@@ -1,0 +1,28 @@
+JOHN VILLANUEVA WEBSITE - LAUNCH NOTES
+
+WHAT WAS ADDED
+- Canonical URLs, Open Graph metadata, Twitter card metadata, Person/WebSite JSON-LD
+- Social sharing image, favicon, Apple touch icon, and web manifest
+- sitemap.xml, robots.txt, and 404.html
+- Privacy-conscious public resume PDF on the Work page
+- Externalized embedded images for browser caching and smaller HTML files
+- Image dimensions, decoding hints, and lazy loading below the fold
+- Optional security headers file for Netlify / Cloudflare Pages
+
+PRIVACY DECISIONS
+- No phone number, home address, date of birth, CNA license number, or exact current workplace is published.
+- The public resume identifies the current role only as an East Bay skilled nursing facility.
+- The contact email is visually masked and assembled by JavaScript to reduce basic scraping.
+- Social and gaming profiles remain linked because they were intentionally supplied for public use.
+- No analytics, cookies, ad pixels, or visitor tracking were added.
+
+DEPLOYMENT
+1. Upload every file and the assets folder without changing the relative structure.
+2. Make index.html the homepage.
+3. Configure 404.html as the custom 404 page if the host supports it.
+4. Confirm https://johnfvillanueva.com/sitemap.xml and /robots.txt are reachable.
+5. Test the social card with LinkedIn Post Inspector and another messaging platform after deployment.
+6. If your host does not support the _headers file, copy the listed headers into its security/header settings.
+
+EXTERNAL MINI-PROJECTS
+The live quiz and game pages at /dino-racers, /pharmacology, /math-game, /spanish, and /filipino are not part of this ZIP. Their source pages must be updated separately if you want the portfolio header/footer added to them.
