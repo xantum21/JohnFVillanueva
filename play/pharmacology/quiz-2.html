@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Pharm HESI Mastery — Weak Areas SEQUEL (Adaptive + SFX)</title>
+<style>
+  :root {
+    --bg: #0b1020;
+    --card: #141a34;
+    --ink: #eaf2ff;
+    --muted: #a9b2cc;
+    --accent: #7cf0ff;
+    --accent2: #b987ff;
+    --danger: #ff6b6b;
+    --success: #56f39a;
+    --warn: #ffd166;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans;
+    background: radial-gradient(1000px 500px at 10% -10%, rgba(124,240,255,0.08), transparent),
+                radial-gradient(800px 400px at 100% 0%, rgba(185,135,255,0.08), transparent),
+                var(--bg);
+    color: var(--ink);
+    margin: 0; padding: 0;
+  }
+  header { padding: 16px 18px; display: grid; grid-template-columns: 1fr auto auto auto; gap: 12px; align-items: center; }
+  .brand { font-weight: 800; font-size: 18px; }
+  .pill { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 8px 12px; display: inline-flex; gap: 8px; align-items: center; color: var(--muted); }
+  button, select { background: var(--card); color: var(--ink); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 12px; cursor: pointer; }
+  button:hover { border-color: rgba(124,240,255,0.5); }
+  main { max-width: 1100px; margin: 0 auto; padding: 12px; }
+  .controls { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 10px; margin-bottom: 12px; }
+  .card { background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px; }
+  .qstem { font-size: 18px; line-height: 1.25; }
+  .options { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+  .opt { padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); cursor: pointer; }
+  .opt:hover { border-color: rgba(185,135,255,0.6); }
+  .opt.correct { background: rgba(86,243,154,0.08); border-color: var(--success); }
+  .opt.incorrect { background: rgba(255,107,107,0.08); border-color: var(--danger); }
+  .muted { color: var(--muted); font-size: 13px; }
+  .rationale { margin-top: 10px; color: var(--muted); }
+  .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { font-size: 11px; padding: 4px 6px; border-radius: 6px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); color: var(--muted); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .footer { margin-top: 12px; display: grid; grid-template-columns: 1fr auto; align-items: center; }
+  .hidden { display: none; }
+  .sfxbtn.on { border-color: var(--success); box-shadow: 0 0 0 2px rgba(86,243,154,0.2) inset; }
+  .musicbtn.on { border-color: var(--accent2); box-shadow: 0 0 0 2px rgba(185,135,255,0.2) inset; }
+  .topic-chip { padding: 4px 8px; border-radius: 999px; background: rgba(124,240,255,0.1); border:1px solid rgba(124,240,255,0.3); font-size: 12px; }
+  .toast { position: fixed; right: 16px; bottom: 16px; background: #121833; color:#fff; border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:10px 12px; opacity:0; transform: translateY(10px); transition: all .2s; }
+  .toast.show { opacity:1; transform: translateY(0); }
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
+<header>
+<div class="brand">💥 Pharm HESI Mastery — Weak Areas SEQUEL</div>
+<button class="pill sfxbtn" id="sfx">🔊 Sound: Off</button>
+<button class="pill musicbtn" id="music">🎵 Music: Off</button>
+<div class="pill muted">Progress: <span id="progress">0/0</span></div>
+</header>
+<main>
+<section class="controls card">
+<div class="row" style="justify-content:space-between; gap:12px;">
+<div class="row">
+<label class="muted">Mode:</label>
+<select id="mode">
+<option value="adaptive">Adaptive (Weak Topics First)</option>
+<option value="random">Random</option>
+<option value="topic">By Topic</option>
+</select>
+</div>
+<div class="row" id="topicFilterWrap">
+<label class="muted">Topic:</label>
+<select id="topicFilter"></select>
+</div>
+<div class="row">
+<label class="muted">Timer:</label>
+<select id="timer">
+<option value="off">Off</option>
+<option value="60">60s</option>
+<option selected="" value="90">90s</option>
+<option value="120">120s</option>
+</select>
+</div>
+<div class="row">
+<button id="reset">Reset Stats</button>
+<button id="next">Next ▶</button>
+</div>
+</div>
+</section>
+<section class="card" id="questionCard">
+<div class="row" style="justify-content:space-between;">
+<div class="badges" id="metaBadges"></div>
+<div class="topic-chip" id="topicChip"></div>
+</div>
+<div class="qstem" id="stem" style="margin-top:10px;"></div>
+<div class="options" id="options"></div>
+<div class="rationale hidden" id="rationale"></div>
+<div class="footer">
+<div class="muted" id="status">Select the best answer.</div>
+<div class="row">
+<button id="showAns">Show Answer</button>
+<button id="again">Again 🔁</button>
+</div>
+</div>
+</section>
+<section class="grid2" style="margin-top:12px;">
+<div class="card">
+<div class="row" style="justify-content:space-between;">
+<div class="muted">Mastery Tracker (per topic)</div>
+<button id="export">Export Results</button>
+</div>
+<div class="muted" id="tracker" style="margin-top:8px; display:grid; grid-template-columns: 1fr 90px 90px; gap:6px;"></div>
+</div>
+<div class="card">
+<div class="muted">Study Tips • Safety Lens</div>
+<ul class="muted">
+<li>When torn between two answers, ask: <em>which option prevents harm first?</em></li>
+<li>Use the timer to practice pacing (~1 min per question).</li>
+<li>Adaptive mode repeats items you miss more often, prioritizing your weak topics.</li>
+</ul>
+</div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+const BANK = [{"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Which insulin most risky if meal delayed?", "options": ["Glargine", "Lispro", "Detemir", "Degludec"], "answerIndex": 1, "answers": [1], "rationale": "Rapid-acting requires food within ~15 min.", "tags": ["timing"]}, {"topic": "Pain/Opioids", "type": "MCQ", "stem": "Most concerning after hydromorphone?", "options": ["RR 10/min", "Itching", "Constipation", "Miosis"], "answerIndex": 0, "answers": [0], "rationale": "RR<12: hold, assess airway.", "tags": ["opioid"]}, {"topic": "Respiratory", "type": "MCQ", "stem": "Controller med for asthma?", "options": ["Albuterol", "Montelukast", "Epinephrine IM", "Racemic epi"], "answerIndex": 1, "answers": [1], "rationale": "LTRA for maintenance.", "tags": ["controller"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Correct SL nitro teaching:", "options": ["Store in plastic bag", "Call EMS after first dose if pain persists; up to 3 doses", "OK with sildenafil if BP normal", "Swallow tablets"], "answerIndex": 1, "answers": [1], "rationale": "EMS plan + max 3 doses; avoid PDE-5.", "tags": ["nitro"]}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Warfarin: keep intake of which consistent?", "options": ["Vitamin C", "Vitamin D", "Vitamin K", "Iron"], "answerIndex": 2, "answers": [2], "rationale": "Vitamin K affects INR.", "tags": ["warfarin"]}, {"topic": "Renal/Electrolyte/IV", "type": "MCQ", "stem": "Appropriate IV potassium order:", "options": ["10 mEq IV push", "40 mEq KCl in 1 L over 4–6 hr via pump", "Add KCl to TPN on unit", "Undiluted KCl peripheral"], "answerIndex": 1, "answers": [1], "rationale": "Never IV push; use pump.", "tags": ["KCl"]}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which may darken iris + increase lash growth?", "options": ["Beta blockers", "Prostaglandin analogs", "Alpha-agonists", "CAIs"], "answerIndex": 1, "answers": [1], "rationale": "Latanoprost/travoprost effects.", "tags": ["PG analog"]}, {"topic": "GI/Hepatic", "type": "MCQ", "stem": "Limit in chronic alcohol use:", "options": ["Acetaminophen", "Ibuprofen", "Aspirin", "Celecoxib"], "answerIndex": 0, "answers": [0], "rationale": "APAP + alcohol ↑ hepatotoxicity risk.", "tags": ["liver"]}, {"topic": "Neuro", "type": "MCQ", "stem": "Riluzole: monitor which lab?", "options": ["TSH", "AST/ALT", "INR", "Lipase"], "answerIndex": 1, "answers": [1], "rationale": "Hepatotoxicity risk.", "tags": ["ALS"]}, {"topic": "Documentation/Teaching", "type": "SATA", "stem": "Nitro SL home teaching (select all):", "options": ["Sit before dose", "Keep in original dark container", "Call EMS if no relief after first dose; up to 3 total", "Use with sildenafil if needed"], "answerIndex": null, "answers": [0, 1, 2], "rationale": "Avoid PDE-5; posture/storage/EMS plan.", "tags": ["teach"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Sick-day rule:", "options": ["Stop insulin", "Continue insulin; check glucose/ketones more often", "Double insulin", "Avoid fluids"], "answerIndex": 1, "answers": [1], "rationale": "Keep insulin, hydrate, monitor closely.", "tags": ["sick-day"]}, {"topic": "Respiratory", "type": "MCQ", "stem": "Theophylline teaching:", "options": ["Safe with caffeine", "No levels needed", "Report palpitations; avoid caffeine; check levels", "First-line rescue"], "answerIndex": 2, "answers": [2], "rationale": "Narrow TI; stimulants worsen effects.", "tags": ["theophylline"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Which causes dry cough?", "options": ["Amlodipine", "Lisinopril", "Hydralazine", "Metoprolol"], "answerIndex": 1, "answers": [1], "rationale": "ACE inhibitor cough.", "tags": ["ACEi"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Order: Cefazolin 2 g in 100 mL over 30 min. Pump rate?", "options": ["100 mL/hr", "150 mL/hr", "200 mL/hr", "240 mL/hr"], "answerIndex": 2, "answers": [2], "rationale": "100 mL/0.5 hr=200 mL/hr.", "tags": ["IV", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label 250 mg/5 mL. Give 375 mg. Volume?", "options": ["5 mL", "6 mL", "7.5 mL", "10 mL"], "answerIndex": 2, "answers": [2], "rationale": "375×(5/250)=7.5 mL.", "tags": ["calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "750 mL over 6 hr with 15 gtt/mL. gtt/min?", "options": ["26", "31", "42", "56"], "answerIndex": 1, "answers": [1], "rationale": "750/360≈2.08; ×15≈31 gtt/min.", "tags": ["drop", "calc"]}, {"topic": "Med Safety/Math", "type": "SATA", "stem": "Reduce LASA errors (select all):", "options": ["Tall-man lettering", "Barcode scan patient + product", "Use vial color coding", "Eliminate do-not-use abbreviations"], "answerIndex": null, "answers": [0, 1, 3], "rationale": "Tall-man + BCMA + no unsafe abbreviations.", "tags": ["LASA"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 4 hr using 10 gtt/mL tubing. Set the rate (gtt/min).", "options": ["4 gtt/min", "10 gtt/min", "14 gtt/min", "18 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/240 = 1.04 mL/min × 10 ≈ 10 gtt/min.", "tags": ["drop factor", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 1000 mL over 4 hr using 10 gtt/mL tubing. Set the rate (gtt/min).", "options": ["36 gtt/min", "42 gtt/min", "46 gtt/min", "50 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "1000/240 = 4.17 mL/min × 10 ≈ 42 gtt/min.", "tags": ["drop factor", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 6 hr using 20 gtt/mL tubing. Set the rate (gtt/min).", "options": ["8 gtt/min", "14 gtt/min", "18 gtt/min", "22 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/360 = 0.69 mL/min × 20 ≈ 14 gtt/min.", "tags": ["drop factor", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 750 mL over 4 hr using 10 gtt/mL tubing. Set the rate (gtt/min).", "options": ["25 gtt/min", "31 gtt/min", "35 gtt/min", "39 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "750/240 = 3.12 mL/min × 10 ≈ 31 gtt/min.", "tags": ["drop factor", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 500 mL over 3 hr using 15 gtt/mL tubing. Set the rate (gtt/min).", "options": ["36 gtt/min", "42 gtt/min", "46 gtt/min", "50 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "500/180 = 2.78 mL/min × 15 ≈ 42 gtt/min.", "tags": ["drop factor", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 750 mL over 3 hr using 10 gtt/mL tubing. Set the rate (gtt/min).", "options": ["36 gtt/min", "42 gtt/min", "46 gtt/min", "50 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "750/180 = 4.17 mL/min × 10 ≈ 42 gtt/min.", "tags": ["drop factor", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 6 hr using 10 gtt/mL tubing. Set the rate (gtt/min).", "options": ["1 gtt/min", "7 gtt/min", "11 gtt/min", "15 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/360 = 0.69 mL/min × 10 ≈ 7 gtt/min.", "tags": ["drop factor", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 1000 mL over 2 hr using 10 gtt/mL tubing. Set the rate (gtt/min).", "options": ["77 gtt/min", "83 gtt/min", "87 gtt/min", "91 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "1000/120 = 8.33 mL/min × 10 ≈ 83 gtt/min.", "tags": ["drop factor", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: Infuse 200 mL over 90 minutes. Set the pump (mL/hr):", "options": ["103 mL/hr", "133 mL/hr", "153 mL/hr", "173 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "200 ÷ (90/60 hr) = 133.3 mL/hr → 133 mL/hr.", "tags": ["pump", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: Infuse 100 mL over 30 minutes. Set the pump (mL/hr):", "options": ["170 mL/hr", "200 mL/hr", "220 mL/hr", "240 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "100 ÷ (30/60 hr) = 200.0 mL/hr → 200 mL/hr.", "tags": ["pump", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: Infuse 100 mL over 45 minutes. Set the pump (mL/hr):", "options": ["103 mL/hr", "133 mL/hr", "153 mL/hr", "173 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "100 ÷ (45/60 hr) = 133.3 mL/hr → 133 mL/hr.", "tags": ["pump", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: Infuse 150 mL over 30 minutes. Set the pump (mL/hr):", "options": ["270 mL/hr", "300 mL/hr", "320 mL/hr", "340 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "150 ÷ (30/60 hr) = 300.0 mL/hr → 300 mL/hr.", "tags": ["pump", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: Infuse 500 mL over 90 minutes. Set the pump (mL/hr):", "options": ["303 mL/hr", "333 mL/hr", "353 mL/hr", "373 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "500 ÷ (90/60 hr) = 333.3 mL/hr → 333 mL/hr.", "tags": ["pump", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: Infuse 100 mL over 60 minutes. Set the pump (mL/hr):", "options": ["70 mL/hr", "100 mL/hr", "120 mL/hr", "140 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "100 ÷ (60/60 hr) = 100.0 mL/hr → 100 mL/hr.", "tags": ["pump", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 250 mg/10 mL. Administer 250 mg. How many mL?", "options": ["9.5 mL", "10 mL", "10.5 mL", "11 mL"], "answerIndex": 1, "answers": [1], "rationale": "250×(10/250) = 10.00 mL → 10 mL.", "tags": ["dose calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 125 mg/10 mL. Administer 375 mg. How many mL?", "options": ["29.5 mL", "30 mL", "30.5 mL", "31 mL"], "answerIndex": 1, "answers": [1], "rationale": "375×(10/125) = 30.00 mL → 30 mL.", "tags": ["dose calc"]}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which glaucoma drug darkens the iris and lengthens lashes?", "options": ["Beta-blockers", "Prostaglandin analogs", "Alpha-agonists", "Carbonic anhydrase inhibitors"], "answerIndex": 1, "answers": [1], "rationale": "Prostaglandin analogs (e.g., latanoprost) can darken iris and lengthen lashes.", "tags": []}, {"topic": "Documentation/Teaching", "type": "MCQ", "stem": "Opioid safety teaching priority:", "options": ["Share extras", "Crush ER tablets", "Keep naloxone accessible & know how to use it", "Store on kitchen counter"], "answerIndex": 2, "answers": [2], "rationale": "Naloxone availability/education reduces overdose deaths.", "tags": []}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which drug is reversed by idarucizumab?", "options": ["Apixaban", "Rivaroxaban", "Dabigatran", "Warfarin"], "answerIndex": 2, "answers": [2], "rationale": "Idarucizumab reverses dabigatran.", "tags": []}, {"topic": "Respiratory", "type": "MCQ", "stem": "Controller for persistent asthma:", "options": ["SABA", "Inhaled corticosteroid", "Racemic epinephrine", "SAMA only"], "answerIndex": 1, "answers": [1], "rationale": "ICS are first-line controllers.", "tags": []}];
+
+let RECENT = [];
+const RECENT_MAX = 12;
+const WEAK_TOPICS = [
+  "Med Safety/Math","Cardiovascular","Endocrine/Insulin","Pain/Opioids","Respiratory",
+  "Renal/Electrolyte/IV","Sensory/Glaucoma","GI/Hepatic","Neuro","Documentation/Teaching",
+  "Anticoag/Antiplatelet"
+];
+let topicWeights = {};
+for (const t of WEAK_TOPICS) topicWeights[t] = 2.0;
+for (const q of BANK) if (!topicWeights[q.topic]) topicWeights[q.topic] = 1.0;
+
+const KEY = "pharm_hesi_mastery_stats_SEQUEL_v1";
+let stats = JSON.parse(localStorage.getItem(KEY) || "{}");
+if (!stats.version) stats = {version:1, seen:0, correct:0, topics:{}};
+function ensureTopic(topic){ if(!stats.topics[topic]) stats.topics[topic] = {seen:0, correct:0}; }
+
+const elStem = document.getElementById('stem');
+const elOptions = document.getElementById('options');
+const elRationale = document.getElementById('rationale');
+const elStatus = document.getElementById('status');
+const elNext = document.getElementById('next');
+const elAgain = document.getElementById('again');
+const elShowAns = document.getElementById('showAns');
+const elTopicFilter = document.getElementById('topicFilter');
+const elTopicWrap = document.getElementById('topicFilterWrap');
+const elMode = document.getElementById('mode');
+const elTimer = document.getElementById('timer');
+const elProgress = document.getElementById('progress');
+const elMeta = document.getElementById('metaBadges');
+const elChip = document.getElementById('topicChip');
+const elReset = document.getElementById('reset');
+const elExport = document.getElementById('export');
+const toast = document.getElementById('toast');
+
+const topics = Array.from(new Set(BANK.map(q=>q.topic))).sort();
+for (const t of topics) { const o=document.createElement('option'); o.value=t; o.textContent=t; elTopicFilter.appendChild(o); }
+
+let AUDIO_ENABLED=false, MUSIC_ENABLED=false;
+const sfxBtn=document.getElementById('sfx'); const musicBtn=document.getElementById('music');
+function tone(f,dur=0.12,type='sine',gain=0.06){
+  if(!AUDIO_ENABLED) return;
+  const ctx=new (window.AudioContext||window.webkitAudioContext)();
+  const o=ctx.createOscillator(); const g=ctx.createGain();
+  o.type=type;o.frequency.value=f;o.connect(g);g.connect(ctx.destination);
+  g.gain.value=gain;o.start();
+  setTimeout(()=>{g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.1);o.stop(ctx.currentTime+0.12);},dur*1000);
+}
+function sfxClick(){tone(320,0.06,'sine',0.05)}
+function sfxCorrect(){tone(660,0.14,'triangle',0.08);setTimeout(()=>tone(880,0.18,'triangle',0.07),90)}
+function sfxWrong(){tone(180,0.18,'sawtooth',0.07)}
+function sfxStreak(){tone(520,0.12,'square',0.05);setTimeout(()=>tone(1040,0.12,'square',0.05),120)}
+
+let musicCtx=null,musicOsc=null,musicInt=null,musicProg=0;
+function toggleMusic(on){
+  if(on){
+    if(musicCtx) return;
+    musicCtx=new (window.AudioContext||window.webkitAudioContext)();
+    musicOsc=musicCtx.createOscillator();
+    const g=musicCtx.createGain(); g.gain.value=0.03;
+    musicOsc.connect(g); g.connect(musicCtx.destination);
+    musicOsc.type='sine'; musicOsc.frequency.value=220; musicOsc.start();
+    musicInt=setInterval(()=>{
+      const seq=[220,277,330,440,330,277];
+      musicOsc.frequency.value=seq[musicProg%seq.length];
+      musicProg++;
+    },420);
+  } else {
+    try{clearInterval(musicInt);}catch(e){}
+    if(musicOsc) musicOsc.stop();
+    musicCtx=null; musicOsc=null; musicInt=null; musicProg=0;
+  }
+}
+sfxBtn.addEventListener('click',()=>{AUDIO_ENABLED=!AUDIO_ENABLED;sfxBtn.classList.toggle('on',AUDIO_ENABLED);sfxBtn.textContent=AUDIO_ENABLED?"🔊 Sound: On":"🔊 Sound: Off";sfxClick();});
+musicBtn.addEventListener('click',()=>{MUSIC_ENABLED=!MUSIC_ENABLED;musicBtn.classList.toggle('on',MUSIC_ENABLED);musicBtn.textContent=MUSIC_ENABLED?"🎵 Music: On":"🎵 Music: Off";toggleMusic(MUSIC_ENABLED);});
+
+let current=null, allowSelect=true, timerId=null, timeLeft=0, streak=0;
+
+function pickAdaptive(){
+  const weighted=[];
+  for(const q of BANK){
+    ensureTopic(q.topic);
+    const t=stats.topics[q.topic];
+    const acc=t.seen? (t.correct/t.seen):0;
+    let w=topicWeights[q.topic]||1;
+    if(acc<0.7) w*=1.5; if(acc<0.5) w*=2.0;
+    weighted.push([q,w]);
+  }
+  let sum=weighted.reduce((a,b)=>a+b[1],0); let r=Math.random()*sum;
+  for(const [q,w] of weighted){ if((r-=w)<=0){ if(!RECENT.includes(q.stem)) return q; } }
+  for(const [q,w] of weighted){ if(!RECENT.includes(q.stem)) return q; }
+  return weighted[0][0];
+  return weighted[0][0];
+}
+function pickRandom(){ let tries=0; while(tries++<50){ const q=BANK[Math.floor(Math.random()*BANK.length)]; if(!RECENT.includes(q.stem)) return q; } return BANK[Math.floor(Math.random()*BANK.length)]; }
+function pickByTopic(t){ const s=BANK.filter(q=>q.topic===t); if(s.length===0) return pickRandom(); let tries=0; while(tries++<50){ const q=s[Math.floor(Math.random()*s.length)]; if(!RECENT.includes(q.stem)) return q; } return s[Math.floor(Math.random()*s.length)]; }
+function setProgress(){ elProgress.textContent = stats.correct + "/" + stats.seen; }
+function badge(t){ const b=document.createElement('div'); b.className='badge'; b.textContent=t; return b; }
+function toastMsg(msg){ toast.textContent=msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1100); }
+
+function renderQuestion(q){
+  current=q; allowSelect=true;
+  elRationale.classList.add('hidden'); elRationale.textContent="";
+  elStatus.textContent="Select the best answer."; elOptions.innerHTML="";
+  elMeta.innerHTML=""; elChip.textContent=q.topic; elMeta.appendChild(badge(q.type)); if(q.tags&&q.tags.length) elMeta.appendChild(badge(q.tags.join(" · ")));
+  elStem.textContent=q.stem;
+  const isSATA=q.type==="SATA"; const chosen=new Set();
+  q.options.forEach((opt,i)=>{
+    const div=document.createElement('div'); div.className='opt'; div.textContent=opt;
+    div.addEventListener('click',()=>{
+      if(!allowSelect) return; sfxClick();
+      if(isSATA){ if(chosen.has(i)){ chosen.delete(i); div.style.opacity=1; } else { chosen.add(i); div.style.opacity=0.8; } }
+      else { finish([i]); }
+    });
+    elOptions.appendChild(div);
+  });
+  elShowAns.onclick=()=>finish(q.answers);
+  elAgain.onclick=()=>{renderQuestion(q);};
+  function finish(sel){
+    if(!allowSelect) return; allowSelect=false;
+    const isSATA=q.type==="SATA"; let correct=false;
+    if(isSATA){ const sels=Array.from(chosen).sort((a,b)=>a-b); correct=JSON.stringify(sels)===JSON.stringify(q.answers); }
+    else { correct=sel[0]===q.answerIndex; }
+    Array.from(elOptions.children).forEach((node,idx)=>{ const ok=q.answers.includes(idx); node.classList.add(ok?'correct':'incorrect'); });
+    stats.seen++; ensureTopic(q.topic); stats.topics[q.topic].seen++;
+RECENT.unshift(q.stem); if(RECENT.length>RECENT_MAX) RECENT.pop();
+    if(correct){ stats.correct++; stats.topics[q.topic].correct++; streak++; sfxCorrect(); if(streak&&streak%5===0) sfxStreak(); elStatus.textContent="✅ Correct"; toastMsg("Nice!"); }
+    else { streak=0; sfxWrong(); elStatus.textContent="❌ Not quite"; }
+    localStorage.setItem(KEY, JSON.stringify(stats));
+    elRationale.textContent=q.rationale; elRationale.classList.remove('hidden');
+    setProgress(); buildTracker();
+  }
+  if(timerId) clearInterval(timerId);
+  const t=elTimer.value;
+  if(t!=="off"){
+    timeLeft=parseInt(t,10); elStatus.textContent="⏱️ "+timeLeft+"s";
+    timerId=setInterval(()=>{
+      if(!allowSelect){clearInterval(timerId);return;}
+      timeLeft--; elStatus.textContent="⏱️ "+timeLeft+"s";
+      if(timeLeft<=0){
+        clearInterval(timerId); allowSelect=false; sfxWrong(); elStatus.textContent="⏰ Time!";
+        Array.from(elOptions.children).forEach((node,idx)=>{ const ok=q.answers.includes(idx); node.classList.add(ok?'correct':'incorrect'); });
+        elRationale.textContent=q.rationale; elRationale.classList.remove('hidden');
+        stats.seen++; ensureTopic(q.topic); stats.topics[q.topic].seen++;
+RECENT.unshift(q.stem); if(RECENT.length>RECENT_MAX) RECENT.pop(); localStorage.setItem(KEY, JSON.stringify(stats));
+        setProgress(); buildTracker();
+      }
+    },1000);
+  }
+}
+
+function nextQuestion(){ let q=null; if(elMode.value==='random') q=pickRandom(); else if(elMode.value==='topic') q=pickByTopic(elTopicFilter.value); else q=pickAdaptive(); renderQuestion(q); }
+function buildTracker(){
+  const c=document.getElementById('tracker'); c.innerHTML="";
+  const ts=Array.from(new Set(BANK.map(q=>q.topic))).sort();
+  ts.forEach(t=>{
+    ensureTopic(t); const s=stats.topics[t];
+    const acc=s.seen? Math.round(100*s.correct/s.seen):0;
+    const r1=document.createElement('div'); r1.textContent=t;
+    const r2=document.createElement('div'); r2.textContent=s.seen+" seen";
+    const r3=document.createElement('div'); r3.textContent=acc+"%";
+    r3.style.color= acc>=85? 'var(--success)': acc>=70? 'var(--warn)': 'var(--danger)';
+    c.appendChild(r1); c.appendChild(r2); c.appendChild(r3);
+  });
+}
+
+document.getElementById('next').addEventListener('click',()=>nextQuestion());
+document.getElementById('mode').addEventListener('change',()=>{ elTopicWrap.style.display=(elMode.value==='topic')?'block':'none'; });
+document.getElementById('reset').addEventListener('click',()=>{ if(confirm('Reset local stats for the SEQUEL?')){ stats={version:1, seen:0, correct:0, topics:{}}; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); }});
+document.getElementById('export').addEventListener('click',()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='pharm_hesi_mastery_stats_sequel.json'; a.click(); });
+
+setProgress(); buildTracker(); elTopicWrap.style.display='none'; nextQuestion();
+</script>
+</body>
+</html>

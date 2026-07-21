@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><style>
+  :root {
+    --bg: #0b1020;
+    --card: #141a34;
+    --ink: #eaf2ff;
+    --muted: #a9b2cc;
+    --accent: #7cf0ff;
+    --accent2: #b987ff;
+    --danger: #ff6b6b;
+    --success: #56f39a;
+    --warn: #ffd166;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+    background: radial-gradient(1000px 500px at 10% -10%, rgba(124,240,255,0.08), transparent),
+                radial-gradient(800px 400px at 100% 0%, rgba(185,135,255,0.08), transparent),
+                var(--bg);
+    color: var(--ink);
+    margin: 0; padding: 0;
+  }
+  header { padding: 16px 18px; display: grid; grid-template-columns: 1fr auto auto auto; gap: 12px; align-items: center; }
+  .brand { font-weight: 800; letter-spacing: .3px; font-size: 18px; }
+  .pill { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 8px 12px; display: inline-flex; gap: 8px; align-items: center; color: var(--muted); }
+  button, select { background: var(--card); color: var(--ink); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 12px; cursor: pointer; }
+  button:hover { border-color: rgba(124,240,255,0.5); }
+  main { max-width: 1100px; margin: 0 auto; padding: 12px; }
+  .controls { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 10px; margin-bottom: 12px; }
+  .card { background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px; }
+  .qstem { font-size: 18px; line-height: 1.25; }
+  .options { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+  .opt { padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); cursor: pointer; }
+  .opt:hover { border-color: rgba(185,135,255,0.6); }
+  .opt.correct { background: rgba(86,243,154,0.08); border-color: var(--success); }
+  .opt.incorrect { background: rgba(255,107,107,0.08); border-color: var(--danger); }
+  .muted { color: var(--muted); font-size: 13px; }
+  .rationale { margin-top: 10px; color: var(--muted); }
+  .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { font-size: 11px; padding: 4px 6px; border-radius: 6px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); color: var(--muted); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .footer { margin-top: 12px; display: grid; grid-template-columns: 1fr auto; align-items: center; }
+  .hidden { display: none; }
+  .sfxbtn.on { border-color: var(--success); box-shadow: 0 0 0 2px rgba(86,243,154,0.2) inset; }
+  .musicbtn.on { border-color: var(--accent2); box-shadow: 0 0 0 2px rgba(185,135,255,0.2) inset; }
+  .topic-chip { padding: 4px 8px; border-radius: 999px; background: rgba(124,240,255,0.1); border:1px solid rgba(124,240,255,0.3); font-size: 12px; }
+  .toast { position: fixed; right: 16px; bottom: 16px; background: #121833; color:#fff; border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:10px 12px; opacity:0; transform: translateY(10px); transition: all .2s; }
+  .toast.show { opacity:1; transform: translateY(0); }
+</style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Pharm HESI — PART 3 (Repaired)</title>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
+<header>
+<div class="brand">🔥 Pharm HESI — PART 3 (Repaired)</div>
+<div class="pill">Progress: <span id="progress">0/0</span></div>
+<button class="pill" id="sfx">🔊 Sound: Off</button>
+<button class="pill" id="music">🎵 Music: Off</button>
+</header>
+<main>
+<section class="controls">
+<div class="row"><span class="muted">Mode:</span>
+<select id="mode">
+<option selected="" value="adaptive">Adaptive (Weak Topics First)</option>
+<option value="random">Random</option>
+<option value="topic">By Topic</option>
+</select>
+</div>
+<div class="row" id="topicWrap"><span class="muted">Topic:</span><select id="topic"></select></div>
+<div class="row"><span class="muted">Timer:</span>
+<select id="timer">
+<option value="off">Off</option>
+<option value="60">60s</option>
+<option selected="" value="90">90s</option>
+<option value="120">120s</option>
+</select>
+</div>
+<div class="row">
+<button id="reset">Reset Stats</button>
+<button id="next">Next ▶</button>
+</div>
+</section>
+<section class="card">
+<div class="badges" id="meta"></div>
+<div class="qstem" id="stem"></div>
+<div class="options" id="opts"></div>
+<div class="rationale" id="rat" style="display:none;"></div>
+<div class="row" style="justify-content:space-between; margin-top:8px;">
+<div class="muted" id="status">Select the best answer.</div>
+<div class="row">
+<button id="show">Show Answer</button>
+<button id="again">Again 🔁</button>
+</div>
+</div>
+</section>
+<section class="card" style="margin-top:12px;">
+<div class="row" style="justify-content:space-between;"><div class="muted">Mastery by Topic</div><button id="export">Export Stats</button></div>
+<div class="muted" id="track" style="display:grid; grid-template-columns:1fr 80px 80px; gap:6px; margin-top:6px;"></div>
+</section>
+</main>
+
+<script>
+function playSFX(id){
+  try{
+    const el=document.getElementById(id);
+    if(el){ el.currentTime=0; el.play().catch(()=>{}); }
+  }catch(e){}
+}
+
+const BANK = [{"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 6 hr using 10 gtt/mL. Set (gtt/min):", "options": ["1 gtt/min", "7 gtt/min", "10 gtt/min", "16 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/360=0.69 mL/min ×10≈7 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 4 hr using 15 gtt/mL. Set (gtt/min):", "options": ["9 gtt/min", "16 gtt/min", "19 gtt/min", "25 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/240=1.04 mL/min ×15≈16 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 500 mL over 2 hr using 15 gtt/mL. Set (gtt/min):", "options": ["56 gtt/min", "63 gtt/min", "66 gtt/min", "72 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "500/120=4.17 mL/min ×15≈63 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 1000 mL over 2 hr using 10 gtt/mL. Set (gtt/min):", "options": ["76 gtt/min", "83 gtt/min", "86 gtt/min", "92 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "1000/120=8.33 mL/min ×10≈83 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 3 hr using 15 gtt/mL. Set (gtt/min):", "options": ["14 gtt/min", "21 gtt/min", "24 gtt/min", "30 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/180=1.39 mL/min ×15≈21 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 6 hr using 10 gtt/mL. Set (gtt/min):", "options": ["1 gtt/min", "7 gtt/min", "10 gtt/min", "16 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/360=0.69 mL/min ×10≈7 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 500 mL over 30 min. Set (mL/hr):", "options": ["975 mL/hr", "1000 mL/hr", "1015 mL/hr", "1035 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "500/(30/60)=1000.0 → 1000 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 500 mL over 30 min. Set (mL/hr):", "options": ["975 mL/hr", "1000 mL/hr", "1015 mL/hr", "1035 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "500/(30/60)=1000.0 → 1000 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 150 mL over 45 min. Set (mL/hr):", "options": ["175 mL/hr", "200 mL/hr", "215 mL/hr", "235 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "150/(45/60)=200.0 → 200 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 100 mL over 45 min. Set (mL/hr):", "options": ["108 mL/hr", "133 mL/hr", "148 mL/hr", "168 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "100/(45/60)=133.3 → 133 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 250 mL over 90 min. Set (mL/hr):", "options": ["142 mL/hr", "167 mL/hr", "182 mL/hr", "202 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "250/(90/60)=166.7 → 167 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 200 mL over 30 min. Set (mL/hr):", "options": ["375 mL/hr", "400 mL/hr", "415 mL/hr", "435 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "200/(30/60)=400.0 → 400 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 500 mg/2 mL. Give 125 mg. How many mL?", "options": ["0.1 mL", "0.5 mL", "0.9 mL", "1.5 mL"], "answerIndex": 1, "answers": [1], "rationale": "125×(2/500)=0.50 mL → 0.5 mL.", "tags": ["ratio"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 125 mg/2 mL. Give 125 mg. How many mL?", "options": ["1.4 mL", "2 mL", "2.4 mL", "3 mL"], "answerIndex": 1, "answers": [1], "rationale": "125×(2/125)=2.00 mL → 2 mL.", "tags": ["ratio"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 500 mg/2 mL. Give 62.5 mg. How many mL?", "options": ["0.1 mL", "0.2 mL", "0.6000000000000001 mL", "1.2 mL"], "answerIndex": 1, "answers": [1], "rationale": "62.5×(2/500)=0.25 mL → 0.2 mL.", "tags": ["ratio"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 125 mg/10 mL. Give 187.5 mg. How many mL?", "options": ["14.4 mL", "15 mL", "15.4 mL", "16 mL"], "answerIndex": 1, "answers": [1], "rationale": "187.5×(10/125)=15.00 mL → 15 mL.", "tags": ["ratio"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 125 mg/10 mL. Give 250 mg. How many mL?", "options": ["19.4 mL", "20 mL", "20.4 mL", "21 mL"], "answerIndex": 1, "answers": [1], "rationale": "250×(10/125)=20.00 mL → 20 mL.", "tags": ["ratio"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 250 mg/5 mL. Give 125 mg. How many mL?", "options": ["1.9 mL", "2.5 mL", "2.9 mL", "3.5 mL"], "answerIndex": 1, "answers": [1], "rationale": "125×(5/250)=2.50 mL → 2.5 mL.", "tags": ["ratio"]}, {"topic": "Renal/Hepatic Dosing", "type": "MCQ", "stem": "Which antibiotic needs renal dose reduction to prevent neurotoxicity?", "options": ["Azithromycin", "Cefepime", "Clindamycin", "Metronidazole"], "answerIndex": 1, "answers": [1], "rationale": "Cefepime accumulation can cause encephalopathy/seizures; adjust to CrCl.", "tags": ["renal dosing"]}, {"topic": "Drug Interactions", "type": "MCQ", "stem": "Which combo most risks severe hyperkalemia?", "options": ["ACE inhibitor + thiazide", "ARB + spironolactone", "Loop diuretic + digoxin", "Beta blocker + statin"], "answerIndex": 1, "answers": [1], "rationale": "Dual RAAS + K-sparing diuretic → hyperK; monitor K+/renal fxn.", "tags": ["hyperK"]}, {"topic": "Psych", "type": "MCQ", "stem": "Bupropion is contraindicated in which history?", "options": ["Hypertension", "Seizure disorder or eating disorder", "Asthma", "Hypothyroidism"], "answerIndex": 1, "answers": [1], "rationale": "Bupropion lowers seizure threshold; contraindicated in seizures/bulimia.", "tags": ["bupropion"]}, {"topic": "Psych", "type": "MCQ", "stem": "Which SSRI at high dose has the greatest QT prolongation concern?", "options": ["Fluoxetine", "Sertraline", "Citalopram", "Paroxetine"], "answerIndex": 2, "answers": [2], "rationale": "Citalopram has dose-dependent QT risk; limit max dose.", "tags": ["QT"]}, {"topic": "OB/Repro", "type": "MCQ", "stem": "Anticoagulant of choice during pregnancy for DVT treatment:", "options": ["Warfarin", "Apixaban", "Heparin (UFH/LMWH)", "Clopidogrel"], "answerIndex": 2, "answers": [2], "rationale": "Heparins don’t cross placenta; warfarin is teratogenic.", "tags": ["OB"]}, {"topic": "OB/Repro", "type": "MCQ", "stem": "Which antibiotic is generally avoided in pregnancy due to effects on teeth/bone?", "options": ["Penicillin", "Cephalexin", "Doxycycline", "Azithromycin"], "answerIndex": 2, "answers": [2], "rationale": "Tetracyclines discolor teeth/inhibit bone growth.", "tags": ["OB safety"]}, {"topic": "Onc/Immuno", "type": "MCQ", "stem": "Cisplatin key toxicities include:", "options": ["Pulmonary fibrosis", "Nephrotoxicity & ototoxicity", "Cardiomyopathy", "Severe hypothyroidism"], "answerIndex": 1, "answers": [1], "rationale": "Hydrate; consider amifostine; monitor kidneys/hearing.", "tags": ["cisplatin"]}, {"topic": "Onc/Immuno", "type": "MCQ", "stem": "Severe diarrhea on checkpoint inhibitor therapy—priority:", "options": ["Loperamide only", "High-dose corticosteroids after excluding perforation", "Continue therapy", "Empiric macrolide"], "answerIndex": 1, "answers": [1], "rationale": "Immune-mediated colitis → steroids; rule out perforation.", "tags": ["IO toxicity"]}, {"topic": "Endocrine/Adrenal", "type": "MCQ", "stem": "During prednisone taper, which finding is most concerning?", "options": ["Fatigue that improves with rest", "BP 132/82", "Hyperglycemia 160 mg/dL", "Postural hypotension + severe weakness"], "answerIndex": 3, "answers": [3], "rationale": "Suggests adrenal insufficiency; urgent eval.", "tags": ["adrenal"]}, {"topic": "Endocrine/Adrenal", "type": "MCQ", "stem": "Which medication may blunt response to epinephrine in anaphylaxis?", "options": ["ACE inhibitor", "Beta blocker", "Thiazide", "CCB"], "answerIndex": 1, "answers": [1], "rationale": "Beta blockers can blunt epi; consider glucagon if refractory.", "tags": ["anaphylaxis"]}, {"topic": "Antimicrobials", "type": "MCQ", "stem": "Linezolid patient teaching should include avoiding excess:", "options": ["Vitamin D", "Tyramine-rich foods", "Protein", "Fiber"], "answerIndex": 1, "answers": [1], "rationale": "MAOI activity → tyramine can cause hypertensive crisis.", "tags": ["linezolid"]}, {"topic": "Antimicrobials", "type": "MCQ", "stem": "Daptomycin should not be used for pneumonia because it is:", "options": ["Only oral", "Inactivated by pulmonary surfactant", "Ineffective against gram-positives", "Nephrotoxic only"], "answerIndex": 1, "answers": [1], "rationale": "Surfactant inactivates it; use vanc/linezolid for MRSA pneumonia.", "tags": ["daptomycin"]}, {"topic": "GI", "type": "MCQ", "stem": "Long-term PPI use is associated with:", "options": ["Bradycardia", "Hypomagnesemia & ↑C. difficile risk", "Hyperkalemia", "Tinnitus"], "answerIndex": 1, "answers": [1], "rationale": "Assess indication; monitor Mg2+; infection/fracture risks noted.", "tags": ["PPI"]}, {"topic": "GI", "type": "MCQ", "stem": "Metoclopramide concerning adverse effect:", "options": ["Constipation", "Tardive dyskinesia/EPS", "Sinus bradycardia", "Xerostomia"], "answerIndex": 1, "answers": [1], "rationale": "Stop if involuntary movements/restlessness develop.", "tags": ["EPS"]}, {"topic": "Neuro", "type": "MCQ", "stem": "Early phenytoin toxicity presents as:", "options": ["Alopecia", "Nystagmus/ataxia", "Hyperreflexia", "Hypoglycemia"], "answerIndex": 1, "answers": [1], "rationale": "Neurologic signs (nystagmus/ataxia) suggest toxicity.", "tags": ["phenytoin"]}, {"topic": "Neuro", "type": "MCQ", "stem": "Valproate counseling for clients who may become pregnant focuses on:", "options": ["Risk of renal stones", "Risk of severe rash", "Risk of neural tube defects", "No special risks"], "answerIndex": 2, "answers": [2], "rationale": "Highly teratogenic; avoid if possible; folate discussion critical.", "tags": ["teratogen"]}, {"topic": "Immunization", "type": "MCQ", "stem": "On prednisone ≥20 mg/day for ≥14 days, avoid which vaccine today?", "options": ["Tdap", "HPV", "Inactivated influenza (IM)", "Live-attenuated varicella"], "answerIndex": 3, "answers": [3], "rationale": "Avoid live vaccines in significant immunosuppression.", "tags": ["vaccine"]}, {"topic": "Bone/Gout", "type": "MCQ", "stem": "Denosumab’s primary mechanism is:", "options": ["Stimulate osteoclasts", "Inhibit RANKL to reduce osteoclast activity", "Block osteoblasts", "Chelate calcium"], "answerIndex": 1, "answers": [1], "rationale": "Anti-RANKL antibody decreases bone resorption.", "tags": ["denosumab"]}, {"topic": "Renal/Hepatic Dosing", "type": "MCQ", "stem": "Which opioid should be avoided/reduced in severe renal failure due to active metabolites?", "options": ["Fentanyl", "Morphine", "Methadone", "Buprenorphine"], "answerIndex": 1, "answers": [1], "rationale": "Morphine metabolites accumulate; consider fentanyl/methadone.", "tags": ["renal"]}, {"topic": "Drug Interactions", "type": "MCQ", "stem": "Rhabdomyolysis risk is highest with:", "options": ["Simvastatin + strong CYP3A4 inhibitor", "Pravastatin + vitamin D", "Rosuvastatin + aspirin", "Atorvastatin + acetaminophen"], "answerIndex": 0, "answers": [0], "rationale": "3A4 inhibitors raise simvastatin levels → myopathy/rhabdo.", "tags": ["statin DI"]}, {"topic": "Cardio/Algorithms", "type": "MCQ", "stem": "Stable narrow-complex SVT after failed vagal maneuvers—next step:", "options": ["Magnesium sulfate", "Adenosine rapid IV push", "Amiodarone first", "Unsynchronized shock"], "answerIndex": 1, "answers": [1], "rationale": "Adenosine transiently blocks AV node; saline flush; warn about flushing.", "tags": ["ACLS"]}, {"topic": "Cardio/Algorithms", "type": "MCQ", "stem": "First-line drug for torsades de pointes:", "options": ["Atropine", "Magnesium sulfate IV", "Adenosine", "Diltiazem"], "answerIndex": 1, "answers": [1], "rationale": "Magnesium stabilizes repolarization in torsades.", "tags": ["torsades"]}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which class can cause eyelash growth and iris darkening?", "options": ["Beta-blockers", "Prostaglandin analogs", "Alpha-agonists", "CAIs"], "answerIndex": 1, "answers": [1], "rationale": "Class effect of prostaglandin analogs (e.g., latanoprost).", "tags": []}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which class can cause eyelash growth and iris darkening?", "options": ["Beta-blockers", "Prostaglandin analogs", "Alpha-agonists", "CAIs"], "answerIndex": 1, "answers": [1], "rationale": "Class effect of prostaglandin analogs (e.g., latanoprost).", "tags": []}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which class can cause eyelash growth and iris darkening?", "options": ["Beta-blockers", "Prostaglandin analogs", "Alpha-agonists", "CAIs"], "answerIndex": 1, "answers": [1], "rationale": "Class effect of prostaglandin analogs (e.g., latanoprost).", "tags": []}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which class can cause eyelash growth and iris darkening?", "options": ["Beta-blockers", "Prostaglandin analogs", "Alpha-agonists", "CAIs"], "answerIndex": 1, "answers": [1], "rationale": "Class effect of prostaglandin analogs (e.g., latanoprost).", "tags": []}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which DOAC has a specific reversal with idarucizumab?", "options": ["Apixaban", "Rivaroxaban", "Dabigatran", "Edoxaban"], "answerIndex": 2, "answers": [2], "rationale": "Idarucizumab reverses dabigatran; andexanet reverses certain Xa inhibitors.", "tags": []}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which DOAC has a specific reversal with idarucizumab?", "options": ["Apixaban", "Rivaroxaban", "Dabigatran", "Edoxaban"], "answerIndex": 2, "answers": [2], "rationale": "Idarucizumab reverses dabigatran; andexanet reverses certain Xa inhibitors.", "tags": []}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which DOAC has a specific reversal with idarucizumab?", "options": ["Apixaban", "Rivaroxaban", "Dabigatran", "Edoxaban"], "answerIndex": 2, "answers": [2], "rationale": "Idarucizumab reverses dabigatran; andexanet reverses certain Xa inhibitors.", "tags": []}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which DOAC has a specific reversal with idarucizumab?", "options": ["Apixaban", "Rivaroxaban", "Dabigatran", "Edoxaban"], "answerIndex": 2, "answers": [2], "rationale": "Idarucizumab reverses dabigatran; andexanet reverses certain Xa inhibitors.", "tags": []}, {"topic": "Respiratory", "type": "MCQ", "stem": "SABA role in persistent asthma management:", "options": ["Controller daily", "Rescue PRN", "Contraindicated", "Replace ICS"], "answerIndex": 1, "answers": [1], "rationale": "SABA is rescue; ICS is controller.", "tags": []}, {"topic": "Respiratory", "type": "MCQ", "stem": "SABA role in persistent asthma management:", "options": ["Controller daily", "Rescue PRN", "Contraindicated", "Replace ICS"], "answerIndex": 1, "answers": [1], "rationale": "SABA is rescue; ICS is controller.", "tags": []}, {"topic": "Respiratory", "type": "MCQ", "stem": "SABA role in persistent asthma management:", "options": ["Controller daily", "Rescue PRN", "Contraindicated", "Replace ICS"], "answerIndex": 1, "answers": [1], "rationale": "SABA is rescue; ICS is controller.", "tags": []}, {"topic": "Respiratory", "type": "MCQ", "stem": "SABA role in persistent asthma management:", "options": ["Controller daily", "Rescue PRN", "Contraindicated", "Replace ICS"], "answerIndex": 1, "answers": [1], "rationale": "SABA is rescue; ICS is controller.", "tags": []}, {"topic": "Opioid Safety", "type": "MCQ", "stem": "Which action reduces opioid overdose deaths?", "options": ["Leaving meds in car", "Sharing pills", "Naloxone education + availability", "Crushing ER tablets"], "answerIndex": 2, "answers": [2], "rationale": "Harm reduction: naloxone access + training.", "tags": []}, {"topic": "Opioid Safety", "type": "MCQ", "stem": "Which action reduces opioid overdose deaths?", "options": ["Leaving meds in car", "Sharing pills", "Naloxone education + availability", "Crushing ER tablets"], "answerIndex": 2, "answers": [2], "rationale": "Harm reduction: naloxone access + training.", "tags": []}, {"topic": "Opioid Safety", "type": "MCQ", "stem": "Which action reduces opioid overdose deaths?", "options": ["Leaving meds in car", "Sharing pills", "Naloxone education + availability", "Crushing ER tablets"], "answerIndex": 2, "answers": [2], "rationale": "Harm reduction: naloxone access + training.", "tags": []}, {"topic": "Opioid Safety", "type": "MCQ", "stem": "Which action reduces opioid overdose deaths?", "options": ["Leaving meds in car", "Sharing pills", "Naloxone education + availability", "Crushing ER tablets"], "answerIndex": 2, "answers": [2], "rationale": "Harm reduction: naloxone access + training.", "tags": []}];
+
+let RECENT=[]; const RECENT_MAX=12;
+const WEAK_TOPICS = ["Med Safety/Math","Drug Interactions","Renal/Hepatic Dosing","OB/Repro","Onc/Immuno","Endocrine/Adrenal",
+                     "Antimicrobials","GI","Neuro","Immunization","Cardio/Algorithms","Bone/Gout","Psych","Opioid Safety","Respiratory","Sensory/Glaucoma","Anticoag/Antiplatelet"];
+let topicWeights={}; for(const t of WEAK_TOPICS) topicWeights[t]=2.0; for(const q of BANK) if(!topicWeights[q.topic]) topicWeights[q.topic]=1.0;
+
+const KEY="pharm_hesi_part3_repaired_stats_v1";
+let stats=JSON.parse(localStorage.getItem(KEY) || "{}"); if(!stats.version) stats={version:1, seen:0, correct:0, topics:{}};
+
+function ensureTopic(t){ if(!stats.topics[t]) stats.topics[t]={seen:0,correct:0}; }
+
+const es = (id)=>document.getElementById(id);
+const elStem=es('stem'), elOpts=es('opts'), elRat=es('rat'), elStatus=es('status');
+const elMode=es('mode'), elTimer=es('timer'), elProgress=es('progress'), elTopic=es('topic'), elTopicWrap=es('topicWrap');
+const elMeta=es('meta'), elReset=es('reset'), elExport=es('export'), elNext=es('next'), elAgain=es('again');
+
+// populate topics
+const topics = Array.from(new Set(BANK.map(q=>q.topic))).sort();
+for(const t of topics){ const o=document.createElement('option'); o.value=t; o.textContent=t; elTopic.appendChild(o); }
+
+function setProgress(){ elProgress.textContent = stats.correct + "/" + stats.seen; }
+
+let AUDIO=false, MUSIC=false;
+es('sfx').onclick=()=>{ AUDIO=!AUDIO; es('sfx').textContent = AUDIO? "🔊 Sound: On":"🔊 Sound: Off"; if(AUDIO) tone(300,0.05); }
+es('music').onclick=()=>{ MUSIC=!MUSIC; es('music').textContent = MUSIC? "🎵 Music: On":"🎵 Music: Off"; if(MUSIC) tone(220,0.08); }
+function tone(f,d=0.12){ if(!AUDIO) return; const c=new (window.AudioContext||window.webkitAudioContext)(); const o=c.createOscillator(); const g=c.createGain(); o.connect(g); g.connect(c.destination); g.gain.value=0.05; o.frequency.value=f; o.start(); setTimeout(()=>{g.gain.exponentialRampToValueAtTime(0.0001,c.currentTime+0.08); o.stop(c.currentTime+0.1);}, d*1000); }
+
+function pickRandom(){ let tries=0; while(tries++<60){ const q=BANK[Math.floor(Math.random()*BANK.length)]; if(!RECENT.includes(q.stem)) return q; } return BANK[Math.floor(Math.random()*BANK.length)]; }
+function pickByTopic(t){ const s=BANK.filter(q=>q.topic===t); if(s.length===0) return pickRandom(); let tries=0; while(tries++<60){ const q=s[Math.floor(Math.random()*s.length)]; if(!RECENT.includes(q.stem)) return q; } return s[Math.floor(Math.random()*s.length)]; }
+function pickAdaptive(){ const weighted=[]; for(const q of BANK){ ensureTopic(q.topic); const st=stats.topics[q.topic]; const acc=st.seen? st.correct/st.seen:0; let w=topicWeights[q.topic]||1; if(acc<0.7) w*=1.6; if(acc<0.5) w*=2.0; weighted.push([q,w]); } let sum=weighted.reduce((a,b)=>a+b[1],0); let r=Math.random()*sum; for(const [q,w] of weighted){ if((r-=w)<=0 && !RECENT.includes(q.stem)) return q; } for(const [q,w] of weighted){ if(!RECENT.includes(q.stem)) return q; } return weighted[0][0]; }
+
+let current=null, allow=true, timer=null, tleft=0;
+
+function render(q){
+  current=q; allow=true; elRat.style.display='none'; elRat.textContent=""; elStatus.textContent="Select the best answer."; elOpts.innerHTML=""; elMeta.innerHTML="";
+  elMeta.append(badge(q.type), badge(q.topic));
+  elStem.textContent=q.stem;
+  q.options.forEach((opt,i)=>{ const d=document.createElement('div'); d.className='opt'; d.textContent=opt;
+    d.onclick=()=>{ if(!allow) return; finish([i]); }; elOpts.appendChild(d); });
+  es('show').onclick=()=>finish(q.answers); elAgain.onclick=()=>render(q);
+
+  if(timer) clearInterval(timer); const tv=elTimer.value;
+  if(tv!=="off"){ tleft=parseInt(tv,10); elStatus.textContent="⏱️ "+tleft+"s";
+    timer=setInterval(()=>{ if(!allow){clearInterval(timer);return;} tleft--; elStatus.textContent="⏱️ "+tleft+"s"; if(tleft<=0){ clearInterval(timer); allow=false; reveal(false); } },1000);
+  }
+}
+
+function reveal(correct){
+  Array.from(elOpts.children).forEach((node,idx)=>{ const ok=current.answers.includes(idx); node.classList.add(ok?'correct':'incorrect'); });
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++;
+  if(correct){ stats.correct++; stats.topics[current.topic].correct++; playSFX('correctSound'); } else { playSFX('wrongSound'); }
+  localStorage.setItem(KEY, JSON.stringify(stats));
+  elRat.textContent=current.rationale; elRat.style.display='block'; setProgress();
+  RECENT.unshift(current.stem); if(RECENT.length>RECENT_MAX) RECENT.pop();
+}
+
+function finish(sel){ if(!allow) return; allow=false;
+  const a = sel.slice().sort((x,y)=>x-y); const b = current.answers.slice().sort((x,y)=>x-y);
+  let ok = a.length===b.length && a.every((v,i)=>v===b[i]); reveal(ok);
+}
+
+function badge(t){ const b=document.createElement('div'); b.className='badge'; b.textContent=t; return b; }
+function nextQ(){ let q=null; if(elMode.value==='random') q=pickRandom(); else if(elMode.value==='topic') q=pickByTopic(elTopic.value); else q=pickAdaptive(); render(q); }
+
+function buildTracker(){
+  const c=es('track'); c.innerHTML="";
+  const ts=Array.from(new Set(BANK.map(q=>q.topic))).sort();
+  ts.forEach(t=>{
+    ensureTopic(t); const s=stats.topics[t]; const acc=s.seen? Math.round(100*s.correct/s.seen):0;
+    const d1=document.createElement('div'); d1.textContent=t;
+    const d2=document.createElement('div'); d2.textContent=(s.seen||0)+" seen";
+    const d3=document.createElement('div'); d3.textContent=acc+"%";
+    d3.style.color = acc>=85? '#56f39a' : acc>=70? '#ffd166' : '#ff6b6b';
+    c.appendChild(d1); c.appendChild(d2); c.appendChild(d3);
+  });
+}
+
+elNext.onclick=nextQ;
+elMode.onchange=()=>{ elTopicWrap.style.display = (elMode.value==='topic')? 'block':'none'; };
+elReset.onclick=()=>{ if(confirm('Reset stats?')){ localStorage.removeItem(KEY); stats={version:1,seen:0,correct:0,topics:{}}; setProgress(); buildTracker(); } };
+elExport.onclick=()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='part3_repaired_stats.json'; a.click(); };
+
+setProgress(); buildTracker(); elTopicWrap.style.display='none'; nextQ();
+
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const bgm=document.getElementById('bgm');
+  const btn=document.getElementById('music')||document.getElementById('toggleMusic');
+  if(bgm && btn){
+    btn.addEventListener('click', ()=>{
+      if(bgm.paused){ bgm.play().catch(()=>{}); btn.textContent='🎵 Music: On'; }
+      else{ bgm.pause(); btn.textContent='🎵 Music: Off'; }
+    });
+  }
+  const sbtn=document.getElementById('sfx')||document.getElementById('toggleSfx');
+  if(sbtn){
+    sbtn.addEventListener('click', ()=>{
+      sbtn.textContent = (sbtn.textContent.includes('Off'))? '🔊 Sound: On' : '🔊 Sound: Off';
+    });
+  }
+});
+</script></body>
+</html>

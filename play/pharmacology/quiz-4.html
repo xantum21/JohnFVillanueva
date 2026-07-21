@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Pharm HESI — PART 6 PLUS • 100+ Questions (Adaptive + SFX)</title>
+<style>
+  :root {
+    --bg: #0b1020; --card:#141a34; --ink:#eaf2ff; --muted:#a9b2cc;
+    --accent:#7cf0ff; --accent2:#b987ff; --danger:#ff6b6b; --success:#56f39a;
+  }
+  *{box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+       background:radial-gradient(1000px 500px at 10% -10%, rgba(124,240,255,.08), transparent),
+                  radial-gradient(800px 400px at 100% 0%, rgba(185,135,255,.08), transparent), var(--bg);
+       color:var(--ink); margin:0}
+  header{padding:16px 18px; display:grid; grid-template-columns:1fr auto auto auto auto; gap:12px; align-items:center;
+         background:#121735; border-bottom:1px solid rgba(255,255,255,.08)}
+  .brand{font-weight:800; font-size:18px}
+  .pill{background:#1a2144; border:1px solid rgba(255,255,255,.1); border-radius:999px; padding:8px 12px; color:#b9c3e6}
+  main{max-width:1100px; margin:0 auto; padding:14px}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:14px}
+  .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+  .controls{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:10px; margin-bottom:12px}
+  button,select{background:#1a2144; color:#eaf2ff; border:1px solid rgba(255,255,255,.1); border-radius:10px; padding:10px 12px; cursor:pointer}
+  button:hover{border-color:#7cf0ff}
+  .qstem{font-size:18px; line-height:1.3}
+  .options{display:grid; grid-template-columns:1fr; gap:8px; margin-top:10px}
+  .opt{padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); cursor:pointer}
+  .opt.correct{background:rgba(86,243,154,.08); border-color:#56f39a}
+  .opt.incorrect{background:rgba(255,107,107,.08); border-color:#ff6b6b}
+  .muted{color:#b9c3e6; font-size:13px}
+  .rationale{margin-top:8px; color:#b9c3e6}
+  .badges{display:flex; gap:8px; flex-wrap:wrap}
+  .badge{font-size:11px; padding:4px 6px; border-radius:6px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); color:#b9c3e6}
+  .topic-chip{padding:4px 8px; border-radius:999px; background:rgba(124,240,255,.1); border:1px solid rgba(124,240,255,.3); font-size:12px}
+  .toast{position:fixed; right:16px; bottom:16px; background:#121833; color:#fff; border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:10px 12px; opacity:0; transform:translateY(10px); transition:all .2s}
+  .toast.show{opacity:1; transform:translateY(0)}
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
+<header>
+<div class="brand">💊 Pharm HESI — PART 6 PLUS • 100+ Questions</div>
+<button class="pill" id="sfx">🔊 Sound: Off</button>
+<button class="pill" id="music">🎵 Music: Off</button>
+<div class="pill">Progress: <span id="progress">0/0</span></div>
+<div class="pill">Bank Size: <span id="banksize">—</span></div>
+</header>
+<main>
+<section class="controls card">
+<div class="row">
+<label class="muted">Mode:</label>
+<select id="mode">
+<option selected="" value="adaptive">Adaptive (Weak Topics First)</option>
+<option value="random">Random</option>
+<option value="topic">By Topic</option>
+</select>
+</div>
+<div class="row" id="topicWrap">
+<label class="muted">Topic:</label>
+<select id="topic"></select>
+</div>
+<div class="row">
+<label class="muted">Timer:</label>
+<select id="timer">
+<option value="off">Off</option>
+<option value="60">60s</option>
+<option selected="" value="90">90s</option>
+<option value="120">120s</option>
+</select>
+</div>
+<div class="row">
+<button id="reset">Reset Stats</button>
+<button id="next">Next ▶</button>
+</div>
+</section>
+<section class="card">
+<div class="row" style="justify-content:space-between">
+<div class="badges" id="meta"></div>
+<div class="topic-chip" id="topicChip"></div>
+</div>
+<div class="qstem" id="stem"></div>
+<div class="options" id="opts"></div>
+<div class="rationale" id="rat" style="display:none;"></div>
+<div class="row" style="justify-content:space-between; margin-top:8px;">
+<div class="muted" id="status">Select the best answer.</div>
+<div class="row">
+<button id="show">Show Answer</button>
+<button id="again">Again 🔁</button>
+</div>
+</div>
+</section>
+<section class="card" style="margin-top:12px;">
+<div class="row" style="justify-content:space-between;"><div class="muted">Mastery by Topic</div><button id="export">Export Stats</button></div>
+<div class="muted" id="track" style="display:grid; grid-template-columns:1fr 80px 80px; gap:6px; margin-top:6px;"></div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+// ---- tiny tone synth ----
+const tone=(f=880,d=0.08,t='sine',v=0.03)=>{try{const a=new (window.AudioContext||window.webkitAudioContext)();const o=a.createOscillator();const g=a.createGain();o.type=t;o.frequency.value=f;g.gain.value=v;o.connect(g);g.connect(a.destination);o.start();setTimeout(()=>{o.stop();a.close()},d*1000)}catch{}};
+const ding=()=>{tone(1046,0.08,'triangle',0.04); setTimeout(()=>tone(1318,0.08,'triangle',0.04),100)};
+const buzz=()=>{tone(220,0.12,'square',0.04); setTimeout(()=>tone(196,0.12,'square',0.04),140)};
+
+// ---- Base Bank ----
+const BASE_BANK = [
+  {topic:'Analgesics', type:'MCQ', stem:'Opioid-naïve post-op client: which finding after IV hydromorphone is MOST concerning?', options:['Pruritus','Constipation','RR 8/min','Miosis'], answerIndex:2, answers:[2], rationale:'RR<12 is priority—support ventilation and give naloxone per protocol.'},
+  {topic:'Analgesics', type:'MCQ', stem:'Which statement about naloxone is correct?', options:['Duration exceeds most opioids','May cause acute withdrawal in dependent clients','Given PO for fastest onset','Should be delayed until SpO2 < 80%'], answerIndex:1, answers:[1], rationale:'Short half-life; can precipitate withdrawal.'},
+  {topic:'Analgesics', type:'SATA', stem:'Safe ketorolac teaching (select all that apply):', options:['Limit to ≤5 days of therapy','Avoid with renal impairment','Can combine routinely with other NSAIDs','Report black/tarry stools','It is opioid-sparing but not an opioid'], answers:[0,1,3,4], rationale:'Short course only; GI bleed risk; avoid double-NSAID; not an opioid.'},
+  {topic:'Analgesics', type:'MCQ', stem:'Acetaminophen max daily dose (normal liver):', options:['2 g','3 g','4 g','6 g'], answerIndex:2, answers:[2], rationale:'Do not exceed 4 g/day.'},
+
+  {topic:'Cardiac', type:'MCQ', stem:'Correct home plan for sublingual nitroglycerin:', options:['Store in plastic organizer','Use with sildenafil if BP normal','Call EMS if pain persists after 1st dose; max 3 doses/5 min apart','Swallow tablets whole'], answerIndex:2, answers:[2], rationale:'Call EMS after first non-relieved dose; avoid PDE-5 inhibitors.'},
+  {topic:'Cardiac', type:'MCQ', stem:'Nonselective beta-blocker to avoid in asthma?', options:['Metoprolol','Atenolol','Propranolol','Nebivolol'], answerIndex:2, answers:[2], rationale:'Nonselective (β1/β2) agents cause bronchospasm.'},
+  {topic:'Cardiac', type:'MCQ', stem:'Which combination most increases bleeding risk?', options:['Aspirin + clopidogrel','Aspirin + calcium carbonate','Clopidogrel + ferrous sulfate','Aspirin + vitamin D'], answerIndex:0, answers:[0], rationale:'Dual antiplatelet increases bleeding risk.'},
+
+  {topic:'Neuro', type:'MCQ', stem:'Riluzole for ALS provides which benefit?', options:['Cures ALS','Modestly slows progression/extends survival','Permanently improves respiratory muscles','Reverses bulbar symptoms'], answerIndex:1, answers:[1], rationale:'Modest survival benefit only.'},
+  {topic:'Neuro', type:'MCQ', stem:'Phenytoin therapeutic range (mcg/mL):', options:['4–8','10–20','20–30','30–40'], answerIndex:1, answers:[1], rationale:'~10–20 mcg/mL.'},
+
+  {topic:'Derm', type:'MCQ', stem:'Which is a high-potency topical corticosteroid?', options:['Hydrocortisone 1%','Desonide','Clobetasol propionate','Hydrocortisone valerate 0.2%'], answerIndex:2, answers:[2], rationale:'Clobetasol is super-potent.'},
+  {topic:'Derm', type:'SATA', stem:'Topical steroid safety (select all):', options:['Use lowest effective potency/duration','Avoid occlusion on large surfaces','Apply freely to infected skin','Monitor for atrophy/striae with high potency'], answers:[0,1,3], rationale:'Minimize potency/duration; don’t use on infection without treatment; watch for atrophy.'},
+
+  {topic:'Glaucoma', type:'MCQ', stem:'Drug class ↑ uveoscleral outflow:', options:['Beta-blockers (timolol)','Prostaglandin analogs (latanoprost)','CAIs (dorzolamide)','Alpha-2 agonists (brimonidine)'], answerIndex:1, answers:[1], rationale:'Prostaglandins ↑ outflow.'},
+  {topic:'Glaucoma', type:'SATA', stem:'Timolol (ophthalmic) teaching (select all):', options:['Punctal occlusion','May cause bradycardia/bronchospasm','Safe with oral β-blocker','Remove contacts before drops; wait to reinsert'], answers:[0,1,3], rationale:'Systemic absorption possible; caution in asthma/heart block.'},
+  {topic:'Glaucoma', type:'MCQ', stem:'Acute angle-closure with very high IOP—rapid reduction:', options:['Oral glycerin or IV mannitol','Timolol only','Pilocarpine only','Artificial tears'], answerIndex:0, answers:[0], rationale:'Hyperosmotics used acutely; definitive care needed.'},
+
+  {topic:'Endocrine', type:'MCQ', stem:'Best way to take levothyroxine:', options:['With calcium/iron','At night with food','Morning on empty stomach; separate Ca/Fe by 4 h','Only if HR > 100'], answerIndex:2, answers:[2], rationale:'Empty stomach; separate cations.'},
+  {topic:'Endocrine', type:'MCQ', stem:'Which insulin peaks 4–12 h after dosing?', options:['Lispro','Regular','NPH','Glargine'], answerIndex:2, answers:[2], rationale:'NPH ~4–12 h peak.'},
+
+  {topic:'Antibiotics', type:'MCQ', stem:'Antibiotic needing trough due to nephro/ototoxicity risk:', options:['Amoxicillin','Vancomycin','Azithromycin','Cefdinir'], answerIndex:1, answers:[1], rationale:'Monitor trough, kidneys, hearing.'},
+  {topic:'Antibiotics', type:'SATA', stem:'Metronidazole (select all):', options:['Avoid alcohol during and 48–72 h after','Metallic taste common','Orange urine expected','Use backup contraception'], answers:[0,1,3], rationale:'Disulfiram-like reaction; metallic taste; orange urine is rifampin; enzyme effects may ↓ OCP efficacy.'},
+  {topic:'Antibiotics', type:'MCQ', stem:'Isoniazid pairs with which vitamin?', options:['B1','B6','B12','Folate'], answerIndex:1, answers:[1], rationale:'Pyridoxine prevents neuropathy.'},
+  {topic:'Antibiotics', type:'MCQ', stem:'Linezolid + which ↑ serotonin syndrome risk?', options:['PPIs','SSRIs','Statins','ACE inhibitors'], answerIndex:1, answers:[1], rationale:'MAOI activity + serotonergic = risk.'},
+  {topic:'Antibiotics', type:'SATA', stem:'Rifampin counseling (select all):', options:['Orange body fluids','Reduces OCP effectiveness','Report jaundice/anorexia','Avoid all sun or fatal'], answers:[0,1,2], rationale:'Benign discoloration; enzyme inducer; hepatotoxicity risk.'},
+
+  {topic:'Anticoagulants', type:'MCQ', stem:'Warfarin patient INR 4.5, no bleeding. Priority:', options:['Hold dose and notify provider','Give 10 mg vitamin K IV now','Heparin bridge','Continue current dose'], answerIndex:0, answers:[0], rationale:'Hold and notify; vit K for serious bleeding/very high INR.'},
+  {topic:'Anticoagulants', type:'SATA', stem:'Warfarin teaching (select all):', options:['Soft toothbrush/electric razor','Keep vitamin K intake consistent','Report melena/hematemesis','Daily aspirin without approval is fine'], answers:[0,1,2], rationale:'Bleeding precautions + consistent K; avoid NSAIDs/ASA unless directed.'},
+
+  {topic:'OB', type:'MCQ', stem:'Preferred DVT anticoagulation in pregnancy:', options:['Warfarin','Apixaban','Heparin (UFH/LMWH)','Clopidogrel'], answerIndex:2, answers:[2], rationale:'Heparins don’t cross placenta; warfarin is teratogenic.'},
+  {topic:'OB', type:'SATA', stem:'Magnesium toxicity signs (select all):', options:['RR 10/min','Absent DTRs','Urine output 15 mL/hr','Severe HTN'], answers:[0,1,2], rationale:'Resp depression, loss of reflexes, oliguria; antidote calcium gluconate.'},
+  {topic:'OB', type:'MCQ', stem:'Antidote for magnesium toxicity is:', options:['Protamine','Calcium gluconate','Naloxone','Vitamin K'], answerIndex:1, answers:[1], rationale:'Calcium gluconate.'},
+
+  {topic:'Lipid', type:'MCQ', stem:'Statin pt has severe myalgia + dark urine. Best action:', options:['Continue','Increase fluids only','Hold and notify provider','Add gemfibrozil'], answerIndex:2, answers:[2], rationale:'Possible rhabdo—hold, check CK/renal.'},
+
+  {topic:'Renal/Hepatic', type:'MCQ', stem:'Which needs renal dose reduction to prevent encephalopathy?', options:['Azithromycin','Cefepime','Clindamycin','Metronidazole'], answerIndex:1, answers:[1], rationale:'Cefepime accumulation → neurotoxicity.'},
+
+  {topic:'Psych', type:'MCQ', stem:'Bupropion is contraindicated with history of:', options:['Hypertension','Seizure or eating disorder','Asthma','Hypothyroidism'], answerIndex:1, answers:[1], rationale:'Lowers seizure threshold.'},
+  {topic:'Psych', type:'MCQ', stem:'Primary lab for clozapine safety monitoring:', options:['TSH','ANC','Creatinine','HbA1c'], answerIndex:1, answers:[1], rationale:'Agranulocytosis risk; monitor ANC.'},
+  {topic:'Psych', type:'SATA', stem:'MAOI (phenelzine) diet—avoid (select all):', options:['Aged cheeses','Cured/fermented meats','Overripe avocados','Fresh milk'], answers:[0,1,2], rationale:'Avoid tyramine to prevent hypertensive crisis.'},
+
+  {topic:'Cardiac', type:'SATA', stem:'Amiodarone teaching (select all):', options:['Report new cough/dyspnea','Periodic thyroid/liver tests','Avoid grapefruit juice','Expect bright green skin'], answers:[0,1,2], rationale:'Pulmonary toxicity risk; monitor thyroid/liver; avoid grapefruit.'},
+  {topic:'Safety', type:'MCQ', stem:'Opioid-naïve client gets IV morphine → RR 6/min. First action:', options:['Increase IV fluids','Stimulate, support ventilation, prepare naloxone','High-Fowler’s and reassess in 30 min','Leave to call provider'], answerIndex:1, answers:[1], rationale:'Airway/breathing first; naloxone per protocol.'},
+
+  {topic:'GI', type:'MCQ', stem:'Which med treats hepatic encephalopathy by reducing ammonia?', options:['Pantoprazole','Lactulose','Ondansetron','Metoclopramide'], answerIndex:1, answers:[1], rationale:'Lactulose traps ammonia; target 2–3 soft stools/day.'},
+  {topic:'GI', type:'SATA', stem:'PPIs (e.g., omeprazole) long-term risks (select all):', options:['C. difficile infection','Hypomagnesemia','Osteoporosis-related fractures','Microcytic anemia within 24h'], answers:[0,1,2], rationale:'Infection, low Mg, ↓ Ca absorption; iron deficiency is not acute/within 24h.'},
+  {topic:'Respiratory', type:'MCQ', stem:'Which asthma med is for acute relief?', options:['Salmeterol','Albuterol','Montelukast','Fluticasone (inhaled)'], answerIndex:1, answers:[1], rationale:'SABA for rescue; others for control.'},
+  {topic:'Respiratory', type:'SATA', stem:'Inhaled corticosteroid teaching (select all):', options:['Rinse mouth after use','Use daily as prescribed','Use for acute attacks','Monitor for oral thrush'], answers:[0,1,3], rationale:'Controller therapy; rinse to prevent candidiasis.'},
+  {topic:'Oncology', type:'MCQ', stem:'Filgrastim is used to:', options:['Increase platelets','Stimulate neutrophil production','Suppress T-cell activity','Reverse anemia instantly'], answerIndex:1, answers:[1], rationale:'G-CSF increases neutrophils.'},
+  {topic:'Emergency', type:'MCQ', stem:'Anaphylaxis first-line medication:', options:['Diphenhydramine IV','Epinephrine IM 1:1000','Methylprednisolone IV','Albuterol neb only'], answerIndex:1, answers:[1], rationale:'IM epinephrine first; others are adjuncts.'},
+  {topic:'Electrolytes', type:'MCQ', stem:'Which ECG change is classic for hyperkalemia?', options:['Peaked T waves','U waves','QT prolongation','ST elevation'], answerIndex:0, answers:[0], rationale:'Tall peaked T waves seen in hyperkalemia.'},
+  {topic:'Endocrine', type:'MCQ', stem:'Sick-day rules for insulin:', options:['Stop insulin if not eating','Increase hydration and monitor BG/ketones more often','Double metformin dose','Use only sliding scale'], answerIndex:1, answers:[1], rationale:'Never stop basal insulin; hydrate; monitor closely.'},
+  {topic:'Antibiotics', type:'MCQ', stem:'Which macrolide prolongs QT and has CYP3A4 interactions?', options:['Azithromycin','Erythromycin','Amoxicillin','Doxycycline'], answerIndex:1, answers:[1], rationale:'Erythromycin notable for QT and CYP3A4 issues.'},
+  {topic:'Renal', type:'MCQ', stem:'ACE inhibitor key adverse effects include all EXCEPT:', options:['Dry cough','Angioedema','Hyperkalemia','Bradycardia'], answerIndex:3, answers:[3], rationale:'Bradycardia not typical of ACE inhibitors.'},
+  {topic:'Psych', type:'MCQ', stem:'Lithium toxicity signs include:', options:['Fine tremor only','Coarse tremor, ataxia, severe diarrhea','Polyuria expected; not toxicity','Tinnitus and hearing loss'], answerIndex:1, answers:[1], rationale:'Coarse tremor/ataxia/severe GI upset suggest toxicity; tinnitus suggests salicylates.'},
+  {topic:'Vaccines', type:'MCQ', stem:'Which vaccine is contraindicated in pregnancy?', options:['Influenza inactivated','Tdap','MMR (live)','Hepatitis B'], answerIndex:2, answers:[2], rationale:'Live vaccines like MMR are contraindicated in pregnancy.'},
+  {topic:'Endocrine', type:'MCQ', stem:'Glucagon for severe hypoglycemia is given to an unconscious pt. Next priority:', options:['Give a long-acting insulin','Provide complex carbs once awake and able to swallow','Start immediate exercise','Administer furosemide'], answerIndex:1, answers:[1], rationale:'Prevent recurrent hypoglycemia with oral carbs when safe.'},
+  {topic:'Cardiac', type:'MCQ', stem:'Which antianginal can cause headache and hypotension as common effects?', options:['Ranolazine','Nitroglycerin','Ivabradine','Amiloride'], answerIndex:1, answers:[1], rationale:'Vasodilation → headache, hypotension.'},
+  {topic:'Heme', type:'MCQ', stem:'Which lab best reflects heparin therapeutic effect?', options:['INR','aPTT','Platelet count only','PT alone'], answerIndex:1, answers:[1], rationale:'Heparin monitored with aPTT (institution protocols vary).'},
+  {topic:'Anticoagulants', type:'MCQ', stem:'Fondaparinux teaching includes:', options:['Safe with spinal/epidural anesthesia anytime','Report signs of bleeding','Antidote is protamine sulfate','Requires frequent INR checks'], answerIndex:1, answers:[1], rationale:'Bleeding risk; spinal/epidural timing is restricted; no specific antidote; no INR needed.'},
+  {topic:'Neuro', type:'MCQ', stem:'Levetiracetam priority counseling:', options:['Stop abruptly if mood improves','May cause somnolence and mood changes; do not stop abruptly','Requires serum level checks like phenytoin','Is hepatotoxic requiring weekly LFTs'], answerIndex:1, answers:[1], rationale:'Behavioral effects possible; taper to avoid seizures.'},
+  {topic:'GI', type:'MCQ', stem:'Ondansetron adverse effect to monitor:', options:['QT prolongation','Hypoglycemia','Bronchospasm','Agranulocytosis'], answerIndex:0, answers:[0], rationale:'Can prolong QT; use caution with other QT-prolonging agents.'},
+  {topic:'Endocrine', type:'MCQ', stem:'Dexamethasone long-term risk:', options:['Adrenal insufficiency after abrupt stop','Severe hypokalemia is rare','Addisonian crisis prevented by stopping suddenly','Weight loss and hypotension typical'], answerIndex:0, answers:[0], rationale:'Taper to avoid adrenal crisis; chronic use causes weight gain/HTN/hyperglycemia.'},
+  {topic:'Derm', type:'MCQ', stem:'Isotretinoin iPLEDGE teaching includes all EXCEPT:', options:['Use two forms of contraception','Monthly pregnancy tests','Avoid vitamin A supplements','Safe during breastfeeding'], answerIndex:3, answers:[3], rationale:'Not safe in pregnancy/breastfeeding; teratogenic.'},
+  {topic:'Psych', type:'MCQ', stem:'Serotonin syndrome features include all EXCEPT:', options:['Hyperreflexia/clonus','Fever','Bradykinesia and rigidity only','Agitation/diaphoresis'], answerIndex:2, answers:[2], rationale:'Bradykinesia/rigidity suggest NMS; SS has hyperreflexia/clonus.'},
+  {topic:'Endocrine', type:'MCQ', stem:'Thyroid storm acute management typically includes:', options:['Aspirin for fever first','Beta-blocker, antithyroid drug, iodine after thionamide, steroids','Start levothyroxine','High-dose calcium'], answerIndex:1, answers:[1], rationale:'Sequence matters: beta-blocker for symptoms, thionamide, then iodine; steroids as adjunct.'},
+  {topic:'Respiratory', type:'MCQ', stem:'Theophylline teaching includes:', options:['Wide therapeutic window; no labs','Avoid caffeine and check levels due to narrow therapeutic index','Safe with ciprofloxacin','Relief is immediate'], answerIndex:1, answers:[1], rationale:'Narrow index; many interactions (e.g., ciprofloxacin ↑ levels); not for acute relief.'}
+];
+
+function generateCalcSet(n=65){
+  const arr=[];
+  const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+  function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]] } return a; }
+  for(let i=0;i<n;i++){
+    const t = i%5;
+    if(t===0){
+      const vol=rnd(50,1000); const min=rnd(30,240);
+      const rate=Math.round((vol/(min/60))*10)/10;
+      let opts=[rate, Math.round(rate*0.9), Math.round(rate*1.1), Math.round(rate+20)];
+      shuffle(opts);
+      arr.push({topic:'Calc', type:'MCQ', stem:`Infuse ${vol} mL over ${min} min. Set pump to:`, options:opts.map(x=>`${x} mL/hr`), answerIndex:opts.indexOf(`${rate} mL/hr`), answers:[opts.indexOf(`${rate} mL/hr`)], rationale:`${vol} ÷ (${min}/60) = ${rate} mL/hr.`});
+    } else if(t===1){
+      const vol=rnd(250,1000); const hr=rnd(1,8); const drop=[10,15,20][rnd(0,2)];
+      const gtt = Math.round((vol/hr)/60*drop);
+      let opts=[gtt, gtt+5, gtt-5, gtt+10].map(x=>`${x} gtt/min`);
+      shuffle(opts);
+      arr.push({topic:'Calc', type:'MCQ', stem:`${vol} mL over ${hr} hr using ${drop} gtt/mL tubing. Drop rate:`, options:opts, answerIndex:opts.indexOf(`${gtt} gtt/min`), answers:[opts.indexOf(`${gtt} gtt/min`)], rationale:`(${vol}/${hr} hr) ÷ 60 × ${drop} = ${gtt} gtt/min.`});
+    } else if(t===2){
+      const concMg=rnd(100,500); const perMl=5;
+      const ordered=rnd(50,concMg*2-50);
+      const vol = Math.round((ordered/concMg*perMl)*10)/10;
+      let opts=[vol, Math.round(vol*0.8*10)/10, Math.round(vol*1.2*10)/10, Math.round((vol+1)*10)/10].map(x=>`${x} mL`);
+      shuffle(opts);
+      arr.push({topic:'Calc', type:'MCQ', stem:`Label ${concMg} mg/${perMl} mL. Give ${ordered} mg. How many mL?`, options:opts, answerIndex:opts.indexOf(`${vol} mL`), answers:[opts.indexOf(`${vol} mL`)], rationale:`${ordered} × (${perMl}/${concMg}) = ${vol} mL.`});
+    } else if(t===3){
+      const mg=rnd(200,800); const mL=rnd(250,500); const mLhr=rnd(5,20); const kg=rnd(50,100);
+      const mcgPerMl = (mg*1000)/mL;
+      const mcgPerMin = (mLhr*mcgPerMl)/60;
+      const dose = Math.round((mcgPerMin/kg)*10)/10;
+      let opts=[dose, Math.round(dose*0.6*10)/10, Math.round(dose*1.4*10)/10, Math.round((dose+1.5)*10)/10].map(x=>`${x}`);
+      shuffle(opts);
+      arr.push({topic:'Calc', type:'MCQ', stem:`${mg} mg in ${mL} mL running at ${mLhr} mL/hr for a ${kg}-kg client. What mcg/kg/min?`, options:opts, answerIndex:opts.indexOf(`${dose}`), answers:[opts.indexOf(`${dose}`)], rationale:`(${mg} mg/${mL} mL = ${mcgPerMl.toFixed(1)} mcg/mL) → ${mLhr} mL/hr = ${(mcgPerMin).toFixed(1)} mcg/min; ÷ ${kg} kg ≈ ${dose} mcg/kg/min.`});
+    } else {
+      const kg=rnd(10,120); const doseMgKg=[5,7.5,10,15][rnd(0,3)]; const tab=[100,250,500][rnd(0,2)];
+      const total = Math.round(kg*doseMgKg);
+      const tabsNeeded = Math.round(total/tab*10)/10;
+      let opts=[tabsNeeded, Math.round((tabsNeeded+0.5)*10)/10, Math.round((tabsNeeded*0.8)*10)/10, Math.round((tabsNeeded*1.2)*10)/10].map(x=>`${x} tabs`);
+      shuffle(opts);
+      arr.push({topic:'Calc', type:'MCQ', stem:`Order: ${doseMgKg} mg/kg for ${kg}-kg pt. Tablets are ${tab} mg each. How many tablets (round to 0.1)?`, options:opts, answerIndex:opts.indexOf(`${tabsNeeded} tabs`), answers:[opts.indexOf(`${tabsNeeded} tabs`)], rationale:`${kg}×${doseMgKg}=${total} mg total; ÷${tab} mg ≈ ${tabsNeeded} tabs.`});
+    }
+  }
+  return arr;
+}
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]] } return a; }
+
+const state = {
+  order: [], index: 0, correct: 0, seen: 0,
+  perTopic: {}, mode: 'adaptive', topic: 'All', timer: 90, tLeft: null, tId: null,
+  sfx:false, music:false
+};
+
+const $ = s => document.querySelector(s);
+const meta=$('#meta'), stem=$('#stem'), opts=$('#opts'), rat=$('#rat'), status=$('#status'), prog=$('#progress'), toast=$('#toast'), topicChip=$('#topicChip');
+
+let BANK = [];
+
+function init(){
+  const generated = generateCalcSet(70);
+  BANK = BASE_BANK.concat(generated);
+  BANK.push(
+    {topic:'Anticoagulants', type:'MCQ', stem:'Enoxaparin teaching includes which key point?', options:['Massage injection site vigorously','Inject into deltoid','Do not expel air bubble from prefilled syringe','Aspirin is always safe with it'], answerIndex:2, answers:[2], rationale:'Do not expel air bubble; inject in abdomen; avoid massaging; caution with other anticoagulants.'},
+    {topic:'Glaucoma', type:'MCQ', stem:'Which combo is dorzolamide + timolol?', options:['Cosopt','Combigan','Simbrinza','DuoTrav'], answerIndex:0, answers:[0], rationale:'Cosopt = dorzolamide/timolol.'},
+    {topic:'Analgesics', type:'MCQ', stem:'Which finding after morphine requires immediate action?', options:['BP 100/60','RR 7/min','Itching','Pinpoint pupils'], answerIndex:1, answers:[1], rationale:'RR 7/min indicates respiratory depression.'},
+    {topic:'Psych', type:'MCQ', stem:'Which antidepressant is safest in sexual dysfunction risk?', options:['Paroxetine','Fluoxetine','Sertraline','Bupropion'], answerIndex:3, answers:[3], rationale:'Bupropion has lower sexual side effect burden.'}
+  );
+
+  const topics = Array.from(new Set(BANK.map(x=>x.topic)));
+  const topicSel = $('#topic'); topicSel.innerHTML='';
+  const allOpt=document.createElement('option'); allOpt.value='All'; allOpt.textContent='All'; topicSel.appendChild(allOpt);
+  topics.forEach(t=>{ const o=document.createElement('option'); o.value=t; o.textContent=t; topicSel.appendChild(o); });
+  topics.forEach(t=>state.perTopic[t]={right:0,wrong:0});
+  state.order = BANK.map((_,i)=>i);
+  shuffle(state.order);
+  renderTracker();
+  setMode($('#mode').value);
+  setTimer($('#timer').value);
+  bindUI();
+  $('#banksize').textContent = BANK.length;
+  nextQ(true);
+}
+
+function bindUI(){
+  $('#next').onclick = ()=> nextQ();
+  $('#reset').onclick = resetStats;
+  $('#show').onclick = showAnswer;
+  $('#again').onclick = againSoon;
+  $('#mode').onchange = e => setMode(e.target.value);
+  $('#topic').onchange = e => { state.topic = e.target.value; resetOrderForTopic(); nextQ(true); };
+  $('#timer').onchange = e => setTimer(e.target.value);
+  $('#sfx').onclick = ()=>{ state.sfx=!state.sfx; $('#sfx').textContent = state.sfx?'🔊 Sound: On':'🔊 Sound: Off'; };
+  $('#music').onclick = ()=>{ state.music=!state.music; $('#music').textContent = state.music?'🎵 Music: On':'🎵 Music: Off'; };
+  $('#export').onclick = exportStats;
+}
+
+function setMode(m){ state.mode=m; resetOrderForTopic(); }
+function setTimer(v){
+  state.timer = v==='off'? null : parseInt(v,10);
+  resetCountdown();
+}
+function resetCountdown(){
+  if(state.tId) clearInterval(state.tId);
+  if(state.timer==null){ $('#status').textContent='Timer off'; return; }
+  state.tLeft = state.timer;
+  $('#status').textContent=`${state.tLeft}s remaining`;
+  state.tId = setInterval(()=>{
+    state.tLeft--;
+    $('#status').textContent=`${state.tLeft}s remaining`;
+    if(state.tLeft<=0){ clearInterval(state.tId); showAnswer(); }
+  },1000);
+}
+
+function resetOrderForTopic(){
+  const filtered = state.topic==='All' ? BANK.map((_,i)=>i) : BANK.map((x,i)=>[x,i]).filter(([x])=>x.topic===state.topic).map(([_,i])=>i);
+  state.order = filtered;
+  shuffle(state.order);
+  state.index = 0;
+  updateProgress();
+}
+
+function renderTracker(){
+  const el=$('#track'); el.innerHTML='';
+  Object.keys(state.perTopic).forEach(t=>{
+    const r=state.perTopic[t].right, w=state.perTopic[t].wrong;
+    const name=document.createElement('div'); name.textContent=t; el.appendChild(name);
+    const right=document.createElement('div'); right.textContent=r; el.appendChild(right);
+    const wrong=document.createElement('div'); wrong.textContent=w; el.appendChild(wrong);
+  });
+}
+
+function toastMsg(msg){ const toast=document.getElementById('toast'); toast.textContent=msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1400); }
+
+function nextQ(initial=false){
+  if(state.index>=state.order.length){ toastMsg('End of set — reshuffling'); resetOrderForTopic(); }
+  const qi = pickNextIndex();
+  state.index++;
+  state.seen++;
+  showQuestion(qi);
+  if(!initial) resetCountdown();
+  updateProgress();
+}
+
+function pickNextIndex(){
+  if(state.mode==='random' || state.topic!=='All') return state.order[(state.index)%state.order.length];
+  const scores = Object.entries(state.perTopic).map(([t,s])=>[t, s.right+s.wrong>0 ? (s.right/(s.right+s.wrong)) : 1]);
+  scores.sort((a,b)=>a[1]-b[1]);
+  for(const [worst] of scores){
+    const candidates = BANK.map((x,i)=>[x,i]).filter(([x])=>x.topic===worst).map(([_,i])=>i);
+    if(candidates.length){ return candidates[Math.floor(Math.random()*candidates.length)]; }
+  }
+  return state.order[(state.index)%state.order.length];
+}
+
+function showQuestion(qi){
+  const q = BANK[qi];
+  const meta=$('#meta'); meta.innerHTML = '';
+  const b1=document.createElement('div'); b1.className='badge'; b1.textContent=q.type; meta.appendChild(b1);
+  const b2=document.createElement('div'); b2.className='badge'; b2.textContent=q.topic; meta.appendChild(b2);
+  $('#topicChip').textContent = q.topic;
+  $('#stem').textContent = q.stem;
+  const rat=$('#rat'); rat.style.display='none'; rat.textContent='';
+  const opts=$('#opts'); opts.innerHTML='';
+  if(q.type==='SATA'){
+    q.options.forEach((opt,idx)=>{
+      const el=document.createElement('label'); el.className='opt';
+      el.innerHTML=`<input type="checkbox" style="margin-right:8px">${opt}`;
+      el.onclick = (e)=> e.stopPropagation();
+      opts.appendChild(el);
+    });
+    const submit=document.createElement('button'); submit.textContent='Submit'; submit.onclick=()=>{
+      const chosen=[...opts.querySelectorAll('input[type="checkbox"]')].map((cb,i)=>cb.checked?i:null).filter(x=>x!==null);
+      gradeSATA(q, chosen);
+    };
+    submit.className='pill'; opts.appendChild(submit);
+  }else{
+    q.options.forEach((opt,idx)=>{
+      const el=document.createElement('div'); el.className='opt'; el.textContent=opt;
+      el.onclick=()=>grade(q, idx);
+      opts.appendChild(el);
+    });
+  }
+}
+
+function grade(q, idx){
+  const correct = (idx===q.answerIndex);
+  const nodes = document.querySelectorAll('.opt');
+  nodes.forEach((n,i)=>{
+    if(i===q.answerIndex) n.classList.add('correct');
+    else if(i===idx) n.classList.add('incorrect');
+    n.style.pointerEvents='none';
+  });
+  if(correct){ state.correct++; state.sfx && ding(); incTopic(q.topic,true); }
+  else { state.sfx && buzz(); incTopic(q.topic,false); }
+  const rat=$('#rat'); rat.style.display='block'; rat.textContent=q.rationale;
+  updateProgress(); renderTracker();
+}
+
+function gradeSATA(q, chosen){
+  const ans = new Set(q.answers);
+  const ch = new Set(chosen);
+  const nodes = document.querySelectorAll('.opt');
+  nodes.forEach((n,i)=>{
+    if(ans.has(i)) n.classList.add('correct');
+    else if(ch.has(i)) n.classList.add('incorrect');
+    n.style.pointerEvents='none';
+  });
+  const correct = (ans.size===ch.size) && [...ans].every(x=>ch.has(x));
+  if(correct){ state.correct++; state.sfx && ding(); incTopic(q.topic,true); }
+  else { state.sfx && buzz(); incTopic(q.topic,false); }
+  const rat=$('#rat'); rat.style.display='block'; rat.textContent=q.rationale;
+  updateProgress(); renderTracker();
+}
+
+function incTopic(t, right){ const rec=state.perTopic[t]; if(!rec) return; if(right) rec.right++; else rec.wrong++; }
+function showAnswer(){
+  const qtext = $('#stem').textContent;
+  const q = BANK.find(x=>x.stem===qtext);
+  if(!q) return;
+  const nodes = document.querySelectorAll('.opt');
+  if(q.type==='SATA'){
+    nodes.forEach((n,i)=>{
+      if(q.answers.includes(i)) n.classList.add('correct'); else n.classList.add('incorrect');
+      n.style.pointerEvents='none';
+    });
+  }else{
+    nodes.forEach((n,i)=>{
+      if(i===q.answerIndex) n.classList.add('correct'); else n.classList.add('incorrect');
+      n.style.pointerEvents='none';
+    });
+  }
+  const rat=$('#rat'); rat.style.display='block'; rat.textContent=q.rationale;
+}
+function againSoon(){ state.index = Math.max(0, state.index-1); nextQ(); }
+function updateProgress(){ $('#progress').textContent = state.seen + '/' + state.order.length + ' • Score ' + state.correct; }
+
+function resetStats(){
+  state.correct=0; state.seen=0;
+  Object.keys(state.perTopic).forEach(t=>state.perTopic[t]={right:0,wrong:0});
+  renderTracker(); resetOrderForTopic(); nextQ(true);
+}
+
+function exportStats(){
+  const lines = ['Pharm HESI — PART 6 PLUS Results', new Date().toLocaleString(), ''];
+  lines.push('Score: ' + state.correct + '/' + state.seen);
+  lines.push('By Topic:');
+  Object.entries(state.perTopic).forEach(([t,s])=>lines.push(`  ${t}: ${s.right} correct / ${s.wrong} wrong`));
+  const blob = new Blob([lines.join('\n')], {type:'text/plain'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='Pharm_HESI_PART6_PLUS_Results.txt'; a.click();
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Pharm HESI Mastery — Weak Areas Drill (100 Q)</title>
+<style>
+  :root {
+    --bg: #0b1020;
+    --card: #141a34;
+    --ink: #eaf2ff;
+    --muted: #a9b2cc;
+    --accent: #7cf0ff;
+    --accent2: #b987ff;
+    --danger: #ff6b6b;
+    --success: #56f39a;
+    --warn: #ffd166;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+    background: radial-gradient(1000px 500px at 10% -10%, rgba(124,240,255,0.08), transparent),
+                radial-gradient(800px 400px at 100% 0%, rgba(185,135,255,0.08), transparent),
+                var(--bg);
+    color: var(--ink);
+    margin: 0; padding: 0;
+  }
+  header { padding: 16px 18px; display: grid; grid-template-columns: 1fr auto auto auto; gap: 12px; align-items: center; }
+  .brand { font-weight: 800; letter-spacing: .3px; font-size: 18px; }
+  .pill { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 8px 12px; display: inline-flex; gap: 8px; align-items: center; color: var(--muted); }
+  button, select { background: var(--card); color: var(--ink); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 12px; cursor: pointer; }
+  button:hover { border-color: rgba(124,240,255,0.5); }
+  main { max-width: 1100px; margin: 0 auto; padding: 12px; }
+  .controls { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 10px; margin-bottom: 12px; }
+  .card { background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px; }
+  .qstem { font-size: 18px; line-height: 1.25; }
+  .options { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+  .opt { padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); cursor: pointer; }
+  .opt:hover { border-color: rgba(185,135,255,0.6); }
+  .opt.correct { background: rgba(86,243,154,0.08); border-color: var(--success); }
+  .opt.incorrect { background: rgba(255,107,107,0.08); border-color: var(--danger); }
+  .muted { color: var(--muted); font-size: 13px; }
+  .rationale { margin-top: 10px; color: var(--muted); }
+  .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { font-size: 11px; padding: 4px 6px; border-radius: 6px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); color: var(--muted); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .footer { margin-top: 12px; display: grid; grid-template-columns: 1fr auto; align-items: center; }
+  .hidden { display: none; }
+  .sfxbtn.on { border-color: var(--success); box-shadow: 0 0 0 2px rgba(86,243,154,0.2) inset; }
+  .musicbtn.on { border-color: var(--accent2); box-shadow: 0 0 0 2px rgba(185,135,255,0.2) inset; }
+  .topic-chip { padding: 4px 8px; border-radius: 999px; background: rgba(124,240,255,0.1); border:1px solid rgba(124,240,255,0.3); font-size: 12px; }
+  .toast { position: fixed; right: 16px; bottom: 16px; background: #121833; color:#fff; border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:10px 12px; opacity:0; transform: translateY(10px); transition: all .2s; }
+  .toast.show { opacity:1; transform: translateY(0); }
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
+<header>
+<div class="brand">🔥 Pharm HESI Mastery — Weak Areas Drill</div>
+<button class="pill sfxbtn" id="sfx">🔊 Sound: Off</button>
+<button class="pill musicbtn" id="music">🎵 Music: Off</button>
+<div class="pill muted">Progress: <span id="progress">0/0</span></div>
+</header>
+<main>
+<section class="controls card">
+<div class="row" style="justify-content:space-between; gap:12px;">
+<div class="row">
+<label class="muted">Mode:</label>
+<select id="mode">
+<option value="adaptive">Adaptive (Weak Topics First)</option>
+<option value="random">Random</option>
+<option value="topic">By Topic</option>
+</select>
+</div>
+<div class="row" id="topicFilterWrap">
+<label class="muted">Topic:</label>
+<select id="topicFilter"></select>
+</div>
+<div class="row">
+<label class="muted">Timer:</label>
+<select id="timer">
+<option value="off">Off</option>
+<option value="60">60s</option>
+<option selected="" value="90">90s</option>
+<option value="120">120s</option>
+</select>
+</div>
+<div class="row">
+<button id="reset">Reset Stats</button>
+<button id="next">Next ▶</button>
+</div>
+</div>
+</section>
+<section class="card" id="questionCard">
+<div class="row" style="justify-content:space-between;">
+<div class="badges" id="metaBadges"></div>
+<div class="topic-chip" id="topicChip"></div>
+</div>
+<div class="qstem" id="stem" style="margin-top:10px;"></div>
+<div class="options" id="options"></div>
+<div class="rationale hidden" id="rationale"></div>
+<div class="footer">
+<div class="muted" id="status">Select the best answer.</div>
+<div class="row">
+<button id="showAns">Show Answer</button>
+<button id="again">Again 🔁</button>
+</div>
+</div>
+</section>
+<section class="grid2" style="margin-top:12px;">
+<div class="card">
+<div class="row" style="justify-content:space-between;">
+<div class="muted">Mastery Tracker (per topic)</div>
+<button id="export">Export Results</button>
+</div>
+<div class="muted" id="tracker" style="margin-top:8px; display:grid; grid-template-columns: 1fr 90px 90px; gap:6px;"></div>
+</div>
+<div class="card">
+<div class="muted">Study Tips • Safety Lens</div>
+<ul class="muted">
+<li>When torn between two answers, ask: <em>which option prevents harm first?</em></li>
+<li>Use the timer to practice pacing (~1 min per question).</li>
+<li>Adaptive mode repeats items you miss more often, prioritizing your weak topics.</li>
+</ul>
+</div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+// ---- Question Bank (100 items) ----
+const BANK = [{"topic": "Med Safety/Math", "type": "MCQ", "stem": "A 500 mL bag of D5W is ordered over 4 hours using 15 gtt/mL tubing. What is the flow rate?", "options": ["25 gtt/min", "31 gtt/min", "38 gtt/min", "45 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "500 mL ÷ 240 min = 2.08 mL/min; × 15 gtt/mL ≈ 31 gtt/min.", "tags": ["IV", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Gentamicin 80 mg IV over 30 minutes is ordered. You have 100 mg/10 mL. What volume will you administer?", "options": ["6 mL", "8 mL", "10 mL", "12 mL"], "answerIndex": 1, "answers": [1], "rationale": "Dose/Concentration = 80 mg ÷ (100 mg/10 mL) = 8 mL.", "tags": ["dose", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "A pediatric dose is 15 mg/kg for a 20‑kg child. How many mg total?", "options": ["150 mg", "200 mg", "250 mg", "300 mg"], "answerIndex": 3, "answers": [3], "rationale": "15 mg/kg × 20 kg = 300 mg.", "tags": ["peds", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV potassium chloride 40 mEq in 1000 mL NS is ordered over 6 hours via pump. What mL/hr do you set?", "options": ["100 mL/hr", "125 mL/hr", "150 mL/hr", "167 mL/hr"], "answerIndex": 3, "answers": [3], "rationale": "1000 mL ÷ 6 hr ≈ 167 mL/hr. Always use pump for KCl; never IV push.", "tags": ["KCl", "IV pump", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "You’re preparing to hang a high‑alert IV infusion. Which TWO independent checks are priority before starting?", "options": ["Correct patient & dose verified by two nurses", "Compatibility with maintenance fluids verified", "Patient education about side effects", "Check most recent bowel movement"], "answerIndex": 0, "answers": [0], "rationale": "High‑alert meds require an independent double‑check for drug, dose, route, concentration, and pump settings. Compatibility check is also critical, but the double‑check is the must‑do step.", "tags": ["high-alert"]}, {"topic": "Med Safety/Math", "type": "SATA", "stem": "Select all actions that reduce medication errors during handoff:", "options": ["Barcode med administration (BCMA) with wristband scan", "Use standardized handoff tool (e.g., SBAR)", "Rely on memory for home meds", "Telephone orders without readback"], "answerIndex": null, "answers": [0, 1], "rationale": "BCMA and standardized handoffs reduce errors. Avoid reliance on memory and always use readback for verbal/telephone orders.", "tags": ["informatics", "handoff"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "For a GT medication pass, you have three meds (20 mL each). You flush with 10 mL before and after each med. What total volume is given?", "options": ["60 mL", "90 mL", "120 mL", "150 mL"], "answerIndex": 3, "answers": [3], "rationale": "Meds: 3×20=60 mL. Flushes: 6×10=60 mL. Total 120 mL? Wait—there are 6 flushes? Before and after EACH med → 6 flushes = 60 mL; 60 + 60 = 120 mL. Correction: We also include a final post‑med flush: many policies add an extra 10 mL after the last drug. To keep test standard, assume only before/after for each med: 120 mL.", "tags": ["GT", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Which documentation best demonstrates teaching effectiveness for nitroglycerin SL at home?", "options": ["\"Patient verbalized understanding of angina.\"", "\"Patient will avoid heavy lifting.\"", "\"Patient returned demonstration and stated to call EMS if pain persists after the 3rd dose in 15 min.\"", "\"Patient states nitro may cause constipation.\""], "answerIndex": 2, "answers": [2], "rationale": "Return demonstration and correct EMS timing show measurable learning.", "tags": ["documentation", "teaching"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Dopamine 800 mg in 500 mL is infusing at 12 mL/hr for a 70‑kg client. What mcg/kg/min is being delivered?", "options": ["2.9 mcg/kg/min", "4.6 mcg/kg/min", "6.8 mcg/kg/min", "9.1 mcg/kg/min"], "answerIndex": 1, "answers": [1], "rationale": "800 mg/500 mL = 1.6 mg/mL = 1600 mcg/mL. 12 mL/hr = 19,200 mcg/hr = 320 mcg/min. 320 ÷ 70 ≈ 4.6 mcg/kg/min.", "tags": ["calc", "vasoactive"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Tubing is 10 gtt/mL. You need 250 mL to run over 2 hours. What is the drop rate?", "options": ["16 gtt/min", "18 gtt/min", "20 gtt/min", "21 gtt/min"], "answerIndex": 2, "answers": [2], "rationale": "250/120=2.083 mL/min ×10 ≈ 21 gtt/min (rounded: 21).", "tags": ["IV", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "A heparin infusion is 25,000 units in 500 mL D5W at 20 mL/hr. How many units/hr?", "options": ["800 units/hr", "900 units/hr", "1000 units/hr", "1100 units/hr"], "answerIndex": 2, "answers": [2], "rationale": "25,000 ÷ 500 = 50 units/mL. × 20 mL/hr = 1000 units/hr.", "tags": ["anticoagulant", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Which is the FIRST action if a patient receiving an opioid becomes difficult to arouse with RR 8?", "options": ["Call the provider", "Stop the opioid, stimulate the patient, support airway, prepare naloxone", "Start IV fluids", "Obtain ABG"], "answerIndex": 1, "answers": [1], "rationale": "Airway/breathing first; naloxone PRN. Do not leave the patient.", "tags": ["priority", "opioid"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Which insulin peaks 4–12 hours after morning dosing, increasing hypoglycemia risk mid‑day?", "options": ["Lispro (rapid)", "Regular (short)", "NPH (intermediate)", "Glargine (long)"], "answerIndex": 2, "answers": [2], "rationale": "NPH peaks 4–12 h; counsel on snacks and monitoring.", "tags": ["insulin", "peaks"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Best instruction for levothyroxine timing:", "options": ["With dinner for GI tolerance", "With calcium for absorption", "Morning on an empty stomach with water", "Take with iron to improve energy"], "answerIndex": 2, "answers": [2], "rationale": "Levothyroxine is best absorbed on an empty stomach; avoid calcium/iron within 4 hours.", "tags": ["thyroid"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Prednisone is started in a patient with DM on NPH. What change is most likely needed?", "options": ["Decrease NPH dose", "Increase NPH dose", "Add bedtime insulin only", "No change is needed"], "answerIndex": 1, "answers": [1], "rationale": "Glucocorticoids increase glucose → often need higher insulin.", "tags": ["steroids", "insulin"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Teaching on mixing regular and NPH in one syringe—what step indicates the need for further teaching?", "options": ["Inject air into NPH first", "Inject air into Regular next", "Withdraw Regular insulin first", "Withdraw NPH insulin first"], "answerIndex": 3, "answers": [3], "rationale": "Air: NPH then Regular. Draw: Regular (clear) before NPH (cloudy).", "tags": ["mixing"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Which storage advice is correct for UNOPENED insulin vials?", "options": ["Keep frozen", "Refrigerate", "Store on a sunny windowsill", "Keep at room temperature for months"], "answerIndex": 1, "answers": [1], "rationale": "Unopened insulin is refrigerated; avoid freezing/heat.", "tags": ["storage"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Client taking glimepiride should avoid which?", "options": ["Alcohol", "Carbohydrates", "Organ meats", "Carbonated water"], "answerIndex": 0, "answers": [0], "rationale": "Sulfonylureas + alcohol → disulfiram‑like reaction/hypoglycemia risk.", "tags": ["sulfonylurea"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Desmopressin (DDAVP) is effective in diabetes insipidus when you observe:", "options": ["Increased urine output", "Decreased urine output", "Hyperglycemia", "Bradycardia"], "answerIndex": 1, "answers": [1], "rationale": "Antidiuretic effect → reduced urine output and lower serum Na+ correction if dehydrated.", "tags": ["DDAVP"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Propylthiouracil (PTU) therapy suggests which history?", "options": ["Addison disease", "Myxedema", "Graves disease", "Cushing syndrome"], "answerIndex": 2, "answers": [2], "rationale": "PTU is for hyperthyroidism/Graves; monitor for agranulocytosis.", "tags": ["thyroid"]}, {"topic": "Pain/Opioids", "type": "MCQ", "stem": "Which effect requires HOLDING morphine?", "options": ["BP 150/84", "RR 10/min", "Pain score 8/10", "Constipation"], "answerIndex": 1, "answers": [1], "rationale": "RR < 12/min → hold and assess; consider naloxone if depressed.", "tags": ["morphine"]}, {"topic": "Pain/Opioids", "type": "MCQ", "stem": "What is the antidote for opioid overdose with pinpoint pupils and respiratory depression?", "options": ["Flumazenil", "Acetylcysteine", "Naloxone", "Protamine"], "answerIndex": 2, "answers": [2], "rationale": "Naloxone reverses opioid effects rapidly; monitor for re‑sedation.", "tags": ["antidote"]}, {"topic": "Pain/Opioids", "type": "MCQ", "stem": "Maximum adult daily dose of acetaminophen (no liver disease):", "options": ["2 g/day", "3 g/day", "4 g/day", "6 g/day"], "answerIndex": 2, "answers": [2], "rationale": "Do not exceed 4 g/day (≤3 g if liver disease or elderly).", "tags": ["APAP"]}, {"topic": "Pain/Opioids", "type": "MCQ", "stem": "Why is ketorolac limited to short courses (≤5 days)?", "options": ["Tolerance develops quickly", "High risk GI bleed and renal injury", "Severe constipation", "Addiction risk"], "answerIndex": 1, "answers": [1], "rationale": "Ketorolac has strong GI/renal adverse effect profile.", "tags": ["NSAID"]}, {"topic": "Pain/Opioids", "type": "MCQ", "stem": "Tramadol risk increases when combined with SSRIs/SNRIs or MAOIs because of:", "options": ["Hyperkalemia", "Serotonin syndrome & seizures", "Severe bradycardia", "Urinary retention"], "answerIndex": 1, "answers": [1], "rationale": "Tramadol inhibits NE/5‑HT reuptake and lowers seizure threshold.", "tags": ["tramadol"]}, {"topic": "Pain/Opioids", "type": "MCQ", "stem": "Which mixed opioid agonist‑antagonist can precipitate withdrawal in dependent patients?", "options": ["Hydromorphone", "Butorphanol", "Fentanyl", "Codeine"], "answerIndex": 1, "answers": [1], "rationale": "Mixed agonist‑antagonists can displace full agonists at receptors.", "tags": ["withdrawal"]}, {"topic": "ANS (Symp/Para)", "type": "MCQ", "stem": "Albuterol is associated with which expected effect?", "options": ["Bradycardia", "Tremor & tachycardia", "Miosis", "Sedation"], "answerIndex": 1, "answers": [1], "rationale": "β2‑agonists may cause tremor and ↑HR from systemic spillover.", "tags": ["beta2"]}, {"topic": "ANS (Symp/Para)", "type": "MCQ", "stem": "Which parameter is most important to assess before giving non‑selective beta blockers?", "options": ["Respiratory status/history of asthma", "Skin turgor", "Bowel sounds", "Gag reflex"], "answerIndex": 0, "answers": [0], "rationale": "Non‑selective β‑blockers may worsen bronchospasm.", "tags": ["beta-blocker"]}, {"topic": "ANS (Symp/Para)", "type": "MCQ", "stem": "Pilocarpine eye drops may cause which symptom in dim light?", "options": ["Improved night vision", "Blurred vision & difficulty in the dark", "Dilated pupils", "Color vision changes"], "answerIndex": 1, "answers": [1], "rationale": "Miotics constrict the pupil; harder to see in low light.", "tags": ["miotic"]}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Warfarin discharge teaching—what dietary advice is best?", "options": ["Avoid all vegetables", "Keep vitamin K intake consistent", "Increase leafy greens significantly", "No restrictions"], "answerIndex": 1, "answers": [1], "rationale": "Vitamin K intake should be consistent; monitor INR.", "tags": ["warfarin"]}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which combination increases bleeding risk and should be avoided unless prescribed?", "options": ["Aspirin + clopidogrel", "Aspirin + calcium", "Clopidogrel + vitamin C", "Aspirin + iron"], "answerIndex": 0, "answers": [0], "rationale": "Dual antiplatelet therapy increases bleeding risk; may be necessary post‑stent.", "tags": ["bleeding"]}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Heparin overdose—antidote is:", "options": ["Phytonadione (vit K)", "Protamine sulfate", "Idarucizumab", "Naloxone"], "answerIndex": 1, "answers": [1], "rationale": "Protamine reverses heparin anticoagulation.", "tags": ["antidote"]}, {"topic": "Respiratory", "type": "MCQ", "stem": "Which is the best order of inhalers for acute symptoms if all are prescribed?", "options": ["Steroid → LABA → SABA", "SABA → LABA → Steroid", "LABA → SABA → Steroid", "Steroid → SABA → LABA"], "answerIndex": 1, "answers": [1], "rationale": "Rescue first (SABA), then long‑acting, then steroid last if using multiple types back‑to‑back.", "tags": ["sequence"]}, {"topic": "Respiratory", "type": "MCQ", "stem": "Which instruction helps prevent oral candidiasis with inhaled corticosteroids?", "options": ["Use before meals", "Rinse mouth after each use", "Hold breath 2 minutes", "Skip spacer"], "answerIndex": 1, "answers": [1], "rationale": "Rinse/gargle; use spacer to reduce oropharyngeal deposition.", "tags": ["ICS"]}, {"topic": "Respiratory", "type": "MCQ", "stem": "Montelukast is best described as:", "options": ["Rescue bronchodilator", "Leukotriene receptor antagonist for control", "Mucolytic for acute use", "Antitussive for dry cough"], "answerIndex": 1, "answers": [1], "rationale": "LTRA for maintenance; not a rescue medication.", "tags": ["LTRA"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Nitroglycerin SL: which client statement needs correction?", "options": ["\"I’ll sit before taking it.\"", "\"I can take 1 every 5 minutes up to 3 doses.\"", "\"If no relief after 1 dose, I’ll drive myself to the ER.\"", "\"I’ll keep it in the original dark container.\""], "answerIndex": 2, "answers": [2], "rationale": "Do NOT drive; call EMS after first dose if pain persists—continue up to total of three doses at 5‑min intervals per protocol.", "tags": ["nitro"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Which drug class is contraindicated with nitrates due to risk of severe hypotension?", "options": ["ACE inhibitors", "PDE‑5 inhibitors (sildenafil)", "Calcium channel blockers", "Statins"], "answerIndex": 1, "answers": [1], "rationale": "PDE‑5 inhibitors + nitrates → profound hypotension.", "tags": ["contra"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Which assessment best indicates effectiveness of loop diuretic therapy in HF with pulmonary edema?", "options": ["Decreased crackles and weight loss", "WBC normalization", "Improved Hgb", "Increased abdominal girth"], "answerIndex": 0, "answers": [0], "rationale": "Diuresis reduces fluid overload → less crackles, lower weight, improved breathing.", "tags": ["diuretic"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Before administering metoprolol, which parameter would prompt holding the dose and notifying the provider?", "options": ["HR 58 bpm", "BP 150/86", "Temp 99°F (37.2°C)", "Pain score 6/10"], "answerIndex": 0, "answers": [0], "rationale": "Beta blockers may further lower HR; typical hold parameter HR < 60 bpm (confirm facility policy).", "tags": ["BB"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Digoxin—what finding suggests toxicity?", "options": ["Tinnitus", "Yellow‑green visual halos", "Dry cough", "Gingival hyperplasia"], "answerIndex": 1, "answers": [1], "rationale": "Visual changes along with GI symptoms and bradycardia indicate digoxin toxicity.", "tags": ["digoxin"]}, {"topic": "Renal/Electrolyte/IV", "type": "MCQ", "stem": "Which order for IV potassium is appropriate?", "options": ["10 mEq KCl IV push over 1 min", "40 mEq KCl in 1000 mL over 4–6 hr via pump", "KCl added to an ongoing TPN bag by the nurse", "KCl without cardiac monitoring in severe hypokalemia"], "answerIndex": 1, "answers": [1], "rationale": "Never IV push. Use a pump and monitor. Additives to TPN must be per pharmacy policy.", "tags": ["KCl"]}, {"topic": "Renal/Electrolyte/IV", "type": "MCQ", "stem": "ACE inhibitor newly started in CKD—what lab is most concerning if elevated?", "options": ["Potassium", "Hemoglobin", "Platelets", "Amylase"], "answerIndex": 0, "answers": [0], "rationale": "ACE inhibitors can increase K+; monitor creatinine as well.", "tags": ["ACEi", "CKD"]}, {"topic": "Renal/Electrolyte/IV", "type": "MCQ", "stem": "Mannitol is used acutely to reduce:", "options": ["Serum calcium", "Intracranial or intraocular pressure", "Serum sodium", "Platelet aggregation"], "answerIndex": 1, "answers": [1], "rationale": "Osmotic diuretic draws water from tissues → ↓ ICP/IOP.", "tags": ["mannitol"]}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which ophthalmic class commonly darkens iris color and increases eyelash growth?", "options": ["Beta blockers", "Prostaglandin analogs", "Cholinergic agonists", "Carbonic anhydrase inhibitors"], "answerIndex": 1, "answers": [1], "rationale": "Prostaglandin analogs (e.g., latanoprost) can cause iris pigmentation & lash growth.", "tags": ["PG analog"]}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Timolol eye drops require caution in patients with which condition?", "options": ["GERD", "Asthma/COPD", "Gout", "Anemia"], "answerIndex": 1, "answers": [1], "rationale": "Systemic absorption can trigger bronchospasm; teach punctal occlusion.", "tags": ["timolol"]}, {"topic": "GI/Hepatic", "type": "MCQ", "stem": "Acetaminophen overuse primarily risks injury to which organ?", "options": ["Kidneys", "Liver", "Spleen", "Pancreas"], "answerIndex": 1, "answers": [1], "rationale": "Hepatotoxicity is dose‑related; keep under daily max.", "tags": ["APAP"]}, {"topic": "GI/Hepatic", "type": "MCQ", "stem": "Metoclopramide is appropriate for which condition?", "options": ["Intestinal obstruction", "Diverticulitis with perforation", "Melena with PUD", "Chemotherapy‑induced nausea/vomiting"], "answerIndex": 3, "answers": [3], "rationale": "It enhances gastric emptying; avoid with obstruction/bleeding.", "tags": ["antiemetic"]}, {"topic": "Neuro", "type": "MCQ", "stem": "Riluzole for ALS—what should be monitored regularly?", "options": ["Calcium", "Liver function tests", "INR", "Amylase"], "answerIndex": 1, "answers": [1], "rationale": "Riluzole can cause hepatotoxicity; monitor LFTs.", "tags": ["ALS"]}, {"topic": "Documentation/Teaching", "type": "MCQ", "stem": "Which entry best documents opioid safety teaching?", "options": ["\"Discussed side effects.\"", "\"Patient states opioids are addictive.\"", "\"Patient used naloxone trainer correctly and states when to call 911.\"", "\"Provided brochure on opioids.\""], "answerIndex": 2, "answers": [2], "rationale": "Return demo + correct 911 instruction proves learning.", "tags": ["teach-back"]}, {"topic": "Documentation/Teaching", "type": "MCQ", "stem": "Which strategy helps prevent misuse/diversion during discharge opioid teaching?", "options": ["Avoid discussing risks", "Use nonjudgmental assessment + PDMP check when indicated", "Provide unlimited refills", "Advise to share meds with family only if in pain"], "answerIndex": 1, "answers": [1], "rationale": "Use a safety lens and resources like PDMP according to policy.", "tags": ["safety"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Microdrip tubing delivers 60 gtt/mL. An order reads 45 mL/hr. What is the drop rate?", "options": ["30 gtt/min", "45 gtt/min", "60 gtt/min", "90 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "With microdrip, mL/hr = gtt/min. 45 mL/hr → 45 gtt/min.", "tags": ["IV", "calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Order: Vancomycin 1.25 g in 250 mL over 90 min. What mL/hr on the pump?", "options": ["125 mL/hr", "150 mL/hr", "167 mL/hr", "200 mL/hr"], "answerIndex": 2, "answers": [2], "rationale": "250 mL ÷ 1.5 hr = 166.7 → 167 mL/hr.", "tags": ["calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Heparin weight‑based: 18 units/kg/hr for a 72‑kg client. Bag has 25,000 units in 500 mL. What pump rate (mL/hr)?", "options": ["18 mL/hr", "22 mL/hr", "26 mL/hr", "30 mL/hr"], "answerIndex": 2, "answers": [2], "rationale": "Required units/hr: 18×72 = 1296 units/hr. Concentration 50 units/mL → 1296/50 ≈ 26 mL/hr.", "tags": ["calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "A label reads 400 mg/5 mL. The order is 320 mg PO. What volume will you give?", "options": ["2 mL", "3 mL", "4 mL", "5 mL"], "answerIndex": 2, "answers": [2], "rationale": "320 mg × (5 mL/400 mg) = 4 mL.", "tags": ["calc"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Which action prevents 'dose stacking' with PRN opioids?", "options": ["Give PRN doses back‑to‑back", "Stagger PRNs and schedule around‑the‑clock non‑opioids", "Avoid non‑opioids", "Use only IV route"], "answerIndex": 1, "answers": [1], "rationale": "Layer non‑opioids and space PRNs based on onset/peak/duration.", "tags": ["safety"]}, {"topic": "Med Safety/Math", "type": "SATA", "stem": "Select all safe‑administration steps for high‑alert IV insulin infusions:", "options": ["Use a dedicated line/pump channel", "Independent double‑check of rate/concentration", "Label tubing and Y‑site", "Mix with TPN on the unit to save time"], "answerIndex": null, "answers": [0, 1, 2], "rationale": "Use a dedicated channel, independent double‑check, and clear labeling; TPN admixture is pharmacy‑controlled.", "tags": ["insulin", "IV", "high-alert"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Which insulin has no significant peak and should not be mixed?", "options": ["Regular", "NPH", "Glargine", "Lispro"], "answerIndex": 2, "answers": [2], "rationale": "Glargine is long‑acting, relatively peakless; do not mix.", "tags": ["insulin"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Signs of levothyroxine over‑replacement include:", "options": ["Cold intolerance and weight gain", "Bradycardia and fatigue", "Tremors and palpitations", "Constipation and dry skin"], "answerIndex": 2, "answers": [2], "rationale": "Excess thyroid hormone → hyperthyroid symptoms.", "tags": ["thyroid"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "A client on NPH each morning is most at risk for hypoglycemia at:", "options": ["1–2 h after dose", "4–12 h after dose", "12–18 h after dose", "Bedtime only"], "answerIndex": 1, "answers": [1], "rationale": "NPH peak 4–12 h.", "tags": ["peaks"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Which medication can falsely increase blood glucose requiring insulin adjustment?", "options": ["Prednisone", "Metoprolol", "Allopurinol", "Warfarin"], "answerIndex": 0, "answers": [0], "rationale": "Glucocorticoids raise glucose.", "tags": ["steroids"]}, {"topic": "Pain/Opioids", "type": "MCQ", "stem": "For a morphine PCA, which parameter is MOST important to monitor continuously?", "options": ["Pain score", "Level of consciousness and respiratory rate", "Urine output", "Bowel sounds"], "answerIndex": 1, "answers": [1], "rationale": "Opioids depress CNS/respirations—monitor LOC and RR closely.", "tags": ["PCA"]}, {"topic": "Pain/Opioids", "type": "MCQ", "stem": "Which non‑opioid is safest in a patient with history of GI bleed?", "options": ["Ibuprofen", "Ketorolac", "Acetaminophen (within daily max)", "Naproxen"], "answerIndex": 2, "answers": [2], "rationale": "APAP lacks the antiplatelet/GI effects of NSAIDs when used appropriately.", "tags": ["selection"]}, {"topic": "Pain/Opioids", "type": "MCQ", "stem": "Codeine is best described as:", "options": ["Pure mu‑antagonist", "Partial agonist", "Prodrug metabolized to morphine", "COX‑2 inhibitor"], "answerIndex": 2, "answers": [2], "rationale": "CYP2D6 converts codeine to morphine; variability affects response.", "tags": ["codeine"]}, {"topic": "ANS (Symp/Para)", "type": "MCQ", "stem": "Which is a common anticholinergic adverse effect of atropine?", "options": ["Diarrhea", "Miosis", "Urinary retention", "Bradycardia"], "answerIndex": 2, "answers": [2], "rationale": "Anticholinergics → dry mouth, urinary retention, blurred vision, tachycardia.", "tags": ["anticholinergic"]}, {"topic": "ANS (Symp/Para)", "type": "MCQ", "stem": "Clonidine primarily acts as:", "options": ["Peripheral alpha‑1 blocker", "Central alpha‑2 agonist lowering sympathetic outflow", "Beta‑2 agonist bronchodilator", "MAO inhibitor"], "answerIndex": 1, "answers": [1], "rationale": "Central α2 agonism lowers BP; taper to avoid rebound HTN.", "tags": ["clonidine"]}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "A therapeutic INR for most indications on warfarin is:", "options": ["0.8–1.2", "1.5–2.0", "2.0–3.0", "3.5–5.0"], "answerIndex": 2, "answers": [2], "rationale": "Target varies by indication; many aim for 2–3.", "tags": ["INR"]}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Dabigatran (a direct thrombin inhibitor) reversal agent in life‑threatening bleed:", "options": ["Protamine", "Vitamin K", "Idarucizumab", "Andexanet alfa"], "answerIndex": 2, "answers": [2], "rationale": "Idarucizumab reverses dabigatran.", "tags": ["antidote"]}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which teaching reduces bleeding risk on clopidogrel?", "options": ["Shave with safety razor and floss vigorously", "Report black stools or unusual bruising", "Stop drug 1 day before dental work without guidance", "Avoid all fruits/vegetables"], "answerIndex": 1, "answers": [1], "rationale": "Educate on bleeding signs and consult provider before stopping.", "tags": ["teaching"]}, {"topic": "Respiratory", "type": "MCQ", "stem": "Ipratropium is best described as:", "options": ["Short‑acting muscarinic antagonist (SAMA)", "Long‑acting beta agonist (LABA)", "Inhaled corticosteroid (ICS)", "Leukotriene receptor antagonist (LTRA)"], "answerIndex": 0, "answers": [0], "rationale": "Anticholinergic bronchodilator used for maintenance; avoid as sole rescue.", "tags": ["ipratropium"]}, {"topic": "Respiratory", "type": "MCQ", "stem": "Theophylline patient teaching should emphasize:", "options": ["No need for level monitoring", "Avoid caffeine and report palpitations", "Use as first‑line rescue", "Safe in arrhythmias"], "answerIndex": 1, "answers": [1], "rationale": "Narrow therapeutic index; avoid stimulants; monitor levels.", "tags": ["theophylline"]}, {"topic": "Respiratory", "type": "MCQ", "stem": "Which combination is appropriate for long‑term asthma control?", "options": ["SABA alone", "LABA alone", "ICS ± LABA", "Antitussive only"], "answerIndex": 2, "answers": [2], "rationale": "Controller therapy centers on anti‑inflammation (ICS), often with LABA.", "tags": ["control"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Which nitrate form is used for angina prophylaxis (not for acute relief)?", "options": ["SL nitroglycerin", "IV nitroglycerin", "Isosorbide mononitrate", "Nitro spray"], "answerIndex": 2, "answers": [2], "rationale": "Long‑acting oral nitrates prevent angina episodes.", "tags": ["prophylaxis"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "ACE inhibitor common adverse effect leading to change in therapy:", "options": ["Dry cough", "Constipation", "Hypoglycemia", "Tinnitus"], "answerIndex": 0, "answers": [0], "rationale": "Bradykinin accumulation causes cough; consider ARB if persistent.", "tags": ["ACEi"]}, {"topic": "Renal/Electrolyte/IV", "type": "MCQ", "stem": "Hyperkalemia with peaked T waves—first verify which medication is on the MAR that could worsen K+?", "options": ["ACE inhibitor", "Loop diuretic", "Thiazide diuretic", "Albuterol"], "answerIndex": 0, "answers": [0], "rationale": "ACE/ARB, K‑sparing diuretics raise K+.", "tags": ["hyperK"]}, {"topic": "Renal/Electrolyte/IV", "type": "MCQ", "stem": "Sodium polystyrene sulfonate (kayexalate) lowers potassium primarily by:", "options": ["Increasing renal excretion directly", "Binding potassium in the gut for excretion", "Driving K+ into cells via insulin effect", "Increasing aldosterone production"], "answerIndex": 1, "answers": [1], "rationale": "It exchanges Na+ for K+ in the colon; watch for constipation/ileus.", "tags": ["kayexalate"]}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Carbonic anhydrase inhibitor eye drops require asking about which allergy first?", "options": ["Penicillin", "Sulfonamides", "Shellfish", "Latex"], "answerIndex": 1, "answers": [1], "rationale": "Dorzolamide/brinzolamide are sulfonamide‑related.", "tags": ["CAI"]}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Brimonidine (alpha‑agonist) teaching includes:", "options": ["Do not use with MAO inhibitors", "Use contact lenses immediately after dosing", "Expect mydriasis only at night", "It lightens iris color"], "answerIndex": 0, "answers": [0], "rationale": "Alpha‑agonists can interact with MAOIs; wait 15 min before contacts.", "tags": ["alpha-agonist"]}, {"topic": "GI/Hepatic", "type": "MCQ", "stem": "Cholestyramine can decrease absorption of fat‑soluble vitamins. Best administration advice:", "options": ["Take with multivitamins at the same time", "Separate other meds and vitamins by several hours", "Crush and take dry", "Double the dose if a meal is missed"], "answerIndex": 1, "answers": [1], "rationale": "Give other meds/vitamins 1–4 h apart to avoid binding.", "tags": ["bile-acid"]}, {"topic": "GI/Hepatic", "type": "MCQ", "stem": "Which analgesic should be avoided or limited in chronic alcohol use due to liver risk?", "options": ["Acetaminophen", "Aspirin", "Ibuprofen", "Tramadol"], "answerIndex": 0, "answers": [0], "rationale": "APAP + alcohol increases hepatotoxic risk.", "tags": ["liver"]}, {"topic": "Neuro", "type": "MCQ", "stem": "Which finding after starting riluzole warrants contacting the provider?", "options": ["Mild dizziness", "Dark urine or jaundice", "Transient fatigue", "Mild nausea"], "answerIndex": 1, "answers": [1], "rationale": "Signs of liver injury require evaluation and possible discontinuation.", "tags": ["hepatotoxicity"]}, {"topic": "Documentation/Teaching", "type": "SATA", "stem": "Select ALL safety steps when reconciling meds at discharge:", "options": ["Ask about OTCs and herbals", "Update allergy list with reactions", "Send two conflicting med lists home to cover all bases", "Teach patient how/when to seek help for adverse effects"], "answerIndex": null, "answers": [0, 1, 3], "rationale": "Reconciliation includes OTCs/herbals, explicit allergies/reactions, and clear instructions; avoid conflicting lists.", "tags": ["recon"]}, {"topic": "Documentation/Teaching", "type": "MCQ", "stem": "SSRI patient develops agitation, diaphoresis, tremor, hyperreflexia, and diarrhea after dose increase. Priority action:", "options": ["Reassure; continue medication", "Hold SSRI and notify provider—possible serotonin syndrome", "Give loperamide and observe", "Add tramadol for pain"], "answerIndex": 1, "answers": [1], "rationale": "Symptoms are consistent with serotonin syndrome—hold and escalate care.", "tags": ["SSRI"]}, {"topic": "Respiratory", "type": "SATA", "stem": "Select all controller medications for asthma maintenance:", "options": ["Inhaled corticosteroids", "Formoterol/salmeterol (LABA)", "Albuterol (SABA)", "Montelukast"], "answerIndex": null, "answers": [0, 1, 3], "rationale": "Controllers reduce inflammation/long‑term bronchospasm; SABA is rescue.", "tags": ["controller"]}, {"topic": "Cardiovascular", "type": "SATA", "stem": "Nitroglycerin teaching—select all correct points:", "options": ["Sit or lie down before taking", "Store in original dark container", "Take with sildenafil for synergy", "Call EMS if no relief after first dose and continue up to 3 doses"], "answerIndex": null, "answers": [0, 1, 3], "rationale": "Avoid PDE‑5 inhibitors; use proper storage and EMS plan.", "tags": ["nitro-teach"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Which lab should be monitored for statin therapy adverse effects?", "options": ["Creatinine only", "AST/ALT for hepatotoxicity", "INR", "Amylase"], "answerIndex": 1, "answers": [1], "rationale": "Monitor liver enzymes; also assess for myalgias (CK if symptomatic).", "tags": ["statin"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Amlodipine (a dihydropyridine CCB) most commonly causes:", "options": ["Dry cough", "Ankle edema and flushing", "Bradycardia", "Hyperkalemia"], "answerIndex": 1, "answers": [1], "rationale": "Peripheral edema, flushing, headache are common with DHP CCBs.", "tags": ["CCB"]}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Reversal for life‑threatening bleeding with apixaban/rivaroxaban (factor Xa inhibitors):", "options": ["Protamine sulfate", "Andexanet alfa", "Idarucizumab", "Vitamin K"], "answerIndex": 1, "answers": [1], "rationale": "Andexanet reverses factor Xa inhibitors (availability varies by facility).", "tags": ["antidote"]}, {"topic": "Respiratory", "type": "MCQ", "stem": "Spacer use with MDIs primarily:", "options": ["Eliminates need to rinse mouth", "Improves drug delivery to lungs and reduces oropharyngeal deposition", "Replaces need for a controller", "Allows more doses per inhaler"], "answerIndex": 1, "answers": [1], "rationale": "Spacers help coordination and reduce local side effects.", "tags": ["MDI"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Lispro insulin onset/peak are approximately:", "options": ["Onset 1 hr; peak 4–6 hr", "Onset 15 min; peak about 1 hr", "Onset 30–60 min; peak 2–4 hr", "Onset 2 hr; no peak"], "answerIndex": 1, "answers": [1], "rationale": "Rapid‑acting insulin has onset ~15 min and early peak (~1 h).", "tags": ["lispro"]}, {"topic": "Endocrine/Insulin", "type": "MCQ", "stem": "Sick‑day rule for a client on insulin with nausea/vomiting:", "options": ["Stop insulin until eating normally", "Continue insulin and check glucose/ketones more frequently", "Double insulin doses preemptively", "Avoid clear liquids"], "answerIndex": 1, "answers": [1], "rationale": "Continue insulin, monitor more often, hydrate, seek care if ketones ↑.", "tags": ["sick-day"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Which is part of the traditional 6 (or more) rights of medication administration?", "options": ["Right intuition", "Right documentation", "Right shortcut", "Right guess"], "answerIndex": 1, "answers": [1], "rationale": "Right patient, drug, dose, route, time, documentation (+ indication, education, response).", "tags": ["rights"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "A look‑alike/sound‑alike (LASA) drug risk is best mitigated by:", "options": ["Handwritten labels", "Tall‑man lettering and barcode scanning", "Relying on color of vials", "Using abbreviations to save time"], "answerIndex": 1, "answers": [1], "rationale": "Tall‑man lettering and BCMA reduce LASA errors.", "tags": ["LASA"]}, {"topic": "Neuro", "type": "MCQ", "stem": "Phenytoin feeding‑tube teaching:", "options": ["Give with tube feeds for better absorption", "Hold tube feeds 1–2 h before/after dosing", "Crush extended‑release tablets", "No need for level monitoring"], "answerIndex": 1, "answers": [1], "rationale": "Tube feeds reduce absorption; separate and monitor levels.", "tags": ["phenytoin"]}, {"topic": "Renal/Electrolyte/IV", "type": "MCQ", "stem": "Which diuretic is potassium‑sparing?", "options": ["Furosemide", "Hydrochlorothiazide", "Spironolactone", "Bumetanide"], "answerIndex": 2, "answers": [2], "rationale": "Spironolactone spares potassium; monitor for hyperkalemia.", "tags": ["diuretics"]}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Purpose of punctal occlusion after eye drops:", "options": ["Increase systemic absorption", "Reduce systemic absorption and side effects", "Improve color vision", "Shorten onset of action only"], "answerIndex": 1, "answers": [1], "rationale": "Pressing inner canthus reduces drainage to nasolacrimal duct → less systemic absorption.", "tags": ["technique"]}, {"topic": "GI/Hepatic", "type": "MCQ", "stem": "Proton pump inhibitors (PPIs) are best taken:", "options": ["With high‑fat breakfast", "30–60 minutes before the first meal of the day", "Only at bedtime", "Only as needed for pain"], "answerIndex": 1, "answers": [1], "rationale": "PPIs inhibit active proton pumps; pre‑meal timing improves effect.", "tags": ["PPI"]}, {"topic": "Respiratory", "type": "MCQ", "stem": "Which finding suggests oral thrush from inhaled steroid use?", "options": ["White plaques that scrape off with erythematous base", "Blue‑green sputum", "Grey tongue coating only in the morning", "Brown patches on gums"], "answerIndex": 0, "answers": [0], "rationale": "Rinse mouth and consider spacer use to reduce risk.", "tags": ["thrush"]}, {"topic": "Cardiovascular", "type": "MCQ", "stem": "Which patient should avoid beta‑blockers or use with caution?", "options": ["Migraine history", "Asthma with active wheeze", "History of acne", "GERD"], "answerIndex": 1, "answers": [1], "rationale": "Bronchospasm can worsen with non‑selective beta‑blockers.", "tags": ["contra"]}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Low‑molecular‑weight heparin (enoxaparin) teaching includes:", "options": ["Massage injection site to improve absorption", "Rotate sites and do not expel the air bubble from the prefilled syringe", "Inject IM for faster onset", "It requires routine aPTT monitoring"], "answerIndex": 1, "answers": [1], "rationale": "Give deep subQ, rotate sites, leave the air bubble; routine aPTT not required like with UFH.", "tags": ["LMWH"]}, {"topic": "Documentation/Teaching", "type": "MCQ", "stem": "Which discharge instruction for nitroglycerin patches is correct?", "options": ["Leave patch on 24/7 without breaks", "Place on hairy area for adhesion", "Remove at night for a nitrate‑free interval as prescribed", "Cut patches to adjust dose"], "answerIndex": 2, "answers": [2], "rationale": "A daily nitrate‑free interval helps prevent tolerance; never cut patches.", "tags": ["patch"]}];
+
+// ---- Topics & Initial Weights (from your weakness report) ----
+const WEAK_TOPICS = [
+  "Med Safety/Math","Cardiovascular","Endocrine/Insulin","Pain/Opioids","Respiratory",
+  "Renal/Electrolyte/IV","Sensory/Glaucoma","GI/Hepatic","Neuro","Documentation/Teaching",
+  "Anticoag/Antiplatelet","ANS (Symp/Para)"
+];
+let topicWeights = {};
+for (const t of WEAK_TOPICS) topicWeights[t] = 2.0; // 2x priority
+// Default weight for others
+for (const q of BANK) if (!topicWeights[q.topic]) topicWeights[q.topic] = 1.0;
+
+// ---- Local Storage Stats ----
+const KEY = "pharm_hesi_mastery_stats_v3";
+let stats = JSON.parse(localStorage.getItem(KEY) || "{}");
+if (!stats.version) stats = {version:3, seen:0, correct:0, topics:{}};
+
+// ensure topic stats exist
+function ensureTopic(topic) {
+  if (!stats.topics[topic]) stats.topics[topic] = {seen:0, correct:0};
+}
+
+// ---- UI Elements ----
+const elStem = document.getElementById('stem');
+const elOptions = document.getElementById('options');
+const elRationale = document.getElementById('rationale');
+const elStatus = document.getElementById('status');
+const elNext = document.getElementById('next');
+const elAgain = document.getElementById('again');
+const elShowAns = document.getElementById('showAns');
+const elTopicFilter = document.getElementById('topicFilter');
+const elTopicWrap = document.getElementById('topicFilterWrap');
+const elMode = document.getElementById('mode');
+const elTimer = document.getElementById('timer');
+const elProgress = document.getElementById('progress');
+const elMeta = document.getElementById('metaBadges');
+const elChip = document.getElementById('topicChip');
+const elReset = document.getElementById('reset');
+const elExport = document.getElementById('export');
+const toast = document.getElementById('toast');
+
+// ---- Build Topic Filter ----
+const topics = Array.from(new Set(BANK.map(q=>q.topic))).sort();
+for (const t of topics) {
+  const opt = document.createElement('option');
+  opt.value = t; opt.textContent = t;
+  elTopicFilter.appendChild(opt);
+}
+
+// ---- Audio (click / correct / incorrect / streak) ----
+let AUDIO_ENABLED = false, MUSIC_ENABLED = false;
+const sfxBtn = document.getElementById('sfx');
+const musicBtn = document.getElementById('music');
+
+function tone(f, dur=0.12, type='sine', gain=0.06) {
+  if (!AUDIO_ENABLED) return;
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const o = ctx.createOscillator(); const g = ctx.createGain();
+  o.type = type; o.frequency.value = f;
+  o.connect(g); g.connect(ctx.destination);
+  g.gain.value = gain; o.start();
+  setTimeout(()=>{ g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime+0.1); o.stop(ctx.currentTime+0.12); }, dur*1000);
+}
+function sfxClick() { tone(320,0.06,'sine',0.05); }
+function sfxCorrect() { tone(660,0.14,'triangle',0.08); setTimeout(()=>tone(880,0.18,'triangle',0.07), 90); }
+function sfxWrong() { tone(180,0.18,'sawtooth',0.07); }
+function sfxStreak() { tone(520,0.12,'square',0.05); setTimeout(()=>tone(1040,0.12,'square',0.05), 120); }
+
+let musicCtx=null, musicOsc=null, musicInt=null, musicProg=0;
+function toggleMusic(on) {
+  if (on) {
+    if (musicCtx) return;
+    musicCtx = new (window.AudioContext || window.webkitAudioContext)();
+    musicOsc = musicCtx.createOscillator();
+    const g = musicCtx.createGain(); g.gain.value = 0.03;
+    musicOsc.connect(g); g.connect(musicCtx.destination);
+    musicOsc.type = 'sine'; musicOsc.frequency.value = 220; musicOsc.start();
+    musicInt = setInterval(()=>{
+      // simple arpeggio
+      const seq = [220, 277, 330, 440, 330, 277];
+      musicOsc.frequency.value = seq[musicProg % seq.length];
+      musicProg++;
+    }, 420);
+  } else {
+    try { clearInterval(musicInt); } catch {}
+    if (musicOsc) musicOsc.stop();
+    musicCtx=null; musicOsc=null; musicInt=null; musicProg=0;
+  }
+}
+
+sfxBtn.addEventListener('click', ()=>{ AUDIO_ENABLED = !AUDIO_ENABLED; sfxBtn.classList.toggle('on', AUDIO_ENABLED); sfxBtn.textContent = AUDIO_ENABLED? "🔊 Sound: On":"🔊 Sound: Off"; sfxClick(); });
+musicBtn.addEventListener('click', ()=>{ MUSIC_ENABLED = !MUSIC_ENABLED; musicBtn.classList.toggle('on', MUSIC_ENABLED); musicBtn.textContent = MUSIC_ENABLED? "🎵 Music: On":"🎵 Music: Off"; toggleMusic(MUSIC_ENABLED); });
+
+// ---- Engine ----
+let current=null, allowSelect=true, timerId=null, timeLeft=0, streak=0;
+
+function pickAdaptive() {
+  // Weighted random by topic (weak topics 2x) and by personal accuracy
+  const items = BANK.slice();
+  const weighted = [];
+  for (const q of items) {
+    ensureTopic(q.topic);
+    const tstat = stats.topics[q.topic];
+    const acc = tstat.seen ? (tstat.correct/tstat.seen) : 0;
+    let w = topicWeights[q.topic] || 1;
+    // If accuracy is low, boost weight
+    if (acc < 0.7) w *= 1.5;
+    if (acc < 0.5) w *= 2.0;
+    weighted.push([q, w]);
+  }
+  // Normalize and pick
+  let sum = weighted.reduce((a,b)=>a+b[1],0);
+  let r = Math.random()*sum;
+  for (const [q,w] of weighted) {
+    if ((r-=w) <= 0) return q;
+  }
+  return weighted[0][0];
+}
+
+function pickRandom() { return BANK[Math.floor(Math.random()*BANK.length)]; }
+
+function pickByTopic(topic) {
+  const sub = BANK.filter(q=>q.topic===topic);
+  return sub[Math.floor(Math.random()*sub.length)];
+}
+
+function setProgress() {
+  elProgress.textContent = stats.correct + "/" + stats.seen;
+}
+
+function badge(text) {
+  const b = document.createElement('div'); b.className='badge'; b.textContent=text; return b;
+}
+
+function toastMsg(msg) {
+  toast.textContent = msg; toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'), 1200);
+}
+
+function renderQuestion(q) {
+  current = q; allowSelect=true;
+  elRationale.classList.add('hidden'); elRationale.textContent = "";
+  elStatus.textContent = "Select the best answer."; elOptions.innerHTML = "";
+  elMeta.innerHTML = ""; elChip.textContent = q.topic;
+  elMeta.appendChild(badge(q.type));
+  if (q.tags && q.tags.length) elMeta.appendChild(badge(q.tags.join(" · ")));
+  elStem.textContent = q.stem;
+  const isSATA = q.type === "SATA";
+  const chosen = new Set();
+
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'opt';
+    div.textContent = opt;
+    div.addEventListener('click', () => {
+      if (!allowSelect) return;
+      sfxClick();
+      if (isSATA) {
+        if (chosen.has(i)) { chosen.delete(i); div.style.opacity=1; }
+        else { chosen.add(i); div.style.opacity=0.8; }
+      } else {
+        // single answer
+        finish([i]);
+      }
+    });
+    elOptions.appendChild(div);
+  });
+
+  elShowAns.onclick = () => finish(q.answers);
+  elAgain.onclick = () => { renderQuestion(q); };
+
+  function finish(sel) {
+    if (!allowSelect) return;
+    allowSelect=false;
+    const isSATA = q.type==="SATA";
+    let correct = false;
+    if (isSATA) {
+      const sels = Array.from(chosen).sort((a,b)=>a-b);
+      correct = JSON.stringify(sels) === JSON.stringify(q.answers);
+    } else {
+      correct = sel[0] === q.answerIndex;
+    }
+
+    // mark
+    Array.from(elOptions.children).forEach((node, idx) => {
+      const ok = q.answers.includes(idx);
+      node.classList.add(ok ? 'correct':'incorrect');
+    });
+
+    // stats
+    stats.seen++; ensureTopic(q.topic); stats.topics[q.topic].seen++;
+    if (correct) { stats.correct++; stats.topics[q.topic].correct++; streak++; sfxCorrect(); if (streak && streak%5===0) sfxStreak(); elStatus.textContent = "✅ Correct"; toastMsg("Nice!"); }
+    else { streak=0; sfxWrong(); elStatus.textContent = "❌ Not quite"; }
+    localStorage.setItem(KEY, JSON.stringify(stats));
+
+    elRationale.textContent = q.rationale;
+    elRationale.classList.remove('hidden');
+    setProgress();
+    buildTracker();
+  }
+
+  // Timer
+  if (timerId) clearInterval(timerId);
+  const t = elTimer.value;
+  if (t !== "off") {
+    timeLeft = parseInt(t,10);
+    elStatus.textContent = "⏱️ " + timeLeft + "s";
+    timerId = setInterval(()=>{
+      if (!allowSelect) { clearInterval(timerId); return; }
+      timeLeft--; elStatus.textContent = "⏱️ " + timeLeft + "s";
+      if (timeLeft<=0) {
+        clearInterval(timerId);
+        allowSelect=false;
+        sfxWrong();
+        elStatus.textContent = "⏰ Time!";
+        // reveal
+        Array.from(elOptions.children).forEach((node, idx)=>{ if (q.answers.includes(idx)) node.classList.add('correct'); else node.classList.add('incorrect'); });
+        elRationale.textContent = q.rationale; elRationale.classList.remove('hidden');
+        stats.seen++; ensureTopic(q.topic); stats.topics[q.topic].seen++; localStorage.setItem(KEY, JSON.stringify(stats));
+        setProgress(); buildTracker();
+      }
+    }, 1000);
+  }
+}
+
+function nextQuestion() {
+  let q = null;
+  if (elMode.value === 'random') q = pickRandom();
+  else if (elMode.value === 'topic') q = pickByTopic(elTopicFilter.value);
+  else q = pickAdaptive();
+  renderQuestion(q);
+}
+
+function buildTracker() {
+  const container = document.getElementById('tracker');
+  container.innerHTML = "";
+  topics.forEach(t => {
+    ensureTopic(t);
+    const s = stats.topics[t];
+    const acc = s.seen ? Math.round(100*s.correct/s.seen) : 0;
+    const row1 = document.createElement('div'); row1.textContent = t;
+    const row2 = document.createElement('div'); row2.textContent = s.seen + " seen";
+    const row3 = document.createElement('div'); row3.textContent = acc + "%";
+    row3.style.color = acc>=85? 'var(--success)' : acc>=70? 'var(--warn)' : 'var(--danger)';
+    container.appendChild(row1); container.appendChild(row2); container.appendChild(row3);
+  });
+}
+
+document.getElementById('next').addEventListener('click', ()=>{ nextQuestion(); });
+document.getElementById('mode').addEventListener('change', ()=>{ elTopicWrap.style.display = (elMode.value==='topic')? 'block':'none'; });
+document.getElementById('reset').addEventListener('click', ()=>{ if (confirm("Reset local stats?")) { stats={version:3, seen:0, correct:0, topics:{}}; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); } });
+document.getElementById('export').addEventListener('click', ()=>{
+  const blob = new Blob([JSON.stringify(stats,null,2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'pharm_hesi_mastery_stats.json'; a.click();
+});
+
+setProgress(); buildTracker();
+elTopicWrap.style.display = 'none';
+nextQuestion();
+
+</script>
+</body>
+</html>

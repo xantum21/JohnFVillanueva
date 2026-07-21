@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Math Quiz Game</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-image: url('/play/assets/math-room4.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #fff;
+    }
+    h1 {
+      color: #fff;
+      text-shadow: 2px 2px 4px #000;
+    }
+    #question {
+      font-size: 2em;
+      margin: 20px;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .feedback {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #000;
+    }
+    .correct {
+      color: #00ff00;
+    }
+    .wrong {
+      color: #ff3333;
+    }
+    .streak {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    .streak.green {
+      color: #00ff00;
+    }
+    .streak.red {
+      color: #ff3333;
+    }
+    #musicPrompt {
+      color: white;
+      font-size: 1em;
+      margin-top: 20px;
+      text-shadow: 1px 1px 2px #000;
+    }
+    input[type="text"] {
+      font-size: 1.5em;
+      width: 80px;
+      text-align: center;
+    }
+    button {
+      font-size: 1em;
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+    #leaderboard, #gameSection {
+      display: none;
+    }
+    #leaderboardTable {
+      background-color: rgba(0, 0, 0, 0.7);
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    table {
+      margin: auto;
+      width: 80%;
+      color: white;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    #leaderboardBtn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    #returnBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    #resetBtnBottom {
+      margin-top: 30px;
+    }
+  </style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
+<button id="leaderboardBtn" onclick="showLeaderboard()">Leaderboard</button>
+<div id="gameSection">
+<h1>Math Quiz Game</h1>
+<div id="question">Loading...</div>
+<input id="answerInput" type="text"/>
+<button onclick="checkAnswer()">Submit</button>
+<div class="feedback" id="feedback"></div>
+<div class="streak green" id="streakDisplay">Streak: 0</div>
+<div id="timerDisplay">Time left: 10</div>
+<div id="musicPrompt">Click anywhere for Background Music</div>
+</div>
+<div id="leaderboard">
+<h1>Recent Leaderboard</h1>
+<div id="leaderboardTable">
+<table>
+<thead>
+<tr><th>Name</th><th>Score</th></tr>
+</thead>
+<tbody id="leaderboardBody"></tbody>
+</table>
+</div>
+<button id="returnBtn" onclick="showGame()">Return to Game</button>
+<button id="resetBtnBottom" onclick="resetLeaderboard()">Reset Leaderboard</button>
+</div>
+<audio id="bgMusic" loop="">
+<source src="https://github.com/xantum21/Math-Game/blob/main/MathSong.mp3?raw=true" type="audio/mpeg"/>
+</audio>
+<audio id="yesSound">
+<source src="https://github.com/xantum21/Math-Game/blob/main/Yes.mp3?raw=true" type="audio/mpeg"/>
+</audio>
+<audio id="noSound">
+<source src="https://github.com/xantum21/Math-Game/blob/main/No.mp3?raw=true" type="audio/mpeg"/>
+</audio>
+<script>
+    let streak = 0;
+    let currentAnswer;
+    let timer;
+    let timeLeft = 5;
+
+    function generateQuestion() {
+      const operations = ['+', '-', '*'];
+      const op = operations[Math.floor(Math.random() * operations.length)];
+      const a = Math.floor(Math.random() * 10) + 1;
+      const b = Math.floor(Math.random() * 10) + 1;
+
+      const question = `${a} ${op} ${b}`;
+      currentAnswer = eval(question);
+      currentAnswer = Math.round(currentAnswer * 100) / 100;
+      document.getElementById("question").textContent = question;
+      document.getElementById("answerInput").value = "";
+      document.getElementById("feedback").textContent = "";
+      resetTimer();
+    }
+
+    function checkAnswer() {
+      const userAnswer = parseFloat(document.getElementById("answerInput").value);
+      const feedback = document.getElementById("feedback");
+      const streakDisplay = document.getElementById("streakDisplay");
+
+      if (userAnswer === currentAnswer) {
+        feedback.textContent = "Correct!";
+        feedback.className = "feedback correct";
+        document.getElementById("yesSound").play();
+        streak++;
+        streakDisplay.className = "streak green";
+        streakDisplay.textContent = `Streak: ${streak}`;
+        generateQuestion();
+      } else {
+        feedback.textContent = "Wrong";
+        feedback.className = "feedback wrong";
+        document.getElementById("noSound").play();
+        streakDisplay.className = "streak red";
+        promptAndRecordStreak();
+        streak = 0;
+        streakDisplay.textContent = `Streak: ${streak}`;
+      }
+    }
+
+    function promptAndRecordStreak() {
+      const playerName = prompt("Enter your name for the leaderboard:");
+      if (!playerName) return;
+      const leaderboard = JSON.parse(localStorage.getItem("math_leaderboard") || "[]");
+      leaderboard.push({ name: playerName, score: streak });
+      localStorage.setItem("math_leaderboard", JSON.stringify(leaderboard));
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timeLeft = 5;
+      document.getElementById("timerDisplay").textContent = `Time left: ${timeLeft}`;
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timerDisplay").textContent = `Time left: ${timeLeft}`;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          document.getElementById("noSound").play();
+          promptAndRecordStreak();
+          streak = 0;
+          document.getElementById("streakDisplay").className = "streak red";
+          document.getElementById("streakDisplay").textContent = `Streak: ${streak}`;
+        }
+      }, 1000);
+    }
+
+    function showGame() {
+      document.getElementById("gameSection").style.display = "block";
+      document.getElementById("leaderboard").style.display = "none";
+      generateQuestion();
+    }
+
+    function showLeaderboard() {
+      const table = document.getElementById("leaderboardBody");
+      table.innerHTML = "";
+      const scores = JSON.parse(localStorage.getItem("math_leaderboard") || "[]");
+      scores.slice(-10).reverse().forEach(entry => {
+        const row = `<tr><td>${entry.name}</td><td>${entry.score}</td></tr>`;
+        table.innerHTML += row;
+      });
+      document.getElementById("gameSection").style.display = "none";
+      document.getElementById("leaderboard").style.display = "block";
+    }
+
+    function resetLeaderboard() {
+      localStorage.removeItem("math_leaderboard");
+      showLeaderboard();
+    }
+
+    document.body.addEventListener("click", function() {
+      const music = document.getElementById("bgMusic");
+      if (music.paused) {
+        music.play().catch(e => console.log("Music autoplay blocked."));
+      }
+    });
+
+    document.getElementById("answerInput").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") checkAnswer();
+    });
+
+    window.onload = showGame;
+  </script>
+</body>
+</html>

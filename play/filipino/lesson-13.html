@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Tagalog — Aralin 13 • Oras, Alis/Dating, Tiket Quiz (STABLE)</title>
+<style>
+:root{
+  --bg:#0b0b0c; --card:#141419; --ink:#f7f7ff; --muted:#b8bdc7;
+  --accent:#ffd54f; --success:#4caf50; --danger:#ef5350; --warn:#ffa726;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--ink);
+  background:
+    radial-gradient(900px 400px at 10% -10%, rgba(255,213,79,.08), transparent),
+    radial-gradient(1000px 600px at 100% 0%, rgba(183,28,28,.10), transparent),
+    linear-gradient(180deg,#101015,#0a0a0d);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+header{display:grid;grid-template-columns:1fr auto auto auto auto;gap:10px;align-items:center;padding:14px 16px}
+.brand{font-weight:800;letter-spacing:.2px}
+.pill{background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 12px;display:flex;gap:8px;align-items:center}
+button,select{background:var(--card);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 12px;color:var(--ink);cursor:pointer}
+button:hover,select:hover{border-color:rgba(255,213,79,.6)}
+main{max-width:1180px;margin:0 auto;padding:10px 12px 22px}
+.controls{display:grid;grid-template-columns:repeat(5,1fr) 120px 120px;gap:10px;margin:10px 0}
+.ctrl{display:flex;align-items:center;gap:8px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.qcard{padding:18px 20px}
+.qstem{font-size:22px;line-height:1.35;margin:6px 0 8px}
+.options{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.opt{padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);cursor:pointer;text-align:left}
+.opt:hover{border-color:rgba(255,213,79,.6)}
+.opt.correct{background:rgba(76,175,80,.12);border-color:var(--success)}
+.opt.incorrect{background:rgba(239,83,80,.12);border-color:var(--danger)}
+.muted{color:var(--muted);font-size:13px}
+.badges{display:flex;gap:8px;align-items:center}
+.badge{font-size:11px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:var(--muted)}
+.footer{margin-top:12px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px}
+.hidden{display:none}
+.toast{position:fixed;right:16px;bottom:16px;background:#111;color:#fff;border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:10px 12px;opacity:0;transform:translateY(10px);transition:all .2s}
+.toast.show{opacity:1;transform:translateY(0)}
+.scorebox{display:flex;gap:8px;align-items:center}
+.volwrap{display:flex;gap:8px;align-items:center}
+#progressbar{height:30px;background:var(--card);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:4px;display:flex;align-items:center;margin:0 12px 14px 12px;position:relative}
+#progressfill{height:100%;border-radius:999px;background:linear-gradient(90deg,#ffe082,#ffd54f);width:0%}
+#progresslabel{position:absolute;margin-left:12px;font-size:13px;color:#111}
+.grid2{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+#tracker{display:grid;grid-template-columns:1fr 90px 90px;gap:6px}
+.row{display:flex;gap:8px;align-items:center}
+input[type="text"]{font-size:16px}
+details.reading{margin-top:10px}
+details.reading>summary{cursor:pointer;color:#ffe082}
+table.small{width:100%;border-collapse:collapse;font-size:14px}
+table.small td, table.small th{border:1px solid rgba(255,255,255,.15);padding:6px 8px}
+.k{padding:2px 6px;border-radius:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
+<header>
+<div class="brand">🇵🇭 Tagalog — Aralin 13 • Oras, Alis/Dating, Tiket Quiz (STABLE)</div>
+<div class="pill scorebox">Score: <strong id="score">0</strong> • Streak: <strong id="streak">0</strong></div>
+<button class="pill" id="sfx">🔊 Sound: On</button>
+<button class="pill" id="music">🎵 Music: On</button>
+<div class="pill volwrap"><span class="muted">Vol</span><input id="vol" max="100" min="0" style="width:140px" type="range" value="65"/></div>
+</header>
+<div id="progressbar"><div id="progressfill"></div><span id="progresslabel">Progress: 0/0</span></div>
+<main>
+<section class="controls card">
+<div class="ctrl"><span class="muted">Question source:</span><select id="category">
+<option selected="" value="all">All (incl. Culture/Reading)</option>
+<option value="vocab">Vocabulary only</option>
+<option value="grammar">Grammar only</option>
+<option value="dialogue">Dialogue only</option>
+<option value="culture">Culture only</option>
+<option value="reading">Reading only</option></select></div>
+<div class="ctrl"><span class="muted">Selection mode:</span><select id="mode">
+<option selected="" value="adaptive">Adaptive (prioritize weak topics)</option>
+<option value="random">Random</option>
+<option value="topic">By topic</option></select></div>
+<div class="ctrl"><span class="muted">Topic:</span><select id="topicFilter"><option selected="" value="any">Any</option></select></div>
+<div class="ctrl"><span class="muted">Timer:</span><select id="timer">
+<option value="off">Off</option><option value="60">60s</option>
+<option selected="" value="90">90s</option><option value="120">120s</option></select></div>
+<button id="reset">Reset</button>
+<button id="next">Next ▶</button>
+</section>
+<section class="card qcard" id="qcard">
+<div class="badges"><span class="badge" id="typeBadge">—</span><span class="badge" id="topicBadge">—</span></div>
+<div class="qstem" id="stem">Tap “Next” to begin.</div>
+<div class="options" id="options"></div>
+<div class="hidden row" id="fibWrap" style="margin-top:12px; display:none;">
+<input id="fibInput" placeholder="Type your answer in Tagalog…" style="flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff" type="text"/>
+<button id="fibCheck">Check</button>
+</div>
+<div class="rationale muted hidden" id="rationale"></div>
+<div class="footer">
+<div class="muted" id="status">Choose the best answer.</div>
+<div class="row"><button id="showAns">Show answer</button><button id="again">Again 🔁</button></div>
+</div>
+<details class="reading card">
+<summary>📖 Reading materials — tap to show/hide</summary>
+<div class="muted" style="margin-top:8px">
+<strong>Dialogue (Bus Station):</strong> <em>Sa Istasyon ng Bus</em><br/>
+        Pasahero: Saan po ako sasakay papuntang Los Baños? — Konduktor: Sa bus na may karatulang “Laguna.” — Pasahero: Anong oras po aalis ang bus? — Konduktor: Bandang alas‑dos kinse po. — Pasahero: Anong oras po darating ang bus sa Los Baños? — Konduktor: Bandang alas‑kuwatro po. Saan kayo bababa? — Pasahero: Sa “crossing” po sa U.P. Los Baños.
+      </div>
+<div class="muted" style="margin-top:10px">
+<strong>Mini‑Schedule:</strong>
+<table class="small">
+<tr><th>Destination</th><th>Departure</th><th>Arrival</th><th>Price</th></tr>
+<tr><td>Pampanga</td><td>8 A.M.</td><td>10:00</td><td>P100</td></tr>
+<tr><td>Tarlac</td><td>8:30</td><td>11:00</td><td>P150</td></tr>
+<tr><td>Baguio</td><td>10 P.M.</td><td>4 A.M.</td><td>P300</td></tr>
+<tr><td>Dagupan</td><td>12 n</td><td>4:30 P.M.</td><td>P250</td></tr>
+<tr><td>Banaue</td><td>11 P.M.</td><td>6 P.M.</td><td>P500</td></tr>
+</table>
+</div>
+<div class="muted" style="margin-top:10px">
+<strong>Short story:</strong> <em>Biyahe Papuntang Sagada</em><br/>
+        Labindalawang oras ang biyahe mula Maynila hanggang Banaue, dalawang oras mula Banaue hanggang Bontoc, at apatnapu’t limang minuto mula Bontoc hanggang Sagada. … Limang minuto bago mag‑alas‑diyes ng gabi. Aalis na ang bus. Hindi bale. Pupunta pa rin ako sa Sagada, sabi ni Lillian sa sarili. … Tumatakbo si Ramon. Ngumiti si Lillian.
+      </div>
+</details>
+</section>
+<section class="grid2" style="margin-top:12px">
+<div class="card">
+<div class="row" style="justify-content:space-between">
+<div class="muted"><strong>Aralin 13 coverage</strong> — time telling (Spanish &amp; Indigenous), particles <span class="k">na/pa/lang</span>, travel verbs (<span class="k">umalis/dumating/bumaba</span>), imperative &amp; infinitive (<span class="k">gusto kong umalis</span>), buying tickets, schedules, and culture (“Filipino time”). Scoring: <strong>+10</strong> correct, <strong>−5</strong> incorrect/timeout. Popups: <em>Ayos! / Subukan muli! / Oras na!</em></div>
+<button id="export">Export results</button>
+</div>
+<div class="muted" id="tracker" style="margin-top:10px"></div>
+</div>
+<div class="card">
+<div class="muted">UI in English • Prompts in Tagalog • Explanations in English. Kulintang‑style SFX/music 🎶</div>
+</div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+/* —— Utility & UI (same shell as Aralin 1) —— */
+function stripAccents(s){return (s||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+function norm(s){
+  return stripAccents(s).toLowerCase()
+    .replace(/[?.!,;:()”“"']/g,'')
+    .replace(/\s+/g,' ').trim();
+}
+function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+
+const KEY='tagalog_aralin13_v1_stats', PREF='tagalog_aralin13_v1_prefs';
+let stats=JSON.parse(localStorage.getItem(KEY)||'{}'); if(!stats.version) stats={version:1,seen:0,correct:0,topics:{},score:0,streak:0};
+
+let AUDIO=true, MUSIC=true;
+let musicCtx=null, musicGain=null, musicInt=null, step=0;
+const sfxBtn=document.getElementById('sfx'); const musicBtn=document.getElementById('music'); const vol=document.getElementById('vol');
+let pref=JSON.parse(localStorage.getItem(PREF)||'{}');
+if(pref.sfx===undefined) pref.sfx=true; if(pref.music===undefined) pref.music=true; if(pref.volume===undefined) pref.volume=65;
+AUDIO=!!pref.sfx; MUSIC=!!pref.music; vol.value=pref.volume;
+function savePref(){ localStorage.setItem(PREF, JSON.stringify({sfx:AUDIO, music:MUSIC, volume:parseInt(vol.value,10)})); }
+function blip(f,d=0.12,t='sine',g=0.06){ if(!AUDIO) return; const ctx=new (window.AudioContext||window.webkitAudioContext)(); const o=ctx.createOscillator(), ga=ctx.createGain(); o.type=t; o.frequency.value=f; o.connect(ga); ga.connect(ctx.destination); ga.gain.value=g; o.start(); setTimeout(()=>{ga.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.1); o.stop(ctx.currentTime+0.12);}, d*1000); }
+function good(){ blip(523.25,0.10,'triangle',0.08); setTimeout(()=>blip(659.25,0.11,'triangle',0.08),95); setTimeout(()=>blip(783.99,0.11,'triangle',0.07),190); }
+function bad(){ blip(196,0.07,'square',0.05); setTimeout(()=>blip(174.61,0.07,'square',0.05),70); }
+function clickS(){ blip(392,0.06,'sine',0.05); }
+function ensureMusic(){ if(!musicCtx){ musicCtx=new (window.AudioContext||window.webkitAudioContext)(); musicGain=musicCtx.createGain(); musicGain.gain.value=0.6*(parseInt(vol.value,10)/100); musicGain.connect(musicCtx.destination);} }
+function gong(freqs){ if(!musicCtx) return; freqs.forEach((f,i)=>{ const o=musicCtx.createOscillator(), g=musicCtx.createGain(); g.gain.value=0.016; o.type='sine'; o.frequency.value=f; o.connect(g); g.connect(musicGain); const t0=musicCtx.currentTime+i*0.08, t1=t0+0.42; o.start(t0); g.gain.setValueAtTime(g.gain.value,t0); g.gain.exponentialRampToValueAtTime(0.0001,t1); o.stop(t1); }); }
+function playMusic(){ if(!MUSIC) return; ensureMusic(); if(musicInt) return; const A=[220,277,330], D=[294,370,440], G=[196,246,392], E=[247,311,370]; const prog=[A,D,G,E]; musicInt=setInterval(()=>{ gong(prog[step%prog.length]); step++; },650); }
+function stopMusic(){ try{clearInterval(musicInt);}catch{} musicInt=null; step=0; }
+function setAudioUi(){ sfxBtn.textContent=AUDIO? "🔊 Sound: On":"🔊 Sound: Off"; musicBtn.textContent=MUSIC? "🎵 Music: On":"🎵 Music: Off"; }
+sfxBtn.onclick=()=>{ AUDIO=!AUDIO; setAudioUi(); savePref(); clickS(); };
+musicBtn.onclick=()=>{ MUSIC=!MUSIC; setAudioUi(); savePref(); if(MUSIC) playMusic(); else stopMusic(); };
+vol.oninput=()=>{ savePref(); if(musicGain){ musicGain.gain.value=0.6*(parseInt(vol.value,10)/100); } };
+window.addEventListener('pointerdown', function unlock(){ setAudioUi(); if(MUSIC) playMusic(); window.removeEventListener('pointerdown', unlock); }, {once:true});
+
+/* —— Question bank —— */
+const BANK=[];
+function add(topic,type,stem,options,answers,rationale,fibAnswers){
+  const q={topic,type,stem};
+  if(type==="MCQ"){ q.options=options; q.answers=answers; }
+  if(type==="FIB"){ q.fibAnswers=fibAnswers; }
+  if(rationale) q.rationale=rationale;
+  BANK.push(q);
+}
+
+function addVocabMCQ(tl,en){
+  add("Vocabulary","MCQ",`Ano ang ibig sabihin ng “${tl}”?`,shuffle([en,"price","to get off","schedule"]),[shuffle([en,"price","to get off","schedule"]).indexOf(en)],`“${tl}” → “${en}”.`);
+}
+function addTimeFIB(stem,answers,rat){ add("Grammar","FIB",stem,null,null,rat,answers); }
+
+/* Vocabulary (time & travel) */
+[["Alas‑dos","two o’clock"],["y medya","half past"],["menos singko","five minutes to"],
+ ["makalipas","past/after (time)"],["umaga","morning"],["hapon","afternoon"],["gabi","evening"],
+ ["madaling‑araw","dawn"],["hatinggabi","midnight"],
+ ["alis","departure"],["dating","arrival"],["bababa","to get off"],["sasakay","to get on"],
+ ["konduktor","conductor"],["pasahero","passenger"],["karatula","sign"],["bandang","around (approx.)"]]
+.forEach(([a,b])=>addVocabMCQ(a,b));
+
+/* Dialogue */
+add("Dialogue","MCQ","PASAHERO: Saan po ako sasakay papuntang Los Baños? — What does ‘saan … sasakay’ ask for?",
+["Where to get on","How much is the fare","What time to arrive","Who is the conductor"],[0],
+"‘Saan … sasakay’ = ‘Where will I get on?’");
+add("Dialogue","MCQ","KONDUKTOR: Bandang alas‑dos kinse po. What does ‘bandang’ add?",
+["Exactly at","Around/approximately","Before","After"],[1],
+"‘Bandang’ softens time to ‘around’."); 
+add("Dialogue","MCQ","‘Saan kayo bababa?’ best answer is…",
+["Bababa ako sa crossing.","Masarap ang mangga.","Magkano ang pamasahe?","Oo, alas‑dos."],[0],
+"Use a place to ‘get off’."); 
+
+/* Grammar — verbs (um) */
+addTimeFIB("Conjugate (future): ‘to leave’ — ___",["aalis"],"umalis/umaalis/aalis");
+addTimeFIB("Conjugate (present): ‘to arrive’ — ___",["dumarating","dumadating"],"dumating/dumarating/darating (dadating also heard).");
+addTimeFIB("Imperative: ‘Get off at the park.’ — ___ ka sa parke.",["bumaba"],"Use completed/imperative form for commands.");
+addTimeFIB("Infinitive after gusto: “I want to leave at four.” — Gusto kong ___ nang alas‑kuwarto.",["umalis"],"Linker: gusto + kong + [infinitive].");
+addTimeFIB("Complete politely: ‘It’s only two fifteen.’ — Alas‑dos kinse ___ ___.",["pa lang"],"pa + lang → only");
+addTimeFIB("Translate: ‘What time is it?’ (Tagalog) — ___ oras na?",["anong"],"Use ‘Anong oras na?’");
+
+/* Grammar — time phrasing */
+addTimeFIB("Translate: 5:30 A.M. — ___ ___ ng umaga.",["alas singko y medya","alas‑singko y medya"],"Use Spanish‑derived clock terms.");
+addTimeFIB("Translate: 8:25 P.M. — ___ ___ na makalipas ang alas‑otso ng gabi.",["dalawampu't limang minuto","dalawampu’t limang minuto","dalawampu't lima na minuto"],"‘… minuto na makalipas ang …’");
+addTimeFIB("Translate: 10:50 A.M. — ___ kinse na para ___‑diyes ng umaga.",["menos","alas"],"‘menos kinse para alas‑diyes’");
+addTimeFIB("Translate: Midnight — ___",["hatinggabi"],"Hatinggabi.");
+addTimeFIB("Translate: Dawn — ___‑araw",["madaling"],"Madaling‑araw.");
+
+/* Saan vs Nasaan */
+add("Grammar","MCQ","____ ang bus stop? (location w/o movement)",
+["Saan","Nasaan"],[1],"Use ‘Nasaan’ for location (no verb).");
+add("Grammar","MCQ","____ ka sasakay? (movement/intention)",
+["Saan","Nasaan"],[0],"Use ‘Saan’ + verb for movement.");
+
+/* Culture */
+add("Culture","MCQ","What is meant by “Filipino time” in the notes?",
+["Exact punctuality","Culturally flexible/approximate time","Always late by 2 hours","Using 24‑hour clock only"],[1],
+"Notes highlight non‑exactness and use of ‘bandang/mga’.");
+add("Culture","MCQ","In many towns, jeepneys/buses depart…",
+["On the dot","When the vehicle is full","After a horn signal","At sunrise only"],[1],
+"Paradahan leaves when full (not exact schedule).");
+add("Culture","MCQ","“Pagputi ng uwak” means…",
+["Soon","Never/‘when pigs fly’","Yesterday","Exactly noon"],[1],
+"Idiom indicating ‘never/eternity’."); 
+
+/* Reading — bus schedule */
+add("Reading","MCQ","From the mini‑schedule: How much to Baguio?",
+["P300","P250","P150","P100"],[0],"Row: Baguio → P300.");
+add("Reading","MCQ","Departure for Dagupan is…",
+["12 noon","4:30 P.M.","8:30","10 P.M."],[0],"‘12 n’ = 12 noon."); 
+add("Reading","MCQ","Arrival time for Pampanga…",
+["10:00","11:00","4:30 P.M.","6 P.M."],[0],"First row shows 10:00.");
+add("Reading","MCQ","Next bus concept: Which phrase marks approximation?",
+["eksakto","bandang","agad","lamang"],[1],"‘bandang’ ≈ around.");
+
+/* Reading — Sagada story */
+add("Reading","MCQ","How long from Manila to Banaue (story)?",
+["12 hours","2 hours","45 minutes","30 minutes"],[0],"Text: Labindalawang oras.");
+add("Reading","MCQ","Why does Lillian prefer Manila→Banaue route?",
+["Faster","Cheaper","Better views","Less crowded"],[2],"Mas maganda ang mga tanawin.");
+add("Reading","MCQ","What happens 5 minutes before 10 P.M.?",
+["Bus arrives","Bus leaves","Power outage","Rain"],[1],"Aalis na ang bus.");
+add("Reading","MCQ","What emotion is repeated at the end?",
+["Fear","Annoyance while waiting","Hunger","Sleepiness"],[1],"‘Nakakainis lang ang naghihintay.’");
+
+/* Dialogue — clock Qs */
+add("Dialogue","MCQ","Best way to ask time (polite):",
+["Mawalang galang na po, anong oras na po?","Anong oras?","Ano ang oras mo?","Orasan mo?"],[0],
+"Polite framing from dialogue.");
+add("Dialogue","MCQ","If you don’t have a watch, say…",
+["Wala po akong relo.","Wala po akong orasan.","Wala po ako oras.","Relos po wala."],[0],
+"From dialogue line.");
+
+
+/* —— Topic list —— */
+const TOPICS=[...new Set(BANK.map(q=>q.topic))].sort();
+
+const elStem=document.getElementById('stem'), elOptions=document.getElementById('options'), elRationale=document.getElementById('rationale'), elStatus=document.getElementById('status');
+const elShowAns=document.getElementById('showAns'), elAgain=document.getElementById('again'), elNext=document.getElementById('next');
+const elType=document.getElementById('typeBadge'), elTopic=document.getElementById('topicBadge');
+const elCategory=document.getElementById('category'), elMode=document.getElementById('mode'), elTopicFilter=document.getElementById('topicFilter'), elTimer=document.getElementById('timer');
+const elFibWrap=document.getElementById('fibWrap'), elFibInput=document.getElementById('fibInput'), elFibCheck=document.getElementById('fibCheck');
+const elScore=document.getElementById('score'), elStreak=document.getElementById('streak'), elTracker=document.getElementById('tracker');
+const elProgressLabel=document.getElementById('progresslabel'), elProgressFill=document.getElementById('progressfill');
+const toast=document.getElementById('toast'); const elExport=document.getElementById('export');
+
+TOPICS.forEach(t=>{ const o=document.createElement('option'); o.value=t; o.textContent=t; elTopicFilter.appendChild(o); });
+
+function ensureTopic(t){ if(!stats.topics[t]) stats.topics[t]={seen:0,correct:0}; }
+function setProgress(){ elScore.textContent=stats.score; elStreak.textContent=stats.streak; elProgressLabel.textContent=`Progress: ${stats.correct}/${stats.seen}`; const pct=stats.seen? (100*stats.correct/stats.seen):0; elProgressFill.style.width=Math.min(100,pct)+"%"; }
+function buildTracker(){ elTracker.innerHTML=""; TOPICS.forEach(t=>{ ensureTopic(t); const s=stats.topics[t]; const acc=s.seen? Math.round(100*s.correct/s.seen):0; const n1=document.createElement('div'); n1.textContent=t; const n2=document.createElement('div'); n2.textContent=s.seen+" seen"; const n3=document.createElement('div'); n3.textContent=acc+"%"; n3.style.color=acc>=85?'var(--success)':acc>=70?'var(--warn)':'var(--danger)'; elTracker.appendChild(n1); elTracker.appendChild(n2); elTracker.appendChild(n3); }); }
+function toastMsg(m){ toast.textContent=m; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1000); }
+
+function allowed(q){
+  const cat=elCategory.value;
+  if(cat==='vocab') return q.topic==='Vocabulary';
+  if(cat==='grammar') return q.topic==='Grammar';
+  if(cat==='dialogue') return q.topic==='Dialogue';
+  if(cat==='culture') return q.topic==='Culture';
+  if(cat==='reading') return q.topic==='Reading';
+  return true;
+}
+function pick(){
+  const mode=elMode.value;
+  let pool=[];
+  if(mode==='topic' && elTopicFilter.value!=='any'){ pool=BANK.filter(q=>q.topic===elTopicFilter.value && allowed(q)); }
+  else { pool=BANK.filter(allowed); }
+  if(!pool.length) return null;
+  if(mode==='adaptive'){
+    const scored=pool.map(q=>{
+      const s=stats.topics[q.topic]||{seen:0,correct:0};
+      const acc=s.seen? s.correct/s.seen : 0;
+      return {q, w:1.2 - 0.8*acc};
+    });
+    const sum=scored.reduce((a,b)=>a+b.w,0);
+    let r=Math.random()*sum;
+    for(const it of scored){ if((r-=it.w)<=0) return it.q; }
+    return scored[scored.length-1].q;
+  }
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+
+let current=null, allow=true, timerId=null, scored=false;
+function render(q){
+  current=q; allow=true; scored=false;
+  elType.textContent=q.type; elTopic.textContent=q.topic;
+  elStem.textContent=q.stem; elRationale.classList.add('hidden'); elRationale.textContent=""; elStatus.textContent="Choose the best answer.";
+  elOptions.innerHTML=""; elFibWrap.classList.add('hidden'); elFibWrap.style.display='none';
+  if(q.type==="MCQ"){
+    q.options.forEach((opt,i)=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=opt; b.onclick=()=>{ if(!allow||scored) return; clickS(); finish([i]); }; elOptions.appendChild(b); });
+  }else{
+    elFibWrap.classList.remove('hidden'); elFibWrap.style.display='flex'; elFibInput.value=""; elFibInput.focus();
+    const handler=()=>{ if(!allow||scored) return; finish([elFibInput.value]); };
+    elFibCheck.onclick=handler; elFibInput.onkeydown=(e)=>{ if(e.key==='Enter') handler(); };
+  }
+  setTimer();
+}
+function finish(sel){
+  allow=false; scored=true;
+  let ok=false, ans="";
+  if(current.type==="MCQ"){
+    const idx=sel[0];
+    ok=current.answers.includes(idx);
+    [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect'));
+    ans=current.options[current.answers[0]];
+  }else{
+    const user=norm(sel[0]||"");
+    const accepted=(current.fibAnswers||[]).map(a=>norm(a));
+    ok=accepted.includes(user);
+    ans=current.fibAnswers? current.fibAnswers[0]:"";
+  }
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++;
+  if(ok){ stats.correct++; stats.topics[current.topic].correct++; stats.streak++; stats.score+=10; good(); toastMsg("Ayos!"); elStatus.textContent="✅ Correct! +10 points"; }
+  else{ stats.streak=0; stats.score-=5; bad(); toastMsg("Subukan muli!"); elStatus.textContent="❌ Not quite. −5 points"; }
+  elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+  localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+}
+function showAnswerPenalty(){
+  if(scored) return;
+  allow=false; scored=true;
+  if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); }
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++; stats.streak=0; stats.score-=5; bad(); toastMsg("Subukan muli!");
+  const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]);
+  elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+  elStatus.textContent="👀 Shown answer. −5 points"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+}
+function nextQ(){ const q=pick(); if(!q){ elStem.textContent="No questions available."; return; } render(q); }
+function setTimer(){
+  if(timerId) clearInterval(timerId);
+  const t=elTimer.value; if(t==="off") return; let left=parseInt(t,10); elStatus.textContent="⏱️ "+left+"s";
+  timerId=setInterval(()=>{
+    if(!allow){ clearInterval(timerId); return; }
+    left--; elStatus.textContent="⏱️ "+left+"s";
+    if(left<=0){
+      clearInterval(timerId); allow=false; scored=true;
+      stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++; stats.streak=0; stats.score-=5; bad(); toastMsg("Oras na!");
+      if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); }
+      const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]);
+      elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+      elStatus.textContent="⏰ Time! −5 points"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+    }
+  },1000);
+}
+
+document.getElementById('reset').onclick=()=>{ if(confirm("Reset all stats?")){ stats={version:1,seen:0,correct:0,topics:{},score:0,streak:0}; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); } };
+document.getElementById('next').onclick=()=>{ nextQ(); };
+document.getElementById('again').onclick=()=>{ if(current) render(current); };
+document.getElementById('showAns').onclick=()=>{ showAnswerPenalty(); };
+document.getElementById('export').onclick=()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='tagalog_aralin13_stats.json'; a.click(); };
+
+setAudioUi(); setProgress(); buildTracker();
+window.addEventListener('load',()=>{ nextQ(); });
+</script>
+</body>
+</html>

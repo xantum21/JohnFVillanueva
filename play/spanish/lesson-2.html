@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Madrigal — Lesson 2 • Spanish Quiz (Stable)</title>
+<style>
+  :root{--bg:#0f1116;--panel:#151923;--ink:#e8edf7;--muted:#9fb0c6;--chip:#23293a;--ok:#36d399;--bad:#f87272;--accent:#ffd166}
+  *{box-sizing:border-box} body{margin:0;background:radial-gradient(900px 400px at 10% -10%, rgba(255,209,102,.14), transparent),
+  radial-gradient(900px 500px at 100% 0%, rgba(248,114,114,.12), transparent),linear-gradient(180deg,#0e1116,#0b0e13);
+  color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+  .wrap{max-width:1100px;margin:0 auto;padding:18px 14px 80px}
+  h1{margin:0 0 10px;font-size:28px;font-weight:800}
+  .pill{background:var(--chip);border-radius:999px;padding:8px 12px;display:inline-flex;gap:8px;align-items:center}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .card{background:var(--panel);border-radius:14px;padding:14px}
+  select,button,input[type="text"]{background:#0f1420;border:1px solid #223049;border-radius:10px;color:var(--ink);padding:10px 12px;font-size:15.5px}
+  button{cursor:pointer} .primary{background:#1c2535}
+  .opt{border:1px solid #24344d;border-radius:12px;padding:14px;margin:8px 0;font-size:20px;cursor:pointer}
+  .opt.correct{background:#0f2e22;border-color:#1a6449} .opt.incorrect{background:#35191b;border-color:#6b2a31}
+  .qtype{background:#263248;padding:4px 8px;border-radius:999px;font-size:12px;margin-right:6px;color:#cfe0ff}
+  .tag{background:#3a2a19;padding:4px 8px;border-radius:999px;font-size:12px;margin-left:6px;color:#ffd9a6}
+  .muted{color:var(--muted)} .big{font-size:26px;margin:12px 0 6px}
+  .progress{height:10px;background:#111520;border-radius:999px;overflow:hidden} .bar{height:100%;width:0%;background:linear-gradient(90deg,#ffb703,#fb8500)}
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
+<div class="wrap">
+<div class="row">
+<h1>ES <span class="muted">Madrigal — Lesson 2 • Spanish Quiz</span></h1>
+<div class="pill">Score: <b id="score">0</b> • Streak: <b id="streak">0</b></div>
+<div class="pill"><button id="sfxBtn">🔊 Sound: Off</button></div>
+<div class="pill"><button id="musicBtn">🎵 Music: Off</button> Vol <input id="vol" max="100" min="0" style="width:120px" type="range" value="70"/></div>
+</div>
+<div class="card row">
+<div>Question source:
+      <select id="sourceSel">
+<option value="all">All (with Culture)</option>
+<option value="vocab">Vocabulary</option>
+<option value="grammar">Grammar</option>
+<option value="culture">Culture</option>
+</select>
+</div>
+<div>Selection mode:
+      <select id="modeSel">
+<option value="adaptive">Adaptive (prioritize weak topics)</option>
+<option value="random">Random</option>
+<option value="topic">By topic…</option>
+</select>
+</div>
+<div>Topic:
+      <select id="topicSel">
+<option value="Any">Any</option>
+<option value="Vocabulary">Vocabulary</option>
+<option value="Grammar">Grammar</option>
+<option value="Culture">Culture</option>
+</select>
+</div>
+<div>Timer:
+      <select id="timerSel">
+<option value="90">90s</option>
+<option value="60">60s</option>
+<option value="30">30s</option>
+<option value="off">Off</option>
+</select>
+</div>
+<div class="row" style="margin-left:auto">
+<button id="resetBtn">Reset</button>
+<button class="primary" id="nextBtn">Next ▶</button>
+</div>
+</div>
+<div class="card progress"><div class="bar" id="bar"></div></div>
+<div class="card">
+<div class="muted" id="status"></div>
+<div class="big" id="stem">Choose the best answer.</div>
+<div id="options"></div>
+<div class="row" id="fibWrap" style="display:none">
+<input id="fibInput" placeholder="Type your answer in Spanish…" style="flex:1" type="text">
+<button class="primary" id="checkBtn">Check</button>
+</input></div>
+<div class="row" style="margin-top:8px">
+<button id="showBtn">Show answer</button>
+<button id="againBtn">Again ⟳</button>
+</div>
+<div class="muted" id="rationale" style="margin-top:6px"></div>
+</div>
+<div class="card">
+<b>Lesson 2 coverage</b> — categories <b>IST→ISTA</b>, <b>OUS→OSO</b>, <b>TION/SION→CIÓN/SIÓN</b>; “words to remember”; gender of <em>-ión</em>; <em>es/no es/muy</em>; inversion; translation drill.
+    Scoring: <b>+10</b> correct, <b>−5</b> incorrect/timeout. Popups: <em>¡Bien!</em> / <em>¡Inténtalo otra vez!</em> / <em>¡Tiempo!</em>
+</div>
+</div>
+<script>
+// --- Audio ---
+let AUDIO=false, MUSIC=false, ac=null, musicGain=null, loop=null;
+function ctx(){ if(!ac) ac=new (window.AudioContext||window.webkitAudioContext)(); return ac;}
+function blip(f=880,d=0.12,v=0.18){ if(!AUDIO) return; const c=ctx(); const o=c.createOscillator(), g=c.createGain(); o.type='triangle'; o.frequency.value=f; g.gain.value=v; o.connect(g).connect(c.destination); o.start(); o.stop(c.currentTime+d);}
+function good(){ blip(760,.12,.22); setTimeout(()=>blip(900,.12,.22),120); }
+function bad(){ blip(300,.14,.22); setTimeout(()=>blip(220,.14,.20),140); }
+function guitar(on){
+  if(!on){ if(loop) cancelAnimationFrame(loop); loop=null; return; }
+  const c=ctx(); musicGain = musicGain || c.createGain(); musicGain.connect(c.destination); musicGain.gain.value = 0.5*(parseInt(vol.value,10)/100);
+  const seq=[329.63,392,440,392,329.63,246.94,293.66,329.63]; let step=0, last=0;
+  function tick(t){ if(!MUSIC){ loop=null; return; } if(t-last>220){ last=t; const o=c.createOscillator(), g=c.createGain(); o.frequency.value=seq[step%seq.length]; o.type='sine'; g.gain.value=0.12; o.connect(g).connect(musicGain); o.start(); o.stop(c.currentTime+0.18); step++; } loop=requestAnimationFrame(tick); }
+  loop=requestAnimationFrame(tick);
+}
+const sfxBtn=document.getElementById('sfxBtn'), musicBtn=document.getElementById('musicBtn'), vol=document.getElementById('vol');
+sfxBtn.onclick=()=>{AUDIO=!AUDIO; sfxBtn.textContent=AUDIO?'🔊 Sound: On':'🔊 Sound: Off'; if(AUDIO) blip(660,.08,.2);};
+musicBtn.onclick=()=>{MUSIC=!MUSIC; musicBtn.textContent=MUSIC?'🎵 Music: On':'🎵 Music: Off'; if(MUSIC) guitar(true); else guitar(false);};
+vol.oninput=()=>{ if(musicGain) musicGain.gain.value = 0.5*(parseInt(vol.value,10)/100); };
+window.addEventListener('pointerdown',()=>{ if(MUSIC) guitar(true); }, {once:true});
+
+// --- Helpers ---
+const rand=n=>Math.floor(Math.random()*n);
+const shuffle=a=>{const x=a.slice(); for(let i=x.length-1;i>0;i--){const j=rand(i+1); [x[i],x[j]]=[x[j],x[i]];} return x;};
+const onlyASCII=s=>/^[\x20-\x7E]+$/.test(s);
+const norm=s=>s.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+
+// --- Cognate rules + overrides (proofread) ---
+function esToEn(w){
+  const s=norm(w);
+  const o={
+    "programa":"program","rosbif":"roast beef","biftec":"beefsteak",
+    "paciente":"patient","interesante":"interesting","muy":"very","en":"in","mi":"my","en mi opinion":"in my opinion",
+    "misterioso":"mysterious","populoso":"populous","turista":"tourist","guitarrista":"guitarist","telegrafista":"telegraphist","pesimista":"pessimist",
+    "accion":"action","reaccion":"reaction","seccion":"section","direccion":"direction","reduccion":"reduction","produccion":"production","introduccion":"introduction","instruccion":"instruction","traduccion":"translation","construccion":"construction","eleccion":"election","perfeccion":"perfection",
+    "sesion":"session","discusion":"discussion","expresion":"expression","comision":"commission","profesion":"profession","publicacion":"publication"
+  };
+  if(o[s]) return o[s];
+  if(s.endsWith("ista")) return s.slice(0,-1);
+  if(s.endsWith("oso")) return s.slice(0,-3)+"ous";
+  if(s.endsWith("cion")) return s.slice(0,-4)+"tion";
+  if(s.endsWith("sion")) return s.slice(0,-4)+"sion";
+  return s;
+}
+function enToEs(w){
+  const s=norm(w);
+  const o={
+    "program":"programa","roast beef":"rosbif","beefsteak":"biftec",
+    "patient":"paciente","interesting":"interesante","very":"muy","in my opinion":"en mi opinión","in":"en","my":"mi",
+    "mysterious":"misterioso","populous":"populoso","tourist":"turista","guitarist":"guitarrista","telegraphist":"telegrafista","pessimist":"pesimista",
+    "session":"sesión","discussion":"discusión","expression":"expresión","commission":"comisión","profession":"profesión","publication":"publicación"
+  };
+  if(o[s]) return o[s];
+  if(s.endsWith("ist")) return s+"a";
+  if(s.endsWith("ous")) return s.slice(0,-3)+"oso";
+  if(s.endsWith("tion")) return s.slice(0,-4)+"ción";
+  if(s.endsWith("sion")) return s.slice(0,-4)+"sión";
+  return s;
+}
+
+// --- Lesson 2 data ---
+const ISTA=["pianista","violinista","dentista","oculista","artista","capitalista","novelista","comunista","optimista","idealista","materialista","metodista","economista","evangelista","modernista","naturalista","moralista","guitarrista","florista","publicista","pugilista","oportunista","reservista","socialista","organista","telegrafista","pacifista","turista","pesimista"];
+const OSO=["famoso","curioso","generoso","melodioso","delicioso","glorioso","religioso","ambicioso","pomposo","amoroso","furioso","ceremonioso","contagioso","fabuloso","gracioso","imperioso","meticuloso","industrioso","misterioso","ingenioso","laborioso","monstruoso","luminoso","nebuloso","malicioso","nervioso","numeroso","poroso","odioso","precioso","prodigioso","populoso","supersticioso","virtuoso","vicioso","voluminoso","victorioso","voluptuoso","vigoroso"];
+const CION=["acción","descripción","admiración","anticipación","cooperación","civilización","circulación","distribución","constitución","generación","institución","invitación","nación","conversación","opinión","celebración","información","operación","composición","producción","construcción","decisión","confusión","discusión","conclusión","comisión","profesión","tradición","recepción","reducción","reflexión","traducción","organización","participación","presentación","representación","educación","formación","publicación","solución","visión","versión","sección","sesión","situación","reacción"];
+const REMEMBER=["programa","rosbif","biftec","paciente","interesante","muy","en","mi","en mi opinión"];
+const NOUNS=["house","school","market","project","system","moment","letter","family","object","station","region","nation","publication","action","session","discussion","expression"];
+const ADJS=["famous","curious","generous","nervous","mysterious","precious","furious","ambitious","religious","industrial","social","musical"];
+
+function four(ans, pool){ const set=new Set([ans]); while(set.size<4){ const p=pool[rand(pool.length)]; if(onlyASCII(p)) set.add(p);} return shuffle([...set]); }
+const BANK=[];
+// ES->EN
+function addSE(list){ list.forEach(w=>{ const ans=esToEn(w); const opts=four(ans,(w.endsWith("o")||w.endsWith("oso"))?ADJS:NOUNS); BANK.push({topic:"Vocabulary",type:"MCQ",stem:`¿Qué significa “${w}” en inglés?`,options:opts,answers:[opts.indexOf(ans)],rationale:`Cognate: “${w}” → “${ans}”.`});});}
+// EN<-ES
+function addES(list){ list.forEach(w=>{ const ans=w; const en=esToEn(w); const pool=shuffle(ISTA.concat(OSO,CION,REMEMBER).filter(x=>x!==ans)); const opts=shuffle([ans,...pool.slice(0,3)]); BANK.push({topic:"Vocabulary",type:"MCQ",stem:`Translate to Spanish: “${en}”`,options:opts,answers:[opts.indexOf(ans)],rationale:`Rule mapping → “${ans}”.`});});}
+addSE(ISTA); addSE(OSO); addSE(CION); addSE(REMEMBER); addES(ISTA); addES(OSO); addES(CION);
+// Grammar FIB
+["nación","invitación","conversación","opinión","celebración","acción","publicación"].forEach(n=>{
+  BANK.push({topic:"Grammar",type:"FIB",stem:`Complete with the correct feminine article: ____ ${n}`,fibAnswers:["la"],rationale:`“-ión” nouns are feminine → “la ${n}”.`});
+  BANK.push({topic:"Grammar",type:"FIB",stem:`Complete with the feminine indefinite article: ____ ${n}`,fibAnswers:["una"],rationale:`“-ión” nouns are feminine → “una ${n}”.`});
+});
+["pianista","novelista","dentista","oculista","artista"].forEach(n=>{
+  BANK.push({topic:"Grammar",type:"FIB",stem:`Use the masculine article per context: ____ ${n}`,fibAnswers:["el"],rationale:`Here we mean a man → “el ${n}”.`});
+});
+const SUBJECTS=["el pianista","el artista","el novelista","el dentista","el doctor","el general","el presidente","el programa","el rosbif","el biftec"];
+const ADJ_OSO=["famoso","ambicioso","curioso","generoso","interesante","delicioso","paciente","impaciente"];
+SUBJECTS.forEach(s=>{
+  const a=ADJ_OSO[rand(ADJ_OSO.length)];
+  BANK.push({topic:"Grammar",type:"FIB",stem:`Completa: ${s[0].toUpperCase()+s.slice(1)} ____ ${a}.`,fibAnswers:["es"],rationale:`Use “es”.`});
+  BANK.push({topic:"Grammar",type:"FIB",stem:`Añade el intensificador: ${s[0].toUpperCase()+s.slice(1)} es ____ ${a}.`,fibAnswers:["muy"],rationale:`Use “muy” = “very”.`});
+});
+BANK.push({topic:"Grammar",type:"FIB",stem:`Forma negativa: El doctor ____ ____ impaciente.`,fibAnswers:["no es","no  es","noes"],rationale:`“no es” = “is not”.`});
+// Culture
+[{stem:"¿Qué letra es distintiva del alfabeto español?",options:["ñ","ç","å","ø"],a:0},
+ {stem:"Las palabras que terminan en “-ión” suelen llevar el artículo…",options:["la","el","los","un"],a:0},
+ {stem:"“H” en español generalmente es…",options:["silenciosa","aspirada como en inglés","siempre fuerte","doblada"],a:0}
+].forEach(q=>BANK.push({topic:"Culture",type:"MCQ",stem:q.stem,options:q.options,answers:[q.a],rationale:""}));
+
+// --- Engine ---
+let score=0, streak=0, timerId=null, allow=true, current=null;
+const stats={seen:0,correct:0,topics:{Vocabulary:{seen:0,correct:0},Grammar:{seen:0,correct:0},Culture:{seen:0,correct:0}}};
+const elScore=document.getElementById('score'), elStreak=document.getElementById('streak'), elBar=document.getElementById('bar');
+const sourceSel=document.getElementById('sourceSel'), modeSel=document.getElementById('modeSel'), topicSel=document.getElementById('topicSel'), timerSel=document.getElementById('timerSel');
+const elStem=document.getElementById('stem'), elOptions=document.getElementById('options'), elFib=document.getElementById('fibWrap'), elFibInput=document.getElementById('fibInput'), elCheck=document.getElementById('checkBtn'), elRationale=document.getElementById('rationale'), elStatus=document.getElementById('status');
+document.getElementById('nextBtn').onclick=()=>render(pick()); document.getElementById('resetBtn').onclick=resetAll; document.getElementById('againBtn').onclick=()=>{ if(current) render(current); };
+document.getElementById('showBtn').onclick=()=>{ if(!allow||!current) return; allow=false; reveal(); score=Math.max(0,score-5); elScore.textContent=score; bad(); elStatus.textContent="Shown answer: −5"; };
+
+function poolByFilters(){
+  let pool=BANK;
+  const src=sourceSel.value;
+  if(src==='vocab') pool=BANK.filter(q=>q.topic==='Vocabulary');
+  if(src==='grammar') pool=BANK.filter(q=>q.topic==='Grammar');
+  if(src==='culture') pool=BANK.filter(q=>q.topic==='Culture');
+  if(topicSel.value!=='Any') pool=pool.filter(q=>q.topic===topicSel.value);
+  return pool;
+}
+function pick(){
+  const pool=poolByFilters();
+  if(modeSel.value==='random') return pool[rand(pool.length)];
+  if(modeSel.value==='topic') return pool.find(q=>q.topic===topicSel.value) || pool[rand(pool.length)];
+  // adaptive: prefer lowest-accuracy topic
+  const acc={}; ["Vocabulary","Grammar","Culture"].forEach(t=>{ const s=stats.topics[t]; acc[t]=s.seen? (s.correct/s.seen):0; });
+  const worst = Object.entries(acc).sort((a,b)=>a[1]-b[1])[0][0];
+  const cand=pool.filter(q=>q.topic===worst); return cand.length? cand[rand(cand.length)]: pool[rand(pool.length)];
+}
+
+function render(q){
+  current=q; allow=true; elRationale.textContent=""; elOptions.innerHTML=""; elFib.style.display="none"; elStatus.textContent="";
+  const chip=`<span class="qtype">${q.type}</span><span class="tag">${q.topic}</span>`; elStem.innerHTML=`${chip} ${q.stem}`;
+  if(q.type==='MCQ'){
+    q.options.forEach((opt,i)=>{ const d=document.createElement('div'); d.className='opt'; d.textContent=opt; d.onclick=()=>finalize(i===q.answers[0]); elOptions.appendChild(d); });
+  }else{
+    elFib.style.display="flex"; elFibInput.value=""; elCheck.onclick=()=>{ const ok=(q.fibAnswers||[]).map(norm).includes(norm(elFibInput.value)); finalize(ok); };
+    elFibInput.onkeydown=(e)=>{ if(e.key==='Enter') elCheck.click(); };
+  }
+  startTimer();
+}
+function reveal(){
+  if(current.type==='MCQ'){
+    Array.from(elOptions.children).forEach((n,i)=>n.classList.add(current.answers.includes(i)?'correct':'incorrect'));
+  }
+  elRationale.textContent=current.rationale||"";
+}
+function finalize(correct){
+  if(!allow) return; allow=false; if(current.type==='MCQ') reveal();
+  stats.seen++; stats.topics[current.topic].seen++; elBar.style.width=(stats.seen%100)+'%';
+  if(correct){ score+=10; streak++; stats.correct++; stats.topics[current.topic].correct++; good(); elStatus.textContent="✅ Correct! +10"; }
+  else { score=Math.max(0,score-5); streak=0; bad(); elStatus.textContent="❌ Not quite. −5"; }
+  elScore.textContent=score; elStreak.textContent=streak;
+}
+function startTimer(){
+  if(timerId) clearInterval(timerId);
+  const t=timerSel.value; if(t==='off') return; let left=parseInt(t,10); elStatus.textContent="⏱️ "+left+"s";
+  timerId=setInterval(()=>{ if(!allow){ clearInterval(timerId); return; } left--; elStatus.textContent="⏱️ "+left+"s"; if(left<=0){ clearInterval(timerId); allow=false; reveal(); score=Math.max(0,score-5); elScore.textContent=score; bad(); elStatus.textContent="⏰ Time! −5"; } },1000);
+}
+function resetAll(){ score=0; streak=0; for(const t in stats.topics){ stats.topics[t]={seen:0,correct:0}; } stats.seen=0; stats.correct=0; elScore.textContent=0; elStreak.textContent=0; elBar.style.width='0%'; render(pick()); }
+render(pick());
+</script>
+</body>
+</html>

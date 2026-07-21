@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Madrigal — Lesson 1 • Spanish Quiz (v5.1 polished)</title>
+<style>
+:root{
+  --bg:#0b0b0c; --card:#151518; --ink:#f9f9fb; --muted:#b9bbc6;
+  --accent:#ffcc00; --accent2:#d32f2f; --success:#4caf50; --danger:#ef5350; --warn:#ffcc80;
+}
+*{box-sizing:border-box}
+body{margin:0;background:
+  radial-gradient(900px 400px at 12% -10%, rgba(255,204,0,0.10), transparent),
+  radial-gradient(1000px 500px at 100% 0%, rgba(211,47,47,0.10), transparent),
+  linear-gradient(180deg,#111114,#0a0a0c);
+  color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+header{display:grid;grid-template-columns:1fr auto auto auto auto;gap:10px;align-items:center;padding:14px 16px}
+.brand{font-weight:800;letter-spacing:.2px}
+.pill{background:var(--card);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:8px 12px;color:var(--ink);display:flex;gap:8px;align-items:center}
+button,select{background:var(--card);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;color:var(--ink);cursor:pointer}
+button:hover,select:hover{border-color:rgba(255,204,0,.6)}
+main{max-width:1180px;margin:0 auto;padding:8px 12px 22px}
+.controls{display:grid;grid-template-columns:repeat(5,1fr) 120px 120px;gap:10px;margin:10px 0}
+.ctrl{display:flex;align-items:center;gap:8px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.qcard{padding:18px 20px}
+.qstem{font-size:22px;line-height:1.3;margin:6px 0 8px}
+.options{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.opt{padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);cursor:pointer}
+.opt:hover{border-color:rgba(255,204,0,.6)}
+.opt.correct{background:rgba(76,175,80,.10);border-color:var(--success)}
+.opt.incorrect{background:rgba(239,83,80,.10);border-color:var(--danger)}
+.muted{color:var(--muted);font-size:13px}
+.badges{display:flex;gap:8px;align-items:center}
+.badge{font-size:11px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:var(--muted)}
+.footer{margin-top:12px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px}
+.hidden{display:none}
+.toast{position:fixed;right:16px;bottom:16px;background:#111;color:#fff;border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:10px 12px;opacity:0;transform:translateY(10px);transition:all .2s}
+.toast.show{opacity:1;transform:translateY(0)}
+.scorebox{display:flex;gap:8px;align-items:center}
+.volwrap{display:flex;gap:8px;align-items:center}
+#progressbar{height:30px;background:var(--card);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:4px;display:flex;align-items:center;margin:0 12px 14px 12px}
+#progressfill{height:100%;border-radius:999px;background:linear-gradient(90deg,#ffd54f,#ffca28);width:0%}
+#progresslabel{position:absolute;margin-left:12px;font-size:13px;color:#111}
+.grid2{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+#tracker{display:grid;grid-template-columns:1fr 90px 90px;gap:6px}
+.row{display:flex;gap:8px;align-items:center}
+input[type="text"]{font-size:16px}
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
+<header>
+<div class="brand">🇪🇸 Madrigal — Lesson 1 • Spanish Quiz (v5.1)</div>
+<div class="pill scorebox">Score: <strong id="score">0</strong> • Streak: <strong id="streak">0</strong></div>
+<button class="pill" id="sfx">🔊 Sound: On</button>
+<button class="pill" id="music">🎵 Music: On</button>
+<div class="pill volwrap"><span class="muted">Vol</span><input id="vol" max="100" min="0" style="width:140px" type="range" value="65"/></div>
+</header>
+<div id="progressbar"><div id="progressfill"></div><span id="progresslabel">Progress: 0/0</span></div>
+<main>
+<section class="controls card">
+<div class="ctrl"><span class="muted">Question source:</span><select id="category">
+<option value="all">All (with Culture)</option>
+<option value="vocab">Vocabulary only</option>
+<option value="grammar">Grammar only</option></select></div>
+<div class="ctrl"><span class="muted">Selection mode:</span><select id="mode">
+<option value="adaptive">Adaptive (prioritize weak topics)</option>
+<option value="random">Random</option>
+<option value="topic">By topic</option></select></div>
+<div class="ctrl"><span class="muted">Topic:</span><select id="topicFilter"></select></div>
+<div class="ctrl"><span class="muted">Timer:</span><select id="timer">
+<option value="off">Off</option><option value="60">60s</option>
+<option selected="" value="90">90s</option><option value="120">120s</option></select></div>
+<button id="reset">Reset</button>
+<button id="next">Next ▶</button>
+</section>
+<section class="card qcard" id="qcard">
+<div class="badges"><span class="badge" id="typeBadge">—</span><span class="badge" id="topicBadge">—</span></div>
+<div class="qstem" id="stem"></div>
+<div class="options" id="options"></div>
+<div class="hidden row" id="fibWrap" style="margin-top:12px">
+<input id="fibInput" placeholder="Type your answer in Spanish…" style="flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff" type="text"/>
+<button id="fibCheck">Check</button>
+</div>
+<div class="rationale muted hidden" id="rationale"></div>
+<div class="footer">
+<div class="muted" id="status">Choose the best answer.</div>
+<div class="row"><button id="showAns">Show answer</button><button id="again">Again 🔁</button></div>
+</div>
+</section>
+<section class="grid2" style="margin-top:12px">
+<div class="card">
+<div class="row" style="justify-content:space-between">
+<div class="muted"><strong>Lesson 1 coverage</strong> — five cognate categories (OR/DOR, AL, BLE, IC→ICO, ENT/ANT→ENTE/ANTE), spelling shifts (PH→F, TH→T, TION→CIÓN, double letters), articles &amp; plurals, sentence practice, and 14 translation items. Scoring: <strong>+10</strong> correct, <strong>−5</strong> incorrect/timeout. Popups: <em>¡Bien! / ¡Inténtalo otra vez! / ¡Tiempo!</em></div>
+<button id="export">Export results</button>
+</div>
+<div class="muted" id="tracker" style="margin-top:10px"></div>
+</div>
+<div class="card">
+<div class="muted">UI in English, stems in Spanish; explanations in English. Spanish theming preserved.</div>
+</div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+// ---------- Helpers ----------
+function stripAccents(str){return (str||"").toString().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().trim();}
+function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+const KEY="spanish_l1_v51_stats"; const PREF="spanish_l1_v51_prefs";
+let stats=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!stats.version) stats={version:51,seen:0,correct:0,topics:{},score:0,streak:0};
+
+// ---------- Audio ----------
+let AUDIO=true, MUSIC=true;
+let musicCtx=null, musicGain=null, musicInt=null, step=0;
+const sfxBtn=document.getElementById('sfx'); const musicBtn=document.getElementById('music'); const vol=document.getElementById('vol');
+let pref=JSON.parse(localStorage.getItem(PREF)||"{}");
+if(pref.sfx===undefined) pref.sfx=true; if(pref.music===undefined) pref.music=true; if(pref.volume===undefined) pref.volume=65;
+AUDIO=!!pref.sfx; MUSIC=!!pref.music; vol.value=pref.volume;
+function savePref(){ localStorage.setItem(PREF, JSON.stringify({sfx:AUDIO, music:MUSIC, volume:parseInt(vol.value,10)})); }
+function tone(f,d=0.12,t='sine',g=0.06){ if(!AUDIO) return; const ctx=new (window.AudioContext||window.webkitAudioContext)(); const o=ctx.createOscillator(), ga=ctx.createGain(); o.type=t; o.frequency.value=f; o.connect(ga); ga.connect(ctx.destination); ga.gain.value=g; o.start(); setTimeout(()=>{ga.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.1); o.stop(ctx.currentTime+0.12);}, d*1000); }
+function good(){ tone(659,0.10,'triangle',0.08); setTimeout(()=>tone(784,0.12,'triangle',0.08),90); setTimeout(()=>tone(880,0.12,'triangle',0.07),180); }
+function bad(){ tone(2300,0.05,'square',0.05); setTimeout(()=>tone(1800,0.05,'square',0.05),60); }
+function clickS(){ tone(360,0.06,'sine',0.05); }
+function ensureMusic(){ if(!musicCtx){ musicCtx=new (window.AudioContext||window.webkitAudioContext)(); musicGain=musicCtx.createGain(); musicGain.gain.value=0.7*(parseInt(vol.value,10)/100); musicGain.connect(musicCtx.destination);} }
+function chord(freqs){ if(!musicCtx) return; freqs.forEach((f,i)=>{ const o=musicCtx.createOscillator(), g=musicCtx.createGain(); g.gain.value=0.015; o.type='sine'; o.frequency.value=f; o.connect(g); g.connect(musicGain); const t0=musicCtx.currentTime+i*0.06, t1=t0+0.35; o.start(t0); g.gain.setValueAtTime(g.gain.value,t0); g.gain.exponentialRampToValueAtTime(0.0001,t1); o.stop(t1); }); }
+function playMusic(){ if(!MUSIC) return; ensureMusic(); if(musicInt) return; const A=[220,261.63,329.63], G=[196,246.94,392.00], F=[174.61,220,349.23], E=[164.81,207.65,329.63]; const prog=[A,G,F,E]; musicInt=setInterval(()=>{ chord(prog[step%prog.length]); step++; },520); }
+function stopMusic(){ try{clearInterval(musicInt);}catch{} musicInt=null; step=0; }
+function setAudioUi(){ sfxBtn.textContent=AUDIO? "🔊 Sound: On":"🔊 Sound: Off"; musicBtn.textContent=MUSIC? "🎵 Music: On":"🎵 Music: Off"; }
+sfxBtn.onclick=()=>{ AUDIO=!AUDIO; setAudioUi(); savePref(); clickS(); };
+musicBtn.onclick=()=>{ MUSIC=!MUSIC; setAudioUi(); savePref(); if(MUSIC) playMusic(); else stopMusic(); };
+vol.oninput=()=>{ savePref(); if(musicGain){ musicGain.gain.value=0.7*(parseInt(vol.value,10)/100); } };
+window.addEventListener('pointerdown', function unlock(){ setAudioUi(); if(MUSIC) playMusic(); window.removeEventListener('pointerdown', unlock); }, {once:true});
+
+// ---------- Question Bank (Lesson 1) ----------
+const BANK=[];
+const OR=["actor","doctor","color","error","profesor","conductor","inspector","motor","tractor","vapor","honor","favor","interior","exterior","superior","tenor","valor","autor","editor"];
+const AL=["animal","central","local","personal","criminal","comercial","musical","rural","canal","legal","natural","social","hospital","ideal","general","original","regional","cultural"];
+const BLE=["cable","posible","probable","terrible","noble","flexible","visible","honorable","inevitable","formidable"];
+const ICO=["público","Atlántico","democrático","elástico","artístico","eléctrico","romántico","automático","auténtico","económico","fantástico","histórico","médico","mecánico","típico"];
+const ENTE=["presidente","accidente","cliente","diferente","inteligente","importante","urgente","reciente","paciente","permanente","transparente","suficiente","evidente"];
+const MENTO=["instrumento","monumento","suplemento","armamento","testamento","sacramento","temperamento"];
+const PHF=[["elephant","elefante"],["telephone","teléfono"],["phonetic","fonético"]];
+const THT=[["cathedral","catedral"],["author","autor"],["authentic","auténtico"]];
+const CION=[["convention","convención"],["conventional","convencional"]];
+const DOUBLE=[["commission","comisión"],["attractive","atractivo"],["different","diferente"]];
+
+// Better Spanish→English mapping by category/ending rules
+function esToEn(word) {
+  const w = word.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const overrides = {
+    "profesor":"professor",
+    "autor":"author",
+    "tenor":"tenor",
+    "vapor":"vapor",
+    "valor":"valor",
+    "color":"color",
+    "honor":"honor",
+    "favor":"favor",
+    "interior":"interior",
+    "exterior":"exterior",
+    "superior":"superior",
+    "tractor":"tractor",
+    "doctor":"doctor",
+    "actor":"actor",
+    "editor":"editor",
+    "conductor":"conductor",
+    "animal":"animal",
+    "central":"central",
+    "local":"local",
+    "personal":"personal",
+    "criminal":"criminal",
+    "comercial":"commercial",
+    "musical":"musical",
+    "rural":"rural",
+    "canal":"canal",
+    "legal":"legal",
+    "natural":"natural",
+    "social":"social",
+    "hospital":"hospital",
+    "ideal":"ideal",
+    "general":"general",
+    "original":"original",
+    "regional":"regional",
+    "cultural":"cultural",
+    "cable":"cable",
+    "posible":"possible",
+    "probable":"probable",
+    "terrible":"terrible",
+    "noble":"noble",
+    "flexible":"flexible",
+    "visible":"visible",
+    "honorable":"honorable",
+    "inevitable":"inevitable",
+    "formidable":"formidable",
+    "publico":"public",
+    "atlantico":"atlantic",
+    "democratico":"democratic",
+    "elastico":"elastic",
+    "artistico":"artistic",
+    "electrico":"electric",
+    "romantico":"romantic",
+    "automatico":"automatic",
+    "autentico":"authentic",
+    "economico":"economic",
+    "fantastico":"fantastic",
+    "historico":"historic",
+    "medico":"medic",
+    "mecanico":"mechanic",
+    "tipico":"typic",
+    "presidente":"president",
+    "accidente":"accident",
+    "cliente":"client",
+    "diferente":"different",
+    "inteligente":"intelligent",
+    "importante":"important",
+    "urgente":"urgent",
+    "reciente":"recent",
+    "paciente":"patient",
+    "permanente":"permanent",
+    "transparente":"transparent",
+    "suficiente":"sufficient",
+    "evidente":"evident",
+    "instrumento":"instrument",
+    "monumento":"monument",
+    "suplemento":"supplement",
+    "armamento":"armament",
+    "testamento":"testament",
+    "sacramento":"sacrament",
+    "temperamento":"temperament"
+  };
+  if (overrides[w]) return overrides[w];
+  if (w.endsWith("mento")) return w.slice(0,-1); // -mento -> -ment
+  if (w.endsWith("ente") || w.endsWith("ante")) return w.slice(0,-1); // -ente/-ante -> -ent/-ant
+  if (w.endsWith("ico")) return w.slice(0,-1); // -ico -> -ic
+  return w; // identical fallback
+}
+function addSE(list){
+  list.forEach(w=>{
+    const en = esToEn(w);
+    const distractorPool = ["house","water","school","object","moment","market","family","system","project","letter"];
+    const opts = [en];
+    while (opts.length<4){
+      const d = distractorPool[Math.floor(Math.random()*distractorPool.length)];
+      if(!opts.includes(d)) opts.push(d);
+    }
+    const shuffled = shuffle(opts);
+    BANK.push({topic:"Vocabulary", type:"MCQ", stem:`¿Qué significa “${w}” en inglés?`, options:shuffled, answers:[shuffled.indexOf(en)], rationale:`Cognate rule mapping gives “${en}”.`});
+  });
+}
+addSE(OR); addSE(AL); addSE(BLE); addSE(ICO); addSE(ENTE); addSE(MENTO);
+[...PHF,...THT,...CION,...DOUBLE].forEach(([en,es])=>{ const pool=shuffle(OR.concat(AL,BLE,ICO,ENTE,MENTO)).slice(0,3); const opts=shuffle([es,...pool]); BANK.push({topic:"Vocabulary",type:"MCQ",stem:`Translate to Spanish: “${en}”`,options:opts,answers:[opts.indexOf(es)],rationale:`"${en}" → "${es}".`}); });
+["doctor","hospital","hotel","animal","idea","accidente","elefante","agente","cliente","presidente","restaurante","canal"].forEach(n=>{ const art=(n==="idea")?"la":"el"; BANK.push({topic:"Grammar",type:"FIB",stem:`Completa con el artículo correcto: ____ ${n}`,fibAnswers:[art],rationale:`Use "${art}".`}); });
+BANK.push({topic:"Grammar",type:"FIB",stem:`Pon en plural: el doctor → ______`,fibAnswers:["los doctores","doctores"],rationale:`Add -es.`});
+BANK.push({topic:"Grammar",type:"FIB",stem:`Pon en plural: el hotel → ______`,fibAnswers:["los hoteles","hoteles"],rationale:`Add -es.`});
+BANK.push({topic:"Grammar",type:"FIB",stem:`Pon en plural: la idea → ______`,fibAnswers:["las ideas","ideas"],rationale:`Add -s.`});
+BANK.push({topic:"Grammar",type:"FIB",stem:`Completa con el artículo plural: ____ animales`,fibAnswers:["los"],rationale:`"los".`});
+BANK.push({topic:"Grammar",type:"FIB",stem:`Completa con el artículo plural: ____ ideas`,fibAnswers:["las"],rationale:`"las".`});
+const SUBJECTS=["el actor","el doctor","el conductor","el profesor","el inventor","el tenor","el presidente","el general","el accidente","el cable","el agente","el cliente","el hospital","el restaurante","el hotel","el canal"];
+const ADJS=["popular","importante","inteligente","excelente","competente","romántico","democrático","diplomático","inevitable","urgente","paciente","terrible","fantástico","curioso","horrible"];
+SUBJECTS.forEach(s=>{ const a=ADJS[Math.floor(Math.random()*ADJS.length)]; BANK.push({topic:"Grammar",type:"FIB",stem:`Completa: ${s[0].toUpperCase()+s.slice(1)} ____ ${a}.`,fibAnswers:["es"],rationale:`Use "es".`}); BANK.push({topic:"Grammar",type:"FIB",stem:`Completa (negativo): ${s[0].toUpperCase()+s.slice(1)} ____ ____ ${a}.`,fibAnswers:["no es","no  es","noes"],rationale:`Use "no es".`}); });
+[["el actor","popular"],["el tenor","romántico"],["el presidente","democrático"],["el canal","importante"]].forEach(([s,a])=>{ BANK.push({topic:"Grammar",type:"FIB",stem:`Convierte a pregunta: "${s[0].toUpperCase()+s.slice(1)} es ${a}." → ¿ ____ ${a} ${s}?`,fibAnswers:["Es"],rationale:`¿Es ... ?`}); });
+const EXEN=["The actor is popular.","The tenor is popular.","The restaurant is excellent.","The hotel is excellent.","The doctor is intelligent.","The cable is urgent.","The hospital is excellent.","The client is important.","The conductor is patient.","The general is important.","The president is democratic.","The inventor is intelligent.","The general is diplomatic.","The cable is important."];
+const EXES=["El actor es popular.","El tenor es popular.","El restaurante es excelente.","El hotel es excelente.","El doctor es inteligente.","El cable es urgente.","El hospital es excelente.","El cliente es importante.","El conductor es paciente.","El general es importante.","El presidente es democrático.","El inventor es inteligente.","El general es diplomático.","El cable es importante."];
+EXEN.forEach((en,i)=>{ const ans=EXES[i]; BANK.push({topic:"Grammar",type:"FIB",stem:`Translate into Spanish: ${en}`,fibAnswers:[ans, ans.toLowerCase(), stripAccents(ans)],rationale:`Expected: ${ans}`}); });
+BANK.push({topic:"Culture",type:"MCQ",stem:`In Spanish, "ph" becomes…`,options:["f","ph","pf","bh"],answers:[0],rationale:`PH→F.`});
+BANK.push({topic:"Culture",type:"MCQ",stem:`In Spanish, "th" becomes…`,options:["t","th","d","tz"],answers:[0],rationale:`TH→T.`});
+BANK.push({topic:"Culture",type:"MCQ",stem:`"-tion" becomes…`,options:["-ción","-sión","-xión","-zión"],answers:[0],rationale:`TION→CIÓN.`});
+BANK.push({topic:"Culture",type:"MCQ",stem:`Which letters are commonly doubled?`,options:["l and r","s and p","m and n","t and f"],answers:[0],rationale:`Only ll / rr.`});
+
+const TOPICS=[...new Set(BANK.map(q=>q.topic))].sort();
+
+// ---------- UI Elements ----------
+const elStem=document.getElementById('stem'), elOptions=document.getElementById('options'), elRationale=document.getElementById('rationale'), elStatus=document.getElementById('status');
+const elShowAns=document.getElementById('showAns'), elAgain=document.getElementById('again'), elNext=document.getElementById('next');
+const elType=document.getElementById('typeBadge'), elTopic=document.getElementById('topicBadge');
+const elCategory=document.getElementById('category'), elMode=document.getElementById('mode'), elTopicFilter=document.getElementById('topicFilter'), elTimer=document.getElementById('timer');
+const elFibWrap=document.getElementById('fibWrap'), elFibInput=document.getElementById('fibInput'), elFibCheck=document.getElementById('fibCheck');
+const elScore=document.getElementById('score'), elStreak=document.getElementById('streak'), elTracker=document.getElementById('tracker');
+const elProgressLabel=document.getElementById('progresslabel'), elProgressFill=document.getElementById('progressfill');
+const toast=document.getElementById('toast'); const elExport=document.getElementById('export');
+TOPICS.forEach(t=>{ const o=document.createElement('option'); o.value=t; o.textContent=t; elTopicFilter.appendChild(o); });
+
+function ensureTopic(t){ if(!stats.topics[t]) stats.topics[t]={seen:0,correct:0}; }
+function setProgress(){ elScore.textContent=stats.score; elStreak.textContent=stats.streak; elProgressLabel.textContent=`Progress: ${stats.correct}/${stats.seen}`; const pct=stats.seen? (100*stats.correct/stats.seen):0; elProgressFill.style.width=Math.min(100,pct)+"%"; }
+function buildTracker(){ elTracker.innerHTML=""; TOPICS.forEach(t=>{ ensureTopic(t); const s=stats.topics[t]; const acc=s.seen? Math.round(100*s.correct/s.seen):0; const n1=document.createElement('div'); n1.textContent=t; const n2=document.createElement('div'); n2.textContent=s.seen+" seen"; const n3=document.createElement('div'); n3.textContent=acc+"%"; n3.style.color=acc>=85?'var(--success)':acc>=70?'var(--warn)':'var(--danger)'; elTracker.appendChild(n1); elTracker.appendChild(n2); elTracker.appendChild(n3); }); }
+function toastMsg(m){ toast.textContent=m; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1000); }
+
+// ---------- Selection ----------
+function allowed(q){ const cat=elCategory.value; if(cat==='vocab') return q.topic==='Vocabulary'; if(cat==='grammar') return q.topic==='Grammar'; return true; }
+function pick(){ const mode=elMode.value; let pool=[]; if(mode==='topic'){ pool=BANK.filter(q=>q.topic===elTopicFilter.value && allowed(q)); } else { pool=BANK.filter(allowed); } if(!pool.length) return null; return pool[Math.floor(Math.random()*pool.length)]; }
+
+// ---------- Render & Scoring ----------
+let current=null, allow=true, timerId=null, scored=false;
+function render(q){
+  current=q; allow=true; scored=false;
+  elType.textContent=q.type; elTopic.textContent=q.topic;
+  elStem.textContent=q.stem; elRationale.classList.add('hidden'); elRationale.textContent=""; elStatus.textContent="Choose the best answer.";
+  elOptions.innerHTML=""; elFibWrap.classList.add('hidden'); elFibWrap.style.display='none';
+  if(q.type==="MCQ"){
+    q.options.forEach((opt,i)=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=opt; b.onclick=()=>{ if(!allow||scored) return; clickS(); finish([i]); }; elOptions.appendChild(b); });
+  }else{
+    elFibWrap.classList.remove('hidden'); elFibWrap.style.display='flex'; elFibInput.value=""; elFibInput.focus();
+    const handler=()=>{ if(!allow||scored) return; finish([elFibInput.value]); };
+    elFibCheck.onclick=handler; elFibInput.onkeydown=(e)=>{ if(e.key==='Enter') handler(); };
+  }
+  setTimer();
+}
+function finish(sel){
+  allow=false; scored=true;
+  let ok=false, ans="";
+  if(current.type==="MCQ"){
+    const idx=sel[0]; ok=current.answers.includes(idx);
+    [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect'));
+    ans=current.options[current.answers[0]];
+  }else{
+    const user=stripAccents(sel[0]||""); const accepted=(current.fibAnswers||[]).map(a=>stripAccents(a)); ok=accepted.includes(user); ans=current.fibAnswers? current.fibAnswers[0]:"";
+  }
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++;
+  if(ok){ stats.correct++; stats.topics[current.topic].correct++; stats.streak++; stats.score+=10; good(); toastMsg("¡Bien!"); elStatus.textContent="✅ Correct! +10 points"; }
+  else{ stats.streak=0; stats.score-=5; bad(); toastMsg("¡Inténtalo otra vez!"); elStatus.textContent="❌ Not quite. −5 points"; }
+  elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+  localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+}
+function showAnswerPenalty(){
+  if(scored) return;
+  allow=false; scored=true;
+  if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); }
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++; stats.streak=0; stats.score-=5; bad(); toastMsg("¡Inténtalo otra vez!");
+  const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]);
+  elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+  elStatus.textContent="👀 Shown answer. −5 points"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+}
+function nextQ(){ const q=pick(); if(!q){ elStem.textContent="No questions available."; return; } render(q); }
+// Timer
+function setTimer(){
+  if(timerId) clearInterval(timerId);
+  const t=elTimer.value; if(t==="off") return; let left=parseInt(t,10); elStatus.textContent="⏱️ "+left+"s";
+  timerId=setInterval(()=>{ if(!allow){ clearInterval(timerId); return; } left--; elStatus.textContent="⏱️ "+left+"s"; if(left<=0){ clearInterval(timerId); allow=false; scored=true; stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++; stats.streak=0; stats.score-=5; bad(); toastMsg("¡Tiempo!"); if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); } const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]); elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden'); elStatus.textContent="⏰ Time! −5 points"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); } },1000);
+}
+
+// Buttons
+document.getElementById('reset').onclick=()=>{ if(confirm("Reset all stats?")){ stats={version:51,seen:0,correct:0,topics:{},score:0,streak:0}; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); } };
+document.getElementById('next').onclick=()=>{ nextQ(); };
+document.getElementById('again').onclick=()=>{ if(current) render(current); };
+document.getElementById('showAns').onclick=()=>{ showAnswerPenalty(); };
+document.getElementById('export').onclick=()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='spanish_l1_stats.json'; a.click(); };
+
+// Init
+setAudioUi(); setProgress(); buildTracker();
+window.addEventListener('load',()=>{ nextQ(); });
+</script>
+</body>
+</html>
