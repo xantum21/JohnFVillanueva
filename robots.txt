@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://johnfvillanueva.com/sitemap.xml

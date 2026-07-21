@@ -1,20 +1,12 @@
 {
   "name": "John Villanueva",
-  "short_name": "John Villanueva",
+  "short_name": "John V.",
+  "description": "Healthcare, business, creative projects, and life beyond work.",
   "start_url": "/",
-  "display": "browser",
-  "background_color": "#f4f1ea",
-  "theme_color": "#17313b",
+  "display": "standalone",
+  "background_color": "#f7f3ec",
+  "theme_color": "#102630",
   "icons": [
-    {
-      "src": "assets/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
-    }
+    {"src": "/assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png"}
   ]
 }
