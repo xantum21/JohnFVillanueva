@@ -1,43 +1,160 @@
 {
-  "generated_pages": 20,
-  "pages": [
-    "404.html",
-    "about.html",
-    "ai/index.html",
-    "contact.html",
-    "dino-racers/index.html",
-    "education-experience/index.html",
-    "entrepreneurship/index.html",
-    "finance/index.html",
-    "index.html",
-    "life.html",
-    "management/index.html",
-    "marketing/index.html",
-    "play/filipino/index.html",
-    "play/index.html",
-    "play/pharmacology/index.html",
-    "play/spanish/index.html",
-    "projects.html",
-    "story.html",
-    "timeline.html",
-    "work.html"
-  ],
+  "status": "pass",
+  "html_pages": 20,
   "errors": [],
   "warnings": [],
-  "assertions": {
-    "project_total_23": true,
-    "six_collections": true,
-    "spanish_2": true,
-    "tagalog_14": true,
-    "life_no_healthcare_chapter": true,
-    "work_canonical_metrics": true,
-    "one_resume_primary": true,
-    "play_exact_counts": true,
-    "no_repaired_in_public_indexes": true,
-    "no_part6plus_in_public_indexes": true,
-    "contact_email_client_assembled": true
+  "contrast_ratios": {
+    "ink_on_paper": 14.37,
+    "muted_on_paper": 5.8,
+    "red_on_paper": 8.68,
+    "cream_on_navy": 14.18,
+    "dark_card_copy": 8.55,
+    "gold_on_navy": 7.74,
+    "navy_button_on_cream": 14.18
   },
-  "notes": [
-    "References to existing image/PDF assets and individual playable files are expected to resolve after this overlay is merged into the current repository."
+  "favicon_configurations": {
+    "/assets/apple-touch-icon-v3.png | /assets/favicon-32-v3.png | /assets/favicon-v3.svg | /favicon.ico": 20
+  },
+  "pages": [
+    {
+      "page": "index.html",
+      "title": "John Villanueva | Healthcare, Business & Creative Projects",
+      "images": 2,
+      "links": 22,
+      "redirect": false
+    },
+    {
+      "page": "about.html",
+      "title": "About John Villanueva | A Nonlinear, Connected Path",
+      "images": 2,
+      "links": 16,
+      "redirect": false
+    },
+    {
+      "page": "work.html",
+      "title": "Work & Education | John Villanueva",
+      "images": 3,
+      "links": 17,
+      "redirect": false
+    },
+    {
+      "page": "projects.html",
+      "title": "Projects & Experiments | John Villanueva",
+      "images": 3,
+      "links": 27,
+      "redirect": false
+    },
+    {
+      "page": "life.html",
+      "title": "Life Beyond Work | John Villanueva",
+      "images": 7,
+      "links": 25,
+      "redirect": false
+    },
+    {
+      "page": "timeline.html",
+      "title": "Timeline | John Villanueva",
+      "images": 0,
+      "links": 15,
+      "redirect": false
+    },
+    {
+      "page": "contact.html",
+      "title": "Connect with John Villanueva",
+      "images": 0,
+      "links": 21,
+      "redirect": false
+    },
+    {
+      "page": "404.html",
+      "title": "Page Not Found | John Villanueva",
+      "images": 0,
+      "links": 16,
+      "redirect": false
+    },
+    {
+      "page": "story.html",
+      "title": "Timeline | John Villanueva",
+      "images": 0,
+      "links": 1,
+      "redirect": true
+    },
+    {
+      "page": "play/index.html",
+      "title": "Play Hub | John Villanueva",
+      "images": 0,
+      "links": 20,
+      "redirect": false
+    },
+    {
+      "page": "play/pharmacology/index.html",
+      "title": "Pharmacology Practice | John Villanueva",
+      "images": 0,
+      "links": 14,
+      "redirect": false
+    },
+    {
+      "page": "play/spanish/index.html",
+      "title": "Spanish Practice | John Villanueva",
+      "images": 0,
+      "links": 12,
+      "redirect": false
+    },
+    {
+      "page": "play/filipino/index.html",
+      "title": "Filipino / Tagalog Practice | John Villanueva",
+      "images": 0,
+      "links": 24,
+      "redirect": false
+    },
+    {
+      "page": "dino-racers/index.html",
+      "title": "Dino Kart Racer | John Villanueva",
+      "images": 1,
+      "links": 10,
+      "redirect": false
+    },
+    {
+      "page": "education-experience/index.html",
+      "title": "Page moved | John Villanueva",
+      "images": 0,
+      "links": 1,
+      "redirect": true
+    },
+    {
+      "page": "finance/index.html",
+      "title": "Page moved | John Villanueva",
+      "images": 0,
+      "links": 1,
+      "redirect": true
+    },
+    {
+      "page": "marketing/index.html",
+      "title": "Page moved | John Villanueva",
+      "images": 0,
+      "links": 1,
+      "redirect": true
+    },
+    {
+      "page": "ai/index.html",
+      "title": "Page moved | John Villanueva",
+      "images": 0,
+      "links": 1,
+      "redirect": true
+    },
+    {
+      "page": "management/index.html",
+      "title": "Page moved | John Villanueva",
+      "images": 0,
+      "links": 1,
+      "redirect": true
+    },
+    {
+      "page": "entrepreneurship/index.html",
+      "title": "Page moved | John Villanueva",
+      "images": 0,
+      "links": 1,
+      "redirect": true
+    }
   ]
 }

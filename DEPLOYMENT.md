@@ -1,26 +1,51 @@
-# Deployment instructions
+# Deploying the refined site
 
-This ZIP is an **overlay for the existing `xantum21/JohnFVillanueva` repository**. It intentionally does not duplicate the large image library, existing résumé PDF, or individual game/quiz files already present in the repository.
+This package is an **overlay for the existing JohnFVillanueva repository**. It replaces the portfolio shell while preserving the individual game and quiz files already in the repository.
 
-## Safe merge method
+## Recommended method
 
-1. Download and unzip this package.
-2. Open the package folder and copy **its contents** into the root of the existing repository—not the outer folder itself.
-3. Allow files with the same names to be replaced. The replacement is intentional for the core pages, shared CSS/JS, sitemap, robots file, redirects, and Play Hub index.
-4. Do **not** delete the existing `assets` files that are not included here. This overlay adds `assets/site.css` and `assets/site.js` and references the image/PDF assets already in the repository.
-5. Do **not** delete the existing collection folders or their individual experiences: `dino-racers`, `pharmacology`, `math-game`, `kana-game`, `spanish`, and `filipino`.
-6. From the repository root, run `python tools/clean-public-titles.py` once. This removes development/version labels from the existing quiz pages without changing their logic.
-7. Commit and push to `main`. Confirm the deployment workflow completes successfully.
+1. Back up or create a branch from the current repository.
+2. Unzip this package.
+3. Copy **the contents of the unzipped folder** into the repository root.
+4. Allow matching files to be replaced.
+5. Keep the existing individual experiences under `play/`—the overlay does not intentionally delete them.
+6. From the repository root, run one of these:
 
-## Recommended repository cleanup
+   **Windows:** double-click `APPLY-REFINEMENT-WINDOWS.bat`
 
-- Delete the nested duplicate package directory `johnfvillanueva_projects_layout_fixed_package` after confirming the root-level site works.
-- Retire any old GoHighLevel routes or pages still serving `/education-experience`, `/finance`, `/marketing`, `/ai`, `/management`, or `/entrepreneurship`. This package provides static redirect fallbacks and a `_redirects` file, but an external platform can still override them if it continues to own those routes.
-- Point `play.johnfvillanueva.com` to `https://johnfvillanueva.com/play/` with a permanent redirect if the subdomain should remain the memorable entry point.
+   **macOS/Linux:**
+   ```bash
+   ./apply-refinement.sh
+   ```
 
-## Post-deployment checks
+   Or run the commands manually:
+   ```bash
+   python tools/finalize-public-html.py
+   python tools/validate_site_v3.py
+   ```
 
-- Open Home, About, Work, Projects, Life, Timeline, Contact, and `/play/` on desktop and mobile.
-- Test the mobile menu, project filters, timeline filters, email copy button, PDF download, all external profile links, and all six collection links.
-- In Google Search Console, submit the updated sitemap and request reindexing for the home page, Work, Projects, Life, and the legacy redirect URLs.
-- Confirm the legacy URLs return a permanent redirect rather than a second page with outdated copy.
+7. Commit and push the merged files to `main`.
+8. Wait for GitHub Pages to finish deploying.
+
+## Why the finalizer is included
+
+The main portfolio and collection pages already use the new shared favicon. The existing individual quiz/game files may still contain older icon references and development labels. `finalize-public-html.py` updates only those public-facing strings and head tags; it does not change question banks, scoring, timers, audio, local storage, or game logic.
+
+## After deployment
+
+Open these routes in a new private/incognito window:
+
+- `/`
+- `/projects.html`
+- `/timeline.html`
+- `/contact.html`
+- `/play/`
+- `/dino-racers/`
+
+Check the Dino Kart cover at desktop and mobile widths, the pale button inside the dark timeline callout, the dark project-card section, and the favicon on several tabs.
+
+Favicons are cached unusually aggressively. If an old red or mismatched icon remains, close every tab for the domain, clear the site icon/cache, or check in a private window before assuming the deployment failed.
+
+## Safe rollback
+
+Because the package is an overlay, rollback is simply a Git revert of the deployment commit or switching back to the backup branch.

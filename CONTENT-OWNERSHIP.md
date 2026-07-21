@@ -1,14 +1,16 @@
-# Content ownership map
+# Page purpose map
 
-This revision prevents the same headline fact from being fully repeated across several pages.
+This file is an editorial guide, not public website copy.
 
-| Page | Owns | Mentions only |
-|---|---|---|
-| Home | Concise overview and visitor routing | Current chapter, no detailed professional metrics |
-| About | Values, identity, and why the nonlinear path coheres | BSN/healthcare only as context |
-| Work | Patient-care hours, BSN target, CNA status, GPA, experience, education, credentials, résumé | Projects and personal interests only as cross-links |
-| Projects | 23-experience accounting, six collections, portfolio systems, experiment status, presentation receipts | Career history only where it explains a build |
-| Life | Gaming, travel, Japanese/anime, karaoke/community, PC building, future/entrepreneurship | Healthcare only as a link back to Work |
-| Timeline | Sequence and major milestones | Detailed facts link back to Work or Projects |
-| Contact | Channels and contact guidance | No biography recap |
-| Play Hub | Collection navigation and exact counts | No portfolio biography |
+| Page | Primary purpose |
+|---|---|
+| Home | Introduce John and help visitors choose Work, Projects, Life, or Timeline |
+| About | Explain values, personality, and how the nonlinear path connects |
+| Work | Present patient-care experience, nursing education, business background, credentials, and résumé |
+| Projects | Show shipped builds, live collections, presentation history, and current experiments |
+| Life | Give gaming, travel, Japanese/anime, karaoke, PC building, and future ambitions room to breathe |
+| Timeline | Show chronology without forcing the Work page to become an employment archive |
+| Contact | Route professional, social, and gaming conversations to the right channel |
+| Play Hub | Organize all playable browser experiences |
+
+A recurring fact can be mentioned briefly elsewhere, but its full explanation belongs on the page above that naturally supports it.

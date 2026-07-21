@@ -1,45 +1,30 @@
-# Refined site revision notes
+# Revision notes — visual and editorial refinement v3
 
-## Site-wide
-- Preserved the Pacific editorial visual direction while moving shared styles and behavior into `assets/site.css` and `assets/site.js`.
-- Added canonical URLs, consistent metadata, social previews, a current sitemap, robots file, accessibility skip links, reduced-motion handling, and privacy-safe contact behavior.
-- Added static-host redirect rules plus GitHub Pages fallback pages for legacy routes.
-- Replaced repetitive cross-page biography copy with a clear content-ownership model.
+## Visual fixes
 
-## Home
-- Shortened the professional biography and removed detailed metrics.
-- Made the four visitor routes explicit: Professional, Builder, Human, and Story.
-- Kept Dino Kart as the featured build without turning the homepage into a project catalog.
+- Locked every Dino Kart cover to its true **3:4 aspect ratio** using a ratio-controlled wrapper and `object-fit: cover`.
+- Removed the duplicated Dino cover from the Projects hero so the artwork appears once as a focused featured project rather than dominating two consecutive sections.
+- Rebuilt the dark-section card palette with navy surfaces, cream headings, pale body copy, and gold accents.
+- Fixed the pale secondary button used inside dark callouts so the label is navy on cream instead of effectively white on white.
+- Consolidated the interface around one warm-paper, navy, burgundy, sage, cream, and gold palette.
+- Removed remaining inline presentation styles from the portfolio shell and replaced them with reusable CSS classes.
+- Standardized the JV favicon across SVG, PNG, ICO, Apple touch, and web-app manifest formats.
+- Kept legacy icon filenames as identical fallbacks so older playable pages do not display a different mark.
 
-## About
-- Focused on values, identity, and the logic connecting a nonlinear path.
-- Removed repeated patient-care hours, GPA, certification details, and project counts.
+## Editorial fixes
 
-## Work
-- Established this as the canonical source for patient-care hours, BSN target, CNA status, business GPA, experience, education, and credentials.
-- Reduced the two competing résumé/print calls to one primary résumé download and one LinkedIn secondary action.
-- Kept the exact current workplace private.
+- Re-read and revised Home, About, Work, Projects, Life, Timeline, Contact, Play Hub, collection indexes, Dino Kart, redirects, and 404 copy.
+- Removed administrative wording such as page “ownership,” public content accounting, release-note language, and placeholder case-study phrasing.
+- Replaced “What 23 means” with a natural description of the six collections and their contents.
+- Changed corporate-sounding phrases such as “portfolio systems” and “AI-assisted workflows” to more direct, personal language.
+- Kept the site’s strongest personal details: nursing, business banking, Japanese, Rocket Raccoon, Pokémon/StarCraft history, travel, karaoke, PC building, and practical entrepreneurship.
+- Made Work the detailed professional route without repeatedly restating the same healthcare biography on every page.
+- Kept Life personal rather than turning hobbies into résumé claims.
+- Cleaned visitor-facing collection titles while preserving the existing playable applications.
 
-## Projects
-- Corrected Spanish to 2 experiences and Filipino/Tagalog to 14.
-- Explained how six collection cards equal 23 individually playable experiences.
-- Separated the two portfolio systems from the playable count.
-- Moved Assist GPT/AI workflow work into an “In the lab” section and labeled it honestly as an unlaunched prototype.
+## Navigation and deployment fixes
 
-## Life
-- Reduced eight equal-weight chapters to six focused chapters.
-- Combined Japanese and anime where their stories overlap.
-- Removed healthcare as a repeated Life chapter and replaced it with a single cross-link to Work.
-
-## Timeline
-- Converted the chronology into a concise filterable page with lanes for education, service, business, building, and healthcare.
-- Kept exact professional details on Work rather than duplicating them.
-
-## Contact
-- Preserved the “pick your door” concept.
-- Reduced repetition and improved the email behavior so the real address is assembled client-side and copied correctly while remaining obfuscated in the page source/display.
-
-## Play Hub
-- Corrected and surfaced exact collection counts.
-- Removed public-facing development labels from the hub copy.
-- Kept the individual game/quiz files untouched for compatibility.
+- Corrected Play Hub and Projects links to point directly to `/play/...` routes instead of relying on root-level redirect folders.
+- Added a reusable finalizer that standardizes favicons across older game pages and removes internal version labels.
+- Added Windows and macOS/Linux one-command deployment helpers.
+- Added a repeatable static validation script and updated manifest/cache-busting references.
