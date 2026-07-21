@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<meta content="#f4f1ea" name="theme-color"/>
+<title>Life Beyond Work - John Villanueva</title>
+<style>
+    :root {
+      --bg:#f4f1ea; --paper:#fbf8f2; --ink:#17313b; --muted:#617078; --line:#d4ded9;
+      --accent:#1f6a73; --accent-dark:#15545c; --accent-soft:#dcebe7; --warm:#d98a45;
+      --warm-soft:#f4e4d3; --navy:#102630; --sand:#f8f3e8; --shadow:0 22px 60px rgba(23,49,59,.11);
+      --shadow-soft:0 12px 34px rgba(23,49,59,.07); --radius:30px; --max:1160px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:104px} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%} a{color:inherit} button,a{-webkit-tap-highlight-color:transparent} :focus-visible{outline:3px solid var(--warm);outline-offset:4px;border-radius:8px}
+    .skip-link{position:fixed;left:16px;top:-80px;z-index:3000;background:var(--ink);color:white;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:800} .skip-link:focus{top:16px}
+    .shell{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .site-header{position:sticky;top:0;z-index:120;background:rgba(244,241,234,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(212,222,217,.92)}
+    .nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px} .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;font-weight:900;letter-spacing:-.035em}
+    .brand-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:var(--accent);color:#fff;font-size:.82rem;box-shadow:0 8px 24px rgba(31,106,115,.2)}
+    .nav-links{display:flex;align-items:center;gap:8px} .nav-links a{min-height:44px;display:inline-flex;align-items:center;padding:0 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:750}
+    .nav-links a:hover{background:var(--paper);color:var(--ink)} .nav-links a[aria-current="page"]{background:var(--accent-soft);color:var(--accent-dark)} .nav-links .contact-link{background:var(--ink);color:white;padding-inline:17px} .nav-links .contact-link:hover{background:var(--accent-dark);color:white}
+    .menu-button{display:none;width:48px;height:48px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);font:inherit;font-weight:900;cursor:pointer}
+    main{overflow:hidden} h1,h2{font-family:Georgia,"Times New Roman",serif} h1,h2,h3{text-wrap:balance} section[id]{scroll-margin-top:96px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--accent-dark);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:900} .eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--warm);box-shadow:0 0 0 5px rgba(217,138,69,.15)}
+    .life-hero{padding:clamp(66px,9vw,118px) 0 76px} .hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);gap:58px;align-items:center}
+    .life-hero h1{margin:18px 0 24px;font-size:clamp(4.3rem,7.2vw,7.4rem);line-height:.91;letter-spacing:-.062em;max-width:820px} .life-hero h1 em{font-style:normal;color:var(--accent)}
+    .hero-lead{max-width:740px;margin:0;color:#465c64;font-size:clamp(1.08rem,1.6vw,1.28rem)} .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .button{min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 20px;border:1px solid transparent;border-radius:999px;text-decoration:none;font-weight:850;transition:transform .16s ease,background .16s ease,border-color .16s ease}
+    .button:hover{transform:translateY(-2px)} .button-primary{background:var(--ink);color:#fff} .button-primary:hover{background:var(--accent-dark)} .button-secondary{background:var(--paper);border-color:var(--line)} .button-secondary:hover{border-color:#aebfba}
+    .hero-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px} .hero-facts span{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(251,248,242,.75);color:var(--muted);font-size:.8rem;font-weight:750}
+    .hero-collage{position:relative;min-height:520px} .hero-photo{position:absolute;overflow:hidden;border:8px solid var(--paper);box-shadow:var(--shadow);background:#dcebe7}
+    .hero-photo img{width:100%;height:100%;object-fit:cover} .hero-photo.one{inset:30px 8% 70px 20%;border-radius:46% 46% 28px 28px;transform:rotate(2deg)} .hero-photo.two{width:44%;height:37%;left:0;bottom:10px;border-radius:24px;transform:rotate(-5deg)} .hero-photo.three{width:39%;height:32%;right:0;top:0;border-radius:24px;transform:rotate(5deg)}
+    .hero-stamp{position:absolute;z-index:5;right:3%;bottom:12%;padding:13px 17px;background:var(--warm);box-shadow:8px 8px 0 var(--accent-soft);font-weight:900;line-height:1.15;transform:rotate(-3deg)} .hero-stamp small{display:block;font-size:.61rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px}
+    .section{padding:92px 0} .section-alt{background:var(--accent-soft)} .section-warm{background:#f6e9da} .section-dark{background:var(--navy);color:var(--sand)}
+    .section-label{margin:0 0 10px;color:var(--accent-dark);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;font-weight:900} .section-dark .section-label{color:#efb26e}
+    h2{margin:0;font-size:clamp(3rem,5.5vw,5.3rem);line-height:.98;letter-spacing:-.055em} .section-intro{max-width:840px;margin-bottom:36px} .section-intro p{margin:18px 0 0;color:var(--muted);font-size:1.05rem} .section-dark .section-intro p{color:rgba(248,243,232,.74)}
+    .life-selector{display:grid;grid-template-columns:330px minmax(0,1fr);gap:24px;align-items:stretch}
+    .life-menu{display:grid;gap:8px} .life-choice{width:100%;min-height:56px;border:1px solid rgba(31,106,115,.15);border-radius:15px;background:rgba(251,248,242,.76);color:var(--ink);font:inherit;font-weight:900;text-align:left;padding:0 18px;cursor:pointer;transition:transform .16s ease,background .16s ease,border-color .16s ease}
+    .life-choice span{display:inline-block;width:34px;color:var(--warm);font-size:.73rem;letter-spacing:.08em} .life-choice:hover{transform:translateX(4px);border-color:#9ab8b1} .life-choice.is-active{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateX(8px)}
+    .selector-stage{position:relative;min-height:560px;overflow:hidden;border-radius:34px;background:var(--navy);box-shadow:var(--shadow)} .selector-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .22s ease,transform .55s cubic-bezier(.2,.7,.2,1)} .selector-stage.is-switching img{opacity:.35;transform:scale(1.07)} .selector-stage::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,38,48,.88) 0%,rgba(16,38,48,.44) 50%,rgba(16,38,48,.14) 100%)}
+    .selector-copy{position:absolute;z-index:2;left:clamp(28px,5vw,58px);right:clamp(28px,5vw,58px);bottom:clamp(28px,5vw,58px);max-width:620px;color:var(--sand)} .selector-kicker{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;font-weight:900;color:#efb26e} .selector-copy h3{margin:10px 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.6rem,5vw,5rem);line-height:.95;letter-spacing:-.05em} .selector-copy p{margin:0 0 22px;color:rgba(248,243,232,.84);font-size:1.05rem} .selector-copy .button{background:var(--sand);color:var(--ink)}
+    .quick-nav{position:sticky;top:74px;z-index:95;background:rgba(16,38,48,.96);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.1)} .quick-nav-inner{display:flex;gap:8px;overflow:auto;padding:10px 0;scrollbar-width:none} .quick-nav-inner::-webkit-scrollbar{display:none} .quick-nav a{flex:0 0 auto;padding:8px 12px;border-radius:999px;color:rgba(248,243,232,.76);text-decoration:none;font-size:.78rem;font-weight:800} .quick-nav a:hover,.quick-nav a.is-current{background:var(--accent);color:#fff}
+    .life-section{padding:110px 0} .life-layout{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(360px,.82fr);gap:54px;align-items:center} .life-section:nth-of-type(even) .life-media{order:2} .life-section:nth-of-type(even) .life-copy{order:1}
+    .life-media{position:relative} .life-image{overflow:hidden;aspect-ratio:16/10;border-radius:32px;background:#dcebe7;box-shadow:var(--shadow)} .life-image img{width:100%;height:100%;object-fit:cover} .image-label{position:absolute;left:20px;bottom:20px;padding:10px 14px;border-radius:12px;background:rgba(251,248,242,.94);color:var(--ink);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:900;box-shadow:var(--shadow-soft)}
+    .life-number{color:var(--warm);font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;font-weight:900} .life-copy h2{margin-top:8px} .life-copy .subtitle{margin:8px 0 0;color:var(--accent-dark);font-size:1.05rem;font-weight:850} .life-copy>p{margin:20px 0 0;color:var(--muted);font-size:1.03rem}
+    .section-dark .life-copy .subtitle{color:#efb26e} .section-dark .life-copy>p{color:rgba(248,243,232,.74)}
+    .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px} .chip{padding:8px 11px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:.79rem;font-weight:750;color:var(--muted)} .section-dark .chip{background:rgba(220,235,231,.08);border-color:rgba(220,235,231,.18);color:rgba(248,243,232,.8)}
+    .link-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px} .text-link{display:inline-flex;align-items:center;gap:7px;color:var(--accent-dark);font-weight:850;text-underline-offset:4px} .section-dark .text-link{color:#f0b36e}
+    .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px} .detail-card{padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--paper);box-shadow:0 8px 24px rgba(23,49,59,.04)} .detail-card b{display:block;color:var(--warm);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase} .detail-card h3{margin:10px 0 8px;font-size:1.12rem;letter-spacing:-.025em} .detail-card p{margin:0;color:var(--muted);font-size:.9rem} .section-dark .detail-card{background:rgba(248,243,232,.06);border-color:rgba(220,235,231,.15)} .section-dark .detail-card p{color:rgba(248,243,232,.67)}
+    .build-list{display:grid;gap:11px;margin-top:26px} .build-line{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:13px 0;border-top:1px solid var(--line)} .build-line:first-child{border-top:0} .build-line strong{color:var(--accent-dark);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase} .build-line span{color:var(--muted)}
+    .section-dark .build-line{border-color:rgba(220,235,231,.14)} .section-dark .build-line strong{color:#efb26e} .section-dark .build-line span{color:rgba(248,243,232,.72)}
+    .quote-panel{margin-top:28px;padding:24px 26px;border-left:5px solid var(--warm);border-radius:0 18px 18px 0;background:rgba(217,138,69,.1);font-family:Georgia,"Times New Roman",serif;font-size:1.18rem;line-height:1.55}
+    .closing{padding:110px 0;text-align:center} .closing h2{max-width:920px;margin:0 auto} .closing p{max-width:740px;margin:22px auto 0;color:var(--muted);font-size:1.08rem} .closing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px;text-align:left} .closing-card{padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--paper)} .closing-card b{color:var(--warm);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase} .closing-card h3{margin:10px 0 8px} .closing-card p{margin:0;color:var(--muted);font-size:.9rem}
+    footer{border-top:1px solid var(--line);padding:28px 0 38px;color:var(--muted);font-size:.82rem} .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center} .footer-links{display:flex;flex-wrap:wrap;gap:16px} .footer-links a{color:var(--accent-dark);font-weight:750}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease} .reveal.is-visible{opacity:1;transform:none}
+    .page-wipe{position:fixed;inset:0;z-index:3000;pointer-events:none;transform:translateX(-120%) skewX(-12deg);background:var(--accent);transition:transform .48s cubic-bezier(.7,0,.2,1)} .page-wipe.is-active{transform:translateX(0) skewX(-12deg)}
+    @media(max-width:980px){.hero-grid,.life-layout{grid-template-columns:1fr} .hero-collage{min-height:500px;max-width:720px;width:100%;margin:0 auto} .life-selector{grid-template-columns:1fr} .life-menu{grid-template-columns:repeat(4,1fr)} .life-choice{text-align:center;padding:0 8px} .life-choice span{display:none} .life-choice.is-active{transform:translateY(-4px)} .life-section:nth-of-type(even) .life-media,.life-section:nth-of-type(even) .life-copy{order:initial} .detail-grid{grid-template-columns:repeat(2,1fr)} .closing-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){.shell{width:min(100% - 28px,var(--max))} .nav{min-height:68px} .menu-button{display:grid;place-items:center} .nav-links{position:absolute;left:14px;right:14px;top:76px;display:none;flex-direction:column;align-items:stretch;padding:12px;border:1px solid var(--line);border-radius:18px;background:var(--paper);box-shadow:var(--shadow)} .nav-links.is-open{display:flex} .nav-links a{justify-content:center} .quick-nav{top:68px} .life-hero{padding-top:48px} .life-hero h1{font-size:clamp(3.4rem,16vw,5.2rem)} .hero-collage{min-height:410px} .hero-photo.one{inset:25px 4% 55px 12%} .hero-photo.two{width:48%;height:34%} .hero-photo.three{width:43%;height:31%} .life-menu{grid-template-columns:repeat(2,1fr)} .selector-stage{min-height:500px} .selector-stage::after{background:linear-gradient(0deg,rgba(16,38,48,.92) 0%,rgba(16,38,48,.42) 72%,rgba(16,38,48,.08) 100%)} .detail-grid,.closing-grid{grid-template-columns:1fr} .life-section{padding:82px 0} .life-image{aspect-ratio:4/3} .build-line{grid-template-columns:1fr;gap:4px} .footer-row{flex-direction:column;align-items:flex-start}}
+    @media(max-width:460px){.brand span:last-child{display:none} .hero-collage{min-height:340px} .hero-photo.one{inset:22px 0 42px 8%} .hero-photo.two{width:51%;height:31%} .hero-photo.three{width:45%;height:28%} .hero-stamp{font-size:.8rem;right:0} .selector-copy h3{font-size:2.45rem} .selector-stage{min-height:440px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto} *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important} .reveal{opacity:1;transform:none}}
+  </style>
+<meta content="Explore John Villanueva's interests in gaming, travel, anime, Japanese, karaoke, PC building, entrepreneurship, and healthcare." name="description"/><meta content="John Villanueva" name="author"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="strict-origin-when-cross-origin" name="referrer"/><link href="https://johnfvillanueva.com/life.html" rel="canonical"/><link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/><link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/><link href="site.webmanifest" rel="manifest"/><meta content="website" property="og:type"/><meta content="John Villanueva" property="og:site_name"/><meta content="Life Beyond Work - John Villanueva" property="og:title"/><meta content="Explore John Villanueva's interests in gaming, travel, anime, Japanese, karaoke, PC building, entrepreneurship, and healthcare." property="og:description"/><meta content="https://johnfvillanueva.com/life.html" property="og:url"/><meta content="https://johnfvillanueva.com/assets/social-card.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="John Villanueva - Healthcare, Business, Technology and Life" property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="Life Beyond Work - John Villanueva" name="twitter:title"/><meta content="Explore John Villanueva's interests in gaming, travel, anime, Japanese, karaoke, PC building, entrepreneurship, and healthcare." name="twitter:description"/><meta content="https://johnfvillanueva.com/assets/social-card.png" name="twitter:image"/></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div aria-hidden="true" class="page-wipe"></div>
+<header class="site-header">
+<div class="shell nav">
+<a aria-label="John Villanueva homepage" class="brand" href="index.html"><span class="brand-mark">JV</span><span>John Villanueva</span></a>
+<button aria-controls="site-navigation" aria-expanded="false" aria-label="Open navigation" class="menu-button" type="button">☰</button>
+<nav aria-label="Primary navigation" class="nav-links" id="site-navigation">
+<a href="about.html">About</a><a href="work.html">Work</a><a href="projects.html">Projects</a><a aria-current="page" href="life.html">Life</a><a class="contact-link" href="contact.html">Connect</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="life-hero" id="top">
+<div class="shell hero-grid">
+<div>
+<div class="eyebrow"><span class="eyebrow-dot"></span>Life beyond the résumé</div>
+<h1>A whole life,<br/><em>not a list</em><br/>of hobbies.</h1>
+<p class="hero-lead">Gaming taught me systems and competition. Travel made the world feel larger and more connected. Language, anime, karaoke, computers, entrepreneurship, and healthcare became different ways of learning how people think—and how I want to live.</p>
+<div class="hero-actions"><a class="button button-primary" href="#selector">Choose a chapter ↓</a><a class="button button-secondary" href="about.html">Read the bigger story →</a></div>
+<div class="hero-facts"><span>California rooted</span><span>Globally curious</span><span>BSN candidate 2026</span><span>Serious goals · earnest personality</span></div>
+</div>
+<div aria-label="A collage of John's gaming, travel, and karaoke sides" class="hero-collage">
+<div class="hero-photo one"><img alt="John traveling through an international airport" decoding="async" fetchpriority="high" height="900" loading="eager" src="assets/life-travel.webp" width="1600"/></div>
+<div class="hero-photo two"><img alt="John relaxing with a game controller" decoding="async" height="900" loading="lazy" src="assets/life-gaming.webp" width="1600"/></div>
+<div class="hero-photo three"><img alt="John singing karaoke" decoding="async" height="900" loading="lazy" src="assets/life-karaoke.webp" width="1600"/></div>
+<div class="hero-stamp"><small>The extended vibe check</small>Many lanes. One person.</div>
+</div>
+</div>
+</section>
+<section class="section section-alt" id="selector">
+<div class="shell">
+<div class="section-intro reveal"><p class="section-label">Choose a chapter</p><h2>Pick a side of the story.</h2><p>Use the selector for the overview, then jump into the section that brought you here. Every homepage personality link lands on its matching chapter below.</p></div>
+<div class="life-selector reveal">
+<div aria-label="Life chapters" class="life-menu" role="list"><button aria-pressed="true" class="life-choice is-active" data-life="gaming" type="button"><span>01</span>Gaming</button>
+<button aria-pressed="false" class="life-choice" data-life="travel" type="button"><span>02</span>Travel</button>
+<button aria-pressed="false" class="life-choice" data-life="anime" type="button"><span>03</span>Anime</button>
+<button aria-pressed="false" class="life-choice" data-life="japanese" type="button"><span>04</span>Japanese</button>
+<button aria-pressed="false" class="life-choice" data-life="karaoke" type="button"><span>05</span>Karaoke</button>
+<button aria-pressed="false" class="life-choice" data-life="pc-building" type="button"><span>06</span>PC Building</button>
+<button aria-pressed="false" class="life-choice" data-life="entrepreneurship" type="button"><span>07</span>Entrepreneurship</button>
+<button aria-pressed="false" class="life-choice" data-life="healthcare" type="button"><span>08</span>Healthcare</button></div>
+<div class="selector-stage" data-active-life="gaming">
+<img alt="John gaming with a controller in a PC setup" class="selector-image" decoding="async" height="900" loading="lazy" src="assets/life-gaming.webp" width="1600"/>
+<div class="selector-copy">
+<div class="selector-kicker">The extended vibe check</div>
+<h3>Ready Player John</h3>
+<p>Strategy, competition, unforgettable worlds, and the occasional ranked-lobby humbling.</p>
+<a class="button selector-jump" href="#gaming">Explore Gaming ↓</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<nav aria-label="Life chapter shortcuts" class="quick-nav"><div class="shell quick-nav-inner">
+<a href="#gaming">Gaming</a><a href="#travel">Travel</a><a href="#anime">Anime</a><a href="#japanese">Japanese</a><a href="#karaoke">Karaoke</a><a href="#pc-building">PC Building</a><a href="#entrepreneurship">Entrepreneurship</a><a href="#healthcare">Healthcare</a>
+</div></nav>
+<section class="life-section" data-chapter="gaming" id="gaming">
+<div class="shell">
+<div class="life-layout">
+<div class="life-media reveal"><div class="life-image"><img alt="John gaming with a controller beside an RGB-lit PC" decoding="async" height="900" loading="lazy" src="assets/life-gaming.webp" width="1600"/></div><span class="image-label">Ready Player John</span></div>
+<div class="life-copy reveal"><div class="life-number">01 / Gaming</div><h2>Games are where my systems brain comes out to play.</h2><div class="subtitle">Grand strategy, hero shooters, fighting games, RPGs, simulations—and ranked queues I probably should have stopped one match earlier.</div><p>I grew up bouncing between Pokémon, Tekken, city builders, real-time strategy, and story-heavy adventures. That range still defines how I play: I like understanding a system, experimenting with it, and finding the point where mechanics turn into a personal playstyle.</p><div class="chip-row"><span class="chip">StarCraft II Masters</span><span class="chip">Marvel Rivals Diamond</span><span class="chip">Pokémon VGC semifinalist</span><span class="chip">Civ V favorite</span><span class="chip">Rocket Raccoon main</span></div><div class="link-row"><a class="text-link" href="https://steamcommunity.com/profiles/76561198088339991/" rel="noopener noreferrer" target="_blank">Steam profile ↗</a><a class="text-link" href="https://psnprofiles.com/flamedragon555x" rel="noopener noreferrer" target="_blank">PSNProfiles ↗</a></div></div>
+</div>
+<div class="detail-grid reveal">
+<article class="detail-card"><b>Strategy notebook</b><h3>Rocket Raccoon &amp; role balance</h3><p>Team-up value, healing pressure, damage windows, positioning, and learning when support play should become aggression.</p></article>
+<article class="detail-card"><b>Build notebook</b><h3>Elden Ring bleed lab</h3><p>Nagakiba, Seppuku, Blood Tax, Mohg’s spear, and deliberately lower-Vigor builds that reward execution instead of autopilot.</p></article>
+<article class="detail-card"><b>Competitive roots</b><h3>Pokémon &amp; StarCraft</h3><p>Matchup planning, team construction, resource management, and the long-running joy of winning because the plan actually worked.</p></article>
+</div>
+</div>
+</section>
+<section class="life-section section-warm" data-chapter="travel" id="travel">
+<div class="shell"><div class="life-layout">
+<div class="life-media reveal"><div class="life-image"><img alt="John traveling with luggage in an airport" decoding="async" height="900" loading="lazy" src="assets/life-travel.webp" width="1600"/></div><span class="image-label">Mr. Worldwide</span></div>
+<div class="life-copy reveal"><div class="life-number">02 / Travel</div><h2>The world feels better when it is more than a map.</h2><div class="subtitle">From hole-in-the-wall ramen shops in Japan to debating Mickey ears in Florida, I am usually planning the next adventure.</div><p>I was born in California, have lived in Texas and Melbourne, and have lived in both the United States and Australia, with family ties across the Pacific. Travel is not just collecting destinations for me—it is food, transit systems, family history, language, everyday routines, and the question of what a good life looks like in different places.</p><div class="chip-row"><span class="chip">United States</span><span class="chip">Australia</span><span class="chip">Japan</span><span class="chip">Singapore</span><span class="chip">Hong Kong</span><span class="chip">New Zealand</span><span class="chip">Fiji</span><span class="chip">Bahamas</span><span class="chip">Canada</span></div><div class="quote-panel">The long-term dream is a life with a strong home base, meaningful work, family close enough to matter, and enough flexibility to keep seeing the world.</div></div>
+</div></div>
+</section>
+<section class="life-section" data-chapter="anime" id="anime">
+<div class="shell"><div class="life-layout">
+<div class="life-media reveal"><div class="life-image"><img alt="Anime-inspired portrait of John in a night city setting" decoding="async" height="705" loading="lazy" src="assets/life-anime.webp" width="1254"/></div><span class="image-label">My Next Episode</span></div>
+<div class="life-copy reveal"><div class="life-number">03 / Anime</div><h2>I want a story that earns the next episode.</h2><div class="subtitle">Strong hooks, meaningful progression, character growth, emotional payoff, and a world worth thinking about after the credits.</div><p>I can enjoy the newest battle shōnen and then pivot straight into a quiet slice-of-life comedy. What matters is momentum: I like stories that feel alive, reward attention, and do not turn entertainment into homework.</p><div class="build-list"><div class="build-line"><strong>Recent favorites</strong><span>Frieren, Jigokuraku, and Solo Leveling.</span></div><div class="build-line"><strong>What hooks me</strong><span>Progression, lore, world-building, found family, strategic conflict, and characters who actually change.</span></div><div class="build-line"><strong>Adjacent obsessions</strong><span>JRPG storytelling, cosplay, conventions, figures, manga, and long discussions about why a character made that decision.</span></div></div><div class="link-row"><a class="text-link" href="https://myanimelist.net/profile/xantum21" rel="noopener noreferrer" target="_blank">View my MyAnimeList ↗</a></div></div>
+</div></div>
+</section>
+<section class="life-section section-alt" data-chapter="japanese" id="japanese">
+<div class="shell"><div class="life-layout">
+<div class="life-media reveal"><div class="life-image"><img alt="John studying Japanese at a desk" decoding="async" height="900" loading="lazy" src="assets/life-japanese.webp" width="1600"/></div><span class="image-label">はじめまして、ジョンです！</span></div>
+<div class="life-copy reveal"><div class="life-number">04 / Japanese</div><h2>Language study made curiosity into a discipline.</h2><div class="subtitle">A college minor, study in Tokyo, and a long-term relationship with textbooks, flashcards, folklore, and the next JLPT milestone.</div><p>I completed a Japanese Language and Culture minor at CSU East Bay and participated in Chuo University’s Academic Language Program in Tokyo. The subject has taken me from Momotarō and Urashima Tarō to modern media, everyday conversation, and the deeper cultural context behind the words.</p><div class="detail-grid"><article class="detail-card"><b>Academic path</b><h3>Japanese minor</h3><p>Formal coursework in language, culture, literature, and the habits needed to keep progressing after class ends.</p></article><article class="detail-card"><b>Tokyo chapter</b><h3>Chuo University ALP</h3><p>Language learning became more tangible when it moved from a classroom concept into daily life in Japan.</p></article><article class="detail-card"><b>Current quest</b><h3>The next JLPT</h3><p>Building consistency, reading more comfortably, and turning passive recognition into usable language.</p></article></div></div>
+</div></div>
+</section>
+<section class="life-section section-dark" data-chapter="karaoke" id="karaoke">
+<div class="shell"><div class="life-layout">
+<div class="life-media reveal"><div class="life-image"><img alt="John singing karaoke in a neon-lit room" decoding="async" height="900" loading="lazy" src="assets/life-karaoke.webp" width="1600"/></div><span class="image-label">On Stage</span></div>
+<div class="life-copy reveal"><div class="life-number">05 / Karaoke</div><h2>The room is better when everybody commits to the bit.</h2><div class="subtitle">Pop singalongs, classic-rock anthems, J-rock, hip-hop throwbacks, and at least one song chosen with more confidence than vocal range.</div><p>Karaoke is one of my favorite versions of being social because perfection is not the point. The best nights are expressive, a little dramatic, and generous—everyone gets a turn, everyone gets hyped up, and the final song feels like a group victory.</p><div class="chip-row"><span class="chip">Today’s pop</span><span class="chip">Classic rock</span><span class="chip">J-rock</span><span class="chip">Hip-hop classics</span><span class="chip">Big closing songs</span></div><div class="quote-panel">My set list changes. The rule does not: sing like the room is already on your side.</div></div>
+</div></div>
+</section>
+<section class="life-section" data-chapter="pc-building" id="pc-building">
+<div class="shell"><div class="life-layout">
+<div class="life-media reveal"><div class="life-image"><img alt="John assembling a custom desktop computer" decoding="async" height="900" loading="lazy" src="assets/life-pc-building.webp" width="1600"/></div><span class="image-label">Overclocked &amp; Hyped</span></div>
+<div class="life-copy reveal"><div class="life-number">06 / PC Building</div><h2>It is adult LEGO—except the finished build can render, calculate, host, and play.</h2><div class="subtitle">Part engineering puzzle, part budget exercise, part aesthetic project, and part excuse to compare six graphics cards that all technically do the same job.</div><p>I enjoy giving every machine a purpose. One system can be a high-end gaming workstation, another can become a SteamOS console, and an older box can find a second life as a server. The fun is not only buying parts—it is balancing performance, compatibility, thermals, noise, upgrade paths, and value.</p><div class="build-list"><div class="build-line"><strong>Main system</strong><span>Ryzen 9 7900X · RTX 4080 Super · 32 GB DDR5.</span></div><div class="build-line"><strong>AM4 workstation</strong><span>Ryzen 9 5950X · 128 GB DDR4 · a long-life productivity and experimentation platform.</span></div><div class="build-line"><strong>SteamOS machine</strong><span>Ryzen 7 3700X · RX 5700 XT · 16 GB DDR4 · 1 TB NVMe, built as a PS5-class living-room PC.</span></div><div class="build-line"><strong>Home server</strong><span>Intel i7-7700 platform repurposed for always-on utility instead of becoming e-waste.</span></div></div></div>
+</div></div>
+</section>
+<section class="life-section section-warm" data-chapter="entrepreneurship" id="entrepreneurship">
+<div class="shell"><div class="life-layout">
+<div class="life-media reveal"><div class="life-image"><img alt="John brainstorming business ideas in a modern workspace" decoding="async" height="900" loading="lazy" src="assets/life-entrepreneurship.webp" width="1600"/></div><span class="image-label">Built to Build</span></div>
+<div class="life-copy reveal"><div class="life-number">07 / Entrepreneurship</div><h2>I like the moment when an idea becomes a system.</h2><div class="subtitle">E-commerce, local concepts, web development, AI workflows, business banking, and the recurring question: would this actually help somebody?</div><p>I have explored Amazon, eBay, dropshipping, web development, AI agents, and local-business ideas while also studying how established companies think about revenue, risk, customers, and operations. I do not romanticize entrepreneurship as one dramatic leap. I see it as a sequence of experiments: observe, build, measure, learn, and try again with better judgment.</p><div class="detail-grid"><article class="detail-card"><b>Market lens</b><h3>Business banking</h3><p>Seeing how real businesses manage cash flow, risk, growth, and customer relationships made entrepreneurship less abstract.</p></article><article class="detail-card"><b>Builder lens</b><h3>Web &amp; AI workflows</h3><p>Small digital tools can turn a repeated problem into a process someone can actually use.</p></article><article class="detail-card"><b>Operator lens</b><h3>Test before scale</h3><p>Start with the user, learn from the friction, and earn the right to make the idea bigger.</p></article></div><div class="link-row"><a class="text-link" href="projects.html">See the things I have built →</a></div></div>
+</div></div>
+</section>
+<section class="life-section section-dark" data-chapter="healthcare" id="healthcare">
+<div class="shell"><div class="life-layout">
+<div class="life-media reveal"><div class="life-image"><img alt="John working as a nurse in a modern hospital setting" decoding="async" height="900" loading="lazy" src="assets/life-healthcare.webp" width="1600"/></div><span class="image-label">Heart in Healthcare</span></div>
+<div class="life-copy reveal"><div class="life-number">08 / Healthcare</div><h2>The technical work matters. So does how people feel in your care.</h2><div class="subtitle">More than 1,000 hours of direct patient care, a BSN in progress, and a nursing identity built around dignity, observation, communication, and dependability.</div><p>Healthcare is where my different backgrounds meet. Business taught me to organize information and make decisions. Technology taught me to troubleshoot. Direct care taught me that none of it matters if a person feels ignored, unsafe, or reduced to a task list.</p><div class="detail-grid"><article class="detail-card"><b>Care first</b><h3>Dignity in the routine</h3><p>ADLs, mobility, comfort, safety, and the small interactions that determine whether care feels human.</p></article><article class="detail-card"><b>Clinical judgment</b><h3>Notice and communicate</h3><p>Observe changes, document clearly, escalate concerns, and understand that dependable teamwork protects patients.</p></article><article class="detail-card"><b>Next chapter</b><h3>BSN candidate 2026</h3><p>Building toward RN practice while carrying forward the bedside perspective earned in direct care.</p></article></div><div class="link-row"><a class="text-link" href="work.html#healthcare">See my healthcare experience →</a></div></div>
+</div></div>
+</section>
+<section class="closing">
+<div class="shell"><p class="section-label">The throughline</p><h2>I am building a life that is capable, curious, warm, and actually fun to live.</h2><p>The goal is not to collect identities. It is to let each part sharpen the others: healthcare with empathy, business with judgment, technology with creativity, culture with humility, and ambition with enough playfulness to remain myself.</p><div class="closing-grid"><article class="closing-card"><b>Meaningful work</b><h3>Care that matters</h3><p>A nursing career where technical growth never replaces humanity.</p></article><article class="closing-card"><b>Creative output</b><h3>Keep making things</h3><p>Games, tools, websites, systems, and whatever curiosity becomes next.</p></article><article class="closing-card"><b>Global perspective</b><h3>Keep crossing borders</h3><p>Travel, language, family ties, and a life that remains open to the wider world.</p></article><article class="closing-card"><b>Home</b><h3>Build something lasting</h3><p>Stability, family, good people, shared traditions, and a home base worth returning to.</p></article></div><div class="hero-actions" style="justify-content:center;margin-top:34px"><a class="button button-primary" href="about.html">Read my story →</a><a class="button button-secondary" href="projects.html">Browse my projects →</a></div></div>
+</section>
+</main>
+<footer><div class="shell footer-row"><span>© 2026 John Villanueva. Built as a whole-person portfolio.</span><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="work.html">Work</a><a href="projects.html">Projects</a><a href="timeline.html">Timeline</a><a href="#top">Back to top ↑</a></div></div></footer>
+<script>
+    const lifeData = {"gaming": {"number": "01", "label": "Gaming", "code": "Ready Player John", "summary": "Strategy, competition, unforgettable worlds, and the occasional ranked-lobby humbling.", "image": "assets/life-gaming.webp"}, "travel": {"number": "02", "label": "Travel", "code": "Mr. Worldwide", "summary": "A California home base with an Australian passport, family abroad, and a habit of planning the next flight.", "image": "assets/life-travel.webp"}, "anime": {"number": "03", "label": "Anime", "code": "My Next Episode", "summary": "Character growth, big worlds, emotional payoff, and a backlog that will probably outlive me.", "image": "assets/life-anime.webp"}, "japanese": {"number": "04", "label": "Japanese", "code": "はじめまして、ジョンです！", "summary": "A college minor, study in Tokyo, cultural curiosity, and the next JLPT milestone waiting ahead.", "image": "assets/life-japanese.webp"}, "karaoke": {"number": "05", "label": "Karaoke", "code": "On Stage", "summary": "Pop, classic rock, J-rock, hip-hop, and enough commitment to make the room believe it.", "image": "assets/life-karaoke.webp"}, "pc-building": {"number": "06", "label": "PC Building", "code": "Overclocked & Hyped", "summary": "Part engineering puzzle, part aesthetic project, part excuse to compare components for three hours.", "image": "assets/life-pc-building.webp"}, "entrepreneurship": {"number": "07", "label": "Entrepreneurship", "code": "Built to Build", "summary": "Testing ideas, learning from the market, and turning curiosity into systems people can actually use.", "image": "assets/life-entrepreneurship.webp"}, "healthcare": {"number": "08", "label": "Healthcare", "code": "Heart in Healthcare", "summary": "Direct care, nursing school, and the belief that technical skill means more when dignity comes with it.", "image": "assets/life-healthcare.webp"}};
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', () => { const open = navLinks.classList.toggle('is-open'); menuButton.setAttribute('aria-expanded', String(open)); menuButton.textContent = open ? '×' : '☰'; });
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { navLinks.classList.remove('is-open'); menuButton.setAttribute('aria-expanded','false'); menuButton.textContent='☰'; }));
+
+    const choices = [...document.querySelectorAll('.life-choice')];
+    const stage = document.querySelector('.selector-stage');
+    const stageImage = document.querySelector('.selector-image');
+    const stageTitle = document.querySelector('.selector-copy h3');
+    const stageSummary = document.querySelector('.selector-copy p');
+    const stageJump = document.querySelector('.selector-jump');
+    let switchTimer;
+    Object.values(lifeData).forEach(item => { const img = new Image(); img.src = item.image; });
+    function selectLife(key, updateHash=false) {
+      const data = lifeData[key]; if (!data) return;
+      choices.forEach(btn => { const active = btn.dataset.life === key; btn.classList.toggle('is-active', active); btn.setAttribute('aria-pressed', String(active)); });
+      clearTimeout(switchTimer); stage.classList.add('is-switching');
+      switchTimer = setTimeout(() => { stage.dataset.activeLife = key; stageImage.src = data.image; stageImage.alt = `John representing the ${data.label.toLowerCase()} chapter`; stageTitle.textContent = data.code; stageSummary.textContent = data.summary; stageJump.href = `#${key}`; stageJump.textContent = `Explore ${data.label} ↓`; stage.classList.remove('is-switching'); }, 160);
+      if (updateHash) history.replaceState(null,'',`#${key}`);
+    }
+    choices.forEach(btn => { btn.addEventListener('click', () => selectLife(btn.dataset.life, false)); btn.addEventListener('mouseenter', () => selectLife(btn.dataset.life, false)); btn.addEventListener('focus', () => selectLife(btn.dataset.life, false)); });
+
+    const revealObserver = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('is-visible'); revealObserver.unobserve(e.target);} }), {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const quickLinks = [...document.querySelectorAll('.quick-nav a')];
+    const chapterSections = [...document.querySelectorAll('[data-chapter]')];
+    const chapterObserver = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting){ const id=entry.target.id; quickLinks.forEach(a => a.classList.toggle('is-current', a.getAttribute('href') === `#${id}`)); selectLife(id,false); } }); }, {rootMargin:'-28% 0px -60% 0px',threshold:.01});
+    chapterSections.forEach(section => chapterObserver.observe(section));
+
+    const initial = location.hash.replace('#','');
+    if (lifeData[initial]) { selectLife(initial,false); requestAnimationFrame(() => document.getElementById(initial)?.scrollIntoView({block:'start'})); }
+    window.addEventListener('hashchange', () => { const key=location.hash.replace('#',''); if(lifeData[key]) selectLife(key,false); });
+
+    const wipe = document.querySelector('.page-wipe');
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href=link.getAttribute('href');
+      if(!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || link.target === '_blank') return;
+      link.addEventListener('click', e => { if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey) return; e.preventDefault(); wipe.classList.add('is-active'); setTimeout(() => location.href=href,390); });
+    });
+  </script>
+</body>
+</html>
