@@ -399,7 +399,37 @@
       .reveal { opacity: 1; transform: none; }
     }
 </style>
-<meta content="Browse John Villanueva's browser games, nursing study tools, language quizzes, portfolio experiments, and presentation work." name="description"/><meta content="John Villanueva" name="author"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="strict-origin-when-cross-origin" name="referrer"/><link href="https://johnfvillanueva.com/projects.html" rel="canonical"/><link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/><link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/><link href="site.webmanifest" rel="manifest"/><meta content="website" property="og:type"/><meta content="John Villanueva" property="og:site_name"/><meta content="Projects &amp; Experiments - John Villanueva" property="og:title"/><meta content="Browse John Villanueva's browser games, nursing study tools, language quizzes, portfolio experiments, and presentation work." property="og:description"/><meta content="https://johnfvillanueva.com/projects.html" property="og:url"/><meta content="https://johnfvillanueva.com/assets/social-card.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="John Villanueva - Healthcare, Business, Technology and Life" property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="Projects &amp; Experiments - John Villanueva" name="twitter:title"/><meta content="Browse John Villanueva's browser games, nursing study tools, language quizzes, portfolio experiments, and presentation work." name="twitter:description"/><meta content="https://johnfvillanueva.com/assets/social-card.png" name="twitter:image"/></head>
+<meta content="Browse John Villanueva's browser games, nursing study tools, language quizzes, portfolio experiments, and presentation work." name="description"/><meta content="John Villanueva" name="author"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="strict-origin-when-cross-origin" name="referrer"/><link href="https://johnfvillanueva.com/projects.html" rel="canonical"/><link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/><link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/><link href="site.webmanifest" rel="manifest"/><meta content="website" property="og:type"/><meta content="John Villanueva" property="og:site_name"/><meta content="Projects &amp; Experiments - John Villanueva" property="og:title"/><meta content="Browse John Villanueva's browser games, nursing study tools, language quizzes, portfolio experiments, and presentation work." property="og:description"/><meta content="https://johnfvillanueva.com/projects.html" property="og:url"/><meta content="https://johnfvillanueva.com/assets/social-card.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="John Villanueva - Healthcare, Business, Technology and Life" property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="Projects &amp; Experiments - John Villanueva" name="twitter:title"/><meta content="Browse John Villanueva's browser games, nursing study tools, language quizzes, portfolio experiments, and presentation work." name="twitter:description"/><meta content="https://johnfvillanueva.com/assets/social-card.png" name="twitter:image"/>
+<style id="persona-human-polish">
+  /* Personality-preserving cleanup: less copy pressure, same angular visual language. */
+  .section-intro > p:last-child,
+  .hero-lead,
+  .hero-copy,
+  .feature-copy > p,
+  .closing > p,
+  .persona-heading > p { max-width: 66ch; }
+  .path-card p,
+  .value-card p,
+  .range-card p,
+  .transfer-card p,
+  .timeline-card p,
+  .project-card p,
+  .detail-card p,
+  .route-card p,
+  .thread-card p { text-wrap: pretty; }
+  .section-label, .persona-kicker, .eyebrow { letter-spacing: .095em; }
+  @media (min-width: 900px) {
+    .section { padding-top: clamp(4.6rem, 7vw, 7rem); padding-bottom: clamp(4.6rem, 7vw, 7rem); }
+    .section-intro { margin-bottom: clamp(2rem, 4vw, 3.4rem); }
+  }
+  @media (max-width: 760px) {
+    .hero-actions .button, .connect-actions .button { min-height: 48px; }
+    .path-card, .project-card, .value-card, .range-card, .detail-card, .route-card { padding: 1.2rem; }
+    .section-intro p, .hero-lead, .hero-copy { font-size: 1rem; }
+  }
+</style>
+
+</head>
 <body>
 <div aria-hidden="true" class="page-wipe"></div>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -416,8 +446,8 @@
 <section class="projects-hero shell">
 <div class="reveal">
 <div class="eyebrow"><span aria-hidden="true" class="eyebrow-dot"></span> Projects · experiments · receipts</div>
-<h1>Curiosity is better when it becomes <em>something useful.</em></h1>
-<p class="hero-lead">I build small tools, browser games, learning systems, and interactive ideas—usually because I wanted something to exist, wanted to understand how it worked, or thought studying could be less boring.</p>
+<h1>Curiosity gets more interesting when it becomes <em>something you can use.</em></h1>
+<p class="hero-lead">I build browser games, study tools, and interactive systems because I wanted something to exist, wanted to understand how it worked, or thought learning could be less boring.</p>
 <div class="hero-actions"><a class="button button-primary" href="#live-projects">Explore the builds <span aria-hidden="true">↓</span></a><a class="button button-secondary" href="/play/">Open the Play Hub <span aria-hidden="true">→</span></a></div>
 <div aria-label="Project summary" class="hero-stats">
 <div class="hero-stat"><strong>23</strong><span>playable experiences</span></div>
@@ -457,7 +487,7 @@
 </div>
 </section>
 <section class="section shell" id="live-projects">
-<div class="section-intro reveal"><p class="section-label">Project library</p><h2>Games, learning tools, and experiments.</h2><p>The common thread is practical curiosity: take an idea, make the smallest useful version, test it, and keep improving the parts that matter.</p></div>
+<div class="section-intro reveal"><p class="section-label">Project library</p><h2>Things you can actually open, use, and play.</h2><p>The common thread is practical curiosity: take an idea, make the smallest useful version, test it, and keep improving the parts that matter.</p></div>
 <div aria-label="Filter projects" class="filter-bar reveal" role="group">
 <button class="filter-button is-active" data-filter="all" type="button">All projects</button>
 <button class="filter-button" data-filter="game" type="button">Games</button>
@@ -545,7 +575,7 @@
 <div class="project-body">
 <div class="project-meta"><span>In development · 2026</span><span class="status">Active build</span></div>
 <h3>Personal Website Revamp</h3>
-<p>The site you are using now: a human-first portfolio that connects healthcare, business, technology, projects, and life without becoming a digital trophy case.</p>
+<p>The site you are using now: a whole-person portfolio connecting healthcare, business, technology, projects, and life.</p>
 <div class="tag-row"><span>UX writing</span><span>Responsive design</span><span>Personal brand</span></div>
 <a class="project-link" href="index.html">Return to the homepage →</a>
 </div>
@@ -582,7 +612,7 @@
 </section>
 <section class="section section-warm" id="presentation-receipts">
 <div class="shell">
-<div class="section-intro reveal"><p class="section-label">Presentation receipts</p><h2>The presentations happened. Here are the receipts.</h2><p>I presented honors research at Stanford in 2015 and UC Berkeley in 2018. I do not have recordings of those presentations, but I still have the original certificates—and they deserve to be part of the portfolio.</p></div>
+<div class="section-intro reveal"><p class="section-label">Presentation receipts</p><h2>Before the browser projects, I was already presenting ideas.</h2><p>Honors research presentations at Stanford and UC Berkeley helped build the same habits I still use now: research, synthesis, public explanation, and follow-through.</p></div>
 <div class="receipts-grid">
 <article class="receipt-card receipt-card-certificate reveal">
 <a aria-label="View John Villanueva's 2015 Stanford honors research certificate at full size" class="receipt-image-link" href="assets/stanford-honors-certificate.webp" rel="noopener" target="_blank">
@@ -605,7 +635,7 @@
 </section>
 <section class="section shell">
 <div class="process-band reveal">
-<div><p class="section-label">How I build</p><h2>Useful first. Interesting second. Better every round.</h2><p>I am not pretending every experiment is a Silicon Valley moonshot. The point is to practice turning an observation into something real—and learn enough from each version to make the next one better.</p></div>
+<div><p class="section-label">How I build</p><h2>Build it. Test it. Make the next version better.</h2><p>I am not pretending every experiment is a Silicon Valley moonshot. The point is to practice turning an observation into something real—and learn enough from each version to make the next one better.</p></div>
 <div class="process-steps">
 <div class="process-step"><b>1</b><div><strong>Start with friction</strong><span>Something is boring, repetitive, confusing, or simply missing.</span></div></div>
 <div class="process-step"><b>2</b><div><strong>Build the smallest useful version</strong><span>A quiz, a game loop, a page, a workflow, or a visual prototype.</span></div></div>
@@ -615,7 +645,7 @@
 </div>
 </section>
 <section class="closing shell">
-<p class="section-label reveal">The next build</p><h2 class="reveal">The project archive will keep growing with the person behind it.</h2><p class="reveal">Some ideas will become polished tools. Some will remain experiments. The value is in continuing to make, test, document, and learn.</p>
+<p class="section-label reveal">The next build</p><h2 class="reveal">The archive grows whenever curiosity turns into something real.</h2><p class="reveal">Some ideas will become polished tools. Some will remain experiments. The value is in continuing to make, test, document, and learn.</p>
 <div class="hero-actions reveal"><a class="button button-primary" href="contact.html">Talk about a project <span aria-hidden="true">→</span></a><a class="button button-secondary" href="about.html">Meet the builder <span aria-hidden="true">→</span></a></div>
 <div class="closing-links reveal"><a href="work.html">Work &amp; education</a><span aria-hidden="true">•</span><a href="life.html">Life beyond work</a><span aria-hidden="true">•</span><a href="timeline.html">Full timeline</a></div>
 </section>
