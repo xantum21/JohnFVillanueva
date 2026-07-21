@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Tagalog — Aralin 6 • Mga Bayan, Bansa, at Nasyonalidad | John Villanueva</title>
+<style>
+:root{
+  --bg:#0b0b0c; --card:#151518; --ink:#f6f7fb; --muted:#b9bbc6;
+  --accent:#ffcc00; --success:#45c463; --danger:#ef5350; --warn:#ffcc80;
+}
+*{box-sizing:border-box}
+body{margin:0;background:
+  radial-gradient(900px 400px at 12% -10%, rgba(255,204,0,0.10), transparent),
+  radial-gradient(1000px 500px at 100% 0%, rgba(211,47,47,0.10), transparent),
+  linear-gradient(180deg,#111114,#0a0a0c);
+  color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+header{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;padding:14px 16px}
+.brand{font-weight:800;letter-spacing:.2px}
+.pill{background:var(--card);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:8px 12px;color:var(--ink);display:flex;gap:8px;align-items:center}
+button,select{background:var(--card);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;color:var(--ink);cursor:pointer}
+button:hover,select:hover{border-color:rgba(255,204,0,.6)}
+main{max-width:1180px;margin:0 auto;padding:8px 12px 22px}
+.controls{display:grid;grid-template-columns:repeat(5,1fr) 120px 120px;gap:10px;margin:10px 0}
+.ctrl{display:flex;align-items:center;gap:8px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.qcard{padding:18px 20px}
+.qstem{font-size:22px;line-height:1.35;margin:6px 0 8px}
+.options{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.opt{padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);cursor:pointer;text-align:left}
+.opt:hover{border-color:rgba(255,204,0,.6)}
+.opt.correct{background:rgba(76,175,80,.10);border-color:var(--success)}
+.opt.incorrect{background:rgba(239,83,80,.10);border-color:var(--danger)}
+.muted{color:var(--muted);font-size:13px}
+.badges{display:flex;gap:8px;align-items:center}
+.badge{font-size:11px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:var(--muted)}
+.footer{margin-top:12px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px}
+.hidden{display:none}
+.toast{position:fixed;right:16px;bottom:16px;background:#111;color:#fff;border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:10px 12px;opacity:0;transform:translateY(10px);transition:all .2s}
+.toast.show{opacity:1;transform:translateY(0)}
+.scorebox{display:flex;gap:8px;align-items:center}
+.volwrap{display:flex;gap:8px;align-items:center}
+#progressbar{height:30px;background:var(--card);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:4px;display:flex;align-items:center;margin:0 12px 14px 12px;position:relative}
+#progressfill{height:100%;border-radius:999px;background:linear-gradient(90deg,#ffd54f,#ffca28);width:0%}
+#progresslabel{position:absolute;margin-left:12px;font-size:13px;color:#111}
+.grid2{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+#tracker{display:grid;grid-template-columns:1fr 90px 90px;gap:6px}
+.row{display:flex;gap:8px;align-items:center}
+input[type="text"]{font-size:16px}
+kbd{padding:2px 6px;border-radius:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:12px}
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style><link rel="icon" href="/assets/favicon.svg"><meta name="theme-color" content="#0d2932">
+<style id="jv-responsive-patch">
+html,body{max-width:100%;overflow-x:hidden}
+body{padding-bottom:82px!important}
+img,video,canvas,svg{max-width:100%;height:auto}
+#jv-play-nav-style + body{}
+.jv-play-nav{max-width:calc(100vw - 20px);flex-wrap:wrap}
+@media(max-width:900px){
+  header{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important;padding:12px!important}
+  header .brand{flex:1 1 100%!important;line-height:1.35!important}
+  .controls{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+  .controls>.ctrl,.controls>.row,.controls>div{width:100%!important;max-width:100%!important}
+  .grid2{grid-template-columns:1fr!important}
+  .footer{grid-template-columns:1fr!important}
+  main,.wrap{width:100%!important;max-width:100%!important;padding-left:10px!important;padding-right:10px!important}
+  select,button,input[type="text"],input[type="number"]{max-width:100%!important}
+  .volwrap{width:100%!important;justify-content:flex-start!important}
+  input[type="range"]{max-width:70vw!important}
+  table{width:100%!important;display:block!important;overflow-x:auto!important}
+}
+@media(max-width:620px){
+  body{padding-left:0!important;padding-right:0!important;padding-bottom:94px!important}
+  header{position:relative!important;grid-template-columns:1fr!important}
+  .brand{font-size:1rem!important;overflow-wrap:anywhere!important}
+  .pill{max-width:100%!important;justify-content:center!important}
+  button,select,input[type="text"],input[type="number"]{min-height:44px!important;font-size:16px!important;width:100%!important}
+  .qcard,.card,.panel{border-radius:12px!important;padding:13px!important}
+  .qstem,#question,.big{font-size:clamp(1.25rem,6.5vw,1.8rem)!important}
+  .options,.grid{grid-template-columns:1fr!important}
+  .row{max-width:100%!important;flex-wrap:wrap!important}
+  #leaderboardBtn,#returnBtn{position:static!important;display:inline-flex!important;width:auto!important;margin:8px!important}
+  #leaderboardTable{padding:10px!important}
+  .jv-play-nav{left:8px!important;right:8px!important;bottom:8px!important;justify-content:center!important}
+  .jv-play-nav a{flex:1 1 auto!important;justify-content:center!important;text-align:center!important}
+}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Library</a><a href="/play/filipino/">All Tagalog Lessons</a><a class="secondary" href="/projects.html">Portfolio</a></nav>
+<header>
+<div class="brand">🇵🇭 Tagalog — Aralin 6 • Mga Bayan, Bansa, at Nasyonalidad</div>
+<div class="pill scorebox">Score: <strong id="score">0</strong> • Streak: <strong id="streak">0</strong></div>
+<button class="pill" id="sfx">🔊 Sound: On</button>
+<button class="pill" id="music">🎵 Music: On</button>
+<div class="pill volwrap"><span class="muted">Vol</span><input id="vol" max="100" min="0" style="width:140px" type="range" value="65"/></div>
+</header>
+<div id="progressbar"><div id="progressfill"></div><span id="progresslabel">Progress: 0/0</span></div>
+<main>
+<section class="controls card">
+<div class="ctrl"><span class="muted">Question source:</span><select id="category">
+<option selected="" value="all">All</option>
+<option value="vocab">Vocabulary only</option>
+<option value="grammar">Grammar only</option>
+<option value="reading">Reading only</option>
+<option value="culture">Culture only</option></select></div>
+<div class="ctrl"><span class="muted">Selection mode:</span><select id="mode">
+<option selected="" value="random">Random</option>
+<option value="topic">By topic</option></select></div>
+<div class="ctrl"><span class="muted">Topic:</span><select id="topicFilter"><option selected="" value="any">Any</option></select></div>
+<div class="ctrl"><span class="muted">Timer:</span><select id="timer">
+<option selected="" value="off">Off</option><option value="60">60s</option>
+<option value="90">90s</option><option value="120">120s</option></select></div>
+<button id="reset">Reset</button>
+<button id="next">Next ▶</button>
+</section>
+<section class="card qcard" id="qcard">
+<div class="badges"><span class="badge" id="typeBadge">—</span><span class="badge" id="topicBadge">—</span></div>
+<div class="qstem" id="stem">Tap “Next” to begin.</div>
+<div class="options" id="options"></div>
+<div class="hidden row" id="fibWrap" style="margin-top:12px; display:none;">
+<input id="fibInput" placeholder="Type your answer…" style="flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff" type="text"/>
+<button id="fibCheck">Check</button>
+</div>
+<div class="rationale muted hidden" id="rationale"></div>
+<div class="footer">
+<div class="muted" id="status">Choose the best answer.</div>
+<div class="row"><button id="showAns">Show answer</button><button id="again">Again 🔁</button></div>
+</div>
+</section>
+<section class="grid2" style="margin-top:12px">
+<div class="card">
+<div class="row" style="justify-content:space-between">
+<div class="muted"><strong>Coverage</strong> — Taga‑saan / Nasa &amp; Nasaan / Nakatira + <em>naka‑</em> / “na” (already) / geography terms / adjectives + mas/kaysa &amp; pinaka‑ / nationalities / reading comprehension. Scoring: <strong>+10</strong> correct, <strong>−5</strong> incorrect/timeout. Popups: <em>Ayos! / Subukan muli! / Oras na!</em></div>
+<button id="export">Export results</button>
+</div>
+<div class="muted" id="tracker" style="margin-top:10px"></div>
+</div>
+<div class="card">
+<div class="muted">Tip: Press <kbd>Enter</kbd> to submit fill‑in answers. Sound/music can be toggled.</div>
+</div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+// ---------- Helpers ----------
+function stripAccents(str){return (str||"").normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');}
+function normalize(str){
+  // Lowercase, remove punctuation, collapse spaces, remove hyphens
+  return stripAccents(String(str||'').toLowerCase())
+    .replace(/[-–—]/g,' ')
+    .replace(/[^a-z0-9\\sáéíóúñü]/g,' ')
+    .replace(/\\s+/g,' ')
+    .trim();
+}
+function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+const KEY="tagalog_l6_v10_stats"; const PREF="tagalog_l6_v10_prefs";
+let stats=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!stats.version) stats={version:10,seen:0,correct:0,topics:{},score:0,streak:0};
+
+// ---------- Audio ----------
+let AUDIO=true, MUSIC=true;
+let musicCtx=null, musicGain=null, musicInt=null, step=0;
+const sfxBtn=document.getElementById('sfx'); const musicBtn=document.getElementById('music'); const vol=document.getElementById('vol');
+let pref=JSON.parse(localStorage.getItem(PREF)||"{}");
+if(pref.sfx===undefined) pref.sfx=true; if(pref.music===undefined) pref.music=true; if(pref.volume===undefined) pref.volume=65;
+AUDIO=!!pref.sfx; MUSIC=!!pref.music; vol.value=pref.volume;
+function savePref(){ localStorage.setItem(PREF, JSON.stringify({sfx:AUDIO, music:MUSIC, volume:parseInt(vol.value,10)})); }
+function tone(f,d=0.12,t='sine',g=0.06){ if(!AUDIO) return; const ctx=new (window.AudioContext||window.webkitAudioContext)(); const o=ctx.createOscillator(), ga=ctx.createGain(); o.type=t; o.frequency.value=f; o.connect(ga); ga.connect(ctx.destination); ga.gain.value=g; o.start(); setTimeout(()=>{ga.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.1); o.stop(ctx.currentTime+0.12);}, d*1000); }
+function good(){ tone(659,0.10,'triangle',0.08); setTimeout(()=>tone(784,0.12,'triangle',0.08),90); setTimeout(()=>tone(880,0.12,'triangle',0.07),180); }
+function bad(){ tone(2300,0.05,'square',0.05); setTimeout(()=>tone(1800,0.05,'square',0.05),60); }
+function clickS(){ tone(360,0.06,'sine',0.05); }
+function ensureMusic(){ if(!musicCtx){ musicCtx=new (window.AudioContext||window.webkitAudioContext)(); musicGain=musicCtx.createGain(); musicGain.gain.value=0.7*(parseInt(vol.value,10)/100); musicGain.connect(musicCtx.destination);} }
+function chord(freqs){ if(!musicCtx) return; freqs.forEach((f,i)=>{ const o=musicCtx.createOscillator(), g=musicCtx.createGain(); g.gain.value=0.015; o.type='sine'; o.frequency.value=f; o.connect(g); g.connect(musicGain); const t0=musicCtx.currentTime+i*0.06, t1=t0+0.35; o.start(t0); g.gain.setValueAtTime(g.gain.value,t0); g.gain.exponentialRampToValueAtTime(0.0001,t1); o.stop(t1); }); }
+function playMusic(){ if(!MUSIC) return; ensureMusic(); if(musicInt) return; const A=[220,261.63,329.63], G=[196,246.94,392.00], F=[174.61,220,349.23], E=[164.81,207.65,329.63]; const prog=[A,G,F,E]; musicInt=setInterval(()=>{ chord(prog[step%prog.length]); step++; },520); }
+function stopMusic(){ try{clearInterval(musicInt);}catch{} musicInt=null; step=0; }
+function setAudioUi(){ sfxBtn.textContent=AUDIO? "🔊 Sound: On":"🔊 Sound: Off"; musicBtn.textContent=MUSIC? "🎵 Music: On":"🎵 Music: Off"; }
+sfxBtn.onclick=()=>{ AUDIO=!AUDIO; setAudioUi(); savePref(); clickS(); };
+musicBtn.onclick=()=>{ MUSIC=!MUSIC; setAudioUi(); savePref(); if(MUSIC) playMusic(); else stopMusic(); };
+vol.oninput=()=>{ savePref(); if(musicGain){ musicGain.gain.value=0.7*(parseInt(vol.value,10)/100); } };
+window.addEventListener('pointerdown', function unlock(){ setAudioUi(); if(MUSIC) playMusic(); window.removeEventListener('pointerdown', unlock); }, {once:true});
+
+// ---------- Question Bank (Aralin 6) ----------
+const BANK=[];
+
+// Utility to add MCQ
+function addMCQ(stem, options, correctIndex, topic, rationale){
+  BANK.push({type:"MCQ", stem, options, answers:[correctIndex], topic, rationale});
+}
+// Utility to add FIB (fill-in)
+function addFIB(stem, answers, topic, rationale){
+  BANK.push({type:"FIB", stem, fibAnswers:answers, topic, rationale});
+}
+
+// Topics: Vocabulary, Grammar, Reading, Culture
+// --- Vocabulary basics from the lesson ---
+addMCQ("Ano ang kahulugan ng “taga‑saan”?", ["From where","Where to","Where at","Who from"], 0, "Vocabulary", "taga‑saan = from where.");
+addMCQ("Ano ang kahulugan ng “nasa”?", ["Preposition indicating location","Marker of ownership","Plural marker","Question particle"], 0, "Vocabulary", "nasa indicates location.");
+addMCQ("Ano ang kahulugan ng “nakatira”?", ["Lives / resides","Sits","Stands","Arrives"], 0, "Vocabulary", "nakatira = lives.");
+addMCQ("Ano ang ibig sabihin ng “ngayon” sa pangungusap na “Saan ka na nakatira ngayon?”", ["Now / today","Later","Yesterday","Always"], 0, "Vocabulary", "ngayon = now.");
+addMCQ("Sa “Saan ka na nakatira ngayon?”, ang “na” ay nangangahulugang…", ["already (change of state)","linker only","not","question marker"], 0, "Vocabulary", "na = already (not just linker).");
+
+// Geography terms
+addMCQ("Piliin ang tamang kahulugan: “bansa”.", ["country","province","city","village"], 0, "Vocabulary", "bansa = country.");
+addMCQ("Piliin ang tamang kahulugan: “probinsiya”.", ["province","country","island","barangay"], 0, "Vocabulary", "probinsiya = province.");
+addMCQ("Piliin ang tamang kahulugan: “lungsod/siyudad”.", ["city","town","island","continent"], 0, "Vocabulary", "lungsod = city.");
+addMCQ("Piliin ang tamang kahulugan: “bayan”.", ["town / country / people (contextual)","mountain","lake","neighborhood"], 0, "Vocabulary", "bayan is polysemous.");
+addMCQ("“Barangay” ay…", ["smallest political unit","a province","a city district","a continent"], 0, "Vocabulary", "barangay = smallest political unit.");
+addMCQ("“Isla” ay…", ["island","lake","river","peninsula"], 0, "Vocabulary", "isla = island.");
+
+// Countries & nationalities
+addMCQ("Ano ang Filipino ng “United States”?", ["Estados Unidos","Estados Unitos","Estados Unido","Estados Unida"], 0, "Vocabulary", "Estados Unidos.");
+addMCQ("Piliin ang tama: “I am Filipino.”", ["Filipino/a ako.","Ako Filipino/a.","Pilipino ako ay.","Filipino ako na."], 0, "Vocabulary", "Filipino/a ako.");
+addMCQ("“Hapon ako.” ay nangangahulugang…", ["I am Japanese.","I am Chinese.","I am Korean.","I am Spanish."], 0, "Vocabulary", "Hapon = Japanese.");
+addMCQ("Alin ang tama? “Koreano/a ako.” ay…", ["I am Korean.","I live in Korea.","I am from Korea (taga‑Korea).","I speak Korean."], 0, "Vocabulary", "Koreano/a ako = I am Korean.");
+addMCQ("“Filipino‑American ako.” ay tumutukoy sa…", ["citizenship/identity","job","address","language only"], 0, "Vocabulary", "Composite identity.");
+
+// Sentence guides (locations)
+addMCQ("Ang Quezon City ay nasa ___", ["Metro Manila","Laguna","Aklan","Cebu"], 0, "Grammar", "Quezon City is in Metro Manila.");
+addMCQ("Nasa ___ ang Los Angeles.", ["California","New York","Laguna","Aklan"], 0, "Grammar", "Los Angeles is in California.");
+addMCQ("Ang Paete ay nasa ___", ["Laguna","Aklan","Metro Manila","Capiz"], 0, "Grammar", "Paete is in Laguna.");
+
+// Taga- origins
+addMCQ("Tamang pahayag: Mauro is from Aklan.", ["Taga‑Aklan si Mauro.","Si Mauro ay nasa Aklan.","Aklan taga si Mauro.","Mauro taga Aklan nasa."], 0, "Grammar", "taga‑ + place.");
+addMCQ("Tamang pahayag: I am from Boston.", ["Taga‑Boston ako.","Ako ay nasa Boston.","Ako taga ng Boston.","Boston ako ay taga."], 0, "Grammar", "taga‑ + place.");
+
+// Nakatira + nasa / nasaan
+addFIB("Punuan: ____ ang San Francisco?", ["Nasaan"], "Grammar", "Use nasaan for questions about location.");
+addFIB("Punuan: ____ California ang Los Angeles.", ["Nasa"], "Grammar", "Use nasa to state location.");
+addFIB("Punuan: ____ ako sa Maynila.", ["Nakatira"], "Grammar", "naka‑ indicates state (nakatira = live).");
+addFIB("Isalin/Complete: Where do you live now? “Saan ka ____ nakatira ____?”", ["na ngayon","ngayon na","na  ngayon","ngayon  na"], "Grammar", "‘na’ = already; ‘ngayon’ = now (order varies in speech).");
+
+// Ownership & pronouns (short checks relevant here)
+addMCQ("Alin ang tumutukoy sa plural you (formal/plural)?", ["kayo","ka","ikaw","siya"], 0, "Vocabulary", "kayo = you (plural/formal).");
+
+// Adjectives describing places
+addMCQ("Piliin ang natural na pangungusap: “Laguna is beautiful.”", ["Maganda ang Laguna.","Maganda Laguna ang.","Ang Laguna ay maganda na.","Laguna maganda ay."], 0, "Grammar", "Maganda ang Laguna.");
+addMCQ("“Malinis na bansa ang bansang Hapon.” ay nangangahulugang…", ["Japan is a clean country.","Japan is a big island.","Japan is a crowded city.","Japan is a small town."], 0, "Vocabulary", "Correct reading.");
+addMCQ("Ano ang kabaligtaran ng “malaki”?", ["maliit","maiksi","pandak","mahaba"], 0, "Vocabulary", "Opposite pairs.");
+addMCQ("Ano ang kabaligtaran ng “maganda”?", ["pangit","madumi","maliit","maikli"], 0, "Vocabulary", "Opposite pairs.");
+
+// Comparatives / Superlatives
+addMCQ("Piliin ang tama: “____ malaki ang lungsod ng Quezon kaysa sa lungsod ng Makati.”", ["Mas","Pinaka","Napaka","Higit"], 0, "Grammar", "mas … kaysa sa …");
+addMCQ("“Pinakamalaki ang lungsod ng Davao.” Ang kahulugan ng “pinaka‑” ay…", ["superlative (the most)","comparative (more)","equal","less"], 0, "Grammar", "pinaka‑ = superlative.");
+addMCQ("Ayon sa aralin: “Mas maliit ang Netherlands sa Pilipinas.” Ito ay halimbawa ng…", ["paghahambing (comparative)","superlative","possessive","passive"], 0, "Grammar", "Comparative with mas … kaysa/sa …");
+addMCQ("Alin ang pinakamaliit (ayon sa halimbawa)?", ["Singapore","Pilipinas","Netherlands","California"], 0, "Grammar", "Pinakamaliit ang Singapore (example).");
+addMCQ("Punan: “Aling lapis ang ____mahaba?”", ["pinaka"," pinaka","Pinaka","PIKAKA"], 0, "Grammar", "pinaka‑ + adj = superlative.");
+addMCQ("Piliin ang tamang paghahambing: “Mas mahaba ang ballpen sa lapis.”", ["Comparative: mas + adj + sa/kaysa (object)","Superlative: pinaka‑ + adj","Equality","Not comparison"], 0, "Grammar", "Pattern recognition.");
+
+
+// Culture note: bayan polysemy
+addMCQ("Ang salitang “bayan” ay maaaring tumukoy sa…", ["(lahat ng nabanggit) bansa / bayan / bayang Pilipino (people)","bansa lamang","baryo lamang","lungsod lamang"], 0, "Culture", "Polysemy per culture notes.");
+
+
+// Reading comprehension — “Ako at ang Aking mga Kaibigan”
+addMCQ("Saan nakatira ngayon ang nagsasalita (ako)?", ["Sa Maynila","Sa Bontoc","Sa Cordillera","Sa Laguna"], 0, "Reading", "Text: Nakatira na ako ngayon sa Maynila.");
+addMCQ("Taga‑saan si Robert?", ["Connecticut","Berkeley","San Francisco","California"], 0, "Reading", "Text: Amerikano si Robert. Taga‑Connecticut siya…");
+addMCQ("Saan nakatira si Robert?", ["Berkeley","San Francisco","Connecticut","Los Angeles"], 0, "Reading", "Text: …pero nakatira siya sa Berkeley.");
+addMCQ("Saan ang Minoo‑shi?", ["Sa Osaka, Hapon","Sa Tokyo, Hapon","Sa Kyoto, Hapon","Sa Aichi, Hapon"], 0, "Reading", "Text: Minoo‑shi. Nasa Osaka sa bansang Hapon.");
+addMCQ("Aling lungsod ang sinabing maganda?", ["San Francisco","Berkeley","Minoo‑shi","Quezon City"], 0, "Reading", "Text: Maganda ang San Francisco.");
+addMCQ("Aling lungsod ang sinabing malinis?", ["Minoo‑shi","San Francisco","Quezon City","Berkeley"], 0, "Reading", "Text: Malinis ang Minoo‑shi.");
+
+// Additional FIB variants for practice
+addFIB("Isalin / punuan: “I live in Manila now.” — Nakatira ____ sa Maynila ____.", ["ako ngayon","ako  ngayon","ngayon ako","ako na ngayon","ngayon na ako"], "Grammar", "Order flexible; include ‘ngayon’ and ‘ako’.");
+addFIB("Punuan: “I am from Aklan.” — ____‑Aklan ako.", ["Taga","taga"], "Grammar", "taga‑ + place.");
+addFIB("Punuan: “Where is Aklan?” — ____ ang Aklan?", ["Nasaan","nasaan"], "Grammar", "Use nasaan for where.");
+addFIB("Punuan: “Aklan is in Panay.” — ____ Panay ang Aklan.", ["Nasa","nasa"], "Grammar", "Use nasa to state location.");
+
+// Build topics array
+const TOPICS=[...new Set(BANK.map(q=>q.topic))].sort();
+
+// ---------- UI Elements ----------
+const elStem=document.getElementById('stem'), elOptions=document.getElementById('options'), elRationale=document.getElementById('rationale'), elStatus=document.getElementById('status');
+const elShowAns=document.getElementById('showAns'), elAgain=document.getElementById('again'), elNext=document.getElementById('next');
+const elType=document.getElementById('typeBadge'), elTopic=document.getElementById('topicBadge');
+const elCategory=document.getElementById('category'), elMode=document.getElementById('mode'), elTopicFilter=document.getElementById('topicFilter'), elTimer=document.getElementById('timer');
+const elFibWrap=document.getElementById('fibWrap'), elFibInput=document.getElementById('fibInput'), elFibCheck=document.getElementById('fibCheck');
+const elScore=document.getElementById('score'), elStreak=document.getElementById('streak'), elTracker=document.getElementById('tracker');
+const elProgressLabel=document.getElementById('progresslabel'), elProgressFill=document.getElementById('progressfill');
+const toast=document.getElementById('toast'); const elExport=document.getElementById('export');
+
+// topic dropdown fill
+TOPICS.forEach(t=>{ const o=document.createElement('option'); o.value=t; o.textContent=t; elTopicFilter.appendChild(o); });
+
+function ensureTopic(t){ if(!stats.topics[t]) stats.topics[t]={seen:0,correct:0}; }
+function setProgress(){ elScore.textContent=stats.score; elStreak.textContent=stats.streak; elProgressLabel.textContent=`Progress: ${stats.correct}/${stats.seen}`; const pct=stats.seen? (100*stats.correct/stats.seen):0; elProgressFill.style.width=Math.min(100,pct)+"%"; }
+function buildTracker(){ elTracker.innerHTML=""; TOPICS.forEach(t=>{ ensureTopic(t); const s=stats.topics[t]; const acc=s.seen? Math.round(100*s.correct/s.seen):0; const n1=document.createElement('div'); n1.textContent=t; const n2=document.createElement('div'); n2.textContent=s.seen+" seen"; const n3=document.createElement('div'); n3.textContent=acc+"%"; n3.style.color=acc>=85?'var(--success)':acc>=70?'var(--warn)':'var(--danger)'; elTracker.appendChild(n1); elTracker.appendChild(n2); elTracker.appendChild(n3); }); }
+function toastMsg(m){ toast.textContent=m; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1000); }
+
+// ---------- Selection ----------
+function allowed(q){
+  const cat=elCategory.value;
+  if(cat==='vocab') return q.topic==='Vocabulary';
+  if(cat==='grammar') return q.topic==='Grammar';
+  if(cat==='reading') return q.topic==='Reading';
+  if(cat==='culture') return q.topic==='Culture';
+  return true;
+}
+function pick(){
+  const mode=elMode.value;
+  let pool=[];
+  if(mode==='topic' && elTopicFilter.value!=='any'){ pool=BANK.filter(q=>q.topic===elTopicFilter.value && allowed(q)); }
+  else { pool=BANK.filter(allowed); }
+  if(!pool.length) return null;
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+
+// ---------- Render & Scoring ----------
+let current=null, allow=true, timerId=null, scored=false;
+function render(q){
+  current=q; allow=true; scored=false;
+  elType.textContent=q.type; elTopic.textContent=q.topic;
+  elStem.textContent=q.stem; elRationale.classList.add('hidden'); elRationale.textContent=""; elStatus.textContent="Choose the best answer.";
+  elOptions.innerHTML=""; elFibWrap.classList.add('hidden'); elFibWrap.style.display='none';
+  if(q.type==="MCQ"){
+    q.options.forEach((opt,i)=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=opt; b.onclick=()=>{ if(!allow||scored) return; clickS(); finish([i]); }; elOptions.appendChild(b); });
+  }else{
+    elFibWrap.classList.remove('hidden'); elFibWrap.style.display='flex'; elFibInput.value=""; elFibInput.focus();
+    const handler=()=>{ if(!allow||scored) return; finish([elFibInput.value]); };
+    elFibCheck.onclick=handler; elFibInput.onkeydown=(e)=>{ if(e.key==='Enter') handler(); };
+  }
+  setTimer();
+}
+function finish(sel){
+  allow=false; scored=true;
+  let ok=false, ans="";
+  if(current.type==="MCQ"){
+    const idx=sel[0]; ok=current.answers.includes(idx);
+    [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect'));
+    ans=current.options[current.answers[0]];
+  }else{
+    const user=normalize(sel[0]||""); const accepted=(current.fibAnswers||[]).map(a=>normalize(a));
+    ok=accepted.includes(user);
+    ans=current.fibAnswers? current.fibAnswers[0]:"";
+  }
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++;
+  if(ok){ stats.correct++; stats.topics[current.topic].correct++; stats.streak++; stats.score+=10; good(); toastMsg("Ayos!"); elStatus.textContent="✅ Tamang sagot! +10 puntos"; }
+  else{ stats.streak=0; stats.score-=5; bad(); toastMsg("Subukan muli!"); elStatus.textContent="❌ Mali. −5 puntos"; }
+  elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+  localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+}
+function showAnswerPenalty(){
+  if(scored) return;
+  allow=false; scored=true;
+  if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); }
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++; stats.streak=0; stats.score-=5; bad(); toastMsg("Subukan muli!");
+  const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]);
+  elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+  elStatus.textContent="👀 Shown answer. −5 puntos"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+}
+function nextQ(){ const q=pick(); if(!q){ elStem.textContent="No questions available."; return; } render(q); }
+// Timer
+function setTimer(){
+  if(timerId) clearInterval(timerId);
+  const t=elTimer.value; if(t==="off") return; let left=parseInt(t,10); elStatus.textContent="⏱️ "+left+"s";
+  timerId=setInterval(()=>{
+    if(!allow){ clearInterval(timerId); return; }
+    left--; elStatus.textContent="⏱️ "+left+"s";
+    if(left<=0){
+      clearInterval(timerId); allow=false; scored=true;
+      stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++; stats.streak=0; stats.score-=5; bad(); toastMsg("Oras na!");
+      if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); }
+      const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]);
+      elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+      elStatus.textContent="⏰ Oras na! −5 puntos"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+    }
+  },1000);
+}
+
+// Buttons
+document.getElementById('reset').onclick=()=>{ if(confirm("Reset all stats?")){ stats={version:10,seen:0,correct:0,topics:{},score:0,streak:0}; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); } };
+document.getElementById('next').onclick=()=>{ nextQ(); };
+document.getElementById('again').onclick=()=>{ if(current) render(current); };
+document.getElementById('showAns').onclick=()=>{ showAnswerPenalty(); };
+document.getElementById('export').onclick=()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='tagalog_aralin6_stats.json'; a.click(); };
+
+// Init
+setAudioUi(); setProgress(); buildTracker();
+window.addEventListener('load',()=>{ nextQ(); });
+</script>
+</body>
+</html>

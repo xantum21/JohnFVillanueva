@@ -1,17 +1,9 @@
-PLAY.JOHNFVILLANUEVA.COM — SIMPLE SETUP
+PLAY.JOHNFVILLANUEVA.COM — FINAL ROOT PAGE
 
-Current safe arrangement:
-- johnfvillanueva.com and johnfvillanueva.com/play/ are hosted by GitHub Pages.
-- play.johnfvillanueva.com remains connected to GoHighLevel so the existing Dino Kart game continues to work.
+The repository now includes GHL-PLAY-HUB.html. Use that file as the root page for play.johnfvillanueva.com inside GoHighLevel.
 
-To make typing play.johnfvillanueva.com open the new hub:
-1. In GoHighLevel, create or edit the homepage assigned to play.johnfvillanueva.com.
-2. Use the supplied GHL-PLAY-ROOT-REDIRECT.html as that root page, or configure an external redirect to:
-   https://johnfvillanueva.com/play/
-3. Do not delete the /dino-racers page in GoHighLevel.
+The root hub links to:
+- /dino-racers on GoHighLevel
+- the GitHub-hosted Math, Kana, Pharmacology, Spanish, and Tagalog experiences
 
-Result:
-- play.johnfvillanueva.com -> new Play Hub
-- play.johnfvillanueva.com/dino-racers -> existing Dino Kart game
-
-The browser will ultimately show johnfvillanueva.com/play/ after the redirect. Keeping play.johnfvillanueva.com in the address bar would require a separate GitHub Pages repository/custom domain or migrating the Dino source into this repository.
+This preserves Dino Kart on GoHighLevel while making play.johnfvillanueva.com a real interactive-media index instead of redirecting visitors directly into Dino Kart.

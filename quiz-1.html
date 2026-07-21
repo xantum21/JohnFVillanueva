@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Tagalog — Aralin 5 • Ang Aking mga Gamit | John Villanueva</title>
+<style>
+:root{
+  --bg:#0c0d10; --card:#15171d; --ink:#f7f8fb; --muted:#b8bdc9;
+  --accent:#ffd23f; --success:#43a047; --danger:#f4511e; --warn:#ffb300;
+}
+*{box-sizing:border-box}
+body{margin:0;background:
+  radial-gradient(900px 400px at 12% -10%, rgba(255,210,63,0.12), transparent),
+  radial-gradient(1000px 500px at 100% 0%, rgba(244,81,30,0.10), transparent),
+  linear-gradient(180deg,#111216,#0a0b0e);
+  color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+header{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;padding:14px 16px}
+.brand{font-weight:800;letter-spacing:.2px}
+.pill{background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 12px;color:var(--ink);display:flex;gap:8px;align-items:center}
+button,select{background:var(--card);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 12px;color:var(--ink);cursor:pointer}
+button:hover,select:hover{border-color:rgba(255,210,63,.6)}
+main{max-width:1100px;margin:0 auto;padding:8px 12px 24px}
+.controls{display:grid;grid-template-columns:1fr 1fr 120px 120px;gap:10px;margin:10px 0}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.qcard{padding:18px 20px}
+.qstem{font-size:22px;line-height:1.35;margin:6px 0 8px}
+.options{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.opt{padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);cursor:pointer;text-align:left}
+.opt:hover{border-color:rgba(255,210,63,.6)}
+.opt.correct{background:rgba(67,160,71,.12);border-color:var(--success)}
+.opt.incorrect{background:rgba(244,81,30,.12);border-color:var(--danger)}
+.muted{color:var(--muted);font-size:13px}
+.badges{display:flex;gap:8px;align-items:center}
+.badge{font-size:11px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--muted)}
+.footer{margin-top:12px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px}
+.hidden{display:none}
+.toast{position:fixed;right:16px;bottom:16px;background:#111;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 12px;opacity:0;transform:translateY(10px);transition:all .2s}
+.toast.show{opacity:1;transform:translateY(0)}
+.scorebox{display:flex;gap:8px;align-items:center}
+.row{display:flex;gap:8px;align-items:center}
+#progressbar{height:28px;background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:4px;display:flex;align-items:center;margin:0 12px 14px 12px;position:relative}
+#progressfill{height:100%;border-radius:999px;background:linear-gradient(90deg,#ffd54f,#ffca28);width:0%}
+#progresslabel{position:absolute;margin-left:12px;font-size:13px;color:#111}
+.grid2{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+input[type="text"]{font-size:16px}
+kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;border:1px solid rgba(255,255,255,.15);padding:2px 6px;border-radius:6px;background:rgba(255,255,255,.05)}
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style><link rel="icon" href="/assets/favicon.svg"><meta name="theme-color" content="#0d2932">
+<style id="jv-responsive-patch">
+html,body{max-width:100%;overflow-x:hidden}
+body{padding-bottom:82px!important}
+img,video,canvas,svg{max-width:100%;height:auto}
+#jv-play-nav-style + body{}
+.jv-play-nav{max-width:calc(100vw - 20px);flex-wrap:wrap}
+@media(max-width:900px){
+  header{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important;padding:12px!important}
+  header .brand{flex:1 1 100%!important;line-height:1.35!important}
+  .controls{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+  .controls>.ctrl,.controls>.row,.controls>div{width:100%!important;max-width:100%!important}
+  .grid2{grid-template-columns:1fr!important}
+  .footer{grid-template-columns:1fr!important}
+  main,.wrap{width:100%!important;max-width:100%!important;padding-left:10px!important;padding-right:10px!important}
+  select,button,input[type="text"],input[type="number"]{max-width:100%!important}
+  .volwrap{width:100%!important;justify-content:flex-start!important}
+  input[type="range"]{max-width:70vw!important}
+  table{width:100%!important;display:block!important;overflow-x:auto!important}
+}
+@media(max-width:620px){
+  body{padding-left:0!important;padding-right:0!important;padding-bottom:94px!important}
+  header{position:relative!important;grid-template-columns:1fr!important}
+  .brand{font-size:1rem!important;overflow-wrap:anywhere!important}
+  .pill{max-width:100%!important;justify-content:center!important}
+  button,select,input[type="text"],input[type="number"]{min-height:44px!important;font-size:16px!important;width:100%!important}
+  .qcard,.card,.panel{border-radius:12px!important;padding:13px!important}
+  .qstem,#question,.big{font-size:clamp(1.25rem,6.5vw,1.8rem)!important}
+  .options,.grid{grid-template-columns:1fr!important}
+  .row{max-width:100%!important;flex-wrap:wrap!important}
+  #leaderboardBtn,#returnBtn{position:static!important;display:inline-flex!important;width:auto!important;margin:8px!important}
+  #leaderboardTable{padding:10px!important}
+  .jv-play-nav{left:8px!important;right:8px!important;bottom:8px!important;justify-content:center!important}
+  .jv-play-nav a{flex:1 1 auto!important;justify-content:center!important;text-align:center!important}
+}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Library</a><a href="/play/filipino/">All Tagalog Lessons</a><a class="secondary" href="/projects.html">Portfolio</a></nav>
+<header>
+<div class="brand">🇵🇭 Tagalog — Aralin 5 • Ang Aking mga Gamit</div>
+<div class="pill scorebox">Score: <strong id="score">0</strong> • Streak: <strong id="streak">0</strong></div>
+<button class="pill" id="sfx">🔊 Sound: On</button>
+<div class="pill"><span class="muted">Total in bank:</span> <strong id="total">—</strong></div>
+</header>
+<div id="progressbar"><div id="progressfill"></div><span id="progresslabel">Progress: 0/0</span></div>
+<main>
+<section class="controls card">
+<div class="row"><span class="muted">Question source:</span>
+<select id="category">
+<option selected="" value="all">All (with Culture)</option>
+<option value="vocab">Vocabulary only</option>
+<option value="grammar">Grammar only</option>
+<option value="culture">Culture only</option>
+</select>
+</div>
+<div class="row"><span class="muted">Timer:</span>
+<select id="timer">
+<option selected="" value="off">Off</option>
+<option value="60">60s</option>
+<option value="90">90s</option>
+</select>
+</div>
+<button id="reset">Reset</button>
+<button id="next">Next ▶</button>
+</section>
+<section class="card qcard" id="qcard">
+<div class="badges"><span class="badge" id="typeBadge">—</span><span class="badge" id="topicBadge">—</span></div>
+<div class="qstem" id="stem">Press <kbd>Next</kbd> to begin. Stems are in Tagalog; directions and UI in English.</div>
+<div class="options" id="options"></div>
+<div class="hidden row" id="fibWrap" style="margin-top:12px; display:none;">
+<input id="fibInput" placeholder="Type your answer in Tagalog…" style="flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:#fff" type="text"/>
+<button id="fibCheck">Check</button>
+</div>
+<div class="rationale muted hidden" id="rationale"></div>
+<div class="footer">
+<div class="muted" id="status">Choose the best answer.</div>
+<div class="row"><button id="showAns">Show answer</button><button id="again">Again 🔁</button></div>
+</div>
+</section>
+<section class="grid2" style="margin-top:12px">
+<div class="card muted">
+<div class="row" style="justify-content:space-between;align-items:flex-start">
+<div>
+<div><strong>Covers (Aralin 5):</strong> colors; ownership markers <strong>kay/kina/sa</strong>; pronouns <strong>akin/kanya/kanila/amin/atin</strong>; location with <strong>nasa</strong> (<em>ibabaw / ilalim / tabi / loob / labas</em>); interrogatives <strong>alin</strong>, <strong>anong kulay</strong>, <strong>kanino</strong>, <strong>nasaan</strong>; adjective–noun linker (<strong>na</strong>/<strong>ng</strong>); dialogue checks.</div>
+<div>Scoring: <strong>+10</strong> correct, <strong>−5</strong> incorrect/timeout/show. Popups: <em>“Ayos!” / “Subukan muli!” / “Oras na!”</em></div>
+</div>
+<div><button id="export">Export results</button></div>
+</div>
+<div class="muted" id="tracker" style="margin-top:10px;display:grid;grid-template-columns:1fr 90px 90px;gap:6px"></div>
+</div>
+<div class="card">
+<div class="muted">Tips: For linkers, use <strong>na</strong> after consonant (itim <strong>na</strong> bag) and contract to <strong>ng</strong> after vowels (pula → pula<strong>ng</strong> telepono).</div>
+</div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+// ---------- Helpers ----------
+function stripAccents(str){return (str||"").toString().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().trim();}
+function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+
+// ---------- State ----------
+const KEY="tagalog_a6_stats_v1";
+let stats=JSON.parse(localStorage.getItem(KEY)||"{}");
+if(!stats.version) stats={version:1,seen:0,correct:0,topics:{},score:0,streak:0};
+
+// ---------- Audio (simple + reliable) ----------
+let AUDIO=true;
+const sfxBtn=document.getElementById('sfx');
+function tone(f,d=0.12,t='sine',g=0.07){ if(!AUDIO) return; const ctx=new (window.AudioContext||window.webkitAudioContext)(); const o=ctx.createOscillator(), ga=ctx.createGain(); o.type=t; o.frequency.value=f; o.connect(ga); ga.connect(ctx.destination); ga.gain.value=g; o.start(); setTimeout(()=>{ga.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.1); o.stop(ctx.currentTime+0.12);}, d*1000); }
+function good(){ tone(660,0.10,'triangle',0.09); setTimeout(()=>tone(880,0.12,'triangle',0.08),100); }
+function bad(){ tone(2200,0.06,'square',0.06); setTimeout(()=>tone(1700,0.06,'square',0.05),70); }
+function clickS(){ tone(380,0.05,'sine',0.05); }
+function setAudioUi(){ sfxBtn.textContent=AUDIO? "🔊 Sound: On":"🔊 Sound: Off"; }
+sfxBtn.onclick=()=>{ AUDIO=!AUDIO; setAudioUi(); clickS(); };
+setAudioUi();
+
+// ---------- Mapping ----------
+const COLORS_EN = ["white","black","blue","red","yellow","green","orange","gray","brown","purple","pink"];
+const COLORS_TL_PRIMARY = {
+  "white":"puti","black":"itim","blue":"asul","red":"pula","yellow":"dilaw","green":"berde","orange":"kahel","gray":"kulay abo","brown":"kayumanggi","purple":"lila","pink":"kulay rosas"
+};
+const COLORS_TL_SYNONYMS = {
+  "blue":"bughaw",
+  "green":"luntian",
+  "brown":"kulay kape",
+  "pink":"rosas"
+};
+
+const LOCATIONS = ["ibabaw","ilalim","tabi","loob","labas"];
+const OWN_MARKERS = ["kay","kina","sa"];
+const OWN_PRON = ["akin","kanya","kanila","amin","atin"]; // mine/hers/theirs/ours(excl)/ours(incl)
+
+// ---------- Question Bank ----------
+const BANK=[];
+
+// Utility to push tracker stats
+function ensureTopic(t){ if(!stats.topics[t]) stats.topics[t]={seen:0,correct:0}; }
+
+// Vocab: English → Tagalog (colors)
+function addColorEnToTl(en, tl, topic="Vocabulary"){
+  const distractorsTL = ["puti","itim","asul","bughaw","pula","dilaw","berde","luntian","kahel","kulay abo","kayumanggi","kulay kape","lila","kulay rosas","rosas"];
+  const correct=tl;
+  const opts=shuffle([correct,...shuffle(distractorsTL.filter(x=>x!==correct)).slice(0,3)]);
+  BANK.push({topic, type:"MCQ", stem:`Piliin ang salin sa Filipino ng “${en}”`, options:opts, answers:[opts.indexOf(correct)], rationale:`“${en}” → “${correct}”.`});
+}
+// Vocab: Tagalog → English (colors)
+function addColorTlToEn(tl, en, topic="Vocabulary"){
+  const distractorsEN = ["white","black","blue","red","yellow","green","orange","gray","brown","purple","pink"];
+  const correct=en;
+  const opts=shuffle([correct,...shuffle(distractorsEN.filter(x=>x!==correct)).slice(0,3)]);
+  BANK.push({topic, type:"MCQ", stem:`Ano ang kahulugan ng “${tl}” sa Ingles?`, options:opts, answers:[opts.indexOf(correct)], rationale:`“${tl}” → “${correct}”.`});
+}
+
+// Primary color set
+for(const en of COLORS_EN){
+  const tl = COLORS_TL_PRIMARY[en];
+  addColorEnToTl(en, tl);
+  addColorTlToEn(tl, en);
+}
+// Synonyms as extra practice
+for(const [en, syn] of Object.entries(COLORS_TL_SYNONYMS)){
+  addColorEnToTl(en, syn);
+  addColorTlToEn(syn, en);
+}
+
+// Grammar: linker na/ng (fill the blank with 'na' or 'ng')
+BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: Itim __ bag.`, fibAnswers:["na"], rationale:`Consonant before linker → “na”.`});
+BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: Pula __ telepono.`, fibAnswers:["ng"], rationale:`Vowel before linker → “ng” (pula → pulang telepono).`});
+BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: Berde __ libro.`, fibAnswers:["ng"], rationale:`Vowel before linker → “ng” (berde → berdeng libro).`});
+BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: Dilaw __ payong.`, fibAnswers:["ng"], rationale:`Vowel before linker → “ng” (dilaw → dilawng → dilawang payong).`});
+
+// Grammar: Nasa (location)
+for(const L of LOCATIONS){
+  BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: ____ ${L} ng mesa ang libro.`, fibAnswers:["nasa"], rationale:`Use the preposition “nasa” for locations.`});
+}
+
+// Grammar: Ownership markers kay/kina/sa
+BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: ____ Clara iyan. (That is Clara's.)`, fibAnswers:["kay"], rationale:`Use “kay” with a single proper name.`});
+BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: ____ Clara at Juan ang mga iyan. (Those are Clara's and Juan's.)`, fibAnswers:["kina"], rationale:`Use “kina” with two+ proper names.`});
+BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: ____ kaibigan ko iyan. (That is my friend's.)`, fibAnswers:["sa"], rationale:`Use “sa” with common nouns (kaibigan).`});
+
+// Grammar: Ownership pronouns (MCQ)
+BANK.push({topic:"Grammar", type:"MCQ", stem:`Piliin ang tamang sagot: “_____ iyan.” (That is mine.)`, options:["Akin","Kanya","Kanila","Atin"], answers:[0], rationale:`“Akin” = mine.`});
+BANK.push({topic:"Grammar", type:"MCQ", stem:`Piliin ang tamang sagot: “_____ iyan.” (That is hers.)`, options:["Akin","Kanya","Kanila","Amin"], answers:[1], rationale:`“Kanya” = hers.`});
+BANK.push({topic:"Grammar", type:"MCQ", stem:`Piliin ang tamang sagot: “_____ iyan.” (That is theirs.)`, options:["Kanya","Kanila","Amin","Atin"], answers:[1], rationale:`“Kanila” = theirs.`});
+BANK.push({topic:"Grammar", type:"MCQ", stem:`Piliin ang tamang sagot: “_____ iyan.” (Ours, exclusive.)`, options:["Amin","Atin","Kanila","Akin"], answers:[0], rationale:`“Amin” = ours (exclusive).`});
+BANK.push({topic:"Grammar", type:"MCQ", stem:`Piliin ang tamang sagot: “_____ iyan.” (Ours, inclusive.)`, options:["Akin","Amin","Atin","Kanya"], answers:[2], rationale:`“Atin” = ours (inclusive).`});
+
+// Grammar: Interrogatives forms
+BANK.push({topic:"Grammar", type:"MCQ", stem:`Alin ang tama? (Which is correct?)`, options:["Alin ang bag mo?","Alin bag ang bag mo?","Alin mo ang bag?"], answers:[0], rationale:`Use “Alin ang …” or “Aling …”, not “Alin bag …”.`});
+BANK.push({topic:"Grammar", type:"MCQ", stem:`Piliin ang tama: (What color is your bag?)`, options:["Anong kulay ng bag mo?","Ano kulay ng bag mo?","Ano'ng kulay bag mo?"], answers:[0], rationale:`Standard is “Anong kulay ng …?”`});
+BANK.push({topic:"Grammar", type:"MCQ", stem:`Piliin ang tamang tanong: (Whose umbrella is this?)`, options:["Kaninong payong ito?","Kanino payong ito?","Kanino ang ito payong?"], answers:[0], rationale:`Conversational: “Kaninong payong ito?”`});
+BANK.push({topic:"Grammar", type:"MCQ", stem:`Piliin ang tamang tanong: (Where is the phone?)`, options:["Nasaan ang telepono?","Saan nasa telepono?","Nasaan telepono ang?"], answers:[0], rationale:`Use “Nasaan ang … ?”`});
+
+// Dialogue checks
+BANK.push({topic:"Culture", type:"MCQ", stem:`Sa usapan: “Paabot naman ng lapis.” Ano ang hinihingi?`, options:["Lapis","Libro","Bag","Payong"], answers:[0], rationale:`“Lapis” = pencil.`});
+BANK.push({topic:"Culture", type:"MCQ", stem:`Ano ang sagot kay “Aling lapis?” kung asul ang gusto?`, options:["Iyong kulay asul.","Iyong kulay pula.","Iyong kulay berde.","Iyong kulay dilaw."], answers:[0], rationale:`“Iyong kulay asul.”`});
+BANK.push({topic:"Culture", type:"MCQ", stem:`Ano ang ibig sabihin ng “Walang anuman”?`, options:["You're welcome","Please","Excuse me","Goodbye"], answers:[0], rationale:`“Walang anuman” ≈ You're welcome.`});
+BANK.push({topic:"Culture", type:"MCQ", stem:`Alin sa mga ito ang katutubong (indigenous) salita para sa “blue”?`, options:["Bughaw","Asul","Berde","Kahel"], answers:[0], rationale:`“Bughaw” is indigenous; “asul/berde” are Spanish-derived.`});
+
+// ---------- UI Elements ----------
+const elStem=document.getElementById('stem'), elOptions=document.getElementById('options'), elRationale=document.getElementById('rationale'), elStatus=document.getElementById('status');
+const elShowAns=document.getElementById('showAns'), elAgain=document.getElementById('again'), elNext=document.getElementById('next');
+const elType=document.getElementById('typeBadge'), elTopic=document.getElementById('topicBadge');
+const elCategory=document.getElementById('category'), elTimer=document.getElementById('timer');
+const elFibWrap=document.getElementById('fibWrap'), elFibInput=document.getElementById('fibInput'), elFibCheck=document.getElementById('fibCheck');
+const elScore=document.getElementById('score'), elStreak=document.getElementById('streak'), elTracker=document.getElementById('tracker');
+const elProgressLabel=document.getElementById('progresslabel'), elProgressFill=document.getElementById('progressfill');
+const toast=document.getElementById('toast'); const elExport=document.getElementById('export'); const elTotal=document.getElementById('total');
+
+// Totals
+elTotal.textContent = BANK.length;
+
+// topic list
+const TOPICS=[...new Set(BANK.map(q=>q.topic))].sort();
+function buildTracker(){ elTracker.innerHTML=""; TOPICS.forEach(t=>{ ensureTopic(t); const s=stats.topics[t]||{seen:0,correct:0}; const acc=s.seen? Math.round(100*s.correct/s.seen):0; const n1=document.createElement('div'); n1.textContent=t; const n2=document.createElement('div'); n2.textContent=s.seen+" seen"; const n3=document.createElement('div'); n3.textContent=acc+"%"; n3.style.color=acc>=85?'var(--success)':acc>=70?'var(--warn)':'var(--danger)'; elTracker.appendChild(n1); elTracker.appendChild(n2); elTracker.appendChild(n3); }); }
+
+function toastMsg(m){ toast.textContent=m; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1000); }
+
+// ---------- Selection ----------
+function allowed(q){
+  const cat=elCategory.value;
+  if(cat==='vocab') return q.topic==='Vocabulary';
+  if(cat==='grammar') return q.topic==='Grammar';
+  if(cat==='culture') return q.topic==='Culture';
+  return true;
+}
+function pick(){
+  const pool=BANK.filter(allowed);
+  if(!pool.length) return null;
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+
+// ---------- Render & Scoring ----------
+let current=null, allow=true, timerId=null, scored=false;
+function setProgress(){ elScore.textContent=stats.score; elStreak.textContent=stats.streak; elProgressLabel.textContent=`Progress: ${stats.correct}/${stats.seen}`; const pct=stats.seen? (100*stats.correct/stats.seen):0; elProgressFill.style.width=Math.min(100,pct)+"%"; }
+
+function render(q){
+  current=q; allow=true; scored=false;
+  elType.textContent=q.type; elTopic.textContent=q.topic;
+  elStem.textContent=q.stem; elRationale.classList.add('hidden'); elRationale.textContent=""; elStatus.textContent="Choose the best answer.";
+  elOptions.innerHTML=""; elFibWrap.classList.add('hidden'); elFibWrap.style.display='none';
+  if(q.type==="MCQ"){
+    q.options.forEach((opt,i)=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=opt; b.onclick=()=>{ if(!allow||scored) return; clickS(); finish([i]); }; elOptions.appendChild(b); });
+  }else{
+    elFibWrap.classList.remove('hidden'); elFibWrap.style.display='flex'; elFibInput.value=""; elFibInput.focus();
+    const handler=()=>{ if(!allow||scored) return; finish([elFibInput.value]); };
+    elFibCheck.onclick=handler; elFibInput.onkeydown=(e)=>{ if(e.key==='Enter') handler(); };
+  }
+  setTimer();
+}
+function finish(sel){
+  allow=false; scored=true;
+  let ok=false, ans="";
+  if(current.type==="MCQ"){
+    const idx=sel[0]; ok=current.answers.includes(idx);
+    [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect'));
+    ans=current.options[current.answers[0]];
+  }else{
+    const user=stripAccents(sel[0]||""); const accepted=(current.fibAnswers||[]).map(a=>stripAccents(a));
+    ok=accepted.includes(user);
+    ans=current.fibAnswers? current.fibAnswers[0]:"";
+  }
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen=(stats.topics[current.topic].seen||0)+1;
+  if(ok){ stats.correct++; stats.topics[current.topic].correct=(stats.topics[current.topic].correct||0)+1; stats.streak++; stats.score+=10; good(); toastMsg("Ayos!"); elStatus.textContent="✅ Correct! +10 points"; }
+  else{ stats.streak=0; stats.score-=5; bad(); toastMsg("Subukan muli!"); elStatus.textContent="❌ Not quite. −5 points"; }
+  elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+  localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+}
+function showAnswerPenalty(){
+  if(scored) return;
+  allow=false; scored=true;
+  if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); }
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen=(stats.topics[current.topic].seen||0)+1; stats.streak=0; stats.score-=5; bad(); toastMsg("Subukan muli!");
+  const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]);
+  elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+  elStatus.textContent="👀 Shown answer. −5 points"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+}
+function nextQ(){ const q=pick(); if(!q){ elStem.textContent="No questions available for this filter."; return; } render(q); }
+
+// Timer
+function setTimer(){
+  if(timerId) clearInterval(timerId);
+  const t=elTimer.value; if(t==="off") return; let left=parseInt(t,10); elStatus.textContent="⏱️ "+left+"s";
+  timerId=setInterval(()=>{ if(!allow){ clearInterval(timerId); return; } left--; elStatus.textContent="⏱️ "+left+"s"; if(left<=0){ clearInterval(timerId); allow=false; scored=true; stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen=(stats.topics[current.topic].seen||0)+1; stats.streak=0; stats.score-=5; bad(); toastMsg("Oras na!"); if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); } const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]); elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden'); elStatus.textContent="⏰ Time! −5 points"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); } },1000);
+}
+
+// Buttons
+document.getElementById('reset').onclick=()=>{ if(confirm("Reset all stats?")){ stats={version:1,seen:0,correct:0,topics:{},score:0,streak:0}; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); } };
+document.getElementById('next').onclick=()=>{ nextQ(); };
+document.getElementById('again').onclick=()=>{ if(current) render(current); };
+document.getElementById('showAns').onclick=()=>{ showAnswerPenalty(); };
+document.getElementById('export').onclick=()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='tagalog_aralin6_stats.json'; a.click(); };
+
+// Init
+setProgress(); buildTracker();
+window.addEventListener('load',()=>{ nextQ(); });
+</script>
+</body>
+</html>

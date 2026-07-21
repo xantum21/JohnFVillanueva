@@ -1,17 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://johnfvillanueva.com/</loc></url>
-  <url><loc>https://johnfvillanueva.com/about.html</loc></url>
-  <url><loc>https://johnfvillanueva.com/work.html</loc></url>
-  <url><loc>https://johnfvillanueva.com/projects.html</loc></url>
-  <url><loc>https://johnfvillanueva.com/life.html</loc></url>
-  <url><loc>https://johnfvillanueva.com/timeline.html</loc></url>
-  <url><loc>https://johnfvillanueva.com/contact.html</loc></url>
+  <url>
+    <loc>https://johnfvillanueva.com/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://johnfvillanueva.com/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://johnfvillanueva.com/work.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://johnfvillanueva.com/projects.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://johnfvillanueva.com/life.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://johnfvillanueva.com/timeline.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://johnfvillanueva.com/contact.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url><loc>https://johnfvillanueva.com/play/</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/math-game/</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/kana-game/</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/pharmacology/</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/spanish/</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/</loc></url>
   <url><loc>https://johnfvillanueva.com/dino-racers/</loc></url>
   <url><loc>https://johnfvillanueva.com/pharmacology/</loc></url>
-  <url><loc>https://johnfvillanueva.com/math-game/</loc></url>
-  <url><loc>https://johnfvillanueva.com/kana-game/</loc></url>
   <url><loc>https://johnfvillanueva.com/spanish/</loc></url>
   <url><loc>https://johnfvillanueva.com/filipino/</loc></url>
+  <url><loc>https://johnfvillanueva.com/math-game/</loc></url>
+  <url><loc>https://johnfvillanueva.com/kana-game/</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/pharmacology/quiz-1.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/pharmacology/quiz-2.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/pharmacology/quiz-3.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/pharmacology/quiz-4.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/spanish/lesson-1.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/spanish/lesson-2.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-1.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-2.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-3.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-4.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-5.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-6.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-7.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-8.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-9.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-10.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-11.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-12.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-13.html</loc></url>
+  <url><loc>https://johnfvillanueva.com/play/filipino/lesson-14.html</loc></url>
 </urlset>

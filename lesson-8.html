@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Tagalog — Aralin 12 • Pagdating at Pag-alis | John Villanueva</title>
+<style>
+:root{
+  --bg:#0b0b0c; --card:#14141a; --ink:#f7f8fc; --muted:#b7bbc9;
+  --accent:#7dd3fc; --success:#5ac470; --danger:#ef6b6b; --warn:#ffcc80;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--ink); font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial;
+  background:
+    radial-gradient(900px 400px at 12% -10%, rgba(125,211,252,.12), transparent),
+    radial-gradient(1000px 500px at 100% 0%, rgba(239,107,107,.12), transparent),
+    linear-gradient(180deg,#101014,#0a0a0c);
+}
+header{
+  display:grid; grid-template-columns:1fr auto auto auto auto; gap:10px;
+  align-items:center; padding:14px 16px;
+}
+.brand{font-weight:800; letter-spacing:.2px}
+.pill{
+  background:var(--card); border:1px solid rgba(255,255,255,.12);
+  border-radius:999px; padding:8px 12px; color:var(--ink);
+  display:flex; gap:8px; align-items:center; cursor:pointer;
+}
+button,select{
+  background:var(--card); border:1px solid rgba(255,255,255,.14);
+  border-radius:12px; padding:10px 12px; color:var(--ink); cursor:pointer;
+}
+button:hover,select:hover{border-color:rgba(125,211,252,.6)}
+main{max-width:1180px; margin:0 auto; padding:8px 12px 22px}
+.controls{
+  display:grid; grid-template-columns:repeat(6,1fr) 120px 120px; gap:10px; margin:10px 0;
+}
+.ctrl{display:flex; align-items:center; gap:8px}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:16px;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+.qcard{padding:18px 20px}
+.qstem{font-size:22px; line-height:1.35; margin:6px 0 8px}
+.options{display:grid; grid-template-columns:1fr; gap:10px; margin-top:12px}
+.opt{
+  padding:13px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03); cursor:pointer; text-align:left;
+}
+.opt:hover{border-color:rgba(125,211,252,.6)}
+.opt.correct{background:rgba(90,196,112,.12); border-color:var(--success)}
+.opt.incorrect{background:rgba(239,107,107,.12); border-color:var(--danger)}
+.muted{color:var(--muted); font-size:13px}
+.badges{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+.badge{
+  font-size:11px; padding:4px 8px; border-radius:999px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10);
+  color:var(--muted)
+}
+.footer{margin-top:12px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px}
+.hidden{display:none}
+.toast{
+  position:fixed; right:16px; bottom:16px; background:#111; color:#fff;
+  border:1px solid rgba(255,255,255,.10); border-radius:12px; padding:10px 12px;
+  opacity:0; transform:translateY(10px); transition:all .18s;
+}
+.toast.show{opacity:1; transform:translateY(0)}
+.scorebox{display:flex; gap:8px; align-items:center}
+.volwrap{display:flex; gap:8px; align-items:center}
+#progressbar{
+  height:30px; background:var(--card); border:1px solid rgba(255,255,255,.10);
+  border-radius:999px; padding:4px; display:flex; align-items:center; margin:0 12px 14px 12px; position:relative
+}
+#progressfill{height:100%; border-radius:999px; background:linear-gradient(90deg,#7dd3fc,#60a5fa); width:0%}
+#progresslabel{position:absolute; margin-left:12px; font-size:13px; color:#111}
+.grid2{display:grid; grid-template-columns:2fr 1fr; gap:12px}
+#tracker{display:grid; grid-template-columns:1fr 90px 90px; gap:6px}
+.row{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+input[type="text"]{
+  font-size:16px; outline:none;
+  padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06); color:#fff
+}
+pre.reading{white-space:pre-wrap; background:rgba(255,255,255,.04); padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.08)}
+kbd{
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15);
+  border-bottom-color:rgba(0,0,0,.25); border-radius:6px; padding:2px 6px; font-family:inherit
+}
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style><link rel="icon" href="/assets/favicon.svg"><meta name="theme-color" content="#0d2932">
+<style id="jv-responsive-patch">
+html,body{max-width:100%;overflow-x:hidden}
+body{padding-bottom:82px!important}
+img,video,canvas,svg{max-width:100%;height:auto}
+#jv-play-nav-style + body{}
+.jv-play-nav{max-width:calc(100vw - 20px);flex-wrap:wrap}
+@media(max-width:900px){
+  header{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important;padding:12px!important}
+  header .brand{flex:1 1 100%!important;line-height:1.35!important}
+  .controls{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+  .controls>.ctrl,.controls>.row,.controls>div{width:100%!important;max-width:100%!important}
+  .grid2{grid-template-columns:1fr!important}
+  .footer{grid-template-columns:1fr!important}
+  main,.wrap{width:100%!important;max-width:100%!important;padding-left:10px!important;padding-right:10px!important}
+  select,button,input[type="text"],input[type="number"]{max-width:100%!important}
+  .volwrap{width:100%!important;justify-content:flex-start!important}
+  input[type="range"]{max-width:70vw!important}
+  table{width:100%!important;display:block!important;overflow-x:auto!important}
+}
+@media(max-width:620px){
+  body{padding-left:0!important;padding-right:0!important;padding-bottom:94px!important}
+  header{position:relative!important;grid-template-columns:1fr!important}
+  .brand{font-size:1rem!important;overflow-wrap:anywhere!important}
+  .pill{max-width:100%!important;justify-content:center!important}
+  button,select,input[type="text"],input[type="number"]{min-height:44px!important;font-size:16px!important;width:100%!important}
+  .qcard,.card,.panel{border-radius:12px!important;padding:13px!important}
+  .qstem,#question,.big{font-size:clamp(1.25rem,6.5vw,1.8rem)!important}
+  .options,.grid{grid-template-columns:1fr!important}
+  .row{max-width:100%!important;flex-wrap:wrap!important}
+  #leaderboardBtn,#returnBtn{position:static!important;display:inline-flex!important;width:auto!important;margin:8px!important}
+  #leaderboardTable{padding:10px!important}
+  .jv-play-nav{left:8px!important;right:8px!important;bottom:8px!important;justify-content:center!important}
+  .jv-play-nav a{flex:1 1 auto!important;justify-content:center!important;text-align:center!important}
+}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Library</a><a href="/play/filipino/">All Tagalog Lessons</a><a class="secondary" href="/projects.html">Portfolio</a></nav>
+<header>
+<div class="brand">⏰ Tagalog — Aralin 12 • Pagdating at Pag-alis</div>
+<div class="pill scorebox">Score: <strong id="score">0</strong> • Streak: <strong id="streak">0</strong></div>
+<button class="pill" id="sfx">🔊 Sound: On</button>
+<button class="pill" id="music">🎵 Music: On</button>
+<div class="pill volwrap"><span class="muted">Vol</span><input id="vol" max="100" min="0" style="width:140px" type="range" value="60"/></div>
+</header>
+<div id="progressbar"><div id="progressfill"></div><span id="progresslabel">Progress: 0/0</span></div>
+<main>
+<section class="controls card">
+<div class="ctrl"><span class="muted">Question source:</span>
+<select id="category">
+<option selected="" value="all">All (Dialogue, Time, Grammar, Station, Culture, Reading)</option>
+<option value="dialogue">Dialogue only</option>
+<option value="time">Time-only</option>
+<option value="grammar">Grammar only</option>
+<option value="station">Station &amp; tickets only</option>
+<option value="culture">Culture only</option>
+<option value="reading">Reading only</option>
+</select>
+</div>
+<div class="ctrl"><span class="muted">Selection mode:</span>
+<select id="mode">
+<option selected="" value="adaptive">Adaptive (prioritize weak topics)</option>
+<option value="random">Random</option>
+<option value="topic">By topic</option>
+</select>
+</div>
+<div class="ctrl"><span class="muted">Topic:</span>
+<select id="topicFilter"><option selected="" value="any">Any</option></select>
+</div>
+<div class="ctrl"><span class="muted">Timer:</span>
+<select id="timer">
+<option selected="" value="off">Off</option>
+<option value="60">60s</option>
+<option value="90">90s</option>
+<option value="120">120s</option>
+</select>
+</div>
+<div class="ctrl"><span class="muted">New Q on Enter:</span>
+<select id="enterMode">
+<option selected="" value="off">Off</option>
+<option value="on">On</option>
+</select>
+</div>
+<button id="reset">Reset</button>
+<button id="next">Next ▶</button>
+</section>
+<section class="card qcard" id="qcard">
+<div class="badges"><span class="badge" id="typeBadge">—</span><span class="badge" id="topicBadge">—</span></div>
+<div class="qstem" id="stem">Tap “Next” to begin.</div>
+<pre class="reading hidden" id="reading"></pre>
+<div class="options" id="options"></div>
+<div class="hidden row" id="fibWrap" style="margin-top:12px; display:none;">
+<input id="fibInput" placeholder="Type your answer…" style="flex:1" type="text"/>
+<button id="fibCheck">Check</button>
+</div>
+<div class="rationale muted hidden" id="rationale"></div>
+<div class="footer">
+<div class="muted" id="status">Choose the best answer.</div>
+<div class="row"><button id="showAns">Show answer</button><button id="again">Again 🔁</button></div>
+</div>
+</section>
+<section class="grid2" style="margin-top:12px">
+<div class="card">
+<div class="row" style="justify-content:space-between">
+<div class="muted">
+<strong>Coverage (Aralin 12):</strong> Time-telling (Spanish &amp; indigenous forms), departures/arrivals, station/ticket talk, ordinals, particles (<em>na/pa/lang</em>), imperatives &amp; infinitives, culture (“Filipino time”), Reading—<em>Biyahe Papuntang Sagada</em>.
+          Scoring: <strong>+10</strong> correct, <strong>−5</strong> incorrect/timeout/show-answer.
+        </div>
+<button id="export">Export results</button>
+</div>
+<div class="muted" style="margin-top:8px">UI in English; stems in Tagalog; explanations in English. Audio unlocks on first click/tap.</div>
+<div class="muted" id="tracker" style="margin-top:12px"></div>
+</div>
+<div class="card">
+<div class="muted">
+        Tips: Use <kbd>Enter</kbd> to check a fill-in. Enable “New Q on Enter” to auto-advance after checking.
+        Answers are case-insensitive; spacing/apostrophes normalized; accepts common synonyms and numeric time (e.g., <em>alas-tres kinse ng hapon</em>, <em>3:15 pm</em>).
+      </div>
+</div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+/* ===========================
+   Helpers & Normalization
+   =========================== */
+function stripDiacritics(s){return (s||"").normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+function normalize(s){
+  return stripDiacritics(String(s||""))
+    .toLowerCase()
+    .replace(/[’‘`´]/g,"'")
+    .replace(/[`“”"”“]/g,"'")
+    .replace(/[-–—]/g,"-")
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function normalizeLoose(s){ return normalize(s).replace(/[ -]/g,''); }
+function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+
+/* ===========================
+   State & Storage
+   =========================== */
+const KEY="tagalog_aralin12_time_v1c_stats"; const PREF="tagalog_aralin12_time_v1c_prefs";
+let stats=JSON.parse(localStorage.getItem(KEY)||"{}");
+if(!stats.version) stats={version:1,seen:0,correct:0,topics:{},score:0,streak:0};
+
+/* ===========================
+   Audio (SFX + Background)
+   =========================== */
+let AUDIO=true, MUSIC=true;
+let musicCtx=null, musicGain=null, musicInt=null, step=0;
+const sfxBtn=document.getElementById('sfx'); const musicBtn=document.getElementById('music'); const vol=document.getElementById('vol');
+let pref=JSON.parse(localStorage.getItem(PREF)||"{}");
+if(pref.sfx===undefined) pref.sfx=true; if(pref.music===undefined) pref.music=true; if(pref.volume===undefined) pref.volume=60;
+AUDIO=!!pref.sfx; MUSIC=!!pref.music; vol.value=pref.volume;
+function savePref(){ localStorage.setItem(PREF, JSON.stringify({sfx:AUDIO, music:MUSIC, volume:parseInt(vol.value,10)})); }
+
+function tone(f,d=0.14,t='sine',g=0.06){
+  if(!AUDIO) return;
+  const ctx=new (window.AudioContext||window.webkitAudioContext)();
+  const o=ctx.createOscillator(), ga=ctx.createGain();
+  o.type=t; o.frequency.value=f; o.connect(ga); ga.connect(ctx.destination); ga.gain.value=g;
+  o.start(); setTimeout(()=>{ga.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.1); o.stop(ctx.currentTime+0.12);}, d*1000);
+}
+function good(){ tone(659,0.10,'triangle',0.08); setTimeout(()=>tone(784,0.12,'triangle',0.08),90); setTimeout(()=>tone(880,0.12,'triangle',0.07),180); }
+function bad(){ tone(2300,0.05,'square',0.05); setTimeout(()=>tone(1800,0.05,'square',0.05),60); }
+function clickS(){ tone(360,0.06,'sine',0.05); }
+
+function ensureMusic(){
+  if(!musicCtx){
+    musicCtx=new (window.AudioContext||window.webkitAudioContext)();
+    musicGain=musicCtx.createGain(); musicGain.gain.value=0.6*(parseInt(vol.value,10)/100);
+    musicGain.connect(musicCtx.destination);
+  }
+}
+function chord(freqs){
+  if(!musicCtx) return;
+  freqs.forEach((f,i)=>{
+    const o=musicCtx.createOscillator(), g=musicCtx.createGain();
+    g.gain.value=0.014; o.type='sine'; o.frequency.value=f; o.connect(g); g.connect(musicGain);
+    const t0=musicCtx.currentTime+i*0.07, t1=t0+0.44;
+    o.start(t0); g.gain.setValueAtTime(g.gain.value,t0); g.gain.exponentialRampToValueAtTime(0.0001,t1); o.stop(t1);
+  });
+}
+// I–V–IV–V loop
+function playMusic(){
+  if(!MUSIC) return; ensureMusic(); if(musicInt) return;
+  const A=[220,277.18,329.63];
+  const E=[164.81,246.94,329.63];
+  const D=[146.83,220.00,293.66];
+  const prog=[A,E,D,E];
+  musicInt=setInterval(()=>{ chord(prog[step%prog.length]); step++; }, 560);
+}
+function stopMusic(){ try{clearInterval(musicInt);}catch{} musicInt=null; step=0; }
+function setAudioUi(){ sfxBtn.textContent=AUDIO? "🔊 Sound: On":"🔊 Sound: Off"; musicBtn.textContent=MUSIC? "🎵 Music: On":"🎵 Music: Off"; }
+sfxBtn.onclick=()=>{ AUDIO=!AUDIO; setAudioUi(); savePref(); clickS(); };
+musicBtn.onclick=()=>{ MUSIC=!MUSIC; setAudioUi(); savePref(); if(MUSIC) playMusic(); else stopMusic(); };
+vol.oninput=()=>{ savePref(); if(musicGain){ musicGain.gain.value=0.6*(parseInt(vol.value,10)/100); } };
+window.addEventListener('pointerdown', function unlock(){ setAudioUi(); if(MUSIC) playMusic(); window.removeEventListener('pointerdown', unlock); }, {once:true});
+
+/* ===========================
+   Lesson Data (Aralin 12) — Reading
+   =========================== */
+const READING_TEXT = "Biyahe Papuntang Sagada\\nLabindalawang oras ang biyahe mula Maynila hanggang Banaue, dalawang oras mula Banaue hanggang Bontoc, at apatnapu't limang minuto mula Bontoc hanggang Sagada.\\n\\nMay mga tao na mas gusto ang biyahe na Maynila hanggang Baguio, at Baguio hanggang Sagada. Pero mas gusto ni Lillian na sumakay ng bus papuntang Banaue. Mas maganda kasi ang mga tanawin. Nakikita niya ang mga bundok, ang rice terraces, ang mga ilog at mga talon.\\n\\nNakaupo si Lillian sa istasyon ng bus. Dahil alas-diyes ang alis ng bus, dumating siya sa istasyon nang alas-nuwebe y medya. Hinihintay niya ang nobyo niyang si Ramon.\\n\\nAlas-nuwebe kwarenta y singko na. May emergency meeting kaya si Ramon? Bakit hindi siya sumasagot sa telepono? Naaksidente kaya siya?\\n\\nApat na araw, tatlong gabi. Ito lang ang “vacation leave” niya. Naplano na niya ang lahat. Pupunta sila sa mga kuweba, sa mga talon, sa mga “hanging coffins.” Magpi-picnic sila sa isang burol. Magha-hiking sila sa bundok. Ang ganda. Kamukha niya si Hilda Koronel sa vintage 1970s na pelikulang “Kung Mangarap Ka’t Magising.”\\n\\nLimang minuto bago mag-alas-diyes ng gabi. Aalis na ang bus. Hindi bale. Pupunta pa rin ako sa Sagada, sabi ni Lillian sa sarili. Okay naman. Nakakainis lang ang naghihintay.\\n\\nTumatakbo si Ramon. Ngumiti si Lillian. Pagkatapos, naisip niya: Okay naman. Nakakainis lang ang naghihintay.";
+
+/* Alt spellings / synonyms */
+const ALT = {
+  "alas-tres":["alas tres","alas 3","3:00","3 o'clock","tatlo","ika-tatlo"],
+  "alas-tres kinse":["alas tres kinse","3:15","3.15","3 15","3:15 pm","3:15 p.m.","alas tres y kinse","alas-tres y kinse"],
+  "3:15 pm":["3:15","3.15","3 15","alas-tres kinse","alas tres kinse"],
+  "alas-kuwatro":["alas kwatro","alas cuatro","4:00","4 o'clock"],
+  "alas-onse":["alas onse","alas 11","11:00"],
+  "ika-anim":["ika anim","ika-6","6 o'clock","alas-sais","alas sais","alas 6"],
+  "y medya":["y media","medya","media","half past",":30"],
+  "menos kinse":["menos quince","kinse minutos bago","quarter to","singkwenta'y lima?","quarter til"],
+  "madaling-araw":["madaling araw","dawn","umaga pa","alas-kuwatro ng umaga"],
+  "hatinggabi":["hating gabi","midnight","12:00 am","12:00 a.m.","12 am"],
+  "bandang":["around","mga","circa","approx"],
+  "paliparan":["airport","naia","ninoy aquino international airport","naia (airport)"],
+  "crossing":["crossing","krosing","intersection"],
+  "ikalawang":["pangalawa","second"],
+  "ika-apat":["pang-apat","fourth"],
+  "panghuli":["huli","last"],
+  "relo":["watch"],
+  "orasan":["clock"]
+};
+
+/* ===========================
+   Question Bank
+   =========================== */
+const BANK=[];
+
+/* --- Dialogue: Anong Oras Na? --- */
+(function(){
+  const items=[
+    {q:`Ano ang sagot ng babae sa “Anong oras na po?”`, opts:[
+      "Alas-dos y medya ng umaga.","Alas-tres kinse ng hapon.","Alas-onse ng gabi.","Alas-singko ng tanghali."
+    ], a:1, r:`“Alas-tres kinse na po ng hapon.”`},
+    {q:`Kung wala siyang relo, alin ang mas magalang na sagot?`, opts:[
+      "Wala akong relo.","Pasensiya na kayo, wala po akong relo.","Hindi ko alam.","Mamaya na lang."
+    ], a:1, r:`Polite form uses “pasensiya” + “po.”`},
+  ];
+  items.forEach(it=>BANK.push({topic:"Dialogue — Time", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r}));
+})();
+
+/* --- Dialogue: Sa Istasyon ng Bus --- */
+(function(){
+  const items=[
+    {q:`Saan sasakay ang pasahero papuntang Los Baños?`, opts:[
+      "Sa bus na may karatulang “Laguna.”","Sa bus na may karatulang “Bicol.”","Sa bus na may karatulang “Baguio.”","Sa tren papuntang Pasay."
+    ], a:0, r:`Konduktor: “Sa bus na may karatulang ‘Laguna.’”`},
+    {q:`Anong oras aalis ang bus?`, opts:[
+      "Alas-kuwatro ng umaga","Bandang alas-dos kinse","Bandang alas-nuwebe","Eksaktong alas-dos"
+    ], a:1, r:`“Bandang alas-dos kinse.”`},
+    {q:`Anong oras darating ang bus sa Los Baños?`, opts:[
+      "Bandang alas-kuwatro","Bandang alas-onse","Bandang alas-sais","Bandang alas-nuwebe"
+    ], a:0, r:`“Bandang alas-kuwatro.”`},
+    {q:`Saan bababa ang pasahero? (isulat nang natural)`, fib:[
+      "Sa crossing sa U.P. Los Baños","Sa crossing sa UP Los Baños","Sa crossing ng U.P. Los Baños","Sa crossing ng UP Los Baños"
+    ], r:`“Sa ‘crossing’ sa U.P. Los Baños.”`},
+  ];
+  items.forEach(it=>{
+    if(it.fib) BANK.push({topic:"Dialogue — Station", type:"FIB", stem:it.q, fibAnswers:it.fib, rationale:it.r});
+    else BANK.push({topic:"Dialogue — Station", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r});
+  });
+})();
+
+/* --- Vocabulary: Time words --- */
+(function(){
+  const pairs=[["Alas-diyes","ten o'clock"],["Ika-anim","six o'clock"],["y medya","half past"],["menos kinse","quarter to"],["madaling-araw","dawn"],["hatinggabi","midnight"],["makalipas","after (minutes past)"],["bandang","around (approx)"],["relo","watch"],["orasan","clock"]];
+  pairs.forEach(([tg,en])=>{
+    const opts=shuffle([en,"sunrise","lunchtime","morning"]).slice(0,3); opts.push(en);
+    const sh=shuffle(opts);
+    BANK.push({topic:"Vocabulary — Time", type:"MCQ", stem:`Ano ang ibig sabihin ng “${tg}”?`, options:sh, answers:[sh.indexOf(en)], rationale:`Time word.`});
+  });
+})();
+
+/* --- Grammar: Aspects (alis/dating/baba) --- */
+(function(){
+  const items=[
+    {q:`Piliin ang tamang anyo (completed): “Kahapon, ____ ang bus.”`, opts:["aalis","umalis","umaalis"], a:1, r:`Completed = umalis.`},
+    {q:`Piliin ang tamang anyo (incompleted): “Araw-araw, ____ ang tren nang alas-nuwebe.”`, opts:["dumarating","dumating","darating"], a:0, r:`Incompleted = dumarating.`},
+    {q:`Piliin ang tamang anyo (contemplated): “Bukas, ____ ako sa Cubao.”`, opts:["bababa","bumababa","bumaba"], a:0, r:`Contemplated = bababa.`},
+  ];
+  items.forEach(it=>BANK.push({topic:"Grammar — Aspects", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r}));
+})();
+
+/* --- Grammar: Particles (na/pa/lang) & Form --- */
+(function(){
+  const items=[
+    {q:`Punan: “Alas-kuwatro ___.”`, fib:["na"], r:`“na” = already.`},
+    {q:`Punan: “Alas-dos kinse ___ ___.”`, fib:["pa lang","pa-lang","pa  lang"], r:`“pa lang” = only.`},
+    {q:`Imperative: Piliin ang mas angkop na payo. “Saan ako sasakay?”`, opts:["Sumakay ka sa harap ng post office.","Gusto kong sumakay.","Sumakay ako sa post office.","Sumasakay siya sa post office."], a:0, r:`Imperative uses completed form = “Sumakay ka …”`},
+    {q:`Infinitive with gusto: “Anong oras mo gustong ____ sa airport?”`, opts:["dumating","darating","dumarating","dumadating"], a:0, r:`Gusto + infinitive (completed base) → “gustong dumating”.`},
+  ];
+  items.forEach(it=>{
+    if(it.fib) BANK.push({topic:"Grammar — Particles & Form", type:"FIB", stem:it.q, fibAnswers:it.fib, rationale:it.r});
+    else BANK.push({topic:"Grammar — Particles & Form", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r});
+  });
+})();
+
+/* --- Ordinals & series --- */
+(function(){
+  const items=[
+    {q:`Ano ang ibig sabihin ng “ikalawang bus”?`, opts:["first bus","second bus","last bus","eighth bus"], a:1, r:`Ikalawa/pangalawa = second.`},
+    {q:`Alin ang katumbas ng “panghuli”?`, opts:["first","middle","last","ninth"], a:2, r:`Panghuli/huli = last.`},
+  ];
+  items.forEach(it=>BANK.push({topic:"Vocabulary — Ordinals", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r}));
+})();
+
+/* --- Station & ticket mini --- */
+(function(){
+  const items=[
+    {q:`Magkano ang isang tiket sa “Pagbili ng Tiket” na usapan?`, opts:["Isang daang piso","Dalawang daang piso","Limampung piso","Tatlong daang piso"], a:0, r:`“Isang daang piso.”`},
+    {q:`Anong oras aalis ang bus sa usapan?`, opts:["Alas-dos","Alas-kuwatro","Alas-sais","Alas-nuwebe"], a:1, r:`“Alas-kuwatro po.”`},
+  ];
+  items.forEach(it=>BANK.push({topic:"Station — Tickets", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r}));
+})();
+
+/* --- Schedule comprehension (sample from table) --- */
+(function(){
+  const items=[
+    {q:`Aling statement ang tama tungkol sa Baguio bus?`, opts:[
+      "Aalis ng 10 A.M., dating 4 P.M., P300.","Aalis ng 10 P.M., dating 4 A.M., P300.","Aalis ng 8 A.M., dating 10 A.M., P300.","Aalis ng 12 N, dating 4:30 P.M., P300."
+    ], a:1, r:`10 P.M. → 4 A.M., P300.`},
+    {q:`Magkano ang biyahe papuntang Banaue ayon sa talahanayan?`, opts:[
+      "P250","P300","P500","P150"
+    ], a:2, r:`Banaue = P500.`},
+  ];
+  items.forEach(it=>BANK.push({topic:"Station — Schedule", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r}));
+})();
+
+/* --- Culture: Filipino time --- */
+(function(){
+  const items=[
+    {q:`Ano ang ibig ipahiwatig ng “Filipino time”?`, opts:[
+      "Eksaktong oras palagi","Pagiging late/di eksakto ang oras","24-hour clock","Pagbabawal sa salitang “bandang”"
+    ], a:1, r:`Stereotype: not exact/late; indeterminate time (bandang/mga).`},
+    {q:`Ano ang ibig sabihin ng “bandang alas-otso”?`, opts:[
+      "Eksaktong 8:00","Between 7:45 and ~8:15","8:30 exactly","9:00"
+    ], a:1, r:`Roughly around 8:00.`},
+  ];
+  items.forEach(it=>BANK.push({topic:"Culture — Time", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r}));
+})();
+
+/* --- Dagdag-Aral: susunod / dapat --- */
+(function(){
+  const items=[
+    {q:`Punan: “Anong oras ang alis ng ____ na bus?”`, fib:["susunod","súsunod","sunod"], r:`“susunod na bus” = next bus.`},
+    {q:`Natural na payo: “Anong oras ako ____ umalis ng bahay?”`, opts:["dapat","puwede","marahil","baka"], a:0, r:`“dapat” = should.`},
+  ];
+  items.forEach(it=>{
+    if(it.fib) BANK.push({topic:"Vocabulary — Helpful words", type:"FIB", stem:it.q, fibAnswers:it.fib, rationale:it.r});
+    else BANK.push({topic:"Vocabulary — Helpful words", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r});
+  });
+})();
+
+/* --- Reading: Biyahe Papuntang Sagada --- */
+(function(){
+  const items=[
+    {q:`Gaano katagal ang biyahe Maynila→Banaue?`, opts:["2 oras","12 oras","45 minuto","6 oras"], a:1, r:`Labindalawang oras.`},
+    {q:`Bakit mas gusto ni Lillian ang rutang Banaue?`, opts:["Mas mura ang pamasahe.","Mas maganda ang tanawin.","Mas mabilis ito.","Mas konti ang stopover."], a:1, r:`“Mas maganda ang mga tanawin.”`},
+    {q:`Anong oras dumating si Lillian sa istasyon?`, opts:["Alas-nuwebe y medya","Alas-diyes","Alas-otso y medya","Alas-onse"], a:0, r:`9:30 (alas-nuwebe y medya).`},
+    {q:`Ano ang sinabi/tiningnan ni Lillian sa sarili tungkol sa paghihintay?`, opts:["Okay lang; masaya ang maghintay.","Nakakapagod maghintay at hindi siya tutuloy.","Okay naman; nakakainis lang ang naghihintay.","Wala siyang pakialam kung hihintayin siya."], a:2, r:`“Okay naman. Nakakainis lang ang naghihintay.”`},
+  ];
+  items.forEach(it=>BANK.push({topic:"Reading — Sagada", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r}));
+})();
+
+/* Collate distinct topic labels for the dropdown */
+const TOPICS=[...new Set(BANK.map(q=>q.topic))].sort();
+
+/* ===========================
+   UI Elements
+   =========================== */
+const elStem=document.getElementById('stem'), elOptions=document.getElementById('options'), elRationale=document.getElementById('rationale'), elStatus=document.getElementById('status');
+const elShowAns=document.getElementById('showAns'), elAgain=document.getElementById('again'), elNext=document.getElementById('next');
+const elType=document.getElementById('typeBadge'), elTopic=document.getElementById('topicBadge');
+const elCategory=document.getElementById('category'), elMode=document.getElementById('mode'), elTopicFilter=document.getElementById('topicFilter'), elTimer=document.getElementById('timer'), elEnter=document.getElementById('enterMode');
+const elFibWrap=document.getElementById('fibWrap'), elFibInput=document.getElementById('fibInput'), elFibCheck=document.getElementById('fibCheck');
+const elScore=document.getElementById('score'), elStreak=document.getElementById('streak'), elTracker=document.getElementById('tracker');
+const elProgressLabel=document.getElementById('progresslabel'), elProgressFill=document.getElementById('progressfill');
+const toast=document.getElementById('toast'); const elExport=document.getElementById('export'); const elReading=document.getElementById('reading');
+
+/* Fill topic dropdown */
+TOPICS.forEach(t=>{ const o=document.createElement('option'); o.value=t; o.textContent=t; elTopicFilter.appendChild(o); });
+
+function ensureTopic(t){ if(!stats.topics[t]) stats.topics[t]={seen:0,correct:0}; }
+function setProgress(){ elScore.textContent=stats.score; elStreak.textContent=stats.streak; elProgressLabel.textContent=`Progress: ${stats.correct}/${stats.seen}`; const pct=stats.seen? (100*stats.correct/stats.seen):0; elProgressFill.style.width=Math.min(100,pct)+"%"; }
+function buildTracker(){
+  elTracker.innerHTML="";
+  TOPICS.forEach(t=>{ ensureTopic(t); const s=stats.topics[t]; const acc=s.seen? Math.round(100*s.correct/s.seen):0;
+    const n1=document.createElement('div'); n1.textContent=t;
+    const n2=document.createElement('div'); n2.textContent=s.seen+" seen";
+    const n3=document.createElement('div'); n3.textContent=acc+"%";
+    n3.style.color=acc>=85?'var(--success)':acc>=70?'var(--warn)':'var(--danger)';
+    elTracker.appendChild(n1); elTracker.appendChild(n2); elTracker.appendChild(n3);
+  });
+}
+function toastMsg(m){ toast.textContent=m; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1100); }
+
+/* ===========================
+   Selection
+   =========================== */
+function allowed(q){
+  const cat=elCategory.value;
+  if(cat==='dialogue') return q.topic.toLowerCase().includes('dialogue');
+  if(cat==='time') return q.topic.toLowerCase().includes('time') || q.stem.toLowerCase().includes('alas') || q.stem.toLowerCase().includes('oras');
+  if(cat==='grammar') return q.topic.toLowerCase().includes('grammar') || q.topic.toLowerCase().includes('ordinals');
+  if(cat==='station') return q.topic.toLowerCase().includes('station');
+  if(cat==='culture') return q.topic.toLowerCase().includes('culture');
+  if(cat==='reading') return q.topic.toLowerCase().includes('reading');
+  return true;
+}
+function pick(){
+  const mode=elMode.value;
+  let pool=[];
+  if(mode==='topic' && elTopicFilter.value!=='any'){ pool=BANK.filter(q=>q.topic===elTopicFilter.value && allowed(q)); }
+  else { pool=BANK.filter(allowed); }
+  if(!pool.length) return null;
+  if(mode==='adaptive'){
+    const weighted=[];
+    pool.forEach(q=>{
+      ensureTopic(q.topic);
+      const s=stats.topics[q.topic];
+      const acc=s.seen? (s.correct/s.seen):0;
+      const w=1.5 - acc;
+      const n=Math.max(1, Math.round(w*4));
+      for(let i=0;i<n;i++) weighted.push(q);
+    });
+    return weighted[Math.floor(Math.random()*weighted.length)];
+  }
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+
+/* ===========================
+   Render & Scoring
+   =========================== */
+let current=null, allow=true, timerId=null, scored=false;
+
+function render(q){
+  current=q; allow=true; scored=false;
+  elType.textContent=q.type; elTopic.textContent=q.topic;
+  elStem.textContent=q.stem; elRationale.classList.add('hidden'); elRationale.textContent=""; elStatus.textContent="Choose the best answer.";
+  elOptions.innerHTML=""; elFibWrap.classList.add('hidden'); elFibWrap.style.display='none'; elReading.classList.add('hidden'); elReading.textContent="";
+  if(q.topic && q.topic.toLowerCase().includes('reading')){ elReading.textContent=READING_TEXT; elReading.classList.remove('hidden'); }
+  if(q.type==="MCQ"){
+    q.options.forEach((opt,i)=>{
+      const b=document.createElement('button'); b.className='opt'; b.textContent=opt;
+      b.onclick=()=>{ if(!allow||scored) return; clickS(); finish([i]); };
+      elOptions.appendChild(b);
+    });
+  }else{
+    elFibWrap.classList.remove('hidden'); elFibWrap.style.display='flex'; elFibInput.value=""; elFibInput.focus();
+    const handler=()=>{ if(!allow||scored) return; finish([elFibInput.value]); };
+    elFibCheck.onclick=handler;
+    elFibInput.onkeydown=(e)=>{ if(e.key==='Enter') handler(); };
+  }
+  setTimer();
+}
+
+function checkFib(user, answers){
+  const u=normalize(user);
+  const uLoose=normalizeLoose(user);
+  const set=new Set();
+  (answers||[]).forEach(a=>{
+    const base=normalize(a);
+    set.add(base); set.add(base.replace(/\s+/g,''));
+    set.add(base.replace(/'/g,'’')); set.add(base.replace(/’/g,"'"));
+    // alt synonyms
+    if(ALT[base]) ALT[base].forEach(x=>{ set.add(normalize(x)); set.add(normalizeLoose(x)); });
+  });
+  // tolerant time parsing e.g., "3:15 pm" vs "alas-tres kinse"
+  function timeish(t){
+    t = normalize(t);
+    const m = t.match(/(alas-?\w+|\d{1,2}[:.]\d{2})(?:\s*(am|a\.m\.|pm|p\.m\.))?/);
+    return m ? m[0] : t;
+  }
+  if(set.has(u) || set.has(uLoose)) return true;
+  if(set.has(timeish(u))) return true;
+  return false;
+}
+
+function finish(sel){
+  allow=false; scored=true;
+  let ok=false, ans="", rationale=(current.rationale||"");
+
+  if(current.type==="MCQ"){
+    const idx=sel[0]; ok=current.answers.includes(idx);
+    [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect'));
+    ans=current.options[current.answers[0]];
+  }else{
+    const user=sel[0]||"";
+    ok=checkFib(user, current.fibAnswers||[]);
+    ans=(current.fibAnswers && current.fibAnswers[0]) || "";
+  }
+
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++;
+  if(ok){
+    stats.correct++; stats.topics[current.topic].correct++; stats.streak++; stats.score+=10;
+    good(); toastMsg("✅ Tama! +10"); elStatus.textContent="✅ Correct! +10 points";
+  }else{
+    stats.streak=0; stats.score-=5;
+    bad(); toastMsg("❌ Mali. −5"); elStatus.textContent="❌ Not quite. −5 points";
+  }
+  elRationale.textContent = (rationale? rationale+" ":"") + (ans? "Answer: "+ans:"");
+  elRationale.classList.remove('hidden');
+
+  localStorage.setItem(KEY, JSON.stringify(stats));
+  setProgress(); buildTracker();
+
+  if(elEnter.value==='on' && current.type==='FIB'){
+    setTimeout(()=>{ nextQ(); }, 450);
+  }
+}
+
+function showAnswerPenalty(){
+  if(scored) return;
+  allow=false; scored=true;
+  if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); }
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++; stats.streak=0; stats.score-=5; bad(); toastMsg("👀 Answer shown −5");
+  const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]);
+  elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+  elStatus.textContent="👀 Shown answer. −5 points"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+}
+
+function nextQ(){
+  const q=pick();
+  if(!q){ elStem.textContent="No questions available for the current filters."; elOptions.innerHTML=""; elReading.classList.add('hidden'); elFibWrap.classList.add('hidden'); return; }
+  render(q);
+}
+
+/* Timer */
+function setTimer(){
+  if(timerId) clearInterval(timerId);
+  const t=elTimer.value; if(t==="off") return; let left=parseInt(t,10);
+  elStatus.textContent="⏱️ "+left+"s";
+  timerId=setInterval(()=>{
+    if(!allow){ clearInterval(timerId); return; }
+    left--; elStatus.textContent="⏱️ "+left+"s";
+    if(left<=0){
+      clearInterval(timerId); allow=false; scored=true;
+      stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++; stats.streak=0; stats.score-=5; bad(); toastMsg("⏰ Oras na! −5");
+      if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); }
+      const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]);
+      elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+      elStatus.textContent="⏰ Time! −5 points"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+    }
+  },1000);
+}
+
+/* Buttons */
+document.getElementById('reset').onclick=()=>{ if(confirm("Reset all stats?")){ stats={version:1,seen:0,correct:0,topics:{},score:0,streak:0}; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); } };
+document.getElementById('next').onclick=()=>{ nextQ(); };
+document.getElementById('again').onclick=()=>{ if(current) render(current); };
+document.getElementById('showAns').onclick=()=>{ showAnswerPenalty(); };
+document.getElementById('export').onclick=()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='tagalog_aralin12_time_stats.json'; a.click(); };
+
+/* Init */
+setAudioUi(); setProgress(); buildTracker();
+window.addEventListener('load',()=>{ nextQ(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Tagalog — Aralin 14 • Pagbibigay Direksiyon | John Villanueva</title>
+<style>
+  :root{
+    --bg:#0b0f17;
+    --card:#141a24;
+    --muted:#9bb0c0;
+    --text:#e9f1f7;
+    --accent:#6de1ff;
+    --good:#7CFC00;
+    --bad:#ff6b6b;
+    --gold:#ffd166;
+  }
+  html,body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;margin:0;height:100%}
+  h1{font-size:22px;margin:14px 16px}
+  .bar{display:flex;align-items:center;gap:16px;padding:8px 16px;border-bottom:1px solid #1e2632}
+  .pill{background:var(--card);border:1px solid #263041;border-radius:10px;padding:8px 10px}
+  .muted{color:var(--muted)}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .wrap{padding:12px 16px}
+  .panel{background:var(--card);border:1px solid #263041;border-radius:14px;padding:14px;margin:12px 16px}
+  .btn{background:#202a37;border:1px solid #2b394c;color:var(--text);padding:10px 12px;border-radius:10px;cursor:pointer}
+  .btn:hover{background:#273242}
+  .btn.primary{background:#2a3b4f;border-color:#36506e}
+  .btn.good{border-color:#355e2a;background:#204020}
+  .btn.bad{border-color:#6b3131;background:#3c1e1e}
+  .grid{display:grid;grid-template-columns:1fr;gap:10px}
+  .choice{background:#1a2330;border:1px solid #2a384d;border-radius:10px;padding:10px;cursor:pointer}
+  .choice.correct{border-color:var(--good)}
+  .choice.wrong{border-color:var(--bad)}
+  .flex{display:flex;justify-content:space-between;align-items:center}
+  .small{font-size:12px}
+  .tag{padding:2px 8px;border-radius:999px;background:#1d2734;border:1px solid #2b3a50;color:var(--muted);font-size:12px}
+  details summary{cursor:pointer}
+  .kbd{border:1px solid #33465f;border-bottom-width:2px;background:#16202c;color:var(--muted);padding:1px 6px;border-radius:6px}
+  .footer{color:#7b8da0;font-size:12px;padding:10px 16px 30px}
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style><link rel="icon" href="/assets/favicon.svg"><meta name="theme-color" content="#0d2932">
+<style id="jv-responsive-patch">
+html,body{max-width:100%;overflow-x:hidden}
+body{padding-bottom:82px!important}
+img,video,canvas,svg{max-width:100%;height:auto}
+#jv-play-nav-style + body{}
+.jv-play-nav{max-width:calc(100vw - 20px);flex-wrap:wrap}
+@media(max-width:900px){
+  header{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important;padding:12px!important}
+  header .brand{flex:1 1 100%!important;line-height:1.35!important}
+  .controls{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+  .controls>.ctrl,.controls>.row,.controls>div{width:100%!important;max-width:100%!important}
+  .grid2{grid-template-columns:1fr!important}
+  .footer{grid-template-columns:1fr!important}
+  main,.wrap{width:100%!important;max-width:100%!important;padding-left:10px!important;padding-right:10px!important}
+  select,button,input[type="text"],input[type="number"]{max-width:100%!important}
+  .volwrap{width:100%!important;justify-content:flex-start!important}
+  input[type="range"]{max-width:70vw!important}
+  table{width:100%!important;display:block!important;overflow-x:auto!important}
+}
+@media(max-width:620px){
+  body{padding-left:0!important;padding-right:0!important;padding-bottom:94px!important}
+  header{position:relative!important;grid-template-columns:1fr!important}
+  .brand{font-size:1rem!important;overflow-wrap:anywhere!important}
+  .pill{max-width:100%!important;justify-content:center!important}
+  button,select,input[type="text"],input[type="number"]{min-height:44px!important;font-size:16px!important;width:100%!important}
+  .qcard,.card,.panel{border-radius:12px!important;padding:13px!important}
+  .qstem,#question,.big{font-size:clamp(1.25rem,6.5vw,1.8rem)!important}
+  .options,.grid{grid-template-columns:1fr!important}
+  .row{max-width:100%!important;flex-wrap:wrap!important}
+  #leaderboardBtn,#returnBtn{position:static!important;display:inline-flex!important;width:auto!important;margin:8px!important}
+  #leaderboardTable{padding:10px!important}
+  .jv-play-nav{left:8px!important;right:8px!important;bottom:8px!important;justify-content:center!important}
+  .jv-play-nav a{flex:1 1 auto!important;justify-content:center!important;text-align:center!important}
+}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Library</a><a href="/play/filipino/">All Tagalog Lessons</a><a class="secondary" href="/projects.html">Portfolio</a></nav>
+<div class="bar">
+<h1>🇵🇭 Tagalog — Aralin 14 • Pagbibigay Direksiyon</h1>
+<div class="pill">Score: <span id="score">0</span></div>
+<div class="pill">Streak: <span id="streak">0</span></div>
+<div class="pill">Sound: <span id="sfxState">On</span> • Music: <span id="musicState">On</span></div>
+</div>
+<div class="panel">
+<div class="row">
+<div>
+<div class="small muted">Question source:</div>
+<select class="btn" id="sourceSel">
+<option value="all">All (incl. Culture/Reading)</option>
+<option value="dialogue">Dialogue</option>
+<option value="vocab">Vocabulary</option>
+<option value="grammar">Grammar</option>
+<option value="directions">Directions Practice</option>
+<option value="culture">Culture</option>
+<option value="reading">Reading: Ang Maynila</option>
+</select>
+</div>
+<div>
+<div class="small muted">Selection mode:</div>
+<select class="btn" id="modeSel">
+<option value="adaptive">Adaptive (prioritize weak topics)</option>
+<option value="random">Random</option>
+<option value="sequential">Sequential</option>
+</select>
+</div>
+<div>
+<div class="small muted">Topic:</div>
+<select class="btn" id="topicSel">
+<option value="any">Any</option>
+<option value="imperative">Imperatives</option>
+<option value="honorifics">Honorifics (po/ho)</option>
+<option value="mula_galing">Mula vs. Galing</option>
+<option value="streets">Streets/Kalye</option>
+<option value="map_moves">Give Directions</option>
+<option value="reading_q">Reading Comprehension</option>
+</select>
+</div>
+<div>
+<div class="small muted">Timer:</div>
+<select class="btn" id="timerSel">
+<option value="90">90s</option>
+<option value="30">30s</option>
+<option value="off">Off</option>
+</select>
+</div>
+<button class="btn" id="resetBtn">Reset</button>
+<button class="btn primary" id="nextBtn">Next ▶</button>
+</div>
+</div>
+<div class="panel">
+<div class="flex">
+<div>
+<div class="muted small" id="qTitle">Tap “Next” to begin.</div>
+<h2 id="qText" style="margin:8px 0 4px 0;"> </h2>
+<div class="tag" id="qMeta"></div>
+</div>
+<div class="row">
+<button class="btn" id="showBtn">Show answer</button>
+<button class="btn" id="againBtn">Again 🔁</button>
+</div>
+</div>
+<div class="grid" id="choices" style="margin-top:10px;"></div>
+<div class="muted" id="explain" style="margin-top:8px;"></div>
+<div class="small muted" id="timerBox" style="margin-top:6px;"></div>
+</div>
+<div class="panel">
+<details>
+<summary>📖 Reading passage (<em>Ang Maynila</em>) — tap to show/hide</summary>
+<div class="muted" style="margin-top:10px;max-width:900px;line-height:1.45">
+<p><strong>Ang Maynila</strong> — Ang pinakalumang Maynila ay ang Maynila ng mga Tagalog, at ang pangalan ng lugar ay galing sa mga salitang “may nila” (mayroong <em>nila</em>, isang uri ng halaman). Ito ang Maynila ng mga Tagalog at ng mga pinuno nilang sina Rajah Sulayman at Rajah Matanda. Ito rin ang Maynila na sinakop ng Borneo at ng mga Muslim; at kilala sa Manila Bay at Ilog Pasig.</p>
+<p>Noong 1571, sinakop ito ng mga Kastila sa pamumuno ni Miguel Lopez de Legazpi. Itinayo nila ang isang lungsod na napapalibutan ng pader — <em>Intramuros</em> (“intra” + “muros” sa Latin). Simbolo ang mga pader dahil ang mga Kastila lang ang puwedeng tumira sa loob.</p>
+<p>Ngayon, “tourist destination” na ito. Puwede kang pumunta sa Fort Santiago; pagkatapos, maglakad papunta sa General Luna Street, lampasan ang Plaza Moriones at Palacio del Gobernador, at makikita mo ang Manila Cathedral. Maglakad pa sa General Luna; pagkatapos ng dalawang kanto, kumanan at maglakad sa Calle Real hanggang Puerta de Sta. Lucia, isa sa mga pasukan papuntang Intramuros. Malapit din ang San Agustin Church at ang Casa Manila.</p>
+<p>Sa labas ng Intramuros, sa Tondo, isinilang ang rebolusyon at ang Katipunan (binuo sa kanto ng El Cano at Ascarraga/Recto noong 1892). Sa panahon ng mga Amerikano, itinayo ang mga gusali ng gobyerno; ginamit ang mga pangalan ng mananakop sa mga kalye; maraming bus, kotse, at karitela sa daan; at ang Malate ay tirahan ng mga mayayaman at Amerikano. Binomba ng mga Amerikano ang Maynila noong Pebrero–Marso 1945 (Battle of Manila) dahil sinakop ito ng mga Hapones.</p>
+<p>Para sa ilan noong 1950s, ang Maynila ay ang Roxas Boulevard (sunset), Rizal Park (piknik), Escolta/Avenida (pamimili); para sa mga aktibista ng 60s–70s, Plaza Miranda, Mendiola Bridge (“Freedom Bridge”), at Liwasang Bonifacio; para sa mga Intsik, Binondo; para sa mga estudyante, “university belt” sa Recto; para sa mga Katoliko, Quiapo Church. Iba‑iba ang Maynila ng mga taga‑Maynila; naging Greater Manila Area; at halos wala nang nakaaalala sa hitsura ng “nila.”</p>
+</div>
+</details>
+</div>
+<div class="panel">
+<div class="flex">
+<div class="muted small">Aralin 14 coverage — <em>giving directions</em> (kumanan, kumaliwa, dumiretso, umikot, <em>huminto</em>, <em>lumampas</em>), polite forms with <em>po/ho</em>, street words (kalye, kalsada, eskinita, daan), <em>mula vs galing</em>, location questions (saan/nasaan), culture notes (“Sige”, “Mag-ingat ka”, small‑talk Qs), and reading on Intramuros/Maynila.</div>
+<button class="btn" id="exportBtn">Export results</button>
+</div>
+<div class="small muted" style="margin-top:6px">UI in English • Prompts in Tagalog • Explanations in English. Kulintang-style SFX/music <span title="Press S to toggle SFX, M to toggle music.">🎵</span> • Keyboard: <span class="kbd">N</span>=Next, <span class="kbd">S</span>=SFX, <span class="kbd">M</span>=Music.</div>
+</div>
+<div class="footer">© Aralin 14 Quiz • Self‑contained HTML. No external network required.</div>
+<script>
+// ---------- Question bank ----------
+const QBANK = [
+  // Dialogue comprehension
+  {id:'d1',cat:'dialogue',topic:'imperative',q:'Nasaan si Maria nang tumawag siya tungkol sa Philippine Bank?',choices:['Sa Greenhills Branch','Sa Mabuhay Hotel','Sa Fort Santiago','Sa General Luna Street'],a:1,exp:'Sinabi ni Maria: “Nasa Mabuhay Hotel.”'},
+  {id:'d2',cat:'dialogue',topic:'imperative',q:'Anong branch ang hinahanap ni Maria?',choices:['Makati','Binondo','Greenhills','Quezon Avenue'],a:2,exp:'Tinanong niya: “Paano po pumunta sa Greenhills branch?”'},
+  {id:'d3',cat:'dialogue',topic:'imperative',q:'Alin ang tamang pagkakasunod-sunod ng direksiyon na ibinigay ng manager?',choices:['Kumanan → Kumaliwa → Dumiretso → Lumampas sa 2 stoplight → Nasa kanan','Kumaliwa → Kumanan → Dumiretso → Lumampas sa 2 stoplight → Nasa kaliwa','Dumiretso → Kumanan → Kumaliwa → Lumampas sa 2 stoplight → Nasa kaliwa','Kumaliwa → Dumiretso → Kumanan → Nasa kaliwa'],a:1,exp:'“Kumaliwa… kumanan sa unang kanto… dumiretso… lumampas sa dalawang stoplight… nasa kaliwa ninyo.”'},
+  {id:'d4',cat:'dialogue',topic:'honorifics',q:'Anong salita ang nagpapakita ng paggalang sa sagot ng manager?',choices:['kayo','po/ho','kita','sila'],a:1,exp:'Gumamit ang manager ng “ho”/“po” sa bawat utos/mensahe.'},
+  // Vocabulary: imperative verbs
+  {id:'v1',cat:'vocab',topic:'imperative',q:'Ano ang kahulugan ng “Kumanan”?',choices:['Go straight','Turn right','Turn left','Go back'],a:1,exp:'Kumanan = turn right.'},
+  {id:'v2',cat:'vocab',topic:'imperative',q:'Piliin ang tamang kahulugan: “Kumaliwa.”',choices:['Turn left','Turn right','Stop','Go around'],a:0,exp:'Kumaliwa = turn left.'},
+  {id:'v3',cat:'vocab',topic:'imperative',q:'“Dumiretso ka.”',choices:['Go straight','Go around','Get off','Go past'],a:0,exp:'Dumiretso = go straight.'},
+  {id:'v4',cat:'vocab',topic:'imperative',q:'“Lumampas ka sa dalawang stoplight.”',choices:['Circle the stoplight','Stop at two lights','Go past two stoplights','Turn at two lights'],a:2,exp:'Lumampas = go past.'},
+  {id:'v5',cat:'vocab',topic:'imperative',q:'“Umikot ka sa Quezon Memorial Circle.”',choices:['Go around QMC','Go straight to QMC','Turn left before QMC','Go back from QMC'],a:0,exp:'Umikot = go around.'},
+  {id:'v6',cat:'vocab',topic:'imperative',q:'Alin ang ibig sabihin ng “Huminto ka”?',choices:['Yield','Reverse','Slow down','Stop'],a:3,exp:'Huminto = stop.'},
+  {id:'v7',cat:'vocab',topic:'streets',q:'Ano ang ibig sabihin ng “kanto”?',choices:['Alley','Corner','Street','Road'],a:1,exp:'Kanto = corner.'},
+  {id:'v8',cat:'vocab',topic:'streets',q:'Tamang tugma: <em>eskinita</em> = ?',choices:['Highway','Alley','Boulevard','Intersection'],a:1,exp:'Eskìnita = alley.'},
+  {id:'v9',cat:'vocab',topic:'streets',q:'Alin ang mas malapit sa kahulugang “road; pass”?',choices:['Daan','Kalye','Kalsada','Tulay'],a:0,exp:'Daan = road; pass.'},
+  // Grammar: honorific placement
+  {id:'g1',cat:'grammar',topic:'honorifics',q:'Alin ang tama at magalang?',choices:['Kumanan kayo po sa Masaya Street.','Po kumanan kayo sa Masaya Street.','Kumanan po kayo sa Masaya Street.','Kayo kumanan po sa Masaya Street.'],a:2,exp:'Ilalagay ang “po/ho” pagkatapos ng pandiwa at bago ang “kayo”.'},
+  {id:'g2',cat:'grammar',topic:'honorifics',q:'Paano sasabihin nang magalang: “Turn left, please.”',choices:['Kumaliwa po kayo.','Kayo po kumaliwa.','Kumaliwa kayo po.','Po kumaliwa kayo.'],a:0,exp:'“Kumaliwa po kayo.”'},
+  // Grammar: mula vs galing
+  {id:'g3',cat:'grammar',topic:'mula_galing',q:'Alin ang mas natural kapag tinatanong ang pinanggalingan ng isang taong kakakita lang?',choices:['Saan ka magmumula?','Saan ka manggagaling?','Saan ka galing?','Mula saan ka?'],a:2,exp:'Karaniwang tanong sa kasalukuyang sitwasyon: “Saan ka galing?”'},
+  {id:'g4',cat:'grammar',topic:'mula_galing',q:'Anong pares ang ginagamit upang magpahiwatig ng oras (from … to …)?',choices:['galing … patungo','mula … hanggang','sa … mula','galing … sa'],a:1,exp:'Mula … hanggang = from … until.'},
+  {id:'g5',cat:'grammar',topic:'mula_galing',q:'Punan: “Saan ho kayo ________?” (Where will you be coming from?)',choices:['magmumula','manggagaling','gagaling','nagmula'],a:1,exp:'“Saan ho kayo manggagaling?” (future/prospective).'},
+  {id:'g6',cat:'grammar',topic:'mula_galing',q:'Alin ang di-parehong kahulugan?',choices:['galing (from)','galing (skill/ability)','mula (from)','hanggang (to)'],a:1,exp:'“galing” ay maaaring “from” (accent sa unang pantig) o “skill/ability” (accent sa ikalawa).'},
+  // Directions practice
+  {id:'p1',cat:'directions',topic:'map_moves',q:'Isalin: “Go past three stoplights.”',choices:['Huminto ka sa tatlong stoplight.','Lumampas ka sa tatlong stoplight.','Dumiretso ka sa tatlong stoplight.','Umikot ka sa tatlong stoplight.'],a:1,exp:'“Lumampas ka sa tatlong stoplight.”'},
+  {id:'p2',cat:'directions',topic:'map_moves',q:'Isalin: “Turn left at the second corner.”',choices:['Kumanan ka sa ikalawang kanto.','Kumaliwa ka sa ikalawang kanto.','Dumiretso ka sa ikalawang kanto.','Umikot ka sa ikalawang kanto.'],a:1,exp:'“Kumaliwa ka sa ikalawang kanto.”'},
+  {id:'p3',cat:'directions',topic:'map_moves',q:'Paalam na magalang: alin ang pinakakaraniwan?',choices:['Paalam.','Sige.','Hanggang sa muli.','Paalis na ako.'],a:1,exp:'Sa araw‑araw na usapan, “Sige.” at “Mag‑ingat ka.” ang madalas gamitin.'},
+  {id:'p4',cat:'directions',topic:'map_moves',q:'Isalin: “Go around Quezon Memorial Circle.”',choices:['Huminto ka sa QMC.','Umikot ka sa Quezon Memorial Circle.','Dumiretso ka papunta sa QMC.','Lumampas ka sa QMC.'],a:1,exp:'“Umikot ka …” = go around.'},
+  {id:'p5',cat:'directions',topic:'map_moves',q:'Alin ang tanong para sa lokasyon ng isang gusali?',choices:['Saan ang Philippine Bank?','Nasaan ang Philippine Bank?','Sino ang Philippine Bank?','Kailan ang Philippine Bank?'],a:1,exp:'“Nasaan” kapag partikular na lugar, “Saan” para sa direksiyon/endpoint — pareho ring ginagamit batay sa konteksto.'},
+  // Culture
+  {id:'c1',cat:'culture',topic:'honorifics',q:'Alin ang pang‑small talk na tanong sa kalsada sa Pilipinas?',choices:['Ilang taon ka na?','Saan ka pupunta?','Magkano suweldo mo?','Anong zodiac sign mo?'],a:1,exp:'Karaniwang tanong: “Saan ka pupunta?”, “Saan ka galing?”, “Kumain ka na ba?”'},
+  {id:'c2',cat:'culture',topic:'honorifics',q:'Bakit hindi masyadong ginagamit ang salitang “paalam”?',choices:['Bawal ito.','Mas mahirap bigkasin.','May himig ng “finality”, kaya mas ginagamit ang “Sige/ Mag‑ingat.”','Hindi naiintindihan ng karamihan.'],a:2,exp:'“Paalam” ay parang pormal at panghuling pamamaalam.'},
+  {id:'c3',cat:'culture',topic:'honorifics',q:'Alin ang dalawang salita na nagbibigay‑kahulugan sa paglalakbay/halagahan sa kultura?',choices:['uwi at lakaran','bili at tinda','sakay at baba','sulat at basa'],a:0,exp:'Binibigyang‑diin ng “uwi” at “lakaran” ang pag‑uwi/paglalakbay sa kasaysayan at danas.'},
+  // Reading comprehension (Ang Maynila)
+  {id:'r1',cat:'reading',topic:'reading_q',q:'Sino ang dalawang pinuno ng pinakalumang Maynila?',choices:['Rajah Sulayman at Rajah Matanda','Andres Bonifacio at Emilio Aguinaldo','Miguel Lopez de Legazpi at Jose Rizal','Rajah Humabon at Lapu‑Lapu'],a:0,exp:'Nabanggit sa teksto: Rajah Sulayman at Rajah Matanda.'},
+  {id:'r2',cat:'reading',topic:'reading_q',q:'Ano ang kahulugan ng pangalang “Intramuros”?',choices:['Bayan sa tabi ng ilog','Lungsod sa loob ng pader','Lugar ng mga pari','Lungsod ng bakal'],a:1,exp:'Mula sa Latin: “intra” + “muros” = within the walls.'},
+  {id:'r3',cat:'reading',topic:'reading_q',q:'Aling hanay ang NAGSISIMULA sa Fort Santiago papunta sa isang katedral?',choices:['Fort Santiago → Plaza Moriones → Palacio del Gobernador → Manila Cathedral','Fort Santiago → Calle Real → Puerta de Sta. Lucia → Casa Manila','Fort Santiago → Mendiola Bridge → Quiapo Church → Recto','Fort Santiago → Roxas Boulevard → Rizal Park → Quiapo Church'],a:0,exp:'Tamang pagkakasunod sa teksto bago makita ang katedral.'},
+  {id:'r4',cat:'reading',topic:'reading_q',q:'Saan matatagpuan ang San Agustin Church at Casa Manila?',choices:['Sa Tondo','Sa General Luna Street (Intramuros)','Sa Malate','Sa Binondo'],a:1,exp:'Parehong nasa General Luna Street.'},
+  {id:'r5',cat:'reading',topic:'reading_q',q:'Saan isinilang ang Katipunan ayon sa teksto?',choices:['Fort Santiago','Binondo Church','Kanto ng El Cano at Ascarraga/Recto, Tondo','Quiapo Church'],a:2,exp:'Binuo noong 1892 sa Tondo, sa kanto ng El Cano at Ascarraga (Recto).'},
+  {id:'r6',cat:'reading',topic:'reading_q',q:'Alin ang HINDI kabilang sa mga sasakyan noong panahon ng mga Amerikano?',choices:['Bus','Kotse','Karitela','Jeepney'],a:3,exp:'Jeepney ay lumitaw pagkatapos ng WWII; di nabanggit sa bahaging iyon.'},
+  {id:'r7',cat:'reading',topic:'reading_q',q:'Kailan binomba ng mga Amerikano ang Maynila?',choices:['1896','1898','1945 (Pebrero–Marso)','1972'],a:2,exp:'Battle of Manila, 1945.'},
+  {id:'r8',cat:'reading',topic:'reading_q',q:'Saan kadalasang namimili ang mga tao noong 1950s, ayon sa teksto?',choices:['Divisoria at Baclaran','Escolta at Avenida','Greenhills at Cubao','Mall of Asia'],a:1,exp:'Escolta at Avenida ang ikinwento.'},
+  {id:'r9',cat:'reading',topic:'reading_q',q:'Aling tulay ang tinawag na “Freedom Bridge”?',choices:['Jones Bridge','Ayala Bridge','Mendiola Bridge','Guadalupe Bridge'],a:2,exp:'Mendiola Bridge (Freedom Bridge).'},
+  {id:'r10',cat:'reading',topic:'reading_q',q:'Saan nakatira noon ang maraming Intsik ayon sa teksto?',choices:['San Juan','Binondo','Malate','Tondo'],a:1,exp:'Binondo ang Chinatown ng Maynila.'},
+  // Extra practice for robustness
+  {id:'x1',cat:'grammar',topic:'imperative',q:'Pumili ng wastong baybay (Tagalog spelling) para sa “straight”.',choices:['direcho','diretso','deretso','directo'],a:1,exp:'Karaniwan sa Tagalog: “diretso” o “dumiretso.”'},
+  {id:'x2',cat:'grammar',topic:'honorifics',q:'Alin ang pinaka‑natural na pagsasama ng “po” at pang‑utos?',choices:['Pakikumanan po kayo.','Paki kumanan po kayo.','Kumanan po kayo.','Po kumanan kayo na.'],a:2,exp:'Maikli at tama ang ayos: “Kumanan po kayo.”'},
+  {id:'x3',cat:'directions',topic:'map_moves',q:'Kompletuhin: “________ ka sa unang kanto, tapos dumiretso.”',choices:['Kumanan','Huminto','Umikot','Bumalik'],a:0,exp:'Turn right at the first corner, then go straight.'},
+  {id:'x4',cat:'vocab',topic:'streets',q:'Paresin: kalye : street :: kalsada : ?',choices:['avenue','road','alley','boulevard'],a:1,exp:'Kalsada ≈ road.'},
+  {id:'x5',cat:'culture',topic:'honorifics',q:'Anong sagot ang pinaka‑Filipino kapag tinapos ang usapan?',choices:['Salamat. Paalam.','Okay, bye forever.','Sige, ingat.','No comment.'],a:2,exp:'“Sige/ Mag‑ingat.” ay very common.'}
+];
+// ---------- State ----------
+let pool = [...QBANK];
+let score = 0, streak = 0;
+let used = new Set();
+let weak = {}; // id -> misses
+let current = null;
+let timerId = null, timeLeft = 0;
+
+// ---------- Helpers ----------
+function pickQuestion(){
+  const source = document.getElementById('sourceSel').value;
+  const mode = document.getElementById('modeSel').value;
+  const topic = document.getElementById('topicSel').value;
+  // filter list
+  let list = QBANK.filter(q=>{
+    const bySource =
+      source==='all' ? true :
+      (source==='reading' ? q.cat==='reading' :
+      (source==='culture' ? q.cat==='culture' :
+      (source==='dialogue' ? q.cat==='dialogue' :
+      (source==='vocab' ? q.cat==='vocab' :
+      (source==='grammar' ? q.cat==='grammar' :
+      (source==='directions' ? q.cat==='directions' : true))))));
+    const byTopic = topic==='any' ? true : q.topic===topic;
+    return bySource && byTopic;
+  });
+  // selection
+  if(mode==='sequential'){
+    list = list.filter(q=>!used.has(q.id));
+    if(list.length===0){used.clear(); list = QBANK.slice();}
+    return list[0];
+  }
+  if(mode==='adaptive'){
+    // prefer ones with higher miss count or unseen
+    list.sort((a,b)=>((weak[b.id]||0)-(weak[a.id]||0)) || (used.has(a.id)-used.has(b.id)));
+    return list[0] || QBANK[0];
+  }
+  // random
+  return list[Math.floor(Math.random()*list.length)];
+}
+function renderQuestion(q){
+  current = q;
+  used.add(q.id);
+  document.getElementById('qTitle').innerText = 'Choose the best answer.';
+  document.getElementById('qText').innerHTML = q.q;
+  document.getElementById('qMeta').innerText = q.cat.toUpperCase()+' • '+q.topic.replace('_','/');
+  const cbox = document.getElementById('choices'); cbox.innerHTML='';
+  q.choices.forEach((c,i)=>{
+    const div = document.createElement('div');
+    div.className = 'choice';
+    div.innerHTML = c;
+    div.addEventListener('click', ()=> grade(i, div));
+    cbox.appendChild(div);
+  });
+  document.getElementById('explain').innerHTML = '';
+  setupTimer();
+}
+function setupTimer(){
+  const sel = document.getElementById('timerSel').value;
+  clearInterval(timerId);
+  const tbox = document.getElementById('timerBox');
+  if(sel==='off'){ tbox.innerText=''; return; }
+  timeLeft = parseInt(sel,10);
+  tbox.innerText = '⏱️ '+timeLeft+'s';
+  timerId = setInterval(()=>{
+    timeLeft--; tbox.innerText = '⏱️ '+timeLeft+'s';
+    if(timeLeft<=0){ clearInterval(timerId); reveal(false,true); }
+  },1000);
+}
+function grade(idx, node){
+  if(node.classList.contains('correct')||node.classList.contains('wrong')) return;
+  const ok = idx===current.a;
+  if(ok){ node.classList.add('correct'); score++; streak++; ding(); }
+  else { node.classList.add('wrong'); streak=0; buzz(); (weak[current.id]=(weak[current.id]||0)+1); }
+  document.getElementById('score').innerText = score;
+  document.getElementById('streak').innerText = streak;
+  reveal(ok,false);
+}
+function reveal(correct, timeup){
+  // mark correct
+  [...document.querySelectorAll('.choice')].forEach((el, i)=>{
+    if(i===current.a) el.classList.add('correct');
+    el.style.pointerEvents='none';
+  });
+  const ex = document.getElementById('explain');
+  ex.innerHTML = (timeup? '⏲️ Time\'s up. ' : '') + (current.exp||'');
+}
+function resetAll(){
+  score=0; streak=0; used.clear(); weak={}; document.getElementById('score').innerText=0; document.getElementById('streak').innerText=0;
+  document.getElementById('qTitle').innerText='Tap “Next” to begin.'; document.getElementById('qText').innerHTML='&nbsp;';
+  document.getElementById('qMeta').innerText=''; document.getElementById('choices').innerHTML=''; document.getElementById('explain').innerHTML='';
+}
+document.getElementById('nextBtn').addEventListener('click',()=>renderQuestion(pickQuestion()));
+document.getElementById('resetBtn').addEventListener('click',resetAll);
+document.getElementById('showBtn').addEventListener('click',()=>reveal(false,false));
+document.getElementById('againBtn').addEventListener('click',()=>{ used.delete(current?.id); renderQuestion(pickQuestion()); });
+document.getElementById('exportBtn').addEventListener('click',()=>{
+  const data = {score, streak, used:[...used], weak};
+  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href=url; a.download='aralin14_results.json'; a.click(); URL.revokeObjectURL(url);
+});
+
+// ---------- SFX / Music (WebAudio) ----------
+let audioCtx = null, sfxOn = true, musicOn = true, musicNode = null;
+function ensureAudio(){ if(!audioCtx){ audioCtx = new (window.AudioContext||window.webkitAudioContext)(); startMusic(); } }
+function tone(freq=880,dur=0.1,gain=0.08,type='sine'){
+  if(!sfxOn) return;
+  ensureAudio();
+  const o = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+  o.type=type; o.frequency.value=freq; g.gain.value=gain;
+  o.connect(g).connect(audioCtx.destination);
+  o.start();
+  setTimeout(()=>{o.stop();}, dur*1000);
+}
+function ding(){ tone(1046,0.08,0.10,'triangle'); setTimeout(()=>tone(1318,0.12,0.08,'triangle'),80); }
+function buzz(){ tone(180,0.18,0.12,'sawtooth'); }
+function startMusic(){
+  if(!musicOn) return;
+  ensureAudio();
+  const tempo = 88; // bpm
+  const pent = [440,494,554,659,740]; // kulintang-ish
+  const g = audioCtx.createGain(); g.gain.value=0.03;
+  g.connect(audioCtx.destination);
+  let t = audioCtx.currentTime + 0.1;
+  musicNode = setInterval(()=>{
+    if(!musicOn) return;
+    for(let i=0;i<4;i++){
+      const o = audioCtx.createOscillator();
+      o.type='sine';
+      o.frequency.value= pent[(i+Math.floor(Math.random()*2))%pent.length];
+      const gg = audioCtx.createGain(); gg.gain.value=0.02 + Math.random()*0.02;
+      o.connect(gg).connect(g);
+      o.start(t + i*(60/tempo));
+      o.stop(t + i*(60/tempo) + 0.18);
+    }
+    t += 4*(60/tempo);
+  }, 4*(60/tempo)*1000);
+}
+function stopMusic(){ if(musicNode){ clearInterval(musicNode); musicNode=null; } }
+document.body.addEventListener('click', ensureAudio, {once:true});
+// Toggles
+function updateBadges(){ document.getElementById('sfxState').innerText = sfxOn?'On':'Off'; document.getElementById('musicState').innerText = musicOn?'On':'Off'; }
+document.addEventListener('keydown',(e)=>{
+  if(e.key.toLowerCase()==='n'){ renderQuestion(pickQuestion()); }
+  if(e.key.toLowerCase()==='s'){ sfxOn=!sfxOn; updateBadges(); ding(); }
+  if(e.key.toLowerCase()==='m'){ musicOn=!musicOn; updateBadges(); if(musicOn) startMusic(); else stopMusic(); }
+});
+updateBadges();
+startMusic();
+</script>
+</body>
+</html>

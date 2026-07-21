@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Tagalog — Aralin 9 • Sa Kalye, Lungsod, at Nayon | John Villanueva</title>
+<style>
+:root{
+  --bg:#0b0b0c; --card:#14141a; --ink:#f7f8fc; --muted:#b7bbc9;
+  --accent:#ffd54f; --success:#5ac470; --danger:#ef6b6b; --warn:#ffcc80;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--ink); font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  background:
+    radial-gradient(900px 400px at 12% -10%, rgba(255,213,79,.12), transparent),
+    radial-gradient(1000px 500px at 100% 0%, rgba(239,107,107,.12), transparent),
+    linear-gradient(180deg,#101014,#0a0a0c);
+}
+header{
+  display:grid; grid-template-columns:1fr auto auto auto auto; gap:10px;
+  align-items:center; padding:14px 16px;
+}
+.brand{font-weight:800; letter-spacing:.2px}
+.pill{
+  background:var(--card); border:1px solid rgba(255,255,255,.12);
+  border-radius:999px; padding:8px 12px; color:var(--ink);
+  display:flex; gap:8px; align-items:center; cursor:pointer;
+}
+button,select{
+  background:var(--card); border:1px solid rgba(255,255,255,.14);
+  border-radius:12px; padding:10px 12px; color:var(--ink); cursor:pointer;
+}
+button:hover,select:hover{border-color:rgba(255,213,79,.6)}
+main{max-width:1180px; margin:0 auto; padding:8px 12px 22px}
+.controls{
+  display:grid; grid-template-columns:repeat(6,1fr) 120px 120px; gap:10px; margin:10px 0;
+}
+.ctrl{display:flex; align-items:center; gap:8px}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:16px;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+.qcard{padding:18px 20px}
+.qstem{font-size:22px; line-height:1.35; margin:6px 0 8px}
+.options{display:grid; grid-template-columns:1fr; gap:10px; margin-top:12px}
+.opt{
+  padding:13px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03); cursor:pointer; text-align:left;
+}
+.opt:hover{border-color:rgba(255,213,79,.6)}
+.opt.correct{background:rgba(90,196,112,.12); border-color:var(--success)}
+.opt.incorrect{background:rgba(239,107,107,.12); border-color:var(--danger)}
+.muted{color:var(--muted); font-size:13px}
+.badges{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+.badge{
+  font-size:11px; padding:4px 8px; border-radius:999px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10);
+  color:var(--muted)
+}
+.footer{margin-top:12px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px}
+.hidden{display:none}
+.toast{
+  position:fixed; right:16px; bottom:16px; background:#111; color:#fff;
+  border:1px solid rgba(255,255,255,.10); border-radius:12px; padding:10px 12px;
+  opacity:0; transform:translateY(10px); transition:all .18s;
+}
+.toast.show{opacity:1; transform:translateY(0)}
+.scorebox{display:flex; gap:8px; align-items:center}
+.volwrap{display:flex; gap:8px; align-items:center}
+#progressbar{
+  height:30px; background:var(--card); border:1px solid rgba(255,255,255,.10);
+  border-radius:999px; padding:4px; display:flex; align-items:center; margin:0 12px 14px 12px; position:relative
+}
+#progressfill{height:100%; border-radius:999px; background:linear-gradient(90deg,#ffd54f,#ffca28); width:0%}
+#progresslabel{position:absolute; margin-left:12px; font-size:13px; color:#111}
+.grid2{display:grid; grid-template-columns:2fr 1fr; gap:12px}
+#tracker{display:grid; grid-template-columns:1fr 90px 90px; gap:6px}
+.row{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+input[type="text"]{
+  font-size:16px; outline:none;
+  padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06); color:#fff
+}
+pre.reading{white-space:pre-wrap; background:rgba(255,255,255,.04); padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.08)}
+kbd{
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15);
+  border-bottom-color:rgba(0,0,0,.25); border-radius:6px; padding:2px 6px; font-family:inherit
+}
+</style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style><link rel="icon" href="/assets/favicon.svg"><meta name="theme-color" content="#0d2932">
+<style id="jv-responsive-patch">
+html,body{max-width:100%;overflow-x:hidden}
+body{padding-bottom:82px!important}
+img,video,canvas,svg{max-width:100%;height:auto}
+#jv-play-nav-style + body{}
+.jv-play-nav{max-width:calc(100vw - 20px);flex-wrap:wrap}
+@media(max-width:900px){
+  header{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important;padding:12px!important}
+  header .brand{flex:1 1 100%!important;line-height:1.35!important}
+  .controls{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+  .controls>.ctrl,.controls>.row,.controls>div{width:100%!important;max-width:100%!important}
+  .grid2{grid-template-columns:1fr!important}
+  .footer{grid-template-columns:1fr!important}
+  main,.wrap{width:100%!important;max-width:100%!important;padding-left:10px!important;padding-right:10px!important}
+  select,button,input[type="text"],input[type="number"]{max-width:100%!important}
+  .volwrap{width:100%!important;justify-content:flex-start!important}
+  input[type="range"]{max-width:70vw!important}
+  table{width:100%!important;display:block!important;overflow-x:auto!important}
+}
+@media(max-width:620px){
+  body{padding-left:0!important;padding-right:0!important;padding-bottom:94px!important}
+  header{position:relative!important;grid-template-columns:1fr!important}
+  .brand{font-size:1rem!important;overflow-wrap:anywhere!important}
+  .pill{max-width:100%!important;justify-content:center!important}
+  button,select,input[type="text"],input[type="number"]{min-height:44px!important;font-size:16px!important;width:100%!important}
+  .qcard,.card,.panel{border-radius:12px!important;padding:13px!important}
+  .qstem,#question,.big{font-size:clamp(1.25rem,6.5vw,1.8rem)!important}
+  .options,.grid{grid-template-columns:1fr!important}
+  .row{max-width:100%!important;flex-wrap:wrap!important}
+  #leaderboardBtn,#returnBtn{position:static!important;display:inline-flex!important;width:auto!important;margin:8px!important}
+  #leaderboardTable{padding:10px!important}
+  .jv-play-nav{left:8px!important;right:8px!important;bottom:8px!important;justify-content:center!important}
+  .jv-play-nav a{flex:1 1 auto!important;justify-content:center!important;text-align:center!important}
+}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Library</a><a href="/play/filipino/">All Tagalog Lessons</a><a class="secondary" href="/projects.html">Portfolio</a></nav>
+<header>
+<div class="brand">🧭 Tagalog — Aralin 9 • Sa Kalye, Lungsod, at Nayon</div>
+<div class="pill scorebox">Score: <strong id="score">0</strong> • Streak: <strong id="streak">0</strong></div>
+<button class="pill" id="sfx">🔊 Sound: On</button>
+<button class="pill" id="music">🎵 Music: On</button>
+<div class="pill volwrap"><span class="muted">Vol</span><input id="vol" max="100" min="0" style="width:140px" type="range" value="65"/></div>
+</header>
+<div id="progressbar"><div id="progressfill"></div><span id="progresslabel">Progress: 0/0</span></div>
+<main>
+<section class="controls card">
+<div class="ctrl"><span class="muted">Question source:</span>
+<select id="category">
+<option selected="" value="all">All (with Dialogue, Culture &amp; Reading)</option>
+<option value="vocab">Vocabulary only</option>
+<option value="grammar">Grammar only</option>
+<option value="dialogue">Dialogue only</option>
+<option value="reading">Reading only</option>
+<option value="culture">Culture/Song only</option>
+</select>
+</div>
+<div class="ctrl"><span class="muted">Selection mode:</span>
+<select id="mode">
+<option selected="" value="adaptive">Adaptive (prioritize weak topics)</option>
+<option value="random">Random</option>
+<option value="topic">By topic</option>
+</select>
+</div>
+<div class="ctrl"><span class="muted">Topic:</span>
+<select id="topicFilter"><option selected="" value="any">Any</option></select>
+</div>
+<div class="ctrl"><span class="muted">Timer:</span>
+<select id="timer">
+<option value="off">Off</option>
+<option value="60">60s</option>
+<option selected="" value="90">90s</option>
+<option value="120">120s</option>
+</select>
+</div>
+<div class="ctrl"><span class="muted">New Q on Enter:</span>
+<select id="enterMode">
+<option selected="" value="off">Off</option>
+<option value="on">On</option>
+</select>
+</div>
+<button id="reset">Reset</button>
+<button id="next">Next ▶</button>
+</section>
+<section class="card qcard" id="qcard">
+<div class="badges"><span class="badge" id="typeBadge">—</span><span class="badge" id="topicBadge">—</span></div>
+<div class="qstem" id="stem">Tap “Next” to begin.</div>
+<pre class="reading hidden" id="reading"></pre>
+<div class="options" id="options"></div>
+<div class="hidden row" id="fibWrap" style="margin-top:12px; display:none;">
+<input id="fibInput" placeholder="Type your answer…" style="flex:1" type="text"/>
+<button id="fibCheck">Check</button>
+</div>
+<div class="rationale muted hidden" id="rationale"></div>
+<div class="footer">
+<div class="muted" id="status">Choose the best answer.</div>
+<div class="row"><button id="showAns">Show answer</button><button id="again">Again 🔁</button></div>
+</div>
+</section>
+<section class="grid2" style="margin-top:12px">
+<div class="card">
+<div class="row" style="justify-content:space-between">
+<div class="muted">
+<strong>Coverage (Aralin 9):</strong> Places in town; location words (<em>kanan/kaliwa/harap/likod/tapat</em>), near vs far; directions Q&amp;A (<em>nasaan</em>, <em>malapit ba</em>);
+          suffix <strong>-an</strong> place nouns; <strong>nasa / nasa ibabaw / nasa itaas</strong>; polite language (<em>po/ho/opo</em>); children’s song actions; map/drawing words; reading (<em>Cubao, 1967</em>).
+          Scoring: <strong>+10</strong> correct, <strong>−5</strong> incorrect/timeout/show-answer.
+        </div>
+<button id="export">Export results</button>
+</div>
+<div class="muted" style="margin-top:8px">UI in English; stems in Tagalog; explanations in English. Audio unlocks on first click/tap.</div>
+<div class="muted" id="tracker" style="margin-top:12px"></div>
+</div>
+<div class="card">
+<div class="muted">
+        Tips: Use <kbd>Enter</kbd> to check a fill-in. Enable “New Q on Enter” to auto-advance after checking.
+        Answers are case-insensitive; hyphen/space/apostrophe variants accepted; common synonyms (e.g., <em>restawran</em>/<em>restoran</em>, <em>botika</em>/<em>parmasya</em>) are recognized.
+      </div>
+</div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+/* ===========================
+   Helpers & Normalization
+   =========================== */
+function stripDiacritics(s){return (s||"").normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+function normalize(s){
+  return stripDiacritics(String(s||""))
+    .toLowerCase()
+    .replace(/[’‘`´]/g,"'")
+    .replace(/[-–—]/g,"-")
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function normalizeLoose(s){ return normalize(s).replace(/[ -]/g,''); }
+function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+
+/* ===========================
+   State & Storage
+   =========================== */
+const KEY="tagalog_aralin9_v1b_stats"; const PREF="tagalog_aralin9_v1b_prefs";
+let stats=JSON.parse(localStorage.getItem(KEY)||"{}");
+if(!stats.version) stats={version:1,seen:0,correct:0,topics:{},score:0,streak:0};
+
+/* ===========================
+   Audio (SFX + Background)
+   =========================== */
+let AUDIO=true, MUSIC=true;
+let musicCtx=null, musicGain=null, musicInt=null, step=0;
+const sfxBtn=document.getElementById('sfx'); const musicBtn=document.getElementById('music'); const vol=document.getElementById('vol');
+let pref=JSON.parse(localStorage.getItem(PREF)||"{}");
+if(pref.sfx===undefined) pref.sfx=true; if(pref.music===undefined) pref.music=true; if(pref.volume===undefined) pref.volume=65;
+AUDIO=!!pref.sfx; MUSIC=!!pref.music; vol.value=pref.volume;
+function savePref(){ localStorage.setItem(PREF, JSON.stringify({sfx:AUDIO, music:MUSIC, volume:parseInt(vol.value,10)})); }
+
+function tone(f,d=0.14,t='sine',g=0.06){
+  if(!AUDIO) return;
+  const ctx=new (window.AudioContext||window.webkitAudioContext)();
+  const o=ctx.createOscillator(), ga=ctx.createGain();
+  o.type=t; o.frequency.value=f; o.connect(ga); ga.connect(ctx.destination); ga.gain.value=g;
+  o.start(); setTimeout(()=>{ga.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.1); o.stop(ctx.currentTime+0.12);}, d*1000);
+}
+function good(){ tone(659,0.10,'triangle',0.08); setTimeout(()=>tone(784,0.12,'triangle',0.08),90); setTimeout(()=>tone(880,0.12,'triangle',0.07),180); }
+function bad(){ tone(2300,0.05,'square',0.05); setTimeout(()=>tone(1800,0.05,'square',0.05),60); }
+function clickS(){ tone(360,0.06,'sine',0.05); }
+
+function ensureMusic(){
+  if(!musicCtx){
+    musicCtx=new (window.AudioContext||window.webkitAudioContext)();
+    musicGain=musicCtx.createGain(); musicGain.gain.value=0.6*(parseInt(vol.value,10)/100);
+    musicGain.connect(musicCtx.destination);
+  }
+}
+function chord(freqs){
+  if(!musicCtx) return;
+  freqs.forEach((f,i)=>{
+    const o=musicCtx.createOscillator(), g=musicCtx.createGain();
+    g.gain.value=0.014; o.type='sine'; o.frequency.value=f; o.connect(g); g.connect(musicGain);
+    const t0=musicCtx.currentTime+i*0.07, t1=t0+0.44;
+    o.start(t0); g.gain.setValueAtTime(g.gain.value,t0); g.gain.exponentialRampToValueAtTime(0.0001,t1); o.stop(t1);
+  });
+}
+// I–V–IV–V loop
+function playMusic(){
+  if(!MUSIC) return; ensureMusic(); if(musicInt) return;
+  const A=[220,277.18,329.63];
+  const E=[164.81,246.94,329.63];
+  const D=[146.83,220.00,293.66];
+  const prog=[A,E,D,E];
+  musicInt=setInterval(()=>{ chord(prog[step%prog.length]); step++; }, 560);
+}
+function stopMusic(){ try{clearInterval(musicInt);}catch{} musicInt=null; step=0; }
+function setAudioUi(){ sfxBtn.textContent=AUDIO? "🔊 Sound: On":"🔊 Sound: Off"; musicBtn.textContent=MUSIC? "🎵 Music: On":"🎵 Music: Off"; }
+sfxBtn.onclick=()=>{ AUDIO=!AUDIO; setAudioUi(); savePref(); clickS(); };
+musicBtn.onclick=()=>{ MUSIC=!MUSIC; setAudioUi(); savePref(); if(MUSIC) playMusic(); else stopMusic(); };
+vol.oninput=()=>{ savePref(); if(musicGain){ musicGain.gain.value=0.6*(parseInt(vol.value,10)/100); } };
+window.addEventListener('pointerdown', function unlock(){ setAudioUi(); if(MUSIC) playMusic(); window.removeEventListener('pointerdown', unlock); }, {once:true});
+
+/* ===========================
+   Lesson Data (Aralin 9)
+   =========================== */
+const READING_TEXT = "Cubao (1967)\\nTaong 1967, at nag-aaral ako ng kindergarten sa Stella Maris College. Nasa Cubao ang eskuwelahan ko. Malaki ang eskuwelahan ko, at maganda at malinis ang Cubao. Nakasuot kaming mga estudyante ng puting blusa na may “sailor collar” at asul na palda. May maliit na simbahan sa loob ng eskuwelahan namin.\\nMalapit sa eskuwelahan namin ang maraming tindahan at restawran. Bumibili kami ng school supplies sa Vasquez at ng sapatos sa Gregg’s, kumakain ng siopao at mami sa restawrang Ma Mon Luk at ng manok sa Kobe Chicken; at nanonood ng sine sa sinehang New Frontier. Sa Pasko, nanonood kami ng Christmas display sa C.O.D. Department Store at ng “Holiday on Ice” sa Araneta Coliseum.\\nMadumi at maingay na ngayon ang Cubao, pero ito ang Cubao na naaalala ko.\\n";
+
+/* Alt spellings / synonyms */
+const ALT = {
+  "restawran":["restoran","restaurant"],
+  "sinehan":["sine","sinehang"],
+  "eskuwelahan":["eskwelahan","paaralan","iskwelahan"],
+  "botika":["parmasya","pharmacy"],
+  "groseri":["grocery"],
+  "bangko":["banko"],
+  "aklatan":["library","silid aklatan","silid-aklatan"],
+  "istasyon ng pulis":["police station","himpilan ng pulis"],
+  "panaderya":["panaderia","bakery"],
+  "tindahan ng prutas":["fruit store","prutasan"],
+  "harap":["harapan","unahan"],
+  "likod":["likuran","huli"],
+  "tapat":["katapat","across","across from"],
+  "kaliwa":["sa kaliwa"],
+  "kanan":["sa kanan"],
+  "malapit":["malapit lang","near"],
+  "malayo":["far","malayong"],
+  "oho":["opo"],
+  "wala hong anuman":["walang anuman","walang anuman po","wala ho'ng anuman"]
+};
+
+/* ===========================
+   Question Bank
+   =========================== */
+const BANK=[];
+
+/* --- Dialogue: Nasaan ang tindahan ng prutas? --- */
+(function(){
+  const items=[
+    {q:`Paano mo sasabihin nang magalang: “Excuse me, where is the fruit store?”`, opts:[
+      "Mawalang-galang na ho, nasaan ho ang tindahan ng prutas?",
+      "Nasaan ang tindahan prutas?",
+      "Saan prutas ang tindahan?",
+      "Saan ang prutas?"
+    ], a:0, r:`Use “Mawalang-galang na ho/po…” and “Nasaan ang …?”`},
+    {q:`Paano sumagot: “It is across from Treehouse Restaurant.”`, opts:[
+      "Nasa tapat ng Treehouse Restaurant ang tindahan ng prutas.",
+      "Nasa likod ng Treehouse Restaurant ang tindahan ng prutas.",
+      "Malayo ang tindahan ng prutas sa Treehouse Restaurant.",
+      "Nasa kanan ng Treehouse Restaurant ang tindahan ng prutas."
+    ], a:0, r:`“tapat” = across from.`},
+    {q:`Ano ang magalang na tugon sa “Salamat ho/po.”?`, opts:[
+      "Wala hong anuman.","Oo.","Hindi.","Sige na."
+    ], a:0, r:`Polite “You’re welcome.”`},
+    {q:`Paano itatanong: “Is the fruit store near here?”`, opts:[
+      "Malapit ba dito ang tindahan ng prutas?","Nasaan ang tindahan ng prutas?","Malayo ba ang tindahan ng prutas?","Saan ang prutas?"
+    ], a:0, r:`Pattern “Malapit ba dito ang … ?”`},
+  ];
+  items.forEach(it=>BANK.push({topic:"Dialogue", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r}));
+})();
+
+/* --- Vocabulary: Places --- */
+(function(){
+  const places=[
+    ["tindahan","store"],["tindahan ng prutas","fruit store"],["tindahan ng bulaklak","flower shop"],
+    ["tindahan ng laruan","toy store"],["groseri","grocery"],["bangko","bank"],["ospital","hospital"],
+    ["restawran","restaurant"],["panaderya","bakery"],["sinehan","movie theater"],["istasyon ng pulis","police station"],
+    ["botika","drugstore"],["paradahan","parking lot"],["bus stop","bus stop"],["eskuwelahan","school"],
+    ["simbahan","church"],["aklatan","library"],["post office","post office"]
+  ];
+  places.forEach(([tg,en])=>{
+    const opts = shuffle([en,"bank","movie theater","church","flower shop"]).slice(0,3); opts.push(en);
+    const options=shuffle(opts);
+    BANK.push({topic:"Vocabulary — Places", type:"MCQ", stem:`Ano ang ibig sabihin ng “${tg}”?`, options, answers:[options.indexOf(en)], rationale:`“${tg}” → “${en}”.`});
+    const tgopts=shuffle([tg,"restawran","simbahan","aklatan","panaderya","sinehan"]).slice(0,3); tgopts.push(tg);
+    const tgoptions=shuffle(tgopts);
+    BANK.push({topic:"Vocabulary — Places", type:"MCQ", stem:`Isalin sa Filipino: “${en}”`, options:tgoptions, answers:[tgoptions.indexOf(tg)], rationale:`Choose “${tg}”.`});
+  });
+})();
+
+/* --- Vocabulary: Location words & near/far --- */
+(function(){
+  const loc=[["kanan","right"],["kaliwa","left"],["harap","front"],["likod","back"],["tapat","across"],["malapit","near"],["malayo","far"]];
+  loc.forEach(([tg,en])=>{
+    const options = shuffle([en,"front","right","across","far"]).slice(0,3); options.push(en);
+    const opts = shuffle(options);
+    BANK.push({topic:"Vocabulary — Location", type:"MCQ", stem:`Ano ang ibig sabihin ng “${tg}”?`, options:opts, answers:[opts.indexOf(en)], rationale:`“${tg}” → “${en}”.`});
+  });
+})();
+
+/* --- Grammar: Direction phrases --- */
+(function(){
+  BANK.push({topic:"Grammar — Directions", type:"FIB", stem:`Punan: Nasa ____ ng bangko ang bus stop.`, fibAnswers:["harap","Harap","harapan"], rationale:`Use “harap” = in front of.`});
+  BANK.push({topic:"Grammar — Directions", type:"FIB", stem:`Punan: Nasa ____ ng restawran ang sinehan.`, fibAnswers:["kanan","Kanan"], rationale:`“kanan” = right (side).`});
+  BANK.push({topic:"Grammar — Directions", type:"FIB", stem:`Punan: Nasa ____ ng ospital ang botika.`, fibAnswers:["kaliwa","Kaliwa"], rationale:`“kaliwa” = left (side).`});
+  BANK.push({topic:"Grammar — Directions", type:"FIB", stem:`Punan: Ang tindahan ng prutas ay nasa ____ ng Treehouse Restaurant.`, fibAnswers:["tapat","Tapat"], rationale:`“tapat” = across from.`});
+  BANK.push({topic:"Grammar — Directions", type:"MCQ", stem:`Piliin ang tamang pangungusap (“Is the library near here?”)`, options:[
+    "Malapit ba dito ang aklatan?","Nasaan ang aklatan?","Malayo ang aklatan.","Saan ang aklatan?"
+  ], answers:[0], rationale:`Use “Malapit ba dito …?”`});
+})();
+
+/* --- Grammar: Suffix -an (place nouns) --- */
+(function(){
+  BANK.push({topic:"Grammar — Suffix -an", type:"MCQ", stem:`Alin ang halimbawa ng place noun na may “-an”?`, options:[
+    "tindahan","palayan","kabundukan","Lahat ng nasa itaas"
+  ], answers:[3], rationale:`“-an” commonly forms place nouns.`});
+})();
+
+/* --- Grammar: nasa / nasa ibabaw / nasa itaas --- */
+(function(){
+  BANK.push({topic:"Grammar — Location (ibabaw/itaas)", type:"MCQ", stem:`Best Tagalog for “The bird is above the tree.”`, options:[
+    "Nasa ibabaw ng puno ang ibon.","Nasa itaas ng puno ang ibon.","Nasa ilalim ng puno ang ibon.","Nasa tabi ng puno ang ibon."
+  ], answers:[0], rationale:`Use “nasa ibabaw” = above.`});
+  BANK.push({topic:"Grammar — Location (ibabaw/itaas)", type:"MCQ", stem:`Best Tagalog for “The cat is high up the tree.”`, options:[
+    "Nasa itaas ng puno ang pusa.","Nasa ibabaw ng puno ang pusa.","Nasa puno ang pusa.","Nasa harap ng puno ang pusa."
+  ], answers:[0], rationale:`Use “nasa itaas” = high up.`});
+})();
+
+/* --- Culture: Song actions (Ang Giyera ni Lapu-Lapu) --- */
+(function(){
+  const actions=[
+    ["Itaas ang kanang kamay!","Raise your right hand!"],
+    ["Itaas ang kaliwang kamay!","Raise your left hand!"],
+    ["Ipadyak ang kanang paa!","Stomp your right foot!"],
+    ["Ipadyak ang kaliwang paa!","Stomp your left foot!"],
+    ["Kumendeng kendeng!","Sashay your hips!"]
+  ];
+  actions.forEach(([tl,en])=>{
+    const opts=shuffle([en,"Clap your hands!","Turn around!","Jump!"]);
+    BANK.push({topic:"Culture — Song", type:"MCQ", stem:`Ano ang ibig sabihin ng “${tl}”?`, options:opts, answers:[opts.indexOf(en)], rationale:`From the children’s song instructions.`});
+  });
+})();
+
+/* --- Map/Drawing vocabulary --- */
+(function(){
+  const mapwords=[
+    ["puno","tree"],["ilog","river"],["palayan","ricefield"],["bundok","mountain"],["kabundukan","mountains"],
+    ["dalampasigan","seashore"],["dagat","ocean"],["gubat","forest"],["kagubatan","forest"],
+    ["araw","sun"],["buwan","moon"],["bituin","star"],["tala","star"],["ibon","bird"],["isda","fish"],["hayop","animal"],
+    ["ibabaw","above"],["itaas","on top/high up"],["gitna","center"],["pagitan","between"]
+  ];
+  mapwords.forEach(([tg,en])=>{
+    const options=shuffle([en,"river","forest","mountain","center"]).slice(0,3); options.push(en);
+    const opts=shuffle(options);
+    BANK.push({topic:"Vocabulary — Map/Scene", type:"MCQ", stem:`Ano ang ibig sabihin ng “${tg}”?`, options:opts, answers:[opts.indexOf(en)], rationale:`“${tg}” → “${en}”.`});
+  });
+})();
+
+/* --- Reading: Cubao (1967) --- */
+(function(){
+  const items=[
+    {q:`Saan ako nag-aaral ng kindergarten?`, opts:["Stella Maris College","UP Elementary","Ateneo Grade School","St. Paul"], a:0, r:`From the passage.`},
+    {q:`Nasaan ang eskuwelahan ko?`, opts:["Cubao","Diliman","Ermita","Pasay"], a:0, r:`“Nasa Cubao …”`},
+    {q:`Ano ang suot ng mga estudyante?`, opts:[
+      "Puting blusa na may sailor collar at asul na palda","Dilaw na uniporme","Pulang baro’t saya","Asul na bestida"
+    ], a:0, r:`From the passage.`},
+    {q:`Saan kami kumakain ng mami at siopao?`, opts:["Ma Mon Luk","Kobe Chicken","New Frontier","C.O.D."], a:0, r:`From the passage.`},
+    {q:`Saan nanonood ng “Holiday on Ice”?`, opts:["Araneta Coliseum","New Frontier","Vasquez","Gregg’s"], a:0, r:`From the passage.`},
+    {q:`Ano ang binibili sa Vasquez?`, opts:["School supplies","Shoes","Manok","Tickets"], a:0, r:`From the passage.`},
+    {q:`Totoo o Mali: Malinis pa rin ang Cubao ayon sa awtor.`, opts:["Mali","Totoo"], a:0, r:`“Madumi at maingay na ngayon …”`},
+  ];
+  items.forEach(it=>BANK.push({topic:"Reading — Cubao 1967", type:"MCQ", stem:it.q, options:it.opts, answers:[it.a], rationale:it.r}));
+})();
+
+/* Collate distinct topic labels for the dropdown */
+const TOPICS=[...new Set(BANK.map(q=>q.topic))].sort();
+
+/* ===========================
+   UI Elements
+   =========================== */
+const elStem=document.getElementById('stem'), elOptions=document.getElementById('options'), elRationale=document.getElementById('rationale'), elStatus=document.getElementById('status');
+const elShowAns=document.getElementById('showAns'), elAgain=document.getElementById('again'), elNext=document.getElementById('next');
+const elType=document.getElementById('typeBadge'), elTopic=document.getElementById('topicBadge');
+const elCategory=document.getElementById('category'), elMode=document.getElementById('mode'), elTopicFilter=document.getElementById('topicFilter'), elTimer=document.getElementById('timer'), elEnter=document.getElementById('enterMode');
+const elFibWrap=document.getElementById('fibWrap'), elFibInput=document.getElementById('fibInput'), elFibCheck=document.getElementById('fibCheck');
+const elScore=document.getElementById('score'), elStreak=document.getElementById('streak'), elTracker=document.getElementById('tracker');
+const elProgressLabel=document.getElementById('progresslabel'), elProgressFill=document.getElementById('progressfill');
+const toast=document.getElementById('toast'); const elExport=document.getElementById('export'); const elReading=document.getElementById('reading');
+
+/* Fill topic dropdown */
+TOPICS.forEach(t=>{ const o=document.createElement('option'); o.value=t; o.textContent=t; elTopicFilter.appendChild(o); });
+
+function ensureTopic(t){ if(!stats.topics[t]) stats.topics[t]={seen:0,correct:0}; }
+function setProgress(){ elScore.textContent=stats.score; elStreak.textContent=stats.streak; elProgressLabel.textContent=`Progress: ${stats.correct}/${stats.seen}`; const pct=stats.seen? (100*stats.correct/stats.seen):0; elProgressFill.style.width=Math.min(100,pct)+"%"; }
+function buildTracker(){
+  elTracker.innerHTML="";
+  TOPICS.forEach(t=>{ ensureTopic(t); const s=stats.topics[t]; const acc=s.seen? Math.round(100*s.correct/s.seen):0;
+    const n1=document.createElement('div'); n1.textContent=t;
+    const n2=document.createElement('div'); n2.textContent=s.seen+" seen";
+    const n3=document.createElement('div'); n3.textContent=acc+"%";
+    n3.style.color=acc>=85?'var(--success)':acc>=70?'var(--warn)':'var(--danger)';
+    elTracker.appendChild(n1); elTracker.appendChild(n2); elTracker.appendChild(n3);
+  });
+}
+function toastMsg(m){ toast.textContent=m; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1100); }
+
+/* ===========================
+   Selection
+   =========================== */
+function allowed(q){
+  const cat=elCategory.value;
+  if(cat==='vocab') return q.topic.toLowerCase().includes('vocabulary');
+  if(cat==='grammar') return q.topic.toLowerCase().includes('grammar');
+  if(cat==='reading') return q.topic.toLowerCase().includes('reading');
+  if(cat==='dialogue') return q.topic.toLowerCase().includes('dialogue');
+  if(cat==='culture') return q.topic.toLowerCase().includes('culture');
+  return true;
+}
+function pick(){
+  const mode=elMode.value;
+  let pool=[];
+  if(mode==='topic' && elTopicFilter.value!=='any'){ pool=BANK.filter(q=>q.topic===elTopicFilter.value && allowed(q)); }
+  else { pool=BANK.filter(allowed); }
+  if(!pool.length) return null;
+  if(mode==='adaptive'){
+    const weighted=[];
+    pool.forEach(q=>{
+      ensureTopic(q.topic);
+      const s=stats.topics[q.topic];
+      const acc=s.seen? (s.correct/s.seen):0;
+      const w=1.5 - acc;
+      const n=Math.max(1, Math.round(w*4));
+      for(let i=0;i<n;i++) weighted.push(q);
+    });
+    return weighted[Math.floor(Math.random()*weighted.length)];
+  }
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+
+/* ===========================
+   Render & Scoring
+   =========================== */
+let current=null, allow=true, timerId=null, scored=false;
+
+function render(q){
+  current=q; allow=true; scored=false;
+  elType.textContent=q.type; elTopic.textContent=q.topic;
+  elStem.textContent=q.stem; elRationale.classList.add('hidden'); elRationale.textContent=""; elStatus.textContent="Choose the best answer.";
+  elOptions.innerHTML=""; elFibWrap.classList.add('hidden'); elFibWrap.style.display='none'; elReading.classList.add('hidden'); elReading.textContent="";
+  if(q.topic && q.topic.toLowerCase().includes('reading')){ elReading.textContent=READING_TEXT; elReading.classList.remove('hidden'); }
+  if(q.type==="MCQ"){
+    q.options.forEach((opt,i)=>{
+      const b=document.createElement('button'); b.className='opt'; b.textContent=opt;
+      b.onclick=()=>{ if(!allow||scored) return; clickS(); finish([i]); };
+      elOptions.appendChild(b);
+    });
+  }else{
+    elFibWrap.classList.remove('hidden'); elFibWrap.style.display='flex'; elFibInput.value=""; elFibInput.focus();
+    const handler=()=>{ if(!allow||scored) return; finish([elFibInput.value]); };
+    elFibCheck.onclick=handler;
+    elFibInput.onkeydown=(e)=>{ if(e.key==='Enter') handler(); };
+  }
+  setTimer();
+}
+
+function checkFib(user, answers){
+  const u=normalize(user);
+  const uLoose=normalizeLoose(user);
+  const set=new Set();
+  (answers||[]).forEach(a=>{
+    const base=normalize(a);
+    set.add(base); set.add(base.replace(/\s+/g,''));
+    set.add(base.replace(/'/g,'’')); set.add(base.replace(/’/g,"'"));
+    // add alt synonyms
+    if(ALT[base]) ALT[base].forEach(x=>{ set.add(normalize(x)); set.add(normalizeLoose(x)); });
+  });
+  return set.has(u) || set.has(uLoose);
+}
+
+function finish(sel){
+  allow=false; scored=true;
+  let ok=false, ans="", rationale=(current.rationale||"");
+
+  if(current.type==="MCQ"){
+    const idx=sel[0]; ok=current.answers.includes(idx);
+    [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect'));
+    ans=current.options[current.answers[0]];
+  }else{
+    const user=sel[0]||"";
+    ok=checkFib(user, current.fibAnswers||[]);
+    ans=(current.fibAnswers && current.fibAnswers[0]) || "";
+  }
+
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++;
+  if(ok){
+    stats.correct++; stats.topics[current.topic].correct++; stats.streak++; stats.score+=10;
+    good(); toastMsg("✅ Tama! +10"); elStatus.textContent="✅ Correct! +10 points";
+  }else{
+    stats.streak=0; stats.score-=5;
+    bad(); toastMsg("❌ Mali. −5"); elStatus.textContent="❌ Not quite. −5 points";
+  }
+  elRationale.textContent = (rationale? rationale+" ":"") + (ans? "Answer: "+ans:"");
+  elRationale.classList.remove('hidden');
+
+  localStorage.setItem(KEY, JSON.stringify(stats));
+  setProgress(); buildTracker();
+
+  if(elEnter.value==='on' && current.type==='FIB'){
+    setTimeout(()=>{ nextQ(); }, 450);
+  }
+}
+
+function showAnswerPenalty(){
+  if(scored) return;
+  allow=false; scored=true;
+  if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); }
+  stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++; stats.streak=0; stats.score-=5; bad(); toastMsg("👀 Answer shown −5");
+  const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]);
+  elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+  elStatus.textContent="👀 Shown answer. −5 points"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+}
+
+function nextQ(){
+  const q=pick();
+  if(!q){ elStem.textContent="No questions available for the current filters."; elOptions.innerHTML=""; elReading.classList.add('hidden'); elFibWrap.classList.add('hidden'); return; }
+  render(q);
+}
+
+/* Timer */
+function setTimer(){
+  if(timerId) clearInterval(timerId);
+  const t=elTimer.value; if(t==="off") return; let left=parseInt(t,10);
+  elStatus.textContent="⏱️ "+left+"s";
+  timerId=setInterval(()=>{
+    if(!allow){ clearInterval(timerId); return; }
+    left--; elStatus.textContent="⏱️ "+left+"s";
+    if(left<=0){
+      clearInterval(timerId); allow=false; scored=true;
+      stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++; stats.streak=0; stats.score-=5; bad(); toastMsg("⏰ Oras na! −5");
+      if(current.type==="MCQ"){ [...elOptions.children].forEach((n,i)=> n.classList.add(current.answers.includes(i)?'correct':'incorrect')); }
+      const ans=current.type==="MCQ"? current.options[current.answers[0]] : (current.fibAnswers && current.fibAnswers[0]);
+      elRationale.textContent=(current.rationale? current.rationale+" ":"")+(ans? "Answer: "+ans:""); elRationale.classList.remove('hidden');
+      elStatus.textContent="⏰ Time! −5 points"; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker();
+    }
+  },1000);
+}
+
+/* Buttons */
+document.getElementById('reset').onclick=()=>{ if(confirm("Reset all stats?")){ stats={version:1,seen:0,correct:0,topics:{},score:0,streak:0}; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); } };
+document.getElementById('next').onclick=()=>{ nextQ(); };
+document.getElementById('again').onclick=()=>{ if(current) render(current); };
+document.getElementById('showAns').onclick=()=>{ showAnswerPenalty(); };
+document.getElementById('export').onclick=()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='tagalog_aralin9_stats.json'; a.click(); };
+
+/* Init */
+setAudioUi(); setProgress(); buildTracker();
+window.addEventListener('load',()=>{ nextQ(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Romaji to Kana | John Villanueva</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-image: url('/play/assets/kana-room.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #fff;
+    }
+    h1 {
+      color: #fff;
+      text-shadow: 2px 2px 4px #000;
+    }
+    #question {
+      font-size: 2em;
+      margin: 20px;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .feedback {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #000;
+    }
+    .correct {
+      color: #00ff00;
+    }
+    .wrong {
+      color: #ff3333;
+    }
+    .streak {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    .streak.green {
+      color: #00ff00;
+    }
+    .streak.red {
+      color: #ff3333;
+    }
+    #musicPrompt {
+      color: white;
+      font-size: 1em;
+      margin-top: 20px;
+      text-shadow: 1px 1px 2px #000;
+    }
+    input[type="text"] {
+      font-size: 1.5em;
+      width: 80px;
+      text-align: center;
+    }
+    button {
+      font-size: 1em;
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+    #leaderboard, #gameSection {
+      display: none;
+    }
+    #leaderboardTable {
+      background-color: rgba(0, 0, 0, 0.7);
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    table {
+      margin: auto;
+      width: 80%;
+      color: white;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    #leaderboardBtn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    #returnBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    #resetBtnBottom {
+      margin-top: 30px;
+    }
+  </style>
+<style id="jv-play-nav-style">
+.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
+.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
+@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
+</style><link rel="icon" href="/assets/favicon.svg"><meta name="theme-color" content="#0d2932">
+<style id="jv-responsive-patch">
+html,body{max-width:100%;overflow-x:hidden}
+body{padding-bottom:82px!important}
+img,video,canvas,svg{max-width:100%;height:auto}
+#jv-play-nav-style + body{}
+.jv-play-nav{max-width:calc(100vw - 20px);flex-wrap:wrap}
+@media(max-width:900px){
+  header{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important;padding:12px!important}
+  header .brand{flex:1 1 100%!important;line-height:1.35!important}
+  .controls{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+  .controls>.ctrl,.controls>.row,.controls>div{width:100%!important;max-width:100%!important}
+  .grid2{grid-template-columns:1fr!important}
+  .footer{grid-template-columns:1fr!important}
+  main,.wrap{width:100%!important;max-width:100%!important;padding-left:10px!important;padding-right:10px!important}
+  select,button,input[type="text"],input[type="number"]{max-width:100%!important}
+  .volwrap{width:100%!important;justify-content:flex-start!important}
+  input[type="range"]{max-width:70vw!important}
+  table{width:100%!important;display:block!important;overflow-x:auto!important}
+}
+@media(max-width:620px){
+  body{padding-left:0!important;padding-right:0!important;padding-bottom:94px!important}
+  header{position:relative!important;grid-template-columns:1fr!important}
+  .brand{font-size:1rem!important;overflow-wrap:anywhere!important}
+  .pill{max-width:100%!important;justify-content:center!important}
+  button,select,input[type="text"],input[type="number"]{min-height:44px!important;font-size:16px!important;width:100%!important}
+  .qcard,.card,.panel{border-radius:12px!important;padding:13px!important}
+  .qstem,#question,.big{font-size:clamp(1.25rem,6.5vw,1.8rem)!important}
+  .options,.grid{grid-template-columns:1fr!important}
+  .row{max-width:100%!important;flex-wrap:wrap!important}
+  #leaderboardBtn,#returnBtn{position:static!important;display:inline-flex!important;width:auto!important;margin:8px!important}
+  #leaderboardTable{padding:10px!important}
+  .jv-play-nav{left:8px!important;right:8px!important;bottom:8px!important;justify-content:center!important}
+  .jv-play-nav a{flex:1 1 auto!important;justify-content:center!important;text-align:center!important}
+}
+</style></head>
+<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Library</a><a class="secondary" href="/projects.html">Portfolio</a></nav>
+<button id="leaderboardBtn" onclick="showLeaderboard()">Leaderboard</button>
+<!-- GAME SECTION -->
+<div id="gameSection">
+<h1>Romaji to Kana Quiz</h1>
+<div id="question">Loading...</div>
+<input id="answerInput" type="text"/>
+<button onclick="checkAnswer()">Submit</button>
+<div class="feedback" id="feedback"></div>
+<div class="streak green" id="streakDisplay">Streak: 0</div>
+<div id="musicPrompt">Click anywhere for Background Music</div>
+</div>
+<!-- LEADERBOARD SECTION -->
+<div id="leaderboard">
+<h1>Recent Leaderboard</h1>
+<div id="leaderboardTable">
+<table>
+<thead>
+<tr><th>Name</th><th>Score</th></tr>
+</thead>
+<tbody id="leaderboardBody"></tbody>
+</table>
+</div>
+<button id="returnBtn" onclick="showGame()">Return to Game</button>
+<button id="resetBtnBottom" onclick="resetLeaderboard()">Reset Leaderboard</button>
+</div>
+<audio id="bgMusic" loop="">
+<source src="https://raw.githubusercontent.com/xantum21/Kana-Game/main/Menu.mp3" type="audio/mpeg"/>
+</audio>
+<audio id="yesSound">
+<source src="https://raw.githubusercontent.com/xantum21/Kana-Game/main/Yes.mp3" type="audio/mpeg"/>
+</audio>
+<audio id="noSound">
+<source src="https://raw.githubusercontent.com/xantum21/Kana-Game/main/No.mp3" type="audio/mpeg"/>
+</audio>
+<script>
+    const quizData = [
+      // HIRAGANA
+      { romaji: "a", kana: "あ", type: "hiragana" }, { romaji: "i", kana: "い", type: "hiragana" },
+      { romaji: "u", kana: "う", type: "hiragana" }, { romaji: "e", kana: "え", type: "hiragana" },
+      { romaji: "o", kana: "お", type: "hiragana" }, { romaji: "ka", kana: "か", type: "hiragana" },
+      { romaji: "ki", kana: "き", type: "hiragana" }, { romaji: "ku", kana: "く", type: "hiragana" },
+      { romaji: "ke", kana: "け", type: "hiragana" }, { romaji: "ko", kana: "こ", type: "hiragana" },
+      { romaji: "sa", kana: "さ", type: "hiragana" }, { romaji: "shi", kana: "し", type: "hiragana" },
+      { romaji: "su", kana: "す", type: "hiragana" }, { romaji: "se", kana: "せ", type: "hiragana" },
+      { romaji: "so", kana: "そ", type: "hiragana" }, { romaji: "ta", kana: "た", type: "hiragana" },
+      { romaji: "chi", kana: "ち", type: "hiragana" }, { romaji: "tsu", kana: "つ", type: "hiragana" },
+      { romaji: "te", kana: "て", type: "hiragana" }, { romaji: "to", kana: "と", type: "hiragana" },
+      { romaji: "na", kana: "な", type: "hiragana" }, { romaji: "ni", kana: "に", type: "hiragana" },
+      { romaji: "nu", kana: "ぬ", type: "hiragana" }, { romaji: "ne", kana: "ね", type: "hiragana" },
+      { romaji: "no", kana: "の", type: "hiragana" }, { romaji: "ha", kana: "は", type: "hiragana" },
+      { romaji: "hi", kana: "ひ", type: "hiragana" }, { romaji: "fu", kana: "ふ", type: "hiragana" },
+      { romaji: "he", kana: "へ", type: "hiragana" }, { romaji: "ho", kana: "ほ", type: "hiragana" },
+      { romaji: "ma", kana: "ま", type: "hiragana" }, { romaji: "mi", kana: "み", type: "hiragana" },
+      { romaji: "mu", kana: "む", type: "hiragana" }, { romaji: "me", kana: "め", type: "hiragana" },
+      { romaji: "mo", kana: "も", type: "hiragana" }, { romaji: "ya", kana: "や", type: "hiragana" },
+      { romaji: "yu", kana: "ゆ", type: "hiragana" }, { romaji: "yo", kana: "よ", type: "hiragana" },
+      { romaji: "ra", kana: "ら", type: "hiragana" }, { romaji: "ri", kana: "り", type: "hiragana" },
+      { romaji: "ru", kana: "る", type: "hiragana" }, { romaji: "re", kana: "れ", type: "hiragana" },
+      { romaji: "ro", kana: "ろ", type: "hiragana" }, { romaji: "wa", kana: "わ", type: "hiragana" },
+      { romaji: "wo", kana: "を", type: "hiragana" }, { romaji: "n", kana: "ん", type: "hiragana" },
+
+      // KATAKANA
+      { romaji: "a", kana: "ア", type: "katakana" }, { romaji: "i", kana: "イ", type: "katakana" },
+      { romaji: "u", kana: "ウ", type: "katakana" }, { romaji: "e", kana: "エ", type: "katakana" },
+      { romaji: "o", kana: "オ", type: "katakana" }, { romaji: "ka", kana: "カ", type: "katakana" },
+      { romaji: "ki", kana: "キ", type: "katakana" }, { romaji: "ku", kana: "ク", type: "katakana" },
+      { romaji: "ke", kana: "ケ", type: "katakana" }, { romaji: "ko", kana: "コ", type: "katakana" },
+      { romaji: "sa", kana: "サ", type: "katakana" }, { romaji: "shi", kana: "シ", type: "katakana" },
+      { romaji: "su", kana: "ス", type: "katakana" }, { romaji: "se", kana: "セ", type: "katakana" },
+      { romaji: "so", kana: "ソ", type: "katakana" }, { romaji: "ta", kana: "タ", type: "katakana" },
+      { romaji: "chi", kana: "チ", type: "katakana" }, { romaji: "tsu", kana: "ツ", type: "katakana" },
+      { romaji: "te", kana: "テ", type: "katakana" }, { romaji: "to", kana: "ト", type: "katakana" },
+      { romaji: "na", kana: "ナ", type: "katakana" }, { romaji: "ni", kana: "ニ", type: "katakana" },
+      { romaji: "nu", kana: "ヌ", type: "katakana" }, { romaji: "ne", kana: "ネ", type: "katakana" },
+      { romaji: "no", kana: "ノ", type: "katakana" }, { romaji: "ha", kana: "ハ", type: "katakana" },
+      { romaji: "hi", kana: "ヒ", type: "katakana" }, { romaji: "fu", kana: "フ", type: "katakana" },
+      { romaji: "he", kana: "ヘ", type: "katakana" }, { romaji: "ho", kana: "ホ", type: "katakana" },
+      { romaji: "ma", kana: "マ", type: "katakana" }, { romaji: "mi", kana: "ミ", type: "katakana" },
+      { romaji: "mu", kana: "ム", type: "katakana" }, { romaji: "me", kana: "メ", type: "katakana" },
+      { romaji: "mo", kana: "モ", type: "katakana" }, { romaji: "ya", kana: "ヤ", type: "katakana" },
+      { romaji: "yu", kana: "ユ", type: "katakana" }, { romaji: "yo", kana: "ヨ", type: "katakana" },
+      { romaji: "ra", kana: "ラ", type: "katakana" }, { romaji: "ri", kana: "リ", type: "katakana" },
+      { romaji: "ru", kana: "ル", type: "katakana" }, { romaji: "re", kana: "レ", type: "katakana" },
+      { romaji: "ro", kana: "ロ", type: "katakana" }, { romaji: "wa", kana: "ワ", type: "katakana" },
+      { romaji: "wo", kana: "ヲ", type: "katakana" }, { romaji: "n", kana: "ン", type: "katakana" }
+    ];
+
+    let currentQuestion;
+    let streak = 0;
+
+    function loadQuestion() {
+      const randomIndex = Math.floor(Math.random() * quizData.length);
+      currentQuestion = quizData[randomIndex];
+      document.getElementById("question").textContent = `${currentQuestion.romaji} - ${currentQuestion.type}`;
+      document.getElementById("answerInput").value = "";
+      document.getElementById("feedback").textContent = "";
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById("answerInput").value.trim();
+      const isCorrect = userAnswer === currentQuestion.kana;
+      const feedback = document.getElementById("feedback");
+      const streakDisplay = document.getElementById("streakDisplay");
+
+      if (isCorrect) {
+        feedback.textContent = "Correct!";
+        feedback.className = "feedback correct";
+        document.getElementById("yesSound").play();
+        streak++;
+        streakDisplay.className = "streak green";
+      } else {
+        feedback.textContent = "Wrong";
+        feedback.className = "feedback wrong";
+        document.getElementById("noSound").play();
+        streakDisplay.className = "streak red";
+        promptAndRecordStreak();
+        streak = 0;
+      }
+
+      streakDisplay.textContent = `Streak: ${streak}`;
+      setTimeout(loadQuestion, 1000);
+    }
+
+    function promptAndRecordStreak() {
+      const playerName = prompt("Enter your name for the leaderboard:");
+      if (!playerName) return;
+      const leaderboard = JSON.parse(localStorage.getItem("kana_leaderboard") || "[]");
+      leaderboard.push({ name: playerName, score: streak });
+      localStorage.setItem("kana_leaderboard", JSON.stringify(leaderboard));
+    }
+
+    function showGame() {
+      document.getElementById("gameSection").style.display = "block";
+      document.getElementById("leaderboard").style.display = "none";
+      loadQuestion();
+    }
+
+    function showLeaderboard() {
+      const table = document.getElementById("leaderboardBody");
+      table.innerHTML = "";
+      const scores = JSON.parse(localStorage.getItem("kana_leaderboard") || "[]");
+      scores.slice(-10).reverse().forEach(entry => {
+        const row = `<tr><td>${entry.name}</td><td>${entry.score}</td></tr>`;
+        table.innerHTML += row;
+      });
+      document.getElementById("gameSection").style.display = "none";
+      document.getElementById("leaderboard").style.display = "block";
+    }
+
+    function resetLeaderboard() {
+      localStorage.removeItem("kana_leaderboard");
+      showLeaderboard();
+    }
+
+    document.body.addEventListener("click", function() {
+      const music = document.getElementById("bgMusic");
+      if (music.paused) {
+        music.play().catch(e => console.log("Music autoplay blocked."));
+      }
+    });
+
+    document.getElementById("answerInput").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") checkAnswer();
+    });
+
+    window.onload = showGame;
+  </script>
+</body>
+</html>

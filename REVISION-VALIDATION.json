@@ -1,0 +1,12 @@
+{
+  "revision": "interactive-media-polish-2",
+  "html_files": 43,
+  "interactive_apps": 22,
+  "playable_experiences": 23,
+  "missing_local_links": [],
+  "javascript_syntax": "checked separately with node --check",
+  "favicon_on_all_apps": true,
+  "responsive_patch_on_all_apps": true,
+  "standardized_app_titles": true,
+  "main_navigation_has_play": true
+}
