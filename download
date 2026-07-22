@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta content="width=device-width,initial-scale=1" name="viewport">
 <title>
-   Pharmacology Practice | John Villanueva
+   Spanish Practice | John Villanueva
   </title>
-  <meta content="Four nursing-focused pharmacology practice routes for medication safety, adaptive review, mastery tracking, and repeated study." name="description">
-  <link href="https://johnfvillanueva.com/play/pharmacology/" rel="canonical">
+  <meta content="Two beginner Spanish practice lessons covering cognates, word formation, grammar, translation, and cultural context." name="description">
+  <link href="https://johnfvillanueva.com/play/spanish/" rel="canonical">
   <meta content="website" property="og:type">
-  <meta content="Pharmacology Practice | John Villanueva" property="og:title">
-  <meta content="Four nursing-focused pharmacology practice routes for medication safety, adaptive review, mastery tracking, and repeated study." property="og:description">
-  <meta content="https://johnfvillanueva.com/play/pharmacology/" property="og:url">
+  <meta content="Spanish Practice | John Villanueva" property="og:title">
+  <meta content="Two beginner Spanish practice lessons covering cognates, word formation, grammar, translation, and cultural context." property="og:description">
+  <meta content="https://johnfvillanueva.com/play/spanish/" property="og:url">
   <meta content="https://johnfvillanueva.com/assets/social-card.png" property="og:image">
 <link href="/assets/site.css?v=20260722b" rel="stylesheet">
   <meta name="theme-color" content="#102a34">
@@ -58,15 +58,15 @@
    <section class="play-hero">
     <div class="shell">
      <p class="eyebrow">
-      Healthcare learning
+      Language learning
      </p>
      <h1>
-      Pharmacology
+      Spanish
       <br>
       Practice.
      </h1>
      <p>
-      Four distinct nursing-focused quiz banks for medication concepts, safety thinking, calculations, broader review, and weak-area practice.
+      Two Madrigal-inspired practice routes built around recognizable word patterns, grammar, translation, and cultural context.
      </p>
      <div class="action-row">
       <a class="button button-secondary" href="../">
@@ -90,63 +90,35 @@
        </h2>
       </div>
       <p>
-       Choose the set that matches the kind of review you need today.
+       Both lessons open directly in the browser; start with either one.
       </p>
      </div>
      <div class="grid-3">
       <article class="card collection-card reveal">
        <span class="count">
-        Practice I
+        Lesson 1
        </span>
        <h3>
-        Medication Safety & Core Review
+        Cognates & Core Patterns
        </h3>
        <p>
-        A broad adaptive review focused on medication concepts, safety thinking, and repeated weak-area practice.
+        Practice cognate families, spelling shifts, articles, plurals, sentence construction, and translation.
        </p>
-       <a class="card-link" href="quiz-1.html">
+       <a class="card-link" href="lesson-1.html">
         Open lesson &rarr;
        </a>
       </article>
       <article class="card collection-card reveal">
        <span class="count">
-        Practice II
+        Lesson 2
        </span>
        <h3>
-        Adaptive Weak-Area Review
+        Word Formation & Sentence Practice
        </h3>
        <p>
-        A second adaptive bank that prioritizes missed topics and adds audio feedback for repeated review.
+        Review word-formation patterns, gender, descriptive language, sentence inversion, culture, and translation.
        </p>
-       <a class="card-link" href="quiz-2.html">
-        Open lesson &rarr;
-       </a>
-      </article>
-      <article class="card collection-card reveal">
-       <span class="count">
-        Practice III
-       </span>
-       <h3>
-        Comprehensive Pharmacology Review
-       </h3>
-       <p>
-        A separate pharmacology bank for broader topic practice, timers, mastery tracking, and exported results.
-       </p>
-       <a class="card-link" href="quiz-3.html">
-        Open lesson &rarr;
-       </a>
-      </article>
-      <article class="card collection-card reveal">
-       <span class="count">
-        Practice IV
-       </span>
-       <h3>
-        Advanced 100+ Question Challenge
-       </h3>
-       <p>
-        The largest practice route, with more than 100 questions, adaptive modes, timers, and topic-level mastery tracking.
-       </p>
-       <a class="card-link" href="quiz-4.html">
+       <a class="card-link" href="lesson-2.html">
         Open lesson &rarr;
        </a>
       </article>

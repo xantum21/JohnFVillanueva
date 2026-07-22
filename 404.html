@@ -1,281 +1,255 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Math Quiz Game | John Villanueva</title>
-<style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-image: url('/play/assets/math-room4.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      color: #fff;
-    }
-    h1 {
-      color: #fff;
-      text-shadow: 2px 2px 4px #000;
-    }
-    #question {
-      font-size: 2em;
-      margin: 20px;
-      text-shadow: 2px 2px 4px #000;
-    }
-    .feedback {
-      font-size: 1.5em;
-      font-weight: bold;
-      text-shadow: 1px 1px 3px #000;
-    }
-    .correct {
-      color: #00ff00;
-    }
-    .wrong {
-      color: #ff3333;
-    }
-    .streak {
-      font-size: 1.2em;
-      margin-top: 10px;
-    }
-    .streak.green {
-      color: #00ff00;
-    }
-    .streak.red {
-      color: #ff3333;
-    }
-    #musicPrompt {
-      color: white;
-      font-size: 1em;
-      margin-top: 20px;
-      text-shadow: 1px 1px 2px #000;
-    }
-    input[type="text"] {
-      font-size: 1.5em;
-      width: 80px;
-      text-align: center;
-    }
-    button {
-      font-size: 1em;
-      padding: 10px 20px;
-      margin-top: 10px;
-    }
-    #leaderboard, #gameSection {
-      display: none;
-    }
-    #leaderboardTable {
-      background-color: rgba(0, 0, 0, 0.7);
-      margin-top: 30px;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    table {
-      margin: auto;
-      width: 80%;
-      color: white;
-      border-collapse: collapse;
-    }
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-    }
-    #leaderboardBtn {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-    }
-    #returnBtn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-    #resetBtnBottom {
-      margin-top: 30px;
-    }
-  </style>
-<style id="jv-play-nav-style">
-.jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-.jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
-.jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
-@media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
-</style><link rel="icon" href="/assets/favicon.svg"><meta name="theme-color" content="#0d2932">
-<style id="jv-responsive-patch">
-html,body{max-width:100%;overflow-x:hidden}
-body{padding-bottom:82px!important}
-img,video,canvas,svg{max-width:100%;height:auto}
-#jv-play-nav-style + body{}
-.jv-play-nav{max-width:calc(100vw - 20px);flex-wrap:wrap}
-@media(max-width:900px){
-  header{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important;padding:12px!important}
-  header .brand{flex:1 1 100%!important;line-height:1.35!important}
-  .controls{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
-  .controls>.ctrl,.controls>.row,.controls>div{width:100%!important;max-width:100%!important}
-  .grid2{grid-template-columns:1fr!important}
-  .footer{grid-template-columns:1fr!important}
-  main,.wrap{width:100%!important;max-width:100%!important;padding-left:10px!important;padding-right:10px!important}
-  select,button,input[type="text"],input[type="number"]{max-width:100%!important}
-  .volwrap{width:100%!important;justify-content:flex-start!important}
-  input[type="range"]{max-width:70vw!important}
-  table{width:100%!important;display:block!important;overflow-x:auto!important}
-}
-@media(max-width:620px){
-  body{padding-left:0!important;padding-right:0!important;padding-bottom:94px!important}
-  header{position:relative!important;grid-template-columns:1fr!important}
-  .brand{font-size:1rem!important;overflow-wrap:anywhere!important}
-  .pill{max-width:100%!important;justify-content:center!important}
-  button,select,input[type="text"],input[type="number"]{min-height:44px!important;font-size:16px!important;width:100%!important}
-  .qcard,.card,.panel{border-radius:12px!important;padding:13px!important}
-  .qstem,#question,.big{font-size:clamp(1.25rem,6.5vw,1.8rem)!important}
-  .options,.grid{grid-template-columns:1fr!important}
-  .row{max-width:100%!important;flex-wrap:wrap!important}
-  #leaderboardBtn,#returnBtn{position:static!important;display:inline-flex!important;width:auto!important;margin:8px!important}
-  #leaderboardTable{padding:10px!important}
-  .jv-play-nav{left:8px!important;right:8px!important;bottom:8px!important;justify-content:center!important}
-  .jv-play-nav a{flex:1 1 auto!important;justify-content:center!important;text-align:center!important}
-}
-</style></head>
-<body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Library</a><a class="secondary" href="/projects.html">Portfolio</a></nav>
-<button id="leaderboardBtn" onclick="showLeaderboard()">Leaderboard</button>
-<div id="gameSection">
-<h1>Math Quiz Game</h1>
-<div id="question">Loading...</div>
-<input id="answerInput" type="text"/>
-<button onclick="checkAnswer()">Submit</button>
-<div class="feedback" id="feedback"></div>
-<div class="streak green" id="streakDisplay">Streak: 0</div>
-<div id="timerDisplay">Time left: 10</div>
-<div id="musicPrompt">Click anywhere for Background Music</div>
-</div>
-<div id="leaderboard">
-<h1>Recent Leaderboard</h1>
-<div id="leaderboardTable">
-<table>
-<thead>
-<tr><th>Name</th><th>Score</th></tr>
-</thead>
-<tbody id="leaderboardBody"></tbody>
-</table>
-</div>
-<button id="returnBtn" onclick="showGame()">Return to Game</button>
-<button id="resetBtnBottom" onclick="resetLeaderboard()">Reset Leaderboard</button>
-</div>
-<audio id="bgMusic" loop="">
-<source src="https://github.com/xantum21/Math-Game/blob/main/MathSong.mp3?raw=true" type="audio/mpeg"/>
-</audio>
-<audio id="yesSound">
-<source src="https://github.com/xantum21/Math-Game/blob/main/Yes.mp3?raw=true" type="audio/mpeg"/>
-</audio>
-<audio id="noSound">
-<source src="https://github.com/xantum21/Math-Game/blob/main/No.mp3?raw=true" type="audio/mpeg"/>
-</audio>
-<script>
-    let streak = 0;
-    let currentAnswer;
-    let timer;
-    let timeLeft = 5;
-
-    function generateQuestion() {
-      const operations = ['+', '-', '*'];
-      const op = operations[Math.floor(Math.random() * operations.length)];
-      const a = Math.floor(Math.random() * 10) + 1;
-      const b = Math.floor(Math.random() * 10) + 1;
-
-      const question = `${a} ${op} ${b}`;
-      currentAnswer = eval(question);
-      currentAnswer = Math.round(currentAnswer * 100) / 100;
-      document.getElementById("question").textContent = question;
-      document.getElementById("answerInput").value = "";
-      document.getElementById("feedback").textContent = "";
-      resetTimer();
-    }
-
-    function checkAnswer() {
-      const userAnswer = parseFloat(document.getElementById("answerInput").value);
-      const feedback = document.getElementById("feedback");
-      const streakDisplay = document.getElementById("streakDisplay");
-
-      if (userAnswer === currentAnswer) {
-        feedback.textContent = "Correct!";
-        feedback.className = "feedback correct";
-        document.getElementById("yesSound").play();
-        streak++;
-        streakDisplay.className = "streak green";
-        streakDisplay.textContent = `Streak: ${streak}`;
-        generateQuestion();
-      } else {
-        feedback.textContent = "Wrong";
-        feedback.className = "feedback wrong";
-        document.getElementById("noSound").play();
-        streakDisplay.className = "streak red";
-        promptAndRecordStreak();
-        streak = 0;
-        streakDisplay.textContent = `Streak: ${streak}`;
-      }
-    }
-
-    function promptAndRecordStreak() {
-      const playerName = prompt("Enter your name for the leaderboard:");
-      if (!playerName) return;
-      const leaderboard = JSON.parse(localStorage.getItem("math_leaderboard") || "[]");
-      leaderboard.push({ name: playerName, score: streak });
-      localStorage.setItem("math_leaderboard", JSON.stringify(leaderboard));
-    }
-
-    function resetTimer() {
-      clearInterval(timer);
-      timeLeft = 5;
-      document.getElementById("timerDisplay").textContent = `Time left: ${timeLeft}`;
-      timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timerDisplay").textContent = `Time left: ${timeLeft}`;
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          document.getElementById("noSound").play();
-          promptAndRecordStreak();
-          streak = 0;
-          document.getElementById("streakDisplay").className = "streak red";
-          document.getElementById("streakDisplay").textContent = `Streak: ${streak}`;
-        }
-      }, 1000);
-    }
-
-    function showGame() {
-      document.getElementById("gameSection").style.display = "block";
-      document.getElementById("leaderboard").style.display = "none";
-      generateQuestion();
-    }
-
-    function showLeaderboard() {
-      const table = document.getElementById("leaderboardBody");
-      table.innerHTML = "";
-      const scores = JSON.parse(localStorage.getItem("math_leaderboard") || "[]");
-      scores.slice(-10).reverse().forEach(entry => {
-        const row = `<tr><td>${entry.name}</td><td>${entry.score}</td></tr>`;
-        table.innerHTML += row;
-      });
-      document.getElementById("gameSection").style.display = "none";
-      document.getElementById("leaderboard").style.display = "block";
-    }
-
-    function resetLeaderboard() {
-      localStorage.removeItem("math_leaderboard");
-      showLeaderboard();
-    }
-
-    document.body.addEventListener("click", function() {
-      const music = document.getElementById("bgMusic");
-      if (music.paused) {
-        music.play().catch(e => console.log("Music autoplay blocked."));
-      }
-    });
-
-    document.getElementById("answerInput").addEventListener("keypress", function (e) {
-      if (e.key === "Enter") checkAnswer();
-    });
-
-    window.onload = showGame;
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+<title>
+   Play Hub | John Villanueva
+  </title>
+  <meta content="Open 23 browser-based games and learning experiences across Dino Kart Racer, pharmacology, math, Japanese kana, Spanish, and Filipino/Tagalog." name="description">
+  <link href="https://johnfvillanueva.com/play/" rel="canonical">
+  <meta content="website" property="og:type">
+  <meta content="Play Hub | John Villanueva" property="og:title">
+  <meta content="Open 23 browser-based games and learning experiences across Dino Kart Racer, pharmacology, math, Japanese kana, Spanish, and Filipino/Tagalog." property="og:description">
+  <meta content="https://johnfvillanueva.com/play/" property="og:url">
+  <meta content="https://johnfvillanueva.com/assets/social-card.png" property="og:image">
+  <meta content="summary_large_image" name="twitter:card">
+<link href="/assets/site.css?v=20260722b" rel="stylesheet">
+  <meta name="theme-color" content="#102a34">
+  <link rel="icon" href="/assets/favicon-v3.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32-v3.png" sizes="32x32" type="image/png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon-v3.png" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest?v=20260722b">
+</head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to content
+  </a>
+  <header class="site-header">
+   <nav aria-label="Primary navigation" class="nav shell">
+    <a class="brand" href="../index.html">
+     <span class="brand-mark">
+      JV
+     </span>
+     <span class="brand-copy">
+      John Villanueva
+      <small>
+       Care &middot; Build &middot; Learn
+      </small>
+     </span>
+    </a>
+    <button aria-controls="primary-links" aria-expanded="false" aria-label="Open navigation" class="menu-button" type="button">
+     Menu
+    </button>
+    <div class="nav-links" id="primary-links">
+     <a href="../about.html">
+      About
+     </a>
+     <a href="../work.html">
+      Work
+     </a>
+     <a aria-current="page" href="../projects.html">
+      Projects
+     </a>
+     <a href="../life.html">
+      Life
+     </a>
+     <a href="../timeline.html">
+      Timeline
+     </a>
+     <a class="nav-cta" href="../contact.html">
+      Connect
+     </a>
+    </div>
+   </nav>
+  </header>
+  <main id="main">
+   <section class="play-hero">
+    <div class="shell">
+     <p class="eyebrow">
+      Play Hub &middot; browser games and learning tools
+     </p>
+     <h1>
+      Twenty-three things
+      <br>
+      you can actually open.
+     </h1>
+     <p>
+      The library is organized into six collections: one combat racer, one math game, one kana trainer, four pharmacology practices, two Spanish lessons, and fourteen Filipino/Tagalog lessons.
+     </p>
+     <div class="play-stats">
+      <span class="play-stat">
+       23 playable experiences
+      </span>
+      <span class="play-stat">
+       6 collections
+      </span>
+      <span class="play-stat">
+       Games + study tools
+      </span>
+      <span class="play-stat">
+       Built for desktop and mobile browsers
+      </span>
+     </div>
+     <div class="action-row">
+      <a class="button button-secondary" href="../projects.html">
+       Read the project stories
+      </a>
+      <a class="button button-secondary" href="../index.html">
+       Return to portfolio
+      </a>
+     </div>
+    </div>
+   </section>
+   <section class="section">
+    <div class="shell">
+     <div class="section-heading reveal">
+      <div>
+       <p class="section-label">
+        Choose a collection
+       </p>
+       <h2>
+        Games, nursing review, and language practice.
+       </h2>
+      </div>
+      <p>
+       Pick a collection, then choose the experience that fits what you want to practice or play.
+      </p>
+     </div>
+     <div class="grid-3">
+      <article class="card collection-card reveal">
+       <span class="collection-icon">
+        🦖
+       </span>
+       <span class="count">
+        1 experience
+       </span>
+       <h3>
+        Dino Kart Racer
+       </h3>
+       <p>
+        Prehistoric combat racing with rival AI, power-ups, collisions, sound, and a homing trilobite.
+       </p>
+       <a class="card-link" href="../dino-racers/">
+        Play now &rarr;
+       </a>
+      </article>
+      <article class="card collection-card reveal">
+       <span class="collection-icon">
+        💊
+       </span>
+       <span class="count">
+        4 experiences
+       </span>
+       <h3>
+        Pharmacology Practice
+       </h3>
+       <p>
+        Four interactive nursing review sets designed for active recall and repeated practice.
+       </p>
+       <a class="card-link" href="pharmacology/">
+        Choose a practice set &rarr;
+       </a>
+      </article>
+      <article class="card collection-card reveal">
+       <span class="collection-icon">
+        ➗
+       </span>
+       <span class="count">
+        1 experience
+       </span>
+       <h3>
+        Math Quiz Game
+       </h3>
+       <p>
+        Fast, lightweight arithmetic practice presented as a repeatable browser challenge.
+       </p>
+       <a class="card-link" href="math-game/">
+        Start the game &rarr;
+       </a>
+      </article>
+      <article class="card collection-card reveal">
+       <span class="collection-icon">
+        あ
+       </span>
+       <span class="count">
+        1 experience
+       </span>
+       <h3>
+        Romaji to Kana
+       </h3>
+       <p>
+        Practice converting familiar romanized sounds into Japanese kana through active recognition.
+       </p>
+       <a class="card-link" href="kana-game/">
+        Practice kana &rarr;
+       </a>
+      </article>
+      <article class="card collection-card reveal">
+       <span class="collection-icon">
+        ES
+       </span>
+       <span class="count">
+        2 experiences
+       </span>
+       <h3>
+        Spanish Practice
+       </h3>
+       <p>
+        Two beginner-oriented lessons covering recognition and introductory sentence patterns.
+       </p>
+       <a class="card-link" href="spanish/">
+        Open both lessons &rarr;
+       </a>
+      </article>
+      <article class="card collection-card reveal">
+       <span class="collection-icon">
+        PH
+       </span>
+       <span class="count">
+        14 experiences
+       </span>
+       <h3>
+        Filipino / Tagalog Practice
+       </h3>
+       <p>
+        Fourteen lessons spanning vocabulary, sentence patterns, and practical language use.
+       </p>
+       <a class="card-link" href="filipino/">
+        Browse all 14 lessons &rarr;
+       </a>
+      </article>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="footer">
+   <div class="footer-grid shell">
+    <p>
+     &copy;
+     <span data-current-year>
+      2026
+     </span>
+     John F. Villanueva &middot; Care &middot; Build &middot; Learn.
+    </p>
+    <div class="footer-links">
+     <a href="../work.html">
+      Work
+     </a>
+     <a href="../projects.html">
+      Projects
+     </a>
+     <a href="../play/">
+      Play Hub
+     </a>
+     <a href="../contact.html">
+      Connect
+     </a>
+    </div>
+   </div>
+  </footer>
+  <script defer src="/assets/site.js?v=20260722b">
   </script>
-</body>
+ </body>
 </html>

@@ -1,10 +1,7 @@
-# What this hotfix addresses
-
-- Stretched Dino Kart artwork
-- White-on-white timeline and crosslink buttons
-- Unreadable headings in dark sections
-- Inconsistent favicon tabs
-- Incorrect indirect Play Hub links
-- Leftover administrative and placeholder copy
-- Public version/status labels on quiz pages
-- Repeated or overly theoretical explanations of the site structure
+#!/usr/bin/env sh
+set -eu
+cd "$(dirname "$0")"
+python3 tools/finalize-public-html.py
+python3 tools/validate_privacy_release.py
+echo "Refinement applied and privacy validation passed."
+echo "Remember: configure the contact form before deployment."
