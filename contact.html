@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://johnfvillanueva.com/contact.html">
   <meta property="og:image" content="https://johnfvillanueva.com/assets/social-card.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="/assets/site.css?v=20260722b">
+  <link rel="stylesheet" href="/assets/site.css?v=20260722c">
   <meta name="theme-color" content="#102a34">
   <link rel="icon" href="/assets/favicon-v3.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/favicon-32-v3.png" sizes="32x32" type="image/png">
@@ -47,7 +47,7 @@
           <p class="eyebrow">Connect &middot; work, projects, or shared interests</p>
           <h1>Send a note.<br><em>I&rsquo;ll read it.</em></h1>
           <p class="page-lead">
-            Reach out about nursing, business, a project, a professional opportunity, or something we genuinely have in common. A little context is all I need.
+            Whether you came through work, a project, a shared interest, or a more personal connection, choose the lane that fits. A little context is all I need.
           </p>
           <div class="action-row">
             <a class="button button-primary" href="#message">Write a message &rarr;</a>
@@ -62,7 +62,7 @@
           <p class="section-label">Message John</p>
           <h2>What would you like to talk about?</h2>
           <form class="contact-form" action="https://formspree.io/f/xqerdqro" method="POST" data-contact-form>
-            <input type="hidden" name="_subject" value="New message from johnfvillanueva.com">
+            <input type="hidden" name="_subject" value="New message from johnfvillanueva.com" data-form-subject>
             <input type="hidden" name="source" value="johnfvillanueva.com contact form">
             <div class="form-honeypot" aria-hidden="true">
               <label for="website">Leave this field empty</label>
@@ -82,14 +82,15 @@
 
             <div class="form-field">
               <label for="topic">What brings you here?</label>
-              <select id="topic" name="topic" required>
-                <option value="" selected disabled>Choose a topic</option>
-                <option>Professional opportunity</option>
-                <option>Healthcare or nursing</option>
+              <select id="topic" name="topic" aria-describedby="topic-hint" required>
+                <option value="" selected disabled>Choose what fits best</option>
+                <option>Work or hiring</option>
                 <option>Project or collaboration</option>
-                <option>Business or technology</option>
-                <option>Shared interest or hello</option>
+                <option>Shared interests or friendship</option>
+                <option>Personal connection or dating</option>
+                <option>Something else</option>
               </select>
+              <p class="form-hint" id="topic-hint" data-topic-hint>This only helps me understand the context and give you a more useful reply.</p>
             </div>
 
             <div class="form-field">
@@ -153,21 +154,26 @@
           </div>
           <p>No formal pitch is necessary. Tell me what caught your attention and what you hope to discuss.</p>
         </div>
-        <div class="grid-3">
+        <div class="grid-4">
           <article class="card reveal">
-            <small>Professional</small>
-            <h3>Name the role or opportunity.</h3>
-            <p>Include the organization, the reason you are reaching out, and any useful timing.</p>
+            <small>Work &amp; hiring</small>
+            <h3>Name the opportunity.</h3>
+            <p>Share the role, organization, or reason you think we should connect.</p>
           </article>
           <article class="card reveal">
-            <small>Project</small>
-            <h3>Point to the thing you saw.</h3>
-            <p>Mention the game, study tool, website, or idea that started the conversation.</p>
+            <small>Project &amp; collaboration</small>
+            <h3>Point to what caught your eye.</h3>
+            <p>Mention the game, study tool, website, business idea, or creative work that started the conversation.</p>
           </article>
           <article class="card reveal">
-            <small>Social</small>
-            <h3>Shared context is enough.</h3>
-            <p>A game, language, city, convention, anime, PC build, or mutual interest is a perfectly good opening.</p>
+            <small>Shared interests</small>
+            <h3>Common ground is enough.</h3>
+            <p>Gaming, anime, travel, language learning, karaoke, conventions, or PC building are all fair openings.</p>
+          </article>
+          <article class="card reveal">
+            <small>Personal</small>
+            <h3>Say how we crossed paths.</h3>
+            <p>A mutual connection, social setting, or dating app is plenty of context. Be direct and be yourself.</p>
           </article>
         </div>
       </div>
@@ -195,6 +201,6 @@
       </div>
     </div>
   </footer>
-  <script defer src="/assets/site.js?v=20260722b"></script>
+  <script defer src="/assets/site.js?v=20260722c"></script>
 </body>
 </html>

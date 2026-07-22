@@ -1053,6 +1053,17 @@ details[open] summary::after { content: "−"; }
 }
 .form-submit-row .button { border: 0; cursor: pointer; font: inherit; }
 .form-submit-row .button[disabled] { cursor: wait; opacity: 0.68; transform: none; }
+.form-hint {
+  min-height: 1.45em;
+  margin: 1px 0 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+.form-hint[data-active="true"] {
+  color: var(--sage-ink);
+  font-weight: 700;
+}
 .form-note {
   margin: 0;
   color: var(--muted);

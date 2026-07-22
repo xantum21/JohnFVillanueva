@@ -72,6 +72,10 @@
   if (contactForm) {
     const submitButton = contactForm.querySelector('[data-form-submit]');
     const status = contactForm.querySelector('[data-form-status]');
+    const topic = contactForm.querySelector('#topic');
+    const topicHint = contactForm.querySelector('[data-topic-hint]');
+    const messageField = contactForm.querySelector('#message-text');
+    const subjectField = contactForm.querySelector('[data-form-subject]');
     const endpoint = contactForm.getAttribute('action') || '';
     const endpointIsConfigured = /^https:\/\/formspree\.io\/f\/[A-Za-z0-9_-]+$/.test(endpoint);
 
@@ -94,6 +98,55 @@
         submitButton.textContent = submitButton.dataset.originalText || 'Send message →';
       }
     };
+
+    const topicGuidance = {
+      'Work or hiring': {
+        hint: 'Roles, clinical opportunities, professional networking, and career conversations fit here.',
+        placeholder: 'Tell me the role, organization, timing, or reason you think we should connect.'
+      },
+      'Project or collaboration': {
+        hint: 'For websites, games, study tools, business ideas, creative work, or anything we might build together.',
+        placeholder: 'Tell me what you saw, what you are building, and what kind of collaboration you have in mind.'
+      },
+      'Shared interests or friendship': {
+        hint: 'For gaming, anime, travel, languages, karaoke, conventions, PC building, or simply saying hello.',
+        placeholder: 'Tell me what we have in common or how you found the site.'
+      },
+      'Personal connection or dating': {
+        hint: 'For someone who found me through a dating app, mutual connection, or social setting.',
+        placeholder: 'Tell me how you found me and what made you want to say hello.'
+      },
+      'Something else': {
+        hint: 'No perfect category needed—just give me enough context to understand the message.',
+        placeholder: 'Tell me what brought you here and what you would like to discuss.'
+      }
+    };
+
+    const updateTopicContext = () => {
+      if (!topic) return;
+      const selected = topicGuidance[topic.value];
+      if (topicHint) {
+        topicHint.textContent = selected
+          ? selected.hint
+          : 'This only helps me understand the context and give you a more useful reply.';
+        topicHint.dataset.active = String(Boolean(selected));
+      }
+      if (messageField) {
+        messageField.placeholder = selected
+          ? selected.placeholder
+          : 'A sentence or two about how you found me and what you would like to discuss is perfect.';
+      }
+      if (subjectField) {
+        subjectField.value = selected
+          ? `Website message — ${topic.value}`
+          : 'New message from johnfvillanueva.com';
+      }
+    };
+
+    if (topic) {
+      topic.addEventListener('change', updateTopicContext);
+      updateTopicContext();
+    }
 
     if (!endpointIsConfigured) {
       if (submitButton) submitButton.disabled = true;
