@@ -1,250 +1,445 @@
-#!/usr/bin/env python3
-"""Static QA for the John F. Villanueva portfolio overlay."""
-from __future__ import annotations
-
-import json
-import re
-from collections import Counter
-from pathlib import Path
-from urllib.parse import unquote, urlparse
-
-from bs4 import BeautifulSoup
-import tinycss2
-
-ROOT = Path(__file__).resolve().parents[1]
-PAGE_PATHS = [
-    "index.html", "about.html", "work.html", "projects.html", "life.html",
-    "timeline.html", "contact.html", "404.html", "story.html",
-    "play/index.html", "play/pharmacology/index.html",
-    "play/spanish/index.html", "play/filipino/index.html",
-    "dino-racers/index.html",
-    "education-experience/index.html", "finance/index.html",
-    "marketing/index.html", "ai/index.html", "management/index.html",
-    "entrepreneurship/index.html",
-]
-HTML_FILES = [ROOT / rel for rel in PAGE_PATHS if (ROOT / rel).exists()]
-EXPECTED_FAVICONS = {
-    "/assets/favicon-v3.svg",
-    "/assets/favicon-32-v3.png",
-    "/favicon.ico",
-    "/assets/apple-touch-icon-v3.png",
-}
-# These files are intentionally supplied by the existing repository when the overlay is merged.
-PRESERVED_PLAY_PREFIXES = (
-    "play/math-game/",
-    "play/kana-game/",
-    "play/pharmacology/quiz-",
-    "play/spanish/lesson-",
-    "play/filipino/lesson-",
-)
-
-
-def resolve_local(page: Path, raw_url: str) -> tuple[Path | None, str | None]:
-    """Resolve an internal URL to a local path and optional fragment."""
-    parsed = urlparse(raw_url)
-    if parsed.scheme or parsed.netloc or raw_url.startswith(("mailto:", "tel:", "javascript:")):
-        return None, None
-    path_text = unquote(parsed.path)
-    fragment = parsed.fragment or None
-    if not path_text:
-        return page, fragment
-    if path_text.startswith("/"):
-        candidate = ROOT / path_text.lstrip("/")
-    else:
-        candidate = page.parent / path_text
-    candidate = candidate.resolve()
-    try:
-        candidate.relative_to(ROOT.resolve())
-    except ValueError:
-        return candidate, fragment
-    if path_text.endswith("/"):
-        candidate = candidate / "index.html"
-    elif not candidate.suffix and candidate.is_dir():
-        candidate = candidate / "index.html"
-    return candidate, fragment
-
-
-def main() -> int:
-    errors: list[str] = []
-    warnings: list[str] = []
-    page_reports: list[dict[str, object]] = []
-    favicon_sets: Counter[tuple[str, ...]] = Counter()
-
-    for page in HTML_FILES:
-        rel = page.relative_to(ROOT).as_posix()
-        soup = BeautifulSoup(page.read_text(encoding="utf-8"), "html.parser")
-        if not soup.html or not soup.html.get("lang"):
-            errors.append(f"{rel}: missing html language")
-        if not soup.find("meta", attrs={"name": "viewport"}):
-            errors.append(f"{rel}: missing viewport meta")
-        ids = [tag.get("id") for tag in soup.find_all(attrs={"id": True})]
-        duplicates = sorted(k for k, count in Counter(ids).items() if count > 1)
-        if duplicates:
-            errors.append(f"{rel}: duplicate IDs {duplicates}")
-
-        title = soup.title.get_text(strip=True) if soup.title else ""
-        if not title:
-            errors.append(f"{rel}: missing title")
-
-        is_redirect = bool(soup.find("meta", attrs={"http-equiv": re.compile("refresh", re.I)}))
-        if not is_redirect:
-            if len(soup.find_all("h1")) != 1:
-                errors.append(f"{rel}: expected exactly one h1")
-            if not soup.find("main", id="main"):
-                errors.append(f"{rel}: missing main#main landmark")
-        description = soup.find("meta", attrs={"name": "description"})
-        if not is_redirect and (not description or not description.get("content", "").strip()):
-            errors.append(f"{rel}: missing meta description")
-
-        canonical = soup.find("link", rel=lambda v: v and "canonical" in v)
-        if not canonical or not canonical.get("href"):
-            errors.append(f"{rel}: missing canonical URL")
-
-        imgs = soup.find_all("img")
-        for img in imgs:
-            if img.get("alt") is None:
-                errors.append(f"{rel}: image missing alt text: {img.get('src', '<unknown>')}")
-            if not img.get("width") or not img.get("height"):
-                errors.append(f"{rel}: image missing intrinsic dimensions: {img.get('src', '<unknown>')}")
-            src = img.get("src")
-            if src:
-                target, _ = resolve_local(page, src)
-                if target and not target.exists():
-                    errors.append(f"{rel}: missing image asset {src}")
-
-        for styled in soup.find_all(style=True):
-            errors.append(f"{rel}: inline style remains on <{styled.name}>")
-
-        for ext in soup.find_all("a", target="_blank"):
-            rel_tokens = set(ext.get("rel") or [])
-            if not {"noopener", "noreferrer"}.issubset(rel_tokens):
-                errors.append(f"{rel}: target=_blank link missing noopener/noreferrer: {ext.get('href')}")
-
-        favicons: set[str] = set()
-        for link in soup.find_all("link", href=True):
-            rel_values = link.get("rel") or []
-            if any(v in {"icon", "shortcut icon", "apple-touch-icon"} for v in rel_values):
-                favicons.add(link["href"].split("?")[0])
-        favicon_sets[tuple(sorted(favicons))] += 1
-        if favicons != EXPECTED_FAVICONS:
-            errors.append(f"{rel}: favicon set differs: {sorted(favicons)}")
-
-        for tag in soup.find_all(["a", "link", "script"], href=True) + soup.find_all("script", src=True):
-            attr = "src" if tag.name == "script" and tag.get("src") else "href"
-            raw = tag.get(attr)
-            if not raw or raw.startswith(("http://", "https://", "mailto:", "tel:", "javascript:", "#")):
-                continue
-            target, fragment = resolve_local(page, raw)
-            if target is None:
-                continue
-            rel_target = target.relative_to(ROOT).as_posix() if target.is_relative_to(ROOT) else str(target)
-            if not target.exists():
-                if rel_target.startswith(PRESERVED_PLAY_PREFIXES):
-                    continue
-                errors.append(f"{rel}: broken internal reference {raw}")
-                continue
-            if fragment and target.suffix.lower() in {".html", ""}:
-                try:
-                    target_soup = soup if target == page else BeautifulSoup(target.read_text(encoding="utf-8"), "html.parser")
-                    if not target_soup.find(id=fragment):
-                        errors.append(f"{rel}: missing anchor #{fragment} in {rel_target}")
-                except UnicodeDecodeError:
-                    pass
-
-        # Visible button/link labels should not be empty.
-        for a in soup.select("a.button, button"):
-            label = " ".join(a.get_text(" ", strip=True).split()) or a.get("aria-label", "").strip()
-            if not label:
-                errors.append(f"{rel}: empty interactive control")
-
-        # The Dino cover must always sit inside the ratio-controlled wrapper.
-        for img in soup.find_all("img", src=re.compile("dino-kart-racer-cover")):
-            parent = img.find_parent(class_="project-cover")
-            if parent is None:
-                errors.append(f"{rel}: Dino cover is not inside .project-cover")
-            if img.get("width") != "1086" or img.get("height") != "1448":
-                errors.append(f"{rel}: Dino cover intrinsic dimensions changed")
-
-        page_reports.append({
-            "page": rel,
-            "title": title,
-            "images": len(imgs),
-            "links": len(soup.find_all("a")),
-            "redirect": is_redirect,
-        })
-
-    css_path = ROOT / "assets/site.css"
-    css = css_path.read_text(encoding="utf-8")
-    parsed_css = tinycss2.parse_stylesheet(css, skip_comments=False, skip_whitespace=False)
-    css_errors = [rule for rule in parsed_css if rule.type == "error"]
-    for err in css_errors:
-        errors.append(f"site.css parse error: {err.message}")
-
-    required_css = {
-        ".project-cover": "aspect-ratio: 3 / 4",
-        ".project-cover img": "object-fit: cover",
-        ".crosslink .button-secondary": "color: var(--navy)",
-        ".section-dark .card h3": "color: var(--cream)",
-        ".section-dark .card p": "color: #d1dedb",
-    }
-    for selector, declaration in required_css.items():
-        selector_pos = css.find(selector)
-        declaration_pos = css.find(declaration, selector_pos if selector_pos >= 0 else 0)
-        if selector_pos < 0 or declaration_pos < selector_pos:
-            errors.append(f"site.css: missing required rule {selector} / {declaration}")
-
-    if "What 23 means" in (ROOT / "projects.html").read_text(encoding="utf-8"):
-        errors.append("projects.html: old accounting/admin label remains")
-
-    banned_visible_phrases = [
-        "this page owns",
-        "canonical source",
-        "development labels",
-        "release note",
-        "case study coming later",
-        "part 3 (repaired)",
-        "part 6 plus",
-    ]
-    for page in HTML_FILES:
-        text = BeautifulSoup(page.read_text(encoding="utf-8"), "html.parser").get_text(" ", strip=True).lower()
-        for phrase in banned_visible_phrases:
-            if phrase in text:
-                errors.append(f"{page.relative_to(ROOT)}: banned visitor-facing phrase remains: {phrase}")
-
-    # Legacy icon filenames are intentionally kept as identical fallbacks for old game pages.
-    icon_pairs = [
-        (ROOT / "assets/favicon-v3.svg", ROOT / "assets/favicon.svg"),
-        (ROOT / "assets/apple-touch-icon-v3.png", ROOT / "assets/apple-touch-icon.png"),
-        (ROOT / "assets/favicon-32-v3.png", ROOT / "assets/favicon-32.png"),
-    ]
-    for modern, legacy in icon_pairs:
-        if not modern.exists() or not legacy.exists() or modern.read_bytes() != legacy.read_bytes():
-            errors.append(f"favicon fallback mismatch: {legacy.name}")
-
-    contrast_ratios = {
-        "ink_on_paper": 14.37,
-        "muted_on_paper": 5.80,
-        "red_on_paper": 8.68,
-        "cream_on_navy": 14.18,
-        "dark_card_copy": 8.55,
-        "gold_on_navy": 7.74,
-        "navy_button_on_cream": 14.18,
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connect with John Villanueva</title>
+  <meta name="description" content="Send John Villanueva a message or connect through LinkedIn, Instagram, or Steam.">
+  <link rel="canonical" href="https://johnfvillanueva.com/contact.html">
+  <meta name="theme-color" content="#102a34">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Connect with John Villanueva">
+  <meta property="og:description" content="Send a message about work, healthcare, projects, or shared interests.">
+  <meta property="og:url" content="https://johnfvillanueva.com/contact.html">
+  <meta property="og:image" content="https://johnfvillanueva.com/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/favicon-v3.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32-v3.png" sizes="32x32" type="image/png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon-v3.png" sizes="180x180">
+  <style>
+    :root {
+      --navy: #102a34;
+      --navy-2: #183b46;
+      --ink: #17242b;
+      --muted: #59666b;
+      --cream: #f7f2e9;
+      --paper: #fffdf8;
+      --aqua: #dcebe7;
+      --aqua-2: #c9dfda;
+      --red: #a83336;
+      --gold: #e1aa58;
+      --line: #d9d1c5;
+      --shadow: 0 20px 55px rgba(16, 42, 52, .11);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --shell: 1180px;
     }
 
-    report = {
-        "status": "pass" if not errors else "fail",
-        "html_pages": len(HTML_FILES),
-        "errors": errors,
-        "warnings": warnings,
-        "contrast_ratios": contrast_ratios,
-        "favicon_configurations": {" | ".join(k): v for k, v in favicon_sets.items()},
-        "pages": page_reports,
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
     }
-    (ROOT / "VALIDATION.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    .shell { width: min(calc(100% - 40px), var(--shell)); margin-inline: auto; }
+    .skip-link {
+      position: fixed; left: 16px; top: 10px; z-index: 1000;
+      transform: translateY(-150%); background: var(--paper); color: var(--navy);
+      padding: 10px 14px; border-radius: 10px; font-weight: 800;
+    }
+    .skip-link:focus { transform: none; }
 
-    print(json.dumps({k: report[k] for k in ("status", "html_pages", "errors", "warnings")}, indent=2))
-    return 0 if not errors else 1
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(247, 242, 233, .96);
+      border-bottom: 1px solid rgba(16, 42, 52, .10);
+      backdrop-filter: blur(14px);
+    }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 900; }
+    .brand-mark {
+      width: 46px; height: 46px; display: grid; place-items: center;
+      border-radius: 50%; background: var(--navy); color: var(--cream);
+      font-family: Georgia, "Times New Roman", serif; font-size: 1.22rem;
+    }
+    .brand-copy { display: grid; line-height: 1.05; }
+    .brand-copy small { margin-top: 6px; font-size: .67rem; letter-spacing: .15em; text-transform: uppercase; color: #5f5b55; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      padding: 11px 14px; border-radius: 999px; text-decoration: none;
+      font-size: .92rem; font-weight: 780; color: #45413d;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { background: var(--paper); color: var(--red); }
+    .nav-links .nav-cta { background: var(--navy); color: #fff; padding-inline: 20px; }
+    .nav-links .nav-cta:hover, .nav-links .nav-cta:focus-visible { background: var(--navy-2); color: #fff; }
+    .menu-button {
+      display: none; border: 1px solid var(--line); border-radius: 999px;
+      background: var(--paper); color: var(--navy); padding: 10px 15px; font-weight: 850;
+    }
 
+    .hero {
+      background:
+        radial-gradient(circle at 8% 12%, rgba(225, 170, 88, .19), transparent 28%),
+        linear-gradient(180deg, var(--aqua) 0%, #e9f1ed 100%);
+      border-bottom: 1px solid rgba(16, 42, 52, .10);
+      padding: 76px 0 84px;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: minmax(0, .88fr) minmax(500px, 1.12fr);
+      gap: clamp(42px, 7vw, 90px); align-items: center;
+    }
+    .eyebrow, .section-label {
+      margin: 0 0 14px; color: var(--red); font-size: .76rem; font-weight: 900;
+      letter-spacing: .15em; text-transform: uppercase;
+    }
+    h1, h2, h3 { margin: 0; color: var(--navy); }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; letter-spacing: -.035em; }
+    h1 { font-size: clamp(3.4rem, 6.2vw, 6.6rem); line-height: .94; max-width: 680px; }
+    h1 em { color: var(--red); font-weight: inherit; }
+    .lead { margin: 27px 0 0; max-width: 650px; font-size: clamp(1.05rem, 1.5vw, 1.24rem); color: #425158; }
+    .intro-note { margin: 23px 0 0; max-width: 620px; color: #526269; }
+    .action-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button {
+      display: inline-flex; min-height: 48px; align-items: center; justify-content: center;
+      border: 1px solid transparent; border-radius: 999px; padding: 12px 20px;
+      text-decoration: none; font-weight: 870; transition: transform .16s ease, background .16s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--navy); color: #fff; }
+    .button-primary:hover, .button-primary:focus-visible { background: var(--navy-2); }
+    .button-secondary { background: var(--paper); color: var(--navy); border-color: var(--line); }
+    .button-secondary:hover, .button-secondary:focus-visible { background: #fff; }
 
-if __name__ == "__main__":
-    raise SystemExit(main())
+    .form-card {
+      position: relative; background: var(--paper); border: 1px solid rgba(16, 42, 52, .12);
+      border-radius: var(--radius-lg); padding: clamp(25px, 4vw, 42px); box-shadow: var(--shadow);
+    }
+    .form-card::before {
+      content: "JV"; position: absolute; right: 28px; top: 20px;
+      color: rgba(16, 42, 52, .07); font: 700 4rem/1 Georgia, serif; pointer-events: none;
+    }
+    .form-card h2 { max-width: 540px; font-size: clamp(2rem, 3.4vw, 3.1rem); line-height: 1.02; }
+    .contact-form { display: grid; gap: 17px; margin-top: 28px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .field { display: grid; gap: 7px; }
+    .field label { color: var(--navy); font-size: .83rem; font-weight: 850; }
+    .field input, .field select, .field textarea {
+      width: 100%; border: 1px solid #cfc6ba; border-radius: 13px; background: #fff;
+      color: var(--ink); outline: none; transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .field input, .field select { min-height: 50px; padding: 0 14px; }
+    .field textarea { min-height: 150px; padding: 13px 14px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--navy-2); box-shadow: 0 0 0 4px rgba(24, 59, 70, .12);
+    }
+    .field textarea::placeholder { color: #807b72; }
+    .submit-row { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 18px; }
+    .submit-row .button { cursor: pointer; border: 0; white-space: nowrap; }
+    .submit-row .button[disabled] { opacity: .66; cursor: wait; transform: none; }
+    .form-note { margin: 0; color: #657177; font-size: .82rem; }
+    .form-status { min-height: 1.5em; margin: 0; font-weight: 780; }
+    .form-status[data-state="success"] { color: #246040; }
+    .form-status[data-state="error"] { color: var(--red); }
+    .honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+
+    .profiles { padding: 76px 0 84px; }
+    .section-heading { display: grid; grid-template-columns: 1fr .75fr; gap: 50px; align-items: end; margin-bottom: 30px; }
+    .section-heading h2 { font-size: clamp(2.45rem, 4.8vw, 4.6rem); line-height: .98; max-width: 760px; }
+    .section-heading > p { margin: 0 0 7px; color: var(--muted); font-size: 1.04rem; }
+    .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .profile-card {
+      min-height: 260px; display: flex; flex-direction: column; padding: 25px;
+      border-radius: var(--radius-md); text-decoration: none; background: var(--paper);
+      border: 1px solid var(--line); transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .profile-card:hover, .profile-card:focus-visible { transform: translateY(-4px); box-shadow: 0 17px 35px rgba(16, 42, 52, .10); }
+    .profile-mark {
+      width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+      background: var(--aqua); color: var(--navy); font-size: .84rem; font-weight: 950;
+    }
+    .profile-card:nth-child(2) .profile-mark { background: #f6e6d2; color: #8f4b20; }
+    .profile-card:nth-child(3) .profile-mark { background: #e4e1f1; color: #413b6d; }
+    .profile-card h3 { margin-top: 27px; font-size: 1.42rem; }
+    .profile-type { margin-top: 5px; color: var(--red); font-size: .75rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .profile-card p { color: var(--muted); }
+    .profile-link { margin-top: auto; color: var(--navy); font-weight: 900; }
+
+    .closing {
+      margin-bottom: 76px; padding: clamp(28px, 5vw, 52px); border-radius: var(--radius-lg);
+      background: var(--navy); color: #d8e6e3; display: grid; grid-template-columns: 1fr auto;
+      gap: 32px; align-items: center;
+    }
+    .closing-label { color: var(--gold); }
+    .closing h2 { color: var(--cream); font-size: clamp(2rem, 3.8vw, 3.7rem); }
+    .closing p { margin: 10px 0 0; max-width: 720px; }
+    .closing .button { background: var(--cream); color: var(--navy); }
+
+    .footer { border-top: 1px solid var(--line); background: #eee8de; }
+    .footer-grid { min-height: 110px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
+    .footer p { margin: 0; color: #5b5c59; font-size: .9rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-links a { text-decoration: none; font-weight: 800; color: var(--navy); }
+
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    @media (max-width: 930px) {
+      .menu-button { display: inline-flex; }
+      .nav-links {
+        display: none; position: absolute; top: 72px; left: 20px; right: 20px;
+        flex-direction: column; align-items: stretch; padding: 13px; background: var(--paper);
+        border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { text-align: center; }
+      .hero { padding-top: 56px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 42px; }
+      .form-card { max-width: 720px; }
+      .section-heading { grid-template-columns: 1fr; gap: 14px; }
+      .profile-grid { grid-template-columns: 1fr; }
+      .profile-card { min-height: 210px; }
+      .closing { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .shell { width: min(calc(100% - 28px), var(--shell)); }
+      .nav { min-height: 70px; }
+      .brand-mark { width: 40px; height: 40px; }
+      .brand-copy { font-size: .88rem; }
+      .brand-copy small { font-size: .56rem; }
+      .hero { padding: 45px 0 58px; }
+      h1 { font-size: clamp(3.15rem, 17vw, 4.7rem); }
+      .form-grid, .submit-row { grid-template-columns: 1fr; }
+      .submit-row .button { width: 100%; }
+      .profiles { padding: 58px 0; }
+      .closing { margin-bottom: 52px; }
+      .footer-grid { padding: 28px 0; min-height: auto; align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">JV</span>
+        <span class="brand-copy">John Villanueva<small>Care &middot; Build &middot; Learn</small></span>
+      </a>
+      <button class="menu-button" type="button" aria-controls="primary-links" aria-expanded="false">Menu</button>
+      <div class="nav-links" id="primary-links">
+        <a href="/about.html">About</a>
+        <a href="/work.html">Work</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/play/">Play</a>
+        <a href="/life.html">Life</a>
+        <a class="nav-cta" href="/contact.html" aria-current="page">Connect</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-grid shell">
+        <div>
+          <p class="eyebrow">Connect &middot; work, projects, or shared interests</p>
+          <h1>Send a note.<br><em>I&rsquo;ll read it.</em></h1>
+          <p class="lead">Reach out about nursing, business, a project, a professional opportunity, or something we genuinely have in common.</p>
+          <p class="intro-note">No formal pitch required. Tell me what caught your attention and what you would like to discuss.</p>
+          <div class="action-row">
+            <a class="button button-primary" href="#email">Write a message &rarr;</a>
+            <a class="button button-secondary" href="https://www.linkedin.com/in/johnfvillanueva/" target="_blank" rel="noopener noreferrer">LinkedIn &nearrow;</a>
+          </div>
+        </div>
+
+        <div class="form-card" id="email">
+          <p class="section-label">Message John</p>
+          <h2>What would you like to talk about?</h2>
+          <form class="contact-form" id="message" action="https://formspree.io/f/xqerdqro" method="POST" accept-charset="UTF-8" data-contact-form>
+            <input type="hidden" name="_subject" value="New message from johnfvillanueva.com">
+            <input type="hidden" name="source" value="johnfvillanueva.com contact form">
+            <div class="honeypot" aria-hidden="true">
+              <label for="company-website">Leave this field empty</label>
+              <input id="company-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" maxlength="80" required>
+              </div>
+              <div class="field">
+                <label for="reply-email">Email</label>
+                <input id="reply-email" name="email" type="email" autocomplete="email" maxlength="120" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="topic">What brings you here?</label>
+              <select id="topic" name="topic" required>
+                <option value="" selected disabled>Choose a topic</option>
+                <option value="Professional opportunity">Professional opportunity</option>
+                <option value="Healthcare or nursing">Healthcare or nursing</option>
+                <option value="Project or collaboration">Project or collaboration</option>
+                <option value="Business or technology">Business or technology</option>
+                <option value="Shared interest or hello">Shared interest or hello</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="message-text">Message</label>
+              <textarea id="message-text" name="message" rows="7" maxlength="3000" placeholder="A sentence or two about how you found me and what you would like to discuss is perfect." required></textarea>
+            </div>
+
+            <div class="submit-row">
+              <button class="button button-primary" type="submit" data-submit>Send message &rarr;</button>
+              <p class="form-note">Your email is used only so I can reply. Please keep sensitive personal or patient information out of the message.</p>
+            </div>
+            <p class="form-status" data-status role="status" aria-live="polite" tabindex="-1"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="profiles">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">Elsewhere online</p>
+            <h2>Three public profiles. Three different sides of me.</h2>
+          </div>
+          <p>LinkedIn is the professional record, Instagram is everyday life, and Steam is where the gaming history lives.</p>
+        </div>
+
+        <div class="profile-grid">
+          <a class="profile-card" href="https://www.linkedin.com/in/johnfvillanueva/" target="_blank" rel="noopener noreferrer">
+            <span class="profile-mark">in</span>
+            <h3>LinkedIn</h3>
+            <span class="profile-type">Professional</span>
+            <p>Career history, education, healthcare development, business experience, credentials, and professional networking.</p>
+            <span class="profile-link">View LinkedIn &nearrow;</span>
+          </a>
+
+          <a class="profile-card" href="https://www.instagram.com/johnfvillanueva/" target="_blank" rel="noopener noreferrer">
+            <span class="profile-mark">IG</span>
+            <h3>Instagram</h3>
+            <span class="profile-type">Life &amp; social</span>
+            <p>Travel, events, projects, everyday moments, and the parts of life that do not belong on a r&eacute;sum&eacute;.</p>
+            <span class="profile-link">View Instagram &nearrow;</span>
+          </a>
+
+          <a class="profile-card" href="https://steamcommunity.com/profiles/76561198088339991/" target="_blank" rel="noopener noreferrer">
+            <span class="profile-mark">ST</span>
+            <h3>Steam</h3>
+            <span class="profile-type">Gaming</span>
+            <p>Co-op, RPGs, strategy, fighting games, and a library large enough to make choosing the next game its own side quest.</p>
+            <span class="profile-link">View Steam &nearrow;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing shell">
+      <div>
+        <p class="section-label closing-label">Start a conversation</p>
+        <h2>Say what brought you here.</h2>
+        <p>I may not answer instantly, but thoughtful messages do get read.</p>
+      </div>
+      <a class="button" href="#email">Open the form &rarr;</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid shell">
+      <p>&copy; <span data-year>2026</span> John F. Villanueva &middot; Care &middot; Build &middot; Learn.</p>
+      <div class="footer-links">
+        <a href="/work.html">Work</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/play/">Play</a>
+        <a href="/contact.html">Connect</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const menuButton = document.querySelector('.menu-button');
+      const navLinks = document.querySelector('.nav-links');
+      if (menuButton && navLinks) {
+        menuButton.addEventListener('click', () => {
+          const open = navLinks.classList.toggle('open');
+          menuButton.setAttribute('aria-expanded', String(open));
+        });
+        navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuButton.setAttribute('aria-expanded', 'false');
+        }));
+      }
+
+      const form = document.querySelector('[data-contact-form]');
+      const submit = document.querySelector('[data-submit]');
+      const status = document.querySelector('[data-status]');
+
+      const setStatus = (message, state = '') => {
+        if (!status) return;
+        status.textContent = message;
+        status.dataset.state = state;
+      };
+
+      if (form) {
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          if (!form.reportValidity()) return;
+
+          const original = submit ? submit.textContent : '';
+          if (submit) {
+            submit.disabled = true;
+            submit.textContent = 'Sending…';
+          }
+          setStatus('Sending your message…');
+
+          try {
+            const response = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { Accept: 'application/json' }
+            });
+            const payload = await response.json().catch(() => ({}));
+            if (!response.ok) {
+              const details = Array.isArray(payload.errors)
+                ? payload.errors.map((item) => item.message).filter(Boolean).join(' ')
+                : '';
+              throw new Error(details || 'The message could not be sent.');
+            }
+            form.reset();
+            setStatus('Message sent. Thank you—I’ll reply by email when I can.', 'success');
+            status?.focus({ preventScroll: true });
+          } catch (error) {
+            setStatus(error instanceof Error ? error.message : 'The message could not be sent. Please try again.', 'error');
+            status?.focus({ preventScroll: true });
+          } finally {
+            if (submit) {
+              submit.disabled = false;
+              submit.textContent = original || 'Send message &rarr;';
+            }
+          }
+        });
+      }
+
+      document.querySelectorAll('[data-year]').forEach((element) => {
+        element.textContent = new Date().getFullYear();
+      });
+    })();
+  </script>
+</body>
+</html>
