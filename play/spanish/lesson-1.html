@@ -5,7 +5,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Madrigal — Lesson 1 • Spanish Quiz (v5.1 polished)</title>
+
+  <meta name="description" content="Interactive Spanish practice covering cognates, spelling patterns, articles, plurals, and sentence building.">
+<title>Spanish Practice I — Cognates & Core Patterns</title>
 <style>
 :root{
   --bg:#0b0b0c; --card:#151518; --ink:#f9f9fb; --muted:#b9bbc6;
@@ -55,10 +57,47 @@ input[type="text"]{font-size:16px}
 .jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
 .jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
 @media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
-</style></head>
+</style>  <link rel="canonical" href="https://johnfvillanueva.com/play/spanish/lesson-1.html">
+  <meta name="theme-color" content="#102a34">
+  <link rel="icon" href="/assets/favicon-v3.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32-v3.png" sizes="32x32" type="image/png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon-v3.png" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest?v=20260722b">
+
+<style id="jv-responsive-play-patch">
+html,body{max-width:100%;overflow-x:hidden}
+header{grid-template-columns:minmax(0,1fr) repeat(4,auto)!important}
+header>*{min-width:0}
+.brand{min-width:0;overflow-wrap:anywhere}
+.controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))!important}
+.controls>*{min-width:0}
+.ctrl,.row{min-width:0}
+.ctrl{flex-wrap:wrap}
+.ctrl select,.row select,select{max-width:100%;min-width:0}
+img,svg,canvas,video{max-width:100%}
+@media(max-width:760px){
+  header{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important;padding:12px!important}
+  header .brand{flex:1 1 100%;font-size:16px!important;line-height:1.25}
+  header .pill,header button{flex:0 1 auto;max-width:100%}
+  .controls{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .controls>.row[style]{justify-content:flex-start!important}
+  .grid2{grid-template-columns:1fr!important}
+  .footer{grid-template-columns:1fr!important;gap:10px!important}
+  #tracker{grid-template-columns:minmax(0,1fr) 70px 70px!important}
+}
+@media(max-width:520px){
+  .controls{grid-template-columns:1fr!important}
+  .ctrl{display:grid!important;grid-template-columns:1fr!important;align-items:start!important}
+  .ctrl select,.ctrl input,.controls button{width:100%!important}
+  .pill{white-space:normal}
+  .jv-play-nav{flex-wrap:wrap;max-width:calc(100vw - 16px)}
+}
+</style>
+</head>
 <body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
 <header>
-<div class="brand">🇪🇸 Madrigal — Lesson 1 • Spanish Quiz (v5.1)</div>
+<div class="brand">🇪🇸 Spanish Practice I — Cognates & Core Patterns</div>
 <div class="pill scorebox">Score: <strong id="score">0</strong> • Streak: <strong id="streak">0</strong></div>
 <button class="pill" id="sfx">🔊 Sound: On</button>
 <button class="pill" id="music">🎵 Music: On</button>

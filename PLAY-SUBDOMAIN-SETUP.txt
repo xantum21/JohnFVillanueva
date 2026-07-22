@@ -1,9 +1,0 @@
-PLAY.JOHNFVILLANUEVA.COM — FINAL ROOT PAGE
-
-The repository now includes GHL-PLAY-HUB.html. Use that file as the root page for play.johnfvillanueva.com inside GoHighLevel.
-
-The root hub links to:
-- /dino-racers on GoHighLevel
-- the GitHub-hosted Math, Kana, Pharmacology, Spanish, and Tagalog experiences
-
-This preserves Dino Kart on GoHighLevel while making play.johnfvillanueva.com a real interactive-media index instead of redirecting visitors directly into Dino Kart.

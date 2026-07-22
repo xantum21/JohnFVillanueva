@@ -1,22 +1,15 @@
-JOHNFVILLANUEVA.COM — REFINED INTERACTIVE REPOSITORY
+JOHN F. VILLANUEVA — CLEAN WEBSITE REPOSITORY
 
-UPLOAD
-1. Extract this ZIP.
-2. Open the johnfvillanueva_refined_repository folder.
-3. Upload the CONTENTS of that folder to the root of the GitHub repository.
-4. Matching files will be updated; new files will be added.
-5. Wait for GitHub Pages to finish deploying.
+This folder is a complete replacement for the corrupted repository contents.
+It includes the portfolio, privacy-safe Formspree contact form, standardized
+favicons, corrected Dino Kart artwork sizing, and all 23 playable experiences.
 
-ROUTING
-- Main portfolio: https://johnfvillanueva.com
-- Interactive library: https://johnfvillanueva.com/play/
-- Dino Kart: https://play.johnfvillanueva.com/dino-racers
-- GoHighLevel root-page template: GHL-PLAY-HUB.html
+DEPLOYMENT
+1. Delete the existing files in the GitHub repository, but do not delete the repository itself.
+2. Upload the CONTENTS of this folder so index.html, CNAME, assets/, and play/ are at the repository root.
+3. Commit the changes to the GitHub Pages publishing branch.
+4. Wait for Pages deployment to finish, then open the site in an incognito window.
+5. Test the contact form and confirm the message arrives through Formspree.
 
-THIS REVISION
-- Sends Dino Kart play buttons directly to the game.
-- Removes migration/admin copy from public pages.
-- Standardizes public quiz titles and lesson numbering.
-- Fixes the Spanish project count from three to two.
-- Adds the JV favicon, collection navigation, and responsive mobile CSS to every individual app.
-- Includes a full GoHighLevel root hub for play.johnfvillanueva.com.
+Form endpoint: https://formspree.io/f/xqerdqro
+The private destination email is not present in the website source.
