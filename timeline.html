@@ -1,37 +1,72 @@
-# Formspree integration decision
-
-## Selected guide: Vanilla JavaScript (AJAX)
-
-The portfolio is a static website built with HTML, CSS, and plain JavaScript and deployed through GitHub Pages. It is not a React application and has no JavaScript bundler.
-
-The integration therefore uses the Vanilla JavaScript approach, but keeps the implementation dependency-free rather than loading `@formspree/ajax` from a CDN. The existing site script already manages form state and can submit directly to Formspree with the browser `fetch()` API.
-
-## Why this implementation fits the site
-
-- No new framework or build step
-- No external JavaScript dependency
-- Inline success and error messages
-- Accessible `aria-live` status updates
-- Native browser validation
-- Normal HTML submission remains available as a fallback
-- Destination email remains private in Formspree
-
-## Endpoint
-
-`https://formspree.io/f/xqerdqro`
-
-## Files changed
-
-- `contact.html`
-  - Configured the live Formspree endpoint
-  - Preserved `method="POST"`
-  - Added a source field
-  - Improved the live status element for keyboard and screen-reader users
-- `assets/site.js`
-  - Added endpoint validation
-  - Added Formspree JSON error handling
-  - Added disabled/loading state management
-  - Added success/error focus behavior
-  - Preserved no-JavaScript HTML fallback
-- All HTML pages
-  - Bumped shared asset cache keys so browsers load the updated script
+.nojekyll
+404.html
+APPLY-REFINEMENT-WINDOWS.bat
+CNAME
+CONFIGURE-CONTACT-FORM-WINDOWS.bat
+CONTACT-FORM-SETUP.md
+CONTENT-OWNERSHIP.md
+DEPLOYMENT.md
+FILE-LIST.txt
+FORM-INTEGRATION.md
+FORMSPREE-VALIDATION.json
+HOTFIX-NOTES.md
+QA-SUMMARY.md
+REVISION-NOTES.md
+VALIDATION.json
+_headers
+_redirects
+about.html
+ai/index.html
+apply-refinement.sh
+assets/apple-touch-icon-v3.png
+assets/apple-touch-icon.png
+assets/berkeley-honors-certificate.webp
+assets/dino-kart-racer-cover.webp
+assets/embedded-1083d52e20e7.webp
+assets/embedded-3e8d595091f4.webp
+assets/embedded-4f931d3526e3.webp
+assets/embedded-9a8936b2b83a.webp
+assets/favicon-16-v3.png
+assets/favicon-32-v3.png
+assets/favicon-32.png
+assets/favicon-v3.svg
+assets/favicon.svg
+assets/icon-192-v3.png
+assets/icon-512-v3.png
+assets/john-villanueva-resume.pdf
+assets/life-entrepreneurship.webp
+assets/life-gaming.webp
+assets/life-japanese.webp
+assets/life-karaoke.webp
+assets/life-pc-building.webp
+assets/life-travel.webp
+assets/site.css
+assets/site.js
+assets/social-card.png
+assets/stanford-honors-certificate.webp
+contact.html
+dino-racers/index.html
+education-experience/index.html
+entrepreneurship/index.html
+favicon.ico
+finance/index.html
+index.html
+life.html
+management/index.html
+marketing/index.html
+play/filipino/index.html
+play/index.html
+play/pharmacology/index.html
+play/spanish/index.html
+projects.html
+robots.txt
+site.webmanifest
+sitemap.xml
+story.html
+timeline.html
+tools/clean-public-titles.py
+tools/configure-contact-form.py
+tools/finalize-public-html.py
+tools/validate_privacy_release.py
+tools/validate_site_v3.py
+work.html

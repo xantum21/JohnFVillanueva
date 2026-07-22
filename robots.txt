@@ -1,16 +1,36 @@
-# Page purpose map
+# Contact form status
 
-This file is an editorial guide, not public website copy.
+The contact form is already configured for the Formspree endpoint:
 
-| Page | Primary purpose |
-|---|---|
-| Home | Introduce John and help visitors choose Work, Projects, Life, or Timeline |
-| About | Explain values, personality, and how the nonlinear path connects |
-| Work | Present patient-care experience, nursing education, business background, credentials, and résumé |
-| Projects | Show shipped builds, live collections, presentation history, and current experiments |
-| Life | Give gaming, travel, Japanese/anime, karaoke, PC building, and future ambitions room to breathe |
-| Timeline | Show chronology without forcing the Work page to become an employment archive |
-| Contact | Route professional, social, and gaming conversations to the right channel |
-| Play Hub | Organize all playable browser experiences |
+`https://formspree.io/f/xqerdqro`
 
-A recurring fact can be mentioned briefly elsewhere, but its full explanation belongs on the page above that naturally supports it.
+No destination email address appears in the website source. Formspree handles delivery to the private inbox configured in the Formspree dashboard.
+
+## Integration used
+
+This is a static HTML/CSS/Vanilla JavaScript site hosted on GitHub Pages, so the site uses a progressive-enhancement approach:
+
+- The form has a normal HTML `action` and `method="POST"`, so it still submits if JavaScript is unavailable.
+- `assets/site.js` intercepts the submission when JavaScript is available and sends it with `fetch()`.
+- The visitor stays on the Contact page and receives inline sending, success, or error feedback.
+- No React package, bundler, or third-party JavaScript SDK is required.
+
+## Form fields delivered to Formspree
+
+- Name
+- Reply email
+- Topic
+- Message
+- Page source
+- Custom email subject
+- Honeypot spam field (`_gotcha`)
+
+## Before launch
+
+1. Confirm `xqerdqro` is active in the Formspree dashboard.
+2. Confirm the intended private destination inbox is verified there.
+3. Send one ordinary test message after deployment.
+4. Reply to that test to verify the visitor's email is available as the reply address.
+5. Review Formspree spam and notification settings.
+
+The endpoint ID is public by design and is not a password or API secret. Do not place your destination email, Formspree login, recovery codes, or account credentials in the repository.

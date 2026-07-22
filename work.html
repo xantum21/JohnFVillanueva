@@ -1,13 +1,11 @@
-# Privacy and contact refinement
-
-This release:
-
-- Removes the public Gmail address and all direct-email behavior.
-- Replaces direct email links with a readable contact form.
-- Routes form submissions through an opaque Formspree endpoint so the destination inbox is not published in source code.
-- Keeps LinkedIn, Instagram, and Steam as the three public social/profile links.
-- Removes the PSN profile link and username from the portfolio shell.
-- Removes the narrow regional wording attached to the homepage and current skilled-nursing role.
-- Replaces the defensive privacy disclaimer with normal employer-facing language.
-- Rebuilds the downloadable résumé without a public email address or precise current-workplace wording.
-- Preserves the standardized JV favicon and the previous layout, contrast, and Dino Kart fixes.
+{
+  "form_exists": true,
+  "endpoint": "https://formspree.io/f/xqerdqro",
+  "method_post": true,
+  "required_fields": true,
+  "honeypot": true,
+  "subject": true,
+  "no_placeholder": true,
+  "no_private_gmail_in_public_code": true,
+  "passed": true
+}

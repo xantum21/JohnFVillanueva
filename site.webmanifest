@@ -1,55 +1,16 @@
-# Deploying the privacy-refined site
+# Page purpose map
 
-This package is an overlay for the existing JohnFVillanueva repository. It replaces the portfolio shell and shared assets while preserving the individual games and quizzes already stored under `play/`.
+This file is an editorial guide, not public website copy.
 
-## Before uploading: connect the private contact form
+| Page | Primary purpose |
+|---|---|
+| Home | Introduce John and help visitors choose Work, Projects, Life, or Timeline |
+| About | Explain values, personality, and how the nonlinear path connects |
+| Work | Present patient-care experience, nursing education, business background, credentials, and résumé |
+| Projects | Show shipped builds, live collections, presentation history, and current experiments |
+| Life | Give gaming, travel, Japanese/anime, karaoke, PC building, and future ambitions room to breathe |
+| Timeline | Show chronology without forcing the Work page to become an employment archive |
+| Contact | Route professional, social, and gaming conversations to the right channel |
+| Play Hub | Organize all playable browser experiences |
 
-A static GitHub Pages site cannot securely deliver email by itself. The contact page therefore uses a Formspree endpoint, which lets messages reach a private inbox without publishing the destination email address in HTML, JavaScript, the résumé, or page source.
-
-1. Create a Formspree form and set its target to your private inbox.
-2. Copy the form ID from the endpoint shown by Formspree.
-3. Double-click `CONFIGURE-CONTACT-FORM-WINDOWS.bat` and paste the ID.
-
-See `CONTACT-FORM-SETUP.md` for the exact steps.
-
-The contact form is already configured for Formspree endpoint `xqerdqro`. After deployment, send one ordinary test message and confirm delivery in the Formspree dashboard and destination inbox.
-
-## Merge and deploy
-
-1. Back up the current repository or create a branch.
-2. Copy the contents of this folder into the repository root.
-3. Allow matching files to be replaced.
-4. Keep the existing individual experiences under `play/`.
-5. Run the refinement tools:
-
-   **Windows:** double-click `APPLY-REFINEMENT-WINDOWS.bat`
-
-   **macOS/Linux:**
-   ```bash
-   ./apply-refinement.sh
-   ```
-
-6. Run the privacy release validator:
-   ```bash
-   python tools/validate_privacy_release.py
-   ```
-7. Commit and push the merged files to `main`.
-8. Wait for GitHub Pages to finish deploying.
-
-## Test after deployment
-
-Use a private/incognito window and check:
-
-- `/`
-- `/work.html`
-- `/projects.html`
-- `/life.html`
-- `/timeline.html`
-- `/contact.html`
-- `/play/`
-
-Submit one test message through the contact form and confirm it reaches the target inbox. Also verify that no email address is visible on the Contact page or in the downloaded résumé.
-
-## Rollback
-
-Revert the deployment commit or switch back to the backup branch.
+A recurring fact can be mentioned briefly elsewhere, but its full explanation belongs on the page above that naturally supports it.

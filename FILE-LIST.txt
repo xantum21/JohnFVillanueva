@@ -1,13 +1,5 @@
-/education-experience /work.html 301
-/education-experience/ /work.html 301
-/finance /work.html#credentials 301
-/finance/ /work.html#credentials 301
-/marketing /work.html#credentials 301
-/marketing/ /work.html#credentials 301
-/ai /projects.html#lab 301
-/ai/ /projects.html#lab 301
-/management /work.html#credentials 301
-/management/ /work.html#credentials 301
-/entrepreneurship /life.html#future 301
-/entrepreneurship/ /life.html#future 301
-/story.html /timeline.html 301
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: SAMEORIGIN

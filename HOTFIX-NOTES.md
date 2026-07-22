@@ -1,7 +1,303 @@
-#!/usr/bin/env sh
-set -eu
-cd "$(dirname "$0")"
-python3 tools/finalize-public-html.py
-python3 tools/validate_privacy_release.py
-echo "Refinement applied and privacy validation passed."
-echo "Remember: configure the contact form before deployment."
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+<title>
+   About John Villanueva | A Nonlinear, Connected Path
+  </title>
+  <meta content="How John Villanueva connects healthcare, business, technology, creative work, global perspective, and lifelong learning." name="description">
+  <link href="https://johnfvillanueva.com/about.html" rel="canonical">
+  <meta content="website" property="og:type">
+  <meta content="About John Villanueva | A Nonlinear, Connected Path" property="og:title">
+  <meta content="How John Villanueva connects healthcare, business, technology, creative work, global perspective, and lifelong learning." property="og:description">
+  <meta content="https://johnfvillanueva.com/about.html" property="og:url">
+  <meta content="https://johnfvillanueva.com/assets/social-card.png" property="og:image">
+  <meta content="summary_large_image" name="twitter:card">
+<link href="/assets/site.css?v=20260722b" rel="stylesheet">
+  <meta name="theme-color" content="#102a34">
+  <link rel="icon" href="/assets/favicon-v3.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32-v3.png" sizes="32x32" type="image/png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon-v3.png" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest?v=20260722b">
+</head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to content
+  </a>
+  <header class="site-header">
+   <nav aria-label="Primary navigation" class="nav shell">
+    <a class="brand" href="index.html">
+     <span class="brand-mark">
+      JV
+     </span>
+     <span class="brand-copy">
+      John Villanueva
+      <small>
+       Care &middot; Build &middot; Learn
+      </small>
+     </span>
+    </a>
+    <button aria-controls="primary-links" aria-expanded="false" aria-label="Open navigation" class="menu-button" type="button">
+     Menu
+    </button>
+    <div class="nav-links" id="primary-links">
+     <a aria-current="page" href="about.html">
+      About
+     </a>
+     <a href="work.html">
+      Work
+     </a>
+     <a href="projects.html">
+      Projects
+     </a>
+     <a href="life.html">
+      Life
+     </a>
+     <a href="timeline.html">
+      Timeline
+     </a>
+     <a class="nav-cta" href="contact.html">
+      Connect
+     </a>
+    </div>
+   </nav>
+  </header>
+  <main id="main">
+   <section class="page-hero">
+    <div class="page-hero-grid shell">
+     <div class="reveal">
+      <p class="eyebrow">
+       About &middot; the person behind the lanes
+      </p>
+      <h1>
+       I was never going to be
+       <em>
+        one thing.
+       </em>
+      </h1>
+      <p class="page-lead">
+       My path has moved through customer service, marketing, business banking, web work, healthcare education, direct care, and creative projects. The point is not the number of labels. It is what those experiences have taught me about people, systems, communication, and the kind of life I want to build.
+      </p>
+      <div class="action-row">
+       <a class="button button-primary" href="timeline.html">
+        See the path in order &rarr;
+       </a>
+       <a class="button button-secondary" href="life.html">
+        Meet the off-duty version
+       </a>
+      </div>
+     </div>
+     <figure class="hero-media reveal">
+      <img alt="John Villanueva smiling in a blue suit" fetchpriority="high" height="577" src="assets/embedded-3e8d595091f4.webp" width="433">
+      <span class="stamp">
+       Best at being himself
+      </span>
+      <figcaption class="media-caption">
+       <strong>
+        Still accurate.
+       </strong>
+       <span>
+        I am less interested in fitting one box than in making the different parts add up.
+       </span>
+      </figcaption>
+     </figure>
+    </div>
+   </section>
+   <section class="section section-alt">
+    <div class="shell">
+     <div class="section-heading reveal">
+      <div>
+       <p class="section-label">
+        What holds it together
+       </p>
+       <h2>
+        Four principles do most of the work.
+       </h2>
+      </div>
+      <p>
+       These are the standards I return to when deciding what deserves my time, effort, and commitment.
+      </p>
+     </div>
+     <div class="grid-4">
+      <article class="card reveal">
+       <small>
+        Care
+       </small>
+       <h3>
+        People are not abstractions.
+       </h3>
+       <p>
+        Competence matters, but so do dignity, patience, context, and the way somebody experiences an interaction.
+       </p>
+      </article>
+      <article class="card reveal">
+       <small>
+        Curiosity
+       </small>
+       <h3>
+        Learn past the requirement.
+       </h3>
+       <p>
+        I am happiest when a question leads into a deeper system, a new culture, or something I can build and test.
+       </p>
+      </article>
+      <article class="card reveal">
+       <small>
+        Usefulness
+       </small>
+       <h3>
+        Make the idea work.
+       </h3>
+       <p>
+        A polished concept is not enough. I value outputs that somebody can understand, use, play, or improve.
+       </p>
+      </article>
+      <article class="card reveal">
+       <small>
+        Range
+       </small>
+       <h3>
+        Let skills travel.
+       </h3>
+       <p>
+        Business discipline can strengthen healthcare. Creative work can sharpen communication. Language study can widen perspective.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="section">
+    <div class="split shell">
+     <figure class="image-card reveal">
+      <img alt="John planning a project in a modern workspace" height="844" loading="lazy" src="assets/embedded-9a8936b2b83a.webp" width="1500">
+      <figcaption class="media-caption">
+       <strong>
+        A pivot, not an erasure.
+       </strong>
+       <span>
+        The earlier chapters still shape how I organize, communicate, and solve problems.
+       </span>
+      </figcaption>
+     </figure>
+     <div class="split-copy reveal">
+      <p class="section-label">
+       How the parts connect
+      </p>
+      <h2>
+       The career changed. The toolkit came with me.
+      </h2>
+      <p>
+       Business banking taught me to handle sensitive information, ask better questions, and understand how decisions affect real people. Marketing and web work taught me to structure information around an audience. Healthcare made the stakes more immediate and human.
+      </p>
+      <p>
+       Creative projects let me practice the same habit in a lower-stakes setting: build a version, notice what does not work, and make it better. I enjoy that loop almost as much as the finished result.
+      </p>
+      <div class="quote">
+       A nonlinear path is only scattered when the person living it cannot explain what each chapter added.
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section section-dark">
+    <div class="shell">
+     <div class="section-heading reveal">
+      <div>
+       <p class="section-label">
+        Now and next
+       </p>
+       <h2>
+        The present is focused, even if the whole story is broad.
+       </h2>
+      </div>
+      <p>
+       Right now, healthcare is the professional center. Business, technology, languages, and creative work remain active parts of the toolkit and the life around it.
+      </p>
+     </div>
+     <div class="grid-3">
+      <article class="card reveal">
+       <small>
+        Now
+       </small>
+       <h3>
+        Finish the BSN well.
+       </h3>
+       <p>
+        Keep strengthening clinical judgment, communication, safety habits, and the transition from student to registered nurse.
+       </p>
+      </article>
+      <article class="card reveal">
+       <small>
+        Alongside it
+       </small>
+       <h3>
+        Keep building.
+       </h3>
+       <p>
+        Keep building useful browser projects and exploring AI as a tool for research, drafting, and prototyping&mdash;without handing over the judgment that makes the work mine.
+       </p>
+      </article>
+      <article class="card reveal">
+       <small>
+        Long term
+       </small>
+       <h3>
+        Build a globally connected life.
+       </h3>
+       <p>
+        Meaningful healthcare work, family, travel, language learning, and enough autonomy to keep creating are all part of the plan.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="closing shell reveal">
+    <p class="section-label">
+     Keep exploring
+    </p>
+    <h2>
+     There is more than one way into the story.
+    </h2>
+    <p>
+     Work covers the professional record, Projects shows what I make, and Life gives the hobbies, communities, and long-term ambitions room to breathe.
+    </p>
+    <div class="action-row">
+     <a class="button button-primary" href="work.html">
+      View work & education
+     </a>
+     <a class="button button-secondary" href="projects.html">
+      Browse projects
+     </a>
+    </div>
+   </section>
+  </main>
+  <footer class="footer">
+   <div class="footer-grid shell">
+    <p>
+     &copy;
+     <span data-current-year>
+      2026
+     </span>
+     John F. Villanueva &middot; Care &middot; Build &middot; Learn.
+    </p>
+    <div class="footer-links">
+     <a href="work.html">
+      Work
+     </a>
+     <a href="projects.html">
+      Projects
+     </a>
+     <a href="play/">
+      Play Hub
+     </a>
+     <a href="contact.html">
+      Connect
+     </a>
+    </div>
+   </div>
+  </footer>
+  <script defer src="/assets/site.js?v=20260722b">
+  </script>
+ </body>
+</html>
