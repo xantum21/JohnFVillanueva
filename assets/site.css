@@ -1245,3 +1245,12 @@ body.is-entering .page-transition__cream { transform: translateX(0); animation: 
   .editorial-panel:hover .editorial-photo { transform: none; }
   .page-transition { display: none !important; }
 }
+
+
+/* 2026-07-24 v6 stale-asset cleanup + hero/media fixes */
+.portrait img, .hero-media img { object-position: center 18%; background: #d8d0c5; }
+.hero-media img[alt*="John Villanueva"], .portrait img[alt*="John Villanueva"] { object-position: center 18%; }
+.page-hero-grid > .hero-media { align-self: start; }
+.editorial-photo { display:block; width:100%; height:100%; }
+.editorial-panel .media-caption strong { text-wrap: balance; }
+.anime-inset { z-index: 3; }
