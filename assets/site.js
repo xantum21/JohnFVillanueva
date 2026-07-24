@@ -1,4 +1,37 @@
 (() => {
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reducedMotion) {
+    const transition = document.createElement('div');
+    transition.className = 'page-transition';
+    transition.setAttribute('aria-hidden', 'true');
+    transition.innerHTML = '<span class="page-transition__navy"></span><span class="page-transition__red"></span><span class="page-transition__cream"></span>';
+    document.body.appendChild(transition);
+
+    if (sessionStorage.getItem('jv-page-transition') === '1') {
+      sessionStorage.removeItem('jv-page-transition');
+      document.body.classList.add('is-entering');
+      window.setTimeout(() => document.body.classList.remove('is-entering'), 700);
+    }
+
+    document.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = event.target.closest('a[href]');
+      if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+      const href = link.getAttribute('href') || '';
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
+
+      const next = new URL(link.href, window.location.href);
+      if (next.origin !== window.location.origin) return;
+      if (next.pathname === window.location.pathname && next.search === window.location.search) return;
+
+      event.preventDefault();
+      sessionStorage.setItem('jv-page-transition', '1');
+      document.body.classList.add('is-leaving');
+      window.setTimeout(() => { window.location.href = next.href; }, 500);
+    });
+  }
+
   const button = document.querySelector('.menu-button');
   const links = document.querySelector('.nav-links');
   if (button && links) {
