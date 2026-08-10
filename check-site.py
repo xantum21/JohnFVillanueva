@@ -23,6 +23,8 @@ os.chdir(ROOT)
 problems = []
 notes = []
 
+RELEASE_ID = "2026-08-10-v6"
+
 TOP_LEVEL = sorted(glob("*.html"))
 ALL_HTML = sorted(glob("*.html") + glob("*/*.html") + glob("*/*/*.html"))
 
@@ -350,6 +352,18 @@ if re.search(
     re.S,
 ):
     problems.append("work.html still contains a stale 2026 BSN completion target")
+
+
+# ---------------------------------------------------------- release identity
+release_path = "release-version.txt"
+if not os.path.isfile(release_path):
+    problems.append(f"{release_path} is missing")
+else:
+    release_text = open(release_path, encoding="utf-8").read()
+    if RELEASE_ID not in release_text:
+        problems.append(
+            f"{release_path} does not identify the expected release: {RELEASE_ID}"
+        )
 
 
 # ---------------------------------------------- game safety and shared assets

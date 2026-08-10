@@ -76,7 +76,9 @@ def build_resume(output_path=OUTPUT):
     canvas.setTitle("John Villanueva - Public Resume")
     canvas.setAuthor("John Villanueva")
     canvas.setCreator("build-public-resume.py")
-    canvas.setSubject("Healthcare, nursing education, business, and project experience")
+    canvas.setSubject(
+        "Healthcare, nursing education, business, leadership, and professional capabilities"
+    )
 
     page_width, page_height = letter
     canvas.setFillColor(PAPER)
@@ -255,23 +257,23 @@ def build_resume(output_path=OUTPUT):
             styles,
         ),
         section(
-            "Selected Projects",
-            [
-                Paragraph("<b>Dino Kart Racer</b> - Browser combat racing game.", styles["body"]),
-                Paragraph("<b>Pharmacology Practice</b> - Four nursing study tools.", styles["body"]),
-                Paragraph("<b>Language Practice</b> - Spanish, Filipino/Tagalog, and kana tools.", styles["body"]),
-                Paragraph("<b>johnfvillanueva.com</b> - Interactive portfolio and timeline.", styles["body"]),
-            ],
-            styles,
-        ),
-        section(
-            "Selected Recognition",
+            "Professional Capabilities",
             [
                 Paragraph(
-                    "Honors research presentations at Stanford University and UC Berkeley; "
-                    "Smith Center Pitch Day finalist; chapter and student leadership.",
+                    "<b>Banking and client relations:</b> Relationship management, lending and "
+                    "treasury exposure, confidential documentation, Salesforce/CRM, and issue resolution.",
                     styles["small"],
-                )
+                ),
+                Paragraph(
+                    "<b>Marketing, web, and operations:</b> Digital marketing, brand messaging, "
+                    "web/UX work, customer-service supervision, escalations, and project coordination.",
+                    styles["small"],
+                ),
+                Paragraph(
+                    "<b>Japanese and cross-cultural communication:</b> Japanese Language and "
+                    "Culture minor, Chuo University study, tutoring, and exchange-program experience.",
+                    styles["small"],
+                ),
             ],
             styles,
         ),
@@ -343,8 +345,21 @@ def build_resume(output_path=OUTPUT):
                 Paragraph(
                     "Direct patient care | Therapeutic communication | Vital signs | Clinical "
                     "observation | SBAR | Safe transfers | Infection prevention | PointClickCare "
-                    "exposure | Client service | Leadership | CRM/Salesforce | Digital projects",
+                    "exposure | Client service | Leadership | CRM/Salesforce | Japanese language | "
+                    "Digital projects",
                     styles["body"],
+                )
+            ],
+            styles,
+        ),
+        section(
+            "Recognition",
+            [
+                Paragraph(
+                    "Honors research presentations at Stanford University and UC Berkeley; "
+                    "Smith Center Pitch Day competition finalist; American Marketing "
+                    "Association (AMA) chapter president.",
+                    styles["small"],
                 )
             ],
             styles,

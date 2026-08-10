@@ -16,6 +16,8 @@ DEPLOYMENT
 4. Commit the reviewed changes to the GitHub Pages publishing branch.
 5. Wait for Pages deployment to finish, then open the site in an incognito window.
 6. Test the professional contact form and confirm the message arrives through Formspree.
+7. Open https://johnfvillanueva.com/release-version.txt and confirm it says
+   `2026-08-10-v6`; this distinguishes the current release from older downloads.
 
 The custom domain is `johnfvillanueva.com`; keep `CNAME` and `.nojekyll` at the
 repository root. See `AUDIT-2026-08-10.md` for this pass's verification summary.

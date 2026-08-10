@@ -38,6 +38,10 @@ It lists only the website and LinkedIn. Keep it privacy-safe because it is
 publicly indexed. Basic EKG Interpretation is listed as valid August 1, 2026;
 ACLS and PALS are listed as valid August 12, 2026.
 
+The lower-left capability section intentionally translates prior banking,
+marketing, web, operations, leadership, and Japanese/cross-cultural experience
+into recruiter-readable skills instead of naming individual hobby projects.
+
 ## 3. Certification honesty
 
 The public site front-loads the dated credential status: Basic EKG
