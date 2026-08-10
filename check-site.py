@@ -23,7 +23,7 @@ os.chdir(ROOT)
 problems = []
 notes = []
 
-RELEASE_ID = "2026-08-10-v6"
+RELEASE_ID = "2026-08-12-v7"
 
 TOP_LEVEL = sorted(glob("*.html"))
 ALL_HTML = sorted(glob("*.html") + glob("*/*.html") + glob("*/*/*.html"))

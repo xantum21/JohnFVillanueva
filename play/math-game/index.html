@@ -120,6 +120,20 @@
       border: 0;
     }
     #soundToggle { margin-left: 8px; }
+    .mode-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 18px 0 8px;
+    }
+    .mode-controls select {
+      min-height: 42px;
+      padding: 8px 10px;
+      border-radius: 9px;
+      font: inherit;
+    }
     @media (max-width: 640px) {
       body { padding: 68px 14px 90px; }
       #leaderboardBtn { top: 12px; left: 12px; }
@@ -128,6 +142,8 @@
     }
   </style>
 <style id="jv-play-nav-style">
+body{padding-bottom:96px!important}
+@media(max-width:640px){body{padding-bottom:128px!important}}
 .jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 .jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
 .jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
@@ -138,7 +154,7 @@
   <link rel="icon" href="/assets/favicon-32-v3.png" sizes="32x32" type="image/png">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon-v3.png" sizes="180x180">
-  <link rel="manifest" href="/site.webmanifest?v=20260722b">
+  <link rel="manifest" href="/site.webmanifest?v=20260812v7">
 
 <style id="jv-responsive-play-patch">
 html,body{max-width:100%;overflow-x:hidden}
@@ -174,15 +190,24 @@ img,svg,canvas,video{max-width:100%}
 <button id="leaderboardBtn" onclick="showLeaderboard()" type="button">Leaderboard</button>
 <section aria-labelledby="game-title" id="gameSection">
 <h1 id="game-title">Math Quiz Game</h1>
-<div aria-live="polite" id="question">Loading...</div>
+<div class="mode-controls">
+<label for="paceSelect">Pace</label>
+<select id="paceSelect">
+<option value="0">Untimed practice</option>
+<option value="10" selected>10 seconds</option>
+<option value="5">5-second challenge</option>
+</select>
+<button id="startButton" type="button">Start</button>
+</div>
+<div aria-live="polite" id="question">Choose a pace, then press Start.</div>
 <label class="sr-only" for="answerInput">Enter your answer</label>
-<input aria-describedby="answer-help" autocomplete="off" id="answerInput" inputmode="decimal" type="text"/>
-<button onclick="checkAnswer()" type="button">Submit answer</button>
+<input aria-describedby="answer-help" autocomplete="off" disabled id="answerInput" inputmode="decimal" type="text"/>
+<button disabled id="submitAnswer" onclick="checkAnswer()" type="button">Submit answer</button>
 <button aria-pressed="true" id="soundToggle" type="button">Sound: On</button>
-<p id="answer-help">Enter the number before the timer reaches zero.</p>
+<p id="answer-help">Untimed practice is available; timed modes start only after you press Start.</p>
 <div aria-live="polite" class="feedback" id="feedback" role="status"></div>
 <div class="streak green" id="streakDisplay">Streak: 0</div>
-<div id="timerDisplay">Time left: 5</div>
+<div id="timerDisplay">Not started</div>
 </section>
 <section aria-labelledby="leaderboard-title" id="leaderboard">
 <h2 id="leaderboard-title">Recent Leaderboard</h2>
@@ -203,7 +228,9 @@ img,svg,canvas,video{max-width:100%}
     let streak = 0;
     let currentAnswer;
     let timer;
-    let timeLeft = 5;
+    let timeLeft = 10;
+    let timeLimit = 10;
+    let gameStarted = false;
     let soundEnabled = true;
     let audioContext;
 
@@ -236,6 +263,7 @@ img,svg,canvas,video{max-width:100%}
     }
 
     function generateQuestion() {
+      if (!gameStarted) return;
       const operations = ['+', '-', '*'];
       const op = operations[Math.floor(Math.random() * operations.length)];
       const a = Math.floor(Math.random() * 10) + 1;
@@ -252,6 +280,7 @@ img,svg,canvas,video{max-width:100%}
     }
 
     function checkAnswer() {
+      if (!gameStarted) return;
       const userAnswer = parseFloat(document.getElementById("answerInput").value);
       const feedback = document.getElementById("feedback");
       const streakDisplay = document.getElementById("streakDisplay");
@@ -290,7 +319,11 @@ img,svg,canvas,video{max-width:100%}
 
     function resetTimer() {
       clearInterval(timer);
-      timeLeft = 5;
+      if (timeLimit === 0) {
+        document.getElementById("timerDisplay").textContent = "Untimed practice";
+        return;
+      }
+      timeLeft = timeLimit;
       document.getElementById("timerDisplay").textContent = `Time left: ${timeLeft}`;
       timer = setInterval(() => {
         timeLeft--;
@@ -311,7 +344,11 @@ img,svg,canvas,video{max-width:100%}
     function showGame() {
       document.getElementById("gameSection").style.display = "block";
       document.getElementById("leaderboard").style.display = "none";
-      generateQuestion();
+      if (gameStarted) {
+        generateQuestion();
+      } else {
+        document.getElementById("startButton").focus({ preventScroll: true });
+      }
     }
 
     function showLeaderboard() {
@@ -341,6 +378,19 @@ img,svg,canvas,video{max-width:100%}
       soundEnabled = !soundEnabled;
       this.setAttribute("aria-pressed", String(soundEnabled));
       this.textContent = soundEnabled ? "Sound: On" : "Sound: Off";
+    });
+
+    document.getElementById("startButton").addEventListener("click", function () {
+      clearInterval(timer);
+      timeLimit = Number(document.getElementById("paceSelect").value);
+      gameStarted = true;
+      streak = 0;
+      document.getElementById("streakDisplay").className = "streak green";
+      document.getElementById("streakDisplay").textContent = "Streak: 0";
+      document.getElementById("answerInput").disabled = false;
+      document.getElementById("submitAnswer").disabled = false;
+      this.textContent = "Restart";
+      generateQuestion();
     });
 
     document.getElementById("answerInput").addEventListener("keydown", function (e) {

@@ -14,8 +14,8 @@
   --dt-linen: #fbf6ef;
   --dt-linen-2: #f2e9dd;
   --dt-lamp: #e9b45c;
-  --dt-lamp-deep: #c98f36;
-  --dt-blush: #d4867f;
+  --dt-lamp-deep: #8a5a12;
+  --dt-blush: #9f4f4b;
   --dt-blush-soft: #f5ded9;
   --dt-sage: #6d8f83;
   --dt-ink: #191c28;
@@ -41,12 +41,18 @@
 }
 
 .dt-page * { box-sizing: border-box; }
-.dt-page img { display: block; max-width: 100%; }
+.dt-page img { display: block; max-width: 100%; height: auto; }
 .dt-page a { color: inherit; }
 .dt-page :focus-visible {
-  outline: 3px solid var(--dt-lamp-deep);
-  outline-offset: 4px;
+  outline: 3px solid var(--dt-night);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(233, 180, 92, 0.48);
   border-radius: 8px;
+}
+.dt-section-night :focus-visible,
+.dt-footer :focus-visible {
+  outline-color: var(--dt-lamp);
+  box-shadow: 0 0 0 6px rgba(251, 246, 239, 0.2);
 }
 
 .dt-skip-link {
@@ -177,6 +183,39 @@
 }
 .dt-hero h1 { margin-bottom: 20px; max-width: 17ch; }
 .dt-hero .dt-lead { margin: 0 0 30px; }
+.dt-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.65fr);
+  gap: clamp(30px, 5vw, 64px);
+  align-items: center;
+}
+.dt-hero .dt-actions { margin-top: 0; }
+.dt-portrait {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(27, 35, 64, 0.16);
+  border-radius: 28px;
+  background: var(--dt-night);
+  box-shadow: var(--dt-shadow);
+  transform: rotate(1deg);
+}
+.dt-portrait img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center 18%;
+}
+.dt-portrait figcaption {
+  padding: 14px 16px 16px;
+  background: var(--dt-night);
+  color: rgba(251, 246, 239, 0.82);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+@media (max-width: 800px) {
+  .dt-hero-grid { grid-template-columns: 1fr; }
+  .dt-portrait { width: min(100%, 360px); transform: none; }
+}
 
 /* ---------- SIGNATURE: the pairing device ----------
    Every pair states the same idea the page is about: the loud thing and

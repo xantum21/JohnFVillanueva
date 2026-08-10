@@ -1,6 +1,15 @@
 (() => {
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const clearPageTransitionState = () => {
+    document.body.classList.remove('is-leaving', 'is-entering');
+  };
+
+  // Browsers can restore the previous DOM exactly as it was when navigating Back.
+  // Always clear transition classes so a cached page can never remain covered.
+  window.addEventListener('pageshow', clearPageTransitionState);
+
   if (!reducedMotion) {
     const transition = document.createElement('div');
     transition.className = 'page-transition';
@@ -11,7 +20,7 @@
     if (sessionStorage.getItem('jv-page-transition') === '1') {
       sessionStorage.removeItem('jv-page-transition');
       document.body.classList.add('is-entering');
-      window.setTimeout(() => document.body.classList.remove('is-entering'), 700);
+      window.setTimeout(() => document.body.classList.remove('is-entering'), 480);
     }
 
     document.addEventListener('click', (event) => {
@@ -28,7 +37,7 @@
       event.preventDefault();
       sessionStorage.setItem('jv-page-transition', '1');
       document.body.classList.add('is-leaving');
-      window.setTimeout(() => { window.location.href = next.href; }, 500);
+      window.setTimeout(() => { window.location.href = next.href; }, 300);
     });
   }
 
@@ -54,6 +63,19 @@
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && links.classList.contains('open')) {
         close({ restoreFocus: true });
+        return;
+      }
+      if (event.key === 'Tab' && links.classList.contains('open')) {
+        const focusable = [button, ...links.querySelectorAll('a')];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     });
     document.addEventListener('click', (event) => {

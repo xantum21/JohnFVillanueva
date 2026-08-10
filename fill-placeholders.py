@@ -10,10 +10,9 @@ dictionary below, then run:
 It rewrites the HTML in place and prints what it changed. Run check-site.py
 afterwards to confirm nothing is left unfilled.
 
-Nothing here is guesswork on my part: credential status and licensure dates are
-the kind of thing a nurse recruiter will verify, so they are left blank rather
-than estimated. Write only what is true today, and update the file again when
-a certification is actually in hand.
+This release is intentionally prepared as the post-August-12, 2026 version so
+the site can be finished before a full class and work schedule resumes. Update
+the dated facts here whenever the public site needs another refresh.
 """
 
 import os
@@ -29,17 +28,17 @@ VALUES = {
     "BSN_COMPLETION": "April 2027",
 
     # When you plan to sit for the NCLEX-RN. Example: "February 2027"
-    "NCLEX_TARGET": "May–June 2027",
+    "NCLEX_TARGET": "targeting May–June 2027, subject to eligibility and ATT",
 
     # The role you want. Example: "New-graduate RN residency"
     "TARGET_ROLE": "New-graduate RN residency",
 
     # Units or specialties, written the way a nurse manager would say them.
     # Example: "medical-surgical, telemetry, or progressive care"
-    "TARGET_SPECIALTY": "medical-surgical, telemetry, or acute care",
+    "TARGET_SPECIALTY": "medical-surgical or telemetry, while open to other units with structured new-grad support",
 
     # When you could start. Example: "Spring 2027" or "Upon licensure"
-    "AVAILABILITY": "June 2027",
+    "AVAILABILITY": "Summer 2027 following RN licensure",
 
     # One sentence on geography. Example:
     #   "Open to relocation within California and to the Sacramento area."
@@ -50,9 +49,9 @@ VALUES = {
     #   "scheduled March 2027"   (registered, not yet taken)
     #   "in progress"            (course underway)
     #   "certified May 2027"     (completed - update the card wording too)
-    "ACLS_STATUS": "valid August 12, 2026",
-    "PALS_STATUS": "valid August 12, 2026",
-    "EKG_STATUS": "valid August 1, 2026",
+    "ACLS_STATUS": "completed August 12, 2026",
+    "PALS_STATUS": "completed August 12, 2026",
+    "EKG_STATUS": "completed August 1, 2026",
 
     # IMPORTANT - read this one carefully.
     # Your resume PDF currently says "1,000+ hours of PAID direct patient-care
@@ -69,7 +68,7 @@ VALUES = {
     #    skilled nursing with supervised clinical rotation hours completed
     #    through Nightingale College. Both are direct, hands-on patient contact."
     #   ...and change the resume PDF so it no longer says "paid."
-    "HOURS_BASIS": "Hours reflect hands-on, direct patient contact. The exact split between paid CNA employment and supervised clinical rotation hours, along with employment verification and clinical records, is provided during a formal hiring process.",
+    "HOURS_BASIS": "The 1,000+ total combines hands-on paid CNA care with supervised clinical practice completed during BSN training. Employment verification and clinical records are available to legitimate employers during a formal hiring process.",
 }
 # ---------------------------------------------------------------------------
 
