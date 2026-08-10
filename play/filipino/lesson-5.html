@@ -66,7 +66,7 @@ kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;border:1px 
 html,body{max-width:100%;overflow-x:hidden}
 header{grid-template-columns:minmax(0,1fr) repeat(4,auto)!important}
 header>*{min-width:0}
-.brand{min-width:0;overflow-wrap:anywhere}
+.brand{min-width:0;margin:0;font-size:inherit;line-height:1.25;overflow-wrap:anywhere}
 .controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))!important}
 .controls>*{min-width:0}
 .ctrl,.row{min-width:0}
@@ -94,16 +94,16 @@ img,svg,canvas,video{max-width:100%}
 </head>
 <body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
 <header>
-<div class="brand">🇵🇭 Tagalog Practice 5 — Colors, Possession & Location</div>
+<h1 class="brand">🇵🇭 Tagalog Practice 5 — Colors, Possession & Location</h1>
 <div class="pill scorebox">Score: <strong id="score">0</strong> • Streak: <strong id="streak">0</strong></div>
-<button class="pill" id="sfx">🔊 Sound: On</button>
+<button type="button" class="pill" id="sfx">🔊 Sound: On</button>
 <div class="pill"><span class="muted">Total in bank:</span> <strong id="total">—</strong></div>
 </header>
 <div id="progressbar"><div id="progressfill"></div><span id="progresslabel">Progress: 0/0</span></div>
 <main>
 <section class="controls card">
 <div class="row"><span class="muted">Question source:</span>
-<select id="category">
+<select aria-label="Question source" id="category">
 <option selected="" value="all">All (with Culture)</option>
 <option value="vocab">Vocabulary only</option>
 <option value="grammar">Grammar only</option>
@@ -111,27 +111,27 @@ img,svg,canvas,video{max-width:100%}
 </select>
 </div>
 <div class="row"><span class="muted">Timer:</span>
-<select id="timer">
+<select aria-label="Timer duration" id="timer">
 <option selected="" value="off">Off</option>
 <option value="60">60s</option>
 <option value="90">90s</option>
 </select>
 </div>
-<button id="reset">Reset</button>
-<button id="next">Next ▶</button>
+<button type="button" id="reset">Reset</button>
+<button type="button" id="next">Next ▶</button>
 </section>
 <section class="card qcard" id="qcard">
 <div class="badges"><span class="badge" id="typeBadge">—</span><span class="badge" id="topicBadge">—</span></div>
-<div class="qstem" id="stem">Press <kbd>Next</kbd> to begin. Stems are in Tagalog; directions and UI in English.</div>
+<div aria-live="polite" class="qstem" id="stem">Press <kbd>Next</kbd> to begin. Stems are in Tagalog; directions and UI in English.</div>
 <div class="options" id="options"></div>
 <div class="hidden row" id="fibWrap" style="margin-top:12px; display:none;">
-<input id="fibInput" placeholder="Type your answer in Tagalog…" style="flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:#fff" type="text"/>
-<button id="fibCheck">Check</button>
+<input autocomplete="off" aria-label="Answer" id="fibInput" placeholder="Type your answer in Tagalog…" style="flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:#fff" type="text"/>
+<button type="button" id="fibCheck">Check</button>
 </div>
 <div class="rationale muted hidden" id="rationale"></div>
 <div class="footer">
-<div class="muted" id="status">Choose the best answer.</div>
-<div class="row"><button id="showAns">Show answer</button><button id="again">Again 🔁</button></div>
+<div aria-live="polite" class="muted" id="status">Choose the best answer.</div>
+<div class="row"><button type="button" id="showAns">Show answer</button><button type="button" id="again">Again 🔁</button></div>
 </div>
 </section>
 <section class="grid2" style="margin-top:12px">
@@ -141,7 +141,7 @@ img,svg,canvas,video{max-width:100%}
 <div><strong>Covers (Aralin 6):</strong> colors; ownership markers <strong>kay/kina/sa</strong>; pronouns <strong>akin/kanya/kanila/amin/atin</strong>; location with <strong>nasa</strong> (<em>ibabaw / ilalim / tabi / loob / labas</em>); interrogatives <strong>alin</strong>, <strong>anong kulay</strong>, <strong>kanino</strong>, <strong>nasaan</strong>; adjective–noun linker (<strong>na</strong>/<strong>ng</strong>); dialogue checks.</div>
 <div>Scoring: <strong>+10</strong> correct, <strong>−5</strong> incorrect/timeout/show. Popups: <em>“Ayos!” / “Subukan muli!” / “Oras na!”</em></div>
 </div>
-<div><button id="export">Export results</button></div>
+<div><button type="button" id="export">Export results</button></div>
 </div>
 <div class="muted" id="tracker" style="margin-top:10px;display:grid;grid-template-columns:1fr 90px 90px;gap:6px"></div>
 </div>
@@ -151,6 +151,7 @@ img,svg,canvas,video{max-width:100%}
 </section>
 </main>
 <div class="toast" id="toast"></div>
+<script src="/play/assets/quiz-utils.js"></script>
 <script>
 // ---------- Helpers ----------
 function stripAccents(str){return (str||"").toString().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().trim();}
@@ -225,7 +226,7 @@ for(const [en, syn] of Object.entries(COLORS_TL_SYNONYMS)){
 BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: Itim __ bag.`, fibAnswers:["na"], rationale:`Consonant before linker → “na”.`});
 BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: Pula __ telepono.`, fibAnswers:["ng"], rationale:`Vowel before linker → “ng” (pula → pulang telepono).`});
 BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: Berde __ libro.`, fibAnswers:["ng"], rationale:`Vowel before linker → “ng” (berde → berdeng libro).`});
-BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: Dilaw __ payong.`, fibAnswers:["ng"], rationale:`Vowel before linker → “ng” (dilaw → dilawng → dilawang payong).`});
+BANK.push({topic:"Grammar", type:"FIB", stem:`Punan: Dilaw __ payong.`, fibAnswers:["na"], rationale:`Consonant before linker → “na” (“dilaw na payong”).`});
 
 // Grammar: Nasa (location)
 for(const L of LOCATIONS){
@@ -270,6 +271,7 @@ const toast=document.getElementById('toast'); const elExport=document.getElement
 elTotal.textContent = BANK.length;
 
 // topic list
+window.JVQuizTools.normalizeSingleAnswerOptions(BANK, shuffle);
 const TOPICS=[...new Set(BANK.map(q=>q.topic))].sort();
 function buildTracker(){ elTracker.innerHTML=""; TOPICS.forEach(t=>{ ensureTopic(t); const s=stats.topics[t]||{seen:0,correct:0}; const acc=s.seen? Math.round(100*s.correct/s.seen):0; const n1=document.createElement('div'); n1.textContent=t; const n2=document.createElement('div'); n2.textContent=s.seen+" seen"; const n3=document.createElement('div'); n3.textContent=acc+"%"; n3.style.color=acc>=85?'var(--success)':acc>=70?'var(--warn)':'var(--danger)'; elTracker.appendChild(n1); elTracker.appendChild(n2); elTracker.appendChild(n3); }); }
 

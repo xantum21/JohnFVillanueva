@@ -32,7 +32,7 @@
   .card { background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px; }
   .qstem { font-size: 18px; line-height: 1.25; }
   .options { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
-  .opt { padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); cursor: pointer; }
+  .opt { width:100%; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); color:var(--ink); cursor: pointer; font:inherit; text-align:left; }
   .opt:hover { border-color: rgba(185,135,255,0.6); }
   .opt.correct { background: rgba(86,243,154,0.08); border-color: var(--success); }
   .opt.incorrect { background: rgba(255,107,107,0.08); border-color: var(--danger); }
@@ -72,7 +72,7 @@
 html,body{max-width:100%;overflow-x:hidden}
 header{grid-template-columns:minmax(0,1fr) repeat(4,auto)!important}
 header>*{min-width:0}
-.brand{min-width:0;overflow-wrap:anywhere}
+.brand{min-width:0;margin:0;font-size:inherit;line-height:1.25;overflow-wrap:anywhere}
 .controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))!important}
 .controls>*{min-width:0}
 .ctrl,.row{min-width:0}
@@ -100,23 +100,23 @@ img,svg,canvas,video{max-width:100%}
 </head>
 <body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
 <header>
-<div class="brand">💊 Pharmacology Practice III — Comprehensive Review</div>
+<h1 class="brand">💊 Pharmacology Practice III — Comprehensive Review</h1>
 <div class="pill">Progress: <span id="progress">0/0</span></div>
-<button class="pill" id="sfx">🔊 Sound: Off</button>
-<button class="pill" id="music">🎵 Music: Off</button>
+<button type="button" class="pill" id="sfx">🔊 Sound: Off</button>
+<button type="button" class="pill" id="music">🎵 Music: Off</button>
 </header>
 <main>
 <section class="controls">
 <div class="row"><span class="muted">Mode:</span>
-<select id="mode">
+<select aria-label="Selection mode" id="mode">
 <option selected="" value="adaptive">Adaptive (Weak Topics First)</option>
 <option value="random">Random</option>
 <option value="topic">By Topic</option>
 </select>
 </div>
-<div class="row" id="topicWrap"><span class="muted">Topic:</span><select id="topic"></select></div>
+<div class="row" id="topicWrap"><span class="muted">Topic:</span><select aria-label="Topic" id="topic"></select></div>
 <div class="row"><span class="muted">Timer:</span>
-<select id="timer">
+<select aria-label="Timer duration" id="timer">
 <option value="off">Off</option>
 <option value="60">60s</option>
 <option selected="" value="90">90s</option>
@@ -124,25 +124,26 @@ img,svg,canvas,video{max-width:100%}
 </select>
 </div>
 <div class="row">
-<button id="reset">Reset Stats</button>
-<button id="next">Next ▶</button>
+<button type="button" id="reset">Reset Stats</button>
+<button type="button" id="next">Next ▶</button>
 </div>
 </section>
+<aside class="card study-notice" role="note" style="margin-bottom:12px"><strong>Study-use notice:</strong> Personal study tool only—not clinical guidance. Verify medication information and calculations against current course materials, drug references, and facility policy.</aside>
 <section class="card">
 <div class="badges" id="meta"></div>
-<div class="qstem" id="stem"></div>
+<div aria-live="polite" class="qstem" id="stem"></div>
 <div class="options" id="opts"></div>
 <div class="rationale" id="rat" style="display:none;"></div>
 <div class="row" style="justify-content:space-between; margin-top:8px;">
-<div class="muted" id="status">Select the best answer.</div>
+<div aria-live="polite" class="muted" id="status">Select the best answer.</div>
 <div class="row">
-<button id="show">Show Answer</button>
-<button id="again">Again 🔁</button>
+<button type="button" id="show">Show Answer</button>
+<button type="button" id="again">Again 🔁</button>
 </div>
 </div>
 </section>
 <section class="card" style="margin-top:12px;">
-<div class="row" style="justify-content:space-between;"><div class="muted">Mastery by Topic</div><button id="export">Export Stats</button></div>
+<div class="row" style="justify-content:space-between;"><div class="muted">Mastery by Topic</div><button type="button" id="export">Export Stats</button></div>
 <div class="muted" id="track" style="display:grid; grid-template-columns:1fr 80px 80px; gap:6px; margin-top:6px;"></div>
 </section>
 </main>
@@ -155,7 +156,798 @@ function playSFX(id){
   }catch(e){}
 }
 
-const BANK = [{"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 6 hr using 10 gtt/mL. Set (gtt/min):", "options": ["1 gtt/min", "7 gtt/min", "10 gtt/min", "16 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/360=0.69 mL/min ×10≈7 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 4 hr using 15 gtt/mL. Set (gtt/min):", "options": ["9 gtt/min", "16 gtt/min", "19 gtt/min", "25 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/240=1.04 mL/min ×15≈16 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 500 mL over 2 hr using 15 gtt/mL. Set (gtt/min):", "options": ["56 gtt/min", "63 gtt/min", "66 gtt/min", "72 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "500/120=4.17 mL/min ×15≈63 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 1000 mL over 2 hr using 10 gtt/mL. Set (gtt/min):", "options": ["76 gtt/min", "83 gtt/min", "86 gtt/min", "92 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "1000/120=8.33 mL/min ×10≈83 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 3 hr using 15 gtt/mL. Set (gtt/min):", "options": ["14 gtt/min", "21 gtt/min", "24 gtt/min", "30 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/180=1.39 mL/min ×15≈21 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "IV: 250 mL over 6 hr using 10 gtt/mL. Set (gtt/min):", "options": ["1 gtt/min", "7 gtt/min", "10 gtt/min", "16 gtt/min"], "answerIndex": 1, "answers": [1], "rationale": "250/360=0.69 mL/min ×10≈7 gtt/min.", "tags": ["drops"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 500 mL over 30 min. Set (mL/hr):", "options": ["975 mL/hr", "1000 mL/hr", "1015 mL/hr", "1035 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "500/(30/60)=1000.0 → 1000 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 500 mL over 30 min. Set (mL/hr):", "options": ["975 mL/hr", "1000 mL/hr", "1015 mL/hr", "1035 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "500/(30/60)=1000.0 → 1000 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 150 mL over 45 min. Set (mL/hr):", "options": ["175 mL/hr", "200 mL/hr", "215 mL/hr", "235 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "150/(45/60)=200.0 → 200 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 100 mL over 45 min. Set (mL/hr):", "options": ["108 mL/hr", "133 mL/hr", "148 mL/hr", "168 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "100/(45/60)=133.3 → 133 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 250 mL over 90 min. Set (mL/hr):", "options": ["142 mL/hr", "167 mL/hr", "182 mL/hr", "202 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "250/(90/60)=166.7 → 167 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Pump: 200 mL over 30 min. Set (mL/hr):", "options": ["375 mL/hr", "400 mL/hr", "415 mL/hr", "435 mL/hr"], "answerIndex": 1, "answers": [1], "rationale": "200/(30/60)=400.0 → 400 mL/hr.", "tags": ["pump"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 500 mg/2 mL. Give 125 mg. How many mL?", "options": ["0.1 mL", "0.5 mL", "0.9 mL", "1.5 mL"], "answerIndex": 1, "answers": [1], "rationale": "125×(2/500)=0.50 mL → 0.5 mL.", "tags": ["ratio"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 125 mg/2 mL. Give 125 mg. How many mL?", "options": ["1.4 mL", "2 mL", "2.4 mL", "3 mL"], "answerIndex": 1, "answers": [1], "rationale": "125×(2/125)=2.00 mL → 2 mL.", "tags": ["ratio"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 500 mg/2 mL. Give 62.5 mg. How many mL?", "options": ["0.1 mL", "0.2 mL", "0.6000000000000001 mL", "1.2 mL"], "answerIndex": 1, "answers": [1], "rationale": "62.5×(2/500)=0.25 mL → 0.2 mL.", "tags": ["ratio"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 125 mg/10 mL. Give 187.5 mg. How many mL?", "options": ["14.4 mL", "15 mL", "15.4 mL", "16 mL"], "answerIndex": 1, "answers": [1], "rationale": "187.5×(10/125)=15.00 mL → 15 mL.", "tags": ["ratio"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 125 mg/10 mL. Give 250 mg. How many mL?", "options": ["19.4 mL", "20 mL", "20.4 mL", "21 mL"], "answerIndex": 1, "answers": [1], "rationale": "250×(10/125)=20.00 mL → 20 mL.", "tags": ["ratio"]}, {"topic": "Med Safety/Math", "type": "MCQ", "stem": "Label: 250 mg/5 mL. Give 125 mg. How many mL?", "options": ["1.9 mL", "2.5 mL", "2.9 mL", "3.5 mL"], "answerIndex": 1, "answers": [1], "rationale": "125×(5/250)=2.50 mL → 2.5 mL.", "tags": ["ratio"]}, {"topic": "Renal/Hepatic Dosing", "type": "MCQ", "stem": "Which antibiotic needs renal dose reduction to prevent neurotoxicity?", "options": ["Azithromycin", "Cefepime", "Clindamycin", "Metronidazole"], "answerIndex": 1, "answers": [1], "rationale": "Cefepime accumulation can cause encephalopathy/seizures; adjust to CrCl.", "tags": ["renal dosing"]}, {"topic": "Drug Interactions", "type": "MCQ", "stem": "Which combo most risks severe hyperkalemia?", "options": ["ACE inhibitor + thiazide", "ARB + spironolactone", "Loop diuretic + digoxin", "Beta blocker + statin"], "answerIndex": 1, "answers": [1], "rationale": "Dual RAAS + K-sparing diuretic → hyperK; monitor K+/renal fxn.", "tags": ["hyperK"]}, {"topic": "Psych", "type": "MCQ", "stem": "Bupropion is contraindicated in which history?", "options": ["Hypertension", "Seizure disorder or eating disorder", "Asthma", "Hypothyroidism"], "answerIndex": 1, "answers": [1], "rationale": "Bupropion lowers seizure threshold; contraindicated in seizures/bulimia.", "tags": ["bupropion"]}, {"topic": "Psych", "type": "MCQ", "stem": "Which SSRI at high dose has the greatest QT prolongation concern?", "options": ["Fluoxetine", "Sertraline", "Citalopram", "Paroxetine"], "answerIndex": 2, "answers": [2], "rationale": "Citalopram has dose-dependent QT risk; limit max dose.", "tags": ["QT"]}, {"topic": "OB/Repro", "type": "MCQ", "stem": "Anticoagulant of choice during pregnancy for DVT treatment:", "options": ["Warfarin", "Apixaban", "Heparin (UFH/LMWH)", "Clopidogrel"], "answerIndex": 2, "answers": [2], "rationale": "Heparins don’t cross placenta; warfarin is teratogenic.", "tags": ["OB"]}, {"topic": "OB/Repro", "type": "MCQ", "stem": "Which antibiotic is generally avoided in pregnancy due to effects on teeth/bone?", "options": ["Penicillin", "Cephalexin", "Doxycycline", "Azithromycin"], "answerIndex": 2, "answers": [2], "rationale": "Tetracyclines discolor teeth/inhibit bone growth.", "tags": ["OB safety"]}, {"topic": "Onc/Immuno", "type": "MCQ", "stem": "Cisplatin key toxicities include:", "options": ["Pulmonary fibrosis", "Nephrotoxicity & ototoxicity", "Cardiomyopathy", "Severe hypothyroidism"], "answerIndex": 1, "answers": [1], "rationale": "Hydrate; consider amifostine; monitor kidneys/hearing.", "tags": ["cisplatin"]}, {"topic": "Onc/Immuno", "type": "MCQ", "stem": "Severe diarrhea on checkpoint inhibitor therapy—priority:", "options": ["Loperamide only", "High-dose corticosteroids after excluding perforation", "Continue therapy", "Empiric macrolide"], "answerIndex": 1, "answers": [1], "rationale": "Immune-mediated colitis → steroids; rule out perforation.", "tags": ["IO toxicity"]}, {"topic": "Endocrine/Adrenal", "type": "MCQ", "stem": "During prednisone taper, which finding is most concerning?", "options": ["Fatigue that improves with rest", "BP 132/82", "Hyperglycemia 160 mg/dL", "Postural hypotension + severe weakness"], "answerIndex": 3, "answers": [3], "rationale": "Suggests adrenal insufficiency; urgent eval.", "tags": ["adrenal"]}, {"topic": "Endocrine/Adrenal", "type": "MCQ", "stem": "Which medication may blunt response to epinephrine in anaphylaxis?", "options": ["ACE inhibitor", "Beta blocker", "Thiazide", "CCB"], "answerIndex": 1, "answers": [1], "rationale": "Beta blockers can blunt epi; consider glucagon if refractory.", "tags": ["anaphylaxis"]}, {"topic": "Antimicrobials", "type": "MCQ", "stem": "Linezolid patient teaching should include avoiding excess:", "options": ["Vitamin D", "Tyramine-rich foods", "Protein", "Fiber"], "answerIndex": 1, "answers": [1], "rationale": "MAOI activity → tyramine can cause hypertensive crisis.", "tags": ["linezolid"]}, {"topic": "Antimicrobials", "type": "MCQ", "stem": "Daptomycin should not be used for pneumonia because it is:", "options": ["Only oral", "Inactivated by pulmonary surfactant", "Ineffective against gram-positives", "Nephrotoxic only"], "answerIndex": 1, "answers": [1], "rationale": "Surfactant inactivates it; use vanc/linezolid for MRSA pneumonia.", "tags": ["daptomycin"]}, {"topic": "GI", "type": "MCQ", "stem": "Long-term PPI use is associated with:", "options": ["Bradycardia", "Hypomagnesemia & ↑C. difficile risk", "Hyperkalemia", "Tinnitus"], "answerIndex": 1, "answers": [1], "rationale": "Assess indication; monitor Mg2+; infection/fracture risks noted.", "tags": ["PPI"]}, {"topic": "GI", "type": "MCQ", "stem": "Metoclopramide concerning adverse effect:", "options": ["Constipation", "Tardive dyskinesia/EPS", "Sinus bradycardia", "Xerostomia"], "answerIndex": 1, "answers": [1], "rationale": "Stop if involuntary movements/restlessness develop.", "tags": ["EPS"]}, {"topic": "Neuro", "type": "MCQ", "stem": "Early phenytoin toxicity presents as:", "options": ["Alopecia", "Nystagmus/ataxia", "Hyperreflexia", "Hypoglycemia"], "answerIndex": 1, "answers": [1], "rationale": "Neurologic signs (nystagmus/ataxia) suggest toxicity.", "tags": ["phenytoin"]}, {"topic": "Neuro", "type": "MCQ", "stem": "Valproate counseling for clients who may become pregnant focuses on:", "options": ["Risk of renal stones", "Risk of severe rash", "Risk of neural tube defects", "No special risks"], "answerIndex": 2, "answers": [2], "rationale": "Highly teratogenic; avoid if possible; folate discussion critical.", "tags": ["teratogen"]}, {"topic": "Immunization", "type": "MCQ", "stem": "On prednisone ≥20 mg/day for ≥14 days, avoid which vaccine today?", "options": ["Tdap", "HPV", "Inactivated influenza (IM)", "Live-attenuated varicella"], "answerIndex": 3, "answers": [3], "rationale": "Avoid live vaccines in significant immunosuppression.", "tags": ["vaccine"]}, {"topic": "Bone/Gout", "type": "MCQ", "stem": "Denosumab’s primary mechanism is:", "options": ["Stimulate osteoclasts", "Inhibit RANKL to reduce osteoclast activity", "Block osteoblasts", "Chelate calcium"], "answerIndex": 1, "answers": [1], "rationale": "Anti-RANKL antibody decreases bone resorption.", "tags": ["denosumab"]}, {"topic": "Renal/Hepatic Dosing", "type": "MCQ", "stem": "Which opioid should be avoided/reduced in severe renal failure due to active metabolites?", "options": ["Fentanyl", "Morphine", "Methadone", "Buprenorphine"], "answerIndex": 1, "answers": [1], "rationale": "Morphine metabolites accumulate; consider fentanyl/methadone.", "tags": ["renal"]}, {"topic": "Drug Interactions", "type": "MCQ", "stem": "Rhabdomyolysis risk is highest with:", "options": ["Simvastatin + strong CYP3A4 inhibitor", "Pravastatin + vitamin D", "Rosuvastatin + aspirin", "Atorvastatin + acetaminophen"], "answerIndex": 0, "answers": [0], "rationale": "3A4 inhibitors raise simvastatin levels → myopathy/rhabdo.", "tags": ["statin DI"]}, {"topic": "Cardio/Algorithms", "type": "MCQ", "stem": "Stable narrow-complex SVT after failed vagal maneuvers—next step:", "options": ["Magnesium sulfate", "Adenosine rapid IV push", "Amiodarone first", "Unsynchronized shock"], "answerIndex": 1, "answers": [1], "rationale": "Adenosine transiently blocks AV node; saline flush; warn about flushing.", "tags": ["ACLS"]}, {"topic": "Cardio/Algorithms", "type": "MCQ", "stem": "First-line drug for torsades de pointes:", "options": ["Atropine", "Magnesium sulfate IV", "Adenosine", "Diltiazem"], "answerIndex": 1, "answers": [1], "rationale": "Magnesium stabilizes repolarization in torsades.", "tags": ["torsades"]}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which class can cause eyelash growth and iris darkening?", "options": ["Beta-blockers", "Prostaglandin analogs", "Alpha-agonists", "CAIs"], "answerIndex": 1, "answers": [1], "rationale": "Class effect of prostaglandin analogs (e.g., latanoprost).", "tags": []}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which class can cause eyelash growth and iris darkening?", "options": ["Beta-blockers", "Prostaglandin analogs", "Alpha-agonists", "CAIs"], "answerIndex": 1, "answers": [1], "rationale": "Class effect of prostaglandin analogs (e.g., latanoprost).", "tags": []}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which class can cause eyelash growth and iris darkening?", "options": ["Beta-blockers", "Prostaglandin analogs", "Alpha-agonists", "CAIs"], "answerIndex": 1, "answers": [1], "rationale": "Class effect of prostaglandin analogs (e.g., latanoprost).", "tags": []}, {"topic": "Sensory/Glaucoma", "type": "MCQ", "stem": "Which class can cause eyelash growth and iris darkening?", "options": ["Beta-blockers", "Prostaglandin analogs", "Alpha-agonists", "CAIs"], "answerIndex": 1, "answers": [1], "rationale": "Class effect of prostaglandin analogs (e.g., latanoprost).", "tags": []}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which DOAC has a specific reversal with idarucizumab?", "options": ["Apixaban", "Rivaroxaban", "Dabigatran", "Edoxaban"], "answerIndex": 2, "answers": [2], "rationale": "Idarucizumab reverses dabigatran; andexanet reverses certain Xa inhibitors.", "tags": []}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which DOAC has a specific reversal with idarucizumab?", "options": ["Apixaban", "Rivaroxaban", "Dabigatran", "Edoxaban"], "answerIndex": 2, "answers": [2], "rationale": "Idarucizumab reverses dabigatran; andexanet reverses certain Xa inhibitors.", "tags": []}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which DOAC has a specific reversal with idarucizumab?", "options": ["Apixaban", "Rivaroxaban", "Dabigatran", "Edoxaban"], "answerIndex": 2, "answers": [2], "rationale": "Idarucizumab reverses dabigatran; andexanet reverses certain Xa inhibitors.", "tags": []}, {"topic": "Anticoag/Antiplatelet", "type": "MCQ", "stem": "Which DOAC has a specific reversal with idarucizumab?", "options": ["Apixaban", "Rivaroxaban", "Dabigatran", "Edoxaban"], "answerIndex": 2, "answers": [2], "rationale": "Idarucizumab reverses dabigatran; andexanet reverses certain Xa inhibitors.", "tags": []}, {"topic": "Respiratory", "type": "MCQ", "stem": "SABA role in persistent asthma management:", "options": ["Controller daily", "Rescue PRN", "Contraindicated", "Replace ICS"], "answerIndex": 1, "answers": [1], "rationale": "SABA is rescue; ICS is controller.", "tags": []}, {"topic": "Respiratory", "type": "MCQ", "stem": "SABA role in persistent asthma management:", "options": ["Controller daily", "Rescue PRN", "Contraindicated", "Replace ICS"], "answerIndex": 1, "answers": [1], "rationale": "SABA is rescue; ICS is controller.", "tags": []}, {"topic": "Respiratory", "type": "MCQ", "stem": "SABA role in persistent asthma management:", "options": ["Controller daily", "Rescue PRN", "Contraindicated", "Replace ICS"], "answerIndex": 1, "answers": [1], "rationale": "SABA is rescue; ICS is controller.", "tags": []}, {"topic": "Respiratory", "type": "MCQ", "stem": "SABA role in persistent asthma management:", "options": ["Controller daily", "Rescue PRN", "Contraindicated", "Replace ICS"], "answerIndex": 1, "answers": [1], "rationale": "SABA is rescue; ICS is controller.", "tags": []}, {"topic": "Opioid Safety", "type": "MCQ", "stem": "Which action reduces opioid overdose deaths?", "options": ["Leaving meds in car", "Sharing pills", "Naloxone education + availability", "Crushing ER tablets"], "answerIndex": 2, "answers": [2], "rationale": "Harm reduction: naloxone access + training.", "tags": []}, {"topic": "Opioid Safety", "type": "MCQ", "stem": "Which action reduces opioid overdose deaths?", "options": ["Leaving meds in car", "Sharing pills", "Naloxone education + availability", "Crushing ER tablets"], "answerIndex": 2, "answers": [2], "rationale": "Harm reduction: naloxone access + training.", "tags": []}, {"topic": "Opioid Safety", "type": "MCQ", "stem": "Which action reduces opioid overdose deaths?", "options": ["Leaving meds in car", "Sharing pills", "Naloxone education + availability", "Crushing ER tablets"], "answerIndex": 2, "answers": [2], "rationale": "Harm reduction: naloxone access + training.", "tags": []}, {"topic": "Opioid Safety", "type": "MCQ", "stem": "Which action reduces opioid overdose deaths?", "options": ["Leaving meds in car", "Sharing pills", "Naloxone education + availability", "Crushing ER tablets"], "answerIndex": 2, "answers": [2], "rationale": "Harm reduction: naloxone access + training.", "tags": []}];
+const BANK = [
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "IV: 250 mL over 6 hr using 10 gtt/mL. Set (gtt/min):",
+    "options": [
+      "1 gtt/min",
+      "7 gtt/min",
+      "10 gtt/min",
+      "16 gtt/min"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "250/360=0.69 mL/min ×10≈7 gtt/min.",
+    "tags": [
+      "drops"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "IV: 250 mL over 4 hr using 15 gtt/mL. Set (gtt/min):",
+    "options": [
+      "9 gtt/min",
+      "16 gtt/min",
+      "19 gtt/min",
+      "25 gtt/min"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "250/240=1.04 mL/min ×15≈16 gtt/min.",
+    "tags": [
+      "drops"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "IV: 500 mL over 2 hr using 15 gtt/mL. Set (gtt/min):",
+    "options": [
+      "56 gtt/min",
+      "63 gtt/min",
+      "66 gtt/min",
+      "72 gtt/min"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "500/120=4.17 mL/min ×15≈63 gtt/min.",
+    "tags": [
+      "drops"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "IV: 1000 mL over 2 hr using 10 gtt/mL. Set (gtt/min):",
+    "options": [
+      "76 gtt/min",
+      "83 gtt/min",
+      "86 gtt/min",
+      "92 gtt/min"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "1000/120=8.33 mL/min ×10≈83 gtt/min.",
+    "tags": [
+      "drops"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "IV: 250 mL over 3 hr using 15 gtt/mL. Set (gtt/min):",
+    "options": [
+      "14 gtt/min",
+      "21 gtt/min",
+      "24 gtt/min",
+      "30 gtt/min"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "250/180=1.39 mL/min ×15≈21 gtt/min.",
+    "tags": [
+      "drops"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Pump: 500 mL over 30 min. Set (mL/hr):",
+    "options": [
+      "975 mL/hr",
+      "1000 mL/hr",
+      "1015 mL/hr",
+      "1035 mL/hr"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "500/(30/60)=1000.0 → 1000 mL/hr.",
+    "tags": [
+      "pump"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Pump: 150 mL over 45 min. Set (mL/hr):",
+    "options": [
+      "175 mL/hr",
+      "200 mL/hr",
+      "215 mL/hr",
+      "235 mL/hr"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "150/(45/60)=200.0 → 200 mL/hr.",
+    "tags": [
+      "pump"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Pump: 100 mL over 45 min. Set (mL/hr):",
+    "options": [
+      "108 mL/hr",
+      "133 mL/hr",
+      "148 mL/hr",
+      "168 mL/hr"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "100/(45/60)=133.3 → 133 mL/hr.",
+    "tags": [
+      "pump"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Pump: 250 mL over 90 min. Set (mL/hr):",
+    "options": [
+      "142 mL/hr",
+      "167 mL/hr",
+      "182 mL/hr",
+      "202 mL/hr"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "250/(90/60)=166.7 → 167 mL/hr.",
+    "tags": [
+      "pump"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Pump: 200 mL over 30 min. Set (mL/hr):",
+    "options": [
+      "375 mL/hr",
+      "400 mL/hr",
+      "415 mL/hr",
+      "435 mL/hr"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "200/(30/60)=400.0 → 400 mL/hr.",
+    "tags": [
+      "pump"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Label: 500 mg/2 mL. Give 125 mg. How many mL?",
+    "options": [
+      "0.1 mL",
+      "0.5 mL",
+      "0.9 mL",
+      "1.5 mL"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "125×(2/500)=0.50 mL → 0.5 mL.",
+    "tags": [
+      "ratio"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Label: 125 mg/2 mL. Give 125 mg. How many mL?",
+    "options": [
+      "1.4 mL",
+      "2 mL",
+      "2.4 mL",
+      "3 mL"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "125×(2/125)=2.00 mL → 2 mL.",
+    "tags": [
+      "ratio"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Label: 500 mg/2 mL. Give 62.5 mg. How many mL?",
+    "options": [
+      "0.1 mL",
+      "0.2 mL",
+      "0.25 mL",
+      "1.2 mL"
+    ],
+    "answerIndex": 2,
+    "answers": [
+      2
+    ],
+    "rationale": "62.5 × (2/500) = 0.25 mL.",
+    "tags": [
+      "ratio"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Label: 125 mg/10 mL. Give 187.5 mg. How many mL?",
+    "options": [
+      "14.4 mL",
+      "15 mL",
+      "15.4 mL",
+      "16 mL"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "187.5×(10/125)=15.00 mL → 15 mL.",
+    "tags": [
+      "ratio"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Label: 125 mg/10 mL. Give 250 mg. How many mL?",
+    "options": [
+      "19.4 mL",
+      "20 mL",
+      "20.4 mL",
+      "21 mL"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "250×(10/125)=20.00 mL → 20 mL.",
+    "tags": [
+      "ratio"
+    ]
+  },
+  {
+    "topic": "Med Safety/Math",
+    "type": "MCQ",
+    "stem": "Label: 250 mg/5 mL. Give 125 mg. How many mL?",
+    "options": [
+      "1.9 mL",
+      "2.5 mL",
+      "2.9 mL",
+      "3.5 mL"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "125×(5/250)=2.50 mL → 2.5 mL.",
+    "tags": [
+      "ratio"
+    ]
+  },
+  {
+    "topic": "Renal/Hepatic Dosing",
+    "type": "MCQ",
+    "stem": "Which antibiotic needs renal dose reduction to prevent neurotoxicity?",
+    "options": [
+      "Azithromycin",
+      "Cefepime",
+      "Clindamycin",
+      "Metronidazole"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Cefepime accumulation can cause encephalopathy/seizures; adjust to CrCl.",
+    "tags": [
+      "renal dosing"
+    ]
+  },
+  {
+    "topic": "Drug Interactions",
+    "type": "MCQ",
+    "stem": "Which combo most risks severe hyperkalemia?",
+    "options": [
+      "ACE inhibitor + thiazide",
+      "ARB + spironolactone",
+      "Loop diuretic + digoxin",
+      "Beta blocker + statin"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Dual RAAS + K-sparing diuretic → hyperK; monitor K+/renal fxn.",
+    "tags": [
+      "hyperK"
+    ]
+  },
+  {
+    "topic": "Psych",
+    "type": "MCQ",
+    "stem": "Bupropion is contraindicated in which history?",
+    "options": [
+      "Hypertension",
+      "Seizure disorder or eating disorder",
+      "Asthma",
+      "Hypothyroidism"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Bupropion lowers seizure threshold; contraindicated in seizures/bulimia.",
+    "tags": [
+      "bupropion"
+    ]
+  },
+  {
+    "topic": "Psych",
+    "type": "MCQ",
+    "stem": "Which SSRI at high dose has the greatest QT prolongation concern?",
+    "options": [
+      "Fluoxetine",
+      "Sertraline",
+      "Citalopram",
+      "Paroxetine"
+    ],
+    "answerIndex": 2,
+    "answers": [
+      2
+    ],
+    "rationale": "Citalopram has dose-dependent QT risk; limit max dose.",
+    "tags": [
+      "QT"
+    ]
+  },
+  {
+    "topic": "OB/Repro",
+    "type": "MCQ",
+    "stem": "Anticoagulant of choice during pregnancy for DVT treatment:",
+    "options": [
+      "Warfarin",
+      "Apixaban",
+      "Heparin (UFH/LMWH)",
+      "Clopidogrel"
+    ],
+    "answerIndex": 2,
+    "answers": [
+      2
+    ],
+    "rationale": "Heparins don’t cross placenta; warfarin is teratogenic.",
+    "tags": [
+      "OB"
+    ]
+  },
+  {
+    "topic": "OB/Repro",
+    "type": "MCQ",
+    "stem": "Which antibiotic is generally avoided in pregnancy due to effects on teeth/bone?",
+    "options": [
+      "Penicillin",
+      "Cephalexin",
+      "Doxycycline",
+      "Azithromycin"
+    ],
+    "answerIndex": 2,
+    "answers": [
+      2
+    ],
+    "rationale": "Tetracyclines discolor teeth/inhibit bone growth.",
+    "tags": [
+      "OB safety"
+    ]
+  },
+  {
+    "topic": "Onc/Immuno",
+    "type": "MCQ",
+    "stem": "Cisplatin key toxicities include:",
+    "options": [
+      "Pulmonary fibrosis",
+      "Nephrotoxicity & ototoxicity",
+      "Cardiomyopathy",
+      "Severe hypothyroidism"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Hydrate; consider amifostine; monitor kidneys/hearing.",
+    "tags": [
+      "cisplatin"
+    ]
+  },
+  {
+    "topic": "Onc/Immuno",
+    "type": "MCQ",
+    "stem": "Severe diarrhea on checkpoint inhibitor therapy—priority:",
+    "options": [
+      "Loperamide only",
+      "High-dose corticosteroids after excluding perforation",
+      "Continue therapy",
+      "Empiric macrolide"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Immune-mediated colitis → steroids; rule out perforation.",
+    "tags": [
+      "IO toxicity"
+    ]
+  },
+  {
+    "topic": "Endocrine/Adrenal",
+    "type": "MCQ",
+    "stem": "During prednisone taper, which finding is most concerning?",
+    "options": [
+      "Fatigue that improves with rest",
+      "BP 132/82",
+      "Hyperglycemia 160 mg/dL",
+      "Postural hypotension + severe weakness"
+    ],
+    "answerIndex": 3,
+    "answers": [
+      3
+    ],
+    "rationale": "Suggests adrenal insufficiency; urgent eval.",
+    "tags": [
+      "adrenal"
+    ]
+  },
+  {
+    "topic": "Endocrine/Adrenal",
+    "type": "MCQ",
+    "stem": "Which medication may blunt response to epinephrine in anaphylaxis?",
+    "options": [
+      "ACE inhibitor",
+      "Beta blocker",
+      "Thiazide",
+      "CCB"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Beta blockers can blunt epi; consider glucagon if refractory.",
+    "tags": [
+      "anaphylaxis"
+    ]
+  },
+  {
+    "topic": "Antimicrobials",
+    "type": "MCQ",
+    "stem": "Linezolid patient teaching should include avoiding excess:",
+    "options": [
+      "Vitamin D",
+      "Tyramine-rich foods",
+      "Protein",
+      "Fiber"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "MAOI activity → tyramine can cause hypertensive crisis.",
+    "tags": [
+      "linezolid"
+    ]
+  },
+  {
+    "topic": "Antimicrobials",
+    "type": "MCQ",
+    "stem": "Daptomycin should not be used for pneumonia because it is:",
+    "options": [
+      "Only oral",
+      "Inactivated by pulmonary surfactant",
+      "Ineffective against gram-positives",
+      "Nephrotoxic only"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Surfactant inactivates it; use vanc/linezolid for MRSA pneumonia.",
+    "tags": [
+      "daptomycin"
+    ]
+  },
+  {
+    "topic": "GI",
+    "type": "MCQ",
+    "stem": "Long-term PPI use is associated with:",
+    "options": [
+      "Bradycardia",
+      "Hypomagnesemia & ↑C. difficile risk",
+      "Hyperkalemia",
+      "Tinnitus"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Assess indication; monitor Mg2+; infection/fracture risks noted.",
+    "tags": [
+      "PPI"
+    ]
+  },
+  {
+    "topic": "GI",
+    "type": "MCQ",
+    "stem": "Metoclopramide concerning adverse effect:",
+    "options": [
+      "Constipation",
+      "Tardive dyskinesia/EPS",
+      "Sinus bradycardia",
+      "Xerostomia"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Stop if involuntary movements/restlessness develop.",
+    "tags": [
+      "EPS"
+    ]
+  },
+  {
+    "topic": "Neuro",
+    "type": "MCQ",
+    "stem": "Early phenytoin toxicity presents as:",
+    "options": [
+      "Alopecia",
+      "Nystagmus/ataxia",
+      "Hyperreflexia",
+      "Hypoglycemia"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Neurologic signs (nystagmus/ataxia) suggest toxicity.",
+    "tags": [
+      "phenytoin"
+    ]
+  },
+  {
+    "topic": "Neuro",
+    "type": "MCQ",
+    "stem": "Valproate counseling for clients who may become pregnant focuses on:",
+    "options": [
+      "Risk of renal stones",
+      "Risk of severe rash",
+      "Risk of neural tube defects",
+      "No special risks"
+    ],
+    "answerIndex": 2,
+    "answers": [
+      2
+    ],
+    "rationale": "Highly teratogenic; avoid if possible; folate discussion critical.",
+    "tags": [
+      "teratogen"
+    ]
+  },
+  {
+    "topic": "Immunization",
+    "type": "MCQ",
+    "stem": "On prednisone ≥20 mg/day for ≥14 days, avoid which vaccine today?",
+    "options": [
+      "Tdap",
+      "HPV",
+      "Inactivated influenza (IM)",
+      "Live-attenuated varicella"
+    ],
+    "answerIndex": 3,
+    "answers": [
+      3
+    ],
+    "rationale": "Avoid live vaccines in significant immunosuppression.",
+    "tags": [
+      "vaccine"
+    ]
+  },
+  {
+    "topic": "Bone/Gout",
+    "type": "MCQ",
+    "stem": "Denosumab’s primary mechanism is:",
+    "options": [
+      "Stimulate osteoclasts",
+      "Inhibit RANKL to reduce osteoclast activity",
+      "Block osteoblasts",
+      "Chelate calcium"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Anti-RANKL antibody decreases bone resorption.",
+    "tags": [
+      "denosumab"
+    ]
+  },
+  {
+    "topic": "Renal/Hepatic Dosing",
+    "type": "MCQ",
+    "stem": "Which opioid should be avoided/reduced in severe renal failure due to active metabolites?",
+    "options": [
+      "Fentanyl",
+      "Morphine",
+      "Methadone",
+      "Buprenorphine"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Morphine metabolites accumulate; consider fentanyl/methadone.",
+    "tags": [
+      "renal"
+    ]
+  },
+  {
+    "topic": "Drug Interactions",
+    "type": "MCQ",
+    "stem": "Rhabdomyolysis risk is highest with:",
+    "options": [
+      "Simvastatin + strong CYP3A4 inhibitor",
+      "Pravastatin + vitamin D",
+      "Rosuvastatin + aspirin",
+      "Atorvastatin + acetaminophen"
+    ],
+    "answerIndex": 0,
+    "answers": [
+      0
+    ],
+    "rationale": "3A4 inhibitors raise simvastatin levels → myopathy/rhabdo.",
+    "tags": [
+      "statin DI"
+    ]
+  },
+  {
+    "topic": "Cardio/Algorithms",
+    "type": "MCQ",
+    "stem": "Stable narrow-complex SVT after failed vagal maneuvers—next step:",
+    "options": [
+      "Magnesium sulfate",
+      "Adenosine rapid IV push",
+      "Amiodarone first",
+      "Unsynchronized shock"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Adenosine transiently blocks AV node; saline flush; warn about flushing.",
+    "tags": [
+      "ACLS"
+    ]
+  },
+  {
+    "topic": "Cardio/Algorithms",
+    "type": "MCQ",
+    "stem": "First-line drug for torsades de pointes:",
+    "options": [
+      "Atropine",
+      "Magnesium sulfate IV",
+      "Adenosine",
+      "Diltiazem"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Magnesium stabilizes repolarization in torsades.",
+    "tags": [
+      "torsades"
+    ]
+  },
+  {
+    "topic": "Sensory/Glaucoma",
+    "type": "MCQ",
+    "stem": "Which class can cause eyelash growth and iris darkening?",
+    "options": [
+      "Beta-blockers",
+      "Prostaglandin analogs",
+      "Alpha-agonists",
+      "CAIs"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "Class effect of prostaglandin analogs (e.g., latanoprost).",
+    "tags": []
+  },
+  {
+    "topic": "Anticoag/Antiplatelet",
+    "type": "MCQ",
+    "stem": "Which DOAC has a specific reversal with idarucizumab?",
+    "options": [
+      "Apixaban",
+      "Rivaroxaban",
+      "Dabigatran",
+      "Edoxaban"
+    ],
+    "answerIndex": 2,
+    "answers": [
+      2
+    ],
+    "rationale": "Idarucizumab reverses dabigatran; andexanet reverses certain Xa inhibitors.",
+    "tags": []
+  },
+  {
+    "topic": "Respiratory",
+    "type": "MCQ",
+    "stem": "SABA role in persistent asthma management:",
+    "options": [
+      "Controller daily",
+      "Rescue PRN",
+      "Contraindicated",
+      "Replace ICS"
+    ],
+    "answerIndex": 1,
+    "answers": [
+      1
+    ],
+    "rationale": "SABA is rescue; ICS is controller.",
+    "tags": []
+  },
+  {
+    "topic": "Opioid Safety",
+    "type": "MCQ",
+    "stem": "Which action reduces opioid overdose deaths?",
+    "options": [
+      "Leaving meds in car",
+      "Sharing pills",
+      "Naloxone education + availability",
+      "Crushing ER tablets"
+    ],
+    "answerIndex": 2,
+    "answers": [
+      2
+    ],
+    "rationale": "Harm reduction: naloxone access + training.",
+    "tags": []
+  }
+];
 
 let RECENT=[]; const RECENT_MAX=12;
 const WEAK_TOPICS = ["Med Safety/Math","Drug Interactions","Renal/Hepatic Dosing","OB/Repro","Onc/Immuno","Endocrine/Adrenal",
@@ -193,9 +985,9 @@ function render(q){
   current=q; allow=true; elRat.style.display='none'; elRat.textContent=""; elStatus.textContent="Select the best answer."; elOpts.innerHTML=""; elMeta.innerHTML="";
   elMeta.append(badge(q.type), badge(q.topic));
   elStem.textContent=q.stem;
-  q.options.forEach((opt,i)=>{ const d=document.createElement('div'); d.className='opt'; d.textContent=opt;
-    d.onclick=()=>{ if(!allow) return; finish([i]); }; elOpts.appendChild(d); });
-  es('show').onclick=()=>finish(q.answers); elAgain.onclick=()=>render(q);
+  q.options.forEach((opt,i)=>{ const optionButton=document.createElement('button'); optionButton.type='button'; optionButton.className='opt'; optionButton.textContent=opt;
+    optionButton.onclick=()=>{ if(!allow) return; finish([i]); }; elOpts.appendChild(optionButton); });
+  es('show').onclick=showCurrentAnswer; elAgain.onclick=()=>render(q);
 
   if(timer) clearInterval(timer); const tv=elTimer.value;
   if(tv!=="off"){ tleft=parseInt(tv,10); elStatus.textContent="⏱️ "+tleft+"s";
@@ -203,8 +995,12 @@ function render(q){
   }
 }
 
-function reveal(correct){
-  Array.from(elOpts.children).forEach((node,idx)=>{ const ok=current.answers.includes(idx); node.classList.add(ok?'correct':'incorrect'); });
+function reveal(correct, selected=[]){
+  Array.from(elOpts.children).forEach((node,idx)=>{
+    if(current.answers.includes(idx)) node.classList.add('correct');
+    else if(selected.includes(idx)) node.classList.add('incorrect');
+    node.disabled=true;
+  });
   stats.seen++; ensureTopic(current.topic); stats.topics[current.topic].seen++;
   if(correct){ stats.correct++; stats.topics[current.topic].correct++; playSFX('correctSound'); } else { playSFX('wrongSound'); }
   localStorage.setItem(KEY, JSON.stringify(stats));
@@ -212,9 +1008,17 @@ function reveal(correct){
   RECENT.unshift(current.stem); if(RECENT.length>RECENT_MAX) RECENT.pop();
 }
 
-function finish(sel){ if(!allow) return; allow=false;
+function finish(sel){ if(!allow) return; allow=false; if(timer) clearInterval(timer);
   const a = sel.slice().sort((x,y)=>x-y); const b = current.answers.slice().sort((x,y)=>x-y);
-  let ok = a.length===b.length && a.every((v,i)=>v===b[i]); reveal(ok);
+  let ok = a.length===b.length && a.every((v,i)=>v===b[i]); reveal(ok,sel);
+}
+
+function showCurrentAnswer(){
+  if(!allow) return;
+  allow=false;
+  if(timer) clearInterval(timer);
+  elStatus.textContent="Answer shown";
+  reveal(false);
 }
 
 function badge(t){ const b=document.createElement('div'); b.className='badge'; b.textContent=t; return b; }
@@ -236,7 +1040,7 @@ function buildTracker(){
 elNext.onclick=nextQ;
 elMode.onchange=()=>{ elTopicWrap.style.display = (elMode.value==='topic')? 'block':'none'; };
 elReset.onclick=()=>{ if(confirm('Reset stats?')){ localStorage.removeItem(KEY); stats={version:1,seen:0,correct:0,topics:{}}; setProgress(); buildTracker(); } };
-elExport.onclick=()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='part3_repaired_stats.json'; a.click(); };
+elExport.onclick=()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='pharmacology-practice-3-stats.json'; a.click(); };
 
 setProgress(); buildTracker(); elTopicWrap.style.display='none'; nextQ();
 

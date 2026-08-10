@@ -35,21 +35,34 @@
   const button = document.querySelector('.menu-button');
   const links = document.querySelector('.nav-links');
   if (button && links) {
-    const close = () => {
+    const close = ({ restoreFocus = false } = {}) => {
       links.classList.remove('open');
       button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-label', 'Open navigation');
       document.body.classList.remove('menu-open');
+      if (restoreFocus) button.focus();
     };
 
     button.addEventListener('click', () => {
       const open = links.classList.toggle('open');
       button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
       document.body.classList.toggle('menu-open', open);
     });
 
     links.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') close();
+      if (event.key === 'Escape' && links.classList.contains('open')) {
+        close({ restoreFocus: true });
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (!links.classList.contains('open')) return;
+      if (links.contains(event.target) || button.contains(event.target)) return;
+      close();
+    });
+    window.matchMedia('(min-width: 761px)').addEventListener('change', (event) => {
+      if (event.matches) close();
     });
   }
 
@@ -74,6 +87,7 @@
 
   const filterButtons = [...document.querySelectorAll('[data-filter-button]')];
   const filterItems = [...document.querySelectorAll('[data-filter-item]')];
+  const filterStatus = document.querySelector('[data-filter-status]');
   filterButtons.forEach((filterButton) => {
     filterButton.addEventListener('click', () => {
       const filter = filterButton.dataset.filterButton;
@@ -83,11 +97,16 @@
       filterItems.forEach((item) => {
         item.hidden = filter !== 'all' && item.dataset.filterItem !== filter;
       });
+      if (filterStatus) {
+        const visibleCount = filterItems.filter((item) => !item.hidden).length;
+        filterStatus.textContent = `${visibleCount} ${visibleCount === 1 ? 'collection' : 'collections'} shown.`;
+      }
     });
   });
 
   const timelineButtons = [...document.querySelectorAll('[data-timeline-filter]')];
   const timelineEntries = [...document.querySelectorAll('.timeline-entry')];
+  const timelineStatus = document.querySelector('[data-timeline-status]');
   timelineButtons.forEach((timelineButton) => {
     timelineButton.addEventListener('click', () => {
       const filter = timelineButton.dataset.timelineFilter;
@@ -96,8 +115,14 @@
       });
       timelineEntries.forEach((entry) => {
         const lanes = (entry.dataset.lanes || '').split(' ');
-        entry.dataset.hidden = String(filter !== 'all' && !lanes.includes(filter));
+        const shouldHide = filter !== 'all' && !lanes.includes(filter);
+        entry.hidden = shouldHide;
+        entry.dataset.hidden = String(shouldHide);
       });
+      if (timelineStatus) {
+        const visibleCount = timelineEntries.filter((entry) => !entry.hidden).length;
+        timelineStatus.textContent = `${visibleCount} ${visibleCount === 1 ? 'timeline entry' : 'timeline entries'} shown.`;
+      }
     });
   });
 
@@ -109,8 +134,12 @@
     const topicHint = contactForm.querySelector('[data-topic-hint]');
     const messageField = contactForm.querySelector('#message-text');
     const subjectField = contactForm.querySelector('[data-form-subject]');
+    const formContext = contactForm.dataset.formContext || 'professional';
     const endpoint = contactForm.getAttribute('action') || '';
     const endpointIsConfigured = /^https:\/\/formspree\.io\/f\/[A-Za-z0-9_-]+$/.test(endpoint);
+    const defaultHint = topicHint?.textContent || '';
+    const defaultPlaceholder = messageField?.placeholder || '';
+    const defaultSubject = subjectField?.value || 'New message from johnfvillanueva.com';
 
     const setStatus = (message, state = '') => {
       if (!status) return;
@@ -132,22 +161,22 @@
       }
     };
 
-    const topicGuidance = {
-      'Work or hiring': {
-        hint: 'Roles, clinical opportunities, professional networking, and career conversations fit here.',
-        placeholder: 'Tell me the role, organization, timing, or reason you think we should connect.'
+    const professionalGuidance = {
+      'Nursing role or clinical opportunity': {
+        hint: 'New-graduate residencies, unit openings, per-diem work, and clinical conversations fit here.',
+        placeholder: 'Tell me the unit, shift, cohort start date, and whether the posting is a new-graduate residency.'
+      },
+      'Recruiting or hiring': {
+        hint: 'For recruiters, talent teams, and hiring managers outside of a specific clinical posting.',
+        placeholder: 'Tell me the organization, the role, and the timeline you are working against.'
       },
       'Project or collaboration': {
         hint: 'For websites, games, study tools, business ideas, creative work, or anything we might build together.',
         placeholder: 'Tell me what you saw, what you are building, and what kind of collaboration you have in mind.'
       },
-      'Shared interests or friendship': {
-        hint: 'For gaming, anime, travel, languages, karaoke, conventions, PC building, or simply saying hello.',
-        placeholder: 'Tell me what we have in common or how you found the site.'
-      },
-      'Personal connection or dating': {
-        hint: 'For someone who found me through a dating app, mutual connection, or social setting.',
-        placeholder: 'Tell me how you found me and what made you want to say hello.'
+      'Speaking, teaching, or mentoring': {
+        hint: 'Student panels, new-graduate mentoring, and second-career perspective on entering nursing.',
+        placeholder: 'Tell me the audience, the format, and roughly when it would be.'
       },
       'Something else': {
         hint: 'No perfect category needed—just give me enough context to understand the message.',
@@ -155,24 +184,46 @@
       }
     };
 
+    const personalGuidance = {
+      'We have already met': {
+        hint: 'A quick reminder of where we met is helpful.',
+        placeholder: 'Remind me where we met and tell me what made you want to say hello.'
+      },
+      'A mutual friend or social setting': {
+        hint: 'You can mention the person, group, or event that connects us.',
+        placeholder: 'Tell me who or what connects us and one thing here that caught your attention.'
+      },
+      'A dating app': {
+        hint: 'Mentioning the app helps me place the conversation.',
+        placeholder: 'Tell me where you found the page and one thing that made you want to reach out.'
+      },
+      'Found this page some other way': {
+        hint: 'A little context is enough—there is no perfect introduction.',
+        placeholder: 'Tell me how you found the page and what made you want to say hello.'
+      }
+    };
+
+    const topicGuidance = formContext === 'personal' ? personalGuidance : professionalGuidance;
+    const subjectPrefix = formContext === 'personal' ? 'Personal message' : 'Website message';
+
     const updateTopicContext = () => {
       if (!topic) return;
       const selected = topicGuidance[topic.value];
       if (topicHint) {
         topicHint.textContent = selected
           ? selected.hint
-          : 'This only helps me understand the context and give you a more useful reply.';
+          : defaultHint;
         topicHint.dataset.active = String(Boolean(selected));
       }
       if (messageField) {
         messageField.placeholder = selected
           ? selected.placeholder
-          : 'A sentence or two about how you found me and what you would like to discuss is perfect.';
+          : defaultPlaceholder;
       }
       if (subjectField) {
         subjectField.value = selected
-          ? `Website message — ${topic.value}`
-          : 'New message from johnfvillanueva.com';
+          ? `${subjectPrefix} — ${topic.value}`
+          : defaultSubject;
       }
     };
 

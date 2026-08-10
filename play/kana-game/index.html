@@ -12,13 +12,15 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 50px;
-      background-image: url('/play/assets/kana-room.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
+      min-height: 100%;
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(231, 91, 131, 0.34), transparent 36%),
+        radial-gradient(circle at 85% 18%, rgba(88, 160, 220, 0.3), transparent 38%),
+        linear-gradient(145deg, #171a35, #251a3d 58%, #102b3a);
       color: #fff;
     }
-    h1 {
+    h1, h2 {
       color: #fff;
       text-shadow: 2px 2px 4px #000;
     }
@@ -58,6 +60,9 @@
       font-size: 1.5em;
       width: 80px;
       text-align: center;
+      padding: 8px;
+      border: 2px solid rgba(255,255,255,.5);
+      border-radius: 10px;
     }
     button {
       font-size: 1em;
@@ -66,6 +71,13 @@
     }
     #leaderboard, #gameSection {
       display: none;
+      width: min(680px, 100%);
+      margin: 60px auto 0;
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 20px;
+      background: rgba(8, 13, 30, .72);
+      box-shadow: 0 20px 60px rgba(0,0,0,.28);
     }
     #leaderboardTable {
       background-color: rgba(0, 0, 0, 0.7);
@@ -96,13 +108,31 @@
     #resetBtnBottom {
       margin-top: 30px;
     }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    #soundToggle { margin-left: 8px; }
+    @media (max-width: 640px) {
+      body { padding: 68px 14px 90px; }
+      #leaderboardBtn { top: 12px; left: 12px; }
+      #gameSection, #leaderboard { margin-top: 28px; padding: 22px 16px; }
+      table { width: 100%; }
+    }
   </style>
 <style id="jv-play-nav-style">
 .jv-play-nav{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 .jv-play-nav a{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:rgba(10,28,36,.94);color:#fff!important;border:1px solid rgba(255,255,255,.22);text-decoration:none!important;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.28);backdrop-filter:blur(10px)}
 .jv-play-nav a:hover{transform:translateY(-1px);border-color:#6fd3d4}.jv-play-nav a.secondary{background:rgba(255,255,255,.9);color:#14333c!important}
 @media(max-width:640px){.jv-play-nav{left:8px;right:8px;bottom:8px}.jv-play-nav a{font-size:12px;padding:8px 10px}}
-</style>  <link rel="canonical" href="https://johnfvillanueva.com/play/kana-game/index.html">
+</style>  <link rel="canonical" href="https://johnfvillanueva.com/play/kana-game/">
   <meta name="theme-color" content="#102a34">
   <link rel="icon" href="/assets/favicon-v3.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/favicon-32-v3.png" sizes="32x32" type="image/png">
@@ -141,40 +171,35 @@ img,svg,canvas,video{max-width:100%}
 </style>
 </head>
 <body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
-<button id="leaderboardBtn" onclick="showLeaderboard()">Leaderboard</button>
+<button id="leaderboardBtn" onclick="showLeaderboard()" type="button">Leaderboard</button>
 <!-- GAME SECTION -->
-<div id="gameSection">
-<h1>Romaji to Kana Quiz</h1>
-<div id="question">Loading...</div>
-<input id="answerInput" type="text"/>
-<button onclick="checkAnswer()">Submit</button>
-<div class="feedback" id="feedback"></div>
+<section aria-labelledby="game-title" id="gameSection">
+<h1 id="game-title">Romaji to Kana Quiz</h1>
+<div aria-live="polite" id="question">Loading...</div>
+<label class="sr-only" for="answerInput">Enter the matching kana character</label>
+<input aria-describedby="answer-help" autocomplete="off" autocapitalize="none" id="answerInput" spellcheck="false" type="text"/>
+<button onclick="checkAnswer()" type="button">Submit answer</button>
+<button aria-pressed="true" id="soundToggle" type="button">Sound: On</button>
+<p id="answer-help">Type the matching hiragana or katakana character.</p>
+<div aria-live="polite" class="feedback" id="feedback" role="status"></div>
 <div class="streak green" id="streakDisplay">Streak: 0</div>
-<div id="musicPrompt">Click anywhere for Background Music</div>
-</div>
+</section>
 <!-- LEADERBOARD SECTION -->
-<div id="leaderboard">
-<h1>Recent Leaderboard</h1>
+<section aria-labelledby="leaderboard-title" id="leaderboard">
+<h2 id="leaderboard-title">Recent Leaderboard</h2>
 <div id="leaderboardTable">
 <table>
+<caption class="sr-only">The ten most recent streaks saved in this browser</caption>
 <thead>
 <tr><th>Name</th><th>Score</th></tr>
 </thead>
 <tbody id="leaderboardBody"></tbody>
 </table>
 </div>
-<button id="returnBtn" onclick="showGame()">Return to Game</button>
-<button id="resetBtnBottom" onclick="resetLeaderboard()">Reset Leaderboard</button>
-</div>
-<audio id="bgMusic" loop="">
-<source src="https://raw.githubusercontent.com/xantum21/Kana-Game/main/Menu.mp3" type="audio/mpeg"/>
-</audio>
-<audio id="yesSound">
-<source src="https://raw.githubusercontent.com/xantum21/Kana-Game/main/Yes.mp3" type="audio/mpeg"/>
-</audio>
-<audio id="noSound">
-<source src="https://raw.githubusercontent.com/xantum21/Kana-Game/main/No.mp3" type="audio/mpeg"/>
-</audio>
+<button id="returnBtn" onclick="showGame()" type="button">Return to Game</button>
+<button id="resetBtnBottom" onclick="resetLeaderboard()" type="button">Reset Leaderboard</button>
+<p>Scores are stored only in this browser under the name “Local player.”</p>
+</section>
 <script>
     const quizData = [
       // HIRAGANA
@@ -230,6 +255,36 @@ img,svg,canvas,video{max-width:100%}
 
     let currentQuestion;
     let streak = 0;
+    let soundEnabled = true;
+    let audioContext;
+
+    function playTone(frequency, duration = 0.12) {
+      if (!soundEnabled) return;
+      audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      oscillator.type = "sine";
+      oscillator.frequency.value = frequency;
+      gain.gain.setValueAtTime(0.07, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + duration);
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + duration);
+    }
+
+    function playFeedback(correct) {
+      playTone(correct ? 660 : 190, correct ? 0.16 : 0.22);
+    }
+
+    function readScores() {
+      try {
+        const scores = JSON.parse(localStorage.getItem("kana_leaderboard") || "[]");
+        return Array.isArray(scores) ? scores : [];
+      } catch {
+        return [];
+      }
+    }
 
     function loadQuestion() {
       const randomIndex = Math.floor(Math.random() * quizData.length);
@@ -237,26 +292,33 @@ img,svg,canvas,video{max-width:100%}
       document.getElementById("question").textContent = `${currentQuestion.romaji} - ${currentQuestion.type}`;
       document.getElementById("answerInput").value = "";
       document.getElementById("feedback").textContent = "";
+      document.getElementById("answerInput").focus({ preventScroll: true });
     }
 
     function checkAnswer() {
       const userAnswer = document.getElementById("answerInput").value.trim();
-      const isCorrect = userAnswer === currentQuestion.kana;
       const feedback = document.getElementById("feedback");
       const streakDisplay = document.getElementById("streakDisplay");
+
+      if (!userAnswer) {
+        feedback.textContent = "Enter a kana character first.";
+        return;
+      }
+
+      const isCorrect = userAnswer === currentQuestion.kana;
 
       if (isCorrect) {
         feedback.textContent = "Correct!";
         feedback.className = "feedback correct";
-        document.getElementById("yesSound").play();
+        playFeedback(true);
         streak++;
         streakDisplay.className = "streak green";
       } else {
         feedback.textContent = "Wrong";
         feedback.className = "feedback wrong";
-        document.getElementById("noSound").play();
+        playFeedback(false);
         streakDisplay.className = "streak red";
-        promptAndRecordStreak();
+        if (streak > 0) recordStreak();
         streak = 0;
       }
 
@@ -264,11 +326,9 @@ img,svg,canvas,video{max-width:100%}
       setTimeout(loadQuestion, 1000);
     }
 
-    function promptAndRecordStreak() {
-      const playerName = prompt("Enter your name for the leaderboard:");
-      if (!playerName) return;
-      const leaderboard = JSON.parse(localStorage.getItem("kana_leaderboard") || "[]");
-      leaderboard.push({ name: playerName, score: streak });
+    function recordStreak() {
+      const leaderboard = readScores();
+      leaderboard.push({ name: "Local player", score: streak });
       localStorage.setItem("kana_leaderboard", JSON.stringify(leaderboard));
     }
 
@@ -281,10 +341,15 @@ img,svg,canvas,video{max-width:100%}
     function showLeaderboard() {
       const table = document.getElementById("leaderboardBody");
       table.innerHTML = "";
-      const scores = JSON.parse(localStorage.getItem("kana_leaderboard") || "[]");
+      const scores = readScores();
       scores.slice(-10).reverse().forEach(entry => {
-        const row = `<tr><td>${entry.name}</td><td>${entry.score}</td></tr>`;
-        table.innerHTML += row;
+        const row = document.createElement("tr");
+        const name = document.createElement("td");
+        const score = document.createElement("td");
+        name.textContent = String(entry.name || "").slice(0, 40);
+        score.textContent = String(Number(entry.score) || 0);
+        row.append(name, score);
+        table.append(row);
       });
       document.getElementById("gameSection").style.display = "none";
       document.getElementById("leaderboard").style.display = "block";
@@ -295,14 +360,13 @@ img,svg,canvas,video{max-width:100%}
       showLeaderboard();
     }
 
-    document.body.addEventListener("click", function() {
-      const music = document.getElementById("bgMusic");
-      if (music.paused) {
-        music.play().catch(e => console.log("Music autoplay blocked."));
-      }
+    document.getElementById("soundToggle").addEventListener("click", function () {
+      soundEnabled = !soundEnabled;
+      this.setAttribute("aria-pressed", String(soundEnabled));
+      this.textContent = soundEnabled ? "Sound: On" : "Sound: Off";
     });
 
-    document.getElementById("answerInput").addEventListener("keypress", function (e) {
+    document.getElementById("answerInput").addEventListener("keydown", function (e) {
       if (e.key === "Enter") checkAnswer();
     });
 

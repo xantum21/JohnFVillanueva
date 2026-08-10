@@ -59,7 +59,7 @@
 html,body{max-width:100%;overflow-x:hidden}
 header{grid-template-columns:minmax(0,1fr) repeat(4,auto)!important}
 header>*{min-width:0}
-.brand{min-width:0;overflow-wrap:anywhere}
+.brand{min-width:0;margin:0;font-size:inherit;line-height:1.25;overflow-wrap:anywhere}
 .controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))!important}
 .controls>*{min-width:0}
 .ctrl,.row{min-width:0}
@@ -96,7 +96,7 @@ img,svg,canvas,video{max-width:100%}
 <div class="row">
 <div>
 <div class="small muted">Question source:</div>
-<select class="btn" id="sourceSel">
+<select aria-label="Question source" class="btn" id="sourceSel">
 <option value="all">All (incl. Culture/Reading)</option>
 <option value="dialogue">Dialogue</option>
 <option value="vocab">Vocabulary</option>
@@ -108,7 +108,7 @@ img,svg,canvas,video{max-width:100%}
 </div>
 <div>
 <div class="small muted">Selection mode:</div>
-<select class="btn" id="modeSel">
+<select aria-label="Selection mode" class="btn" id="modeSel">
 <option value="adaptive">Adaptive (prioritize weak topics)</option>
 <option value="random">Random</option>
 <option value="sequential">Sequential</option>
@@ -116,7 +116,7 @@ img,svg,canvas,video{max-width:100%}
 </div>
 <div>
 <div class="small muted">Topic:</div>
-<select class="btn" id="topicSel">
+<select aria-label="Topic" class="btn" id="topicSel">
 <option value="any">Any</option>
 <option value="imperative">Imperatives</option>
 <option value="honorifics">Honorifics (po/ho)</option>
@@ -128,14 +128,14 @@ img,svg,canvas,video{max-width:100%}
 </div>
 <div>
 <div class="small muted">Timer:</div>
-<select class="btn" id="timerSel">
+<select aria-label="Timer duration" class="btn" id="timerSel">
 <option value="90">90s</option>
 <option value="30">30s</option>
 <option value="off">Off</option>
 </select>
 </div>
-<button class="btn" id="resetBtn">Reset</button>
-<button class="btn primary" id="nextBtn">Next ▶</button>
+<button type="button" class="btn" id="resetBtn">Reset</button>
+<button type="button" class="btn primary" id="nextBtn">Next ▶</button>
 </div>
 </div>
 <div class="panel">
@@ -146,8 +146,8 @@ img,svg,canvas,video{max-width:100%}
 <div class="tag" id="qMeta"></div>
 </div>
 <div class="row">
-<button class="btn" id="showBtn">Show answer</button>
-<button class="btn" id="againBtn">Again 🔁</button>
+<button type="button" class="btn" id="showBtn">Show answer</button>
+<button type="button" class="btn" id="againBtn">Again 🔁</button>
 </div>
 </div>
 <div class="grid" id="choices" style="margin-top:10px;"></div>
@@ -169,7 +169,7 @@ img,svg,canvas,video{max-width:100%}
 <div class="panel">
 <div class="flex">
 <div class="muted small">Aralin 14 coverage — <em>giving directions</em> (kumanan, kumaliwa, dumiretso, umikot, <em>huminto</em>, <em>lumampas</em>), polite forms with <em>po/ho</em>, street words (kalye, kalsada, eskinita, daan), <em>mula vs galing</em>, location questions (saan/nasaan), culture notes (“Sige”, “Mag-ingat ka”, small‑talk Qs), and reading on Intramuros/Maynila.</div>
-<button class="btn" id="exportBtn">Export results</button>
+<button type="button" class="btn" id="exportBtn">Export results</button>
 </div>
 <div class="small muted" style="margin-top:6px">UI in English • Prompts in Tagalog • Explanations in English. Kulintang-style SFX/music <span title="Press S to toggle SFX, M to toggle music.">🎵</span> • Keyboard: <span class="kbd">N</span>=Next, <span class="kbd">S</span>=SFX, <span class="kbd">M</span>=Music.</div>
 </div>

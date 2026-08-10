@@ -39,8 +39,9 @@
   .card { background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px; }
   .qstem { font-size: 18px; line-height: 1.25; }
   .options { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
-  .opt { padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); cursor: pointer; }
+  .opt { width:100%; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); color:var(--ink); cursor: pointer; font:inherit; text-align:left; }
   .opt:hover { border-color: rgba(185,135,255,0.6); }
+  .opt.selected { border-color:var(--accent); box-shadow:0 0 0 2px rgba(124,240,255,.15) inset; }
   .opt.correct { background: rgba(86,243,154,0.08); border-color: var(--success); }
   .opt.incorrect { background: rgba(255,107,107,0.08); border-color: var(--danger); }
   .muted { color: var(--muted); font-size: 13px; }
@@ -74,7 +75,7 @@
 html,body{max-width:100%;overflow-x:hidden}
 header{grid-template-columns:minmax(0,1fr) repeat(4,auto)!important}
 header>*{min-width:0}
-.brand{min-width:0;overflow-wrap:anywhere}
+.brand{min-width:0;margin:0;font-size:inherit;line-height:1.25;overflow-wrap:anywhere}
 .controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))!important}
 .controls>*{min-width:0}
 .ctrl,.row{min-width:0}
@@ -102,9 +103,9 @@ img,svg,canvas,video{max-width:100%}
 </head>
 <body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
 <header>
-<div class="brand">💊 Pharmacology Practice II — Adaptive Weak-Area Review</div>
-<button class="pill sfxbtn" id="sfx">🔊 Sound: Off</button>
-<button class="pill musicbtn" id="music">🎵 Music: Off</button>
+<h1 class="brand">💊 Pharmacology Practice II — Adaptive Weak-Area Review</h1>
+<button type="button" class="pill sfxbtn" id="sfx">🔊 Sound: Off</button>
+<button type="button" class="pill musicbtn" id="music">🎵 Music: Off</button>
 <div class="pill muted">Progress: <span id="progress">0/0</span></div>
 </header>
 <main>
@@ -112,7 +113,7 @@ img,svg,canvas,video{max-width:100%}
 <div class="row" style="justify-content:space-between; gap:12px;">
 <div class="row">
 <label class="muted">Mode:</label>
-<select id="mode">
+<select aria-label="Selection mode" id="mode">
 <option value="adaptive">Adaptive (Weak Topics First)</option>
 <option value="random">Random</option>
 <option value="topic">By Topic</option>
@@ -120,11 +121,11 @@ img,svg,canvas,video{max-width:100%}
 </div>
 <div class="row" id="topicFilterWrap">
 <label class="muted">Topic:</label>
-<select id="topicFilter"></select>
+<select aria-label="Topic" id="topicFilter"></select>
 </div>
 <div class="row">
 <label class="muted">Timer:</label>
-<select id="timer">
+<select aria-label="Timer duration" id="timer">
 <option value="off">Off</option>
 <option value="60">60s</option>
 <option selected="" value="90">90s</option>
@@ -132,24 +133,25 @@ img,svg,canvas,video{max-width:100%}
 </select>
 </div>
 <div class="row">
-<button id="reset">Reset Stats</button>
-<button id="next">Next ▶</button>
+<button type="button" id="reset">Reset Stats</button>
+<button type="button" id="next">Next ▶</button>
 </div>
 </div>
 </section>
+<aside class="card study-notice" role="note" style="margin-bottom:12px"><strong>Study-use notice:</strong> Personal study tool only—not clinical guidance. Verify medication information and calculations against current course materials, drug references, and facility policy.</aside>
 <section class="card" id="questionCard">
 <div class="row" style="justify-content:space-between;">
 <div class="badges" id="metaBadges"></div>
 <div class="topic-chip" id="topicChip"></div>
 </div>
-<div class="qstem" id="stem" style="margin-top:10px;"></div>
+<div aria-live="polite" class="qstem" id="stem" style="margin-top:10px;"></div>
 <div class="options" id="options"></div>
 <div class="rationale hidden" id="rationale"></div>
 <div class="footer">
-<div class="muted" id="status">Select the best answer.</div>
+<div aria-live="polite" class="muted" id="status">Select the best answer.</div>
 <div class="row">
-<button id="showAns">Show Answer</button>
-<button id="again">Again 🔁</button>
+<button type="button" id="showAns">Show Answer</button>
+<button type="button" id="again">Again 🔁</button>
 </div>
 </div>
 </section>
@@ -157,7 +159,7 @@ img,svg,canvas,video{max-width:100%}
 <div class="card">
 <div class="row" style="justify-content:space-between;">
 <div class="muted">Mastery Tracker (per topic)</div>
-<button id="export">Export Results</button>
+<button type="button" id="export">Export Results</button>
 </div>
 <div class="muted" id="tracker" style="margin-top:8px; display:grid; grid-template-columns: 1fr 90px 90px; gap:6px;"></div>
 </div>
@@ -266,7 +268,6 @@ function pickAdaptive(){
   for(const [q,w] of weighted){ if((r-=w)<=0){ if(!RECENT.includes(q.stem)) return q; } }
   for(const [q,w] of weighted){ if(!RECENT.includes(q.stem)) return q; }
   return weighted[0][0];
-  return weighted[0][0];
 }
 function pickRandom(){ let tries=0; while(tries++<50){ const q=BANK[Math.floor(Math.random()*BANK.length)]; if(!RECENT.includes(q.stem)) return q; } return BANK[Math.floor(Math.random()*BANK.length)]; }
 function pickByTopic(t){ const s=BANK.filter(q=>q.topic===t); if(s.length===0) return pickRandom(); let tries=0; while(tries++<50){ const q=s[Math.floor(Math.random()*s.length)]; if(!RECENT.includes(q.stem)) return q; } return s[Math.floor(Math.random()*s.length)]; }
@@ -277,30 +278,45 @@ function toastMsg(msg){ toast.textContent=msg; toast.classList.add('show'); setT
 function renderQuestion(q){
   current=q; allowSelect=true;
   elRationale.classList.add('hidden'); elRationale.textContent="";
-  elStatus.textContent="Select the best answer."; elOptions.innerHTML="";
+  const isSATA=q.type==="SATA";
+  elStatus.textContent=isSATA?"Select all that apply, then submit.":"Select the best answer."; elOptions.innerHTML="";
   elMeta.innerHTML=""; elChip.textContent=q.topic; elMeta.appendChild(badge(q.type)); if(q.tags&&q.tags.length) elMeta.appendChild(badge(q.tags.join(" · ")));
   elStem.textContent=q.stem;
-  const isSATA=q.type==="SATA"; const chosen=new Set();
+  const chosen=new Set();
+  elShowAns.textContent=isSATA?"Submit answers":"Show answer";
   q.options.forEach((opt,i)=>{
-    const div=document.createElement('div'); div.className='opt'; div.textContent=opt;
-    div.addEventListener('click',()=>{
+    const optionButton=document.createElement('button'); optionButton.type='button'; optionButton.className='opt'; optionButton.textContent=opt;
+    if(isSATA) optionButton.setAttribute('aria-pressed','false');
+    optionButton.addEventListener('click',()=>{
       if(!allowSelect) return; sfxClick();
-      if(isSATA){ if(chosen.has(i)){ chosen.delete(i); div.style.opacity=1; } else { chosen.add(i); div.style.opacity=0.8; } }
+      if(isSATA){
+        if(chosen.has(i)) chosen.delete(i); else chosen.add(i);
+        const selected=chosen.has(i);
+        optionButton.classList.toggle('selected',selected);
+        optionButton.setAttribute('aria-pressed',String(selected));
+      }
       else { finish([i]); }
     });
-    elOptions.appendChild(div);
+    elOptions.appendChild(optionButton);
   });
-  elShowAns.onclick=()=>finish(q.answers);
+  elShowAns.onclick=()=>isSATA?finish(Array.from(chosen)):finish([],true);
   elAgain.onclick=()=>{renderQuestion(q);};
-  function finish(sel){
+  function finish(sel,revealed=false){
     if(!allowSelect) return; allowSelect=false;
+    if(timerId) clearInterval(timerId);
     const isSATA=q.type==="SATA"; let correct=false;
-    if(isSATA){ const sels=Array.from(chosen).sort((a,b)=>a-b); correct=JSON.stringify(sels)===JSON.stringify(q.answers); }
-    else { correct=sel[0]===q.answerIndex; }
-    Array.from(elOptions.children).forEach((node,idx)=>{ const ok=q.answers.includes(idx); node.classList.add(ok?'correct':'incorrect'); });
+    if(!revealed&&isSATA){ const sels=Array.from(chosen).sort((a,b)=>a-b); correct=JSON.stringify(sels)===JSON.stringify(q.answers); }
+    else if(!revealed){ correct=sel[0]===q.answerIndex; }
+    Array.from(elOptions.children).forEach((node,idx)=>{
+      const ok=q.answers.includes(idx);
+      if(ok) node.classList.add('correct');
+      else if(!revealed&&sel.includes(idx)) node.classList.add('incorrect');
+      node.disabled=true;
+    });
     stats.seen++; ensureTopic(q.topic); stats.topics[q.topic].seen++;
 RECENT.unshift(q.stem); if(RECENT.length>RECENT_MAX) RECENT.pop();
-    if(correct){ stats.correct++; stats.topics[q.topic].correct++; streak++; sfxCorrect(); if(streak&&streak%5===0) sfxStreak(); elStatus.textContent="✅ Correct"; toastMsg("Nice!"); }
+    if(revealed){ streak=0; elStatus.textContent="Answer shown"; }
+    else if(correct){ stats.correct++; stats.topics[q.topic].correct++; streak++; sfxCorrect(); if(streak&&streak%5===0) sfxStreak(); elStatus.textContent="✅ Correct"; toastMsg("Nice!"); }
     else { streak=0; sfxWrong(); elStatus.textContent="❌ Not quite"; }
     localStorage.setItem(KEY, JSON.stringify(stats));
     elRationale.textContent=q.rationale; elRationale.classList.remove('hidden');
@@ -315,7 +331,7 @@ RECENT.unshift(q.stem); if(RECENT.length>RECENT_MAX) RECENT.pop();
       timeLeft--; elStatus.textContent="⏱️ "+timeLeft+"s";
       if(timeLeft<=0){
         clearInterval(timerId); allowSelect=false; sfxWrong(); elStatus.textContent="⏰ Time!";
-        Array.from(elOptions.children).forEach((node,idx)=>{ const ok=q.answers.includes(idx); node.classList.add(ok?'correct':'incorrect'); });
+        Array.from(elOptions.children).forEach((node,idx)=>{ if(q.answers.includes(idx)) node.classList.add('correct'); node.disabled=true; });
         elRationale.textContent=q.rationale; elRationale.classList.remove('hidden');
         stats.seen++; ensureTopic(q.topic); stats.topics[q.topic].seen++;
 RECENT.unshift(q.stem); if(RECENT.length>RECENT_MAX) RECENT.pop(); localStorage.setItem(KEY, JSON.stringify(stats));
@@ -342,8 +358,8 @@ function buildTracker(){
 
 document.getElementById('next').addEventListener('click',()=>nextQuestion());
 document.getElementById('mode').addEventListener('change',()=>{ elTopicWrap.style.display=(elMode.value==='topic')?'block':'none'; });
-document.getElementById('reset').addEventListener('click',()=>{ if(confirm('Reset local stats for the SEQUEL?')){ stats={version:1, seen:0, correct:0, topics:{}}; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); }});
-document.getElementById('export').addEventListener('click',()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='pharm_hesi_mastery_stats_sequel.json'; a.click(); });
+document.getElementById('reset').addEventListener('click',()=>{ if(confirm('Reset all local stats?')){ stats={version:1, seen:0, correct:0, topics:{}}; localStorage.setItem(KEY, JSON.stringify(stats)); setProgress(); buildTracker(); }});
+document.getElementById('export').addEventListener('click',()=>{ const blob=new Blob([JSON.stringify(stats,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='pharmacology-practice-2-stats.json'; a.click(); });
 
 setProgress(); buildTracker(); elTopicWrap.style.display='none'; nextQuestion();
 </script>

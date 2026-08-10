@@ -69,7 +69,7 @@ kbd{padding:2px 6px;border-radius:6px;background:rgba(255,255,255,.08);border:1p
 html,body{max-width:100%;overflow-x:hidden}
 header{grid-template-columns:minmax(0,1fr) repeat(4,auto)!important}
 header>*{min-width:0}
-.brand{min-width:0;overflow-wrap:anywhere}
+.brand{min-width:0;margin:0;font-size:inherit;line-height:1.25;overflow-wrap:anywhere}
 .controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))!important}
 .controls>*{min-width:0}
 .ctrl,.row{min-width:0}
@@ -97,50 +97,50 @@ img,svg,canvas,video{max-width:100%}
 </head>
 <body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
 <header>
-<div class="brand">🇵🇭 Tagalog Practice 6 — Places, Countries & Nationalities</div>
+<h1 class="brand">🇵🇭 Tagalog Practice 6 — Places, Countries & Nationalities</h1>
 <div class="pill scorebox">Score: <strong id="score">0</strong> • Streak: <strong id="streak">0</strong></div>
-<button class="pill" id="sfx">🔊 Sound: On</button>
-<button class="pill" id="music">🎵 Music: On</button>
-<div class="pill volwrap"><span class="muted">Vol</span><input id="vol" max="100" min="0" style="width:140px" type="range" value="65"/></div>
+<button type="button" class="pill" id="sfx">🔊 Sound: On</button>
+<button type="button" class="pill" id="music">🎵 Music: On</button>
+<div class="pill volwrap"><span class="muted">Vol</span><input aria-label="Volume" id="vol" max="100" min="0" style="width:140px" type="range" value="65"/></div>
 </header>
 <div id="progressbar"><div id="progressfill"></div><span id="progresslabel">Progress: 0/0</span></div>
 <main>
 <section class="controls card">
-<div class="ctrl"><span class="muted">Question source:</span><select id="category">
+<div class="ctrl"><span class="muted">Question source:</span><select aria-label="Question source" id="category">
 <option selected="" value="all">All</option>
 <option value="vocab">Vocabulary only</option>
 <option value="grammar">Grammar only</option>
 <option value="reading">Reading only</option>
 <option value="culture">Culture only</option></select></div>
-<div class="ctrl"><span class="muted">Selection mode:</span><select id="mode">
+<div class="ctrl"><span class="muted">Selection mode:</span><select aria-label="Selection mode" id="mode">
 <option selected="" value="random">Random</option>
 <option value="topic">By topic</option></select></div>
-<div class="ctrl"><span class="muted">Topic:</span><select id="topicFilter"><option selected="" value="any">Any</option></select></div>
-<div class="ctrl"><span class="muted">Timer:</span><select id="timer">
+<div class="ctrl"><span class="muted">Topic:</span><select aria-label="Topic" id="topicFilter"><option selected="" value="any">Any</option></select></div>
+<div class="ctrl"><span class="muted">Timer:</span><select aria-label="Timer duration" id="timer">
 <option selected="" value="off">Off</option><option value="60">60s</option>
 <option value="90">90s</option><option value="120">120s</option></select></div>
-<button id="reset">Reset</button>
-<button id="next">Next ▶</button>
+<button type="button" id="reset">Reset</button>
+<button type="button" id="next">Next ▶</button>
 </section>
 <section class="card qcard" id="qcard">
 <div class="badges"><span class="badge" id="typeBadge">—</span><span class="badge" id="topicBadge">—</span></div>
-<div class="qstem" id="stem">Tap “Next” to begin.</div>
+<div aria-live="polite" class="qstem" id="stem">Tap “Next” to begin.</div>
 <div class="options" id="options"></div>
 <div class="hidden row" id="fibWrap" style="margin-top:12px; display:none;">
-<input id="fibInput" placeholder="Type your answer…" style="flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff" type="text"/>
-<button id="fibCheck">Check</button>
+<input autocomplete="off" aria-label="Answer" id="fibInput" placeholder="Type your answer…" style="flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff" type="text"/>
+<button type="button" id="fibCheck">Check</button>
 </div>
 <div class="rationale muted hidden" id="rationale"></div>
 <div class="footer">
-<div class="muted" id="status">Choose the best answer.</div>
-<div class="row"><button id="showAns">Show answer</button><button id="again">Again 🔁</button></div>
+<div aria-live="polite" class="muted" id="status">Choose the best answer.</div>
+<div class="row"><button type="button" id="showAns">Show answer</button><button type="button" id="again">Again 🔁</button></div>
 </div>
 </section>
 <section class="grid2" style="margin-top:12px">
 <div class="card">
 <div class="row" style="justify-content:space-between">
 <div class="muted"><strong>Coverage</strong> — Taga‑saan / Nasa &amp; Nasaan / Nakatira + <em>naka‑</em> / “na” (already) / geography terms / adjectives + mas/kaysa &amp; pinaka‑ / nationalities / reading comprehension. Scoring: <strong>+10</strong> correct, <strong>−5</strong> incorrect/timeout. Popups: <em>Ayos! / Subukan muli! / Oras na!</em></div>
-<button id="export">Export results</button>
+<button type="button" id="export">Export results</button>
 </div>
 <div class="muted" id="tracker" style="margin-top:10px"></div>
 </div>
@@ -150,6 +150,7 @@ img,svg,canvas,video{max-width:100%}
 </section>
 </main>
 <div class="toast" id="toast"></div>
+<script src="/play/assets/quiz-utils.js"></script>
 <script>
 // ---------- Helpers ----------
 function stripAccents(str){return (str||"").normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');}
@@ -274,6 +275,7 @@ addFIB("Punuan: “Where is Aklan?” — ____ ang Aklan?", ["Nasaan","nasaan"],
 addFIB("Punuan: “Aklan is in Panay.” — ____ Panay ang Aklan.", ["Nasa","nasa"], "Grammar", "Use nasa to state location.");
 
 // Build topics array
+window.JVQuizTools.normalizeSingleAnswerOptions(BANK, shuffle);
 const TOPICS=[...new Set(BANK.map(q=>q.topic))].sort();
 
 // ---------- UI Elements ----------

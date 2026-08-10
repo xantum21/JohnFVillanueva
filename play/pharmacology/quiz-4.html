@@ -30,7 +30,7 @@
   button:hover{border-color:#7cf0ff}
   .qstem{font-size:18px; line-height:1.3}
   .options{display:grid; grid-template-columns:1fr; gap:8px; margin-top:10px}
-  .opt{padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); cursor:pointer}
+  .opt{width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); color:var(--ink); cursor:pointer; font:inherit; text-align:left}
   .opt.correct{background:rgba(86,243,154,.08); border-color:#56f39a}
   .opt.incorrect{background:rgba(255,107,107,.08); border-color:#ff6b6b}
   .muted{color:#b9c3e6; font-size:13px}
@@ -58,7 +58,7 @@
 html,body{max-width:100%;overflow-x:hidden}
 header{grid-template-columns:minmax(0,1fr) repeat(4,auto)!important}
 header>*{min-width:0}
-.brand{min-width:0;overflow-wrap:anywhere}
+.brand{min-width:0;margin:0;font-size:inherit;line-height:1.25;overflow-wrap:anywhere}
 .controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))!important}
 .controls>*{min-width:0}
 .ctrl,.row{min-width:0}
@@ -86,9 +86,9 @@ img,svg,canvas,video{max-width:100%}
 </head>
 <body><nav aria-label="Interactive media navigation" class="jv-play-nav"><a href="/play/">← Play Hub</a><a class="secondary" href="/projects.html">Portfolio Projects</a></nav>
 <header>
-<div class="brand">💊 Pharmacology Practice IV — Advanced 100+ Question Challenge</div>
-<button class="pill" id="sfx">🔊 Sound: Off</button>
-<button class="pill" id="music">🎵 Music: Off</button>
+<h1 class="brand">💊 Pharmacology Practice IV — Advanced 100+ Question Challenge</h1>
+<button type="button" class="pill" id="sfx">🔊 Sound: Off</button>
+<button type="button" class="pill" id="music">🎵 Music: Off</button>
 <div class="pill">Progress: <span id="progress">0/0</span></div>
 <div class="pill">Bank Size: <span id="banksize">—</span></div>
 </header>
@@ -96,7 +96,7 @@ img,svg,canvas,video{max-width:100%}
 <section class="controls card">
 <div class="row">
 <label class="muted">Mode:</label>
-<select id="mode">
+<select aria-label="Selection mode" id="mode">
 <option selected="" value="adaptive">Adaptive (Weak Topics First)</option>
 <option value="random">Random</option>
 <option value="topic">By Topic</option>
@@ -104,11 +104,11 @@ img,svg,canvas,video{max-width:100%}
 </div>
 <div class="row" id="topicWrap">
 <label class="muted">Topic:</label>
-<select id="topic"></select>
+<select aria-label="Topic" id="topic"></select>
 </div>
 <div class="row">
 <label class="muted">Timer:</label>
-<select id="timer">
+<select aria-label="Timer duration" id="timer">
 <option value="off">Off</option>
 <option value="60">60s</option>
 <option selected="" value="90">90s</option>
@@ -116,32 +116,34 @@ img,svg,canvas,video{max-width:100%}
 </select>
 </div>
 <div class="row">
-<button id="reset">Reset Stats</button>
-<button id="next">Next ▶</button>
+<button type="button" id="reset">Reset Stats</button>
+<button type="button" id="next">Next ▶</button>
 </div>
 </section>
+<aside class="card study-notice" role="note" style="margin-bottom:12px"><strong>Study-use notice:</strong> Personal study tool only—not clinical guidance. Verify medication information and calculations against current course materials, drug references, and facility policy.</aside>
 <section class="card">
 <div class="row" style="justify-content:space-between">
 <div class="badges" id="meta"></div>
 <div class="topic-chip" id="topicChip"></div>
 </div>
-<div class="qstem" id="stem"></div>
+<div aria-live="polite" class="qstem" id="stem"></div>
 <div class="options" id="opts"></div>
 <div class="rationale" id="rat" style="display:none;"></div>
 <div class="row" style="justify-content:space-between; margin-top:8px;">
-<div class="muted" id="status">Select the best answer.</div>
+<div aria-live="polite" class="muted" id="status">Select the best answer.</div>
 <div class="row">
-<button id="show">Show Answer</button>
-<button id="again">Again 🔁</button>
+<button type="button" id="show">Show Answer</button>
+<button type="button" id="again">Again 🔁</button>
 </div>
 </div>
 </section>
 <section class="card" style="margin-top:12px;">
-<div class="row" style="justify-content:space-between;"><div class="muted">Mastery by Topic</div><button id="export">Export Stats</button></div>
+<div class="row" style="justify-content:space-between;"><div class="muted">Mastery by Topic</div><button type="button" id="export">Export Stats</button></div>
 <div class="muted" id="track" style="display:grid; grid-template-columns:1fr 80px 80px; gap:6px; margin-top:6px;"></div>
 </section>
 </main>
 <div class="toast" id="toast"></div>
+<script src="/play/assets/quiz-utils.js"></script>
 <script>
 // ---- tiny tone synth ----
 const tone=(f=880,d=0.08,t='sine',v=0.03)=>{try{const a=new (window.AudioContext||window.webkitAudioContext)();const o=a.createOscillator();const g=a.createGain();o.type=t;o.frequency.value=f;g.gain.value=v;o.connect(g);g.connect(a.destination);o.start();setTimeout(()=>{o.stop();a.close()},d*1000)}catch{}};
@@ -225,42 +227,53 @@ function generateCalcSet(n=65){
   const arr=[];
   const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
   function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]] } return a; }
+  function makeChoices(correct, distractors, unit, step){
+    const values=[];
+    const seen=new Set();
+    const format=value=>`${Number.isInteger(value)?value:Math.round(value*10)/10}${unit}`;
+    [correct,...distractors].forEach(value=>{
+      if(!Number.isFinite(value)||value<=0) return;
+      const text=format(value);
+      if(!seen.has(text)){ seen.add(text); values.push(text); }
+    });
+    for(let offset=step; values.length<4; offset+=step){
+      const text=format(correct+offset);
+      if(!seen.has(text)){ seen.add(text); values.push(text); }
+    }
+    const options=shuffle(values.slice(0,4));
+    return {options, answerIndex:options.indexOf(format(correct))};
+  }
   for(let i=0;i<n;i++){
     const t = i%5;
     if(t===0){
       const vol=rnd(50,1000); const min=rnd(30,240);
       const rate=Math.round((vol/(min/60))*10)/10;
-      let opts=[rate, Math.round(rate*0.9), Math.round(rate*1.1), Math.round(rate+20)];
-      shuffle(opts);
-      arr.push({topic:'Calc', type:'MCQ', stem:`Infuse ${vol} mL over ${min} min. Set pump to:`, options:opts.map(x=>`${x} mL/hr`), answerIndex:opts.indexOf(`${rate} mL/hr`), answers:[opts.indexOf(`${rate} mL/hr`)], rationale:`${vol} ÷ (${min}/60) = ${rate} mL/hr.`});
+      const choices=makeChoices(rate,[Math.round(rate*0.9),Math.round(rate*1.1),Math.round(rate+20)],' mL/hr',10);
+      arr.push({topic:'Calc', type:'MCQ', stem:`Infuse ${vol} mL over ${min} min. Set pump to:`, options:choices.options, answerIndex:choices.answerIndex, answers:[choices.answerIndex], rationale:`${vol} ÷ (${min}/60) = ${rate} mL/hr.`});
     } else if(t===1){
       const vol=rnd(250,1000); const hr=rnd(1,8); const drop=[10,15,20][rnd(0,2)];
       const gtt = Math.round((vol/hr)/60*drop);
-      let opts=[gtt, gtt+5, gtt-5, gtt+10].map(x=>`${x} gtt/min`);
-      shuffle(opts);
-      arr.push({topic:'Calc', type:'MCQ', stem:`${vol} mL over ${hr} hr using ${drop} gtt/mL tubing. Drop rate:`, options:opts, answerIndex:opts.indexOf(`${gtt} gtt/min`), answers:[opts.indexOf(`${gtt} gtt/min`)], rationale:`(${vol}/${hr} hr) ÷ 60 × ${drop} = ${gtt} gtt/min.`});
+      const choices=makeChoices(gtt,[gtt+5,gtt-5,gtt+10],' gtt/min',3);
+      arr.push({topic:'Calc', type:'MCQ', stem:`${vol} mL over ${hr} hr using ${drop} gtt/mL tubing. Drop rate:`, options:choices.options, answerIndex:choices.answerIndex, answers:[choices.answerIndex], rationale:`(${vol}/${hr} hr) ÷ 60 × ${drop} = ${gtt} gtt/min.`});
     } else if(t===2){
       const concMg=rnd(100,500); const perMl=5;
       const ordered=rnd(50,concMg*2-50);
       const vol = Math.round((ordered/concMg*perMl)*10)/10;
-      let opts=[vol, Math.round(vol*0.8*10)/10, Math.round(vol*1.2*10)/10, Math.round((vol+1)*10)/10].map(x=>`${x} mL`);
-      shuffle(opts);
-      arr.push({topic:'Calc', type:'MCQ', stem:`Label ${concMg} mg/${perMl} mL. Give ${ordered} mg. How many mL?`, options:opts, answerIndex:opts.indexOf(`${vol} mL`), answers:[opts.indexOf(`${vol} mL`)], rationale:`${ordered} × (${perMl}/${concMg}) = ${vol} mL.`});
+      const choices=makeChoices(vol,[Math.round(vol*0.8*10)/10,Math.round(vol*1.2*10)/10,Math.round((vol+1)*10)/10],' mL',0.5);
+      arr.push({topic:'Calc', type:'MCQ', stem:`Label ${concMg} mg/${perMl} mL. Give ${ordered} mg. How many mL?`, options:choices.options, answerIndex:choices.answerIndex, answers:[choices.answerIndex], rationale:`${ordered} × (${perMl}/${concMg}) = ${vol} mL.`});
     } else if(t===3){
       const mg=rnd(200,800); const mL=rnd(250,500); const mLhr=rnd(5,20); const kg=rnd(50,100);
       const mcgPerMl = (mg*1000)/mL;
       const mcgPerMin = (mLhr*mcgPerMl)/60;
       const dose = Math.round((mcgPerMin/kg)*10)/10;
-      let opts=[dose, Math.round(dose*0.6*10)/10, Math.round(dose*1.4*10)/10, Math.round((dose+1.5)*10)/10].map(x=>`${x}`);
-      shuffle(opts);
-      arr.push({topic:'Calc', type:'MCQ', stem:`${mg} mg in ${mL} mL running at ${mLhr} mL/hr for a ${kg}-kg client. What mcg/kg/min?`, options:opts, answerIndex:opts.indexOf(`${dose}`), answers:[opts.indexOf(`${dose}`)], rationale:`(${mg} mg/${mL} mL = ${mcgPerMl.toFixed(1)} mcg/mL) → ${mLhr} mL/hr = ${(mcgPerMin).toFixed(1)} mcg/min; ÷ ${kg} kg ≈ ${dose} mcg/kg/min.`});
+      const choices=makeChoices(dose,[Math.round(dose*0.6*10)/10,Math.round(dose*1.4*10)/10,Math.round((dose+1.5)*10)/10],'',0.5);
+      arr.push({topic:'Calc', type:'MCQ', stem:`${mg} mg in ${mL} mL running at ${mLhr} mL/hr for a ${kg}-kg client. What mcg/kg/min?`, options:choices.options, answerIndex:choices.answerIndex, answers:[choices.answerIndex], rationale:`(${mg} mg/${mL} mL = ${mcgPerMl.toFixed(1)} mcg/mL) → ${mLhr} mL/hr = ${(mcgPerMin).toFixed(1)} mcg/min; ÷ ${kg} kg ≈ ${dose} mcg/kg/min.`});
     } else {
       const kg=rnd(10,120); const doseMgKg=[5,7.5,10,15][rnd(0,3)]; const tab=[100,250,500][rnd(0,2)];
       const total = Math.round(kg*doseMgKg);
       const tabsNeeded = Math.round(total/tab*10)/10;
-      let opts=[tabsNeeded, Math.round((tabsNeeded+0.5)*10)/10, Math.round((tabsNeeded*0.8)*10)/10, Math.round((tabsNeeded*1.2)*10)/10].map(x=>`${x} tabs`);
-      shuffle(opts);
-      arr.push({topic:'Calc', type:'MCQ', stem:`Order: ${doseMgKg} mg/kg for ${kg}-kg pt. Tablets are ${tab} mg each. How many tablets (round to 0.1)?`, options:opts, answerIndex:opts.indexOf(`${tabsNeeded} tabs`), answers:[opts.indexOf(`${tabsNeeded} tabs`)], rationale:`${kg}×${doseMgKg}=${total} mg total; ÷${tab} mg ≈ ${tabsNeeded} tabs.`});
+      const choices=makeChoices(tabsNeeded,[Math.round((tabsNeeded+0.5)*10)/10,Math.round((tabsNeeded*0.8)*10)/10,Math.round((tabsNeeded*1.2)*10)/10],' tabs',0.5);
+      arr.push({topic:'Calc', type:'MCQ', stem:`Order: ${doseMgKg} mg/kg for ${kg}-kg pt. Tablets are ${tab} mg each. How many tablets (round to 0.1)?`, options:choices.options, answerIndex:choices.answerIndex, answers:[choices.answerIndex], rationale:`${kg}×${doseMgKg}=${total} mg total; ÷${tab} mg ≈ ${tabsNeeded} tabs.`});
     }
   }
   return arr;
@@ -269,7 +282,7 @@ function generateCalcSet(n=65){
 function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]] } return a; }
 
 const state = {
-  order: [], index: 0, correct: 0, seen: 0,
+  order: [], unseen: [], index: 0, currentIndex: null, answered: false, correct: 0, seen: 0,
   perTopic: {}, mode: 'adaptive', topic: 'All', timer: 90, tLeft: null, tId: null,
   sfx:false, music:false
 };
@@ -288,6 +301,7 @@ function init(){
     {topic:'Analgesics', type:'MCQ', stem:'Which finding after morphine requires immediate action?', options:['BP 100/60','RR 7/min','Itching','Pinpoint pupils'], answerIndex:1, answers:[1], rationale:'RR 7/min indicates respiratory depression.'},
     {topic:'Psych', type:'MCQ', stem:'Which antidepressant is safest in sexual dysfunction risk?', options:['Paroxetine','Fluoxetine','Sertraline','Bupropion'], answerIndex:3, answers:[3], rationale:'Bupropion has lower sexual side effect burden.'}
   );
+  window.JVQuizTools.normalizeSingleAnswerOptions(BANK, shuffle);
 
   const topics = Array.from(new Set(BANK.map(x=>x.topic)));
   const topicSel = $('#topic'); topicSel.innerHTML='';
@@ -338,6 +352,7 @@ function resetOrderForTopic(){
   const filtered = state.topic==='All' ? BANK.map((_,i)=>i) : BANK.map((x,i)=>[x,i]).filter(([x])=>x.topic===state.topic).map(([_,i])=>i);
   state.order = filtered;
   shuffle(state.order);
+  state.unseen = state.order.slice();
   state.index = 0;
   updateProgress();
 }
@@ -355,7 +370,8 @@ function renderTracker(){
 function toastMsg(msg){ const toast=document.getElementById('toast'); toast.textContent=msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1400); }
 
 function nextQ(initial=false){
-  if(state.index>=state.order.length){ toastMsg('End of set — reshuffling'); resetOrderForTopic(); }
+  const shouldCycle = state.mode!=='adaptive' || state.topic!=='All';
+  if(shouldCycle && state.index>=state.order.length){ toastMsg('End of set — reshuffling'); resetOrderForTopic(); }
   const qi = pickNextIndex();
   state.index++;
   state.seen++;
@@ -365,17 +381,22 @@ function nextQ(initial=false){
 }
 
 function pickNextIndex(){
+  if(state.unseen.length) return state.unseen.shift();
   if(state.mode==='random' || state.topic!=='All') return state.order[(state.index)%state.order.length];
-  const scores = Object.entries(state.perTopic).map(([t,s])=>[t, s.right+s.wrong>0 ? (s.right/(s.right+s.wrong)) : 1]);
-  scores.sort((a,b)=>a[1]-b[1]);
-  for(const [worst] of scores){
-    const candidates = BANK.map((x,i)=>[x,i]).filter(([x])=>x.topic===worst).map(([_,i])=>i);
-    if(candidates.length){ return candidates[Math.floor(Math.random()*candidates.length)]; }
+  const attempted = Object.entries(state.perTopic).filter(([,s])=>s.right+s.wrong>0);
+  if(attempted.length){
+    const weakest = Math.min(...attempted.map(([,s])=>s.right/(s.right+s.wrong)));
+    const weakTopics = attempted.filter(([,s])=>s.right/(s.right+s.wrong)===weakest).map(([topic])=>topic);
+    const targetTopic = weakTopics[Math.floor(Math.random()*weakTopics.length)];
+    const candidates = BANK.map((question,index)=>[question,index]).filter(([question])=>question.topic===targetTopic).map(([,index])=>index);
+    if(candidates.length) return candidates[Math.floor(Math.random()*candidates.length)];
   }
   return state.order[(state.index)%state.order.length];
 }
 
 function showQuestion(qi){
+  state.currentIndex=qi;
+  state.answered=false;
   const q = BANK[qi];
   const meta=$('#meta'); meta.innerHTML = '';
   const b1=document.createElement('div'); b1.className='badge'; b1.textContent=q.type; meta.appendChild(b1);
@@ -387,8 +408,9 @@ function showQuestion(qi){
   if(q.type==='SATA'){
     q.options.forEach((opt,idx)=>{
       const el=document.createElement('label'); el.className='opt';
-      el.innerHTML=`<input type="checkbox" style="margin-right:8px">${opt}`;
-      el.onclick = (e)=> e.stopPropagation();
+      const checkbox=document.createElement('input'); checkbox.type='checkbox'; checkbox.style.marginRight='8px';
+      const text=document.createElement('span'); text.textContent=opt;
+      el.append(checkbox,text);
       opts.appendChild(el);
     });
     const submit=document.createElement('button'); submit.textContent='Submit'; submit.onclick=()=>{
@@ -398,7 +420,7 @@ function showQuestion(qi){
     submit.className='pill'; opts.appendChild(submit);
   }else{
     q.options.forEach((opt,idx)=>{
-      const el=document.createElement('div'); el.className='opt'; el.textContent=opt;
+      const el=document.createElement('button'); el.type='button'; el.className='opt'; el.textContent=opt;
       el.onclick=()=>grade(q, idx);
       opts.appendChild(el);
     });
@@ -406,6 +428,9 @@ function showQuestion(qi){
 }
 
 function grade(q, idx){
+  if(state.answered) return;
+  state.answered=true;
+  if(state.tId) clearInterval(state.tId);
   const correct = (idx===q.answerIndex);
   const nodes = document.querySelectorAll('.opt');
   nodes.forEach((n,i)=>{
@@ -420,6 +445,9 @@ function grade(q, idx){
 }
 
 function gradeSATA(q, chosen){
+  if(state.answered) return;
+  state.answered=true;
+  if(state.tId) clearInterval(state.tId);
   const ans = new Set(q.answers);
   const ch = new Set(chosen);
   const nodes = document.querySelectorAll('.opt');
@@ -437,9 +465,12 @@ function gradeSATA(q, chosen){
 
 function incTopic(t, right){ const rec=state.perTopic[t]; if(!rec) return; if(right) rec.right++; else rec.wrong++; }
 function showAnswer(){
+  if(state.answered) return;
   const qtext = $('#stem').textContent;
   const q = BANK.find(x=>x.stem===qtext);
   if(!q) return;
+  state.answered=true;
+  if(state.tId) clearInterval(state.tId);
   const nodes = document.querySelectorAll('.opt');
   if(q.type==='SATA'){
     nodes.forEach((n,i)=>{
@@ -453,8 +484,14 @@ function showAnswer(){
     });
   }
   const rat=$('#rat'); rat.style.display='block'; rat.textContent=q.rationale;
+  incTopic(q.topic,false);
+  renderTracker();
 }
-function againSoon(){ state.index = Math.max(0, state.index-1); nextQ(); }
+function againSoon(){
+  if(state.currentIndex===null) return;
+  showQuestion(state.currentIndex);
+  resetCountdown();
+}
 function updateProgress(){ $('#progress').textContent = state.seen + '/' + state.order.length + ' • Score ' + state.correct; }
 
 function resetStats(){
@@ -464,12 +501,12 @@ function resetStats(){
 }
 
 function exportStats(){
-  const lines = ['Pharm HESI — PART 6 PLUS Results', new Date().toLocaleString(), ''];
+  const lines = ['Pharmacology Practice IV Results', new Date().toLocaleString(), ''];
   lines.push('Score: ' + state.correct + '/' + state.seen);
   lines.push('By Topic:');
   Object.entries(state.perTopic).forEach(([t,s])=>lines.push(`  ${t}: ${s.right} correct / ${s.wrong} wrong`));
   const blob = new Blob([lines.join('\n')], {type:'text/plain'});
-  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='Pharm_HESI_PART6_PLUS_Results.txt'; a.click();
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='pharmacology-practice-4-results.txt'; a.click();
 }
 
 init();

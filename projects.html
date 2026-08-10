@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
 <title>
-   Projects & Experiments | John Villanueva
+   Projects &amp; Experiments | John Villanueva
   </title>
   <meta content="Explore Dino Kart Racer, nursing study tools, language quizzes, browser games, web projects, and creative experiments by John Villanueva." name="description">
   <link href="https://johnfvillanueva.com/projects.html" rel="canonical">
@@ -14,7 +14,7 @@
   <meta content="https://johnfvillanueva.com/projects.html" property="og:url">
   <meta content="https://johnfvillanueva.com/assets/social-card.png" property="og:image">
   <meta content="summary_large_image" name="twitter:card">
-<link href="/assets/site.css?v=20260724p" rel="stylesheet">
+<link href="/assets/site.css?v=20260810v1" rel="stylesheet">
   <meta name="theme-color" content="#102a34">
   <link rel="icon" href="/assets/favicon-v3.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/favicon-32-v3.png" sizes="32x32" type="image/png">
@@ -80,7 +80,7 @@
       <p class="page-lead">
        I build browser games, nursing study tools, language practice, and small web projects. Sometimes the goal is useful; sometimes it is fun. Either way, I like taking an idea far enough that somebody can actually use it.
       </p>
-      <div aria-label="Project library summary" class="stat-band">
+      <div aria-label="Project library summary" class="stat-band" role="group">
        <div class="stat">
         <strong>
          23
@@ -177,20 +177,21 @@
        The library includes one kart racer, a math game, a kana trainer, four pharmacology practices, two Spanish lessons, and fourteen Filipino/Tagalog lessons.
       </p>
      </div>
-     <div aria-label="Filter project collections" class="filter-bar">
-      <button aria-pressed="true" class="filter-button" data-filter-button="all">
+     <div aria-label="Filter project collections" class="filter-bar" role="group">
+      <button aria-pressed="true" class="filter-button" data-filter-button="all" type="button">
        All collections
       </button>
-      <button aria-pressed="false" class="filter-button" data-filter-button="game">
+      <button aria-pressed="false" class="filter-button" data-filter-button="game" type="button">
        Games
       </button>
-      <button aria-pressed="false" class="filter-button" data-filter-button="study">
+      <button aria-pressed="false" class="filter-button" data-filter-button="study" type="button">
        Study tools
       </button>
-      <button aria-pressed="false" class="filter-button" data-filter-button="language">
+      <button aria-pressed="false" class="filter-button" data-filter-button="language" type="button">
        Language
       </button>
      </div>
+     <p class="sr-only" data-filter-status role="status" aria-live="polite"></p>
      <div class="grid-3">
       <article class="card project-card reveal" data-filter-item="game">
        <div class="project-preview">
@@ -508,7 +509,7 @@
     </div>
    </div>
   </footer>
-  <script defer src="/assets/site.js?v=20260724p">
+  <script defer src="/assets/site.js?v=20260810v1">
   </script>
  </body>
 </html>

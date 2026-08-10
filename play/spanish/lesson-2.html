@@ -43,7 +43,7 @@
 html,body{max-width:100%;overflow-x:hidden}
 header{grid-template-columns:minmax(0,1fr) repeat(4,auto)!important}
 header>*{min-width:0}
-.brand{min-width:0;overflow-wrap:anywhere}
+.brand{min-width:0;margin:0;font-size:inherit;line-height:1.25;overflow-wrap:anywhere}
 .controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))!important}
 .controls>*{min-width:0}
 .ctrl,.row{min-width:0}
@@ -74,12 +74,12 @@ img,svg,canvas,video{max-width:100%}
 <div class="row">
 <h1>ES <span class="muted">Spanish Practice II — Word Formation & Sentence Practice</span></h1>
 <div class="pill">Score: <b id="score">0</b> • Streak: <b id="streak">0</b></div>
-<div class="pill"><button id="sfxBtn">🔊 Sound: Off</button></div>
-<div class="pill"><button id="musicBtn">🎵 Music: Off</button> Vol <input id="vol" max="100" min="0" style="width:120px" type="range" value="70"/></div>
+<div class="pill"><button type="button" id="sfxBtn">🔊 Sound: Off</button></div>
+<div class="pill"><button type="button" id="musicBtn">🎵 Music: Off</button> Vol <input aria-label="Volume" id="vol" max="100" min="0" style="width:120px" type="range" value="70"/></div>
 </div>
 <div class="card row">
 <div>Question source:
-      <select id="sourceSel">
+      <select aria-label="Question source" id="sourceSel">
 <option value="all">All (with Culture)</option>
 <option value="vocab">Vocabulary</option>
 <option value="grammar">Grammar</option>
@@ -87,14 +87,14 @@ img,svg,canvas,video{max-width:100%}
 </select>
 </div>
 <div>Selection mode:
-      <select id="modeSel">
+      <select aria-label="Selection mode" id="modeSel">
 <option value="adaptive">Adaptive (prioritize weak topics)</option>
 <option value="random">Random</option>
 <option value="topic">By topic…</option>
 </select>
 </div>
 <div>Topic:
-      <select id="topicSel">
+      <select aria-label="Topic" id="topicSel">
 <option value="Any">Any</option>
 <option value="Vocabulary">Vocabulary</option>
 <option value="Grammar">Grammar</option>
@@ -102,7 +102,7 @@ img,svg,canvas,video{max-width:100%}
 </select>
 </div>
 <div>Timer:
-      <select id="timerSel">
+      <select aria-label="Timer duration" id="timerSel">
 <option value="90">90s</option>
 <option value="60">60s</option>
 <option value="30">30s</option>
@@ -110,22 +110,22 @@ img,svg,canvas,video{max-width:100%}
 </select>
 </div>
 <div class="row" style="margin-left:auto">
-<button id="resetBtn">Reset</button>
-<button class="primary" id="nextBtn">Next ▶</button>
+<button type="button" id="resetBtn">Reset</button>
+<button type="button" class="primary" id="nextBtn">Next ▶</button>
 </div>
 </div>
 <div class="card progress"><div class="bar" id="bar"></div></div>
 <div class="card">
-<div class="muted" id="status"></div>
-<div class="big" id="stem">Choose the best answer.</div>
+<div aria-live="polite" class="muted" id="status"></div>
+<div aria-live="polite" class="big" id="stem">Choose the best answer.</div>
 <div id="options"></div>
 <div class="row" id="fibWrap" style="display:none">
-<input id="fibInput" placeholder="Type your answer in Spanish…" style="flex:1" type="text">
-<button class="primary" id="checkBtn">Check</button>
+<input autocomplete="off" aria-label="Answer" id="fibInput" placeholder="Type your answer in Spanish…" style="flex:1" type="text">
+<button type="button" class="primary" id="checkBtn">Check</button>
 </input></div>
 <div class="row" style="margin-top:8px">
-<button id="showBtn">Show answer</button>
-<button id="againBtn">Again ⟳</button>
+<button type="button" id="showBtn">Show answer</button>
+<button type="button" id="againBtn">Again ⟳</button>
 </div>
 <div class="muted" id="rationale" style="margin-top:6px"></div>
 </div>

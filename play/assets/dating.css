@@ -1,0 +1,512 @@
+/* ==========================================================================
+   dating.css — scoped styles for /dating.html
+   Deliberately separate from site.css: warmer, darker, evening-toned.
+   Everything is namespaced .dt-* so it cannot collide with the main site.
+   ========================================================================== */
+
+.dt-page {
+  /* Palette: lantern light. Indigo evening + amber lamp + dusty rose.
+     Chosen to read as "a good night out" rather than the daylight
+     cream/navy/red of the professional pages. */
+  --dt-night: #1b2340;
+  --dt-night-2: #262f56;
+  --dt-night-3: #333e6b;
+  --dt-linen: #fbf6ef;
+  --dt-linen-2: #f2e9dd;
+  --dt-lamp: #e9b45c;
+  --dt-lamp-deep: #c98f36;
+  --dt-blush: #d4867f;
+  --dt-blush-soft: #f5ded9;
+  --dt-sage: #6d8f83;
+  --dt-ink: #191c28;
+  --dt-muted: #5c6274;
+  --dt-line: #ded2c2;
+
+  --dt-radius: 20px;
+  --dt-radius-lg: 32px;
+  --dt-shadow: 0 20px 60px rgba(27, 35, 64, 0.12);
+  --dt-shadow-soft: 0 10px 30px rgba(27, 35, 64, 0.08);
+  --dt-max: 1080px;
+
+  --dt-display: Fraunces, Georgia, "Times New Roman", serif;
+  --dt-body: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  background: var(--dt-linen);
+  color: var(--dt-ink);
+  font-family: var(--dt-body);
+  font-size: 16px;
+  line-height: 1.68;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dt-page * { box-sizing: border-box; }
+.dt-page img { display: block; max-width: 100%; }
+.dt-page a { color: inherit; }
+.dt-page :focus-visible {
+  outline: 3px solid var(--dt-lamp-deep);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.dt-skip-link {
+  position: fixed;
+  top: -90px;
+  left: 16px;
+  z-index: 5000;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--dt-ink);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.dt-skip-link:focus { top: 16px; }
+
+.dt-shell {
+  width: min(var(--dt-max), calc(100% - 44px));
+  margin-inline: auto;
+}
+
+/* ---------- Minimal header: this page is not the portfolio ---------- */
+.dt-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: rgba(251, 246, 239, 0.93);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(222, 210, 194, 0.8);
+}
+.dt-header-inner {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.dt-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.dt-mark span:first-child {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--dt-night);
+  color: var(--dt-lamp);
+  font-family: var(--dt-display);
+  font-size: 1rem;
+}
+.dt-mark small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dt-muted);
+}
+.dt-backlink {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dt-muted);
+  text-decoration: none;
+  padding: 8px 14px;
+  border: 1px solid var(--dt-line);
+  border-radius: 999px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.dt-backlink:hover { color: var(--dt-ink); border-color: var(--dt-night); }
+
+/* ---------- Typography ---------- */
+.dt-page h1, .dt-page h2, .dt-page h3 {
+  font-family: var(--dt-display);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1.12;
+  margin: 0;
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+}
+.dt-page h1 { font-size: clamp(2.15rem, 5.4vw, 3.7rem); }
+.dt-page h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
+.dt-page h3 { font-size: 1.22rem; line-height: 1.25; }
+.dt-page h1 em, .dt-page h2 em { font-style: italic; color: var(--dt-blush); }
+
+.dt-eyebrow {
+  margin: 0 0 18px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--dt-lamp-deep);
+}
+.dt-lead {
+  font-size: clamp(1.02rem, 1.7vw, 1.16rem);
+  color: var(--dt-muted);
+  max-width: 60ch;
+}
+
+/* ---------- Sections ---------- */
+.dt-section { padding: clamp(58px, 8vw, 104px) 0; }
+.dt-section-linen { background: var(--dt-linen-2); }
+.dt-section-night {
+  background: var(--dt-night);
+  color: var(--dt-linen);
+}
+.dt-section-night h2 { color: var(--dt-linen); }
+.dt-section-night .dt-eyebrow { color: var(--dt-lamp); }
+.dt-section-night .dt-lead { color: rgba(251, 246, 239, 0.75); }
+
+.dt-section-head { max-width: 62ch; margin-bottom: clamp(30px, 4vw, 48px); }
+.dt-section-head h2 { margin-bottom: 14px; }
+
+/* ---------- Hero ---------- */
+.dt-hero {
+  padding: clamp(48px, 7vw, 88px) 0 clamp(40px, 6vw, 72px);
+  background:
+    radial-gradient(1100px 460px at 82% -8%, rgba(233, 180, 92, 0.22), transparent 62%),
+    radial-gradient(760px 400px at 6% 8%, rgba(212, 134, 127, 0.15), transparent 60%),
+    var(--dt-linen);
+}
+.dt-hero h1 { margin-bottom: 20px; max-width: 17ch; }
+.dt-hero .dt-lead { margin: 0 0 30px; }
+
+/* ---------- SIGNATURE: the pairing device ----------
+   Every pair states the same idea the page is about: the loud thing and
+   the quiet thing belong to one person. Used in the hero and again in
+   "What life with me looks like". The connector is the page's motif. */
+.dt-pair {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 0;
+  margin: 0 0 18px;
+}
+.dt-pair-hero { margin-top: 34px; }
+.dt-pair-card {
+  background: #fff;
+  border: 1px solid var(--dt-line);
+  border-radius: var(--dt-radius);
+  padding: 20px 22px;
+  box-shadow: var(--dt-shadow-soft);
+}
+.dt-pair-card small {
+  display: block;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.dt-pair-card:first-child small { color: var(--dt-blush); }
+.dt-pair-card:last-child small { color: var(--dt-sage); }
+.dt-pair-card p {
+  margin: 0;
+  font-family: var(--dt-display);
+  font-size: 1.08rem;
+  line-height: 1.32;
+  font-variation-settings: "SOFT" 40, "WONK" 1;
+}
+.dt-pair-link {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  position: relative;
+}
+.dt-pair-link::before,
+.dt-pair-link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 1px;
+  background: var(--dt-line);
+}
+.dt-pair-link::before { left: 2px; }
+.dt-pair-link::after { right: 2px; }
+.dt-pair-amp {
+  position: relative;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--dt-lamp);
+  color: var(--dt-night);
+  font-family: var(--dt-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.dt-section-night .dt-pair-card {
+  background: var(--dt-night-2);
+  border-color: var(--dt-night-3);
+  box-shadow: none;
+  color: var(--dt-linen);
+}
+.dt-section-night .dt-pair-link::before,
+.dt-section-night .dt-pair-link::after { background: var(--dt-night-3); }
+
+@media (max-width: 640px) {
+  .dt-pair { grid-template-columns: 1fr; }
+  .dt-pair-link { width: 100%; height: 42px; }
+  .dt-pair-link::before, .dt-pair-link::after {
+    top: auto; left: 50%; width: 1px; height: 12px;
+  }
+  .dt-pair-link::before { top: 2px; }
+  .dt-pair-link::after { bottom: 2px; }
+}
+
+/* ---------- Prose ---------- */
+.dt-prose { max-width: 64ch; }
+.dt-prose p { margin: 0 0 18px; font-size: 1.03rem; }
+.dt-prose p:last-child { margin-bottom: 0; }
+.dt-heading-spaced { margin-bottom: 22px !important; }
+
+.dt-two-col {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+@media (max-width: 860px) { .dt-two-col { grid-template-columns: 1fr; } }
+
+.dt-aside {
+  background: #fff;
+  border: 1px solid var(--dt-line);
+  border-radius: var(--dt-radius);
+  padding: 24px 26px;
+  box-shadow: var(--dt-shadow-soft);
+}
+.dt-aside h3 { margin-bottom: 14px; font-size: 1.05rem; }
+.dt-aside dl { margin: 0; display: grid; gap: 13px; }
+.dt-aside dt {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--dt-muted);
+}
+.dt-aside dd { margin: 2px 0 0; font-size: 0.95rem; }
+
+/* ---------- Tag cloud ---------- */
+.dt-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+.dt-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--dt-line);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+.dt-tag i { font-style: normal; font-size: 0.98rem; line-height: 1; }
+.dt-section-night .dt-tag {
+  background: var(--dt-night-2);
+  border-color: var(--dt-night-3);
+  color: var(--dt-linen);
+}
+
+/* ---------- Generic card grids ---------- */
+.dt-grid { display: grid; gap: 16px; }
+.dt-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.dt-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.dt-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.dt-facts-grid { margin-bottom: clamp(44px, 6vw, 72px); }
+.dt-section-head-compact { margin-bottom: 24px; }
+@media (max-width: 900px) {
+  .dt-grid-3, .dt-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .dt-grid-2, .dt-grid-3, .dt-grid-4 { grid-template-columns: 1fr; }
+}
+
+.dt-card {
+  background: #fff;
+  border: 1px solid var(--dt-line);
+  border-radius: var(--dt-radius);
+  padding: 22px 24px;
+  box-shadow: var(--dt-shadow-soft);
+}
+.dt-card h3 { margin-bottom: 9px; }
+.dt-card p { margin: 0; color: var(--dt-muted); font-size: 0.95rem; }
+.dt-card .dt-card-kicker {
+  display: block;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dt-lamp-deep);
+  margin-bottom: 9px;
+}
+
+/* Small "fact" chips — deliberately terse */
+.dt-fact {
+  background: #fff;
+  border: 1px solid var(--dt-line);
+  border-radius: 16px;
+  padding: 17px 19px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.dt-fact i {
+  font-style: normal;
+  font-size: 1.18rem;
+  line-height: 1.2;
+  flex: 0 0 auto;
+}
+.dt-fact span { font-size: 0.93rem; font-weight: 500; line-height: 1.42; }
+.dt-section-night .dt-fact {
+  background: var(--dt-night-2);
+  border-color: var(--dt-night-3);
+  color: var(--dt-linen);
+}
+
+/* ---------- Numbered date ideas ---------- */
+.dt-date-list { display: grid; gap: 12px; counter-reset: dtdate; }
+.dt-date {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: baseline;
+  padding: 18px 22px;
+  background: #fff;
+  border: 1px solid var(--dt-line);
+  border-radius: var(--dt-radius);
+}
+.dt-date::before {
+  counter-increment: dtdate;
+  content: counter(dtdate, decimal-leading-zero);
+  font-family: var(--dt-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dt-lamp-deep);
+}
+.dt-date strong { display: block; font-size: 1rem; margin-bottom: 3px; }
+.dt-date span { color: var(--dt-muted); font-size: 0.93rem; }
+
+/* ---------- Conversation starters ---------- */
+.dt-starters { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.dt-starters li {
+  position: relative;
+  padding: 14px 18px 14px 46px;
+  border-radius: 14px;
+  background: rgba(251, 246, 239, 0.06);
+  border: 1px solid var(--dt-night-3);
+  font-size: 0.98rem;
+}
+.dt-starters li::before {
+  content: "“";
+  position: absolute;
+  left: 17px;
+  top: 12px;
+  font-family: var(--dt-display);
+  font-size: 1.7rem;
+  line-height: 1;
+  color: var(--dt-lamp);
+}
+
+/* ---------- Closing / CTA ---------- */
+.dt-cta {
+  background: linear-gradient(140deg, var(--dt-blush-soft), var(--dt-linen) 62%);
+  border: 1px solid var(--dt-line);
+  border-radius: var(--dt-radius-lg);
+  padding: clamp(30px, 5vw, 52px);
+  box-shadow: var(--dt-shadow);
+}
+.dt-cta h2 { margin-bottom: 14px; max-width: 20ch; }
+
+.dt-button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.94rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.2s ease, color 0.2s ease;
+}
+.dt-button:hover { transform: translateY(-1px); }
+.dt-button-primary { background: var(--dt-night); color: var(--dt-linen); }
+.dt-button-primary:hover { background: var(--dt-night-2); }
+.dt-button-ghost {
+  background: transparent;
+  color: var(--dt-ink);
+  border-color: var(--dt-night);
+}
+.dt-button-ghost:hover { background: rgba(27, 35, 64, 0.06); }
+.dt-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+
+/* ---------- Form ---------- */
+.dt-form { margin-top: 28px; display: grid; gap: 18px; }
+.dt-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 560px) { .dt-form-row { grid-template-columns: 1fr; } }
+.dt-field { display: grid; gap: 7px; }
+.dt-field label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; }
+.dt-field input,
+.dt-field select,
+.dt-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--dt-line);
+  background: #fff;
+  color: var(--dt-ink);
+  font: inherit;
+  font-size: 0.95rem;
+}
+.dt-field textarea { resize: vertical; min-height: 130px; }
+.dt-hint { margin: 0; font-size: 0.82rem; color: var(--dt-muted); }
+.dt-form-privacy { margin-top: 14px; }
+.dt-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.dt-form-status { margin: 0; font-size: 0.9rem; font-weight: 600; min-height: 1.2em; }
+.dt-form-status[data-state="error"] { color: #a43a42; }
+.dt-form-status[data-state="success"] { color: #2f6b4f; }
+
+/* ---------- Footer ---------- */
+.dt-footer {
+  background: var(--dt-night);
+  color: rgba(251, 246, 239, 0.72);
+  padding: 40px 0;
+  font-size: 0.86rem;
+}
+.dt-footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+.dt-footer a { color: var(--dt-lamp); text-decoration: none; }
+.dt-footer a:hover { text-decoration: underline; }
+.dt-footer-copy { margin: 0; }
+
+/* ---------- Motion ---------- */
+.dt-page .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.dt-page .reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .dt-page .reveal { opacity: 1; transform: none; transition: none; }
+  .dt-button:hover { transform: none; }
+  .dt-page * { scroll-behavior: auto !important; }
+}
+@media (scripting: none) {
+  .dt-page .reveal { opacity: 1; transform: none; transition: none; }
+}
