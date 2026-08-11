@@ -995,6 +995,51 @@ details[open] summary::after { content: "−"; }
   .project-cover .stamp { right: 10px; }
 }
 
+/* 2026-08-12 v7.3 Work hero: a close care conversation, not empty-room cropping. */
+.page-hero-grid > .work-care-hero {
+  display: grid;
+  grid-template-rows: auto auto;
+  min-height: 0;
+  align-self: center;
+  overflow: hidden;
+  background: var(--navy);
+}
+.page-hero-grid > .work-care-hero::after {
+  display: none;
+}
+.page-hero-grid > .work-care-hero > .editorial-photo {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+}
+.page-hero-grid > .work-care-hero > .media-caption {
+  position: relative;
+  inset: auto;
+  padding: 22px 25px 24px;
+  background: var(--navy);
+}
+.page-hero-grid > .work-care-hero > .media-caption span {
+  margin-top: 6px;
+  line-height: 1.55;
+}
+
+@media (max-width: 980px) {
+  .page-hero-grid > .work-care-hero {
+    width: min(100%, 720px);
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-hero-grid > .work-care-hero > .media-caption {
+    padding: 19px 20px 21px;
+  }
+}
+
 @media (max-width: 480px) {
   .brand-copy small { display: none; }
   .brand { gap: 9px; }

@@ -341,12 +341,30 @@
 }
 
 .dt-weekends article {
-  padding: 27px 30px;
+  overflow: hidden;
+  padding: 0;
   border: 1px solid var(--dt-line);
   border-radius: var(--dt-radius);
   background: var(--dt-paper);
   box-shadow: var(--dt-shadow-soft);
 }
+
+.dt-weekend-image {
+  overflow: hidden;
+  background: var(--dt-night);
+}
+
+.dt-weekend-image img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.16);
+  transition: transform 650ms cubic-bezier(.2,.75,.18,1);
+}
+
+.dt-weekend-card:hover .dt-weekend-image img { transform: scale(1.2); }
+.dt-weekend-copy { padding: 25px 29px 29px; }
 
 .dt-weekends article:first-child { border-top-right-radius: 8px; }
 .dt-weekends article:last-child { border-top-left-radius: 8px; }
@@ -383,6 +401,10 @@
 
 /* Main sections */
 .dt-section { padding: clamp(76px, 9vw, 132px) 0; }
+#about,
+#life-together,
+#looking-for,
+#say-hello { scroll-margin-top: 92px; }
 .dt-section-linen { background: var(--dt-cream-2); }
 .dt-section-night { background: var(--dt-night); color: var(--dt-cream); }
 .dt-section-night .dt-eyebrow { color: var(--dt-gold); }
@@ -426,15 +448,50 @@
 
 .dt-detail-card-wide {
   grid-row: span 2;
-  min-height: 558px;
+  min-height: 620px;
+  padding: 0;
+  background: var(--dt-paper);
+}
+
+.dt-heritage-visual {
+  position: relative;
+  overflow: hidden;
+  background: var(--dt-night);
+}
+
+.dt-heritage-visual::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 34%;
+  background: linear-gradient(transparent, rgba(24, 33, 61, 0.4));
+  pointer-events: none;
+}
+
+.dt-heritage-visual img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center 48%;
+}
+
+.dt-detail-copy { padding: 30px 34px 35px; }
+.dt-origin-line {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background:
-    linear-gradient(180deg, rgba(255, 253, 249, 0.4), var(--dt-paper) 72%),
-    radial-gradient(circle at 80% 14%, rgba(214, 155, 61, 0.34), transparent 38%),
-    radial-gradient(circle at 12% 4%, rgba(152, 70, 65, 0.2), transparent 45%),
-    var(--dt-paper);
+  flex-wrap: wrap;
+  gap: 5px 10px;
+  margin: 0 0 17px;
+  color: var(--dt-gold-dark);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.dt-detail-card-wide .dt-card-number {
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.78);
+  text-shadow: 0 3px 18px rgba(24, 33, 61, 0.34);
 }
 
 .dt-card-number {
@@ -450,6 +507,7 @@
 
 .dt-detail-card h3 { max-width: 22ch; }
 .dt-detail-card > p:last-child { max-width: 56ch; margin: 15px 0 0; color: var(--dt-muted); }
+.dt-detail-copy > p:last-child { max-width: 56ch; margin: 15px 0 0; color: var(--dt-muted); }
 
 /* Life together */
 .dt-life-grid {
@@ -580,14 +638,71 @@
 .dt-date-card p { margin: 12px 0 0; color: var(--dt-muted); }
 
 /* Personality */
+.dt-personality-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(30px, 5vw, 58px);
+  align-items: start;
+}
+
+.dt-anime-card {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid rgba(214, 155, 61, 0.5);
+  border-radius: 28px;
+  background: var(--dt-cream);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.28);
+  transform: rotate(-0.8deg);
+}
+
+.dt-anime-card::before {
+  content: "SIDE QUEST";
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  right: 16px;
+  padding: 8px 11px;
+  border-radius: 9px;
+  background: var(--dt-gold);
+  color: var(--dt-night);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  box-shadow: 0 8px 24px rgba(24, 33, 61, 0.2);
+  transform: rotate(2deg);
+}
+
+.dt-anime-card img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.dt-anime-card figcaption {
+  display: grid;
+  gap: 5px;
+  padding: 21px 23px 24px;
+  background: var(--dt-wine);
+  color: #fff;
+}
+
+.dt-anime-card figcaption strong {
+  font-family: var(--dt-display);
+  font-size: 1.16rem;
+}
+
+.dt-anime-card figcaption span { color: rgba(255, 255, 255, 0.78); font-size: 0.83rem; }
+.dt-personality-stack { min-width: 0; }
+
 .dt-personality-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
 .dt-personality-grid > div {
-  min-height: 152px;
+  min-height: 140px;
   padding: 24px;
   border: 1px solid var(--dt-night-3);
   border-radius: 18px;
@@ -602,8 +717,8 @@
   grid-template-columns: auto 1fr;
   gap: 34px;
   align-items: start;
-  margin-top: 46px;
-  padding-top: 32px;
+  margin-top: 24px;
+  padding-top: 26px;
   border-top: 1px solid var(--dt-night-3);
 }
 .dt-prompts p { margin: 0; color: var(--dt-cream); font-weight: 800; }
@@ -728,11 +843,13 @@
   .dt-weekends article:last-child { border-radius: var(--dt-radius); }
   .dt-weekends-join { margin: -5px auto; }
   .dt-detail-grid { grid-template-columns: 1fr; }
-  .dt-detail-card-wide { grid-row: auto; min-height: 340px; }
+  .dt-detail-card-wide { grid-row: auto; min-height: 0; }
   .dt-life-grid,
   .dt-values-grid,
   .dt-date-grid { grid-template-columns: 1fr; }
   .dt-bring { grid-template-columns: 1fr; gap: 28px; }
+  .dt-personality-layout { grid-template-columns: 1fr; }
+  .dt-anime-card { width: min(100%, 440px); margin-inline: auto; transform: none; }
   .dt-contact-copy { position: static; }
 }
 
@@ -749,10 +866,12 @@
   .dt-actions { display: grid; grid-template-columns: 1fr; }
   .dt-actions .dt-button { width: 100%; }
   .dt-portrait::before { right: -7px; }
-  .dt-detail-card,
+  .dt-detail-card:not(.dt-detail-card-wide),
   .dt-life-card,
   .dt-value-card,
   .dt-date-card { padding: 24px; }
+  .dt-weekend-copy { padding: 22px 23px 25px; }
+  .dt-detail-copy { padding: 24px; }
   .dt-intention-list > div { grid-template-columns: 1fr; gap: 5px; }
   .dt-personality-grid { grid-template-columns: 1fr; }
   .dt-prompts { grid-template-columns: 1fr; gap: 15px; }

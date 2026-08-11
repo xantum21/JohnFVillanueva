@@ -15,7 +15,7 @@
 <link href="/assets/favicon-32-v3.png" rel="icon" sizes="32x32" type="image/png">
 <link href="/favicon.ico" rel="shortcut icon">
 <link href="/assets/apple-touch-icon-v3.png" rel="apple-touch-icon" sizes="180x180">
-<link href="/assets/dating.css?v=20260812v71" rel="stylesheet">
+<link href="/assets/dating.css?v=20260812v73" rel="stylesheet">
 </head>
 
 <body class="dt-page">
@@ -69,16 +69,26 @@
       </div>
 
       <div class="dt-weekends reveal" aria-label="A balanced kind of weekend">
-        <article>
-          <small>One weekend</small>
-          <h2>Go somewhere.</h2>
-          <p>Try a new restaurant, wander a museum, or turn a day trip into a full afternoon.</p>
+        <article class="dt-weekend-card">
+          <div class="dt-weekend-image">
+            <img alt="A lively Tokyo street, representing John's love of travel and exploring" height="844" loading="lazy" src="assets/editorial/life-travel-v6.webp" width="1500">
+          </div>
+          <div class="dt-weekend-copy">
+            <small>One weekend</small>
+            <h2>Go somewhere.</h2>
+            <p>Try a new restaurant, wander a museum, or turn a day trip into a full afternoon.</p>
+          </div>
         </article>
         <span class="dt-weekends-join" aria-hidden="true">&amp;</span>
-        <article>
-          <small>The next</small>
-          <h2>Stay in.</h2>
-          <p>Cook dinner, choose a game or movie, and talk longer than either of us planned.</p>
+        <article class="dt-weekend-card">
+          <div class="dt-weekend-image">
+            <img alt="A colorful PC gaming setup, representing one of John's favorite quiet nights in" height="844" loading="lazy" src="assets/editorial/life-gaming-v6.webp" width="1500">
+          </div>
+          <div class="dt-weekend-copy">
+            <small>The next</small>
+            <h2>Stay in.</h2>
+            <p>Cook dinner, choose a game or movie, and talk longer than either of us planned.</p>
+          </div>
         </article>
       </div>
     </div>
@@ -100,9 +110,15 @@
     <div class="dt-shell dt-detail-grid">
       <article class="dt-detail-card dt-detail-card-wide reveal">
         <span class="dt-card-number">01</span>
-        <p class="dt-card-kicker">Where I come from</p>
-        <h3>Filipino American, with a family map that stretches.</h3>
-        <p>I grew up understanding that home can be more than one place. Family ties in the Philippines and Australia shaped how I think about culture, belonging, and showing up for people.</p>
+        <div class="dt-heritage-visual">
+          <img alt="An original heritage illustration weaving a golden Filipino sun, American-inspired stripes, and Australia's Southern Cross into one design" height="1086" loading="lazy" src="assets/dating/heritage-story-v73.webp" width="1448">
+        </div>
+        <div class="dt-detail-copy">
+          <p class="dt-origin-line">Philippines <span aria-hidden="true">·</span> United States <span aria-hidden="true">·</span> Australia</p>
+          <p class="dt-card-kicker">Where I come from</p>
+          <h3>Filipino American, with a family map that stretches.</h3>
+          <p>I grew up understanding that home can be more than one place. Family ties in the Philippines and Australia shaped how I think about culture, belonging, and showing up for people.</p>
+        </div>
       </article>
 
       <article class="dt-detail-card reveal">
@@ -253,24 +269,37 @@
       <div class="dt-section-head reveal">
         <p class="dt-eyebrow">Unmistakably me</p>
         <h2>The interests that keep showing up.</h2>
+        <p>These are actual parts of my week—not personality keywords added for the page.</p>
       </div>
 
-      <div class="dt-personality-grid reveal">
-        <div><strong>Gaming</strong><span>RPGs, strategy, co-op, and the occasional ranked mistake</span></div>
-        <div><strong>Japanese</strong><span>Learning slowly, practicing stubbornly</span></div>
-        <div><strong>Travel</strong><span>Asia-Pacific, family visits, and food worth a detour</span></div>
-        <div><strong>Karaoke</strong><span>Once the microphone is on, commitment is mandatory</span></div>
-        <div><strong>Making things</strong><span>PCs, browser projects, ambitious weekend recipes</span></div>
-        <div><strong>Culture</strong><span>Anime, museums, festivals, conventions, and Renaissance fairs</span></div>
-      </div>
+      <div class="dt-personality-layout">
+        <figure class="dt-anime-card reveal">
+          <img alt="A playful anime-style illustration of John with his glasses, game controller, travel bag, and karaoke microphone" height="1200" loading="lazy" src="assets/dating/anime-john-v73.webp" width="900">
+          <figcaption>
+            <strong>Off-duty John, anime edition.</strong>
+            <span>Controller packed. Trip half-planned. Karaoke mic somehow made the carry-on.</span>
+          </figcaption>
+        </figure>
 
-      <div class="dt-prompts reveal">
-        <p>Easy ways to start a conversation:</p>
-        <ul>
-          <li>What can you talk about for way too long?</li>
-          <li>What trip or meal still lives in your head?</li>
-          <li>What does your ideal no-plans day look like?</li>
-        </ul>
+        <div class="dt-personality-stack">
+          <div class="dt-personality-grid reveal">
+            <div><strong>Gaming</strong><span>RPGs, strategy, co-op, and the occasional ranked mistake</span></div>
+            <div><strong>Japanese</strong><span>Learning slowly, practicing stubbornly</span></div>
+            <div><strong>Travel</strong><span>Asia-Pacific, family visits, and food worth a detour</span></div>
+            <div><strong>Karaoke</strong><span>Once the microphone is on, commitment is mandatory</span></div>
+            <div><strong>Making things</strong><span>PCs, browser projects, ambitious weekend recipes</span></div>
+            <div><strong>Culture</strong><span>Anime, museums, festivals, conventions, and Renaissance fairs</span></div>
+          </div>
+
+          <div class="dt-prompts reveal">
+            <p>Easy ways to start a conversation:</p>
+            <ul>
+              <li>What can you talk about for way too long?</li>
+              <li>What trip or meal still lives in your head?</li>
+              <li>What does your ideal no-plans day look like?</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -344,6 +373,6 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=20260812v71" defer></script>
+<script src="/assets/site.js?v=20260812v73" defer></script>
 </body>
 </html>
