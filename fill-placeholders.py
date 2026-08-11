@@ -10,9 +10,9 @@ dictionary below, then run:
 It rewrites the HTML in place and prints what it changed. Run check-site.py
 afterwards to confirm nothing is left unfilled.
 
-This release is intentionally prepared as the post-August-12, 2026 version so
-the site can be finished before a full class and work schedule resumes. Update
-the dated facts here whenever the public site needs another refresh.
+This release is prepared on August 11, 2026, before the scheduled ACLS, PALS,
+and Basic EKG training. Update the dated facts here only after issued
+documentation confirms completion.
 """
 
 import os
@@ -49,9 +49,9 @@ VALUES = {
     #   "scheduled March 2027"   (registered, not yet taken)
     #   "in progress"            (course underway)
     #   "certified May 2027"     (completed - update the card wording too)
-    "ACLS_STATUS": "current",
-    "PALS_STATUS": "current",
-    "EKG_STATUS": "completed",
+    "ACLS_STATUS": "scheduled August 12, 2026",
+    "PALS_STATUS": "scheduled August 12, 2026",
+    "EKG_STATUS": "scheduled August 12, 2026",
 
     # IMPORTANT - read this one carefully.
     # Your resume PDF currently says "1,000+ hours of PAID direct patient-care
@@ -68,7 +68,7 @@ VALUES = {
     #    skilled nursing with supervised clinical rotation hours completed
     #    through Nightingale College. Both are direct, hands-on patient contact."
     #   ...and change the resume PDF so it no longer says "paid."
-    "HOURS_BASIS": "The 1,000+ total combines hands-on paid CNA care with supervised clinical practice completed during BSN training. Employment verification and clinical records are available to legitimate employers during a formal hiring process.",
+    "HOURS_BASIS": "All 1,000+ hours are paid CNA bedside care. Supervised BSN clinical hours are documented separately through Nightingale College and are not included in that number.",
 }
 # ---------------------------------------------------------------------------
 

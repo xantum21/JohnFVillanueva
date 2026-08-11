@@ -182,8 +182,8 @@ def build_resume(output_path=OUTPUT):
             [
                 Paragraph(
                     "California Certified Nursing Assistant and BSN candidate with "
-                    "1,000+ combined hours of direct patient contact across paid CNA care "
-                    "and supervised clinical practice. Brings an earlier foundation in business "
+                    "1,000+ hours of paid CNA bedside care. Supervised BSN clinical practice "
+                    "is documented separately. Brings an earlier foundation in business "
                     "banking, marketing, leadership, technology, and client service.",
                     styles["body"],
                 ),
@@ -201,8 +201,8 @@ def build_resume(output_path=OUTPUT):
             "Healthcare Experience",
             [
                 *role(
-                    "Certified Nursing Assistant",
-                    "Skilled nursing and sub-acute care | 2026-Present",
+                    "Certified Nursing Assistant - Rosewood Post Acute",
+                    "Pleasant Hill, CA | January 2026-Present",
                     [
                         "<bullet>&bull;</bullet>Provide direct resident care including activities of daily living, mobility, transfers, repositioning, toileting, feeding, hygiene, comfort, vital signs, and intake/output observations.",
                         "<bullet>&bull;</bullet>Report changes in condition and support accurate handoff, PointClickCare workflows, infection prevention, fall prevention, skin safety, rehabilitation, and discharge readiness.",
@@ -235,11 +235,11 @@ def build_resume(output_path=OUTPUT):
                     styles["compact"],
                 ),
                 Paragraph(
-                    "<b>Associate Degrees / Honors</b> - Los Medanos College | 2015 | GPA 3.5 | Math and Science; Arts and Humanities; Behavioral and Social Sciences; Honors Scholar",
+                    "<b>Associate of Liberal Arts / Honors</b> - Los Medanos College | 2015 | GPA 3.5 | Math and Science; Arts and Humanities; Behavioral and Social Sciences; Honors Scholar",
                     styles["compact"],
                 ),
                 Paragraph(
-                    "<b>RN path:</b> Targeting NCLEX-RN May-June 2027, subject to eligibility and authorization to test. Seeking a structured new-graduate RN residency following licensure in Summer 2027; Bay Area and Sacramento region; night and rotating schedules welcome.",
+                    "<b>RN path:</b> Plans to take the NCLEX-RN in May-June 2027 after graduation. Seeking a structured new-graduate RN residency following licensure in Summer 2027; Bay Area and Sacramento region; night and rotating schedules welcome.",
                     styles["compact"],
                 ),
             ],
@@ -251,7 +251,7 @@ def build_resume(output_path=OUTPUT):
             "Credentials",
             [
                 Paragraph(
-                    "California Certified Nursing Assistant - Active | AHA BLS Provider - Current | ACLS - Current | PALS - Current<br/>Basic EKG Interpretation - Completed",
+                    "California Certified Nursing Assistant - Active | AHA BLS Provider - Current<br/>ACLS, PALS, and Basic EKG Interpretation training - Scheduled August 12, 2026",
                     styles["compact"],
                 ),
                 Paragraph(
@@ -315,7 +315,7 @@ def build_resume(output_path=OUTPUT):
     canvas.setFillColor(MUTED)
     canvas.setFont(FONT_REGULAR, 6.7)
     canvas.drawString(36, 23, "Public resume | Contact: johnfvillanueva.com/contact.html")
-    canvas.drawRightString(576, 23, "Updated August 2026 | Verification available to employers")
+    canvas.drawRightString(576, 23, "Updated August 11, 2026 | Verification available to employers")
 
     canvas.save()
     return output_path

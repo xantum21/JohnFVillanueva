@@ -1,7 +1,6 @@
 # Deployment checklist
 
-No copy, design, or code editing is required before deployment. This package is
-prepared as the post-August-12, 2026 version.
+This package is ready to copy into the existing GitHub Pages repository.
 
 ## In GitHub Desktop
 
@@ -10,27 +9,29 @@ prepared as the post-August-12, 2026 version.
 3. Copy everything inside `COPY-CONTENTS-INTO-REPOSITORY` into the repository
    root and choose **Replace** when Windows asks.
 4. Confirm GitHub Desktop shows the changed files.
-5. Commit with `Deploy website release 2026-08-12-v7.4` and push.
+5. Commit with `Deploy website release 2026-08-11-v7.5` and push.
 
 ## After GitHub Pages finishes
 
 1. Open `https://johnfvillanueva.com/release-version.txt` and confirm the first
-   line says `2026-08-12-v7.4`.
-2. Open the homepage, Work, Projects, Play Hub, Contact, and the unlisted
-   personal page once on desktop and once on a phone.
-3. Download the public resume and confirm it opens as one page.
-4. Submit one professional and one personal contact-form test and verify both
-   messages arrive with the correct subject.
-5. Launch Dino Kart Racer in a current desktop browser with hardware
-   acceleration enabled.
+   line says `2026-08-11-v7.5`.
+2. Open Timeline and test a year, a category filter, search, an expandable entry,
+   an era jump, Play years, and a copied deep link on desktop and phone.
+3. Open Work and confirm ACLS, PALS, and Basic EKG are labeled **scheduled**.
+4. Download the public résumé and confirm it opens as one page.
+5. Test the professional contact form.
+6. Launch Dino Kart Racer in a current desktop browser with hardware acceleration enabled.
 
-## Future maintenance only
+## After the August 12 training
 
-- Update certification expiration dates when the issued cards provide them.
-- Update the BSN, NCLEX-RN, and availability language as eligibility and
-  licensure milestones occur.
-- Replace the public resume whenever those professional facts change by running
-  `python3 build-public-resume.py`.
-- A domain email alias and a genuine third-party recommendation could improve
-  recruiter conversion later, but neither is required for this deployment and
-  neither has been fabricated in the current build.
+Only after the courses and issued documentation are complete:
+
+- Change ACLS and PALS from **scheduled** to **current**.
+- Change Basic EKG Interpretation from **scheduled** to **completed**.
+- Add issued dates or expiration dates only when the cards make those dates clear.
+- Rebuild the public résumé with `python3 build-public-resume.py`.
+- Run `python3 check-site.py` and `node --check assets/site.js` before the next push.
+
+A domain email alias and a genuine third-party recommendation may improve
+recruiter conversion later. Neither has been fabricated in this release.
+

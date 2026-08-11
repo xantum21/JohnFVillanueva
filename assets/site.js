@@ -7,8 +7,11 @@
   };
 
   // Browsers can restore the previous DOM exactly as it was when navigating Back.
-  // Always clear transition classes so a cached page can never remain covered.
-  window.addEventListener('pageshow', clearPageTransitionState);
+  // Clear transition classes only for a bfcache restore so a normal entrance
+  // animation is not cancelled on every warm load.
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) clearPageTransitionState();
+  });
 
   if (!reducedMotion) {
     const transition = document.createElement('div');

@@ -23,7 +23,7 @@ os.chdir(ROOT)
 problems = []
 notes = []
 
-RELEASE_ID = "2026-08-12-v7.4"
+RELEASE_ID = "2026-08-11-v7.5"
 
 TOP_LEVEL = sorted(glob("*.html"))
 ALL_HTML = sorted(glob("*.html") + glob("*/*.html") + glob("*/*/*.html"))
@@ -352,6 +352,31 @@ if re.search(
     re.S,
 ):
     problems.append("work.html still contains a stale 2026 BSN completion target")
+for premature in (
+    "ACLS — current",
+    "PALS — current",
+    "Basic EKG Interpretation — completed",
+):
+    if premature in work_text:
+        problems.append(
+            f"work.html makes a pre-course credential claim that must remain scheduled: {premature}"
+        )
+
+timeline_text = (
+    open("timeline.html", encoding="utf-8").read()
+    if os.path.isfile("timeline.html")
+    else ""
+)
+for required in (
+    "data-archive-search",
+    "data-year-rail",
+    "data-archive-play",
+    "archive-noscript",
+):
+    if required not in timeline_text:
+        problems.append(f"timeline.html is missing interactive archive marker: {required}")
+if not os.path.isfile("assets/timeline.js"):
+    problems.append("assets/timeline.js is missing")
 
 
 # ---------------------------------------------------------- release identity
