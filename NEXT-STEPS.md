@@ -9,12 +9,12 @@ This package is ready to copy into the existing GitHub Pages repository.
 3. Copy everything inside `COPY-CONTENTS-INTO-REPOSITORY` into the repository
    root and choose **Replace** when Windows asks.
 4. Confirm GitHub Desktop shows the changed files.
-5. Commit with `Deploy website release 2026-08-11-v7.5` and push.
+5. Commit with `Deploy website release 2026-08-11-v7.6` and push.
 
 ## After GitHub Pages finishes
 
 1. Open `https://johnfvillanueva.com/release-version.txt` and confirm the first
-   line says `2026-08-11-v7.5`.
+   line says `2026-08-11-v7.6`.
 2. Open Timeline and test a year, a category filter, search, an expandable entry,
    an era jump, Play years, and a copied deep link on desktop and phone.
 3. Open Work and confirm ACLS, PALS, and Basic EKG are labeled **scheduled**.
@@ -34,4 +34,3 @@ Only after the courses and issued documentation are complete:
 
 A domain email alias and a genuine third-party recommendation may improve
 recruiter conversion later. Neither has been fabricated in this release.
-

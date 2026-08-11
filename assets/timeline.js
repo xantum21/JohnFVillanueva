@@ -47,6 +47,37 @@
 };
   const events = [
   {
+    "year": 2011,
+    "lane": "competition",
+    "title": "StarCraft II — Gold",
+    "org": "Ranked ladder",
+    "type": "Competitive gaming",
+    "date": "Season 1 · 2011",
+    "body": "Reached Gold for the first time during StarCraft II’s first ranked season.",
+    "details": [
+      "This was the first step in a rank progression that eventually reached Masters."
+    ],
+    "skills": [
+      "Strategy",
+      "Adaptation",
+      "Competitive Progression"
+    ]
+  },
+  {
+    "year": 2012,
+    "lane": "education",
+    "title": "Graduated high school",
+    "org": "Class of 2012",
+    "type": "Education",
+    "date": "2012",
+    "body": "Graduated high school in 2012, before the college and work chapters that follow.",
+    "details": [],
+    "skills": [
+      "Academic Foundation",
+      "Transition"
+    ]
+  },
+  {
     "year": 2012,
     "lane": "work",
     "title": "Sales Representative",
@@ -63,6 +94,40 @@
       "Presentation",
       "Prospecting",
       "Direct Sales"
+    ]
+  },
+  {
+    "year": 2013,
+    "lane": "competition",
+    "title": "StarCraft II — Platinum",
+    "org": "Heart of the Swarm ranked ladder",
+    "type": "Competitive gaming",
+    "date": "Season 4 · 2013",
+    "body": "Reached Platinum in Heart of the Swarm during the fourth ranked season of 2013.",
+    "details": [
+      "Continued moving up the ladder after first reaching Gold in 2011."
+    ],
+    "skills": [
+      "Game Sense",
+      "Practice",
+      "Adaptation"
+    ]
+  },
+  {
+    "year": 2014,
+    "lane": "competition",
+    "title": "StarCraft II — Diamond",
+    "org": "Heart of the Swarm ranked ladder",
+    "type": "Competitive gaming",
+    "date": "Season 2 · 2014",
+    "body": "Reached Diamond in the second ranked season of 2014.",
+    "details": [
+      "The next step after reaching Platinum in 2013."
+    ],
+    "skills": [
+      "Decision-Making",
+      "Pattern Recognition",
+      "Consistency"
     ]
   },
   {
@@ -84,6 +149,23 @@
   },
   {
     "year": 2015,
+    "lane": "competition",
+    "title": "Naruto Ultimate Ninja Storm 4 tournament semifinalist",
+    "org": "PlayStation Experience 2015",
+    "type": "Competition",
+    "date": "December 2015",
+    "body": "Reached the semifinals in the Naruto Ultimate Ninja Storm 4 tournament at PlayStation Experience in San Francisco.",
+    "details": [
+      "PlayStation officially called the event PlayStation Experience, often shortened to PSX."
+    ],
+    "skills": [
+      "Competition",
+      "Composure",
+      "Adaptation"
+    ]
+  },
+  {
+    "year": 2015,
     "lane": "recognition",
     "title": "Honors research presentation",
     "org": "Stanford University",
@@ -91,7 +173,7 @@
     "date": "May 2015",
     "body": "Presented honors research at Stanford University through the Los Medanos College honors program.",
     "details": [
-      "The surviving certificate is shown here as one of the few proof images worth keeping public."
+      "I kept this certificate on the site because it is part of the story."
     ],
     "skills": [
       "Research",
@@ -721,6 +803,23 @@
   },
   {
     "year": 2023,
+    "lane": "competition",
+    "title": "StarCraft II — Masters",
+    "org": "Ranked ladder",
+    "type": "Competitive gaming",
+    "date": "Season 3 · 2023",
+    "body": "Finally reached Masters in Season 3 after first making Gold back in 2011.",
+    "details": [
+      "The full progression was Gold in 2011, Platinum in 2013, Diamond in 2014, and Masters in 2023."
+    ],
+    "skills": [
+      "Long-Term Progress",
+      "Strategy",
+      "Persistence"
+    ]
+  },
+  {
+    "year": 2023,
     "lane": "recognition",
     "title": "PNC Certified Women’s Business Advocate",
     "org": "PNC Bank",
@@ -1262,6 +1361,25 @@
   },
   {
     "year": 2025,
+    "lane": "competition",
+    "title": "Marvel Rivals rank progression",
+    "org": "Competitive ranked play",
+    "type": "Competitive gaming",
+    "date": "January–October 2025",
+    "body": "Climbed from Gold in Season 1 to Platinum in Season 1.5, then reached Diamond in Season 4.5.",
+    "details": [
+      "Gold — Season 1, which began January 10, 2025.",
+      "Platinum — Season 1.5, which began February 21, 2025.",
+      "Diamond — Season 4.5, which began October 10, 2025."
+    ],
+    "skills": [
+      "Team Play",
+      "Adaptation",
+      "Competitive Progression"
+    ]
+  },
+  {
+    "year": 2025,
     "lane": "clinical",
     "title": "Student Nurse Clinical Rotation",
     "org": "Pikes Peak Post Acute",
@@ -1307,7 +1425,7 @@
     "date": "January 2026–April 2028",
     "body": "Earned active California Certified Nursing Assistant status after passing the required examinations in January 2026.",
     "details": [
-      "The public site confirms active status without publishing the certificate number or a scan."
+      "I keep the certificate number off the public site."
     ],
     "skills": [
       "Patient Care",
@@ -1324,7 +1442,7 @@
     "date": "Current through October 2026",
     "body": "Maintains current Basic Life Support provider status.",
     "details": [
-      "Credential identifiers remain off the public site."
+      "I can provide the credential card when it is needed."
     ],
     "skills": [
       "BLS",
@@ -1406,9 +1524,9 @@
     "org": "California BRN-approved continuing-education provider",
     "type": "Scheduled training",
     "date": "Scheduled August 12, 2026",
-    "body": "Registered for ACLS, PALS, and Basic EKG Interpretation training. This release labels the courses as scheduled because it was prepared before completion.",
+    "body": "Registered for ACLS, PALS, and Basic EKG Interpretation training scheduled for August 12, 2026.",
     "details": [
-      "Update the status only after the course and issued documentation are complete."
+      "I will update this entry after the courses are complete."
     ],
     "skills": [
       "Advanced Life Support",
@@ -1457,7 +1575,7 @@
     ]
   }
 ];
-  const years = Array.from({ length: 15 }, (_, index) => 2012 + index);
+  const years = Array.from({ length: 16 }, (_, index) => 2011 + index);
   const currentYear = 2026;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1527,7 +1645,7 @@
   const readHash = () => {
     const raw = window.location.hash.replace(/^#/, '');
     const yearMatch = raw.match(/^year-(20\d{2}|201\d)/);
-    if (yearMatch) selectedYear = Math.min(currentYear, Math.max(2012, Number(yearMatch[1])));
+    if (yearMatch) selectedYear = Math.min(currentYear, Math.max(2011, Number(yearMatch[1])));
     activeEventId = raw.includes('--') ? raw : '';
   };
 
@@ -1595,7 +1713,7 @@
       ? `<figure class="archive-proof">
           <img src="${escapeHtml(event.proof)}" alt="${escapeHtml(event.proofAlt || '')}"
             width="${proofSize.width}" height="${proofSize.height}" loading="lazy">
-          <figcaption>Selected public proof. Most credential scans and identifying numbers stay private.</figcaption>
+          <figcaption>One of the two certificate images I chose to keep on the site.</figcaption>
         </figure>`
       : '';
     const outbound = event.link
