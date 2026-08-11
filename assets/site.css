@@ -995,7 +995,7 @@ details[open] summary::after { content: "−"; }
   .project-cover .stamp { right: 10px; }
 }
 
-/* 2026-08-12 v7.3 Work hero: a close care conversation, not empty-room cropping. */
+/* 2026-08-12 v7.4 Work hero: a close care conversation, not empty-room cropping. */
 .page-hero-grid > .work-care-hero {
   display: grid;
   grid-template-rows: auto auto;

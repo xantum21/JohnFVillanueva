@@ -1,4 +1,4 @@
-JohnFVillanueva website release: 2026-08-12-v7.3
+JohnFVillanueva website release: 2026-08-12-v7.4
 
 Prepared as the post-August-12 deployment build.
 
