@@ -251,7 +251,7 @@ def build_resume(output_path=OUTPUT):
             "Credentials",
             [
                 Paragraph(
-                    "California Certified Nursing Assistant - active | AHA BLS Provider - current | Basic EKG Interpretation - completed Aug 1, 2026 | ACLS - completed Aug 12, 2026 | PALS - completed Aug 12, 2026",
+                    "California Certified Nursing Assistant - Active | AHA BLS Provider - Current | ACLS - Current | PALS - Current<br/>Basic EKG Interpretation - Completed",
                     styles["compact"],
                 ),
                 Paragraph(

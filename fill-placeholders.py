@@ -49,9 +49,9 @@ VALUES = {
     #   "scheduled March 2027"   (registered, not yet taken)
     #   "in progress"            (course underway)
     #   "certified May 2027"     (completed - update the card wording too)
-    "ACLS_STATUS": "completed August 12, 2026",
-    "PALS_STATUS": "completed August 12, 2026",
-    "EKG_STATUS": "completed August 1, 2026",
+    "ACLS_STATUS": "current",
+    "PALS_STATUS": "current",
+    "EKG_STATUS": "completed",
 
     # IMPORTANT - read this one carefully.
     # Your resume PDF currently says "1,000+ hours of PAID direct patient-care

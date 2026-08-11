@@ -10,12 +10,12 @@ prepared as the post-August-12, 2026 version.
 3. Copy everything inside `COPY-CONTENTS-INTO-REPOSITORY` into the repository
    root and choose **Replace** when Windows asks.
 4. Confirm GitHub Desktop shows the changed files.
-5. Commit with `Deploy website release 2026-08-12-v7` and push.
+5. Commit with `Deploy website release 2026-08-12-v7.1` and push.
 
 ## After GitHub Pages finishes
 
 1. Open `https://johnfvillanueva.com/release-version.txt` and confirm the first
-   line says `2026-08-12-v7`.
+   line says `2026-08-12-v7.1`.
 2. Open the homepage, Work, Projects, Play Hub, Contact, and the unlisted
    personal page once on desktop and once on a phone.
 3. Download the public resume and confirm it opens as one page.

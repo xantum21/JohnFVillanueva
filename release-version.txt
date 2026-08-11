@@ -1,4 +1,4 @@
-JohnFVillanueva website release: 2026-08-12-v7
+JohnFVillanueva website release: 2026-08-12-v7.1
 
 Prepared as the post-August-12 deployment build.
 
@@ -6,8 +6,9 @@ Verification markers:
 - BSN expected completion: April 2027
 - Current BSN GPA: 3.84
 - Sigma Theta Tau: inducted August 2026
-- Basic EKG Interpretation: completed August 1, 2026
-- ACLS and PALS: completed August 12, 2026
+- Basic EKG Interpretation: completed
+- ACLS and PALS: current
 - Public resume: single-column ATS-friendly edition
+- Personal page: redesigned editorial edition with clarified relationship copy
 - Resume recognition: American Marketing Association chapter president and Smith Center Pitch Day competition finalist
 - Interactive library: 23 playable experiences across 6 collections
