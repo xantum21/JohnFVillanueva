@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta name="theme-color" content="#f9dbe4" />
+  <meta name="description" content="A private little Valentine playlist in six chapters." />
+  <link rel="canonical" href="https://johnfvillanueva.com/our-playlist/" />
+  <meta property="og:url" content="https://johnfvillanueva.com/our-playlist/" />
+  <meta property="og:title" content="A Little Love Story ♡" />
+  <meta property="og:description" content="A Valentine’s playlist in six chapters." />
+  <title>A Little Love Story ♡</title>
+  <link rel="preconnect" href="https://open.spotify.com" />
+  <link rel="preconnect" href="https://i.scdn.co" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+
+  <div id="envelope" class="envelope-screen">
+    <div class="envelope-card">
+      <div class="seal">♡</div>
+      <p class="tiny-caps">A little something for you</p>
+      <h1>Open when you have a few songs to spare.</h1>
+      <p>There are six chapters inside. Start at the beginning. 💌</p>
+      <button id="open-envelope" class="primary-button" type="button">Open the playlist</button>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="hero-flowers flower-left" aria-hidden="true">✿　♡　✿</div>
+    <div class="hero-flowers flower-right" aria-hidden="true">♡　✿　♡</div>
+    <div class="hero-inner">
+      <p id="eyebrow" class="eyebrow"></p>
+      <h1 id="page-title"></h1>
+      <p id="subtitle" class="subtitle"></p>
+      <div class="note-card">
+        <span class="note-pin">♡</span>
+        <p id="note"></p>
+      </div>
+      <a class="primary-button hero-button" href="#playlist">Begin chapter one <span aria-hidden="true">↓</span></a>
+    </div>
+  </header>
+
+  <main id="playlist">
+    <nav class="chapter-nav" aria-label="Playlist chapters">
+      <div id="chapter-nav-inner" class="chapter-nav-inner"></div>
+    </nav>
+
+    <section class="player-shell" aria-label="Spotify player">
+      <div class="now-playing-copy">
+        <span class="tiny-caps">Now playing</span>
+        <strong id="now-title">Pick a song below</strong>
+        <span id="now-artist">Your soundtrack will appear here.</span>
+      </div>
+      <div id="embed-iframe" class="spotify-frame">
+        <div class="player-loading">Loading Spotify…</div>
+      </div>
+    </section>
+
+    <div id="chapters" class="chapters"></div>
+  </main>
+
+  <footer>
+    <div class="footer-heart">♡</div>
+    <p id="signoff"></p>
+    <a href="#top">Back to the beginning ↑</a>
+  </footer>
+
+  <script src="playlist-data.js"></script>
+  <script src="script.js"></script>
+  <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+</body>
+</html>
