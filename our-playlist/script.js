@@ -92,8 +92,10 @@
 
     const lyricsButton = document.createElement('button');
     lyricsButton.type = 'button';
-    lyricsButton.className = 'stream-link lyrics-link';
-    lyricsButton.textContent = 'Lyrics ♡';
+    const lyricInfo = lyricsConfig(track);
+    const hasLyrics = Boolean(lyricInfo.originalLyrics.trim() || lyricInfo.englishLyrics.trim());
+    lyricsButton.className = `stream-link lyrics-link${hasLyrics ? ' is-ready' : ' is-pending'}`;
+    lyricsButton.textContent = hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon';
     lyricsButton.setAttribute('aria-label', `View lyrics for ${track.title}`);
     lyricsButton.addEventListener('click', () => openLyrics(track));
 
@@ -149,7 +151,11 @@
     $('#now-title').textContent = track.title;
     $('#now-artist').textContent = track.artist;
     $('#player-track-number').textContent = `${String(track.number).padStart(2,'0')} / ${allTracks.length}`;
+    const lyricInfo = lyricsConfig(track);
+    const hasLyrics = Boolean(lyricInfo.originalLyrics.trim() || lyricInfo.englishLyrics.trim());
     $('#player-lyrics').setAttribute('aria-label', `View lyrics for ${track.title}`);
+    $('#player-lyrics').textContent = hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon';
+    $('#player-lyrics').classList.toggle('is-ready', hasLyrics);
   }
 
   function updateNavigationButtons() {
@@ -242,6 +248,7 @@
       englishLabel: configured.englishLabel || 'English',
       originalLyrics: configured.originalLyrics || '',
       englishLyrics: configured.englishLyrics || '',
+      sourceLabel: configured.sourceLabel || '',
       hasTranslation: isTranslated
     };
   }
@@ -348,7 +355,7 @@
       body.appendChild(lyrics);
       note.textContent = config.hasTranslation
         ? `${activeLyricsLanguage === 'english' ? 'English translation' : config.originalLanguage + ' original'} · static letter view`
-        : 'Static letter view';
+        : (config.sourceLabel || 'Static letter view');
     } else {
       const placeholder = document.createElement('div');
       placeholder.className = 'lyrics-placeholder';

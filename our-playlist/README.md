@@ -85,3 +85,7 @@ Near the top of `playlist-data.js`, edit `window.VALENTINE_PAGE` to customize:
 ## Privacy
 
 The page includes `noindex,nofollow,noarchive`, which discourages search engines from indexing it. That makes it unlisted-ish, **not password protected**. Anyone who has the URL can still open it.
+
+
+## Part I lyric demo
+Lyrics supplied in `Part 1 Lyrics.docx` are loaded for tracks 1–5: Clinton Kane, Sam Smith, AJ Rafael, Good Kid, and Joe Brooks. Tracks 6–7 remain in the styled pending state because their lyric text was not included in that document.
