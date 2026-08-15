@@ -1176,9 +1176,597 @@ No, I've never seen anything quite like you tonight
 No, I've never seen anything quite like you tonight`
   },
 
+  // James TW — You & Me
+  "spotify:track:1bQhZOoXYqjXs7u7rFXo0h": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part III",
+    originalLyrics: `I didn't mean to hurt you
+So why'd I let you walk out the door?
+You say that you don't know me
+You don't know who I am anymore
+But if you knew the truth, then
+Then you wouldn't feel insecure
+'Cause if I didn't have you
+I wouldn't have nothing at all
+I wish you could see yourself through my eyes
+I always forget that you can't read my mind
+As long as I got you and me
+Moving through this world as a two-man team
+I'll always have everything I need
+You don't even realize what you mean
+No one could fall for you quite like me
+No one could get me so perfectly
+You don't even realize (oh-oh-oh)
+You're all that I need
+'Cause I want you and me, you and me
+I know one day, we'll look back
+Stories on the tip of our tongues
+A library full of pages
+Remembering when we fell in love
+All of the broken hearts and the stupid mistakes
+Have got us to where we are, it was worth all the pain
+Yeah, we'll look back
+We'll look back and laugh
+As long as I got you and me
+Moving through this world as a two-man team
+I'll always have everything I need
+You don't even realize what you mean
+No one could fall for you quite like me
+No one could get me so perfectly
+You don't even realize (oh-oh-oh)
+You're all that I need
+'Cause I want you, you, you
+Me, me, me, together
+Oh, I want you, you, you
+And me, me, me, forever (oh-oh-oh)
+You and me, you and me (oh-oh-oh)
+You and me, you and me (oh-oh-oh)
+You and me, you and me (oh-oh-oh)
+You and me, you and me
+As long as I got you and me
+Moving through this world as a two-man team
+I'll always have everything I need
+You don't even realize what you mean
+No one could fall for you quite like me
+No one could get me so perfectly
+You don't even realize
+You're all that I need
+'Cause I want you, you, you
+And me, me, me, together (you and me, you and me)
+Oh, I want you, you, you
+And me, me, me, forever (you and me, you and me)`
+  },
+
+  // Joe Brooks & Melissa Polinar — Dandelion Hair
+  "spotify:track:416dC1qBvWJcbgub6zCnJI": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part III",
+    originalLyrics: `I never thought that this morning would ever come
+Over mountains, through doors, we have always won
+Laid bare we′ve shared every shadowy heart
+I've played out this scene, oh, so many nights
+And for a moment, we are timeless
+Bare feet in the grass with your dandelion hair
+No, I am not scared
+If there′s one in a lifetime
+There is no doubt in my mind
+Feel the Earth as it moves
+As I stand here with you
+As your eyes meet with my eyes
+Beautiful in the sunlight
+Breathe in to me
+Feel the Earth as your heart beats faster
+My heart beats faster
+I was close but never here before
+Afraid of falling again, not to be caught
+But I see my dream as you stand before me
+As you stand before me
+I play these calloused hands and give you all I can
+I'm not much but you make me the wealthiest man
+And I'm in love, and here I stand
+So come on love, come on love
+If there′s one in a lifetime
+There is no doubt in my mind
+Feel the Earth as it moves
+As I stand here with you
+As your eyes meet with my eyes
+Beautiful in the sunlight
+Breathe in to me
+Feel the Earth as your heart beats faster
+My heart beats faster
+I′ve played out this scene, oh, so many nights
+And for a moment, we are timeless
+Bare feet in the grass with your dandelion hair`
+  },
+
+  // Jack Johnson — Better Together
+  "spotify:track:2iXdwVdzA0KrI2Q0iZNJbX": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part III",
+    originalLyrics: `There's no combination of words I could put on the back of a postcard
+No song that I could sing, but I can try for your heart
+Our dreams, and they are made out of real things
+Like a shoe box of photographs
+With sepia-toned loving
+Love is the answer, at least for most of the questions in my heart
+Like why are we here? And where do we go?
+And how come it's so hard?
+It's not always easy and
+Sometimes life can be deceiving
+I'll tell you one thing, it's always better when we're together
+Mmm, it's always better when we're together
+Yeah, we'll look at the stars when we're together
+Well, it's always better when we're together
+Yeah, it's always better when we're together
+And all of these moments
+Just might find their way into my dreams tonight
+But I know that they'll be gone
+When the morning light sings
+Or brings new things
+For tomorrow night you see
+That they'll be gone too
+Too many things I have to do
+But if all of these dreams might find their way
+Into my day to day scene
+I'd be under the impression
+I was somewhere in between
+With only two
+Just me and you
+Not so many things we got to do
+Or places we got to be
+We'll sit beneath the mango tree now
+Yeah, it's always better when we're together
+Mmm, we're somewhere in between together
+Well, it's always better when we're together
+Yeah, it's always better when we're together
+I believe in memories
+They look so, so pretty when I sleep
+Hey now and, and when I wake up
+You look so pretty sleeping next to me
+But there is not enough time
+And there is no, no song I could sing
+And there is no combination of words I could say
+But I will still tell you one thing
+We're better together`
+  },
+
+  // Ross David — Luckiest Man Alive
+  "spotify:track:6XPmY4NWIqq0CofdhhjyP4": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part III",
+    originalLyrics: `I'm telling ya
+as I see you walking down that aisle
+white dress and a great big smile and
+I must be the luckiest man alive I'm telling ya
+'bout to make this girl my wife
+I'm the luckiest man alive
+that one in a million could ever see a girl like you
+I'm feeling kinda lucky
+like my biggest dream came true
+and right now it's hard to
+stand still like I'm supposed to
+I feel like kissin' you babe
+and we both kick off our shoes
+I'm telling ya
+as I see you walking down that aisle
+white dress and a great big smile and
+I must be the luckiest man alive, I'm telling ya
+'bout to make this girl my wife
+I'm the luckiest man alive
+you've written your vows
+baby trying not to cry
+so I grab your hand
+and I kiss it just one time
+I guess it's my turn to read you all of mine
+baby words can't express this love but I'll try
+I'm telling ya
+as I see you walking down that aisle
+white dress and a great big smile and
+I must be the luckiest man alive,
+I'm telling ya
+'bout to make this girl my wife
+I must be the luckiest man alive
+I'm telling ya
+bout to say to this girl
+I do
+I can't believe that you're my wife
+but it's true
+and ooh I've got butterflies inside
+it's so new
+and i am the luckiest man, the luckiest man and
+I'm telling ya
+as I see you walking down that aisle
+white dress and a great big smile and
+I must be the luckiest man alive, I'm telling ya
+saying
+bout to see her walking down that aisel
+white dress and a great big smile
+saying
+saying
+and i see her waking dow. that aisle
+white dress and great big smile
+i must be the luckiest man alive
+'bout to make this girl my wife
+I'm the luckiest man alive`
+  },
+
+  // Tori Kelly & Ed Sheeran — I Was Made For Loving You
+  "spotify:track:1Xwh83YOFQARZ3QXscP123": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part III",
+    originalLyrics: `A dangerous plan, just this time
+A stranger's hand clutched in mine
+I'll take this chance, so call me blind
+I've been waiting all my life
+Please don't scar this young heart
+Just take my hand
+I was made for loving you
+Even though we may be hopeless hearts just passing through
+Every bone screaming, I don't know what we should do
+All I know is, darling, I was made for loving you
+Hold me close, through the night
+Don't let me go, we'll be all right
+Touch my soul and hold it tight
+I've been waiting all my life
+I won't scar your young heart
+Just take my hand
+'Cause I was made for loving you
+Even though we may be hopeless hearts just passing through
+Every bone screaming I don't know what we should do
+All I know is, darling, I was made for loving you
+Please don't go, I've been waiting so long
+Oh, you don't even know me at all
+But I was made for loving you
+I was made for loving you
+Even though we may be hopeless hearts just passing through
+Every bone screaming, I don't know what we should do
+All I know is, darling, I was made for loving you`
+  },
+
+  // Tom Walker — Better Half of Me
+  "spotify:track:114xcQz8sZ6fxRBTZmgmNE": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part III",
+    originalLyrics: `You'll always be my number one
+A whole lot more than good enough
+I'm giving everything I've got to gain every second lost
+Six years just ain't enough
+With you, I'm happy being me
+Don't pretend, 'cause I don't need to
+I'm a thousand miles from home, never on my own
+When you whisper down the phone
+Well, I guess we never saw this coming
+Halfway around the world calling
+But I just want you to know
+That I'd have all I need
+If you were standing right in front of me
+I'll finally see what it means to be complete
+Don't need to spend our lives chasing gold
+Anywhere with you, I'll call my home
+Oh, I'd have all I need
+If you'd be the better half of me
+I'm still up, it's 4 AM
+Is this Amsterdam or Berlin?
+Yeah, I'm just waiting for the day I finally get to say
+These words face to face
+Well, I guess we never saw this coming
+Halfway around the world calling
+But I just want you to know
+That I'd have all I need
+If you were standing right in front of me
+I'll finally see what it means to be complete
+Don't need to spend our lives chasing gold
+Anywhere with you, I'll call my home
+Oh, I'd have all I need
+If you'd be the better half of me
+I'd have all I need
+If you were standing right in front of me
+I'll finally see what it means to be complete
+Don't need to spend our lives chasing gold
+Anywhere with you, I'll call my home
+Oh, I'd have all I need
+If you'd be the better half of me
+If you'd be the better half of me
+Yeah, will you be the better half of me?
+Will you be the better half of me?`
+  },
+
+  // Ellie Goulding — Still Falling For You
+  "spotify:track:3odrUVQ9tvRpkC9II2oWzx": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part III",
+    originalLyrics: `Fire 'n' ice
+This love is like fire 'n' ice
+This love is like rain and blue skies
+This love is like sun on the rise
+This love got me rollin' the dice
+Don't let me lose
+Still falling for you
+Still falling for you
+Beautiful mind
+Your heart got a story with mine
+Your heart got me hurtin' at times
+Your heart gave me new kind of highs
+Your heart got me feelin' so fine
+So what to do?
+Still falling for you
+Still falling for you
+It took us a while
+With every breath a new day, with love on the line
+We've had our share of mistakes
+But all your flaws and scars are mine
+Still falling for you
+Still falling for you
+And just like that all I breathe, all I feel
+You are all for me, I'm in
+And just like that all I breathe, all I feel
+You are all for me
+No one can lift me, catch me, the way that you do
+I'm still falling for you
+Brighter than gold
+This love shinin' brighter than gold
+This love is like letters in bold
+This love is like out of control
+This love's never growin' old
+You make it new
+Still falling for you
+Still falling for you
+It took us a while 'cause we were young and unsure
+With love on the line
+What if we both would need more?
+But all your flaws and scars are mine
+Still falling for you
+Still falling for you
+Still falling for you
+And just like that all I breathe, all I feel
+You are all for me, I'm in
+And just like that, all I breathe, all I feel
+You are all for me
+No one can lift me, catch me, the way that you do
+Still falling for you
+Falling, crash into my arms
+Love you like this like a first kiss
+Never let go
+Falling, crash into my arms
+Never breakin' what we got
+Still falling for you
+Still falling for
+And just like that all I breathe, all I feel
+You are all for me, I'm in
+And just like that, all I breathe, all I feel
+You are all for me, all for me
+And just like that
+All I feel is you, all I feel is you
+You are all for me
+I'm still falling
+And just like that
+All I feel is you, all I feel is you
+You are all for me
+No one can lift me, catch me, the way that you do
+I'm still falling for you`
+  },
+
+  // Betty Who — I Love You Always Forever
+  "spotify:track:1p6rk9R8SCum97WnvGNt6O": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part III",
+    originalLyrics: `Feels like I'm standing in a timeless dream
+A light mist of pale amber rose
+Feels like I'm lost in a deep cloud of heavenly scent
+Touching, discovering you
+Those days, of warm rains come rushing back to me
+Miles of windless, summer night air
+Secret moments, shared in the heat of the afternoon
+Out of the stillness, soft spoken words
+I love you always forever
+Near and far, closer together
+Everywhere, I will be with you
+Everything, I will do for you
+I love you always forever
+Near and far, closer together
+Everywhere, I will be with you
+Everything, I will do for you!
+You've got the most unbelievable blue eyes I've ever seen
+You've got me almost melting away
+As we lay there, under a blue sky of pure white stars
+Exotic sweetness, a magical time
+I love you always forever
+Near and far, closer together
+Everywhere, I will be with you
+Everything, I will do for you
+I love you always forever
+Near and far, closer together
+Everywhere, I will be with you
+Everything, I will do for you
+Say you'll love me forever
+Never stop, never whatever
+Near and far, always and everywhere and every
+Say you'll love me forever
+Never stop, never whatever
+Near and far, always and everywhere and every
+Say you'll love me forever
+Never stop, never whatever
+Near and far, always and everywhere and every
+Say you'll love me forever
+Never stop, never whatever
+Near and far, always and everywhere and everything
+I love you always forever
+Near and far, closer together
+Everywhere, I will be with you
+Everything, I will do for you
+I love you always forever
+Near and far, closer together
+Everywhere, I will be with you
+Everything, I will do for you
+I love you always forever
+Near and far, closer together
+Everywhere, I will be with you
+Everything, I will do for you`
+  },
+
+  // Tom Walker — Just You and I
+  "spotify:track:03x2rVJRFUrvwlfxoHd9Mo": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part III",
+    originalLyrics: `Let's get drunk
+I'll pour my heart out through my mouth
+This year's been hard for us, no doubt
+Let's raise a glass to a better one
+Let all the things that we've overcome
+Bring hope to us 'cause
+Me and you, we can hold this up
+Only you understand how I'm feeling now, yeah
+And I know
+I can tell you anything
+You won't judge
+You're just listening, yeah
+'Cause you're the best thing that ever happened to me
+'Cause my darling, you and I
+Could take over the world
+One step at a time
+Just you and I (just you and I)
+'Cause you're the only one
+Who brings light just like the sun
+One step at a time
+Just you and I (just you and I)
+Let's get drunk
+Reminisce about the days
+We were broke, not getting paid
+And taking trips at the weekend
+When I would drive down to see ya
+And we would paint the town
+Too many shots, I'll be passing out
+'Cause I can never keep up
+Quad vods, now I'm puking up
+And I know
+I can tell you anything
+You won't judge
+You're just listening, yeah
+'Cause you're the best thing that ever happened to me
+'Cause my darling, you and I
+Could take over the world
+One step at a time
+Just you and I (just you and I)
+'Cause you're the only one
+Who brings light just like the sun
+One step at a time
+Just you and I (just you and I, just you and I)
+I'm tired of chasing paper
+Staring at this screen
+Been saving up for weeks now
+Just to get to you, my dear
+And though you're far from my home
+This ain't no weekend buzz
+Though my heart grows fonder
+Must be city love
+'Cause my darling, you and I
+Could take over the world
+One step at a time
+Just you and I
+'Cause my darling, you and I
+Could take over the world
+One step at a time
+Just you and I (just you and I)
+'Cause you're the only one
+Who brings light just like the sun
+One step at a time
+Just you and I (just you and I)
+Yeah, one step at a time
+Just you and I
+Yeah, one step at a time
+Just you and I`
+  },
+
   // TJ Monterde & KZ Tandingan — Palagi
   "spotify:track:4WgViu9gw3qYOr3iF9OuLG": {
-    originalLanguage: "Tagalog", originalLabel: "Tagalog", englishLabel: "English", originalLyrics: "", englishLyrics: ""
+    originalLanguage: "Tagalog",
+    originalLabel: "Tagalog",
+    englishLabel: "English",
+    englishLanguage: "English translation",
+    sourceLabel: "Lyrics supplied for this project · Part III · English translation prepared for this page",
+    originalLyrics: `Hindi man araw-araw na nakangiti
+Ilang beses na rin tayong humihindi
+'Di na mabilang ang ating mga tampuhan
+Away-bati natin, 'di na namamalayan
+Eto tayo
+Ngunit sa huli, palagi
+Babalik pa rin sa yakap mo
+Hanggang sa huli, palagi
+Pipiliin kong maging sa 'yo
+Ulit-ulitin man
+Nais kong malaman mong
+Iyo ako palagi
+Palagi
+Kung balikan man ang hirap, luha't lahat
+Ikaw ang paborito kong desisyon at
+'Pag napaligiran ng ingay at ng gulo
+'Di ko 'pagpapalit ngiti mo sa mundo
+Eto tayo
+Sa huli, palagi
+Babalik pa rin sa yakap mo
+Hanggang sa huli, palagi
+Pipiliin kong maging sa 'yo
+Ulit-ulitin man
+Nais kong malaman mong
+Iyo ako
+Sa pagdating ng ating pilak at ginto
+Diyamante ma'y abutin, ikaw pa rin aking bituin
+Natatangi kong dalangin 'gang sa huling siglo
+Sa huli, palagi
+Babalik pa rin sa yakap mo
+Mahal, sa huli, palagi
+Pipiliin kong maging sa 'yo
+Ulit-ulitin man
+Nais kong malaman mong
+Iyo ako palagi`,
+    englishLyrics: `Even if we're not smiling every single day
+We've had so many times when we disagreed
+I can't even count all our little misunderstandings
+The fighting and making up happens before we even notice
+Here we are
+
+But in the end, always
+I'll still come back to your embrace
+Until the very end, always
+I'll choose to be yours
+No matter how many times we have to do it again
+I want you to know
+I'm yours, always
+Always
+
+If we look back on every hardship, every tear, all of it
+You are still my favorite decision
+And when we're surrounded by noise and chaos
+I wouldn't trade your smile for the world
+Here we are
+
+In the end, always
+I'll still come back to your embrace
+Until the very end, always
+I'll choose to be yours
+No matter how many times we have to do it again
+I want you to know
+I'm yours
+
+When we reach our silver and our gold
+Even if we make it all the way to diamond, you'll still be my star
+You're the one prayer I carry with me to the very end of time
+In the end, always
+I'll still come back to your embrace
+My love, in the end, always
+I'll choose to be yours
+No matter how many times we have to do it again
+I want you to know
+I'm yours, always`
   },
 
   // OFFICIAL HIGE DANDISM — 115 million kilometer film

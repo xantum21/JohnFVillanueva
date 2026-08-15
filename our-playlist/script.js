@@ -279,6 +279,10 @@
     return config.views.find((view) => view.key === activeLyricsLanguage) || config.views[0];
   }
 
+  function containsJapanese(text) {
+    return /[぀-ヿ㐀-鿿]/.test(String(text || ''));
+  }
+
   function lyricsTheme(track) {
     return (window.VALENTINE_LYRIC_THEMES || {})[track.uri] || {
       name: 'Love Letter', motif: '♡ ✦ ♡', texture: 'soft', paper: '#fffaf8', ink: '#3d2430', accent: '#d94f70', accent2: '#f5b6c6'
@@ -429,6 +433,9 @@
     const sheet = $('#lyrics-sheet');
     const view = currentLyricsView(config);
     sheet.dataset.language = activeLyricsLanguage;
+    sheet.dataset.tabCount = String(config.views.length);
+    sheet.dataset.titleScript = containsJapanese(activeLyricsTrack.title) ? 'jp' : 'latin';
+    sheet.dataset.viewScript = containsJapanese(view.text) || view.label === '日本語' ? 'jp' : 'latin';
     header.textContent = config.views.length > 1
       ? `${view.label} · ${view.language}`
       : `${view.language}`;
@@ -438,6 +445,7 @@
     const tabs = $('#lyrics-tabs');
     tabs.innerHTML = '';
     const config = lyricsConfig(activeLyricsTrack);
+    tabs.dataset.count = String(config.views.length);
 
     if (config.views.length <= 1) {
       tabs.hidden = true;

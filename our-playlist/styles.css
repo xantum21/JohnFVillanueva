@@ -220,3 +220,398 @@ body.lyrics-open{overflow:hidden}
 @media (max-width:760px){.paper-roll{left:18px;right:18px;top:14px;height:26px}.postage-stamp{right:16px;top:16px;min-width:66px;padding:6px 7px}.wax-seal{width:52px;height:52px;right:16px;top:70px;font-size:.92rem}.lyrics-close{left:12px;top:12px}.stationery-header{margin:0 86px 18px 46px}.lyrics-sheet h2{margin-right:82px}.lyrics-kicker,.lyrics-artist{margin-right:82px}.lyrics-body{max-height:55vh;padding-right:2px}.lyrics-scroll-prompt{position:sticky;top:0;margin:0 0 8px 0;font-size:.72rem;padding:8px 11px}.lyrics-text{font-size:1rem;line-height:1.82;padding-right:2px}.lyrics-sheet[data-form="vow"] .stationery-header{padding-right:0}}
 
 .lyrics-sheet *{box-sizing:border-box}
+
+
+/* V8 — fit-to-viewport lyric letter */
+.lyrics-modal{
+  padding:24px 64px;
+  overflow:hidden;
+}
+.lyrics-sheet{
+  width:min(680px, calc(100vw - 128px)) !important;
+  height:min(820px, 86vh);
+  max-height:86vh !important;
+  overflow:hidden !important;
+  display:flex;
+  flex-direction:column;
+  padding:30px 34px 26px;
+  box-sizing:border-box;
+}
+.lyrics-sheet,
+.lyrics-sheet *{
+  box-sizing:border-box;
+  min-width:0;
+}
+.lyrics-sheet::before,
+.lyrics-sheet::after{pointer-events:none}
+.stationery-header,
+.lyrics-kicker,
+.lyrics-sheet h2,
+.lyrics-artist,
+.lyrics-tabs,
+.lyrics-note,
+.letter-signoff{flex:0 0 auto}
+.stationery-header{margin:0 112px 18px 48px !important}
+.lyrics-motif{
+  white-space:normal !important;
+  max-width:88px;
+  text-align:right;
+  line-height:1.15;
+}
+.lyrics-kicker{margin-right:96px !important}
+.lyrics-sheet h2{
+  margin-right:96px !important;
+  overflow-wrap:anywhere;
+}
+.lyrics-artist{margin-right:96px !important}
+.lyrics-tabs{
+  width:max-content;
+  max-width:100%;
+}
+.lyrics-body{
+  flex:1 1 auto;
+  min-height:0 !important;
+  max-height:none !important;
+  width:100%;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  overscroll-behavior:contain;
+  padding-right:2px !important;
+}
+.lyrics-body::-webkit-scrollbar,
+.lyrics-sheet::-webkit-scrollbar{
+  width:0;
+  height:0;
+  display:none;
+}
+.lyrics-text,
+.lyric-line,
+.lyric-section{
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.lyrics-scroll-prompt{
+  max-width:100%;
+  margin-left:auto;
+}
+.postage-stamp{
+  right:18px !important;
+  top:18px !important;
+  min-width:72px !important;
+  max-width:82px;
+}
+.wax-seal{
+  right:26px !important;
+  top:78px !important;
+  width:54px !important;
+  height:54px !important;
+}
+.lyrics-close{
+  left:14px !important;
+  right:auto !important;
+  top:14px !important;
+  z-index:20 !important;
+}
+.margin-notes{display:none !important}
+.lyrics-sheet[data-texture="washi"] h2{
+  font-size:clamp(2rem, 4.2vw, 3.15rem);
+  letter-spacing:-.025em;
+}
+.paper-roll{
+  left:22px !important;
+  right:22px !important;
+  max-width:calc(100% - 44px);
+}
+@media (max-width:900px){
+  .lyrics-modal{padding:16px 24px}
+  .lyrics-sheet{
+    width:min(660px, calc(100vw - 48px)) !important;
+    height:min(820px, 88vh);
+    max-height:88vh !important;
+  }
+}
+@media (max-width:760px){
+  .lyrics-modal{
+    padding:8px !important;
+    align-items:center !important;
+  }
+  .lyrics-sheet{
+    width:calc(100vw - 16px) !important;
+    height:calc(100dvh - 24px);
+    max-height:calc(100dvh - 24px) !important;
+    padding:24px 18px 20px !important;
+    border-radius:12px 12px 18px 12px !important;
+  }
+  .stationery-header{margin:0 74px 16px 42px !important}
+  .lyrics-kicker,
+  .lyrics-sheet h2,
+  .lyrics-artist{margin-right:68px !important}
+  .lyrics-tabs{margin-top:16px}
+  .postage-stamp{
+    right:10px !important;
+    top:12px !important;
+    min-width:60px !important;
+    max-width:66px;
+    padding:5px 6px !important;
+  }
+  .wax-seal{
+    right:14px !important;
+    top:66px !important;
+    width:46px !important;
+    height:46px !important;
+    font-size:.85rem !important;
+  }
+  .lyrics-close{
+    left:10px !important;
+    top:10px !important;
+    width:36px !important;
+    height:36px !important;
+  }
+  .lyrics-scroll-prompt{
+    margin:0 0 8px auto !important;
+    padding:7px 10px !important;
+  }
+}
+
+
+/* V9 — aesthetic polish pass */
+.lyrics-sheet[data-title-script="jp"] h2{
+  font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP","Source Han Serif JP","MS PMincho",serif;
+  font-weight:700;
+  letter-spacing:-.018em;
+  line-height:1.12;
+}
+
+.lyrics-sheet[data-view-script="jp"] .lyrics-text{
+  font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP","Source Han Serif JP",serif;
+  font-size:1.12rem;
+  line-height:2.02;
+  letter-spacing:.01em;
+}
+
+.lyrics-sheet[data-view-script="jp"] .lyric-line{
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+
+.lyrics-sheet[data-view-script="jp"] .lyric-section{
+  letter-spacing:.18em;
+  font-size:.8rem;
+}
+
+.lyrics-sheet h2{
+  text-wrap:balance;
+  max-width:12.5em;
+}
+
+.lyrics-artist,
+.lyrics-language-header,
+.lyrics-note{
+  text-wrap:balance;
+}
+
+.lyrics-tabs{
+  gap:6px;
+  border-radius:22px;
+  backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55);
+}
+
+.lyrics-tab{
+  position:relative;
+  min-height:42px;
+  padding:10px 16px;
+  letter-spacing:.02em;
+  transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease;
+}
+
+.lyrics-tab:hover{
+  transform:translateY(-1px);
+}
+
+.lyrics-tab.is-active{
+  box-shadow:0 7px 18px rgba(66,34,45,.12), inset 0 1px 0 rgba(255,255,255,.75);
+}
+
+.lyrics-tab.is-active::after{
+  content:"";
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:6px;
+  height:2px;
+  border-radius:999px;
+  background:linear-gradient(90deg, transparent, color-mix(in srgb,var(--letter-accent) 82%,white), transparent);
+}
+
+.lyrics-sheet[data-tab-count="3"] .lyrics-tabs,
+.lyrics-tabs[data-count="3"]{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  width:min(100%, 430px);
+  padding:6px;
+  gap:6px;
+  border-radius:24px;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--letter-paper) 76%,white),color-mix(in srgb,var(--letter-accent-2) 20%,transparent));
+  border:1px solid color-mix(in srgb,var(--letter-accent) 18%,transparent);
+}
+
+.lyrics-sheet[data-tab-count="3"] .lyrics-tab,
+.lyrics-tabs[data-count="3"] .lyrics-tab{
+  width:100%;
+  text-align:center;
+  justify-self:stretch;
+  padding:11px 12px;
+  font-size:.81rem;
+}
+
+.lyrics-sheet[data-tab-count="3"] .lyrics-tab:nth-child(1),
+.lyrics-tabs[data-count="3"] .lyrics-tab:nth-child(1){
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+}
+
+.lyrics-theme-label{
+  text-wrap:balance;
+}
+
+.stationery-header{
+  align-items:end;
+}
+
+.lyrics-sheet[data-title-script="jp"] .lyrics-kicker{
+  letter-spacing:.01em;
+}
+
+.paper-roll,
+.postage-stamp,
+.wax-seal{
+  filter:drop-shadow(0 10px 18px rgba(60,31,41,.08));
+}
+
+@media (max-width:760px){
+  .lyrics-sheet{
+    padding:22px 16px 18px !important;
+    border-radius:14px 14px 20px 14px !important;
+  }
+
+  .stationery-header{
+    margin:0 72px 14px 40px !important;
+    gap:10px;
+  }
+
+  .lyrics-theme-label{
+    font-size:.62rem;
+    letter-spacing:.16em;
+  }
+
+  .lyrics-language-header{
+    font-size:.73rem;
+  }
+
+  .lyrics-kicker,
+  .lyrics-sheet h2,
+  .lyrics-artist{
+    margin-right:64px !important;
+  }
+
+  .lyrics-sheet h2{
+    font-size:clamp(1.85rem, 8vw, 2.6rem);
+    line-height:1.08;
+  }
+
+  .lyrics-sheet[data-title-script="jp"] h2{
+    font-size:clamp(1.8rem, 7.3vw, 2.5rem);
+  }
+
+  .lyrics-tabs,
+  .lyrics-sheet[data-tab-count="3"] .lyrics-tabs,
+  .lyrics-tabs[data-count="3"]{
+    width:100%;
+  }
+
+  .lyrics-tab,
+  .lyrics-sheet[data-tab-count="3"] .lyrics-tab,
+  .lyrics-tabs[data-count="3"] .lyrics-tab{
+    min-height:40px;
+    padding:9px 10px;
+    font-size:.76rem;
+  }
+
+  .lyrics-body{
+    padding-top:2px !important;
+  }
+
+  .lyrics-note{
+    font-size:.72rem;
+    line-height:1.45;
+  }
+
+  .lyrics-scroll-prompt{
+    width:100%;
+    justify-content:center;
+    text-align:center;
+    gap:6px;
+    padding:8px 10px !important;
+  }
+
+  .lyrics-scroll-prompt span:last-child{
+    width:100%;
+  }
+
+  .lyrics-motif{
+    max-width:60px;
+    font-size:1rem;
+  }
+}
+
+@media (max-width:460px){
+  .lyrics-modal{
+    padding:6px !important;
+  }
+
+  .lyrics-sheet{
+    width:calc(100vw - 12px) !important;
+    height:calc(100dvh - 16px);
+    max-height:calc(100dvh - 16px) !important;
+    padding:20px 14px 16px !important;
+  }
+
+  .stationery-header{
+    margin:0 64px 12px 38px !important;
+  }
+
+  .lyrics-kicker,
+  .lyrics-sheet h2,
+  .lyrics-artist{
+    margin-right:56px !important;
+  }
+
+  .postage-stamp{
+    right:9px !important;
+    top:10px !important;
+    min-width:56px !important;
+    max-width:60px;
+    padding:4px 5px !important;
+  }
+
+  .stamp-text{
+    font-size:.49rem;
+    letter-spacing:.12em;
+  }
+
+  .wax-seal{
+    right:12px !important;
+    top:60px !important;
+    width:42px !important;
+    height:42px !important;
+    font-size:.8rem !important;
+  }
+
+  .lyrics-close{
+    width:34px !important;
+    height:34px !important;
+  }
+}

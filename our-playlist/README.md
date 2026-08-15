@@ -106,3 +106,14 @@ This build adds a short paper-unrolling opening animation, chapter-based paper m
 
 ## V7 cleanup + JP/romaji/EN pass
 This pass adds a three-tab Japanese / Romaji / English treatment for Novelbright, fills in ZAYN's "Let Me", and declutters the lyrics modal by moving the close button away from the decorative art, tightening the top-right stamp/seal area, and suppressing accidental horizontal overflow.
+
+## V8 fit-to-viewport lyric popup
+The lyric letter now fits within the browser viewport without an outer horizontal or vertical scrollbar. Only the lyric text area scrolls vertically, and its scrollbar is visually hidden. Decorative stamp/seal art remains, while margin-note cards are suppressed in the popup to keep the reading surface uncluttered.
+
+
+## V9 aesthetic polish pass
+This pass focuses on UI polish: cleaner Japanese typography for titles and original-language lyrics, improved balancing/wrapping for long song titles, more refined styling for 3-language lyric tabs, and gentler mobile spacing/typography for the lyric-letter popup.
+
+
+## V10 Part III lyric import
+Part 3 Lyrics.docx is now integrated into the current V9-polished interface. Lyrics are populated for tracks 20, 21, 23–26, and 28–31. Track 30 (Palagi) includes Tagalog and an English translation toggle. Tracks 22 (Two Punks In Love) and 27 (Please Keep Loving Me) remain in the styled pending state because those lyrics were not present in the Part 3 document.
