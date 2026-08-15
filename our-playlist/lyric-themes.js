@@ -44,50 +44,48 @@ window.VALENTINE_LYRIC_THEMES = {
   "spotify:track:1bQhZOoXYqjXs7u7rFXo0h": {"name": "Two-Sided Note", "motif": "you  ⇄  me", "texture": "split", "paper": "#fffaf5", "ink": "#332f2d", "accent": "#c16b65", "accent2": "#f3c9b4"},
   // 21. Dandelion Hair
   "spotify:track:416dC1qBvWJcbgub6zCnJI": {"name": "Dandelion Pressing", "motif": "❀  wish  ❀", "texture": "garden", "paper": "#fffdf0", "ink": "#353528", "accent": "#b79a3f", "accent2": "#e8d892"},
-  // 22. Two Punks In Love
-  "spotify:track:6etznGTGT7SJm1s5WnSQnl": {"name": "Stickerbomb Valentine", "motif": "★  +  ♡  +  ★", "texture": "confetti", "paper": "#fff9fd", "ink": "#35283a", "accent": "#d3459a", "accent2": "#7dd8d3"},
-  // 23. Better Together
+  // 22. Better Together
   "spotify:track:2iXdwVdzA0KrI2Q0iZNJbX": {"name": "Kitchen-Table Note", "motif": "☀  together  ♡", "texture": "soft", "paper": "#fffbed", "ink": "#3c3527", "accent": "#cc9151", "accent2": "#f1d8a6"},
-  // 24. Luckiest Man Alive
+  // 23. Luckiest Man Alive
   "spotify:track:6XPmY4NWIqq0CofdhhjyP4": {"name": "Golden Ticket", "motif": "✦ lucky me ✦", "texture": "postcard", "paper": "#fffaf0", "ink": "#3a3026", "accent": "#b4883f", "accent2": "#ead49a"},
-  // 25. I Was Made For Loving You
+  // 24. I Was Made For Loving You
   "spotify:track:1Xwh83YOFQARZ3QXscP123": {"name": "Stitched Together", "motif": "—♡—♡—", "texture": "lace", "paper": "#fff8f5", "ink": "#3d2a2d", "accent": "#bf5e68", "accent2": "#efc0b8"},
-  // 26. Better Half of Me
+  // 25. Better Half of Me
   "spotify:track:114xcQz8sZ6fxRBTZmgmNE": {"name": "Half & Half", "motif": "½  +  ½  =  ♡", "texture": "split", "paper": "#fdfaf5", "ink": "#37302d", "accent": "#a66d58", "accent2": "#d9c0ac"},
-  // 27. Please Keep Loving Me
+  // 26. Please Keep Loving Me
   "spotify:track:78zUxUPvONPgMIt46q5be6": {"name": "Keep This Letter", "motif": "keep  ♡  keep", "texture": "notebook", "paper": "#fffaf9", "ink": "#39282f", "accent": "#c65372", "accent2": "#f0becb"},
-  // 28. Still Falling For You
+  // 27. Still Falling For You
   "spotify:track:3odrUVQ9tvRpkC9II2oWzx": {"name": "Falling Petals", "motif": "❀  ↓  ♡  ↓  ❀", "texture": "petals", "paper": "#fff8fb", "ink": "#392a34", "accent": "#ca5e85", "accent2": "#f2c0dc"},
-  // 29. I Love You Always Forever
+  // 28. I Love You Always Forever
   "spotify:track:1p6rk9R8SCum97WnvGNt6O": {"name": "Infinity Margins", "motif": "always  ∞  forever", "texture": "stars", "paper": "#fbf9ff", "ink": "#312c3e", "accent": "#8066a6", "accent2": "#d6c4ed"},
-  // 30. Palagi
+  // 29. Palagi
   "spotify:track:4WgViu9gw3qYOr3iF9OuLG": {"name": "Kundiman Letter", "motif": "palagi  ♡  lagi", "texture": "lace", "paper": "#fffaf5", "ink": "#3e2d2a", "accent": "#b64553", "accent2": "#e8c3a8"},
-  // 31. Just You and I
+  // 30. Just You and I
   "spotify:track:03x2rVJRFUrvwlfxoHd9Mo": {"name": "Road-Trip Postcard", "motif": "→  you + me  →", "texture": "postcard", "paper": "#fffdf7", "ink": "#31383a", "accent": "#4d8f91", "accent2": "#c9e2dc"},
-  // 32. Grow as We Go
+  // 31. Grow as We Go
   "spotify:track:1xscBC6UV21t0sMCgu0mLi": {"name": "Garden We Grow", "motif": "seed  →  ♡  →  bloom", "texture": "garden", "paper": "#fbfdf4", "ink": "#304034", "accent": "#6f9b67", "accent2": "#d6e6ba"},
-  // 33. Photograph
+  // 32. Photograph
   "spotify:track:6CgNoAbFJ4Q4Id4EjtbXlC": {"name": "Back of a Photograph", "motif": "▣  remember this  ♡", "texture": "postcard", "paper": "#fffaf0", "ink": "#3f352c", "accent": "#9e7659", "accent2": "#dfc8a6"},
-  // 34. Whole Lives
+  // 33. Whole Lives
   "spotify:track:1hzWoLgh1yQ4H9fqIvOFMP": {"name": "Whole-Life Timeline", "motif": "•—•—♡—•—•", "texture": "book", "paper": "#fffcf6", "ink": "#37312c", "accent": "#9b6a52", "accent2": "#dec7b5"},
-  // 35. Carry You Home
+  // 34. Carry You Home
   "spotify:track:2yCte16wVT6slIJ2Tqm9ML": {"name": "Homeward Letter", "motif": "⌂  →  ♡", "texture": "watercolor", "paper": "#fffaf5", "ink": "#343335", "accent": "#6c7f9d", "accent2": "#d6bfac"},
-  // 36. The Book of Love
+  // 35. The Book of Love
   "spotify:track:4HcSK64Cy7JJ5gv1Txzhzo": {"name": "Bookplate of Us", "motif": "Vol. ♡ · us", "texture": "book", "paper": "#fffdf8", "ink": "#352e2b", "accent": "#8b6958", "accent2": "#dbc8b7"},
-  // 37. Marry Me
+  // 36. Marry Me
   "spotify:track:2MWOqewf5j0qf2b6S5J6cS": {"name": "Proposal Note", "motif": "will you?  ♡", "texture": "lace", "paper": "#fffdf9", "ink": "#3c3032", "accent": "#b64c63", "accent2": "#efd0d6"},
-  // 38. Perfect
+  // 37. Perfect
   "spotify:track:0tgVpDi06FyKpA1z0VMD4v": {"name": "First-Dance Vellum", "motif": "1 · 2 · 3 · ♡", "texture": "velvet", "paper": "#fffaf8", "ink": "#372e31", "accent": "#9e6b7b", "accent2": "#ead5dc"},
-  // 39. Ordinary - Wedding Version
+  // 38. Ordinary - Wedding Version
   "spotify:track:4t6qMeHgbxWod2SLokiSQp": {"name": "Vow Card", "motif": "ordinary  →  extraordinary", "texture": "lace", "paper": "#fffdf9", "ink": "#33302d", "accent": "#a68a62", "accent2": "#e6dcc9"},
-  // 40. Turning Page
+  // 39. Turning Page
   "spotify:track:2kfGoV9a5dbSKCNmUWH2ZF": {"name": "Turning the Page", "motif": "page  →  page  →  ♡", "texture": "book", "paper": "#fffdf8", "ink": "#31303a", "accent": "#767392", "accent2": "#d7d4e5"},
-  // 41. Never Stop (Wedding Version)
+  // 40. Never Stop (Wedding Version)
   "spotify:track:5himtcBG5IetEOAYuB1Lu1": {"name": "Ribbon Vow", "motif": "∞  never stop  ∞", "texture": "lace", "paper": "#fffaf9", "ink": "#362d31", "accent": "#a44f65", "accent2": "#e7c5cf"},
-  // 42. 115 Million Kilometer Film
+  // 41. 115 Million Kilometer Film
   "spotify:track:4mdOqt3AiUJbBXL02aa5iw": {"name": "Film-Reel Letter", "motif": "▣  115,000,000 km  ▣", "texture": "film", "paper": "#fffaf2", "ink": "#302d29", "accent": "#b77a42", "accent2": "#e5c8a5"},
-  // 43. I Will Spend My Whole Life Loving You
+  // 42. I Will Spend My Whole Life Loving You
   "spotify:track:77enz5hl8RicxrbPB56VXQ": {"name": "Lifetime Constellation", "motif": "✦  whole life  ✦", "texture": "stars", "paper": "#fbfbff", "ink": "#2e3042", "accent": "#6b72a5", "accent2": "#c9d4f0"},
-  // 44. Kahit Maputi Na Ang Buhok Ko
+  // 43. Kahit Maputi Na Ang Buhok Ko
   "spotify:track:6r9o3XGxSYFlX6ktsEqIbK": {"name": "Old Love Letter", "motif": "♡  hanggang pagtanda  ♡", "texture": "soft", "paper": "#fff9e9", "ink": "#3f3328", "accent": "#a66d51", "accent2": "#e8d2ad"},
 };

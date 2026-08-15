@@ -21,9 +21,11 @@
   <div id="envelope" class="envelope-screen">
     <div class="envelope-card">
       <div class="seal">♡</div>
+      <p id="envelope-for" class="envelope-for" hidden></p>
       <p class="tiny-caps">A little something for you</p>
       <h1>Open when you have a few songs to spare.</h1>
       <p>There are six chapters inside. Start at the beginning. 💌</p>
+      <p id="envelope-date" class="envelope-date" hidden></p>
       <button id="open-envelope" class="primary-button" type="button">Open the playlist</button>
     </div>
   </div>
@@ -58,6 +60,15 @@
     </section>
 
     <div id="chapters" class="chapters"></div>
+
+    <section id="finale" class="finale-card" aria-label="Playlist ending">
+      <p class="tiny-caps">After the last song</p>
+      <div class="finale-mark" aria-hidden="true">♡</div>
+      <h2 id="final-title">End of playlist.</h2>
+      <p id="final-note"></p>
+      <p id="final-aside" class="finale-aside"></p>
+      <button id="replay-story" class="primary-button finale-button" type="button">Replay from the beginning ↺</button>
+    </section>
   </main>
 
   <div id="lyrics-modal" class="lyrics-modal" aria-hidden="true">
@@ -101,8 +112,9 @@
 
     <div class="player-main-row">
       <button id="player-track-button" class="player-track-copy" type="button" aria-label="Show current song in playlist">
-        <span id="player-track-number" class="player-track-number">01 / 44</span>
+        <span id="player-track-number" class="player-track-number">01 / 43</span>
         <span class="player-track-text">
+          <span id="player-chapter" class="player-track-chapter">I · The Crush</span>
           <strong id="now-title">this is what having a massive crush on someone feels like</strong>
           <span id="now-artist">Clinton Kane</span>
         </span>

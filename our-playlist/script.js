@@ -21,6 +21,15 @@
     $('#subtitle').textContent = page.subtitle;
     $('#note').textContent = page.note;
     $('#signoff').textContent = page.signoff;
+    $('#final-title').textContent = page.finalTitle || 'End of playlist.';
+    $('#final-note').textContent = page.finalNote || 'Hopefully not the end of the story. ♡';
+    $('#final-aside').textContent = page.finalAside || '';
+
+    const envelopeFor = $('#envelope-for');
+    const envelopeDate = $('#envelope-date');
+    const forText = page.envelopeFor || (page.recipient ? `For ${page.recipient} ♡` : '');
+    if (forText) { envelopeFor.textContent = forText; envelopeFor.hidden = false; }
+    if (page.date) { envelopeDate.textContent = page.date; envelopeDate.hidden = false; }
     document.title = `${page.title} ♡`;
   }
 
@@ -63,9 +72,26 @@
 
       const closing = document.createElement('p');
       closing.className = 'chapter-closing';
-      closing.textContent = chapterIndex === chapters.length - 1 ? '…and then, hopefully, a very long encore. ♡' : '♡  ·  ♡  ·  ♡';
+      closing.textContent = chapterIndex === chapters.length - 1
+        ? '…and then, hopefully, a very long encore. ♡'
+        : `End of Part ${chapter.part} · ♡`;
       section.appendChild(closing);
       root.appendChild(section);
+
+      if (chapterIndex < chapters.length - 1 && chapter.transition) {
+        const next = chapters[chapterIndex + 1];
+        const bridge = document.createElement('aside');
+        bridge.className = 'story-transition';
+        bridge.setAttribute('aria-label', `Transition from Part ${chapter.part} to Part ${next.part}`);
+        bridge.innerHTML = `
+          <span class="transition-line" aria-hidden="true"></span>
+          <div class="transition-copy">
+            <p class="transition-kicker">Part ${chapter.part} → Part ${next.part}</p>
+            <p>${escapeHtml(chapter.transition)}</p>
+          </div>
+          <span class="transition-heart" aria-hidden="true">♡</span>`;
+        root.appendChild(bridge);
+      }
     });
   }
 
@@ -151,6 +177,7 @@
     $('#now-title').textContent = track.title;
     $('#now-artist').textContent = track.artist;
     $('#player-track-number').textContent = `${String(track.number).padStart(2,'0')} / ${allTracks.length}`;
+    $('#player-chapter').textContent = `${track.chapter.part} · ${track.chapter.title}`;
     const lyricInfo = lyricsConfig(track);
     const hasLyrics = lyricInfo.views.some((view) => String(view.text || '').trim());
     $('#player-lyrics').setAttribute('aria-label', `View lyrics for ${track.title}`);
@@ -306,13 +333,12 @@
       'spotify:track:0aVsVsOYDSEEigiwTrIab9': { stamp: 'AFTER DARK', seal: '☾', notes: ['intimate letter, softer ending', 'let me stay for the rest of ours'] },
       'spotify:track:0sYfwwEy0UyNizk6na4zGm': { stamp: 'CITRUS NOTE', seal: '○', notes: ['craving your presence', 'sun-warm skin and late-night thoughts'] },
       'spotify:track:2amIuarebiXTBtwMubGA3S': { stamp: 'WITH YOU', seal: '☀', notes: ['the whole world falls away', 'come-home kind of love'] },
-      'spotify:track:4McP7SOTK2NWkydOcDCajC': { stamp: '恋文', seal: '愛', notes: ['romanized for now', 'translation tab waiting its turn'] },
+      'spotify:track:4McP7SOTK2NWkydOcDCajC': { stamp: '恋文', seal: '愛', notes: ['three ways to read the same feeling', '日本語 · Romaji · English'] },
       'spotify:track:1dB1kzLOjTcmSHttRd8bnV': { stamp: 'OH.', seal: '…', notes: ['yep. definitely in love', 'worth the wait'] },
       'spotify:track:3J4eGb9Ufadl5eNUgktO9t': { stamp: 'FATED', seal: '✦', notes: ['dreamed you into life', 'best friend / home / forever'] },
       'spotify:track:018Idkvf82hi44UZmIXiGB': { stamp: 'ONE OF ONE', seal: '◇', notes: ['never seen anything quite like you', 'tonight is the line that matters'] },
       'spotify:track:1bQhZOoXYqjXs7u7rFXo0h': { stamp: 'YOU + ME', seal: '⇄', notes: ['two-sided note', 'steady little us'] },
       'spotify:track:416dC1qBvWJcbgub6zCnJI': { stamp: 'WISH', seal: '❀', notes: ['make a wish, keep it', 'soft hair / softer heart'] },
-      'spotify:track:6etznGTGT7SJm1s5WnSQnl': { stamp: 'PUNKS IN LOVE', seal: '★', notes: ['chaotic but sweet', 'sticker-covered feelings'] },
       'spotify:track:2iXdwVdzA0KrI2Q0iZNJbX': { stamp: 'BETTER TOGETHER', seal: '☀', notes: ['simple things / right person', 'kitchen-table forever'] },
       'spotify:track:6XPmY4NWIqq0CofdhhjyP4': { stamp: 'LUCKY ME', seal: '✦', notes: ['golden-ticket kind of gratitude', 'how did I get this lucky?'] },
       'spotify:track:1Xwh83YOFQARZ3QXscP123': { stamp: 'MADE FOR YOU', seal: '♡', notes: ['stitched together', 'soft certainty'] },
@@ -337,14 +363,12 @@
       'spotify:track:6r9o3XGxSYFlX6ktsEqIbK': { stamp: 'UNTIL OUR HAIR TURNS WHITE', seal: '⌛', notes: ['aged paper / steady heart', 'the ending is still us'] }
     };
 
-    let chapterForm = 'letter';
-    if (track.number <= 5) chapterForm = 'notebook';
-    else if (track.number <= 10) chapterForm = 'folded';
-    else if (track.number <= 19) chapterForm = 'romance';
-    else if (track.number <= 31) chapterForm = 'keepsake';
-    else if (track.number <= 36) chapterForm = 'stationery';
-    else if (track.number <= 41) chapterForm = 'vow';
-    else chapterForm = 'aged';
+    const resolved = allTracks.find((item) => item.uri === track.uri);
+    const part = resolved?.chapter?.part || 'III';
+    let chapterForm = ({ I:'notebook', II:'folded', III:'romance', IV:'keepsake', V:'stationery', VI:'vow' })[part] || 'letter';
+    if (track.uri === 'spotify:track:4mdOqt3AiUJbBXL02aa5iw' ||
+        track.uri === 'spotify:track:77enz5hl8RicxrbPB56VXQ' ||
+        track.uri === 'spotify:track:6r9o3XGxSYFlX6ktsEqIbK') chapterForm = 'aged';
 
     return {
       form: chapterForm,
@@ -611,6 +635,11 @@
   $('#player-lyrics').addEventListener('click', () => openLyrics(allTracks[currentTrackIndex]));
   $('#player-spotify-toggle').addEventListener('click', toggleSpotifyDrawer);
   $('#player-track-button').addEventListener('click', revealCurrentTrack);
+
+  $('#replay-story').addEventListener('click', () => {
+    setActiveTrack(0, { play: true, reveal: true });
+    window.setTimeout(() => document.querySelector('.track[data-index="0"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
+  });
 
   $('#lyrics-close').addEventListener('click', closeLyrics);
   $$('[data-close-lyrics]').forEach((el) => el.addEventListener('click', closeLyrics));

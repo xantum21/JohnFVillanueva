@@ -49,7 +49,7 @@ The custom controls call Spotify's iFrame controller; they do not host or redist
 
 Every song's **Lyrics ♡** button opens a folded-paper / love-letter view rather than a generic modal.
 
-`lyric-themes.js` contains **44 distinct visual identities** — one for every song. Examples include a blushing notebook, moonlit question letter, dance card, Japanese washi love note, kundiman stationery, a photograph postcard, wedding vow card, film-reel letter, and an aged old-love letter.
+`lyric-themes.js` contains **43 distinct visual identities** — one for every song. Examples include a blushing notebook, moonlit question letter, dance card, Japanese washi love note, kundiman stationery, a photograph postcard, wedding vow card, film-reel letter, and an aged old-love letter.
 
 These are visual themes only; no copyrighted lyric text is bundled in this file.
 
@@ -66,11 +66,11 @@ Switching tabs changes the letterhead to make clear whether the reader is seeing
 
 ## Add lyric text later
 
-`lyrics-data.js` intentionally ships with placeholders. Once the companion lyric document is ready, populate the corresponding entries there. The UI, language toggles, and all 44 visual themes are already wired.
+`lyrics-data.js` intentionally ships with placeholders. Once the companion lyric document is ready, populate the corresponding entries there. The UI, language toggles, and all 43 visual themes are already wired.
 
 ## Playlist data
 
-All 44 tracks, Spotify URIs, Spotify links, YouTube Music search links, and the six narrative chapters live in `playlist-data.js`.
+All 43 tracks, Spotify URIs, Spotify links, YouTube Music search links, and the six narrative chapters live in `playlist-data.js`.
 
 ## Page copy
 
@@ -116,7 +116,7 @@ This pass focuses on UI polish: cleaner Japanese typography for titles and origi
 
 
 ## V10 Part III lyric import
-Part 3 Lyrics.docx is now integrated into the current V9-polished interface. Lyrics are populated for tracks 20, 21, 23–26, and 28–31. Track 30 (Palagi) includes Tagalog and an English translation toggle. Tracks 22 (Two Punks In Love) and 27 (Please Keep Loving Me) remain in the styled pending state because those lyrics were not present in the Part 3 document.
+Part 3 Lyrics.docx is now integrated into the current V9-polished interface. Part 3 lyrics are integrated across the established-relationship section. Palagi includes Tagalog and an English translation toggle. Please Keep Loving Me was added in the following correction pass.
 
 
 ## V11 URI mapping fix
@@ -124,4 +124,12 @@ Fixed the Clinton Kane `I GUESS I'M IN LOVE` lyric lookup key. Spotify track IDs
 
 
 ## V12 Part III addendum
-Added James TW — `Please Keep Loving Me` from the supplied `Lyrics new.docx`. With this correction, the only intentionally pending lyric track in this section is `Two Punks In Love`.
+Added James TW — `Please Keep Loving Me` from the supplied `Lyrics new.docx`.
+
+
+## V13 playlist trim
+Removed `Two Punks In Love` from the site at the user's request. The narrative playlist now contains 43 tracks, all downstream track numbers and chapter ranges were shifted, and the chapter-specific lyric-letter mechanics were updated to match the new numbering.
+
+
+## V14 serious narrative-order pass
+This version deliberately reorders the 43-song story around lyrical chronology rather than keeping the original grouping. Major changes include moving **Make You Mine**, **Never Seen Anything “Quite Like You”**, and **Luckiest Man Alive** toward the marriage/finale material; moving **I Was Made For Loving You** into the falling-hard section; and moving **Better Half of Me**, **Palagi**, and **Just You and I** into the shared-life chapter. The site also adds chapter-to-chapter transition cards, chapter context in the sticky player, optional recipient/date fields on the opening envelope, and a final replay card after the last song.
