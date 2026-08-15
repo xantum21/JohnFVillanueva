@@ -117,3 +117,11 @@ This pass focuses on UI polish: cleaner Japanese typography for titles and origi
 
 ## V10 Part III lyric import
 Part 3 Lyrics.docx is now integrated into the current V9-polished interface. Lyrics are populated for tracks 20, 21, 23–26, and 28–31. Track 30 (Palagi) includes Tagalog and an English translation toggle. Tracks 22 (Two Punks In Love) and 27 (Please Keep Loving Me) remain in the styled pending state because those lyrics were not present in the Part 3 document.
+
+
+## V11 URI mapping fix
+Fixed the Clinton Kane `I GUESS I'M IN LOVE` lyric lookup key. Spotify track IDs are case-sensitive; one character in the lyric-data key was capitalized (`Z`) while the playlist URI uses lowercase (`z`), causing the site to show `Lyrics · soon` even though the lyric text was present.
+
+
+## V12 Part III addendum
+Added James TW — `Please Keep Loving Me` from the supplied `Lyrics new.docx`. With this correction, the only intentionally pending lyric track in this section is `Two Punks In Love`.

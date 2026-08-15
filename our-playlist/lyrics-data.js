@@ -1044,7 +1044,7 @@ I want to hold you forever.`
   },
 
   // Clinton Kane — I GUESS I'M IN LOVE
-  "spotify:track:1dB1kZLOjTcmSHttRd8bnV": {
+  "spotify:track:1dB1kzLOjTcmSHttRd8bnV": {
     originalLanguage: "English",
     originalLabel: "Lyrics",
     sourceLabel: "Lyrics supplied for this project · Part II",
@@ -1475,6 +1475,55 @@ If you'd be the better half of me
 If you'd be the better half of me
 Yeah, will you be the better half of me?
 Will you be the better half of me?`
+  },
+
+  // James TW — Please Keep Loving Me
+  "spotify:track:78zUxUPvONPgMIt46q5be6": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part III addendum",
+    originalLyrics: `I know I have my moments
+And at times I'm hard to be around
+I get impatient when you're getting dressed
+It's just I thought the first one looked the best
+You're beautiful
+More than I deserve
+So listen close
+To these one, two, three, four words
+So please keep loving me
+Because our hearts speak fluently
+Wherever I go, whatever I do
+The map on my heart leads to you
+So baby, please keep loving me
+Loving me, loving me, yeah
+Your lips on my smile
+Are like bees 'round a honeycomb
+You see through my heart's misty window
+And out of all the fingerprints, only yours will show
+You're beautiful
+Before the make-up's on
+And out of all the girls
+You're the one I want
+So please keep loving me
+Because our hearts speak fluently
+Wherever I go, whatever I do
+The map on my heart leads to you
+So baby, please keep loving me
+Loving me, loving me, yeah
+For all the mistakes
+I'm making, I don't mean
+(I don't mean them, I don't mean them)
+For all the little things
+That I fail to see
+My heart is on my sleeve
+Please keep loving me
+Because our hearts speak fluently
+Wherever I go, whatever I do
+The map on my heart leads to you
+So baby, please keep loving me
+Loving, loving me
+Oh, ooh
+Please keep loving me`
   },
 
   // Ellie Goulding — Still Falling For You
