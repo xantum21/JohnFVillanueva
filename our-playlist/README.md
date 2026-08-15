@@ -89,3 +89,12 @@ The page includes `noindex,nofollow,noarchive`, which discourages search engines
 
 ## Part I lyric demo
 Lyrics supplied in `Part 1 Lyrics.docx` are loaded for tracks 1–5: Clinton Kane, Sam Smith, AJ Rafael, Good Kid, and Joe Brooks. Tracks 6–7 remain in the styled pending state because their lyric text was not included in that document.
+
+
+## V4 interaction note
+
+The lyrics letter is intentionally **not synced to playback**. Opening lyrics creates a scrollable love-letter view where lines reveal progressively as the reader scrolls downward, as if the note is unfolding.
+
+
+## Part II lyric demo
+Lyrics from `Part 2 Lyrics.docx` are now loaded for tracks 6–12, 14–19. Track 13 (**Let Me**) is still pending because its lyric text was not included in that document. Novelbright is currently loaded as a romanized original with the English translation tab still waiting for text.

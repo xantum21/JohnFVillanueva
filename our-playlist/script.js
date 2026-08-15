@@ -348,14 +348,36 @@
     const text = activeLyricsLanguage === 'english' ? config.englishLyrics : config.originalLyrics;
 
     body.innerHTML = '';
+    body.scrollTop = 0;
+
     if (text.trim()) {
+      const prompt = document.createElement('div');
+      prompt.className = 'lyrics-scroll-prompt';
+      prompt.innerHTML = `<span aria-hidden="true">↡</span><strong>Unfold the letter</strong><span>Scroll down to reveal the next lines.</span>`;
+      body.appendChild(prompt);
+
       const lyrics = document.createElement('div');
       lyrics.className = 'lyrics-text';
-      lyrics.textContent = text.trim();
+      parseLyricsLines(text).forEach((item, idx) => {
+        if (item.type === 'gap') {
+          const spacer = document.createElement('div');
+          spacer.className = 'lyric-gap';
+          lyrics.appendChild(spacer);
+          return;
+        }
+
+        const line = document.createElement('div');
+        line.className = item.type === 'section' ? 'lyric-section' : 'lyric-line';
+        line.textContent = item.text;
+        if (idx < 4) line.classList.add('is-revealed');
+        lyrics.appendChild(line);
+      });
       body.appendChild(lyrics);
+      attachLyricsReveal(body);
+
       note.textContent = config.hasTranslation
-        ? `${activeLyricsLanguage === 'english' ? 'English translation' : config.originalLanguage + ' original'} · static letter view`
-        : (config.sourceLabel || 'Static letter view');
+        ? `${activeLyricsLanguage === 'english' ? 'English translation' : config.originalLanguage + ' original'} · scroll-to-unfold letter view · not time-synced`
+        : `${config.sourceLabel || 'Lyrics supplied for this project'} · scroll-to-unfold letter view · not time-synced`;
     } else {
       const placeholder = document.createElement('div');
       placeholder.className = 'lyrics-placeholder';
@@ -368,6 +390,44 @@
         ? `${config.originalLanguage} ↔ English toggle is already wired for this song.`
         : 'This song will use one lyrics view once its text is added.';
     }
+  }
+
+  function parseLyricsLines(text) {
+    return String(text).replace(/\r/g, '').split('\n').map((raw) => {
+      const line = raw.replace(/\s+$/,'');
+      const trimmed = line.trim();
+      if (!trimmed) return { type: 'gap', text: '' };
+      if (/^\[[^\]]+\]$/.test(trimmed)) return { type: 'section', text: trimmed };
+      return { type: 'line', text: line };
+    });
+  }
+
+  function attachLyricsReveal(scroller) {
+    const revealables = [...scroller.querySelectorAll('.lyric-line, .lyric-section')];
+    if (!revealables.length) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-revealed');
+        });
+      }, { root: scroller, threshold: 0.22, rootMargin: '0px 0px -8% 0px' });
+
+      revealables.forEach((node) => observer.observe(node));
+    } else {
+      revealables.forEach((node) => node.classList.add('is-revealed'));
+    }
+
+    let promptHidden = false;
+    const prompt = scroller.querySelector('.lyrics-scroll-prompt');
+    const onScroll = () => {
+      if (!prompt || promptHidden) return;
+      if (scroller.scrollTop > 18) {
+        prompt.classList.add('is-dismissed');
+        promptHidden = true;
+      }
+    };
+    scroller.addEventListener('scroll', onScroll, { passive: true });
   }
 
   function ambientHearts() {

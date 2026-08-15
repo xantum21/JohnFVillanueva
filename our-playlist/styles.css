@@ -117,8 +117,18 @@ body.lyrics-open{overflow:hidden}
 .lyrics-artist{margin:0;color:color-mix(in srgb,var(--letter-ink) 64%,transparent);font-weight:700}
 .lyrics-tabs{display:inline-flex;gap:5px;margin:22px 0 8px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--letter-accent-2) 22%,transparent);border:1px solid color-mix(in srgb,var(--letter-accent) 20%,transparent)}
 .lyrics-tab{border:0;border-radius:999px;padding:9px 16px;background:transparent;color:color-mix(in srgb,var(--letter-ink) 68%,transparent);font:800 .8rem/1 "DM Sans",sans-serif;cursor:pointer}.lyrics-tab.is-active{background:color-mix(in srgb,var(--letter-paper) 82%,#fff);color:var(--letter-ink);box-shadow:0 5px 14px rgba(66,34,45,.1)}
-.lyrics-body{margin-top:14px;min-height:260px}
-.lyrics-text{white-space:pre-wrap;font-family:"Playfair Display",serif;font-size:1.08rem;line-height:1.96;color:var(--letter-ink);padding:14px 6px 22px}
+.lyrics-body{position:relative;margin-top:14px;min-height:260px;max-height:min(54vh,560px);overflow:auto;padding:2px 8px 10px 0;scroll-behavior:smooth;mask-image:linear-gradient(to bottom,transparent 0,black 18px,black calc(100% - 28px),transparent 100%)}
+.lyrics-body:after{content:"";position:sticky;left:0;bottom:0;display:block;height:32px;margin-top:-32px;background:linear-gradient(180deg,rgba(255,255,255,0),color-mix(in srgb,var(--letter-paper) 96%,transparent));pointer-events:none}
+.lyrics-scroll-prompt{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;flex-wrap:wrap;width:fit-content;max-width:100%;padding:9px 14px;margin:0 0 10px auto;background:color-mix(in srgb,var(--letter-paper) 82%,white);border:1px solid color-mix(in srgb,var(--letter-accent) 18%,transparent);border-radius:999px;box-shadow:0 8px 20px rgba(52,25,36,.08);font-size:.78rem;line-height:1.2;color:color-mix(in srgb,var(--letter-ink) 82%,transparent);backdrop-filter:blur(8px);transition:opacity .35s ease,transform .35s ease}
+.lyrics-scroll-prompt strong{font-size:.8rem;color:var(--letter-accent)}
+.lyrics-scroll-prompt span[aria-hidden="true"]{font-size:1rem;color:var(--letter-accent)}
+.lyrics-scroll-prompt.is-dismissed{opacity:0;transform:translateY(-8px);pointer-events:none}
+.lyrics-text{display:grid;gap:8px;font-family:"Playfair Display",serif;font-size:1.08rem;line-height:1.96;color:var(--letter-ink);padding:4px 8px 24px 6px}
+.lyric-line,.lyric-section{opacity:.05;filter:blur(6px);transform:translateY(16px);transition:opacity .55s ease,transform .55s ease,filter .55s ease}
+.lyric-line.is-revealed,.lyric-section.is-revealed{opacity:1;filter:blur(0);transform:translateY(0)}
+.lyric-line{white-space:pre-wrap}
+.lyric-section{margin-top:12px;margin-bottom:4px;font-size:.84rem;line-height:1.4;letter-spacing:.14em;text-transform:uppercase;color:var(--letter-accent);font-weight:800;font-family:Inter,sans-serif}
+.lyric-gap{height:12px}
 .lyrics-placeholder{position:relative;padding:48px 34px;text-align:center;border:1px dashed color-mix(in srgb,var(--letter-accent) 38%,transparent);border-radius:16px;background:color-mix(in srgb,var(--letter-paper) 84%,#fff);overflow:hidden}.lyrics-placeholder:before{content:"";position:absolute;inset:auto -80px -90px auto;width:220px;height:220px;border:1px solid color-mix(in srgb,var(--letter-accent) 18%,transparent);transform:rotate(45deg)}
 .lyrics-placeholder strong{display:block;font-family:"Playfair Display",serif;font-size:1.5rem;margin-bottom:7px}.lyrics-placeholder p{max-width:520px;margin:0 auto;color:color-mix(in srgb,var(--letter-ink) 65%,transparent)}.lyrics-placeholder code{font-size:.88em;padding:.12em .34em;border-radius:6px;background:color-mix(in srgb,var(--letter-accent-2) 28%,transparent)}
 .placeholder-heart{font-family:"Caveat",cursive;font-size:2.8rem;color:var(--letter-accent);margin-bottom:6px}.lyrics-note{margin:20px 0 0;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--letter-accent) 18%,transparent);font-size:.76rem;color:color-mix(in srgb,var(--letter-ink) 57%,transparent)}.letter-signoff{text-align:right;margin-top:8px;font-family:"Caveat",cursive;font-size:2.2rem;color:var(--letter-accent);transform:rotate(-7deg)}
@@ -156,7 +166,7 @@ body.lyrics-open{overflow:hidden}
   .chapter-heading{grid-template-columns:64px 1fr;gap:14px}.part-badge{width:62px;height:62px;border-radius:19px;font-size:1.35rem}.chapter h2{font-size:2.45rem}
   .track{grid-template-columns:1fr}.track-main{grid-template-columns:42px 1fr;padding:13px 10px}.track-actions{padding:0 10px 11px 63px;flex-wrap:wrap}.stream-link{padding:7px 9px}.chapters{gap:58px}
   .sticky-player{bottom:8px;width:calc(100% - 12px);border-radius:20px}.player-main-row{display:grid;grid-template-columns:1fr;padding:8px 10px 6px;gap:5px}.player-track-copy{padding:4px 5px}.player-track-number{height:38px;min-width:52px}.player-track-text strong{font-size:.87rem}.player-controls{order:2}.player-actions{order:3}.player-status-row{font-size:.61rem;padding:2px 12px 7px}.player-status-row span:last-child{max-width:56%}.player-control{width:38px;height:38px}.player-play{width:46px;height:46px}
-  .lyrics-modal{padding:10px;align-items:end}.lyrics-sheet{width:100%;max-height:89vh;border-radius:8px 8px 20px 8px;padding:27px 20px 22px}.lyrics-sheet h2{font-size:2.25rem}.lyrics-placeholder{padding:34px 18px}.stationery-header{margin-right:36px}.lyrics-motif{font-size:1.15rem}.paper-fold{width:58px;height:58px}
+  .lyrics-modal{padding:10px;align-items:end}.lyrics-sheet{width:100%;max-height:89vh;border-radius:8px 8px 20px 8px;padding:27px 20px 22px}.lyrics-sheet h2{font-size:2.25rem}.lyrics-placeholder{padding:34px 18px}.stationery-header{margin-right:36px}.lyrics-motif{font-size:1.15rem}.paper-fold{width:58px;height:58px}.lyrics-body{max-height:55vh;padding-right:2px}.lyrics-scroll-prompt{position:sticky;top:0;margin:0 0 8px 0;font-size:.72rem;padding:8px 11px}.lyrics-text{font-size:1rem;line-height:1.82;padding-right:2px}
 }
 
 @media (max-width:430px){

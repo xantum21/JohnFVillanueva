@@ -273,9 +273,751 @@ And tell you that I'm not that strong
 I hope you like me as I am`
   },
 
+  // Taylor Swift & Ed Sheeran — Everything Has Changed
+  "spotify:track:3Z1kZKYfRC8iRXnYeC5sCJ": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `[Verse 1: Taylor Swift]
+All I knew this morning when I woke
+Is I know something now
+Know something now I didn't before
+And all I've seen since eighteen hours ago
+
+Is green eyes and freckles and your smile
+
+In the back of my mind, making me feel like
+
+[Pre-Chorus: Taylor Swift & Ed Sheeran]
+
+I just wanna know you better
+Know you better, know you better now
+I just wanna know you better
+Know you better, know you better now
+I just wanna know you better
+Know you better, know you better now
+I just wanna know you, know you, know you
+
+[Chorus: Taylor Swift & Ed Sheeran]
+'Cause all I know is we said, "Hello"
+And your eyes look like coming home
+All I know is a simple name
+And everything has changed
+All I know is you held the door
+You'll be mine and I'll be yours
+All I know since yesterday
+Is everything has changed
+
+[Verse 2: Ed Sheeran & Taylor Swift]
+And all my walls stood tall, painted blue
+And I'll take 'em down, take 'em down
+And open up the door for you
+
+And all I feel in my stomach is butterflies
+The beautiful kind, making up for lost time
+Taking flight, making me feel right
+
+[Pre-Chorus: Taylor Swift & Ed Sheeran]
+
+I just wanna know you better
+Know you better, know you better now
+I just wanna know you better
+Know you better, know you better now
+I just wanna know you better
+Know you better, know you better now
+I just wanna know you, know you, know you
+
+[Chorus: Taylor Swift & Ed Sheeran]
+'Cause all I know is we said, "Hello"
+And your eyes look like coming home
+All I know is a simple name
+And everything has changed
+All I know is you held the door (Ooh)
+You'll be mine and I'll be yours (Ooh)
+All I know since yesterday (Ooh)
+Is everything has changed
+[Bridge: Taylor Swift & Ed Sheeran]
+Come back and tell me why
+I'm feeling like I've missed you all this time
+ (Ohh-ohh-ohh)
+And meet me there tonight
+And let me know that it's not all in my mind
+
+[Pre-Chorus: Taylor Swift]
+
+I just wanna know you better
+Know you better, know you better now
+I just wanna know you, know you, know you
+
+[Chorus: Taylor Swift & Ed Sheeran]
+'Cause all I know is we said, "Hello" (Ooh)
+And your eyes look like coming home (Ooh)
+All I know is a simple name (Ooh)
+And everything has changed (Ooh)
+All I know is you held the door (Ooh)
+You'll be mine and I'll be yours (Ooh)
+All I know since yesterday (Ooh)
+Is everything has changed
+
+[Outro: Taylor Swift & Ed Sheeran]
+All I know is we said, "Hello" (Ooh)
+So dust off your highest hopes (Ooh)
+All I know is pouring rain (Ooh)
+And everything has changed (Ooh)
+All I know is a new found grace
+ (Ooh)
+All my days, I'll know your face (Ooh)
+All I know since yesterday (Ooh)
+Is everything has changed
+
+OUR FIRST SONG JOSEPH VINCENT LYRICS`
+  },
+
+  // Joseph Vincent — Our First Song
+  "spotify:track:6J9tgHIE8qdy5ulg3c9SwG": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `Time to let the, time to let the, time to let the beat drop
+Baby Imma let you know, don't always gotta be fast
+Maybe we can take it slow 
+Don't always gotta rush, gotta build that trust 
+We're two birds just singin' that song
+
+Singing that ladeedeedodeeda, melodies go back and forth
+You sittin' on that G string, maybe I just struck a chord
+The music's in your heart, that's where I'm gonna start
+and if you just play along
+
+I'll make sure I'm in tune
+in this concert just for two
+
+'Cause this is our first song
+Sorry I had you waiting so long
+Gotta make it perfect it can't be wrong. no
+Tryin' to keep doin' it right, with you on my mind
+'Cause you are my baby
+Promise I'll treat you like a lady
+and I won't do you no harm
+'cause this is our first song
+
+yeah
+
+Let's take a flight, through the clouds
+in the sky, can't bring us down
+to the ground in reality's hole
+let's make all our fantasies real, yeah you already know
+that I'm taking requests, tell me what to do
+where we going next, I'l leave it up to you
+
+Take all your reservation. debating what going on inside
+your mind, your heart, your soul
+Switch it up and be alive
+Take it all the way
+it'll be okay
+and when the moment is right
+
+I'll make sure I'm in tune
+in this concert just for two
+
+'Cause this is our first song
+Sorry I had you waiting so long
+Gotta make it perfect it can't be wrong. no
+Tryin' to keep doin' it right, with you on my mind
+'Cause you are my baby
+Promise I'll treat you like a lady
+and I won't do you no harm
+'cause this is our first song
+
+I don't have to sing alone
+Together we're in tune
+Just two merged as one
+I'll give you all my lovin'
+till we finish what we've both begun
+
+'Cause this is our first song
+Sorry I had you waiting so long
+Gotta make it perfect it can't be wrong. no
+Tryin' to keep doin' it right, with you on my mind
+'Cause you are my baby
+Promise I'll treat you like a lady
+and I can't do you no harm
+'cause this is our first song`
+  },
+
+  // Us The Duo — Make You Mine
+  "spotify:track:1ZWFt1f25IDDHsyx2rlcSV": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `If summer is for lovers then consider me in love
+I found the one who I found the one who I've been dreaming of
+If friends are what you're looking for, consider me your friend
+But I'll break apart and take your heart before the story ends
+This is the part where we fall in love
+Tonight, I will make you mine
+I will make you mine
+I will make you mine
+If you let me, if you let me
+Dating for the fun of it, is no longer in my game
+I'll take all your lovers and I'll put 'em all to shame
+Don't compare the love in the air to anyone before
+'Cause when you find the one you've been dreaming of
+You will hurt no more
+This is the part where you check yes or yes
+Tonight, I will make you mine
+I will make you mine
+I will make you mine
+If you let me, if you let me
+Tonight, I will make you mine
+I will make you mine
+I will make you mine
+If you let me, if you let me
+We've been together for a while now and everyday seems new
+You know it when, you know it and I always knew with you
+I'm down here on one knee and it never felt so right
+When I come back up, I'll call you mine 'til the end of time
+This is the part where we say "I do"
+Tonight, I will make you mine
+I will make you mine
+I will make you mine
+If you let me, if you let me
+Tonight, I will make you mine
+I will make you mine
+I will make you mine
+If you let me, if you let me
+If you let me, if you let me
+If you let me, if you let me make you mine`
+  },
+
+  // AJ Mitchell & Ava Max — Slow Dance
+  "spotify:track:5FNS5Vj69AhRGJWjhrAd01": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `If you stay for this minute
+Girl, I'll never let you down
+We ain't off the limit
+I could hold you after now
+No more talking, I don't know what you wanna do with that
+If it's good, why you even wanna hold it back?
+We just work and I know there's no coming back
+Where you at? Where you at? Where you at?
+I wanna slow dance if you're feeling me now
+If we don't hold hands you'll be killing me now
+I need a romance, one chance
+I just wanna know, will you slow dance?
+I wanna slow dance if you're feeling me now
+If we don't hold hands you'll be killing me now
+We need a romance (woo), one chance
+I just wanna know, will you slow dance?
+And do you mind if I say it?
+Just wanna have you around, ooh
+We take, then we give it
+Something lifts us off the ground, baby
+No more talk, I don't know what you wanna do with that
+If it's f good, why you even wanna hold it back? (Hold it back)
+We just work, so I know that there's no going back
+Where you at? Where you at? Where you at? (Ohh)
+I wanna slow dance if you feeling me now (if you're feeling me now)
+If we don't hold hands you'll be killing me now
+I need a romance (romance), one chance (one chance)
+I just wanna know, will you slow dance?
+I wanna slow dance if you feeling me now (if you're feeling me now)
+If we don't hold hands you'll be killing me now (killing me now)
+We need a romance, one chance (one chance)
+I just wanna know, will you slow dance?
+It won't work, it won't work, it won't work out
+If we don't have a say in this world now
+Taking turns, taking turns in this dance now (yeah)
+I won't forget about you
+I wanna slow dance if you feeling me now
+If we don't hold hands you'll be killing me now (killing me now)
+I need a romance, one chance (no, no, no, no)
+I just wanna know, will you slow dance?
+I wanna slow dance if you feeling me now
+If we don't hold hands you'll be killing me now (killing me now)
+We need a romance, one chance (one chance)
+I just wanna know, will you slow dance?`
+  },
+
+  // Parachute — Kiss Me Slowly
+  "spotify:track:72R0X0h8YaxYNpegeoOl0M": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `Stay with me, baby stay with me,
+Tonight don't leave me alone.
+Walk with me, come and walk with me,
+To the edge of all we've ever known.
+I can see you there with the city lights
+Fourteenth floor, pale blue eyes.
+I can breathe you in.
+Two shadows standing by the bedroom door,
+No, I could not want you more than I did right then,
+As our heads leaned in.
+Well, I'm not sure what this is gonna be,
+But with my eyes closed all I see
+Is the skyline, through the window,
+The moon above you and the streets below.
+Hold my breath as you're moving in,
+Taste your lips and feel your skin.
+When the time comes, baby don't run, just kiss me slowly.
+Stay with me, baby stay with me,
+Tonight don't leave me alone.
+She shows me everything she used to know,
+Picture frames and country roads,
+When the days were long and the world was small.
+She stood by as it fell apart,
+Separate rooms and broken hearts,
+But I won't be the one to let you go.
+Oh, I'm not sure what this is gonna be,
+But with my eyes closed all I see
+Is the skyline, through the window,
+The moon above you and the streets below.
+Hold my breath as you're moving in,
+Taste your lips and feel your skin.
+When the time comes, baby don't run, just kiss me slowly.
+Don't run away
+And it's hard to love again,
+When the only way it's been,
+When the only love you know,
+Just walked away
+If it's something that you want,
+Darling you don't have to run,
+You don't have to go
+Just stay with me, baby stay with me
+Well, I'm not sure what this is gonna be,
+But with my eyes closed all I see
+Is the skyline, through the window,
+The moon above you and the streets below.
+Hold my breath as you're moving in,
+Taste your lips and feel your skin.
+When the time comes, baby don't run, just kiss me slowly.
+Oh, I'm not sure what this is gonna go,
+But in this moment all I know
+Is the skyline, through the window,
+The moon above you and the streets below.
+Hold my breath as you're moving in,
+Taste your lips and feel your skin.
+When the time comes, baby don't run, just kiss me slowly.`
+  },
+
+  // Miguel — Adorn
+  "spotify:track:25cUhiAod71TIQSNicOaW3": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `She's art dealer chic
+Would you be my friend, my freak?
+She's (yeah) art dealer chic
+Would you be my friend, my freak?
+These lips can't wait to taste your skin, baby, no, no
+And these eyes, yeah, can't wait to see your grin, ooh, ooh, baby
+Just let my love
+Just let my love adorn you
+Please baby, yeah
+You gotta know
+You gotta know
+You know that I adore you
+Yeah, baby
+Baby, these fists will always protect ya, lady
+And this mind, ooh, will never neglect you, yeah, baby, ooh
+And they stay trying to break us down
+But don't let that affect us, no, baby
+You just gotta let my love
+Let my love
+Let my love adorn you
+Ah, le-le-le-let it dress you down
+You gotta know
+You gotta know
+Know that I adore you
+Just that, baby
+Ah, ah, oh
+Let my love adorn you, baby
+Don't you ever
+Don't you let nobody tell you different, baby
+I'll always adore you
+You gotta know now
+You got to know, know, know
+Now (could you be my friend, my freak?)
+Oh, yeah
+The same way that the stars adorn the skies, yeah (every night, baby)
+Oh, and look up, sugar (every night, baby)
+Now, hey, hey, hey
+The same way that my
+Whole world's in your eyes (when I look in your eyes, baby)
+Ooh, and it's time now (you know that it's time, baby)
+To let
+Let my love adorn you baby, hey
+Le-le-le-let it dress you down
+You gotta know, baby
+Oh, you gotta know
+Know that I adorn you, yeah
+Oh, love ain't never looked so good on ya
+Oh, put it on, baby
+Let my love adorn you`
+  },
+
+  // Loud Luxury & Emily Roberts — LOVE YOU FOR LIFE.
+  "spotify:track:3acMyDFxlQ2O5l3c9pJeQ4": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `Three words, one night, the two of us
+Burned into my mind, when love meets lust
+Still taste the echoes of how you touched me
+You keep me all on my own, babe
+With blue eyes and those lines, your body made
+Realize you can't choose the way you love me
+You knew it when you took that bite
+That I was gonna fill you up, never gonna get enough
+And now when you can't sleep at night
+I got the same kinda cravin', call me when you finally cave in
+'Cause our bodies spilled the secrets that we kept on our minds
+Wanna know your every thought 'til there's nothin' to hide
+You're mine
+Love you for life
+We skipped a couple levels 'til we blurred every line
+You'll never break my heart no matter how hard you try
+'Cause I
+Love you for life, love you for life
+Love of my life
+Those thoughts I kept locked in secrecy
+Wish you would come say 'em all to me
+I want you to work up my appetite
+You knew that when you took that bite
+That I was gonna fill you up, never gonna get enough (oh)
+And now when you can't sleep at night
+I got the same kinda cravin', call me when you finally cave in
+'Cause our bodies spilled the secrets that we kept on our minds
+Wanna know your every thought 'til there's nothin' to hide
+You're mine (you're mine)
+Love you for life
+We skipped a couple levels 'til we blurred every line
+You'll never break my heart, no matter how hard you try
+'Cause I
+Love you for life, love you for life
+Love of my life
+Love of my life, babe
+Love of my life, oh`
+  },
+
+  // Emotional Oranges — Just Like You
+  "spotify:track:0sYfwwEy0UyNizk6na4zGm": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `Left flowers on the table, I'm missing your touch
+The way that you hold me, put no one above
+I picture you naked when you're outta town
+My sole inspiration lately (lately)
+All night's how I want it (want it)
+I know you been patient with me
+All night's how I need it (need it)
+Tell me, girl, do you crave it like me?
+Hit me up when you're lonely (lonely)
+I know that you're waiting tonight
+One time if you save it tonight
+Sometimes, I love myself
+Touch myself
+Thinking of you
+Sometimes, when you're gone
+Far from home
+Thinking 'bout you, baby
+Just like you, just like you (just like you)
+Just like you, just like you (just like you)
+Kiss on your navel, my hands on your waist
+Obsessed with your flavor, I just want a taste
+My caramel shorty, you're deep in my soul
+Stop talking so naughty, you're crazy
+You talk too much shit
+All night's how I want it
+I know you been patient with me
+All night's how I need it
+Tell me, girl, do you crave it like me?
+Hit me up when you're lonely
+I know that you're waiting tonight
+One time if you save it tonight
+Sometimes, I love myself
+Touch myself
+Thinking of you (thinking about you)
+Sometimes, when you're gone
+Far from home (home, baby)
+Thinking 'bout you, baby
+Just like you (just like you), just like you
+(Every morning, love it, fuck it up)
+Just like you (just like you), just like you
+Sometimes, I love myself
+Touch myself
+Thinking of you (thinking about you)
+Sometimes, when you're gone
+Far from home
+Thinking 'bout you, baby
+Every morning, love it, fuck it up`
+  },
+
+  // Ross David — When I'm With You
+  "spotify:track:2amIuarebiXTBtwMubGA3S": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `(V1)
+With you I am
+On top of the world
+With you I see
+Things as they should be
+
+(Pre-CH)
+And who knows when
+I’ll wake up from this dream come true
+Fast asleep, when I’m with you
+
+(V2)
+With you I feel
+Like touching the stars
+With you I’ll be
+A love stricken heart
+
+(Pre-CH)
+And who knows when
+I’ll wake up from this dream come true
+Fast asleep when I’m with you
+
+(Chorus)
+But, When I’m with you
+The whole world falls away 
+And I know who I wanna be
+When it’s all through
+
+If the love is true
+I could be a million miles away
+And know just who I’m coming home to
+
+Darlin when I’m with you
+
+(V3)
+With me you are
+The only girl in the world
+With me you’ll read
+Love’s brail in the dark
+
+(Pre-CH)
+And who knows when
+I’ll wake up from this dream come true
+Fast asleep, when I’m with you
+
+(Bridge)
+And I used to stare up at cloud nine
+Dreaming of ways that I could fly
+Never knew it’d be so simple 
+
+(Chorus)
+But, When I’m with you
+The whole world falls away 
+And I know who I wanna be
+When it’s all through
+
+If the love is true
+I could be a million miles away
+And know just who I’m coming home to
+
+Darlin when I’m with you`
+  },
+
   // Novelbright — 愛とか恋とか
   "spotify:track:4McP7SOTK2NWkydOcDCajC": {
-    originalLanguage: "Japanese", originalLabel: "日本語", englishLabel: "English", originalLyrics: "", englishLyrics: ""
+    originalLanguage: "Japanese (romanized)",
+    originalLabel: "Romanized",
+    englishLabel: "English",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `[Verse 1]
+Getsuyoubi no asa, yuu-utsuna kimochi mo
+Kimi to au hi wo omoi ukabereba
+Itsumo no michi ni yasashii kaze ga fuki
+Kokoro hazumase kyou ga hajimaru yo
+
+[Pre-Chorus]
+Mukashi wa kikanakatta ano uta ya
+Eiga ya kousui no nioi de sae mo
+Kimi ga sukina monotte dakede sa
+Doushite boku mo suki nandarou
+
+[Chorus]
+Konna ni mo
+Ai toka koi toka no kotoba de katadzukerarenai kurai no
+"Aishiteru" ga afuredashite, tomaranai omoi
+Kimi mo onaji kana, tsutaeyou me wo mite, ima sugu hashitta
+Hanarenai you ni, hanasanai kara
+Dakishimetai yo zutto
+
+[Verse 2]
+Aenai toki wa omoide wo mekutte
+Chikaku ni kimi wo kanjite hagemasare
+Keitai ni utsuru kimi kara no tsuuchi wo
+Hiraku jikan ni egao ni nareru yo
+[Pre-Chorus]
+Boku no ude de kimi ga nemuru yoru mo
+Yume demo itsudemo kimi to sugoshiteta
+Me ga sametemo yumе wa samenai mama
+Kokoro ga kimi de michiteiku
+
+[Chorus]
+Konna ni mo
+Ai toka koi toka no kotoba dе katadzukerarenai kurai no
+"Aishiteru" ga afuredashite, tomaranai omoi
+Mamoritai ashita mo, kono saki otozureru mirai wo zenbu
+Azukete hoshii, kimi igai wa mou hoka ni wa nani mo iranai
+
+[Bridge]
+"Nantomonai yo", "daijoubu da yo"
+Kobosu kuchiguse, boku wa kidzuiteru yo
+Yowakutemo ii, naitemo ii nda yo
+Boku no mae de tsuyogaranaide
+Aishita riyuu wa sa
+Arikitari nano kamo shirenai kedo
+Kimi igai ni wa kangaerarenai
+
+[Chrous]
+Ai toka koi toka no kotoba de katadzukerarenai kurai no
+"Aishiteru" ga afuredashite, tomaranai omoi
+Kimi mo onajikana, tsutaeyou me wo mite, ima sugu hashitta
+Hanarenai you ni, hanasanai kara
+Dakishimetai yo zutto`,
+    englishLyrics: ""
+  },
+
+  // Clinton Kane — I GUESS I'M IN LOVE
+  "spotify:track:1dB1kZLOjTcmSHttRd8bnV": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `Oh, I'm obsessed
+With the way your head is layin' on my chest
+How you love the things I hate about myself
+That no one knows, but with you, I see hope again
+Oh, I'm a mess
+When I overthink the little things in my head
+You seem to always help me catch my breath
+But then I lose it again
+When I look at you, that's the end
+And why do I get so nervous when I look into your eyes?
+Butterflies can't stop me fallin' for you
+And darlin', this is more than anything I felt before
+You're everything that I want, but I didn't think I'd find
+Someone who is worth the wait of all the years of my heartbreak
+But I know now I found the one I love
+And I love the way
+You can never find the right things to say
+And you can't sit still an hour in the day
+I'm so in love, let's run away because us is enough
+And why do I get so nervous when I look into your eyes?
+And butterflies can't stop me fallin' for you
+And darlin', this is more than anything I felt before
+You're everything that I want, but I didn't think I'd find
+Someone who is worth the wait of all the years of my heartbreak
+But I know now I found the one
+Come close, let me be home for anything
+Good or bad, I know it's worth it, whoa
+Whoa
+And darlin', this is more than anything I felt before
+You're everything that I want, but I didn't think I'd find
+Someone who is worth the wait of all the years of my heartbreak
+But I know now I found the one I love`
+  },
+
+  // Music Travel Love — I Knew I Loved You
+  "spotify:track:3J4eGb9Ufadl5eNUgktO9t": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `Maybe it's intuition
+But somethings you just don't question
+Like in your eyes, I see my future in an instant
+And there it goes, I think I've found my best friend
+I know that it might sound more than a little crazy, but I believe
+I knew I loved you before I met you
+I think I dreamed you into life
+I knew I loved you before I met you
+I have been waiting all my life
+There's just no rhyme or reason
+Only a sense of completion
+And in your eyes, I see the missing pieces
+I'm searching for, I think I've found my way home
+I know that it might sound more than a little crazy, but I believe
+I knew I loved you before I met you
+I think I dreamed you into life
+I knew I loved you before I met you
+I have been waiting all my life
+A thousand angels dance around you
+(Ooh hoo, hoo ooo, hoo ooo, hoo hoo hoo)
+I am complete now that I've found you
+I knew I loved you before I met you
+I think I dreamed you into life
+I knew I loved you before I met you
+I have been waiting all my life
+I knew I loved you before I met you
+I think I dreamed you into life
+I knew I loved you before I met you
+I have been waiting all my life
+I knew I loved you before I met you
+I knew I loved you
+I knew I loved you before I met you
+I knew I loved you
+I knew I loved you before I met you
+I knew I loved you before I met you, I knew I loved you
+I knew I loved you before I met`
+  },
+
+  // The Script — Never Seen Anything “Quite Like You”
+  "spotify:track:018Idkvf82hi44UZmIXiGB": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II",
+    originalLyrics: `[Verse 1]
+I think I want you more than want
+And no I need you more than need
+I want to hold you more than hold
+When you stood in front of me
+I think you know me more than know
+And you see me more than see
+I could die now more than die
+Every time you look at me
+
+[Chorus]
+Well I've seen you in jeans with no make-up on
+And I've stood there in awe as your date for the prom
+I'm blessed as a man to have seen you in white
+But I've never seen anything quite like you tonight
+No, I've never seen anything quite like you
+
+[Verse 2]
+When it's right it's more than right
+Those you feel it more than feel
+I could take this moment now
+Right into the grave with me
+
+[Chorus]
+Well I've seen you in jeans with no make-up on
+And I've stood there in awe as your date for the prom
+I'm blessed as a man to have seen you in white
+But I've never seen anything quite like you tonight
+No, I've never seen anything quite like you tonight
+No, I've never seen anything quite like you tonight 
+
+[Bridge]
+And your eyes are in your eyes
+And my heart's in our hearts
+Sometimes words just ain't enough
+For this love that's more than love
+
+[Chorus]
+Well I've seen you in jeans with no make-up on
+And I've stood there in awe as your date for the prom
+I'm blessed as a man to have seen you in white
+But I've never seen anything quite like you tonight
+No, I've never seen anything quite like you tonight
+No, I've never seen anything quite like you tonight`
   },
 
   // TJ Monterde & KZ Tandingan — Palagi
