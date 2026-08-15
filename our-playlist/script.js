@@ -1,10 +1,19 @@
 (() => {
   const page = window.VALENTINE_PAGE;
   const chapters = window.VALENTINE_CHAPTERS;
+  const allTracks = chapters.flatMap((chapter) => chapter.tracks.map((track) => ({ ...track, chapter })));
+
   let spotifyController = null;
-  let pendingTrack = null;
+  let currentTrackIndex = 0;
+  let activeLyricsTrack = null;
+  let activeLyricsLanguage = 'original';
+  let playerIsPaused = true;
+  let playerHasStarted = false;
+  let spotifyReady = false;
+  let spotifyDrawerOpen = false;
 
   const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => [...document.querySelectorAll(sel)];
 
   function fillPageCopy() {
     $('#eyebrow').textContent = page.eyebrow;
@@ -46,7 +55,10 @@
 
       const list = document.createElement('div');
       list.className = 'track-list';
-      chapter.tracks.forEach((track) => list.appendChild(trackRow(track)));
+      chapter.tracks.forEach((track) => {
+        const index = allTracks.findIndex((item) => item.uri === track.uri);
+        list.appendChild(trackRow(track, index));
+      });
       section.appendChild(list);
 
       const closing = document.createElement('p');
@@ -57,10 +69,11 @@
     });
   }
 
-  function trackRow(track) {
+  function trackRow(track, index) {
     const row = document.createElement('article');
-    row.className = 'track';
+    row.className = `track${index === 0 ? ' is-active' : ''}`;
     row.dataset.uri = track.uri;
+    row.dataset.index = String(index);
 
     const button = document.createElement('button');
     button.type = 'button';
@@ -72,37 +85,281 @@
         <span class="track-title">${escapeHtml(track.title)}</span>
         <span class="track-artist">${escapeHtml(track.artist)}</span>
       </span>`;
-    button.addEventListener('click', () => selectTrack(track, row));
+    button.addEventListener('click', () => setActiveTrack(index, { play: true }));
 
     const actions = document.createElement('div');
     actions.className = 'track-actions';
+
+    const lyricsButton = document.createElement('button');
+    lyricsButton.type = 'button';
+    lyricsButton.className = 'stream-link lyrics-link';
+    lyricsButton.textContent = 'Lyrics ♡';
+    lyricsButton.setAttribute('aria-label', `View lyrics for ${track.title}`);
+    lyricsButton.addEventListener('click', () => openLyrics(track));
+
     actions.innerHTML = `
       <a class="stream-link" href="${track.spotifyUrl}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(track.title)} in Spotify">Spotify ↗</a>
       <a class="stream-link" href="${track.youtubeMusicUrl}" target="_blank" rel="noopener noreferrer" aria-label="Search ${escapeHtml(track.title)} in YouTube Music">YT Music ↗</a>`;
+    actions.prepend(lyricsButton);
 
     row.append(button, actions);
     return row;
   }
 
-  function selectTrack(track, row) {
-    document.querySelectorAll('.track').forEach((el) => el.classList.remove('is-active'));
-    row.classList.add('is-active');
-    $('#now-title').textContent = track.title;
-    $('#now-artist').textContent = track.artist;
+  function setActiveTrack(index, options = {}) {
+    const { play = false, reveal = false } = options;
+    if (index < 0 || index >= allTracks.length) return;
+
+    currentTrackIndex = index;
+    const track = allTracks[index];
+
+    $$('.track').forEach((row) => row.classList.toggle('is-active', Number(row.dataset.index) === index));
+    updatePlayerTrackCopy(track);
+    updateNavigationButtons();
+    resetProgress();
 
     if (spotifyController) {
-      spotifyController.loadEntity(track.uri);
-      // This originates from a user click; most browsers will allow it, but the Embed still
-      // exposes its own play button if autoplay policy blocks programmatic playback.
-      setTimeout(() => {
-        try { spotifyController.play(); } catch (_) {}
-      }, 350);
-    } else {
-      pendingTrack = track;
+      try {
+        spotifyController.loadEntity(track.uri);
+        playerHasStarted = false;
+        playerIsPaused = true;
+        if (play) {
+          // This call comes directly from a user action (row/next/previous button).
+          // Browser autoplay rules may still require a tap on Play in some cases.
+          try { spotifyController.play(); } catch (_) {}
+          playerIsPaused = false;
+          playerHasStarted = true;
+        }
+      } catch (_) {
+        setPlayerStatus('Spotify could not load this preview. Try the Spotify link on the song.');
+      }
+    } else if (play) {
+      setPlayerStatus('Spotify is still loading — tap Play again in a moment.');
     }
 
-    if (window.innerWidth < 760) {
-      document.querySelector('.player-shell').scrollIntoView({behavior:'smooth', block:'start'});
+    updatePlayButton();
+
+    if (reveal) {
+      const row = document.querySelector(`.track[data-index="${index}"]`);
+      if (row) row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  function updatePlayerTrackCopy(track) {
+    $('#now-title').textContent = track.title;
+    $('#now-artist').textContent = track.artist;
+    $('#player-track-number').textContent = `${String(track.number).padStart(2,'0')} / ${allTracks.length}`;
+    $('#player-lyrics').setAttribute('aria-label', `View lyrics for ${track.title}`);
+  }
+
+  function updateNavigationButtons() {
+    $('#player-prev').disabled = currentTrackIndex === 0;
+    $('#player-next').disabled = currentTrackIndex === allTracks.length - 1;
+  }
+
+  function updatePlayButton() {
+    const button = $('#player-play');
+    const icon = $('#player-play-icon');
+    const playing = playerHasStarted && !playerIsPaused;
+    icon.textContent = playing ? '❚❚' : '▶';
+    button.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    button.setAttribute('title', playing ? 'Pause' : 'Play');
+    button.classList.toggle('is-playing', playing);
+  }
+
+  function setPlayerStatus(text) {
+    $('#player-status').textContent = text;
+  }
+
+  function resetProgress() {
+    $('#player-progress-fill').style.width = '0%';
+    $('#player-time').textContent = '0:00 / --:--';
+  }
+
+  function syncPlaybackState(data) {
+    if (!data) return;
+    const { playingURI, isPaused, isBuffering, duration, position } = data;
+
+    if (playingURI) {
+      const index = allTracks.findIndex((track) => track.uri === playingURI);
+      if (index >= 0 && index !== currentTrackIndex) {
+        currentTrackIndex = index;
+        $$('.track').forEach((row) => row.classList.toggle('is-active', Number(row.dataset.index) === index));
+        updatePlayerTrackCopy(allTracks[index]);
+        updateNavigationButtons();
+      }
+    }
+
+    playerIsPaused = Boolean(isPaused);
+    if (position > 0 || !isPaused) playerHasStarted = true;
+    updatePlayButton();
+
+    if (duration > 0) {
+      const pct = Math.max(0, Math.min(100, (position / duration) * 100));
+      $('#player-progress-fill').style.width = `${pct}%`;
+      $('#player-time').textContent = `${formatTime(position)} / ${formatTime(duration)}`;
+    }
+
+    setPlayerStatus(isBuffering ? 'Buffering Spotify preview…' : (playerIsPaused ? 'Paused' : 'Playing through Spotify embed'));
+  }
+
+  function formatTime(ms) {
+    if (!Number.isFinite(ms) || ms < 0) return '--:--';
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${String(seconds).padStart(2, '0')}`;
+  }
+
+  function showStickyPlayer() {
+    const dock = $('#sticky-player');
+    dock.classList.add('is-visible');
+    dock.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('player-visible');
+  }
+
+  function revealCurrentTrack() {
+    const row = document.querySelector(`.track[data-index="${currentTrackIndex}"]`);
+    if (row) row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function toggleSpotifyDrawer() {
+    spotifyDrawerOpen = !spotifyDrawerOpen;
+    const drawer = $('#spotify-drawer');
+    const button = $('#player-spotify-toggle');
+    drawer.classList.toggle('is-open', spotifyDrawerOpen);
+    drawer.setAttribute('aria-hidden', spotifyDrawerOpen ? 'false' : 'true');
+    button.setAttribute('aria-expanded', spotifyDrawerOpen ? 'true' : 'false');
+    button.textContent = spotifyDrawerOpen ? 'Spotify ▾' : 'Spotify ▴';
+  }
+
+  function lyricsConfig(track) {
+    const configured = (window.VALENTINE_LYRICS || {})[track.uri] || {};
+    const isTranslated = Boolean(configured.englishLabel || configured.englishLyrics);
+    return {
+      originalLanguage: configured.originalLanguage || 'English',
+      originalLabel: configured.originalLabel || 'Lyrics',
+      englishLabel: configured.englishLabel || 'English',
+      originalLyrics: configured.originalLyrics || '',
+      englishLyrics: configured.englishLyrics || '',
+      hasTranslation: isTranslated
+    };
+  }
+
+  function lyricsTheme(track) {
+    return (window.VALENTINE_LYRIC_THEMES || {})[track.uri] || {
+      name: 'Love Letter', motif: '♡ ✦ ♡', texture: 'soft', paper: '#fffaf8', ink: '#3d2430', accent: '#d94f70', accent2: '#f5b6c6'
+    };
+  }
+
+  function applyLyricsTheme(track) {
+    const theme = lyricsTheme(track);
+    const sheet = $('#lyrics-sheet');
+    sheet.dataset.texture = theme.texture || 'soft';
+    sheet.style.setProperty('--letter-paper', theme.paper || '#fffaf8');
+    sheet.style.setProperty('--letter-ink', theme.ink || '#3d2430');
+    sheet.style.setProperty('--letter-accent', theme.accent || '#d94f70');
+    sheet.style.setProperty('--letter-accent-2', theme.accent2 || '#f5b6c6');
+    $('#lyrics-theme-label').textContent = theme.name || 'Love Letter';
+    $('#lyrics-motif').textContent = theme.motif || '♡';
+  }
+
+  function openLyrics(track) {
+    activeLyricsTrack = track;
+    activeLyricsLanguage = 'original';
+    applyLyricsTheme(track);
+    $('#lyrics-title').textContent = track.title;
+    $('#lyrics-artist').textContent = track.artist;
+    renderLyricsTabs();
+    renderLyricsBody();
+    renderLanguageHeader();
+
+    const modal = $('#lyrics-modal');
+    modal.classList.add('is-visible');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lyrics-open');
+    $('#lyrics-close').focus();
+  }
+
+  function closeLyrics() {
+    const modal = $('#lyrics-modal');
+    modal.classList.remove('is-visible');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lyrics-open');
+    activeLyricsTrack = null;
+  }
+
+  function renderLanguageHeader() {
+    const config = lyricsConfig(activeLyricsTrack);
+    const header = $('#lyrics-language-header');
+    const sheet = $('#lyrics-sheet');
+    sheet.dataset.language = activeLyricsLanguage;
+    if (config.hasTranslation) {
+      header.textContent = activeLyricsLanguage === 'english'
+        ? `English translation · ${config.originalLanguage} → English`
+        : `Original language · ${config.originalLabel}`;
+    } else {
+      header.textContent = `${config.originalLanguage} original`;
+    }
+  }
+
+  function renderLyricsTabs() {
+    const tabs = $('#lyrics-tabs');
+    tabs.innerHTML = '';
+    const config = lyricsConfig(activeLyricsTrack);
+
+    if (!config.hasTranslation) {
+      tabs.hidden = true;
+      return;
+    }
+
+    tabs.hidden = false;
+    [
+      ['original', config.originalLabel],
+      ['english', config.englishLabel]
+    ].forEach(([language, label]) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `lyrics-tab${activeLyricsLanguage === language ? ' is-active' : ''}`;
+      button.textContent = label;
+      button.setAttribute('role', 'tab');
+      button.setAttribute('aria-selected', activeLyricsLanguage === language ? 'true' : 'false');
+      button.addEventListener('click', () => {
+        activeLyricsLanguage = language;
+        renderLyricsTabs();
+        renderLyricsBody();
+        renderLanguageHeader();
+      });
+      tabs.appendChild(button);
+    });
+  }
+
+  function renderLyricsBody() {
+    const body = $('#lyrics-body');
+    const note = $('#lyrics-note');
+    const config = lyricsConfig(activeLyricsTrack);
+    const text = activeLyricsLanguage === 'english' ? config.englishLyrics : config.originalLyrics;
+
+    body.innerHTML = '';
+    if (text.trim()) {
+      const lyrics = document.createElement('div');
+      lyrics.className = 'lyrics-text';
+      lyrics.textContent = text.trim();
+      body.appendChild(lyrics);
+      note.textContent = config.hasTranslation
+        ? `${activeLyricsLanguage === 'english' ? 'English translation' : config.originalLanguage + ' original'} · static letter view`
+        : 'Static letter view';
+    } else {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'lyrics-placeholder';
+      placeholder.innerHTML = `
+        <div class="placeholder-heart" aria-hidden="true">♡</div>
+        <strong>This letter is waiting for its words.</strong>
+        <p>The stationery, language toggle, and song-specific visual theme are ready. Add the companion lyric text later in <code>lyrics-data.js</code>.</p>`;
+      body.appendChild(placeholder);
+      note.textContent = config.hasTranslation
+        ? `${config.originalLanguage} ↔ English toggle is already wired for this song.`
+        : 'This song will use one lyrics view once its text is added.';
     }
   }
 
@@ -128,23 +385,102 @@
   $('#open-envelope').addEventListener('click', () => {
     $('#envelope').classList.add('is-open');
     document.body.style.overflow = '';
+    showStickyPlayer();
   });
-  document.body.style.overflow = 'hidden';
 
+  $('#player-prev').addEventListener('click', () => setActiveTrack(currentTrackIndex - 1, { play: true }));
+  $('#player-next').addEventListener('click', () => setActiveTrack(currentTrackIndex + 1, { play: true }));
+  $('#player-restart').addEventListener('click', () => {
+    if (!spotifyController) return;
+    try { spotifyController.restart(); } catch (_) {}
+  });
+  $('#player-play').addEventListener('click', () => {
+    if (!spotifyController) {
+      setPlayerStatus('Spotify is still loading…');
+      return;
+    }
+    try {
+      if (!playerHasStarted) {
+        spotifyController.play();
+        playerHasStarted = true;
+        playerIsPaused = false;
+      } else {
+        spotifyController.togglePlay();
+        playerIsPaused = !playerIsPaused;
+      }
+      updatePlayButton();
+    } catch (_) {
+      setPlayerStatus('Playback was blocked by the browser — open the Spotify drawer and tap its play button.');
+    }
+  });
+  $('#player-lyrics').addEventListener('click', () => openLyrics(allTracks[currentTrackIndex]));
+  $('#player-spotify-toggle').addEventListener('click', toggleSpotifyDrawer);
+  $('#player-track-button').addEventListener('click', revealCurrentTrack);
+
+  $('#lyrics-close').addEventListener('click', closeLyrics);
+  $$('[data-close-lyrics]').forEach((el) => el.addEventListener('click', closeLyrics));
+  document.addEventListener('keydown', (event) => {
+    const modalOpen = $('#lyrics-modal').classList.contains('is-visible');
+    const playerVisible = document.body.classList.contains('player-visible');
+    const typingOrControl = /INPUT|TEXTAREA|BUTTON|A/.test(document.activeElement?.tagName || '');
+
+    if (event.key === 'Escape' && modalOpen) closeLyrics();
+    if (event.key === ' ' && playerVisible && !modalOpen && !typingOrControl) {
+      event.preventDefault();
+      $('#player-play').click();
+    }
+    if (event.key === 'ArrowRight' && playerVisible && !modalOpen && !typingOrControl && currentTrackIndex < allTracks.length - 1) {
+      event.preventDefault();
+      setActiveTrack(currentTrackIndex + 1, { play: true });
+    }
+    if (event.key === 'ArrowLeft' && playerVisible && !modalOpen && !typingOrControl && currentTrackIndex > 0) {
+      event.preventDefault();
+      setActiveTrack(currentTrackIndex - 1, { play: true });
+    }
+  });
+
+  document.body.style.overflow = 'hidden';
   fillPageCopy();
   renderNav();
   renderChapters();
   ambientHearts();
+  updatePlayerTrackCopy(allTracks[0]);
+  updateNavigationButtons();
 
   window.onSpotifyIframeApiReady = (IFrameAPI) => {
     const element = document.getElementById('embed-iframe');
-    const first = chapters[0].tracks[0];
+    const first = allTracks[0];
     const options = { width: '100%', height: 152, uri: first.uri };
     IFrameAPI.createController(element, options, (controller) => {
       spotifyController = controller;
-      if (pendingTrack) {
-        controller.loadEntity(pendingTrack.uri);
-        pendingTrack = null;
+      spotifyReady = true;
+      setPlayerStatus('Ready · Spotify embed');
+
+      try {
+        controller.addListener('ready', () => {
+          spotifyReady = true;
+          setPlayerStatus('Ready · Spotify embed');
+        });
+        controller.addListener('playback_started', (event) => {
+          playerHasStarted = true;
+          playerIsPaused = false;
+          if (event?.data?.playingURI) {
+            const index = allTracks.findIndex((track) => track.uri === event.data.playingURI);
+            if (index >= 0) {
+              currentTrackIndex = index;
+              $$('.track').forEach((row) => row.classList.toggle('is-active', Number(row.dataset.index) === index));
+              updatePlayerTrackCopy(allTracks[index]);
+              updateNavigationButtons();
+            }
+          }
+          updatePlayButton();
+        });
+        controller.addListener('playback_update', (event) => syncPlaybackState(event?.data));
+      } catch (_) {}
+
+      // If someone clicked a different row before Spotify finished loading, keep the selected track.
+      if (currentTrackIndex !== 0) {
+        try { controller.loadEntity(allTracks[currentTrackIndex].uri); } catch (_) {}
       }
     });
   };
