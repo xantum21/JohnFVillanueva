@@ -101,23 +101,23 @@ footer{text-align:center;padding:40px 24px 90px;color:var(--muted)}.footer-heart
 /* Folded stationery lyrics */
 .lyrics-link{font-family:inherit}
 body.lyrics-open{overflow:hidden}
-.lyrics-modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:26px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
+.lyrics-modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:18px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
 .lyrics-modal.is-visible{opacity:1;visibility:visible}
 .lyrics-backdrop{position:absolute;inset:0;background:rgba(50,25,36,.52);backdrop-filter:blur(10px)}
-.lyrics-sheet{--letter-paper:#fffaf8;--letter-ink:#3d2430;--letter-accent:#d94f70;--letter-accent-2:#f5b6c6;position:relative;width:min(760px,100%);max-height:min(84vh,900px);overflow:auto;padding:32px 38px 30px;background-color:var(--letter-paper);color:var(--letter-ink);border:1px solid color-mix(in srgb,var(--letter-accent) 24%,transparent);border-radius:8px 8px 22px 8px;box-shadow:0 34px 110px rgba(51,22,34,.34);isolation:isolate;transform:rotate(-.25deg)}
+.lyrics-sheet{--letter-paper:#fffaf8;--letter-ink:#3d2430;--letter-accent:#d94f70;--letter-accent-2:#f5b6c6;position:relative;width:min(720px,calc(100vw - 36px));max-height:min(86vh,920px);overflow-y:auto;overflow-x:hidden;padding:32px 34px 30px;background-color:var(--letter-paper);color:var(--letter-ink);border:1px solid color-mix(in srgb,var(--letter-accent) 24%,transparent);border-radius:8px 8px 22px 8px;box-shadow:0 34px 110px rgba(51,22,34,.34);isolation:isolate;transform:rotate(-.15deg)}
 .lyrics-sheet:before{content:"";position:absolute;z-index:-2;inset:12px -12px -12px 12px;background:color-mix(in srgb,var(--letter-paper) 88%,#d8c8c3);border-radius:8px 8px 22px 8px;box-shadow:0 14px 32px rgba(45,23,32,.13);transform:rotate(.65deg)}
 .lyrics-sheet:after{content:"";position:absolute;z-index:-1;left:0;right:0;top:44%;height:1px;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--letter-accent) 18%,transparent),transparent);box-shadow:0 1px 0 rgba(255,255,255,.5);pointer-events:none}
 .paper-fold{position:absolute;right:0;top:0;width:72px;height:72px;clip-path:polygon(100% 0,0 0,100% 100%);background:linear-gradient(225deg,color-mix(in srgb,var(--letter-paper) 72%,#bfa9a2),var(--letter-paper) 58%,color-mix(in srgb,var(--letter-accent) 16%,var(--letter-paper)));box-shadow:-8px 8px 18px rgba(68,36,47,.09);pointer-events:none}
 .paper-grain{position:absolute;inset:0;z-index:-1;opacity:.28;pointer-events:none;background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.7) 0 1px,transparent 1.3px),radial-gradient(circle at 75% 64%,rgba(50,25,35,.06) 0 .7px,transparent 1px);background-size:11px 13px,17px 19px;mix-blend-mode:multiply}
-.lyrics-close{position:sticky;float:right;top:0;margin:-10px -10px 0 14px;width:42px;height:42px;border:1px solid color-mix(in srgb,var(--letter-accent) 24%,transparent);border-radius:50%;background:color-mix(in srgb,var(--letter-paper) 86%,#fff);color:var(--letter-accent);font:600 1.65rem/1 "DM Sans",sans-serif;cursor:pointer;z-index:4}
-.stationery-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin:0 50px 20px 0;padding-bottom:13px;border-bottom:1px solid color-mix(in srgb,var(--letter-accent) 22%,transparent)}
+.lyrics-close{position:absolute;left:16px;top:16px;margin:0;width:40px;height:40px;border:1px solid color-mix(in srgb,var(--letter-accent) 24%,transparent);border-radius:50%;background:color-mix(in srgb,var(--letter-paper) 90%,#fff);color:var(--letter-accent);font:600 1.5rem/1 "DM Sans",sans-serif;cursor:pointer;z-index:6;box-shadow:0 8px 18px rgba(55,28,38,.08);backdrop-filter:blur(6px)}
+.stationery-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin:0 124px 20px 52px;padding:2px 0 13px;border-bottom:1px solid color-mix(in srgb,var(--letter-accent) 22%,transparent)}
 .lyrics-theme-label{margin:0;color:var(--letter-accent);text-transform:uppercase;letter-spacing:.2em;font-size:.66rem;font-weight:900}.lyrics-language-header{margin:4px 0 0;color:color-mix(in srgb,var(--letter-ink) 62%,transparent);font-size:.76rem;font-weight:700;transition:color .2s ease,letter-spacing .2s ease}.lyrics-sheet[data-language="english"] .lyrics-language-header{color:color-mix(in srgb,var(--letter-accent) 74%,var(--letter-ink));letter-spacing:.015em}.lyrics-sheet[data-language="english"] .stationery-header{border-bottom-style:dashed}.lyrics-motif{font-family:"Caveat",cursive;font-size:1.45rem;color:var(--letter-accent);white-space:nowrap;transform:rotate(2deg)}
-.lyrics-kicker{margin:0 0 5px;color:var(--letter-accent);font-family:"Caveat",cursive;font-size:1.16rem;font-weight:700}
-.lyrics-sheet h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,3.65rem);line-height:1.03;letter-spacing:-.035em;margin:.08rem 48px .3rem 0;color:var(--letter-ink)}
-.lyrics-artist{margin:0;color:color-mix(in srgb,var(--letter-ink) 64%,transparent);font-weight:700}
-.lyrics-tabs{display:inline-flex;gap:5px;margin:22px 0 8px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--letter-accent-2) 22%,transparent);border:1px solid color-mix(in srgb,var(--letter-accent) 20%,transparent)}
+.lyrics-kicker{margin:0 110px 5px 0;color:var(--letter-accent);font-family:"Caveat",cursive;font-size:1.16rem;font-weight:700}
+.lyrics-sheet h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,3.65rem);line-height:1.03;letter-spacing:-.035em;margin:.08rem 118px .3rem 0;color:var(--letter-ink)}
+.lyrics-artist{margin:0 110px 0 0;color:color-mix(in srgb,var(--letter-ink) 64%,transparent);font-weight:700}
+.lyrics-tabs{display:inline-flex;flex-wrap:wrap;gap:5px;margin:22px 0 8px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--letter-accent-2) 22%,transparent);border:1px solid color-mix(in srgb,var(--letter-accent) 20%,transparent)}
 .lyrics-tab{border:0;border-radius:999px;padding:9px 16px;background:transparent;color:color-mix(in srgb,var(--letter-ink) 68%,transparent);font:800 .8rem/1 "DM Sans",sans-serif;cursor:pointer}.lyrics-tab.is-active{background:color-mix(in srgb,var(--letter-paper) 82%,#fff);color:var(--letter-ink);box-shadow:0 5px 14px rgba(66,34,45,.1)}
-.lyrics-body{position:relative;margin-top:14px;min-height:260px;max-height:min(54vh,560px);overflow:auto;padding:2px 8px 10px 0;scroll-behavior:smooth;mask-image:linear-gradient(to bottom,transparent 0,black 18px,black calc(100% - 28px),transparent 100%)}
+.lyrics-body{position:relative;margin-top:14px;min-height:260px;max-height:min(54vh,560px);overflow-y:auto;overflow-x:hidden;padding:2px 6px 10px 0;scroll-behavior:smooth;mask-image:linear-gradient(to bottom,transparent 0,black 18px,black calc(100% - 28px),transparent 100%)}
 .lyrics-body:after{content:"";position:sticky;left:0;bottom:0;display:block;height:32px;margin-top:-32px;background:linear-gradient(180deg,rgba(255,255,255,0),color-mix(in srgb,var(--letter-paper) 96%,transparent));pointer-events:none}
 .lyrics-scroll-prompt{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;flex-wrap:wrap;width:fit-content;max-width:100%;padding:9px 14px;margin:0 0 10px auto;background:color-mix(in srgb,var(--letter-paper) 82%,white);border:1px solid color-mix(in srgb,var(--letter-accent) 18%,transparent);border-radius:999px;box-shadow:0 8px 20px rgba(52,25,36,.08);font-size:.78rem;line-height:1.2;color:color-mix(in srgb,var(--letter-ink) 82%,transparent);backdrop-filter:blur(8px);transition:opacity .35s ease,transform .35s ease}
 .lyrics-scroll-prompt strong{font-size:.8rem;color:var(--letter-accent)}
@@ -126,7 +126,7 @@ body.lyrics-open{overflow:hidden}
 .lyrics-text{display:grid;gap:8px;font-family:"Playfair Display",serif;font-size:1.08rem;line-height:1.96;color:var(--letter-ink);padding:4px 8px 24px 6px}
 .lyric-line,.lyric-section{opacity:.05;filter:blur(6px);transform:translateY(16px);transition:opacity .55s ease,transform .55s ease,filter .55s ease}
 .lyric-line.is-revealed,.lyric-section.is-revealed{opacity:1;filter:blur(0);transform:translateY(0)}
-.lyric-line{white-space:pre-wrap}
+.lyric-line{white-space:pre-wrap;overflow-wrap:anywhere}
 .lyric-section{margin-top:12px;margin-bottom:4px;font-size:.84rem;line-height:1.4;letter-spacing:.14em;text-transform:uppercase;color:var(--letter-accent);font-weight:800;font-family:Inter,sans-serif}
 .lyric-gap{height:12px}
 .lyrics-placeholder{position:relative;padding:48px 34px;text-align:center;border:1px dashed color-mix(in srgb,var(--letter-accent) 38%,transparent);border-radius:16px;background:color-mix(in srgb,var(--letter-paper) 84%,#fff);overflow:hidden}.lyrics-placeholder:before{content:"";position:absolute;inset:auto -80px -90px auto;width:220px;height:220px;border:1px solid color-mix(in srgb,var(--letter-accent) 18%,transparent);transform:rotate(45deg)}
@@ -190,11 +190,11 @@ body.lyrics-open{overflow:hidden}
 .lyrics-sheet.is-opening{animation:sheetArrive .85s cubic-bezier(.19,.8,.25,1) both}
 @keyframes paperUnroll{0%{opacity:1;transform:scaleY(1) translateY(0)}48%{opacity:1;transform:scaleY(1) translateY(0)}100%{opacity:0;transform:scaleY(.04) translateY(-22px)}}
 @keyframes sheetArrive{0%{transform:translateY(26px) scale(.985) rotate(-.12deg)}100%{transform:translateY(0) scale(1) rotate(-.25deg)}}
-.wax-seal{position:absolute;right:84px;top:64px;display:grid;place-items:center;width:68px;height:68px;border-radius:50%;background:radial-gradient(circle at 34% 30%,color-mix(in srgb,var(--letter-accent-2) 82%,white),transparent 26%), radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--letter-accent) 92%,#7e2138), color-mix(in srgb,var(--letter-accent) 70%,#5f1731));color:#fff8fb;font-weight:900;font-size:1.1rem;box-shadow:0 12px 26px rgba(72,24,38,.22), inset 0 2px 10px rgba(255,255,255,.15);transform:rotate(-7deg);letter-spacing:.04em}
-.postage-stamp{position:absolute;right:28px;top:26px;display:grid;justify-items:center;gap:4px;min-width:86px;padding:8px 10px 9px;border:2px dashed color-mix(in srgb,var(--letter-accent) 36%,transparent);background:color-mix(in srgb,var(--letter-paper) 88%,white);border-radius:8px;box-shadow:0 8px 18px rgba(56,28,39,.08);transform:rotate(5deg)}
+.wax-seal{position:absolute;right:32px;top:78px;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 34% 30%,color-mix(in srgb,var(--letter-accent-2) 82%,white),transparent 26%), radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--letter-accent) 92%,#7e2138), color-mix(in srgb,var(--letter-accent) 70%,#5f1731));color:#fff8fb;font-weight:900;font-size:1rem;box-shadow:0 12px 26px rgba(72,24,38,.22), inset 0 2px 10px rgba(255,255,255,.15);transform:rotate(-6deg);letter-spacing:.04em}
+.postage-stamp{position:absolute;right:22px;top:20px;display:grid;justify-items:center;gap:4px;min-width:78px;padding:7px 9px 8px;border:2px dashed color-mix(in srgb,var(--letter-accent) 36%,transparent);background:color-mix(in srgb,var(--letter-paper) 88%,white);border-radius:8px;box-shadow:0 8px 18px rgba(56,28,39,.08);transform:rotate(4deg)}
 .stamp-icon{font-size:.95rem;color:var(--letter-accent);font-weight:800}
 .stamp-text{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb,var(--letter-ink) 72%,transparent);font-weight:800;text-align:center;line-height:1.2}
-.margin-notes{position:absolute;top:166px;width:108px;display:grid;gap:12px;pointer-events:none}
+.margin-notes{position:absolute;top:188px;width:108px;display:grid;gap:12px;pointer-events:none}
 .margin-notes-left{left:-92px}
 .margin-notes-right{right:-92px}
 .margin-note{padding:9px 10px;border-radius:10px;background:color-mix(in srgb,var(--letter-paper) 88%,white);border:1px solid color-mix(in srgb,var(--letter-accent) 15%,transparent);box-shadow:0 10px 18px rgba(55,30,39,.08);font-family:"Caveat",cursive;font-size:1.05rem;line-height:1.1;color:color-mix(in srgb,var(--letter-ink) 86%,transparent);transform:rotate(-4deg)}
@@ -207,9 +207,9 @@ body.lyrics-open{overflow:hidden}
 .lyrics-sheet[data-form="romance"] .wax-seal{top:74px}
 .lyrics-sheet[data-form="keepsake"]{border-radius:16px 16px 30px 16px}
 .lyrics-sheet[data-form="keepsake"] .postage-stamp{transform:rotate(2deg) translateY(2px)}
-.lyrics-sheet[data-form="stationery"]{width:min(700px,100%);padding-bottom:42px}
+.lyrics-sheet[data-form="stationery"]{width:min(700px,calc(100vw - 36px));padding-bottom:42px}
 .lyrics-sheet[data-form="stationery"] .lyrics-body{max-height:min(60vh,650px)}
-.lyrics-sheet[data-form="vow"]{width:min(680px,100%);background-image:linear-gradient(180deg,color-mix(in srgb,var(--letter-accent-2) 16%,transparent),transparent 120px), var(--letter-paper);border-radius:14px}
+.lyrics-sheet[data-form="vow"]{width:min(680px,calc(100vw - 36px));background-image:linear-gradient(180deg,color-mix(in srgb,var(--letter-accent-2) 16%,transparent),transparent 120px), var(--letter-paper);border-radius:14px}
 .lyrics-sheet[data-form="vow"] .stationery-header{justify-content:center;text-align:center;padding-right:86px}
 .lyrics-sheet[data-form="vow"] .lyrics-sheet h2{letter-spacing:-.03em}
 .lyrics-sheet[data-form="aged"]{filter:saturate(.88);box-shadow:0 34px 110px rgba(51,22,34,.34), 0 0 0 1px rgba(140,101,62,.12)}
@@ -217,4 +217,6 @@ body.lyrics-open{overflow:hidden}
 .lyrics-sheet[data-form="aged"] .paper-roll,.lyrics-sheet[data-form="aged"] .postage-stamp{filter:sepia(.2)}
 .lyrics-sheet[data-form="aged"] .lyrics-sheet:before{}
 @media (max-width:1100px){.margin-notes{display:none}}
-@media (max-width:760px){.paper-roll{left:18px;right:18px;top:14px;height:26px}.postage-stamp{right:50px;top:18px;min-width:72px;padding:6px 8px}.wax-seal{width:56px;height:56px;right:18px;top:64px;font-size:.95rem}.lyrics-sheet[data-form="vow"] .stationery-header{padding-right:64px}}
+@media (max-width:760px){.paper-roll{left:18px;right:18px;top:14px;height:26px}.postage-stamp{right:16px;top:16px;min-width:66px;padding:6px 7px}.wax-seal{width:52px;height:52px;right:16px;top:70px;font-size:.92rem}.lyrics-close{left:12px;top:12px}.stationery-header{margin:0 86px 18px 46px}.lyrics-sheet h2{margin-right:82px}.lyrics-kicker,.lyrics-artist{margin-right:82px}.lyrics-body{max-height:55vh;padding-right:2px}.lyrics-scroll-prompt{position:sticky;top:0;margin:0 0 8px 0;font-size:.72rem;padding:8px 11px}.lyrics-text{font-size:1rem;line-height:1.82;padding-right:2px}.lyrics-sheet[data-form="vow"] .stationery-header{padding-right:0}}
+
+.lyrics-sheet *{box-sizing:border-box}

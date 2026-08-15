@@ -703,6 +703,50 @@ Love of my life, babe
 Love of my life, oh`
   },
 
+
+
+  // ZAYN — Let Me
+  "spotify:track:0aVsVsOYDSEEigiwTrIab9": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part II + user correction",
+    originalLyrics: `Sweet baby, our sex has meaning
+Know this time you'll stay 'til the morning
+Duvet days and vanilla ice cream
+More than just one night together exclusively
+Baby, let me be your man
+So I can love you
+And if you let me be your man
+Then I'll take care of you, you
+For the rest of my life, for the rest of yours
+For the rest of my life, for the rest of yours
+For the rest of ours
+We're drinking the finest label
+Dirty dancing on top of the table
+Long walks on the beach in April (beach in April)
+Yeah, I promise, darling, that I'll be faithful (be faithful)
+Baby, let me be your man (let me be your man)
+So I can love you (I can love you)
+And if you let me be your man (let me be your man)
+Then I'll take care of you (I can love you)
+For the rest of my life, for the rest of yours
+For the rest of my life, for the rest of yours
+For the rest of ours
+Give me your body and let me love you like I do
+Come a little closer and let me do those things to you
+This feeling will last forever, baby, that's the truth
+Let me be your man so I can love you
+Baby, let me be your man (let me be your man)
+So I can love you (I can love you)
+And if you let me be your man (let me be your man)
+Then I'll take care of you, you (I can love you)
+For the rest of my life, for the rest of yours
+(For the rest of my life, for the rest of yours)
+For the rest of my life, for the rest of yours
+(For the rest of my life, for the rest of yours)
+For the rest of ours (for the rest of ours)`
+  },
+
   // Emotional Oranges — Just Like You
   "spotify:track:0sYfwwEy0UyNizk6na4zGm": {
     originalLanguage: "English",
@@ -827,64 +871,176 @@ Darlin when I’m with you`
 
   // Novelbright — 愛とか恋とか
   "spotify:track:4McP7SOTK2NWkydOcDCajC": {
-    originalLanguage: "Japanese (romanized)",
-    originalLabel: "Romanized",
+    originalLanguage: "Japanese",
+    originalLabel: "日本語",
+    secondaryLanguage: "Romanized Japanese",
+    secondaryLabel: "Romaji",
     englishLabel: "English",
-    sourceLabel: "Lyrics supplied for this project · Part II",
+    englishLanguage: "English translation",
+    sourceLabel: "Lyrics supplied for this project · user-corrected Japanese / Romaji / English",
     originalLyrics: `[Verse 1]
-Getsuyoubi no asa, yuu-utsuna kimochi mo
-Kimi to au hi wo omoi ukabereba
+月曜日の朝 憂鬱な気持ちも
+君と会う日を思い浮かべれば
+いつもの道に優しい風が吹き
+心弾ませ今日が始まるよ
+
+[Pre-Chorus]
+昔は聴かなかったあの歌や
+映画や香水の匂いでさえも
+君が好きなものってだけでさ
+どうして僕も好きなんだろう
+
+[Chorus]
+こんなにも
+愛とか恋とかの言葉で片付けられないくらいの
+「愛してる」が溢れ出して 止まらない想い
+君も同じかな 伝えよう目を見て 今すぐ走った
+離れないように 離さないから
+抱きしめたいよずっと
+
+[Verse 2]
+会えない時は思い出をめくって
+近くに君を感じて励まされ
+携帯に映る君からの通知を
+開く時間に笑顔になれるよ
+
+[Pre-Chorus]
+僕の腕で君が眠る夜も
+夢でもいつでも君と過ごしてた
+目が覚めても夢は醒めないまま
+心が君で満ちていく
+
+[Chorus]
+こんなにも
+愛とか恋とかの言葉で片付けられないくらいの
+「愛してる」が溢れ出して 止まらない想い
+守りたい明日も この先訪れる未来を全部
+預けてほしい 君以外はもう他には何もいらない
+
+[Bridge]
+「なんともないよ」「大丈夫だよ」
+溢す口癖 僕は気づいてるよ
+弱くてもいい 泣いてもいいんだよ
+僕の前で強がらないで
+愛した理由はさ
+ありきたりなのかもしれないけど
+君以外には考えられない
+
+[Chorus]
+愛とか恋とかの言葉で片付けられないくらいの
+「愛してる」が溢れ出して 止まらない想い
+君も同じかな 伝えよう目を見て 今すぐ走った
+離れないように 離さないから
+抱きしめたいよずっと`,
+    secondaryLyrics: `[Verse 1]
+Getsuyoubi no asa, yuuutsu na kimochi mo
+Kimi to au hi o omoi ukabereba
 Itsumo no michi ni yasashii kaze ga fuki
 Kokoro hazumase kyou ga hajimaru yo
 
 [Pre-Chorus]
 Mukashi wa kikanakatta ano uta ya
 Eiga ya kousui no nioi de sae mo
-Kimi ga sukina monotte dakede sa
+Kimi ga sukina mono tte dake de sa
 Doushite boku mo suki nandarou
 
 [Chorus]
 Konna ni mo
 Ai toka koi toka no kotoba de katadzukerarenai kurai no
-"Aishiteru" ga afuredashite, tomaranai omoi
-Kimi mo onaji kana, tsutaeyou me wo mite, ima sugu hashitta
-Hanarenai you ni, hanasanai kara
+"Aishiteru" ga afuredashite tomaranai omoi
+Kimi mo onaji kana tsutaeyou me o mite ima sugu hashitta
+Hanarenai you ni hanasanai kara
 Dakishimetai yo zutto
 
 [Verse 2]
-Aenai toki wa omoide wo mekutte
-Chikaku ni kimi wo kanjite hagemasare
-Keitai ni utsuru kimi kara no tsuuchi wo
+Aenai toki wa omoide o mekutte
+Chikaku ni kimi o kanjite hagemasare
+Keitai ni utsuru kimi kara no tsuuchi o
 Hiraku jikan ni egao ni nareru yo
+
 [Pre-Chorus]
 Boku no ude de kimi ga nemuru yoru mo
 Yume demo itsudemo kimi to sugoshiteta
-Me ga sametemo yumе wa samenai mama
+Me ga sametemo yume wa samenai mama
 Kokoro ga kimi de michiteiku
 
 [Chorus]
 Konna ni mo
-Ai toka koi toka no kotoba dе katadzukerarenai kurai no
-"Aishiteru" ga afuredashite, tomaranai omoi
-Mamoritai ashita mo, kono saki otozureru mirai wo zenbu
-Azukete hoshii, kimi igai wa mou hoka ni wa nani mo iranai
+Ai toka koi toka no kotoba de katadzukerarenai kurai no
+"Aishiteru" ga afuredashite tomaranai omoi
+Mamoritai ashita mo kono saki otozureru mirai o zenbu
+Azukete hoshii kimi igai wa mou hoka ni wa nani mo iranai
 
 [Bridge]
-"Nantomonai yo", "daijoubu da yo"
-Kobosu kuchiguse, boku wa kidzuiteru yo
-Yowakutemo ii, naitemo ii nda yo
+"Nantomonai yo" "Daijoubu da yo"
+Kobosu kuchiguse boku wa kidzuiteru yo
+Yowakutemo ii naitemo ii n da yo
 Boku no mae de tsuyogaranaide
 Aishita riyuu wa sa
 Arikitari nano kamo shirenai kedo
 Kimi igai ni wa kangaerarenai
 
-[Chrous]
+[Chorus]
 Ai toka koi toka no kotoba de katadzukerarenai kurai no
-"Aishiteru" ga afuredashite, tomaranai omoi
-Kimi mo onajikana, tsutaeyou me wo mite, ima sugu hashitta
-Hanarenai you ni, hanasanai kara
+"Aishiteru" ga afuredashite tomaranai omoi
+Kimi mo onaji kana tsutaeyou me o mite ima sugu hashitta
+Hanarenai you ni hanasanai kara
 Dakishimetai yo zutto`,
-    englishLyrics: ""
+    englishLyrics: `[Verse 1]
+Even Monday mornings and their gloomy feelings
+Turn light when I picture the day I get to see you.
+A gentle breeze blows along the road I always take,
+And the day begins with my heart already dancing.
+
+[Pre-Chorus]
+Even that song I never used to listen to,
+And even the scent of films and perfume,
+Just because they're things that you love,
+Why is it that I end up loving them too?
+
+[Chorus]
+This much—
+More than words like love or romance could ever neatly explain,
+"I love you" keeps overflowing from me, feelings that won't stop.
+I wonder if you feel the same; I ran to tell you while looking straight into your eyes.
+So we never drift apart—because I won't let go,
+I want to hold you forever.
+
+[Verse 2]
+When I can't see you, I turn through our memories,
+Feel you close to me, and that keeps me going.
+Even the moment I open a notification from you on my phone
+Is enough to make me smile.
+
+[Pre-Chorus]
+Even on the nights you fall asleep in my arms,
+I was always with you, even in my dreams.
+And even when I wake up, the dream doesn't fade,
+My heart just fills more and more with you.
+
+[Chorus]
+This much—
+More than words like love or romance could ever neatly explain,
+"I love you" keeps overflowing from me, feelings that won't stop.
+I want to protect tomorrow too—and every bit of the future waiting for us.
+Trust it all to me; besides you,
+I don't need anything else.
+
+[Bridge]
+"I'm fine," "It's okay"—
+I notice those little phrases you let spill out.
+It's okay to be weak; it's okay to cry.
+You don't have to act strong in front of me.
+The reason I fell in love with you
+May be ordinary,
+But I can't imagine anyone except you.
+
+[Chorus]
+More than words like love or romance could ever neatly explain,
+"I love you" keeps overflowing from me, feelings that won't stop.
+I wonder if you feel the same; I ran to tell you while looking straight into your eyes.
+So we never drift apart—because I won't let go,
+I want to hold you forever.`
   },
 
   // Clinton Kane — I GUESS I'M IN LOVE

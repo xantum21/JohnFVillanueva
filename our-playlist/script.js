@@ -93,7 +93,7 @@
     const lyricsButton = document.createElement('button');
     lyricsButton.type = 'button';
     const lyricInfo = lyricsConfig(track);
-    const hasLyrics = Boolean(lyricInfo.originalLyrics.trim() || lyricInfo.englishLyrics.trim());
+    const hasLyrics = lyricInfo.views.some((view) => String(view.text || '').trim());
     lyricsButton.className = `stream-link lyrics-link${hasLyrics ? ' is-ready' : ' is-pending'}`;
     lyricsButton.textContent = hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon';
     lyricsButton.setAttribute('aria-label', `View lyrics for ${track.title}`);
@@ -152,7 +152,7 @@
     $('#now-artist').textContent = track.artist;
     $('#player-track-number').textContent = `${String(track.number).padStart(2,'0')} / ${allTracks.length}`;
     const lyricInfo = lyricsConfig(track);
-    const hasLyrics = Boolean(lyricInfo.originalLyrics.trim() || lyricInfo.englishLyrics.trim());
+    const hasLyrics = lyricInfo.views.some((view) => String(view.text || '').trim());
     $('#player-lyrics').setAttribute('aria-label', `View lyrics for ${track.title}`);
     $('#player-lyrics').textContent = hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon';
     $('#player-lyrics').classList.toggle('is-ready', hasLyrics);
@@ -241,16 +241,42 @@
 
   function lyricsConfig(track) {
     const configured = (window.VALENTINE_LYRICS || {})[track.uri] || {};
-    const isTranslated = Boolean(configured.englishLabel || configured.englishLyrics);
+    const views = [
+      {
+        key: 'original',
+        label: configured.originalLabel || 'Lyrics',
+        language: configured.originalLanguage || 'English',
+        text: configured.originalLyrics || ''
+      }
+    ];
+
+    if (configured.secondaryLabel || configured.secondaryLyrics) {
+      views.push({
+        key: 'secondary',
+        label: configured.secondaryLabel || 'Romaji',
+        language: configured.secondaryLanguage || 'Romanized',
+        text: configured.secondaryLyrics || ''
+      });
+    }
+
+    if (configured.englishLabel || configured.englishLyrics) {
+      views.push({
+        key: 'english',
+        label: configured.englishLabel || 'English',
+        language: configured.englishLanguage || 'English translation',
+        text: configured.englishLyrics || ''
+      });
+    }
+
     return {
-      originalLanguage: configured.originalLanguage || 'English',
-      originalLabel: configured.originalLabel || 'Lyrics',
-      englishLabel: configured.englishLabel || 'English',
-      originalLyrics: configured.originalLyrics || '',
-      englishLyrics: configured.englishLyrics || '',
       sourceLabel: configured.sourceLabel || '',
-      hasTranslation: isTranslated
+      views,
+      hasTranslation: views.length > 1
     };
+  }
+
+  function currentLyricsView(config) {
+    return config.views.find((view) => view.key === activeLyricsLanguage) || config.views[0];
   }
 
   function lyricsTheme(track) {
@@ -273,7 +299,7 @@
       'spotify:track:72R0X0h8YaxYNpegeoOl0M': { stamp: 'SLOWLY', seal: '❦', notes: ['do not run', 'stay with me tonight'] },
       'spotify:track:25cUhiAod71TIQSNicOaW3': { stamp: 'ADORN', seal: '✦', notes: ['put love on like jewelry', 'midnight satin mood'] },
       'spotify:track:3acMyDFxlQ2O5l3c9pJeQ4': { stamp: 'FOR LIFE', seal: '∞', notes: ['blurred every line', 'love meets lust'] },
-      'spotify:track:0aVsVsOYDSEEigiwTrIab9': { stamp: 'AFTER DARK', seal: '☾', notes: ['pending lyrics', 'still part of the story'] },
+      'spotify:track:0aVsVsOYDSEEigiwTrIab9': { stamp: 'AFTER DARK', seal: '☾', notes: ['intimate letter, softer ending', 'let me stay for the rest of ours'] },
       'spotify:track:0sYfwwEy0UyNizk6na4zGm': { stamp: 'CITRUS NOTE', seal: '○', notes: ['craving your presence', 'sun-warm skin and late-night thoughts'] },
       'spotify:track:2amIuarebiXTBtwMubGA3S': { stamp: 'WITH YOU', seal: '☀', notes: ['the whole world falls away', 'come-home kind of love'] },
       'spotify:track:4McP7SOTK2NWkydOcDCajC': { stamp: '恋文', seal: '愛', notes: ['romanized for now', 'translation tab waiting its turn'] },
@@ -401,14 +427,11 @@
     const config = lyricsConfig(activeLyricsTrack);
     const header = $('#lyrics-language-header');
     const sheet = $('#lyrics-sheet');
+    const view = currentLyricsView(config);
     sheet.dataset.language = activeLyricsLanguage;
-    if (config.hasTranslation) {
-      header.textContent = activeLyricsLanguage === 'english'
-        ? `English translation · ${config.originalLanguage} → English`
-        : `Original language · ${config.originalLabel}`;
-    } else {
-      header.textContent = `${config.originalLanguage} original`;
-    }
+    header.textContent = config.views.length > 1
+      ? `${view.label} · ${view.language}`
+      : `${view.language}`;
   }
 
   function renderLyricsTabs() {
@@ -416,24 +439,21 @@
     tabs.innerHTML = '';
     const config = lyricsConfig(activeLyricsTrack);
 
-    if (!config.hasTranslation) {
+    if (config.views.length <= 1) {
       tabs.hidden = true;
       return;
     }
 
     tabs.hidden = false;
-    [
-      ['original', config.originalLabel],
-      ['english', config.englishLabel]
-    ].forEach(([language, label]) => {
+    config.views.forEach((view) => {
       const button = document.createElement('button');
       button.type = 'button';
-      button.className = `lyrics-tab${activeLyricsLanguage === language ? ' is-active' : ''}`;
-      button.textContent = label;
+      button.className = `lyrics-tab${activeLyricsLanguage === view.key ? ' is-active' : ''}`;
+      button.textContent = view.label;
       button.setAttribute('role', 'tab');
-      button.setAttribute('aria-selected', activeLyricsLanguage === language ? 'true' : 'false');
+      button.setAttribute('aria-selected', activeLyricsLanguage === view.key ? 'true' : 'false');
       button.addEventListener('click', () => {
-        activeLyricsLanguage = language;
+        activeLyricsLanguage = view.key;
         renderLyricsTabs();
         renderLyricsBody();
         renderLanguageHeader();
@@ -446,7 +466,8 @@
     const body = $('#lyrics-body');
     const note = $('#lyrics-note');
     const config = lyricsConfig(activeLyricsTrack);
-    const text = activeLyricsLanguage === 'english' ? config.englishLyrics : config.originalLyrics;
+    const view = currentLyricsView(config);
+    const text = String(view.text || '');
 
     body.innerHTML = '';
     body.scrollTop = 0;
@@ -454,7 +475,7 @@
     if (text.trim()) {
       const prompt = document.createElement('div');
       prompt.className = 'lyrics-scroll-prompt';
-      prompt.innerHTML = `<span aria-hidden="true">↡</span><strong>Unfold the letter</strong><span>Scroll down to reveal the next lines.</span>`;
+      prompt.innerHTML = `<span aria-hidden="true">↡</span><strong>Unfold the letter</strong><span>Scroll to reveal the next lines.</span>`;
       body.appendChild(prompt);
 
       const lyrics = document.createElement('div');
@@ -476,9 +497,7 @@
       body.appendChild(lyrics);
       attachLyricsReveal(body);
 
-      note.textContent = config.hasTranslation
-        ? `${activeLyricsLanguage === 'english' ? 'English translation' : config.originalLanguage + ' original'} · scroll-to-unfold letter view · not time-synced`
-        : `${config.sourceLabel || 'Lyrics supplied for this project'} · scroll-to-unfold letter view · not time-synced`;
+      note.textContent = `${view.label} · ${view.language} · scroll-to-unfold letter view`;
     } else {
       const placeholder = document.createElement('div');
       placeholder.className = 'lyrics-placeholder';
@@ -487,8 +506,8 @@
         <strong>This letter is waiting for its words.</strong>
         <p>The stationery, language toggle, and song-specific visual theme are ready. Add the companion lyric text later in <code>lyrics-data.js</code>.</p>`;
       body.appendChild(placeholder);
-      note.textContent = config.hasTranslation
-        ? `${config.originalLanguage} ↔ English toggle is already wired for this song.`
+      note.textContent = config.views.length > 1
+        ? `${view.label} is ready as a tab — this specific view is still waiting for text.`
         : 'This song will use one lyrics view once its text is added.';
     }
   }

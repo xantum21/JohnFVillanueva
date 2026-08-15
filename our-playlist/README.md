@@ -102,3 +102,7 @@ Lyrics from `Part 2 Lyrics.docx` are now loaded for tracks 6–12, 14–19. Trac
 
 ## V6 dramatic letter pass
 This build adds a short paper-unrolling opening animation, chapter-based paper mechanics (notebook / folded / romance / keepsake / stationery / vow / aged), and per-song decorative ephemera including wax seals, faux postage stamps, and handwritten margin notes.
+
+
+## V7 cleanup + JP/romaji/EN pass
+This pass adds a three-tab Japanese / Romaji / English treatment for Novelbright, fills in ZAYN's "Let Me", and declutters the lyrics modal by moving the close button away from the decorative art, tightening the top-right stamp/seal area, and suppressing accidental horizontal overflow.
