@@ -98,3 +98,7 @@ The lyrics letter is intentionally **not synced to playback**. Opening lyrics cr
 
 ## Part II lyric demo
 Lyrics from `Part 2 Lyrics.docx` are now loaded for tracks 6–12, 14–19. Track 13 (**Let Me**) is still pending because its lyric text was not included in that document. Novelbright is currently loaded as a romanized original with the English translation tab still waiting for text.
+
+
+## V6 dramatic letter pass
+This build adds a short paper-unrolling opening animation, chapter-based paper mechanics (notebook / folded / romance / keepsake / stationery / vow / aged), and per-song decorative ephemera including wax seals, faux postage stamps, and handwritten margin notes.

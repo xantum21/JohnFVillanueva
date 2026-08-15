@@ -259,16 +259,111 @@
     };
   }
 
+  function letterDetails(track) {
+    const byUri = {
+      'spotify:track:782sFc96ACqG89GlvPN9S2': { stamp: 'CRUSH FILE', seal: '?', notes: ['looked at you / looked away', 'heart acting ridiculous'] },
+      'spotify:track:1I75ohulScHJpoMmE9Xbfl': { stamp: 'MAYBE?', seal: '☾', notes: ['does she know?', 'every heartbeat says ask'] },
+      'spotify:track:5JJ8C9f06xhUrVRk44maoI': { stamp: 'YES / MAYBE', seal: '✓', notes: ['tiny checkbox energy', 'please say it back'] },
+      'spotify:track:6BJHsLiE47Sk0wQkuppqhr': { stamp: 'FROM PAGE ONE', seal: '01', notes: ['confession draft', 'cupids involved apparently'] },
+      'spotify:track:2AHZHeLTPuGILKyr4l8uTU': { stamp: 'HERO NOTE', seal: 'S', notes: ['trying to be brave', 'hope you like me as I am'] },
+      'spotify:track:3Z1kZKYfRC8iRXnYeC5sCJ': { stamp: 'IT CHANGED', seal: '↺', notes: ['before / after', 'something shifted yesterday'] },
+      'spotify:track:6J9tgHIE8qdy5ulg3c9SwG': { stamp: 'TRACK 01', seal: '♪', notes: ['our soundtrack starts here', 'concert for two'] },
+      'spotify:track:1ZWFt1f25IDDHsyx2rlcSV': { stamp: 'MAKE YOU MINE', seal: '❀', notes: ['this is where the sparks get bold', 'future proposal energy'] },
+      'spotify:track:5FNS5Vj69AhRGJWjhrAd01': { stamp: 'DANCE CARD', seal: '♫', notes: ['one chance', 'hold my hand already'] },
+      'spotify:track:72R0X0h8YaxYNpegeoOl0M': { stamp: 'SLOWLY', seal: '❦', notes: ['do not run', 'stay with me tonight'] },
+      'spotify:track:25cUhiAod71TIQSNicOaW3': { stamp: 'ADORN', seal: '✦', notes: ['put love on like jewelry', 'midnight satin mood'] },
+      'spotify:track:3acMyDFxlQ2O5l3c9pJeQ4': { stamp: 'FOR LIFE', seal: '∞', notes: ['blurred every line', 'love meets lust'] },
+      'spotify:track:0aVsVsOYDSEEigiwTrIab9': { stamp: 'AFTER DARK', seal: '☾', notes: ['pending lyrics', 'still part of the story'] },
+      'spotify:track:0sYfwwEy0UyNizk6na4zGm': { stamp: 'CITRUS NOTE', seal: '○', notes: ['craving your presence', 'sun-warm skin and late-night thoughts'] },
+      'spotify:track:2amIuarebiXTBtwMubGA3S': { stamp: 'WITH YOU', seal: '☀', notes: ['the whole world falls away', 'come-home kind of love'] },
+      'spotify:track:4McP7SOTK2NWkydOcDCajC': { stamp: '恋文', seal: '愛', notes: ['romanized for now', 'translation tab waiting its turn'] },
+      'spotify:track:1dB1kzLOjTcmSHttRd8bnV': { stamp: 'OH.', seal: '…', notes: ['yep. definitely in love', 'worth the wait'] },
+      'spotify:track:3J4eGb9Ufadl5eNUgktO9t': { stamp: 'FATED', seal: '✦', notes: ['dreamed you into life', 'best friend / home / forever'] },
+      'spotify:track:018Idkvf82hi44UZmIXiGB': { stamp: 'ONE OF ONE', seal: '◇', notes: ['never seen anything quite like you', 'tonight is the line that matters'] },
+      'spotify:track:1bQhZOoXYqjXs7u7rFXo0h': { stamp: 'YOU + ME', seal: '⇄', notes: ['two-sided note', 'steady little us'] },
+      'spotify:track:416dC1qBvWJcbgub6zCnJI': { stamp: 'WISH', seal: '❀', notes: ['make a wish, keep it', 'soft hair / softer heart'] },
+      'spotify:track:6etznGTGT7SJm1s5WnSQnl': { stamp: 'PUNKS IN LOVE', seal: '★', notes: ['chaotic but sweet', 'sticker-covered feelings'] },
+      'spotify:track:2iXdwVdzA0KrI2Q0iZNJbX': { stamp: 'BETTER TOGETHER', seal: '☀', notes: ['simple things / right person', 'kitchen-table forever'] },
+      'spotify:track:6XPmY4NWIqq0CofdhhjyP4': { stamp: 'LUCKY ME', seal: '✦', notes: ['golden-ticket kind of gratitude', 'how did I get this lucky?'] },
+      'spotify:track:1Xwh83YOFQARZ3QXscP123': { stamp: 'MADE FOR YOU', seal: '♡', notes: ['stitched together', 'soft certainty'] },
+      'spotify:track:114xcQz8sZ6fxRBTZmgmNE': { stamp: 'BETTER HALF', seal: '½', notes: ['two halves / one page', 'balanced in the best way'] },
+      'spotify:track:78zUxUPvONPgMIt46q5be6': { stamp: 'KEEP THIS', seal: '♡', notes: ['please keep loving me', 'fold and keep close'] },
+      'spotify:track:3odrUVQ9tvRpkC9II2oWzx': { stamp: 'STILL FALLING', seal: '↓', notes: ['falling petals / falling harder', 'and somehow still more'] },
+      'spotify:track:1p6rk9R8SCum97WnvGNt6O': { stamp: 'ALWAYS / FOREVER', seal: '∞', notes: ['infinity margins', 'the long answer is yes'] },
+      'spotify:track:4WgViu9gw3qYOr3iF9OuLG': { stamp: 'PALAGI', seal: '✿', notes: ['kundiman letter', 'always, always, always'] },
+      'spotify:track:03x2rVJRFUrvwlfxoHd9Mo': { stamp: 'POSTMARK: US', seal: '→', notes: ['road-trip postcard energy', 'just you and I is enough'] },
+      'spotify:track:1xscBC6UV21t0sMCgu0mLi': { stamp: 'WE GROW', seal: '✿', notes: ['grow side by side', 'staying is part of the growth'] },
+      'spotify:track:6CgNoAbFJ4Q4Id4EjtbXlC': { stamp: 'PHOTO BACK', seal: '▣', notes: ['write this on the back of the photo', 'save this memory'] },
+      'spotify:track:1hzWoLgh1yQ4H9fqIvOFMP': { stamp: 'WHOLE LIVES', seal: '•', notes: ['timeline in ink', 'not just moments — whole lives'] },
+      'spotify:track:2yCte16wVT6slIJ2Tqm9ML': { stamp: 'HOMEWARD', seal: '⌂', notes: ['carry you home', 'love with a front door'] },
+      'spotify:track:4HcSK64Cy7JJ5gv1Txzhzo': { stamp: 'BOOKPLATE', seal: 'Vol.', notes: ['the book of love is dog-eared now', 'return to us, always'] },
+      'spotify:track:2MWOqewf5j0qf2b6S5J6cS': { stamp: 'WILL YOU?', seal: '✧', notes: ['proposal note', 'this is the page with the question'] },
+      'spotify:track:0tgVpDi06FyKpA1z0VMD4v': { stamp: 'FIRST DANCE', seal: '1·2·3', notes: ['vellum and candlelight', 'dancing barefoot in the margins'] },
+      'spotify:track:4t6qMeHgbxWod2SLokiSQp': { stamp: 'VOW CARD', seal: '✉', notes: ['ordinary → extraordinary', 'quiet promise, huge meaning'] },
+      'spotify:track:2kfGoV9a5dbSKCNmUWH2ZF': { stamp: 'TURNING PAGE', seal: '↗', notes: ['new chapter, same love', 'one page into the next'] },
+      'spotify:track:5himtcBG5IetEOAYuB1Lu1': { stamp: 'NEVER STOP', seal: '∞', notes: ['wedding ribbon edition', 'keep choosing, keep going'] },
+      'spotify:track:4mdOqt3AiUJbBXL02aa5iw': { stamp: '115,000,000 KM', seal: '▣', notes: ['our life as a film reel', 'leave scratches — keep the story'] },
+      'spotify:track:77enz5hl8RicxrbPB56VXQ': { stamp: 'WHOLE LIFE', seal: '✦', notes: ['constellation promise', 'for the long horizon'] },
+      'spotify:track:6r9o3XGxSYFlX6ktsEqIbK': { stamp: 'UNTIL OUR HAIR TURNS WHITE', seal: '⌛', notes: ['aged paper / steady heart', 'the ending is still us'] }
+    };
+
+    let chapterForm = 'letter';
+    if (track.number <= 5) chapterForm = 'notebook';
+    else if (track.number <= 10) chapterForm = 'folded';
+    else if (track.number <= 19) chapterForm = 'romance';
+    else if (track.number <= 31) chapterForm = 'keepsake';
+    else if (track.number <= 36) chapterForm = 'stationery';
+    else if (track.number <= 41) chapterForm = 'vow';
+    else chapterForm = 'aged';
+
+    return {
+      form: chapterForm,
+      stamp: 'LOVE STORY',
+      seal: '♡',
+      notes: ['a little note in the margin'],
+      ...(byUri[track.uri] || {})
+    };
+  }
+
   function applyLyricsTheme(track) {
     const theme = lyricsTheme(track);
+    const detail = letterDetails(track);
     const sheet = $('#lyrics-sheet');
     sheet.dataset.texture = theme.texture || 'soft';
+    sheet.dataset.form = detail.form || 'letter';
     sheet.style.setProperty('--letter-paper', theme.paper || '#fffaf8');
     sheet.style.setProperty('--letter-ink', theme.ink || '#3d2430');
     sheet.style.setProperty('--letter-accent', theme.accent || '#d94f70');
     sheet.style.setProperty('--letter-accent-2', theme.accent2 || '#f5b6c6');
     $('#lyrics-theme-label').textContent = theme.name || 'Love Letter';
     $('#lyrics-motif').textContent = theme.motif || '♡';
+    renderLetterDecor(detail, theme);
+  }
+
+  function renderLetterDecor(detail, theme) {
+    const left = $('#margin-notes-left');
+    const right = $('#margin-notes-right');
+    const notes = detail.notes || [];
+    left.innerHTML = '';
+    right.innerHTML = '';
+
+    notes.forEach((note, idx) => {
+      const el = document.createElement('div');
+      el.className = 'margin-note';
+      el.textContent = note;
+      (idx % 2 === 0 ? left : right).appendChild(el);
+    });
+
+    if (!right.children.length && left.children.length) {
+      const clone = document.createElement('div');
+      clone.className = 'margin-note margin-note-ghost';
+      clone.textContent = theme.motif || '♡';
+      right.appendChild(clone);
+    }
+
+    $('#wax-seal').textContent = detail.seal || '♡';
+    $('#stamp-icon').textContent = theme.motif || '♡';
+    $('#stamp-text').textContent = detail.stamp || 'LOVE STORY';
   }
 
   function openLyrics(track) {
@@ -282,9 +377,15 @@
     renderLanguageHeader();
 
     const modal = $('#lyrics-modal');
+    const sheet = $('#lyrics-sheet');
     modal.classList.add('is-visible');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('lyrics-open');
+    sheet.classList.remove('is-opening');
+    void sheet.offsetWidth;
+    sheet.classList.add('is-opening');
+    window.clearTimeout(window.__lyricsOpenTimer);
+    window.__lyricsOpenTimer = window.setTimeout(() => sheet.classList.remove('is-opening'), 1200);
     $('#lyrics-close').focus();
   }
 
