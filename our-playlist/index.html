@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="robots" content="noindex,nofollow,noarchive" />
   <meta name="theme-color" content="#f9dbe4" />
   <meta name="description" content="A private playlist in six parts." />
@@ -24,11 +24,23 @@
     <div class="envelope-stage">
       <div class="real-envelope" id="real-envelope">
         <div class="envelope-back" aria-hidden="true"></div>
-        <div class="envelope-letter-blank" aria-hidden="true">
-          <span class="letter-line line-one"></span>
-          <span class="letter-line line-two"></span>
-          <span class="letter-line line-three"></span>
-          <span class="letter-heart">♡</span>
+        <div class="envelope-letter-blank">
+          <div class="letter-idle-mark" aria-hidden="true">
+            <span class="letter-line line-one"></span>
+            <span class="letter-line line-two"></span>
+            <span class="letter-line line-three"></span>
+            <span class="letter-heart">♡</span>
+          </div>
+
+          <form id="password-form" class="envelope-password-form" autocomplete="off" aria-hidden="true">
+            <label class="sr-only" for="playlist-password">Secret word</label>
+            <div class="envelope-password-row">
+              <input id="playlist-password" type="password" inputmode="text" autocomplete="current-password" placeholder="secret word…" aria-label="Secret word" required />
+              <button class="envelope-password-submit" type="submit" aria-label="Unlock letter">♡</button>
+            </div>
+            <p id="password-message" class="password-message" aria-live="polite"></p>
+            <button id="password-cancel" class="envelope-password-cancel" type="button">close</button>
+          </form>
         </div>
         <div class="envelope-front" aria-hidden="true"></div>
         <div class="envelope-flap" aria-hidden="true"></div>
@@ -36,21 +48,6 @@
           <span aria-hidden="true">♡</span>
         </button>
       </div>
-    </div>
-
-    <div id="password-gate" class="password-gate" hidden>
-      <div class="password-backdrop" data-close-password></div>
-      <form id="password-form" class="password-card" autocomplete="off">
-        <div class="password-mini-seal" aria-hidden="true">♡</div>
-        <p class="tiny-caps">For your eyes only</p>
-        <h2>Password?</h2>
-        <input id="playlist-password" type="password" inputmode="text" autocomplete="current-password" placeholder="Enter password" aria-label="Password" required />
-        <p id="password-message" class="password-message" aria-live="polite"></p>
-        <div class="password-actions">
-          <button class="password-cancel" type="button" data-close-password>Never mind</button>
-          <button class="password-unlock" type="submit">Open it ♡</button>
-        </div>
-      </form>
     </div>
   </div>
 
@@ -65,7 +62,14 @@
         <span class="note-pin">♡</span>
         <p id="note"></p>
       </div>
-      <a class="primary-button hero-button" href="#playlist">Start at the beginning <span aria-hidden="true">↓</span></a>
+      <div class="hero-actions">
+        <a class="primary-button hero-button" href="#playlist">Start at the beginning <span aria-hidden="true">↓</span></a>
+        <button id="open-full-playlist" class="secondary-button hero-secondary" type="button">Full Spotify playlist ♫</button>
+      </div>
+      <button id="continue-story" class="continue-story" type="button" hidden>
+        <span>Continue where you left off ♡</span>
+        <strong id="continue-story-title"></strong>
+      </button>
     </div>
   </header>
 
@@ -121,6 +125,7 @@
       <p class="lyrics-kicker">A little note for this one ♡</p>
       <h2 id="lyrics-title"></h2>
       <p id="lyrics-artist" class="lyrics-artist"></p>
+      <p id="lyrics-personal-note" class="lyrics-personal-note" hidden></p>
 
       <div id="lyrics-tabs" class="lyrics-tabs" role="tablist" aria-label="Lyrics language"></div>
       <div id="lyrics-body" class="lyrics-body"></div>

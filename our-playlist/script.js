@@ -11,6 +11,9 @@
   let playerHasStarted = false;
   let spotifyReady = false;
   let spotifyDrawerOpen = false;
+  let savedTrackIndex = null;
+  const LAST_TRACK_KEY = 'ourPlaylistLastTrack';
+  const personalNotes = window.VALENTINE_PERSONAL_NOTES || {};
 
   const $ = (sel) => document.querySelector(sel);
   const $$ = (sel) => [...document.querySelectorAll(sel)];
@@ -44,6 +47,7 @@
       const section = document.createElement('section');
       section.className = 'chapter';
       section.id = `chapter-${chapter.part.toLowerCase()}`;
+      section.dataset.part = chapter.part.toLowerCase();
 
       const heading = document.createElement('div');
       heading.className = 'chapter-heading';
@@ -106,7 +110,8 @@
       <span class="track-copy">
         <span class="track-title">${escapeHtml(track.title)}</span>
         <span class="track-artist">${escapeHtml(track.artist)}</span>
-      </span>`;
+      </span>
+      <span class="now-playing-chip" aria-hidden="true"><span class="now-playing-heart">♡</span><span>now playing</span></span>`;
     button.addEventListener('click', () => setActiveTrack(index, { play: true }));
 
     const actions = document.createElement('div');
@@ -127,7 +132,41 @@
     actions.prepend(lyricsButton);
 
     row.append(button, actions);
+    row.setAttribute('aria-current', index === currentTrackIndex ? 'true' : 'false');
+    row.addEventListener('click', (event) => {
+      if (event.target.closest('a,button')) return;
+      setActiveTrack(index, { play: true });
+    });
     return row;
+  }
+
+  function markActiveTrack(index) {
+    $$('.track').forEach((row) => {
+      const active = Number(row.dataset.index) === index;
+      row.classList.toggle('is-active', active);
+      row.setAttribute('aria-current', active ? 'true' : 'false');
+    });
+  }
+
+  function rememberTrack(index) {
+    try { localStorage.setItem(LAST_TRACK_KEY, String(index)); } catch (_) {}
+  }
+
+  function loadSavedTrack() {
+    try {
+      const raw = localStorage.getItem(LAST_TRACK_KEY);
+      const parsed = Number(raw);
+      if (Number.isInteger(parsed) && parsed > 0 && parsed < allTracks.length) savedTrackIndex = parsed;
+    } catch (_) {}
+  }
+
+  function renderContinueStory() {
+    const button = $('#continue-story');
+    const title = $('#continue-story-title');
+    if (!button || savedTrackIndex == null) return;
+    const track = allTracks[savedTrackIndex];
+    title.textContent = `#${track.number} · ${track.title}`;
+    button.hidden = false;
   }
 
   function setActiveTrack(index, options = {}) {
@@ -137,7 +176,8 @@
     currentTrackIndex = index;
     const track = allTracks[index];
 
-    $$('.track').forEach((row) => row.classList.toggle('is-active', Number(row.dataset.index) === index));
+    markActiveTrack(index);
+    rememberTrack(index);
     updatePlayerTrackCopy(track);
     updateNavigationButtons();
     resetProgress();
@@ -213,7 +253,8 @@
       const index = allTracks.findIndex((track) => track.uri === playingURI);
       if (index >= 0 && index !== currentTrackIndex) {
         currentTrackIndex = index;
-        $$('.track').forEach((row) => row.classList.toggle('is-active', Number(row.dataset.index) === index));
+        markActiveTrack(index);
+        rememberTrack(index);
         updatePlayerTrackCopy(allTracks[index]);
         updateNavigationButtons();
       }
@@ -453,6 +494,12 @@
     applyLyricsTheme(track);
     $('#lyrics-title').textContent = track.title;
     $('#lyrics-artist').textContent = track.artist;
+    const personalNote = $('#lyrics-personal-note');
+    const noteText = String(personalNotes[track.uri] || '').trim();
+    if (personalNote) {
+      personalNote.textContent = noteText;
+      personalNote.hidden = !noteText;
+    }
     renderLyricsTabs();
     renderLyricsBody();
     renderLanguageHeader();
@@ -637,16 +684,23 @@
     return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
   }
 
-  function showPasswordGate() {
-    const gate = $('#password-gate');
+  function showEnvelopePassword() {
+    const envelope = $('#envelope');
+    const form = $('#password-form');
     const input = $('#playlist-password');
+    if (!envelope || !form || !input) return;
     $('#password-message').textContent = '';
-    gate.hidden = false;
-    window.setTimeout(() => input.focus(), 40);
+    envelope.classList.add('is-passwording');
+    form.setAttribute('aria-hidden', 'false');
+    window.setTimeout(() => input.focus(), 360);
   }
 
-  function hidePasswordGate() {
-    $('#password-gate').hidden = true;
+  function hideEnvelopePassword() {
+    const envelope = $('#envelope');
+    const form = $('#password-form');
+    if (!envelope || !form) return;
+    envelope.classList.remove('is-passwording');
+    form.setAttribute('aria-hidden', 'true');
     $('#playlist-password').value = '';
     $('#password-message').textContent = '';
   }
@@ -654,15 +708,23 @@
   function openPlaylistEnvelope() {
     const envelope = $('#envelope');
     if (envelope.classList.contains('is-opening') || envelope.classList.contains('is-open')) return;
+    envelope.classList.remove('is-passwording');
     envelope.classList.add('is-opening');
+    $('#password-form')?.setAttribute('aria-hidden', 'true');
     $('#open-envelope').disabled = true;
     sessionStorage.setItem('ourPlaylistUnlocked', '1');
+
+    // Phase 1: flap opens and the paper lifts out.
+    window.setTimeout(() => envelope.classList.add('is-letter-lifted'), 520);
+    // Phase 2: paper grows toward the viewport, then dissolves into the hero underneath.
+    window.setTimeout(() => envelope.classList.add('is-transitioning'), 980);
     window.setTimeout(() => {
       envelope.classList.add('is-open');
       document.body.style.overflow = '';
       showStickyPlayer();
-      $('#top')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 1050);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      renderContinueStory();
+    }, 1540);
   }
 
   $('#open-envelope').addEventListener('click', () => {
@@ -670,29 +732,27 @@
       openPlaylistEnvelope();
       return;
     }
-    showPasswordGate();
+    showEnvelopePassword();
   });
+
+  $('#password-cancel')?.addEventListener('click', hideEnvelopePassword);
 
   $('#password-form').addEventListener('submit', async (event) => {
     event.preventDefault();
     const input = $('#playlist-password');
-    const card = event.currentTarget;
+    const form = event.currentTarget;
     const enteredHash = await sha256Hex(input.value);
     if (enteredHash === PLAYLIST_PASSWORD_SHA256) {
-      hidePasswordGate();
+      $('#password-message').textContent = '';
       openPlaylistEnvelope();
       return;
     }
 
-    $('#password-message').textContent = 'Nope. Enjoy the detour ♡';
-    card.classList.remove('is-wrong');
-    void card.offsetWidth;
-    card.classList.add('is-wrong');
+    $('#password-message').textContent = 'nope ♡';
+    form.classList.remove('is-wrong');
+    void form.offsetWidth;
+    form.classList.add('is-wrong');
     window.setTimeout(() => window.location.replace(RICKROLL_URL), 650);
-  });
-
-  $$('[data-close-password]').forEach((element) => {
-    element.addEventListener('click', () => hidePasswordGate());
   });
 
   $('#player-prev').addEventListener('click', () => setActiveTrack(currentTrackIndex - 1, { play: true }));
@@ -728,6 +788,11 @@
   $('#player-spotify-toggle').addEventListener('click', toggleSpotifyDrawer);
   $('#player-track-button').addEventListener('click', revealCurrentTrack);
 
+  $('#continue-story')?.addEventListener('click', () => {
+    if (savedTrackIndex == null) return;
+    setActiveTrack(savedTrackIndex, { play: false, reveal: true });
+  });
+
   $('#replay-story').addEventListener('click', () => {
     setActiveTrack(0, { play: true, reveal: true });
     window.setTimeout(() => document.querySelector('.track[data-index="0"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
@@ -760,6 +825,7 @@
   });
 
   document.body.style.overflow = 'hidden';
+  loadSavedTrack();
   fillPageCopy();
   renderNav();
   renderChapters();
@@ -788,7 +854,8 @@
             const index = allTracks.findIndex((track) => track.uri === event.data.playingURI);
             if (index >= 0) {
               currentTrackIndex = index;
-              $$('.track').forEach((row) => row.classList.toggle('is-active', Number(row.dataset.index) === index));
+              markActiveTrack(index);
+              rememberTrack(index);
               updatePlayerTrackCopy(allTracks[index]);
               updateNavigationButtons();
             }

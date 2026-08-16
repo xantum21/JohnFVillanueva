@@ -160,3 +160,7 @@ Visible prose was tightened throughout the site: chapter descriptions were remov
 
 ## V21 full Spotify playlist
 The custom story/player remains the main experience, but the complete Spotify playlist is now one tap away from both the hero and sticky player. It opens Spotify's official playlist embed in a responsive modal, with a direct Open in Spotify link. The full embed is lazy-loaded on first use.
+
+
+## V22 interaction polish
+This pass integrates the final framework recommendations: in-envelope password entry, continuous envelope-to-page animation, chapter color progression, stronger active-track feedback, whole-row playback, optional personal-note hooks, return-visit memory, and a mobile/safe-area cleanup. See `V22_QA.md` for the exact implementation checklist.

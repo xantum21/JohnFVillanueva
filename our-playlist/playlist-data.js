@@ -431,3 +431,9 @@ window.VALENTINE_CHAPTERS = [
     ]
   }
 ];
+
+
+// Optional personal sentences for individual lyric letters.
+// Add only the songs that need one. Nothing is shown when a song is absent here.
+// Example: "spotify:track:YOUR_ID": "Your sentence here ♡"
+window.VALENTINE_PERSONAL_NOTES = window.VALENTINE_PERSONAL_NOTES || {};
