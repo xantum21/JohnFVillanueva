@@ -1817,14 +1817,787 @@ No matter how many times we have to do it again
 I want you to know
 I'm yours, always`
   },
-
-  // OFFICIAL HIGE DANDISM — 115 million kilometer film
+  // OFFICIAL HIGE DANDISM — 115 Million Kilometer Film
   "spotify:track:4mdOqt3AiUJbBXL02aa5iw": {
-    originalLanguage: "Japanese", originalLabel: "日本語", englishLabel: "English", originalLyrics: "", englishLyrics: ""
-  },
+    originalLanguage: "Japanese",
+    originalLabel: "日本語",
+    englishLabel: "English",
+    englishLanguage: "English translation",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `これから歌う曲の内容は僕の頭の中のこと
+主演はもちろん君で 僕は助演で監督でカメラマン
+目の奥にあるフィルムで作る映画の話さ ah
+くだらないなと笑ったんなら掴みはそれで万事OK!
+呆れていないでちょっと待って
+きっと気に入ってもらえると思うな
+ここまでのダイジェストを少しだけ見せるよ
+初めて喧嘩した夜の涙
+個人的に胸が痛むけれど
+そのまま見続けよう
+ごめんねと言って仲直りして手を握って
+ほら ここで君が笑うシーンが見どころなんだからさ ah
+写真にも映せやしないとても些細なその仕草に
+どんな暗いストーリーも覆す瞬間が溢れてる
+どれかひとつを切り取って
+サムネイルにしようとりあえず今の所は
+きっと10年後くらいにはキャストが増えたりもするんだろう
+今でも余裕なんてないのにこんな安月給じゃもうキャパオーバー!
+きっと情けないところも山ほど見せるだろう
+苗字がひとつになった日も
+何ひとつ代わり映えのない日も
+愛しい日々尊い日々
+逃さないように忘れないように焼き付けていくよ
+今 目を細めて恥じらいあって永遠を願った僕たちを
+すれ違いや憂鬱な展開が引き裂こうとしたその時には
+僕がうるさいくらいの声量でこの歌何度も歌うよ
+だからどうかそばにいて
+エンドロールなんてもん作りたくもないから yeah
+クランクアップがいつなのか僕らには決められない
+だから風に吹かれていこう (風に吹かれていこう)
+フィルムは用意したよ (フィルムは用意したよ)
+一生分の長さを ざっと115万キロ
+ほら ここで君が笑うシーンが見どころなんだからさ ah
+写真にも映せやしないとても些細なその仕草に
+どんな暗いストーリーも覆す瞬間が溢れてる
+どれかひとつを切り取って サムネイルにしよう
+さあ これから生まれる名場面を探しにいこうよ
+酸いも甘いも寄り添って
+一緒に味わおうフィルムがなくなるまで
+撮影を続けようこの命ある限り`,
+    englishLyrics: `What I’m about to sing is what’s inside my head.
+Of course, you’re the star; I’m the supporting actor, the director, and the cameraman.
+It’s a movie made from the film behind my eyes, ah.
+If you laugh and call it silly, then I guess the opening already worked perfectly.
+Don’t roll your eyes—wait just a little.
+I think you’re going to like it.
+Let me show you just a little digest of everything up to now.
 
+The tears from the night of our first fight—
+personally, that scene still hurts my heart,
+but let’s keep watching.
+We say we’re sorry, make up, and hold hands.
+See? The scene where you smile right here is one of the highlights, ah.
+In those tiny gestures that no photograph could ever capture,
+there are countless moments powerful enough to turn around even the darkest story.
+Let’s choose one of them
+and make it the thumbnail—for now.
+
+I’m sure that in about ten years, the cast might grow too.
+I barely have enough room as it is; on this tiny salary, I’d already be over capacity!
+I’m sure I’ll show you plenty of pathetic sides of me too.
+The day our last names become one,
+and all the ordinary days when nothing seems to change—
+these beloved days, these precious days,
+I’ll burn them into memory so I never miss them and never forget them.
+
+Now, when we narrow our eyes, get shy, and wish for forever,
+if misunderstandings or gloomy plot twists ever try to tear us apart,
+I’ll sing this song again and again, loudly enough to annoy you.
+So please, stay by my side.
+I don’t want to make an end-roll at all, yeah.
+
+We don’t get to decide when filming finally wraps,
+so let’s just go wherever the wind takes us.
+The film is ready.
+Roughly 1.15 million kilometers—enough for an entire lifetime.
+See? The scene where you smile right here is one of the highlights, ah.
+In those tiny gestures that no photograph could ever capture,
+there are countless moments powerful enough to overturn even the darkest story.
+Let’s cut one out and make it the thumbnail.
+Come on—let’s go find all the great scenes that haven’t happened yet.
+Let’s stay close through the sour and the sweet,
+and taste all of it together until the film runs out.
+Let’s keep filming for as long as this life lasts.`
+  },
   // Joseph Vincent — Kahit Maputi Na Ang Buhok Ko
   "spotify:track:6r9o3XGxSYFlX6ktsEqIbK": {
-    originalLanguage: "Tagalog", originalLabel: "Tagalog", englishLabel: "English", originalLyrics: "", englishLyrics: ""
+    originalLanguage: "Tagalog",
+    originalLabel: "Tagalog",
+    englishLabel: "English",
+    englishLanguage: "English translation",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `Kung tayo ay matanda na, sana'y 'di tayo magbago
+Kailanman, nasaan ma'y ito ang pangarap ko
+Makuha mo pa kayang ako'y hagkan at yakapin
+Mmm, hanggang pagtanda natin?
+Nagtatanong lang sa 'yo, ako pa kaya'y ibigin mo
+Kung maputi na ang buhok ko?
+Pagdating ng araw, ang 'yong buhok ay puputi na rin
+Sabay tayong mangangarap ng nakaraan sa 'tin
+Ang nakalipas ay ibabalik natin
+Mmm, ipapaalala ko sa 'yo
+Ang aking pangako na ang pag-ibig ko'y laging sa 'yo
+Kahit maputi na ang buhok ko
+Ang nakalipas ay ibabalik natin
+Mmm, ipapaalala ko sa 'yo
+Ang aking pangako na ang pag-ibig ko'y laging sa 'yo
+Kahit maputi na ang buhok ko`,
+    englishLyrics: `When we are old, I hope we never change.
+Wherever we may be, this is the dream I hold forever.
+Will you still be able to kiss me and hold me,
+mmm, all the way into our old age?
+I’m only asking you—will you still love me
+when my hair has turned white?
+
+When that day comes, your hair will turn white too.
+Together we’ll dream again about everything we’ve lived through.
+We’ll bring the past back to life.
+Mmm, I’ll remind you
+of my promise that my love will always belong to you,
+even when my hair has turned white.
+
+We’ll bring the past back to life.
+Mmm, I’ll remind you
+of my promise that my love will always belong to you,
+even when my hair has turned white.`
+  },
+
+  // Grow as We Go
+  "spotify:track:1xscBC6UV21t0sMCgu0mLi": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `[Verse 1: Ben Platt, Ben Platt & Sara Bareilles]
+You say there's so much you don't know
+You need to go and find yourself
+You say you'd rather be alone
+'Cause you think you won't find it tied to someone else
+
+[Pre-Chorus: Ben Platt & Sara Bareilles]
+Ooh, ooh, ooh, who said it's true
+That the growing only happens on your own?
+They don't know me and you
+
+[Chorus: Ben Platt & Sara Bareilles]
+I don't think you have to leave
+If to change is what you need
+You can change right next to me
+When you're high, I'll take the lows
+You can ebb and I can flow
+And we'll take it slow
+And grow as we go (Go, ooh, ooh)
+Grow as we go (Go, ooh, ooh)
+
+[Verse 2: Sara Bareilles]
+You won't be the only one
+I am unfinished, I've got so much left to learn
+I don't know how this river runs
+I'd like thе company through every twist and turn
+
+[Pre-Chorus: Ben Platt & Sara Bareilles, Sara Bareilles]
+Ooh, ooh, ooh, who said it's true
+That thе growing only happens on your own?
+They don't know me and you
+
+[Chorus: Sara Bareilles, Ben Platt & Sara Bareilles]
+You don't think ever have to leave
+If to change is what you need
+You can change right next to me
+When you're high, I'll take the lows
+You can ebb and I can flow
+And we'll take it slow
+And grow as we go
+Grow as we go (Grow as we go)
+Grow as we go (Grow as we go)
+Grow as we go
+
+[Bridge: Ben Platt & Sara Bareilles, Ben Platt, Sara Bareilles]
+I don't know who we'll become (Oh-oh, oh-oh)
+I can't promise it's not written in the stars
+But I believe that when it's done
+We're gonna see that it was better
+That we grew up together
+
+[Chorus: Sara Bareilles, Ben Platt & Sara Bareilles]
+Tell me you don't wanna leave
+'Cause if change is what you need
+You can change right next to me
+When you're high, I'll take the lows
+You can ebb and I can flow
+We'll take it slow
+And grow as we go
+Grow as we go
+Grow as we go (Grow as we go)
+Grow as we go (Grow as we go)`
+  },
+
+  // Photograph
+  "spotify:track:6CgNoAbFJ4Q4Id4EjtbXlC": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `[Verse 1]
+Loving can hurt, loving can hurt sometimes
+But it's the only thing that I know
+When it gets hard, you know it can get hard sometimes
+It is the only thing that makes us feel alive
+
+[Pre-Chorus]
+We keep this love in a photograph
+We made these memories for ourselves
+Where our eyes are never closing
+Our hearts are never broken
+And time's forever frozen, still
+
+[Chorus 1]
+So you can keep me
+Inside the pocket of your ripped jeans
+Holding me close until our eyes meet
+You won't ever be alone, wait for me to come home
+
+[Verse 2]
+Loving can heal, loving can mend your soul
+And it's the only thing that I know
+I swear it will get easier, remember that with every piece of ya
+And it's the only thing to take with us when we die
+
+[Pre-Chorus]
+We keep this love in a photograph
+We made these memories for ourselves
+Where our eyes are never closing
+Our hearts were never broken
+And time's forever frozen, still
+
+[Chorus 2]
+So you can keep me
+Inside the pocket of your ripped jeans
+Holding me close until our eyes meet
+You won't ever be alone
+And if you hurt me, that's okay baby
+Only words bleed inside these pages
+You just hold me
+And I won’t ever let you go
+Wait for me to come home
+Wait for me to come home
+Wait for me to come home
+Wait for me to come home
+
+[Bridge]
+Oh and you can fit me
+Inside the necklace you got when you were sixteen
+Next to your heartbeat where I should be
+Keep it deep within your soul
+And if you hurt me, that's okay baby
+Only words bleed inside these pages
+You just hold me
+And I won’t ever let you go
+
+[Outro]
+When I'm away, I will remember how you kissed me
+Under the lamppost back on Sixth street
+Hearing you whisper through the phone
+Wait for me to come home`
+  },
+
+  // Whole Lives
+  "spotify:track:1hzWoLgh1yQ4H9fqIvOFMP": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `[Verse 1]
+I met you in the sun
+Saw my plans come undone
+Cause I knew you were the one
+So we from Paris on one knee
+With a letter and a ring
+Got married in the spring
+
+[Pre Chorus]
+And the day I met you I think I met myself
+I don't ever want to be with anyone else
+We’ve got the kind of story that the stories would tell
+It’s different than I’ve ever felt
+
+[Chorus]
+And I know we’re got our whole lives
+No ending this in sight
+Darling all I want to do
+Is be with you
+And I know we’ve got our whole lives
+No ending this in sight
+Darling all I want to do
+Is be with you tonight
+And yeah, and yeah
+Be with you tonight
+And yeah, and yeah
+Be with you tonight
+
+[Verse 2]
+You, I’ll never fully know
+How deep your heart can go
+Or the beauty of your soul
+You, where were you all along
+Every other one was wrong
+But I found where I belong
+
+[Pre Chorus]
+Oh the day I met you I think I met myself
+And I don't ever want to be with anyone else
+We’ve got the kind of story that the stories would tell
+Different than I’ve ever felt
+
+[Chorus]
+And I know we’re got our whole lives
+No ending this in sight
+Darling all I want to do
+Is be with you
+And I know we’ve got our whole lives
+No ending this in sight
+Darling all I want to do
+Is be with you tonight
+And yeah, and yeah
+Be with you tonight
+And yeah, and yeah
+Be with you tonight
+
+[Bridge]
+We’re not in a rush we’re not gonna leave
+But I can't get enough of what you do to me
+We’re not in a rush we’re not gonna leave
+But I can't get enough of what you do to me
+
+[Chorus]
+And I know we’re got our whole lives
+No ending this in sight
+Darling all I want to do
+Is be with you
+And I know we’ve got our whole lives
+No ending this in sight
+Darling all I want to do
+Is be with you tonight
+And yeah, and yeah
+Be with you tonight
+And yeah, and yeah
+Be with you tonight
+Hey, yeah
+With you tonight
+Just be with you tonight`
+  },
+
+  // Carry You Home
+  "spotify:track:2yCte16wVT6slIJ2Tqm9ML": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `[Chorus]
+Oh, I hope you know I will carry you home
+Whether it′s tonight or 55 years down the road
+Oh, I know there's so many ways that this could go
+Don′t want you to wonder, darlin', I need you to know
+
+[Verse]
+We were talking to the sunset
+Throwing dreams against the wall (ah)
+I know none of them have stuck yet
+But I bet it on you, honey, oh, I would risk it all
+
+[Pre-Chorus]
+These days, these nights are changin'
+My heart, my mind is set on you
+I′m not afraid to say it
+To say it′s true
+
+[Chorus]
+Oh, I hope you know I will carry you home
+Whether it's tonight or 55 years down the road
+Oh, I know there′s so many ways that this could go
+Don't want you to wonder, darlin′, I need you to know
+In this and every life
+I choose us every time
+
+[Hook]
+Oh, oh (oh)
+Oh, oh (hm, oh)
+
+[Verse]
+Back in London, in my hotel room
+Yeah, our hometown never felt so far
+But I'm in love with everythin′ 'bout you
+From your big green eyes to your out-of-tune guitar
+
+[Pre-Chorus]
+These days, these nights are changin'
+My heart, my mind is set on you
+I′m not afraid to say it
+To say I do
+
+[Chorus]
+Oh, I hope you know I will carry you home
+Whether it′s tonight or 55 years down the road
+Oh, I know there's so many ways that this could go
+Don′t want you to wonder, darlin', I need you to know
+In this and every life
+I choose us every time
+
+[Hook]
+Oh, oh
+Oh, oh
+
+[Outro]
+Oh, I hope you know I will carry you home
+Whether it′s tonight or 55 years down the road`
+  },
+
+  // The Book of Love
+  "spotify:track:4HcSK64Cy7JJ5gv1Txzhzo": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `[Verse 1]
+The book of love is long and boring
+No one can lift the damn thing
+It's full of charts and facts and figures
+And instructions for dancin'
+
+[Chorus]
+And I
+I love it when you read to me
+And you
+You can read me anything
+
+[Verse 2]
+The book of love has music in it
+In fact, that's where music comes from
+Some of it's just transcendental
+And some of it's just really dumb
+
+[Chorus]
+And I
+I love it when you sing to me
+And you
+You can sing me anything, yeah, you
+You can sing me anything
+
+[Bridge]
+And ooh, ooh, ooh
+Ooh, ooh, ooh
+Ooh, ooh, ooh, ooh, ooh
+
+[Verse 3]
+The book of love is long and boring
+And written many years ago
+It's full of flowers and heart-shaped boxes
+And things we're all too young to know
+
+[Outro]
+And I
+And I love it when you give me things
+And you
+You wanna give me wedding rings, yeah, you
+You wanna give me wedding rings
+You wanna give me wedding rings`
+  },
+
+  // Marry Me
+  "spotify:track:2MWOqewf5j0qf2b6S5J6cS": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `Forever can never be long enough for me
+To feel like I've had long enough with you
+Forget the world now, we won't let them see
+But there's one thing left to do
+Now that the weight has lifted
+Love has surely shifted my way
+Marry me
+Today and every day
+Marry me
+If I ever get the nerve to say hello in this café
+Say you will, hmm-mm
+Say you will, hmm-mm
+Together can never be close enough for me
+To feel like I am close enough to you
+You wear white, and I'll wear out the words I love you
+And you're beautiful
+Now that the wait is over
+And love and has finally showed her my way
+Marry me
+Today and every day
+Marry me
+If I ever get the nerve to say hello in this café
+Say you will, hmm-mm
+Say you will, hmm-mm
+Promise me you'll always be
+Happy by my side
+I promise to sing to you
+When all the music dies
+And marry me
+Today and everyday
+Marry me
+If I ever get the nerve to say hello in this café
+Say you will, hmm-mm
+Say you will, hmm-mm
+Marry me, hmm-mm`
+  },
+
+  // Perfect
+  "spotify:track:0tgVpDi06FyKpA1z0VMD4v": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `I found a love for me
+Darling, just dive right in and follow my lead
+Well, I found a girl, beautiful and sweet
+Oh, I never knew you were the someone waitin' for me
+'Cause we were just kids when we fell in love, not knowin' what it was
+I will not give you up this time
+Darling, just kiss me slow, your heart is all I own
+And in your eyes, you're holding mine
+Baby, I'm dancin' in the dark with you between my arms
+Barefoot on the grass, listenin' to our favourite song
+When you said you looked a mess, I whispered underneath my breath
+But you heard it, "Darling, you look perfect tonight"
+Well, I found a woman, stronger than anyone I know
+She shares my dreams, I hope that someday, I'll share her home
+I found a love to carry more than just my secrets
+To carry love, to carry children of our own
+We are still kids, but we're so in love, fighting against all odds
+I know we'll be alright this time
+Darling, just hold my hand, be my girl, I'll be your man
+I see my future in your eyes
+Baby, I'm dancin' in the dark with you between my arms
+Barefoot on the grass, listenin' to our favourite song
+When I saw you in that dress, lookin' so beautiful
+I don't deserve this, darling, you look perfect tonight
+No, no, no
+Mm-hm
+Baby, I'm dancin' in the dark with you between my arms
+Barefoot on the grass, listenin' to our favourite song
+I have faith in what I see, now I know I have met
+An angel in person, and she looks perfect
+I don't deserve this, you look perfect tonight`
+  },
+
+  // Ordinary — Wedding Version
+  "spotify:track:4t6qMeHgbxWod2SLokiSQp": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `[Verse 1]
+They say, "The holy water's watered down
+And this town's lost its faith
+Our colors will fade eventually"
+So, if our time is runnin' out
+Day after day
+We'll make the mundane our masterpiece
+
+[Pre-Chorus]
+Oh my, my
+Oh my, my love
+I take one look at you
+
+[Chorus]
+You're takin' me out of the ordinary
+I want you layin' me down 'til we're dead and buried
+On the edge of your knife, stayin' drunk on your vine
+The angels up in the clouds are jealous knowin' we found
+Somethin' so out of the ordinary
+You got me kissin' the ground of your sanctuary
+Shatter me with your touch, oh Lord, return me to dust
+The angels up in the clouds are jealous knowin' we found
+
+[Verse 2]
+Hopeless hallelujah
+On this side of Heaven's gate
+Oh, my life, how do ya
+Breathe and take my breath away?
+At your altar, I will pray
+You're the sculptor, I'm the clay
+
+[Pre-Chorus]
+Oh my, my
+
+[Chorus]
+You're takin' me out of the ordinary
+I want you layin' me down 'til we're dead and buried
+On the edge of your knife, stayin' drunk on your vine
+The angels up in the clouds are jealous knowin' we found
+Somethin' so out (Out) of the ordinary (Ordinary)
+You got me kissing the ground (Ground) of your sanctuary (Sanctuary)
+Shatter me with your touch, oh Lord, return me to dust
+The angels up in the clouds are jealous knowin' we found
+
+[Bridge]
+Somethin' so heavenly, higher than ecstasy
+Whenever you're next to me, oh my, my
+World was in black and white until I saw your light
+I thought you had to die to find
+
+[Chorus]
+Somethin' so out of the ordinary
+I want you laying me down 'til we're dead and buried
+On the edge of your knife, stayin' drunk on your vine
+The angels up in the clouds are jealous knowin' we found
+Somethin' so out (Out) of the ordinary
+You got me kissing the ground (Ground) of your sanctuary (Sanctuary)
+Shatter me with your touch, oh Lord, return me to dust
+The angels up in the clouds are jealous knowin' we found`
+  },
+
+  // Never Stop
+  "spotify:track:5himtcBG5IetEOAYuB1Lu1": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `This is my love song to you
+Let every woman know I'm yours
+So you can fall asleep each night, babe
+And know I'm dreaming of you more
+You're always hoping that we make it
+You always want to keep my gaze
+Well you're the only one I see
+And that's the one thing that won't change
+I'll never stop trying
+I'll never stop watching as you leave
+I'll never stop losing my breath
+Every time I see you looking back at me
+I'll never stop holding your hand
+I'll never stop opening your door
+I'll never stop choosing you babe
+I'll never get used to you
+And with this love song to you
+It's not a momentary phase
+You are my life, I don't deserve you
+But you love me just the same
+And as the mirror says we're older
+I want to look the other way
+You are my life, my love, my only
+And that's the one thing that won't change
+I'll never stop trying
+I'll never stop watching as you leave
+I'll never stop losing my breath
+Every time I see you looking back at me
+I'll never stop holding your hand
+I'll never stop opening your door
+I'll never stop choosing you babe
+I'll never get used to you
+You still get my heart racing
+You still get my heart racing
+You still get my heart racing
+You still get my heart racing
+For you
+I'll never stop trying
+I'll never stop watching as you leave
+I'll never stop losing my breath
+Every time I see you looking back at me
+I'll never stop holding your hand
+I'll never stop opening your door
+I'll never stop choosing you babe
+I'll never get used to you
+You still get my heart racing
+You still get my heart racing
+You still get my heart racing
+You still get my heart racing
+For you
+You still get my heart racing
+You still get my heart racing
+You still get my heart racing
+You still get my heart racing
+For you`
+  },
+
+  // I Will Spend My Whole Life Loving You
+  "spotify:track:77enz5hl8RicxrbPB56VXQ": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `[Verse 1]
+August afternoon
+I can picture you
+Walking with your father at your side
+In the summer heat
+California speaks
+Softly like she's making up her mind
+
+[Pre-Chorus]
+And now, as I stand beside you I say
+
+[Chorus]
+Baby, isn't it crazy that we are born only to die?
+Oh, but lately, I've been counting my stars
+'Cause I will spend my whole life loving you
+
+[Verse 2]
+Through your shining eyes
+Sweet like Jeffrey Pines
+I pretended I could read your thoughts
+Now it's just the truth
+Seems our hearts have fused
+Soldered like the gold your sister brought
+
+[Pre-Chorus]
+And how am I lucky enough to say
+
+[Chorus]
+Baby, isn't it crazy that we are born only to die?
+Oh, but lately, I've been counting my stars
+'Cause I will spend my whole life loving you
+
+[Bridge]
+Loving you, loving you, loving you
+Loving you, loving you, loving you, loving you
+
+[Pre-Chorus]
+And I said
+
+[Chorus]
+Baby, isn't it crazy that we are born only to die?
+Oh, but lately, I've been counting my stars
+'Cause I will spend my whole life loving you`
+  },
+
+  // Christina Perri — A Thousand Years
+  "spotify:track:6lanRgr6wXibZr8KgzXxBl": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · Part 4",
+    originalLyrics: `Heart beats fast
+Colours and promises
+How to be brave?
+How can I love when I'm afraid to fall?
+But watching you stand alone
+All of my doubt
+Suddenly goes away somehow
+
+One step closer
+
+I have died every day waiting for you
+Darling, don't be afraid
+I have loved you for a thousand years
+I'll love you for a thousand more
+
+Time stands still
+Beauty in all she is
+I will be brave
+I will not let anything take away
+What's standing in front of me
+Every breath
+Every hour has come to this
+
+One step closer
+
+I have died every day waiting for you
+Darling, don't be afraid
+I have loved you for a thousand years
+I'll love you for a thousand more
+
+And all along I believed I would find you
+Time has brought your heart to me
+I have loved you for a thousand years
+I'll love you for a thousand more
+
+One step closer
+One step closer
+
+I have died every day waiting for you
+Darling, don't be afraid
+I have loved you for a thousand years
+I'll love you for a thousand more
+
+And all along I believed I would find you
+Time has brought your heart to me
+I have loved you for a thousand years
+I'll love you for a thousand more`
   }
+
 };

@@ -673,3 +673,9 @@ body.lyrics-open{overflow:hidden}
   .player-track-chapter{font-size:.54rem;letter-spacing:.09em}
 }
 @media(prefers-reduced-motion:reduce){.transition-heart{animation:none}}
+
+
+/* V20 copy cleanup */
+.lyrics-theme-label{display:none!important}
+.chapter-heading .chapter-description:empty{display:none}
+.chapter-closing{font-size:1rem;opacity:.55}

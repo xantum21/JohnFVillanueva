@@ -78,8 +78,8 @@ window.VALENTINE_LYRIC_THEMES = {
   "spotify:track:0tgVpDi06FyKpA1z0VMD4v": {"name": "First-Dance Vellum", "motif": "1 · 2 · 3 · ♡", "texture": "velvet", "paper": "#fffaf8", "ink": "#372e31", "accent": "#9e6b7b", "accent2": "#ead5dc"},
   // 38. Ordinary - Wedding Version
   "spotify:track:4t6qMeHgbxWod2SLokiSQp": {"name": "Vow Card", "motif": "ordinary  →  extraordinary", "texture": "lace", "paper": "#fffdf9", "ink": "#33302d", "accent": "#a68a62", "accent2": "#e6dcc9"},
-  // 39. Turning Page
-  "spotify:track:2kfGoV9a5dbSKCNmUWH2ZF": {"name": "Turning the Page", "motif": "page  →  page  →  ♡", "texture": "book", "paper": "#fffdf8", "ink": "#31303a", "accent": "#767392", "accent2": "#d7d4e5"},
+  // 39. A Thousand Years
+  "spotify:track:6lanRgr6wXibZr8KgzXxBl": {"name": "A Thousand-Year Promise", "motif": "♡  1,000 years  ♡", "texture": "vellum", "paper": "#fffaf7", "ink": "#332d34", "accent": "#9a677d", "accent2": "#e7ccd7"},
   // 40. Never Stop (Wedding Version)
   "spotify:track:5himtcBG5IetEOAYuB1Lu1": {"name": "Ribbon Vow", "motif": "∞  never stop  ∞", "texture": "lace", "paper": "#fffaf9", "ink": "#362d31", "accent": "#a44f65", "accent2": "#e7c5cf"},
   // 41. 115 Million Kilometer Film

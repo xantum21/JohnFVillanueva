@@ -140,4 +140,20 @@ This pass gives the playlist page its own dedicated favicon and replaces the fla
 
 
 ## V16 sealed-envelope password gate
-The intro is now a closed, text-free envelope with a clickable wax seal. Clicking the seal opens a styled password prompt. The temporary password is `test` (stored as a SHA-256 digest in the client script). A correct password triggers the envelope-opening animation and reveals the playlist; an incorrect password redirects to a Rickroll after a short error animation. Successful unlocks persist only for the current browser session via `sessionStorage`. This is a client-side privacy gate, not server-side authentication; static GitHub Pages assets remain publicly retrievable by someone deliberately inspecting the site.
+The intro is now a closed, text-free envelope with a clickable wax seal. Clicking the seal opens a styled password prompt. The temporary password is `test` (stored as a SHA-256 digest in the client script). A correct password triggers the envelope-opening animation and reveals the playlist; an incorrect password redirects to the custom YouTube prank video after a short error animation. Successful unlocks persist only for the current browser session via `sessionStorage`. This is a client-side privacy gate, not server-side authentication; static GitHub Pages assets remain publicly retrievable by someone deliberately inspecting the site.
+
+
+## V17 custom wrong-password video
+Wrong-password redirects now use the supplied YouTube URL: https://www.youtube.com/watch?v=G8iEMVr7GFg
+
+
+## V18 Part 4 lyrics
+Imported the matching Part 4 lyric batch into the current 43-track/password-gated site. Japanese `115 Million Kilometer Film` and Tagalog `Kahit Maputi Na Ang Buhok Ko` now include English translation tabs.
+
+
+## V19 — A Thousand Years swap
+Track #39 now uses **A Thousand Years — Christina Perri** instead of **Turning Page — Sleeping At Last**. The Spotify player mapping, YouTube Music search link, lyric data, lyric-letter theme, order review, and lyric audit were updated together. Lyrics coverage is now 43 / 43.
+
+
+## V20 copy audit
+Visible prose was tightened throughout the site: chapter descriptions were removed, transitions were rewritten as short conversational beats, the hero/player/finale/password copy was simplified, technical lyric-footer copy was removed, and generated lyric-theme labels are hidden. See `COPY_AUDIT.md`.

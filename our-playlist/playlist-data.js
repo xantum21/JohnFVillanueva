@@ -1,26 +1,26 @@
 // Easy-edit content for the page. Change the text below; the Spotify song IDs are already wired in.
 window.VALENTINE_PAGE = {
-  "eyebrow": "A Valentine’s playlist in six chapters",
+  "eyebrow": "For you, in six parts",
   "title": "A Little Love Story",
-  "subtitle": "43 songs about the journey from “oh no, I like you” to growing old together.",
-  "note": "For you — because some feelings deserve a soundtrack. ♡",
-  "signoff": "Made with a ridiculous amount of affection.",
+  "subtitle": "43 songs from “oh no, I like you” to “okay, grow old with me.”",
+  "note": "I made this instead of trying to say all of it normally. ♡",
+  "signoff": "Made with a ridiculous amount of affection. ♡",
   "recipient": "",
   "date": "",
   "envelopeFor": "",
-  "finalTitle": "End of playlist.",
-  "finalNote": "Hopefully not the end of the story. ♡",
-  "finalAside": "Replay it from the beginning whenever you want to hear the whole little story again."
+  "finalTitle": "Okay, that’s the playlist.",
+  "finalNote": "43 songs later, I think you get the idea. ♡",
+  "finalAside": "Start it over if you want. I won’t complain."
 };
 
 window.VALENTINE_CHAPTERS = [
   {
     "part": "I",
     "title": "The Crush",
-    "kicker": "butterflies & maybe?",
+    "kicker": "oh no, i like you",
     "icon": "💘",
-    "description": "Before anything is certain: noticing them, freezing up around them, wondering if the feeling is mutual, and finally risking the question.",
-    "transition": "Eventually, wondering if there is a chance becomes noticing that maybe there is.",
+    "description": "",
+    "transition": "Okay… maybe I’m not imagining this.",
     "start": 1,
     "end": 5,
     "tracks": [
@@ -69,10 +69,10 @@ window.VALENTINE_CHAPTERS = [
   {
     "part": "II",
     "title": "Wait… You Like Me Too?",
-    "kicker": "the spark turns mutual",
+    "kicker": "wait. seriously?",
     "icon": "💞",
-    "description": "The first real shift: a hello that feels different, trust beginning to form, hands finding each other, and the first kiss becoming possible.",
-    "transition": "The firsts start adding up — and suddenly this is more than a crush.",
+    "description": "",
+    "transition": "Well. This is becoming a thing.",
     "start": 6,
     "end": 9,
     "tracks": [
@@ -113,10 +113,10 @@ window.VALENTINE_CHAPTERS = [
   {
     "part": "III",
     "title": "Falling Hard",
-    "kicker": "okay, this is real",
+    "kicker": "yeah, i’m in trouble",
     "icon": "💕",
-    "description": "Attraction becomes intimacy; intimacy becomes comfort; and somewhere in the middle of all that, the word “love” stops feeling hypothetical.",
-    "transition": "At some point, wanting someone turns into knowing exactly who you want beside you.",
+    "description": "",
+    "transition": "Somewhere in here, I stopped thinking of you as a crush.",
     "start": 10,
     "end": 18,
     "tracks": [
@@ -197,10 +197,10 @@ window.VALENTINE_CHAPTERS = [
   {
     "part": "IV",
     "title": "You’re My Person",
-    "kicker": "choosing each other",
+    "kicker": "you + me",
     "icon": "🫶",
-    "description": "The relationship becomes less about sparks and more about partnership: being understood, being imperfect, repairing, and still choosing one another.",
-    "transition": "Then love has to live in ordinary days — distance, mistakes, memories, plans, and all.",
+    "description": "",
+    "transition": "And then “us” started sounding like a plan.",
     "start": 19,
     "end": 23,
     "tracks": [
@@ -249,10 +249,10 @@ window.VALENTINE_CHAPTERS = [
   {
     "part": "V",
     "title": "Building a Life",
-    "kicker": "growing side by side",
+    "kicker": "what if we keep going?",
     "icon": "🏡",
-    "description": "Love stretches into real life: growing together, surviving hard seasons, making memories, finding home in each other, and letting the future take shape.",
-    "transition": "Eventually the future stops sounding like “maybe someday.”",
+    "description": "",
+    "transition": "So… how about forever? ♡",
     "start": 24,
     "end": 32,
     "tracks": [
@@ -333,9 +333,9 @@ window.VALENTINE_CHAPTERS = [
   {
     "part": "VI",
     "title": "Forever",
-    "kicker": "the long ending",
+    "kicker": "all the way",
     "icon": "🤍",
-    "description": "The question, the aisle, the vows, the years that follow — and the promise that the story keeps going long after the wedding song ends.",
+    "description": "",
     "transition": "",
     "start": 33,
     "end": 43,
@@ -390,11 +390,11 @@ window.VALENTINE_CHAPTERS = [
       },
       {
         "number": 39,
-        "title": "Turning Page",
-        "artist": "Sleeping At Last",
-        "uri": "spotify:track:2kfGoV9a5dbSKCNmUWH2ZF",
-        "spotifyUrl": "https://open.spotify.com/track/2kfGoV9a5dbSKCNmUWH2ZF",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=Turning+Page+Sleeping+At+Last"
+        "title": "A Thousand Years",
+        "artist": "Christina Perri",
+        "uri": "spotify:track:6lanRgr6wXibZr8KgzXxBl",
+        "spotifyUrl": "https://open.spotify.com/track/6lanRgr6wXibZr8KgzXxBl",
+        "youtubeMusicUrl": "https://music.youtube.com/search?q=A+Thousand+Years+Christina+Perri"
       },
       {
         "number": 40,

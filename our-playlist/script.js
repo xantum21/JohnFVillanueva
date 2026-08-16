@@ -47,12 +47,15 @@
 
       const heading = document.createElement('div');
       heading.className = 'chapter-heading';
+      const descriptionHtml = chapter.description
+        ? `<p class="chapter-description">${escapeHtml(chapter.description)}</p>`
+        : '';
       heading.innerHTML = `
         <div class="part-badge" aria-hidden="true">${chapter.icon}</div>
         <div>
           <p class="chapter-kicker">Part ${chapter.part} · ${escapeHtml(chapter.kicker)}</p>
           <h2>${escapeHtml(chapter.title)}</h2>
-          <p class="chapter-description">${escapeHtml(chapter.description)}</p>
+          ${descriptionHtml}
         </div>`;
       section.appendChild(heading);
 
@@ -66,9 +69,8 @@
 
       const closing = document.createElement('p');
       closing.className = 'chapter-closing';
-      closing.textContent = chapterIndex === chapters.length - 1
-        ? '…and then, hopefully, a very long encore. ♡'
-        : `End of Part ${chapter.part} · ♡`;
+      closing.textContent = '♡';
+      closing.setAttribute('aria-hidden', 'true');
       section.appendChild(closing);
       root.appendChild(section);
 
@@ -80,7 +82,7 @@
         bridge.innerHTML = `
           <span class="transition-line" aria-hidden="true"></span>
           <div class="transition-copy">
-            <p class="transition-kicker">Part ${chapter.part} → Part ${next.part}</p>
+            <p class="transition-kicker">and then…</p>
             <p>${escapeHtml(chapter.transition)}</p>
           </div>
           <span class="transition-heart" aria-hidden="true">♡</span>`;
@@ -350,7 +352,7 @@
       'spotify:track:2MWOqewf5j0qf2b6S5J6cS': { stamp: 'WILL YOU?', seal: '✧', notes: ['proposal note', 'this is the page with the question'] },
       'spotify:track:0tgVpDi06FyKpA1z0VMD4v': { stamp: 'FIRST DANCE', seal: '1·2·3', notes: ['vellum and candlelight', 'dancing barefoot in the margins'] },
       'spotify:track:4t6qMeHgbxWod2SLokiSQp': { stamp: 'VOW CARD', seal: '✉', notes: ['ordinary → extraordinary', 'quiet promise, huge meaning'] },
-      'spotify:track:2kfGoV9a5dbSKCNmUWH2ZF': { stamp: 'TURNING PAGE', seal: '↗', notes: ['new chapter, same love', 'one page into the next'] },
+      'spotify:track:6lanRgr6wXibZr8KgzXxBl': { stamp: '1,000 YEARS', seal: '∞', notes: ['one step closer', 'and a thousand more'] },
       'spotify:track:5himtcBG5IetEOAYuB1Lu1': { stamp: 'NEVER STOP', seal: '∞', notes: ['wedding ribbon edition', 'keep choosing, keep going'] },
       'spotify:track:4mdOqt3AiUJbBXL02aa5iw': { stamp: '115,000,000 KM', seal: '▣', notes: ['our life as a film reel', 'leave scratches — keep the story'] },
       'spotify:track:77enz5hl8RicxrbPB56VXQ': { stamp: 'WHOLE LIFE', seal: '✦', notes: ['constellation promise', 'for the long horizon'] },
@@ -501,7 +503,7 @@
     if (text.trim()) {
       const prompt = document.createElement('div');
       prompt.className = 'lyrics-scroll-prompt';
-      prompt.innerHTML = `<span aria-hidden="true">↡</span><strong>Unfold the letter</strong><span>Scroll to reveal the next lines.</span>`;
+      prompt.innerHTML = `<span aria-hidden="true">↡</span><strong>Keep scrolling</strong><span>There’s more below. ♡</span>`;
       body.appendChild(prompt);
 
       const lyrics = document.createElement('div');
@@ -523,14 +525,14 @@
       body.appendChild(lyrics);
       attachLyricsReveal(body);
 
-      note.textContent = `${view.label} · ${view.language} · scroll-to-unfold letter view`;
+      note.textContent = '';
     } else {
       const placeholder = document.createElement('div');
       placeholder.className = 'lyrics-placeholder';
       placeholder.innerHTML = `
         <div class="placeholder-heart" aria-hidden="true">♡</div>
-        <strong>This letter is waiting for its words.</strong>
-        <p>The stationery, language toggle, and song-specific visual theme are ready. Add the companion lyric text later in <code>lyrics-data.js</code>.</p>`;
+        <strong>Still writing this one. ♡</strong>
+        <p>Come back later.</p>`;
       body.appendChild(placeholder);
       note.textContent = config.views.length > 1
         ? `${view.label} is ready as a tab — this specific view is still waiting for text.`
@@ -596,7 +598,7 @@
   }
 
   const PLAYLIST_PASSWORD_SHA256 = '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08';
-  const RICKROLL_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  const RICKROLL_URL = 'https://www.youtube.com/watch?v=G8iEMVr7GFg';
 
   async function sha256Hex(value) {
     const bytes = new TextEncoder().encode(value);
@@ -651,7 +653,7 @@
       return;
     }
 
-    $('#password-message').textContent = 'Wrong password. Nice try ♡';
+    $('#password-message').textContent = 'Nope. Enjoy the detour ♡';
     card.classList.remove('is-wrong');
     void card.offsetWidth;
     card.classList.add('is-wrong');
@@ -670,7 +672,7 @@
   });
   $('#player-play').addEventListener('click', () => {
     if (!spotifyController) {
-      setPlayerStatus('Spotify is still loading…');
+      setPlayerStatus('Loading Spotify…');
       return;
     }
     try {
