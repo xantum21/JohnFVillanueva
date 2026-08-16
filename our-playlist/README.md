@@ -167,3 +167,9 @@ This pass integrates the final framework recommendations: in-envelope password e
 
 ## V23 stronger chapter palettes
 The six-chapter color progression is now intentionally visible rather than merely hinted at. Chapter surfaces, badges, track cards, active-track states, sticky-player accents, and the sticky chapter navigation all follow each chapter's palette. The navigation automatically highlights the chapter currently in view.
+
+## V24 mobile scroll fix
+Fixed a mobile-only vertical "boomerang" caused by the V23 chapter-color observer calling `scrollIntoView()` on the active pill inside the sticky horizontal chapter navigation. The active pill is now centered by changing only the nav's horizontal `scrollLeft`, never the document scroll position. Mobile automatic smooth page scrolling is also disabled for stability.
+
+## V25 password removed
+The temporary password gate has been removed. The wax seal now opens the envelope directly and continues through the existing letter-lift transition into the playlist. The V24 mobile scroll fix and all later playlist/player/color features remain intact.

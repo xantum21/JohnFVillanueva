@@ -96,8 +96,12 @@
     });
   }
 
+  let chapterInView = null;
+
   function setChapterInView(part) {
-    if (!part) return;
+    if (!part || part === chapterInView) return;
+    chapterInView = part;
+
     document.body.dataset.chapter = part;
     const nav = $('#chapter-nav-inner');
     if (nav) nav.dataset.activePart = part;
@@ -105,14 +109,18 @@
     $$('.chapter-pill').forEach((pill) => {
       const current = pill.dataset.part === part;
       pill.classList.toggle('is-current', current);
+
       if (current) {
         pill.setAttribute('aria-current', 'location');
-        if (nav && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          const navRect = nav.getBoundingClientRect();
-          const pillRect = pill.getBoundingClientRect();
-          if (pillRect.left < navRect.left || pillRect.right > navRect.right) {
-            pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-          }
+
+        // IMPORTANT: never use pill.scrollIntoView() here.
+        // On mobile browsers, scrollIntoView on a child of a sticky horizontal
+        // scroller can also move the *page vertically*, which caused the
+        // "boomerang" scroll behavior when the active chapter changed.
+        if (nav) {
+          const left = pill.offsetLeft - (nav.clientWidth - pill.offsetWidth) / 2;
+          const maxLeft = Math.max(0, nav.scrollWidth - nav.clientWidth);
+          nav.scrollLeft = Math.max(0, Math.min(maxLeft, left));
         }
       } else {
         pill.removeAttribute('aria-current');
@@ -732,44 +740,11 @@
     return String(value).replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
   }
 
-  const PLAYLIST_PASSWORD_SHA256 = '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08';
-  const RICKROLL_URL = 'https://www.youtube.com/watch?v=G8iEMVr7GFg';
-
-  async function sha256Hex(value) {
-    const bytes = new TextEncoder().encode(value);
-    const digest = await crypto.subtle.digest('SHA-256', bytes);
-    return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
-  }
-
-  function showEnvelopePassword() {
-    const envelope = $('#envelope');
-    const form = $('#password-form');
-    const input = $('#playlist-password');
-    if (!envelope || !form || !input) return;
-    $('#password-message').textContent = '';
-    envelope.classList.add('is-passwording');
-    form.setAttribute('aria-hidden', 'false');
-    window.setTimeout(() => input.focus(), 360);
-  }
-
-  function hideEnvelopePassword() {
-    const envelope = $('#envelope');
-    const form = $('#password-form');
-    if (!envelope || !form) return;
-    envelope.classList.remove('is-passwording');
-    form.setAttribute('aria-hidden', 'true');
-    $('#playlist-password').value = '';
-    $('#password-message').textContent = '';
-  }
-
   function openPlaylistEnvelope() {
     const envelope = $('#envelope');
     if (envelope.classList.contains('is-opening') || envelope.classList.contains('is-open')) return;
-    envelope.classList.remove('is-passwording');
     envelope.classList.add('is-opening');
-    $('#password-form')?.setAttribute('aria-hidden', 'true');
     $('#open-envelope').disabled = true;
-    sessionStorage.setItem('ourPlaylistUnlocked', '1');
 
     // Phase 1: flap opens and the paper lifts out.
     window.setTimeout(() => envelope.classList.add('is-letter-lifted'), 520);
@@ -784,33 +759,7 @@
     }, 1540);
   }
 
-  $('#open-envelope').addEventListener('click', () => {
-    if (sessionStorage.getItem('ourPlaylistUnlocked') === '1') {
-      openPlaylistEnvelope();
-      return;
-    }
-    showEnvelopePassword();
-  });
-
-  $('#password-cancel')?.addEventListener('click', hideEnvelopePassword);
-
-  $('#password-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const input = $('#playlist-password');
-    const form = event.currentTarget;
-    const enteredHash = await sha256Hex(input.value);
-    if (enteredHash === PLAYLIST_PASSWORD_SHA256) {
-      $('#password-message').textContent = '';
-      openPlaylistEnvelope();
-      return;
-    }
-
-    $('#password-message').textContent = 'nope ♡';
-    form.classList.remove('is-wrong');
-    void form.offsetWidth;
-    form.classList.add('is-wrong');
-    window.setTimeout(() => window.location.replace(RICKROLL_URL), 650);
-  });
+  $('#open-envelope').addEventListener('click', openPlaylistEnvelope);
 
   $('#player-prev').addEventListener('click', () => setActiveTrack(currentTrackIndex - 1, { play: true }));
   $('#player-next').addEventListener('click', () => setActiveTrack(currentTrackIndex + 1, { play: true }));
