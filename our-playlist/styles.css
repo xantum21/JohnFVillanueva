@@ -679,3 +679,23 @@ body.lyrics-open{overflow:hidden}
 .lyrics-theme-label{display:none!important}
 .chapter-heading .chapter-description:empty{display:none}
 .chapter-closing{font-size:1rem;opacity:.55}
+
+
+/* V21 — full Spotify playlist access */
+.hero-actions{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+.secondary-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.62);color:var(--rose-dark);font:800 .82rem/1 "DM Sans",sans-serif;cursor:pointer;box-shadow:0 8px 22px rgba(73,39,52,.06);transition:transform .18s ease,background .18s ease,box-shadow .18s ease}
+.secondary-button:hover{transform:translateY(-1px);background:#fff;box-shadow:0 10px 26px rgba(73,39,52,.1)}
+.full-playlist-modal{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:24px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility .25s ease}
+.full-playlist-modal.is-visible{opacity:1;visibility:visible;pointer-events:auto}
+.full-playlist-backdrop{position:absolute;inset:0;background:rgba(34,19,26,.62);backdrop-filter:blur(16px)}
+.full-playlist-panel{position:relative;width:min(620px,100%);max-height:min(760px,calc(100dvh - 32px));padding:24px;overflow:hidden;border:1px solid rgba(255,255,255,.62);border-radius:28px;background:linear-gradient(180deg,rgba(255,251,249,.98),rgba(251,240,244,.98));box-shadow:0 34px 100px rgba(49,24,34,.34);transform:translateY(18px) scale(.985);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+.full-playlist-modal.is-visible .full-playlist-panel{transform:translateY(0) scale(1)}
+.full-playlist-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.74);color:var(--rose-dark);font-size:1.45rem;line-height:1;cursor:pointer}
+.full-playlist-heading{padding:4px 48px 18px 4px}
+.full-playlist-heading h2{margin:.2rem 0 .55rem;font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,3rem);line-height:1;color:var(--rose-dark)}
+.full-playlist-external{color:var(--rose-dark);font-size:.82rem;font-weight:800;text-decoration:none}
+.full-playlist-external:hover{text-decoration:underline}
+.full-playlist-embed-wrap{overflow:hidden;border-radius:14px;box-shadow:0 12px 34px rgba(52,31,40,.12);background:#191414}
+.full-playlist-embed-wrap iframe{display:block;width:100%;max-height:min(480px,62dvh);border:0}
+body.full-playlist-open{overflow:hidden}
+@media (max-width:760px){.hero-actions{flex-direction:column}.hero-actions .primary-button,.hero-actions .secondary-button{width:min(320px,100%)}.full-playlist-modal{padding:8px}.full-playlist-panel{width:100%;max-height:calc(100dvh - 16px);padding:18px 12px 12px;border-radius:22px}.full-playlist-heading{padding:4px 46px 14px 4px}.full-playlist-heading h2{font-size:2rem}.full-playlist-embed-wrap iframe{height:420px;max-height:68dvh}}

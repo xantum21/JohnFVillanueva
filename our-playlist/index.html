@@ -129,6 +129,32 @@
     </section>
   </div>
 
+
+  <div id="full-playlist-modal" class="full-playlist-modal" aria-hidden="true">
+    <div class="full-playlist-backdrop" data-close-full-playlist></div>
+    <section class="full-playlist-panel" role="dialog" aria-modal="true" aria-labelledby="full-playlist-title">
+      <button id="full-playlist-close" class="full-playlist-close" type="button" aria-label="Close full playlist">×</button>
+      <div class="full-playlist-heading">
+        <p class="tiny-caps">Spotify</p>
+        <h2 id="full-playlist-title">The whole playlist ♡</h2>
+        <a class="full-playlist-external" href="https://open.spotify.com/playlist/4WgQR20AgZJ4i7o3nDNQzk?si=07a312978dbf4022" target="_blank" rel="noopener">Open in Spotify ↗</a>
+      </div>
+      <div class="full-playlist-embed-wrap">
+        <iframe
+          id="full-playlist-embed"
+          data-src="https://open.spotify.com/embed/playlist/4WgQR20AgZJ4i7o3nDNQzk?utm_source=generator&si=07a312978dbf4022"
+          title="Full Spotify playlist"
+          style="border-radius:12px"
+          width="100%"
+          height="480"
+          frameborder="0"
+          allowfullscreen
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"></iframe>
+      </div>
+    </section>
+  </div>
+
   <aside id="sticky-player" class="sticky-player" aria-label="Playlist player" aria-hidden="true">
     <div class="player-progress" aria-hidden="true">
       <div id="player-progress-fill" class="player-progress-fill"></div>
@@ -155,6 +181,7 @@
 
       <div class="player-actions">
         <button id="player-lyrics" class="player-action" type="button">Lyrics ♡</button>
+        <button id="player-full-playlist" class="player-action" type="button">Full playlist ♫</button>
         <button id="player-spotify-toggle" class="player-action" type="button" aria-expanded="false" aria-controls="spotify-drawer">Spotify ▴</button>
       </div>
     </div>

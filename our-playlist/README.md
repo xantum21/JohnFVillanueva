@@ -157,3 +157,6 @@ Track #39 now uses **A Thousand Years — Christina Perri** instead of **Turning
 
 ## V20 copy audit
 Visible prose was tightened throughout the site: chapter descriptions were removed, transitions were rewritten as short conversational beats, the hero/player/finale/password copy was simplified, technical lyric-footer copy was removed, and generated lyric-theme labels are hidden. See `COPY_AUDIT.md`.
+
+## V21 full Spotify playlist
+The custom story/player remains the main experience, but the complete Spotify playlist is now one tap away from both the hero and sticky player. It opens Spotify's official playlist embed in a responsive modal, with a direct Open in Spotify link. The full embed is lazy-loaded on first use.

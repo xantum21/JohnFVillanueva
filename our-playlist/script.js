@@ -262,6 +262,37 @@
     button.textContent = spotifyDrawerOpen ? 'Spotify ▾' : 'Spotify ▴';
   }
 
+  function openFullPlaylist() {
+    const modal = $('#full-playlist-modal');
+    const iframe = $('#full-playlist-embed');
+    if (!modal || !iframe) return;
+
+    if (!iframe.getAttribute('src')) {
+      iframe.setAttribute('src', iframe.dataset.src);
+    }
+
+    if (spotifyController && playerHasStarted && !playerIsPaused) {
+      try {
+        spotifyController.pause();
+        playerIsPaused = true;
+        updatePlayButton();
+      } catch (_) {}
+    }
+
+    modal.classList.add('is-visible');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('full-playlist-open');
+    window.setTimeout(() => $('#full-playlist-close')?.focus(), 40);
+  }
+
+  function closeFullPlaylist() {
+    const modal = $('#full-playlist-modal');
+    if (!modal) return;
+    modal.classList.remove('is-visible');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('full-playlist-open');
+  }
+
   function lyricsConfig(track) {
     const configured = (window.VALENTINE_LYRICS || {})[track.uri] || {};
     const views = [
@@ -690,6 +721,10 @@
     }
   });
   $('#player-lyrics').addEventListener('click', () => openLyrics(allTracks[currentTrackIndex]));
+  $('#player-full-playlist')?.addEventListener('click', openFullPlaylist);
+  $('#open-full-playlist')?.addEventListener('click', openFullPlaylist);
+  $('#full-playlist-close')?.addEventListener('click', closeFullPlaylist);
+  $$('[data-close-full-playlist]').forEach((el) => el.addEventListener('click', closeFullPlaylist));
   $('#player-spotify-toggle').addEventListener('click', toggleSpotifyDrawer);
   $('#player-track-button').addEventListener('click', revealCurrentTrack);
 
@@ -705,6 +740,10 @@
     const playerVisible = document.body.classList.contains('player-visible');
     const typingOrControl = /INPUT|TEXTAREA|BUTTON|A/.test(document.activeElement?.tagName || '');
 
+    if (event.key === 'Escape' && $('#full-playlist-modal')?.classList.contains('is-visible')) {
+      closeFullPlaylist();
+      return;
+    }
     if (event.key === 'Escape' && modalOpen) closeLyrics();
     if (event.key === ' ' && playerVisible && !modalOpen && !typingOrControl) {
       event.preventDefault();
