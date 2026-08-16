@@ -35,6 +35,7 @@
     chapters.forEach((chapter) => {
       const a = document.createElement('a');
       a.className = 'chapter-pill';
+      a.dataset.part = chapter.part.toLowerCase();
       a.href = `#chapter-${chapter.part.toLowerCase()}`;
       a.textContent = `${chapter.part} · ${chapter.title}`;
       nav.appendChild(a);
@@ -93,6 +94,61 @@
         root.appendChild(bridge);
       }
     });
+  }
+
+  function setChapterInView(part) {
+    if (!part) return;
+    document.body.dataset.chapter = part;
+    const nav = $('#chapter-nav-inner');
+    if (nav) nav.dataset.activePart = part;
+
+    $$('.chapter-pill').forEach((pill) => {
+      const current = pill.dataset.part === part;
+      pill.classList.toggle('is-current', current);
+      if (current) {
+        pill.setAttribute('aria-current', 'location');
+        if (nav && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const navRect = nav.getBoundingClientRect();
+          const pillRect = pill.getBoundingClientRect();
+          if (pillRect.left < navRect.left || pillRect.right > navRect.right) {
+            pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          }
+        }
+      } else {
+        pill.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function initChapterPaletteObserver() {
+    const sections = $$('.chapter');
+    if (!sections.length) return;
+    setChapterInView(sections[0].dataset.part);
+
+    if (!('IntersectionObserver' in window)) return;
+
+    const visibility = new Map();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => visibility.set(entry.target, entry.intersectionRatio));
+
+      let best = null;
+      let bestRatio = 0;
+      sections.forEach((section) => {
+        const ratio = visibility.get(section) || 0;
+        if (ratio > bestRatio) {
+          best = section;
+          bestRatio = ratio;
+        }
+      });
+
+      if (best && bestRatio > 0.08) setChapterInView(best.dataset.part);
+    }, {
+      root: null,
+      threshold: [0.08,0.18,0.32,0.5,0.7],
+      rootMargin: '-16% 0px -48% 0px'
+    });
+
+    sections.forEach((section) => observer.observe(section));
   }
 
   function trackRow(track, index) {
@@ -214,6 +270,7 @@
     $('#now-artist').textContent = track.artist;
     $('#player-track-number').textContent = `${String(track.number).padStart(2,'0')} / ${allTracks.length}`;
     $('#player-chapter').textContent = `${track.chapter.part} · ${track.chapter.title}`;
+    $('#sticky-player').dataset.part = track.chapter.part.toLowerCase();
     const lyricInfo = lyricsConfig(track);
     const hasLyrics = lyricInfo.views.some((view) => String(view.text || '').trim());
     $('#player-lyrics').setAttribute('aria-label', `View lyrics for ${track.title}`);
@@ -829,6 +886,7 @@
   fillPageCopy();
   renderNav();
   renderChapters();
+  initChapterPaletteObserver();
   ambientHearts();
   updatePlayerTrackCopy(allTracks[0]);
   updateNavigationButtons();

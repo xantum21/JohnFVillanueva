@@ -816,3 +816,166 @@ body.player-visible{padding-bottom:calc(var(--player-height) + env(safe-area-ins
   .now-playing-heart{animation:none}
   .envelope-screen.is-transitioning .envelope-letter-blank{transform:translateY(-20%);opacity:0}
 }
+
+
+/* V23 — stronger chapter color progression
+   More visible than V22, while keeping one cohesive Valentine design. */
+
+.chapter{
+  --chapter-accent:#d55379;
+  --chapter-soft:rgba(247,211,222,.48);
+  --chapter-deep:rgba(213,83,121,.10);
+  border:1px solid color-mix(in srgb,var(--chapter-accent) 14%,rgba(255,255,255,.8));
+  background:
+    radial-gradient(circle at 12% 8%, color-mix(in srgb,var(--chapter-accent) 13%,transparent), transparent 33%),
+    linear-gradient(145deg,var(--chapter-soft),rgba(255,255,255,.34) 48%,var(--chapter-deep) 100%);
+  box-shadow:0 18px 52px color-mix(in srgb,var(--chapter-accent) 7%,transparent);
+}
+
+.chapter[data-part="i"]{
+  --chapter-accent:#d85c82;
+  --chapter-soft:rgba(250,214,226,.58);
+  --chapter-deep:rgba(216,92,130,.09);
+}
+.chapter[data-part="ii"]{
+  --chapter-accent:#d97970;
+  --chapter-soft:rgba(252,222,208,.58);
+  --chapter-deep:rgba(217,121,112,.09);
+}
+.chapter[data-part="iii"]{
+  --chapter-accent:#c64269;
+  --chapter-soft:rgba(239,188,206,.48);
+  --chapter-deep:rgba(198,66,105,.11);
+}
+.chapter[data-part="iv"]{
+  --chapter-accent:#8f3e55;
+  --chapter-soft:rgba(222,193,202,.50);
+  --chapter-deep:rgba(143,62,85,.12);
+}
+.chapter[data-part="v"]{
+  --chapter-accent:#aa8251;
+  --chapter-soft:rgba(244,226,188,.59);
+  --chapter-deep:rgba(170,130,81,.10);
+}
+.chapter[data-part="vi"]{
+  --chapter-accent:#9a7a62;
+  --chapter-soft:rgba(239,226,207,.66);
+  --chapter-deep:rgba(154,122,98,.11);
+}
+
+.chapter .part-badge{
+  background:linear-gradient(145deg,
+    color-mix(in srgb,var(--chapter-accent) 15%,white),
+    color-mix(in srgb,var(--chapter-accent) 7%,white));
+  border-color:color-mix(in srgb,var(--chapter-accent) 25%,transparent);
+  box-shadow:0 12px 28px color-mix(in srgb,var(--chapter-accent) 12%,transparent);
+}
+
+.chapter h2{
+  color:color-mix(in srgb,var(--ink) 82%,var(--chapter-accent));
+}
+
+.chapter .track{
+  background:color-mix(in srgb,var(--chapter-accent) 3.5%,rgba(255,255,255,.92));
+  border-color:color-mix(in srgb,var(--chapter-accent) 12%,var(--line));
+}
+.chapter .track:hover{
+  background:color-mix(in srgb,var(--chapter-accent) 7%,white);
+  border-color:color-mix(in srgb,var(--chapter-accent) 31%,transparent);
+  box-shadow:0 12px 30px color-mix(in srgb,var(--chapter-accent) 10%,transparent);
+}
+.chapter .track-number{
+  background:color-mix(in srgb,var(--chapter-accent) 14%,white);
+}
+.chapter .track.is-active{
+  border-color:color-mix(in srgb,var(--chapter-accent) 62%,transparent);
+  background:linear-gradient(90deg,
+    color-mix(in srgb,var(--chapter-accent) 5%,white),
+    color-mix(in srgb,var(--chapter-accent) 13%,white));
+  box-shadow:
+    0 15px 38px color-mix(in srgb,var(--chapter-accent) 17%,transparent),
+    inset 4px 0 0 color-mix(in srgb,var(--chapter-accent) 78%,transparent);
+}
+
+/* Chapter navigation now visibly follows the chapter in view. */
+.chapter-pill{
+  --pill-accent:#d85c82;
+  border:1px solid transparent;
+  transition:background .28s ease,color .28s ease,border-color .28s ease,box-shadow .28s ease,transform .2s ease;
+}
+.chapter-pill[data-part="i"]{--pill-accent:#d85c82}
+.chapter-pill[data-part="ii"]{--pill-accent:#d97970}
+.chapter-pill[data-part="iii"]{--pill-accent:#c64269}
+.chapter-pill[data-part="iv"]{--pill-accent:#8f3e55}
+.chapter-pill[data-part="v"]{--pill-accent:#aa8251}
+.chapter-pill[data-part="vi"]{--pill-accent:#9a7a62}
+.chapter-pill.is-current{
+  color:var(--pill-accent);
+  background:color-mix(in srgb,var(--pill-accent) 13%,white);
+  border-color:color-mix(in srgb,var(--pill-accent) 24%,transparent);
+  box-shadow:0 7px 18px color-mix(in srgb,var(--pill-accent) 13%,transparent);
+}
+.chapter-pill.is-current::before{
+  content:"♡";
+  margin-right:5px;
+  font-family:"Playfair Display",serif;
+}
+.chapter-nav-inner{
+  transition:background .4s ease,border-color .4s ease,box-shadow .4s ease;
+}
+.chapter-nav-inner[data-active-part="i"]{background:rgba(255,244,248,.91);border-color:rgba(216,92,130,.16)}
+.chapter-nav-inner[data-active-part="ii"]{background:rgba(255,246,239,.92);border-color:rgba(217,121,112,.17)}
+.chapter-nav-inner[data-active-part="iii"]{background:rgba(255,239,245,.92);border-color:rgba(198,66,105,.17)}
+.chapter-nav-inner[data-active-part="iv"]{background:rgba(250,240,243,.93);border-color:rgba(143,62,85,.18)}
+.chapter-nav-inner[data-active-part="v"]{background:rgba(255,249,235,.93);border-color:rgba(170,130,81,.18)}
+.chapter-nav-inner[data-active-part="vi"]{background:rgba(250,246,239,.94);border-color:rgba(154,122,98,.18)}
+
+/* The docked player takes on the chapter accent of the selected song. */
+.sticky-player{
+  --player-accent:#d85c82;
+  transition:
+    transform .45s cubic-bezier(.2,.8,.2,1),
+    opacity .35s ease,
+    border-color .4s ease,
+    box-shadow .4s ease;
+}
+.sticky-player[data-part="i"]{--player-accent:#d85c82}
+.sticky-player[data-part="ii"]{--player-accent:#d97970}
+.sticky-player[data-part="iii"]{--player-accent:#c64269}
+.sticky-player[data-part="iv"]{--player-accent:#a75369}
+.sticky-player[data-part="v"]{--player-accent:#c39a60}
+.sticky-player[data-part="vi"]{--player-accent:#b49a80}
+.sticky-player[data-part]{
+  border-color:color-mix(in srgb,var(--player-accent) 32%,rgba(255,255,255,.16));
+  box-shadow:0 24px 70px rgba(65,30,43,.34),0 0 0 1px color-mix(in srgb,var(--player-accent) 9%,transparent);
+}
+.player-track-chapter{color:color-mix(in srgb,var(--player-accent) 82%,white)}
+.player-progress-fill{background:linear-gradient(90deg,var(--player-accent),color-mix(in srgb,var(--player-accent) 35%,white))}
+
+/* A very soft page-level atmosphere follows the section in view. */
+main{
+  position:relative;
+}
+main::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.72;
+  background:var(--page-chapter-wash,transparent);
+  transition:background .65s ease;
+}
+body[data-chapter="i"]{--page-chapter-wash:radial-gradient(circle at 50% 42%,rgba(250,206,221,.23),transparent 58%)}
+body[data-chapter="ii"]{--page-chapter-wash:radial-gradient(circle at 50% 42%,rgba(250,216,193,.23),transparent 58%)}
+body[data-chapter="iii"]{--page-chapter-wash:radial-gradient(circle at 50% 42%,rgba(226,155,181,.20),transparent 58%)}
+body[data-chapter="iv"]{--page-chapter-wash:radial-gradient(circle at 50% 42%,rgba(180,116,134,.16),transparent 58%)}
+body[data-chapter="v"]{--page-chapter-wash:radial-gradient(circle at 50% 42%,rgba(232,207,155,.23),transparent 58%)}
+body[data-chapter="vi"]{--page-chapter-wash:radial-gradient(circle at 50% 42%,rgba(221,204,181,.27),transparent 58%)}
+
+@media(max-width:760px){
+  .chapter{
+    box-shadow:0 12px 36px color-mix(in srgb,var(--chapter-accent) 7%,transparent);
+  }
+  main::before{opacity:.58}
+}

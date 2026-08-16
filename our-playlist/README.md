@@ -164,3 +164,6 @@ The custom story/player remains the main experience, but the complete Spotify pl
 
 ## V22 interaction polish
 This pass integrates the final framework recommendations: in-envelope password entry, continuous envelope-to-page animation, chapter color progression, stronger active-track feedback, whole-row playback, optional personal-note hooks, return-visit memory, and a mobile/safe-area cleanup. See `V22_QA.md` for the exact implementation checklist.
+
+## V23 stronger chapter palettes
+The six-chapter color progression is now intentionally visible rather than merely hinted at. Chapter surfaces, badges, track cards, active-track states, sticky-player accents, and the sticky chapter navigation all follow each chapter's palette. The navigation automatically highlights the chapter currently in view.
