@@ -602,9 +602,17 @@
   }
 
   $('#open-envelope').addEventListener('click', () => {
-    $('#envelope').classList.add('is-open');
-    document.body.style.overflow = '';
-    showStickyPlayer();
+    const envelope = $('#envelope');
+    if (envelope.classList.contains('is-opening') || envelope.classList.contains('is-open')) return;
+    envelope.classList.add('is-opening');
+    const button = $('#open-envelope');
+    button.disabled = true;
+    window.setTimeout(() => {
+      envelope.classList.add('is-open');
+      document.body.style.overflow = '';
+      showStickyPlayer();
+      $('#playlist')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 980);
   });
 
   $('#player-prev').addEventListener('click', () => setActiveTrack(currentTrackIndex - 1, { play: true }));

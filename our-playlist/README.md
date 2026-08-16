@@ -133,3 +133,7 @@ Removed `Two Punks In Love` from the site at the user's request. The narrative p
 
 ## V14 serious narrative-order pass
 This version deliberately reorders the 43-song story around lyrical chronology rather than keeping the original grouping. Major changes include moving **Make You Mine**, **Never Seen Anything “Quite Like You”**, and **Luckiest Man Alive** toward the marriage/finale material; moving **I Was Made For Loving You** into the falling-hard section; and moving **Better Half of Me**, **Palagi**, and **Just You and I** into the shared-life chapter. The site also adds chapter-to-chapter transition cards, chapter context in the sticky player, optional recipient/date fields on the opening envelope, and a final replay card after the last song.
+
+
+## V15 animated envelope entry
+This pass gives the playlist page its own dedicated favicon and replaces the flat intro card with a more literal envelope-and-letter entry. The wax seal is now the open control; clicking it triggers a short flap-and-letter opening animation before revealing the playlist.

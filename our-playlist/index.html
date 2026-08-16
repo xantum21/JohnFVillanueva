@@ -11,6 +11,8 @@
   <meta property="og:title" content="A Little Love Story ♡" />
   <meta property="og:description" content="A Valentine’s playlist in six chapters." />
   <title>A Little Love Story ♡</title>
+  <link rel="icon" type="image/svg+xml" href="favicon-playlist.svg" />
+  <link rel="shortcut icon" href="favicon-playlist.svg" />
   <link rel="preconnect" href="https://open.spotify.com" />
   <link rel="preconnect" href="https://i.scdn.co" />
   <link rel="stylesheet" href="styles.css" />
@@ -19,14 +21,29 @@
   <div class="ambient" aria-hidden="true"></div>
 
   <div id="envelope" class="envelope-screen">
-    <div class="envelope-card">
-      <div class="seal">♡</div>
-      <p id="envelope-for" class="envelope-for" hidden></p>
-      <p class="tiny-caps">A little something for you</p>
-      <h1>Open when you have a few songs to spare.</h1>
-      <p>There are six chapters inside. Start at the beginning. 💌</p>
-      <p id="envelope-date" class="envelope-date" hidden></p>
-      <button id="open-envelope" class="primary-button" type="button">Open the playlist</button>
+    <div class="envelope-stage">
+      <div class="envelope-card">
+        <div class="envelope-shell">
+          <div class="envelope-pocket" aria-hidden="true"></div>
+          <div class="envelope-flap" aria-hidden="true"></div>
+
+          <article class="envelope-letter">
+            <div class="envelope-letter-inner">
+              <p id="envelope-for" class="envelope-for" hidden></p>
+              <p class="tiny-caps">A little something for you</p>
+              <h1>Open when you have a few songs to spare.</h1>
+              <p>There are six chapters inside. Start at the beginning. 💌</p>
+              <p id="envelope-date" class="envelope-date" hidden></p>
+            </div>
+          </article>
+
+          <button id="open-envelope" class="envelope-seal-button" type="button" aria-label="Open the playlist letter">
+            <span class="seal-heart" aria-hidden="true">♡</span>
+            <span class="seal-open-label">Open playlist</span>
+          </button>
+        </div>
+        <p class="envelope-instruction">Tap the wax seal to open the letter ♡</p>
+      </div>
     </div>
   </div>
 
