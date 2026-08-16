@@ -24,12 +24,6 @@
     $('#final-title').textContent = page.finalTitle || 'End of playlist.';
     $('#final-note').textContent = page.finalNote || 'Hopefully not the end of the story. ♡';
     $('#final-aside').textContent = page.finalAside || '';
-
-    const envelopeFor = $('#envelope-for');
-    const envelopeDate = $('#envelope-date');
-    const forText = page.envelopeFor || (page.recipient ? `For ${page.recipient} ♡` : '');
-    if (forText) { envelopeFor.textContent = forText; envelopeFor.hidden = false; }
-    if (page.date) { envelopeDate.textContent = page.date; envelopeDate.hidden = false; }
     document.title = `${page.title} ♡`;
   }
 
@@ -601,18 +595,71 @@
     return String(value).replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
   }
 
-  $('#open-envelope').addEventListener('click', () => {
+  const PLAYLIST_PASSWORD_SHA256 = '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08';
+  const RICKROLL_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+
+  async function sha256Hex(value) {
+    const bytes = new TextEncoder().encode(value);
+    const digest = await crypto.subtle.digest('SHA-256', bytes);
+    return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+  }
+
+  function showPasswordGate() {
+    const gate = $('#password-gate');
+    const input = $('#playlist-password');
+    $('#password-message').textContent = '';
+    gate.hidden = false;
+    window.setTimeout(() => input.focus(), 40);
+  }
+
+  function hidePasswordGate() {
+    $('#password-gate').hidden = true;
+    $('#playlist-password').value = '';
+    $('#password-message').textContent = '';
+  }
+
+  function openPlaylistEnvelope() {
     const envelope = $('#envelope');
     if (envelope.classList.contains('is-opening') || envelope.classList.contains('is-open')) return;
     envelope.classList.add('is-opening');
-    const button = $('#open-envelope');
-    button.disabled = true;
+    $('#open-envelope').disabled = true;
+    sessionStorage.setItem('ourPlaylistUnlocked', '1');
     window.setTimeout(() => {
       envelope.classList.add('is-open');
       document.body.style.overflow = '';
       showStickyPlayer();
-      $('#playlist')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 980);
+      $('#top')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 1050);
+  }
+
+  $('#open-envelope').addEventListener('click', () => {
+    if (sessionStorage.getItem('ourPlaylistUnlocked') === '1') {
+      openPlaylistEnvelope();
+      return;
+    }
+    showPasswordGate();
+  });
+
+  $('#password-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const input = $('#playlist-password');
+    const card = event.currentTarget;
+    const enteredHash = await sha256Hex(input.value);
+    if (enteredHash === PLAYLIST_PASSWORD_SHA256) {
+      hidePasswordGate();
+      openPlaylistEnvelope();
+      return;
+    }
+
+    $('#password-message').textContent = 'Wrong password. Nice try ♡';
+    card.classList.remove('is-wrong');
+    void card.offsetWidth;
+    card.classList.add('is-wrong');
+    window.setTimeout(() => window.location.replace(RICKROLL_URL), 650);
+  });
+
+  $$('[data-close-password]').forEach((element) => {
+    element.addEventListener('click', () => hidePasswordGate());
   });
 
   $('#player-prev').addEventListener('click', () => setActiveTrack(currentTrackIndex - 1, { play: true }));

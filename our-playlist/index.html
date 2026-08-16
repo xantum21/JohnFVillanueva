@@ -20,30 +20,37 @@
 <body>
   <div class="ambient" aria-hidden="true"></div>
 
-  <div id="envelope" class="envelope-screen">
+  <div id="envelope" class="envelope-screen" aria-label="Sealed playlist letter">
     <div class="envelope-stage">
-      <div class="envelope-card">
-        <div class="envelope-shell">
-          <div class="envelope-pocket" aria-hidden="true"></div>
-          <div class="envelope-flap" aria-hidden="true"></div>
-
-          <article class="envelope-letter">
-            <div class="envelope-letter-inner">
-              <p id="envelope-for" class="envelope-for" hidden></p>
-              <p class="tiny-caps">A little something for you</p>
-              <h1>Open when you have a few songs to spare.</h1>
-              <p>There are six chapters inside. Start at the beginning. 💌</p>
-              <p id="envelope-date" class="envelope-date" hidden></p>
-            </div>
-          </article>
-
-          <button id="open-envelope" class="envelope-seal-button" type="button" aria-label="Open the playlist letter">
-            <span class="seal-heart" aria-hidden="true">♡</span>
-            <span class="seal-open-label">Open playlist</span>
-          </button>
+      <div class="real-envelope" id="real-envelope">
+        <div class="envelope-back" aria-hidden="true"></div>
+        <div class="envelope-letter-blank" aria-hidden="true">
+          <span class="letter-line line-one"></span>
+          <span class="letter-line line-two"></span>
+          <span class="letter-line line-three"></span>
+          <span class="letter-heart">♡</span>
         </div>
-        <p class="envelope-instruction">Tap the wax seal to open the letter ♡</p>
+        <div class="envelope-front" aria-hidden="true"></div>
+        <div class="envelope-flap" aria-hidden="true"></div>
+        <button id="open-envelope" class="envelope-seal-button" type="button" aria-label="Open sealed letter">
+          <span aria-hidden="true">♡</span>
+        </button>
       </div>
+    </div>
+
+    <div id="password-gate" class="password-gate" hidden>
+      <div class="password-backdrop" data-close-password></div>
+      <form id="password-form" class="password-card" autocomplete="off">
+        <div class="password-mini-seal" aria-hidden="true">♡</div>
+        <p class="tiny-caps">This letter is sealed</p>
+        <h2>What’s the password?</h2>
+        <input id="playlist-password" type="password" inputmode="text" autocomplete="current-password" placeholder="Password" aria-label="Password" required />
+        <p id="password-message" class="password-message" aria-live="polite"></p>
+        <div class="password-actions">
+          <button class="password-cancel" type="button" data-close-password>Cancel</button>
+          <button class="password-unlock" type="submit">Unlock ♡</button>
+        </div>
+      </form>
     </div>
   </div>
 

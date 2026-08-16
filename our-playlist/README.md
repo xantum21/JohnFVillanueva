@@ -137,3 +137,7 @@ This version deliberately reorders the 43-song story around lyrical chronology r
 
 ## V15 animated envelope entry
 This pass gives the playlist page its own dedicated favicon and replaces the flat intro card with a more literal envelope-and-letter entry. The wax seal is now the open control; clicking it triggers a short flap-and-letter opening animation before revealing the playlist.
+
+
+## V16 sealed-envelope password gate
+The intro is now a closed, text-free envelope with a clickable wax seal. Clicking the seal opens a styled password prompt. The temporary password is `test` (stored as a SHA-256 digest in the client script). A correct password triggers the envelope-opening animation and reveals the playlist; an incorrect password redirects to a Rickroll after a short error animation. Successful unlocks persist only for the current browser session via `sessionStorage`. This is a client-side privacy gate, not server-side authentication; static GitHub Pages assets remain publicly retrievable by someone deliberately inspecting the site.
