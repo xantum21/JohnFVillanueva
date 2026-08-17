@@ -1,6 +1,6 @@
-JohnFVillanueva website release: 2026-08-11-v7.6
+JohnFVillanueva website release: 2026-08-17-v7.7
 
-Prepared for deployment on August 11, 2026.
+Prepared for deployment on August 17, 2026.
 
 Verification markers:
 - Timeline archive: 84 dated entries across 2011–2026
@@ -12,6 +12,8 @@ Verification markers:
 - Sigma Theta Tau: inducted August 2026
 - California CNA: active; Rosewood Post Acute, January 2026–present
 - AHA BLS: current
-- ACLS, PALS, and Basic EKG Interpretation: scheduled August 12, 2026
+- ACLS and PALS: current; completed August 12, 2026
+- Basic EKG Interpretation: completed August 2026
+- Personal-photo refresh: About, Life, Timeline, and the unlisted Dating page
 - Public resume: one-page, single-column ATS-friendly edition
 - Interactive library: 23 playable experiences across 6 collections

@@ -23,7 +23,7 @@ os.chdir(ROOT)
 problems = []
 notes = []
 
-RELEASE_ID = "2026-08-11-v7.6"
+RELEASE_ID = "2026-08-17-v7.7"
 
 TOP_LEVEL = sorted(glob("*.html"))
 ALL_HTML = sorted(glob("*.html") + glob("*/*.html") + glob("*/*/*.html"))
@@ -352,14 +352,14 @@ if re.search(
     re.S,
 ):
     problems.append("work.html still contains a stale 2026 BSN completion target")
-for premature in (
+for required_credential in (
     "ACLS — current",
     "PALS — current",
     "Basic EKG Interpretation — completed",
 ):
-    if premature in work_text:
+    if required_credential not in work_text:
         problems.append(
-            f"work.html makes a pre-course credential claim that must remain scheduled: {premature}"
+            f"work.html is missing the confirmed credential status: {required_credential}"
         )
 
 timeline_text = (

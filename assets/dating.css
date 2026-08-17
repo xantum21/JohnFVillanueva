@@ -364,6 +364,11 @@
 }
 
 .dt-weekend-card:hover .dt-weekend-image img { transform: scale(1.2); }
+.dt-weekends article:first-child .dt-weekend-image img {
+  object-position: center 34%;
+  transform: scale(1.04);
+}
+.dt-weekends article:first-child:hover .dt-weekend-image img { transform: scale(1.08); }
 .dt-weekend-copy { padding: 25px 29px 29px; }
 
 .dt-weekends article:first-child { border-top-right-radius: 8px; }
@@ -508,6 +513,52 @@
 .dt-detail-card h3 { max-width: 22ch; }
 .dt-detail-card > p:last-child { max-width: 56ch; margin: 15px 0 0; color: var(--dt-muted); }
 .dt-detail-copy > p:last-child { max-width: 56ch; margin: 15px 0 0; color: var(--dt-muted); }
+
+/* A small real-photo journal keeps the page personal without turning it into a feed. */
+.dt-photo-journal {
+  padding: clamp(70px, 8vw, 112px) 0;
+  border-block: 1px solid var(--dt-line);
+  background: var(--dt-cream-2);
+}
+.dt-photo-heading { max-width: 760px; margin-bottom: 34px; }
+.dt-photo-heading h2 { max-width: 15ch; }
+.dt-photo-heading > p:last-child {
+  max-width: 58ch;
+  margin: 18px 0 0;
+  color: var(--dt-muted);
+  font-size: 1.02rem;
+}
+.dt-photo-grid {
+  display: grid;
+  grid-template-columns: 1.08fr repeat(2, minmax(0, 0.92fr));
+  gap: 14px;
+}
+.dt-photo-card {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--dt-line);
+  border-radius: 22px;
+  background: var(--dt-paper);
+  box-shadow: var(--dt-shadow-soft);
+}
+.dt-photo-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.dt-photo-card-wide img { object-position: center 42%; }
+.dt-photo-card figcaption {
+  display: grid;
+  gap: 5px;
+  padding: 17px 18px 20px;
+}
+.dt-photo-card figcaption strong {
+  color: var(--dt-night);
+  font-family: var(--dt-display);
+  font-size: 1.02rem;
+}
+.dt-photo-card figcaption span { color: var(--dt-muted); font-size: 0.8rem; }
 
 /* Life together */
 .dt-life-grid {
@@ -826,6 +877,9 @@
   .dt-weekends article:last-child { border-radius: var(--dt-radius); }
   .dt-weekends-join { margin: -5px auto; }
   .dt-detail-grid { grid-template-columns: 1fr; }
+  .dt-photo-grid { grid-template-columns: 1fr; }
+  .dt-photo-card { width: min(100%, 520px); margin-inline: auto; }
+  .dt-photo-card img { aspect-ratio: 4 / 3; }
   .dt-detail-card-wide { grid-row: auto; min-height: 0; }
   .dt-life-grid,
   .dt-values-grid,

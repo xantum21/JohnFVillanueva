@@ -1,24 +1,27 @@
-JohnFVillanueva Photographic Editorial Refresh — QA Summary
+JohnFVillanueva Personal Photo Refresh — QA Summary
 
 Scope
-- Replaced abstract icon illustrations with edited Pexels editorial photography.
-- Kept anime-style artwork only inside the Japanese & Anime section.
-- Added original angular navy/burgundy/gold page transitions inspired by energetic editorial game UI, without copying Persona artwork or assets.
-- Preserved the Formspree contact form, privacy removals, resume, favicon system, project library, and all playable experiences.
+- Added seven selected solo photographs from John's archive.
+- Used personal photos only where they add context: graduation, travel, outdoors, food, and fandom.
+- Kept group photos, credential scans, and workplace images unpublished.
+- Preserved the recruiter-first Work page, Formspree contact form, project library, and playable experiences.
+- Retained a small amount of generated artwork where it is clearly editorial rather than documentary.
 
 Validation
-- 47 HTML pages parsed successfully.
+- 51 HTML pages parsed successfully.
 - 0 broken internal references detected.
-- JavaScript passed node --check.
+- All JavaScript and Python files passed syntax checks.
+- All local raster image dimensions and alt attributes were checked.
+- Personal WebP exports contain no retained EXIF metadata.
+- The public résumé renders as one US Letter page and extracts in a clean reading order.
 - Formspree endpoint remains https://formspree.io/f/xqerdqro.
 - No private Gmail address, PSN name, or PSNProfiles link detected in deployable text files.
-- All eleven replacement editorial images are optimized WebP files.
 - Reduced-motion users do not receive page-wipe or image-hover animation.
-- Stock-photo source pages and licensing notes are recorded in VISUAL-SOURCES.md.
+- Source and usage notes are recorded in VISUAL-SOURCES.md.
 
-Visual system
-- Healthcare: professional nurse / older-adult interaction and bedside support.
-- Business: collaborative meeting imagery.
-- Life: gaming setup, Tokyo street, Japanese study, karaoke, PC hardware, and entrepreneurship workspace.
-- Anime: one inset image, restricted to the Japanese & Anime chapter.
-- Persona-inspired motion: original angular color wipes only; no copyrighted character art, logos, fonts, or direct game assets.
+Placement
+- About: CSU East Bay graduation, 2022.
+- Life: Shibuya hero, a three-photo journal, beach travel, and a real One Piece moment.
+- Timeline: the 2022 degree entry can reveal the graduation photo.
+- Unlisted Dating page: Yosemite plus a compact real-photo journal.
+- Work: no personal or workplace photography was added; healthcare visuals remain privacy-safe editorial illustration.

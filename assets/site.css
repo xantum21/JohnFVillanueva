@@ -487,6 +487,10 @@ a.card { display: block; text-decoration: none; }
   box-shadow: var(--shadow);
 }
 .image-card img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; }
+.image-card img.personal-graduation-photo {
+  aspect-ratio: 3 / 4;
+  object-position: center 24%;
+}
 .image-card::after {
   content: "";
   position: absolute;
@@ -800,6 +804,41 @@ details[open] summary::after { content: "−"; }
 }
 .interest strong { display: block; }
 .interest span { display: block; margin-top: 4px; color: var(--muted); font-size: 0.8rem; }
+
+.life-photo-journal {
+  padding: clamp(66px, 8vw, 100px) 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+.life-photo-journal .section-heading { margin-bottom: 30px; }
+.life-photo-grid {
+  display: grid;
+  grid-template-columns: 1.08fr repeat(2, minmax(0, 0.92fr));
+  gap: 14px;
+}
+.life-photo-card {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--navy);
+  box-shadow: var(--shadow-soft);
+}
+.life-photo-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.life-photo-card-wide img { object-position: center 36%; }
+.life-photo-card figcaption {
+  display: grid;
+  gap: 4px;
+  padding: 16px 17px 18px;
+  color: var(--cream);
+}
+.life-photo-card figcaption strong { font-size: 0.94rem; }
+.life-photo-card figcaption span { color: #cfddda; font-size: 0.78rem; }
 
 /* Crosslinks and contact */
 .crosslink {
@@ -1428,6 +1467,8 @@ details[open] summary::after { content: "−"; }
   color: var(--muted);
   font-size: 0.72rem;
 }
+.archive-proof-personal { max-width: 360px; }
+.archive-proof-personal img { max-height: 460px; }
 
 .archive-noscript { display: none; }
 .archive-fallback-count {
@@ -1685,6 +1726,8 @@ details[open] summary::after { content: "−"; }
 .hero-media.editorial-panel {
   border-radius: 30px;
 }
+.hero-media .life-hero-photo { object-position: center 38% !important; }
+.life-image .life-travel-photo { object-position: center 42%; }
 
 /* Anime is intentionally isolated to its own Life-page section. */
 .japanese-feature {
@@ -1776,6 +1819,9 @@ body.is-entering .page-transition__cream { transform: translateX(0); animation: 
 @keyframes persona-reveal-left { to { transform: translateX(-118%); } }
 
 @media (max-width: 760px) {
+  .life-photo-grid { grid-template-columns: 1fr; }
+  .life-photo-card { width: min(100%, 520px); margin-inline: auto; }
+  .life-photo-card img { aspect-ratio: 4 / 3; }
   .anime-inset {
     right: 10px;
     bottom: 10px;

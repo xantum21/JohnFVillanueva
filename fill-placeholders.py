@@ -10,9 +10,8 @@ dictionary below, then run:
 It rewrites the HTML in place and prints what it changed. Run check-site.py
 afterwards to confirm nothing is left unfilled.
 
-This release is prepared on August 11, 2026, before the scheduled ACLS, PALS,
-and Basic EKG training. Update the dated facts here only after issued
-documentation confirms completion.
+This release reflects the completed August 2026 ACLS, PALS, and Basic EKG
+training. Keep these values aligned with the issued documentation.
 """
 
 import os
@@ -49,9 +48,9 @@ VALUES = {
     #   "scheduled March 2027"   (registered, not yet taken)
     #   "in progress"            (course underway)
     #   "certified May 2027"     (completed - update the card wording too)
-    "ACLS_STATUS": "scheduled August 12, 2026",
-    "PALS_STATUS": "scheduled August 12, 2026",
-    "EKG_STATUS": "scheduled August 12, 2026",
+    "ACLS_STATUS": "current",
+    "PALS_STATUS": "current",
+    "EKG_STATUS": "completed August 2026",
 
     # IMPORTANT - read this one carefully.
     # Your resume PDF currently says "1,000+ hours of PAID direct patient-care

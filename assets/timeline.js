@@ -654,7 +654,12 @@
       "Marketing Management",
       "Leadership",
       "Japanese Minor"
-    ]
+    ],
+    "proof": "assets/photos/john-graduation-2022.webp",
+    "proofAlt": "John Villanueva smiling in his cap and gown at his CSU East Bay graduation",
+    "proofWidth": 900,
+    "proofHeight": 1200,
+    "proofCaption": "CSU East Bay graduation, 2022."
   },
   {
     "year": 2022,
@@ -1520,20 +1525,20 @@
   {
     "year": 2026,
     "lane": "credentials",
-    "title": "ACLS, PALS, and Basic EKG training",
+    "title": "ACLS and PALS certification; Basic EKG training",
     "org": "California BRN-approved continuing-education provider",
-    "type": "Scheduled training",
-    "date": "Scheduled August 12, 2026",
-    "body": "Registered for ACLS, PALS, and Basic EKG Interpretation training scheduled for August 12, 2026.",
+    "type": "Completed training",
+    "date": "August 2026",
+    "body": "Completed Basic EKG Interpretation and earned current ACLS and PALS provider status in August 2026.",
     "details": [
-      "I will update this entry after the courses are complete."
+      "ACLS and PALS completed August 12, 2026.",
+      "Credential identifiers stay off the public site."
     ],
     "skills": [
       "Advanced Life Support",
       "Pediatric Response",
       "Rhythm Interpretation"
-    ],
-    "status": "scheduled"
+    ]
   },
   {
     "year": 2026,
@@ -1706,14 +1711,19 @@
       ? `<div class="chip-row" aria-label="What this added">${event.skills.map((skill) =>
           `<span class="chip">${escapeHtml(skill)}</span>`).join('')}</div>`
       : '';
-    const proofSize = event.proof?.includes('stanford')
-      ? { width: 1000, height: 707 }
-      : { width: 800, height: 614 };
+    const proofSize = {
+      width: event.proofWidth || (event.proof?.includes('stanford') ? 1000 : 800),
+      height: event.proofHeight || (event.proof?.includes('stanford') ? 707 : 614),
+    };
+    const proofClass = event.proof?.includes('/photos/')
+      ? 'archive-proof archive-proof-personal'
+      : 'archive-proof';
+    const proofCaption = event.proofCaption || 'A certificate image I chose to keep on the site.';
     const proof = event.proof
-      ? `<figure class="archive-proof">
+      ? `<figure class="${proofClass}">
           <img src="${escapeHtml(event.proof)}" alt="${escapeHtml(event.proofAlt || '')}"
             width="${proofSize.width}" height="${proofSize.height}" loading="lazy">
-          <figcaption>One of the two certificate images I chose to keep on the site.</figcaption>
+          <figcaption>${escapeHtml(proofCaption)}</figcaption>
         </figure>`
       : '';
     const outbound = event.link

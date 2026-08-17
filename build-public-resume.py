@@ -251,7 +251,7 @@ def build_resume(output_path=OUTPUT):
             "Credentials",
             [
                 Paragraph(
-                    "California Certified Nursing Assistant - Active | AHA BLS Provider - Current<br/>ACLS, PALS, and Basic EKG Interpretation training - Scheduled August 12, 2026",
+                    "California Certified Nursing Assistant - Active | AHA BLS Provider - Current<br/>ACLS &amp; PALS - Current | Basic EKG Interpretation - Completed",
                     styles["compact"],
                 ),
                 Paragraph(
@@ -315,7 +315,7 @@ def build_resume(output_path=OUTPUT):
     canvas.setFillColor(MUTED)
     canvas.setFont(FONT_REGULAR, 6.7)
     canvas.drawString(36, 23, "Public resume | Contact: johnfvillanueva.com/contact.html")
-    canvas.drawRightString(576, 23, "Updated August 11, 2026 | Verification available to employers")
+    canvas.drawRightString(576, 23, "Updated August 17, 2026 | Verification available to employers")
 
     canvas.save()
     return output_path
