@@ -168,6 +168,57 @@ Oh, 'cause I love you, do you love me too?
 I love you, do you love me?`
   },
 
+  // a!ka — I Won't Say (I'm In Love)
+  "spotify:track:1gOLlylQkWzriT4HZUhVBK": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied directly for this project",
+    originalLyrics: `If there's a prize for rotten judgement
+I guess I've already won that
+No man is worth the aggravation
+That's ancient history, been there, done that
+Who'd you think you're kidding?
+He's the Earth and heaven to you
+Try to keep it hidden
+Honey, we can see right through you (oh, no)
+Girl, you can't conceal it
+We know how you feel and who you're thinking of (oh)
+No chance, no way
+I won't say it, no, no
+You swoon, you sigh
+Why deny it? Oh-oh
+It's too cliché (oh)
+I won't say I'm in love (shoo-doop, shoo-doop)
+(Ooh)
+I thought my heart had learned its lesson (oh)
+It feels so good when you start out (ooh)
+My head is screaming, "Get a grip, girl!" (Ah)
+Unless you're dying to cry your heart out
+You keep on denying (oh)
+Who you are and how you're feeling
+Baby, we're not buying
+Hon, we saw you hit the ceiling (oh)
+Face it like a grown-up
+When you gonna own up that you got, got, got it bad? (Whoa)
+No chance, no way
+I won't say it, no, no
+Give up, give in
+Check the grin, you're in love
+This scene won't play
+I won't say I'm in love (you're doing flips)
+(Read our lips, you're in love)
+You're way off base
+I won't say it (she won't say it, no)
+Get off my case (sha-la)
+I won't say it (ooh)
+Girl, don't be proud
+It's okay, you're in love
+Oh
+At least out loud
+I won't say I'm in love (shoo-doop, shoo-doop, shoo-doop, shoo-doop)
+(Sha-la-la-la-la-la, ah)`
+  },
+
   // Good Kid — From the Start
   "spotify:track:6BJHsLiE47Sk0wQkuppqhr": {
     originalLanguage: "English",

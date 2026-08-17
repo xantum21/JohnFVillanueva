@@ -454,6 +454,7 @@
       'spotify:track:782sFc96ACqG89GlvPN9S2': { stamp: 'CRUSH FILE', seal: '?', notes: ['looked at you / looked away', 'heart acting ridiculous'] },
       'spotify:track:1I75ohulScHJpoMmE9Xbfl': { stamp: 'MAYBE?', seal: '☾', notes: ['does she know?', 'every heartbeat says ask'] },
       'spotify:track:5JJ8C9f06xhUrVRk44maoI': { stamp: 'YES / MAYBE', seal: '✓', notes: ['tiny checkbox energy', 'please say it back'] },
+      'spotify:track:1gOLlylQkWzriT4HZUhVBK': { stamp: 'NOT SAYING IT', seal: '♡', notes: ['absolutely not in love. obviously.', 'the denial is doing a lot of work'] },
       'spotify:track:6BJHsLiE47Sk0wQkuppqhr': { stamp: 'FROM PAGE ONE', seal: '01', notes: ['confession draft', 'cupids involved apparently'] },
       'spotify:track:2AHZHeLTPuGILKyr4l8uTU': { stamp: 'HERO NOTE', seal: 'S', notes: ['trying to be brave', 'hope you like me as I am'] },
       'spotify:track:3Z1kZKYfRC8iRXnYeC5sCJ': { stamp: 'IT CHANGED', seal: '↺', notes: ['before / after', 'something shifted yesterday'] },

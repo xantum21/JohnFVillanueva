@@ -1,6 +1,6 @@
 # V19 Lyrics Audit
 
-All **43 / 43** songs in the current website playlist now have lyric entries.
+All **44 / 44** songs in the current website playlist now have lyric entries.
 
 ## V19 change
 

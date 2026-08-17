@@ -49,7 +49,7 @@ The custom controls call Spotify's iFrame controller; they do not host or redist
 
 Every song's **Lyrics ♡** button opens a folded-paper / love-letter view rather than a generic modal.
 
-`lyric-themes.js` contains **43 distinct visual identities** — one for every song. Examples include a blushing notebook, moonlit question letter, dance card, Japanese washi love note, kundiman stationery, a photograph postcard, wedding vow card, film-reel letter, and an aged old-love letter.
+`lyric-themes.js` contains **44 distinct visual identities** — one for every song. Examples include a blushing notebook, moonlit question letter, dance card, Japanese washi love note, kundiman stationery, a photograph postcard, wedding vow card, film-reel letter, and an aged old-love letter.
 
 These are visual themes only; no copyrighted lyric text is bundled in this file.
 
@@ -66,11 +66,11 @@ Switching tabs changes the letterhead to make clear whether the reader is seeing
 
 ## Add lyric text later
 
-`lyrics-data.js` intentionally ships with placeholders. Once the companion lyric document is ready, populate the corresponding entries there. The UI, language toggles, and all 43 visual themes are already wired.
+`lyrics-data.js` intentionally ships with placeholders. Once the companion lyric document is ready, populate the corresponding entries there. The UI, language toggles, and all 44 visual themes are already wired.
 
 ## Playlist data
 
-All 43 tracks, Spotify URIs, Spotify links, YouTube Music search links, and the six narrative chapters live in `playlist-data.js`.
+All 44 tracks, Spotify URIs, Spotify links, YouTube Music search links, and the six narrative chapters live in `playlist-data.js`.
 
 ## Page copy
 
@@ -173,3 +173,7 @@ Fixed a mobile-only vertical "boomerang" caused by the V23 chapter-color observe
 
 ## V25 password removed
 The temporary password gate has been removed. The wax seal now opens the envelope directly and continues through the existing letter-lift transition into the playlist. The V24 mobile scroll fix and all later playlist/player/color features remain intact.
+
+
+## V26 — a!ka crush-section addition
+Added **I Won't Say (I'm In Love) — a!ka** to Part I immediately after **Superman**. Part I now runs six songs, the full narrative is 44 tracks, all downstream numbering/chapter ranges were refreshed, and the supplied lyrics are wired to a dedicated lyric letter.

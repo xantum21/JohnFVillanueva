@@ -8,6 +8,8 @@ window.VALENTINE_LYRIC_THEMES = {
   "spotify:track:1I75ohulScHJpoMmE9Xbfl": {"name": "A Question in the Moonlight", "motif": "☾  ?  ✦", "texture": "moon", "paper": "#fbf8ff", "ink": "#342c49", "accent": "#8465b8", "accent2": "#d9ccff"},
   // 03. Like Me
   "spotify:track:5JJ8C9f06xhUrVRk44maoI": {"name": "Do You Like Me?", "motif": "☐ yes  ☐ maybe  ♡", "texture": "notebook", "paper": "#fffdf7", "ink": "#3b302c", "accent": "#d96f64", "accent2": "#ffd9a8"},
+  // I Won't Say (I'm In Love)
+  "spotify:track:1gOLlylQkWzriT4HZUhVBK": {"name": "Not Saying It", "motif": "nope.  ♡  definitely not.", "texture": "notebook", "paper": "#fff9fb", "ink": "#422a34", "accent": "#d85c82", "accent2": "#f7c9d8"},
   // 04. From the Start
   "spotify:track:6BJHsLiE47Sk0wQkuppqhr": {"name": "Page One", "motif": "✦ 01 ♡", "texture": "confetti", "paper": "#fffaf0", "ink": "#332b28", "accent": "#ec6a62", "accent2": "#ffe08c"},
   // 05. Superman
