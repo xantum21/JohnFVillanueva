@@ -9,12 +9,12 @@ This package is ready to copy into the existing GitHub Pages repository.
 3. Copy everything inside `COPY-CONTENTS-INTO-REPOSITORY` into the repository
    root and choose **Replace** when Windows asks.
 4. Confirm GitHub Desktop shows the changed files.
-5. Commit with `Deploy website release 2026-08-17-v7.7` and push.
+5. Commit with `Deploy website release 2026-08-17-v7.9` and push.
 
 ## After GitHub Pages finishes
 
 1. Open `https://johnfvillanueva.com/release-version.txt` and confirm the first
-   line says `2026-08-17-v7.7`.
+   line says `2026-08-17-v7.9`.
 2. Open Timeline and test a year, a category filter, search, an expandable entry,
    an era jump, Play years, and a copied deep link on desktop and phone.
 3. Open Work and confirm ACLS and PALS are labeled **current** and Basic EKG is **completed**.

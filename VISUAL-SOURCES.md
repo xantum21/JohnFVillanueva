@@ -8,6 +8,7 @@ Pexels states that its photos may be downloaded, used on websites, and modified 
 |---|---|---|
 | John portrait | Personal photograph supplied by John Villanueva | Private original |
 | Graduation, Shibuya, Yosemite, beach, Gundam, One Piece, and restaurant photos | Personal photographs supplied by John Villanueva | Private originals |
+| Hiking, Oktoberfest, Wizarding World, roadside-stop, and dressed-up garden photos | Personal photographs supplied by John Villanueva | Private originals |
 | Work-page care hero | Original generated illustration created for this site | Not applicable |
 | Bedside care | Tima Miroshnichenko | https://www.pexels.com/photo/a-nurse-talking-the-patient-6010859/ |
 | Business collaboration | Mikhail Nilov | https://www.pexels.com/photo/business-meeting-8284732/ |

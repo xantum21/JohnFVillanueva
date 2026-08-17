@@ -356,19 +356,15 @@
 
 .dt-weekend-image img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: center;
-  transform: scale(1.16);
+  transform: scale(1.01);
   transition: transform 650ms cubic-bezier(.2,.75,.18,1);
 }
 
-.dt-weekend-card:hover .dt-weekend-image img { transform: scale(1.2); }
-.dt-weekends article:first-child .dt-weekend-image img {
-  object-position: center 34%;
-  transform: scale(1.04);
-}
-.dt-weekends article:first-child:hover .dt-weekend-image img { transform: scale(1.08); }
+.dt-weekend-card:hover .dt-weekend-image img { transform: scale(1.035); }
+.dt-weekend-photo-hike { object-position: center 28% !important; }
 .dt-weekend-copy { padding: 25px 29px 29px; }
 
 .dt-weekends article:first-child { border-top-right-radius: 8px; }
@@ -547,7 +543,15 @@
   aspect-ratio: 4 / 5;
   object-fit: cover;
 }
-.dt-photo-card-wide img { object-position: center 42%; }
+.dt-photo-card-wide img { object-position: center; }
+.dt-photo-card-formal img {
+  transform: scale(1.28);
+  transform-origin: 53% 62%;
+}
+.dt-photo-card-roadtrip img {
+  transform: scale(1.12);
+  transform-origin: 44% 58%;
+}
 .dt-photo-card figcaption {
   display: grid;
   gap: 5px;
@@ -879,7 +883,7 @@
   .dt-detail-grid { grid-template-columns: 1fr; }
   .dt-photo-grid { grid-template-columns: 1fr; }
   .dt-photo-card { width: min(100%, 520px); margin-inline: auto; }
-  .dt-photo-card img { aspect-ratio: 4 / 3; }
+  .dt-photo-card img { aspect-ratio: 4 / 5; }
   .dt-detail-card-wide { grid-row: auto; min-height: 0; }
   .dt-life-grid,
   .dt-values-grid,

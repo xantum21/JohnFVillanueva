@@ -1,4 +1,4 @@
-JohnFVillanueva website release: 2026-08-17-v7.7
+JohnFVillanueva website release: 2026-08-17-v7.9
 
 Prepared for deployment on August 17, 2026.
 
@@ -15,5 +15,7 @@ Verification markers:
 - ACLS and PALS: current; completed August 12, 2026
 - Basic EKG Interpretation: completed August 2026
 - Personal-photo refresh: About, Life, Timeline, and the unlisted Dating page
+- Credential wording audit: no remaining public-facing pre-course status language
+- Dating photo refresh: five distinct activity, event, travel, and dressed-up images with no Life-page reuse
 - Public resume: one-page, single-column ATS-friendly edition
 - Interactive library: 23 playable experiences across 6 collections

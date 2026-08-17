@@ -23,8 +23,8 @@ plain first-person language.
 - Keeps the remaining completed professional certificates in the credential list.
 - Replaces the administrative-sounding credential explanation with direct,
   conversational copy.
-- Keeps ACLS, PALS, and Basic EKG clearly labeled as scheduled for August 12,
-  2026 because this package was prepared on August 11.
+- Historical credential wording from this archived release has been superseded.
+  See `release-version.txt` for the current completed credential status.
 - Removes the duplicate undated StarCraft II and Marvel Rivals bullets now that
   both have dated Timeline entries.
 

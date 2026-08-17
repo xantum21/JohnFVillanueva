@@ -23,9 +23,9 @@ This is the downloadable Timeline rebuild and pre-course accuracy release.
 - Clarifies that the 1,000+ figure refers to paid CNA bedside hours; supervised
   BSN clinical hours are separate.
 - Names Rosewood Post Acute on the Work page and public résumé.
-- Labels ACLS, PALS, and Basic EKG Interpretation as scheduled for August 12,
-  2026 because this release was prepared on August 11.
-- Removes the three scheduled courses from structured-data credential claims.
+- Historical credential wording from this archived release has been superseded.
+  See `release-version.txt` for the current completed credential status.
+- Keeps uncompleted credentials out of structured-data claims in this archived build.
 - Lists Nightingale College as a current affiliation and preserves completed
   schools under alumniOf.
 
@@ -50,4 +50,3 @@ node --check assets/timeline.js
 
 The public résumé should remain one US Letter page, and the release marker
 should read `2026-08-11-v7.5`.
-

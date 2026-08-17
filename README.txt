@@ -17,10 +17,10 @@ DEPLOYMENT
 5. Wait for Pages deployment to finish, then open the site in an incognito window.
 6. Test the professional contact form and confirm the message arrives through Formspree.
 7. Open https://johnfvillanueva.com/release-version.txt and confirm it says
-   `2026-08-17-v7.7`; this distinguishes the current release from older downloads.
+   `2026-08-17-v7.9`; this distinguishes the current release from older downloads.
 
 The custom domain is `johnfvillanueva.com`; keep `CNAME` and `.nojekyll` at the
-repository root. See `RELEASE-NOTES-2026-08-17-v7.7.md` for this pass's verification summary.
+repository root. See `RELEASE-NOTES-2026-08-17-v7.9.md` for this pass's verification summary.
 
 GitHub Pages does not apply the Netlify-style `_headers` or `_redirects` files.
 They remain in this package only for host portability; the redirect pages also

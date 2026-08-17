@@ -23,7 +23,7 @@ os.chdir(ROOT)
 problems = []
 notes = []
 
-RELEASE_ID = "2026-08-17-v7.7"
+RELEASE_ID = "2026-08-17-v7.9"
 
 TOP_LEVEL = sorted(glob("*.html"))
 ALL_HTML = sorted(glob("*.html") + glob("*/*.html") + glob("*/*/*.html"))
@@ -319,6 +319,30 @@ if os.path.isfile(dating):
             "reads the noindex tag."
         )
 
+    life_text = (
+        open("life.html", encoding="utf-8").read()
+        if os.path.isfile("life.html")
+        else ""
+    )
+    personal_image = re.compile(r'src="(assets/photos/[^"]+)"')
+    shared_personal_images = set(personal_image.findall(text)) & set(
+        personal_image.findall(life_text)
+    )
+    if shared_personal_images:
+        problems.append(
+            "Dating and Life reuse personal images: "
+            + ", ".join(sorted(shared_personal_images))
+        )
+    for required_photo in (
+        "assets/photos/john-hiking-poles.webp",
+        "assets/photos/john-oktoberfest.webp",
+        "assets/photos/john-wizarding-world.webp",
+        "assets/photos/john-roadtrip-stop.webp",
+        "assets/photos/john-formal-garden.webp",
+    ):
+        if required_photo not in text:
+            problems.append(f"dating.html is missing selected photo: {required_photo}")
+
 
 # ------------------------------------------------------- sitemap parity
 if os.path.isfile("sitemap.xml"):
@@ -361,6 +385,15 @@ for required_credential in (
         problems.append(
             f"work.html is missing the confirmed credential status: {required_credential}"
         )
+for path in ALL_HTML:
+    page_text = open(path, encoding="utf-8").read()
+    if re.search(
+        r"(?:ACLS|PALS|Basic EKG).{0,100}scheduled|"
+        r"scheduled.{0,100}(?:ACLS|PALS|Basic EKG)",
+        page_text,
+        re.I | re.S,
+    ):
+        problems.append(f"{path}: contains obsolete scheduled credential wording")
 
 timeline_text = (
     open("timeline.html", encoding="utf-8").read()
