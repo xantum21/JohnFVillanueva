@@ -177,3 +177,7 @@ The temporary password gate has been removed. The wax seal now opens the envelop
 
 ## V26 — a!ka crush-section addition
 Added **I Won't Say (I'm In Love) — a!ka** to Part I immediately after **Superman**. Part I now runs six songs, the full narrative is 44 tracks, all downstream numbering/chapter ranges were refreshed, and the supplied lyrics are wired to a dedicated lyric letter.
+
+
+## V27 vibe-first sequencing
+Reordered selected tracks for smoother genre/energy/production flow while keeping the six-chapter lyrical narrative intact. Added SPOTIFY_MASTER_ORDER.md and spotify-master-order.csv for syncing the real Spotify playlist.

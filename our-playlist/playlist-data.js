@@ -34,6 +34,14 @@ window.VALENTINE_CHAPTERS = [
       },
       {
         "number": 2,
+        "title": "From the Start",
+        "artist": "Good Kid",
+        "uri": "spotify:track:6BJHsLiE47Sk0wQkuppqhr",
+        "spotifyUrl": "https://open.spotify.com/track/6BJHsLiE47Sk0wQkuppqhr",
+        "youtubeMusicUrl": "https://music.youtube.com/search?q=From+the+Start+Good+Kid"
+      },
+      {
+        "number": 3,
         "title": "Superman",
         "artist": "Joe Brooks",
         "uri": "spotify:track:2AHZHeLTPuGILKyr4l8uTU",
@@ -41,20 +49,12 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Superman+Joe+Brooks"
       },
       {
-        "number": 3,
+        "number": 4,
         "title": "I Won't Say (I'm In Love)",
         "artist": "a!ka",
         "uri": "spotify:track:1gOLlylQkWzriT4HZUhVBK",
         "spotifyUrl": "https://open.spotify.com/track/1gOLlylQkWzriT4HZUhVBK",
         "youtubeMusicUrl": "https://music.youtube.com/search?q=I+Won%27t+Say+%28I%27m+In+Love%29+a%21ka"
-      },
-      {
-        "number": 4,
-        "title": "From the Start",
-        "artist": "Good Kid",
-        "uri": "spotify:track:6BJHsLiE47Sk0wQkuppqhr",
-        "spotifyUrl": "https://open.spotify.com/track/6BJHsLiE47Sk0wQkuppqhr",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=From+the+Start+Good+Kid"
       },
       {
         "number": 5,
@@ -170,19 +170,19 @@ window.VALENTINE_CHAPTERS = [
       },
       {
         "number": 16,
-        "title": "I GUESS I'M IN LOVE",
-        "artist": "Clinton Kane",
-        "uri": "spotify:track:1dB1kzLOjTcmSHttRd8bnV",
-        "spotifyUrl": "https://open.spotify.com/track/1dB1kzLOjTcmSHttRd8bnV",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=I+GUESS+I%27M+IN+LOVE+Clinton+Kane"
-      },
-      {
-        "number": 17,
         "title": "愛とか恋とか",
         "artist": "Novelbright",
         "uri": "spotify:track:4McP7SOTK2NWkydOcDCajC",
         "spotifyUrl": "https://open.spotify.com/track/4McP7SOTK2NWkydOcDCajC",
         "youtubeMusicUrl": "https://music.youtube.com/search?q=%E6%84%9B%E3%81%A8%E3%81%8B%E6%81%8B%E3%81%A8%E3%81%8B+Novelbright"
+      },
+      {
+        "number": 17,
+        "title": "I GUESS I'M IN LOVE",
+        "artist": "Clinton Kane",
+        "uri": "spotify:track:1dB1kzLOjTcmSHttRd8bnV",
+        "spotifyUrl": "https://open.spotify.com/track/1dB1kzLOjTcmSHttRd8bnV",
+        "youtubeMusicUrl": "https://music.youtube.com/search?q=I+GUESS+I%27M+IN+LOVE+Clinton+Kane"
       },
       {
         "number": 18,
@@ -238,19 +238,19 @@ window.VALENTINE_CHAPTERS = [
       },
       {
         "number": 23,
-        "title": "Still Falling For You",
-        "artist": "Ellie Goulding",
-        "uri": "spotify:track:3odrUVQ9tvRpkC9II2oWzx",
-        "spotifyUrl": "https://open.spotify.com/track/3odrUVQ9tvRpkC9II2oWzx",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=Still+Falling+For+You+Ellie+Goulding"
-      },
-      {
-        "number": 24,
         "title": "I Love You Always Forever",
         "artist": "Betty Who",
         "uri": "spotify:track:1p6rk9R8SCum97WnvGNt6O",
         "spotifyUrl": "https://open.spotify.com/track/1p6rk9R8SCum97WnvGNt6O",
         "youtubeMusicUrl": "https://music.youtube.com/search?q=I+Love+You+Always+Forever+Betty+Who"
+      },
+      {
+        "number": 24,
+        "title": "Still Falling For You",
+        "artist": "Ellie Goulding",
+        "uri": "spotify:track:3odrUVQ9tvRpkC9II2oWzx",
+        "spotifyUrl": "https://open.spotify.com/track/3odrUVQ9tvRpkC9II2oWzx",
+        "youtubeMusicUrl": "https://music.youtube.com/search?q=Still+Falling+For+You+Ellie+Goulding"
       }
     ]
   },
@@ -366,14 +366,6 @@ window.VALENTINE_CHAPTERS = [
       },
       {
         "number": 36,
-        "title": "Perfect",
-        "artist": "Ed Sheeran",
-        "uri": "spotify:track:0tgVpDi06FyKpA1z0VMD4v",
-        "spotifyUrl": "https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=Perfect+Ed+Sheeran"
-      },
-      {
-        "number": 37,
         "title": "Never Seen Anything “Quite Like You”",
         "artist": "The Script",
         "uri": "spotify:track:018Idkvf82hi44UZmIXiGB",
@@ -381,7 +373,23 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Never+Seen+Anything+%E2%80%9CQuite+Like+You%E2%80%9D+The+Script"
       },
       {
+        "number": 37,
+        "title": "Never Stop (Wedding Version)",
+        "artist": "SafetySuit",
+        "uri": "spotify:track:5himtcBG5IetEOAYuB1Lu1",
+        "spotifyUrl": "https://open.spotify.com/track/5himtcBG5IetEOAYuB1Lu1",
+        "youtubeMusicUrl": "https://music.youtube.com/search?q=Never+Stop+%28Wedding+Version%29+SafetySuit"
+      },
+      {
         "number": 38,
+        "title": "Perfect",
+        "artist": "Ed Sheeran",
+        "uri": "spotify:track:0tgVpDi06FyKpA1z0VMD4v",
+        "spotifyUrl": "https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v",
+        "youtubeMusicUrl": "https://music.youtube.com/search?q=Perfect+Ed+Sheeran"
+      },
+      {
+        "number": 39,
         "title": "Luckiest Man Alive",
         "artist": "Ross David",
         "uri": "spotify:track:6XPmY4NWIqq0CofdhhjyP4",
@@ -389,7 +397,7 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Luckiest+Man+Alive+Ross+David"
       },
       {
-        "number": 39,
+        "number": 40,
         "title": "Ordinary - Wedding Version",
         "artist": "Alex Warren",
         "uri": "spotify:track:4t6qMeHgbxWod2SLokiSQp",
@@ -397,20 +405,12 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Ordinary+-+Wedding+Version+Alex+Warren"
       },
       {
-        "number": 40,
+        "number": 41,
         "title": "A Thousand Years",
         "artist": "Christina Perri",
         "uri": "spotify:track:6lanRgr6wXibZr8KgzXxBl",
         "spotifyUrl": "https://open.spotify.com/track/6lanRgr6wXibZr8KgzXxBl",
         "youtubeMusicUrl": "https://music.youtube.com/search?q=A+Thousand+Years+Christina+Perri"
-      },
-      {
-        "number": 41,
-        "title": "Never Stop (Wedding Version)",
-        "artist": "SafetySuit",
-        "uri": "spotify:track:5himtcBG5IetEOAYuB1Lu1",
-        "spotifyUrl": "https://open.spotify.com/track/5himtcBG5IetEOAYuB1Lu1",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=Never+Stop+%28Wedding+Version%29+SafetySuit"
       },
       {
         "number": 42,
