@@ -42,8 +42,8 @@ Kicker: `all the way`
 ## Hero / ending
 
 Eyebrow: `For you, in six parts`
-Subtitle: `44 songs from “oh no, I like you” to “okay, grow old with me.”`
+Subtitle: `46 songs from “oh no, I like you” to “okay, grow old with me.”`
 Note: `I made this instead of trying to say all of it normally. ♡`
-Finale: `Okay, that’s the playlist.` / `44 songs later, I think you get the idea. ♡`
+Finale: `Okay, that’s the playlist.` / `46 songs later, I think you get the idea. ♡`
 
 These are intentionally preliminary. They are easy to replace later with personal copy without changing the layout or song data.

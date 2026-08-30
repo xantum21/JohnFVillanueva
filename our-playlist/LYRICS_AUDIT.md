@@ -1,14 +1,10 @@
-# V19 Lyrics Audit
+# V28 Lyrics Coverage Audit
 
-All **44 / 44** songs in the current website playlist now have lyric entries.
+The playlist now contains **46 tracks**.
 
-## V19 change
+## V28 additions
 
-Track #39 was changed from **Turning Page — Sleeping At Last** to **A Thousand Years — Christina Perri**. The lyrics supplied in `Part 4.docx` are now connected to that playlist track, so there are no remaining `Lyrics · soon` entries caused by missing lyric data.
+- **Nice To Meet You — Myles Smith** — lyrics supplied by the user in `final v(1).docx` and wired to the new Part I opener.
+- **Imagine - Acoustic — Ben Platt** — lyrics supplied by the user in `final v(1).docx` and wired to the new Part VI placement.
 
-## Multilingual lyric views
-
-- **愛とか恋とか — Novelbright:** 日本語 / Romaji / English
-- **115 Million Kilometer Film — OFFICIAL HIGE DANDISM:** 日本語 / English
-- **Palagi — TJ Monterde & KZ Tandingan:** Tagalog / English
-- **Kahit Maputi Na Ang Buhok Ko — Joseph Vincent:** Tagalog / English
+Both songs have dedicated lyric-letter entries and custom stationery themes. Existing V27 lyric data remains intact.

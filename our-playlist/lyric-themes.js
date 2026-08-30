@@ -2,6 +2,8 @@
 // These themes contain only original visual metadata — no lyric text.
 // Every track gets a distinct letter title, motif, palette, and paper treatment.
 window.VALENTINE_LYRIC_THEMES = {
+  // Nice To Meet You — Myles Smith
+  "spotify:track:2gl06oGDmIatJLXusFlqAf": {"name": "First Hello", "motif": "oh, hi  ♫  ♡", "texture": "dance", "paper": "#fffaf4", "ink": "#382f2c", "accent": "#c46f55", "accent2": "#f2c99f"},
   // 01. this is what having a massive crush on someone feels like
   "spotify:track:782sFc96ACqG89GlvPN9S2": {"name": "Blushing Notebook", "motif": "♡ ? ♡", "texture": "doodles", "paper": "#fff8fb", "ink": "#422333", "accent": "#e04f7a", "accent2": "#ffc6d8"},
   // 02. How Will I Know
@@ -90,4 +92,6 @@ window.VALENTINE_LYRIC_THEMES = {
   "spotify:track:77enz5hl8RicxrbPB56VXQ": {"name": "Lifetime Constellation", "motif": "✦  whole life  ✦", "texture": "stars", "paper": "#fbfbff", "ink": "#2e3042", "accent": "#6b72a5", "accent2": "#c9d4f0"},
   // 43. Kahit Maputi Na Ang Buhok Ko
   "spotify:track:6r9o3XGxSYFlX6ktsEqIbK": {"name": "Old Love Letter", "motif": "♡  hanggang pagtanda  ♡", "texture": "soft", "paper": "#fff9e9", "ink": "#3f3328", "accent": "#a66d51", "accent2": "#e8d2ad"},
+  // Imagine - Acoustic — Ben Platt
+  "spotify:track:3m9MKNTdPmsKJRqrhqQnhW": {"name": "Life Without You", "motif": "you  ∞  me", "texture": "stars", "paper": "#fbfaff", "ink": "#303044", "accent": "#6e6fa6", "accent2": "#d5d3ef"},
 };

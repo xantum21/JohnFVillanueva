@@ -2649,6 +2649,121 @@ And all along I believed I would find you
 Time has brought your heart to me
 I have loved you for a thousand years
 I'll love you for a thousand more`
+  },
+
+  // Myles Smith — Nice To Meet You
+  "spotify:track:2gl06oGDmIatJLXusFlqAf": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied by you · V28",
+    originalLyrics: `Lonely in this crowd, I sit alone, oh
+One more drink away from heading home, oh
+Oh, I could feel the night slipping by
+Oh, away from me
+And, oh, she caught my eye through the light
+Then she came right up to me
+She said, "Oh, hi, nice to meet you
+Tonight, maybe we could
+Go dance, get up off our feet"
+She said, "This life ain't forever
+One song, here together
+Then let's play it on repeat"
+We could dance, we could dance all night
+We could dance 'til the morning light
+Let's forget about our worries and the wild world outside
+She said, "Oh, hi, nice to meet you
+Tonight, maybe we could
+Go dance, get up off our feet"
+We could dance, we could dance all night
+She took my hand and led me through the dark, oh
+She said, "Feel the beat, forget that broken heart", oh
+And, oh, I can feel the night slipping by
+Oh, away from me
+And, oh, I saw the light in her eyes
+Glad she came right up to me
+She said, "Oh, hi, nice to meet you
+Tonight, maybe we could
+Go dance, get up off our feet"
+She said, "This life ain't forever
+One song, here together
+Then let's play it on repeat"
+We could dance, we could dance all night
+We could dance 'til the morning light
+Let's forget about our worries and the wild world outside
+She said, "Oh, hi, nice to meet you
+Tonight, maybe we could
+Go dance, get up off our feet"
+We could dance, we could dance all night
+We could dance, we could dance all night
+She said, "Oh, hi, nice to meet you
+Tonight, maybe we could
+Go dance, get up off our feet"
+She said, "This life ain't forever
+One song, here together
+Then let's play it on repeat"
+We could dance, we could dance all night`
+  },
+
+  // Ben Platt — Imagine - Acoustic
+  "spotify:track:3m9MKNTdPmsKJRqrhqQnhW": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied by you · V28",
+    originalLyrics: `[Verse 1]
+Your eyes give life a new meaning
+It's like I found the North Lights
+I never knew what I needed
+Until I felt your hand holding mine
+
+[Pre-Chorus]
+You say I'm your hero
+But you are the one that saved me
+If I ever lost you
+I'd fall to my knees
+
+[Chorus]
+I can't imagine my life without you
+I can't imagine one night without you
+If something happened, don't know what I’d do
+I can't imagine
+I can't imagine my life without you
+
+[Verse 2]
+Your eyes give life a new meaning
+It's like I found the North Lights
+Oh, I never knеw what I needed
+Until I felt your hand holding mine, yеah
+
+[Pre-Chorus]
+You say I'm your hero
+But you are the one that saved me
+If I ever lost you
+I'd fall to my knees
+
+[Chorus]
+I can't imagine my life without you
+I can't imagine one night without you
+If something happened, don't know what I’d do
+I can't imagine
+I can't imagine my life without you
+
+[Bridge]
+Ooh-ooh-ooh-ooh-ooh-ooh-ooh
+My life without you
+Ooh-ooh-ooh-ooh-ooh-ooh-ooh
+
+[Chorus]
+I can't imagine my life without you
+I can't imagine one night without you
+If something happened, don't know what I would do
+I can't imagine
+I can't imagine my life without you
+
+[Outro]
+Ooh-ooh-ooh-ooh-ooh-ooh-ooh
+My life without you
+I can't imagine
+I can't imagine my life without you`
   }
 
 };

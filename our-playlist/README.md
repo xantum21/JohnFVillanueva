@@ -70,7 +70,7 @@ Switching tabs changes the letterhead to make clear whether the reader is seeing
 
 ## Playlist data
 
-All 44 tracks, Spotify URIs, Spotify links, YouTube Music search links, and the six narrative chapters live in `playlist-data.js`.
+All 46 tracks, Spotify URIs, Spotify links, YouTube Music search links, and the six narrative chapters live in `playlist-data.js`.
 
 ## Page copy
 
@@ -177,3 +177,12 @@ The temporary password gate has been removed. The wax seal now opens the envelop
 
 ## V26 — a!ka crush-section addition
 Added **I Won't Say (I'm In Love) — a!ka** to Part I immediately after **Superman**. Part I now runs six songs, the full narrative is 44 tracks, all downstream numbering/chapter ranges were refreshed, and the supplied lyrics are wired to a dedicated lyric letter.
+
+
+## V27 vibe-first sequencing
+Reordered selected tracks for smoother genre/energy/production flow while keeping the six-chapter lyrical narrative intact. Added SPOTIFY_MASTER_ORDER.md and spotify-master-order.csv for syncing the real Spotify playlist.
+
+
+## V28 first-hello + imagine additions
+
+Added **Nice To Meet You — Myles Smith** as the new opening song of Part I so the story begins with the encounter itself before the crush fully lands. Added **Imagine - Acoustic — Ben Platt** in Part VI immediately before **I Will Spend My Whole Life Loving You**. The full narrative now contains 46 tracks. Spotify mappings, YouTube Music links, chapter ranges, track numbering, lyric data, lyric-letter themes, letter details, copy counts, and the master-order files were updated together. Lyrics for both new tracks come from the user-supplied `final v(1).docx`.

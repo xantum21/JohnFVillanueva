@@ -493,6 +493,7 @@
       'spotify:track:6lanRgr6wXibZr8KgzXxBl': { stamp: '1,000 YEARS', seal: '∞', notes: ['one step closer', 'and a thousand more'] },
       'spotify:track:5himtcBG5IetEOAYuB1Lu1': { stamp: 'NEVER STOP', seal: '∞', notes: ['wedding ribbon edition', 'keep choosing, keep going'] },
       'spotify:track:4mdOqt3AiUJbBXL02aa5iw': { stamp: '115,000,000 KM', seal: '▣', notes: ['our life as a film reel', 'leave scratches — keep the story'] },
+      'spotify:track:3m9MKNTdPmsKJRqrhqQnhW': { stamp: 'IMAGINE US', seal: '∞', notes: ['life without you does not compute', 'quiet acoustic forever energy'] },
       'spotify:track:77enz5hl8RicxrbPB56VXQ': { stamp: 'WHOLE LIFE', seal: '✦', notes: ['constellation promise', 'for the long horizon'] },
       'spotify:track:6r9o3XGxSYFlX6ktsEqIbK': { stamp: 'UNTIL OUR HAIR TURNS WHITE', seal: '⌛', notes: ['aged paper / steady heart', 'the ending is still us'] }
     };

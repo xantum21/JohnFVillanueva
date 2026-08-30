@@ -1,66 +1,69 @@
-# Spotify Master Order — V27
+# Spotify Master Order — V28
 
-This is the exact song order used by the website after the vibe/genre-flow audit.
-Use this list to drag the real Spotify playlist into the same order.
+**Tracks:** 46
+
+V28 adds **Nice To Meet You — Myles Smith** as the opening song of Part I and **Imagine - Acoustic — Ben Platt** immediately before **I Will Spend My Whole Life Loving You** in Part VI.
 
 ## Part I — The Crush
 
-1. **this is what having a massive crush on someone feels like** — Clinton Kane
-2. **From the Start** — Good Kid
-3. **Superman** — Joe Brooks
-4. **I Won't Say (I'm In Love)** — a!ka
-5. **How Will I Know** — Sam Smith
-6. **Like Me** — AJ Rafael
+1. **Nice To Meet You** — Myles Smith
+2. **this is what having a massive crush on someone feels like** — Clinton Kane
+3. **From the Start** — Good Kid
+4. **Superman** — Joe Brooks
+5. **I Won't Say (I'm In Love)** — a!ka
+6. **How Will I Know** — Sam Smith
+7. **Like Me** — AJ Rafael
 
 ## Part II — Wait… You Like Me Too?
 
-7. **Everything Has Changed** — Taylor Swift & Ed Sheeran
-8. **Our First Song** — Joseph Vincent
-9. **Slow Dance** — AJ Mitchell & Ava Max
-10. **Kiss Me Slowly** — Parachute
+8. **Everything Has Changed** — Taylor Swift & Ed Sheeran
+9. **Our First Song** — Joseph Vincent
+10. **Slow Dance** — AJ Mitchell & Ava Max
+11. **Kiss Me Slowly** — Parachute
 
 ## Part III — Falling Hard
 
-11. **Adorn** — Miguel
-12. **Just Like You** — Emotional Oranges
-13. **LOVE YOU FOR LIFE.** — Loud Luxury & Emily Roberts
-14. **Let Me** — ZAYN
-15. **When I'm With You** — Ross David
-16. **愛とか恋とか** — Novelbright
-17. **I GUESS I'M IN LOVE** — Clinton Kane
-18. **I Was Made For Loving You** — Tori Kelly & Ed Sheeran
-19. **I Knew I Loved You** — Music Travel Love
+12. **Adorn** — Miguel
+13. **Just Like You** — Emotional Oranges
+14. **LOVE YOU FOR LIFE.** — Loud Luxury & Emily Roberts
+15. **Let Me** — ZAYN
+16. **When I'm With You** — Ross David
+17. **愛とか恋とか** — Novelbright
+18. **I GUESS I'M IN LOVE** — Clinton Kane
+19. **I Was Made For Loving You** — Tori Kelly & Ed Sheeran
+20. **I Knew I Loved You** — Music Travel Love
 
 ## Part IV — You’re My Person
 
-20. **Better Together** — Jack Johnson
-21. **You & Me** — James TW
-22. **Please Keep Loving Me** — James TW
-23. **I Love You Always Forever** — Betty Who
-24. **Still Falling For You** — Ellie Goulding
+21. **Better Together** — Jack Johnson
+22. **You & Me** — James TW
+23. **Please Keep Loving Me** — James TW
+24. **I Love You Always Forever** — Betty Who
+25. **Still Falling For You** — Ellie Goulding
 
 ## Part V — Building a Life
 
-25. **Grow as We Go** — Ben Platt & Sara Bareilles
-26. **Just You and I** — Tom Walker
-27. **Photograph** — Boyce Avenue & Bea Miller
-28. **Palagi** — TJ Monterde & KZ Tandingan
-29. **Whole Lives** — Jake Scott
-30. **Carry You Home** — Alex Warren & Ella Henderson
-31. **Better Half of Me** — Tom Walker
-32. **Dandelion Hair (feat. Melissa Polinar)** — Joe Brooks & Melissa Polinar
-33. **The Book of Love** — Gavin James
+26. **Grow as We Go** — Ben Platt & Sara Bareilles
+27. **Just You and I** — Tom Walker
+28. **Photograph** — Boyce Avenue & Bea Miller
+29. **Palagi** — TJ Monterde & KZ Tandingan
+30. **Whole Lives** — Jake Scott
+31. **Carry You Home** — Alex Warren & Ella Henderson
+32. **Better Half of Me** — Tom Walker
+33. **Dandelion Hair (feat. Melissa Polinar)** — Joe Brooks & Melissa Polinar
+34. **The Book of Love** — Gavin James
 
 ## Part VI — Forever
 
-34. **Marry Me** — Train
-35. **Make You Mine** — Us The Duo
-36. **Never Seen Anything “Quite Like You”** — The Script
-37. **Never Stop (Wedding Version)** — SafetySuit
-38. **Perfect** — Ed Sheeran
-39. **Luckiest Man Alive** — Ross David
-40. **Ordinary - Wedding Version** — Alex Warren
-41. **A Thousand Years** — Christina Perri
-42. **115 Million Kilometer Film** — OFFICIAL HIGE DANDISM
-43. **I Will Spend My Whole Life Loving You** — Imaginary Future & Kina Grannis
-44. **Kahit Maputi Na Ang Buhok Ko** — Joseph Vincent
+35. **Marry Me** — Train
+36. **Make You Mine** — Us The Duo
+37. **Never Seen Anything “Quite Like You”** — The Script
+38. **Never Stop (Wedding Version)** — SafetySuit
+39. **Perfect** — Ed Sheeran
+40. **Luckiest Man Alive** — Ross David
+41. **Ordinary - Wedding Version** — Alex Warren
+42. **A Thousand Years** — Christina Perri
+43. **115 Million Kilometer Film** — OFFICIAL HIGE DANDISM
+44. **Imagine - Acoustic** — Ben Platt
+45. **I Will Spend My Whole Life Loving You** — Imaginary Future & Kina Grannis
+46. **Kahit Maputi Na Ang Buhok Ko** — Joseph Vincent
