@@ -15,9 +15,36 @@
   <link rel="shortcut icon" href="favicon-playlist.svg" />
   <link rel="preconnect" href="https://open.spotify.com" />
   <link rel="preconnect" href="https://i.scdn.co" />
+  <script>document.documentElement.classList.add('access-locked');</script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div id="access-gate" class="access-gate" role="dialog" aria-modal="true" aria-labelledby="access-title">
+    <div class="access-gate-glow" aria-hidden="true"></div>
+    <section class="access-card">
+      <div class="access-seal" aria-hidden="true">♡</div>
+      <p class="access-kicker">Private playlist</p>
+      <h1 id="access-title">A little something just for you.</h1>
+      <p class="access-copy">Enter the password to open the letter.</p>
+      <form id="access-form" class="access-form" novalidate>
+        <label for="access-password" class="sr-only">Password</label>
+        <input
+          id="access-password"
+          name="password"
+          type="password"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength="4"
+          autocomplete="off"
+          placeholder="Password"
+          aria-describedby="access-error"
+        />
+        <button id="access-submit" type="submit">Open the playlist</button>
+        <p id="access-error" class="access-error" aria-live="polite"></p>
+      </form>
+      <p class="access-footnote">♡</p>
+    </section>
+  </div>
   <div class="ambient" aria-hidden="true"></div>
 
   <div id="envelope" class="envelope-screen" aria-label="Sealed playlist letter">
@@ -199,6 +226,7 @@
     <a href="#top">Back to the top ↑</a>
   </footer>
 
+  <script src="auth.js"></script>
   <script src="playlist-data.js"></script>
   <script src="lyrics-data.js"></script>
   <script src="lyric-themes.js"></script>

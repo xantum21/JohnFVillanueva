@@ -999,3 +999,30 @@ body[data-chapter="vi"]{--page-chapter-wash:radial-gradient(circle at 50% 42%,rg
     scroll-behavior:auto;
   }
 }
+
+/* V29 — private access gate */
+html.access-locked,
+html.access-locked body{min-height:100%;overflow:hidden!important}
+html.access-locked body > :not(#access-gate){display:none!important}
+.access-gate[hidden]{display:none!important}
+.access-gate{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;background:linear-gradient(180deg,#fff9f7 0%,#f8dce5 52%,#efc8d4 100%);overflow:hidden;transition:opacity .34s ease,visibility .34s ease}
+.access-gate.is-unlocking{opacity:0;visibility:hidden;pointer-events:none}
+.access-gate-glow{position:absolute;width:min(760px,115vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.9) 0%,rgba(255,244,248,.58) 38%,rgba(255,255,255,0) 70%);top:-34%;left:50%;transform:translateX(-50%);pointer-events:none}
+.access-card{position:relative;width:min(430px,100%);padding:42px 34px 30px;border:1px solid rgba(255,255,255,.92);border-radius:30px;background:rgba(255,250,249,.93);box-shadow:0 34px 90px rgba(106,47,69,.19);backdrop-filter:blur(18px);text-align:center}
+.access-seal{width:68px;height:68px;margin:-9px auto 18px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 34% 28%,#ef7899 0 10%,#d84973 28%,#a92e50 100%);color:#fff;font:700 1.8rem/1 "Playfair Display",serif;box-shadow:0 14px 30px rgba(176,48,80,.27),inset 0 2px 10px rgba(255,255,255,.2)}
+.access-kicker{margin:0 0 7px;color:var(--rose-dark);font-size:.69rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+.access-card h1{margin:0;font-family:"Playfair Display",serif;font-size:clamp(2rem,8vw,3rem);line-height:1.02;letter-spacing:-.035em;color:var(--ink)}
+.access-copy{margin:12px auto 22px;max-width:320px;color:var(--muted);font-size:.94rem}
+.access-form{display:grid;gap:10px}
+.access-form input{width:100%;height:54px;border:1px solid rgba(189,95,119,.25);border-radius:16px;padding:0 16px;background:#fff;color:var(--ink);font:700 1.1rem/1 "DM Sans",sans-serif;letter-spacing:.16em;text-align:center;outline:none;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.access-form input::placeholder{letter-spacing:0;color:rgba(128,95,108,.58);font-weight:600}
+.access-form input:focus{border-color:rgba(201,65,99,.62);box-shadow:0 0 0 4px rgba(219,88,121,.1)}
+.access-form button{height:50px;border:0;border-radius:999px;background:linear-gradient(135deg,#d94b72,#b43055);color:#fff;font:800 .86rem/1 "DM Sans",sans-serif;cursor:pointer;box-shadow:0 11px 26px rgba(177,47,79,.2);transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease}
+.access-form button:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 14px 30px rgba(177,47,79,.25)}
+.access-form button:disabled{opacity:.7;cursor:wait}
+.access-error{min-height:22px;margin:0;color:#a52f4e;font-size:.78rem;font-weight:700}
+.access-footnote{margin:4px 0 0;color:rgba(169,46,80,.55);font-family:"Playfair Display",serif;font-size:1.4rem}
+.access-gate.is-error .access-card{animation:accessShake .36s ease}
+@keyframes accessShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}50%{transform:translateX(6px)}75%{transform:translateX(-3px)}}
+@media(max-width:520px){.access-gate{padding:16px}.access-card{padding:34px 22px 24px;border-radius:24px}.access-seal{width:62px;height:62px}.access-copy{margin-bottom:18px}}
+@media(prefers-reduced-motion:reduce){.access-gate,.access-card,.access-form button,.access-form input{transition:none!important;animation:none!important}}
