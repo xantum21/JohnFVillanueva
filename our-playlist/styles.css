@@ -1064,3 +1064,14 @@ html.access-locked body > :not(#access-gate){display:none!important}
 .heart-map-route.six-up{grid-template-columns:repeat(6,minmax(0,1fr))}
 .map-path .map-stop{width:min(16.2%,112px)}
 @media(max-width:760px){.heart-map-route.six-up{grid-template-columns:1fr}.map-path .map-stop{width:16.6%}}
+
+
+/* V36 — optional "Why this song" notes */
+.track-why-note{grid-column:1/-1;margin:0 12px 12px 76px;padding:13px 16px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(255,248,244,.96),rgba(255,239,244,.78));border:1px solid rgba(195,87,116,.14);box-shadow:0 9px 22px rgba(93,48,64,.05);animation:whyReveal .22s ease both}
+.track-why-note[hidden]{display:none!important}
+.track-why-kicker{display:block;margin-bottom:4px;color:var(--rose-dark);font-size:.68rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.track-why-note p{margin:0;color:var(--muted);font-family:"Playfair Display",serif;font-style:italic;font-size:.96rem;line-height:1.55}
+.why-link{background:rgba(255,245,238,.72)}
+.why-link.is-open{background:var(--blush);color:var(--ink)}
+@keyframes whyReveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media(max-width:760px){.track-why-note{margin:0 10px 10px;padding:12px 14px}.track-why-note p{font-size:.92rem}}

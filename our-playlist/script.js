@@ -190,12 +190,38 @@
     lyricsButton.setAttribute('aria-label', `View lyrics for ${track.title}`);
     lyricsButton.addEventListener('click', () => openLyrics(track));
 
+    const whyText = String(track.why || '').trim();
+    let whyButton = null;
+    let whyNote = null;
+    if (whyText) {
+      whyButton = document.createElement('button');
+      whyButton.type = 'button';
+      whyButton.className = 'stream-link why-link';
+      whyButton.textContent = 'Why this song ♡';
+      whyButton.setAttribute('aria-expanded', 'false');
+      whyButton.setAttribute('aria-label', `Read why ${track.title} is on this map`);
+
+      whyNote = document.createElement('aside');
+      whyNote.className = 'track-why-note';
+      whyNote.hidden = true;
+      whyNote.innerHTML = `<span class="track-why-kicker">Why it’s here</span><p>${escapeHtml(whyText)}</p>`;
+
+      whyButton.addEventListener('click', () => {
+        const opening = whyNote.hidden;
+        whyNote.hidden = !opening;
+        whyButton.setAttribute('aria-expanded', opening ? 'true' : 'false');
+        whyButton.classList.toggle('is-open', opening);
+      });
+    }
+
     actions.innerHTML = `
       <a class="stream-link" href="${track.spotifyUrl}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(track.title)} in Spotify">Spotify ↗</a>
       <a class="stream-link" href="${track.youtubeMusicUrl}" target="_blank" rel="noopener noreferrer" aria-label="Search ${escapeHtml(track.title)} in YouTube Music">YT Music ↗</a>`;
+    if (whyButton) actions.prepend(whyButton);
     actions.prepend(lyricsButton);
 
     row.append(button, actions);
+    if (whyNote) row.append(whyNote);
     row.setAttribute('aria-current', index === currentTrackIndex ? 'true' : 'false');
     row.addEventListener('click', (event) => {
       if (event.target.closest('a,button')) return;
@@ -284,6 +310,24 @@
     $('#player-lyrics').setAttribute('aria-label', `View lyrics for ${track.title}`);
     $('#player-lyrics').textContent = hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon';
     $('#player-lyrics').classList.toggle('is-ready', hasLyrics);
+
+    const whyButton = $('#player-why');
+    const hasWhy = Boolean(String(track.why || '').trim());
+    if (whyButton) {
+      whyButton.hidden = !hasWhy;
+      whyButton.setAttribute('aria-label', `Read why ${track.title} is on this map`);
+    }
+  }
+
+
+  function revealCurrentWhy() {
+    const row = document.querySelector(`.track[data-index="${currentTrackIndex}"]`);
+    if (!row) return;
+    const whyButton = row.querySelector('.why-link');
+    const whyNote = row.querySelector('.track-why-note');
+    if (!whyButton || !whyNote) return;
+    if (whyNote.hidden) whyButton.click();
+    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   function updateNavigationButtons() {
@@ -789,6 +833,7 @@
     }
   });
   $('#player-lyrics').addEventListener('click', () => openLyrics(allTracks[currentTrackIndex]));
+  $('#player-why')?.addEventListener('click', revealCurrentWhy);
   $('#player-full-playlist')?.addEventListener('click', openFullPlaylist);
   $('#open-full-playlist')?.addEventListener('click', openFullPlaylist);
   $('#full-playlist-close')?.addEventListener('click', closeFullPlaylist);

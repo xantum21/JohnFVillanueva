@@ -2764,6 +2764,247 @@ Ooh-ooh-ooh-ooh-ooh-ooh-ooh
 My life without you
 I can't imagine
 I can't imagine my life without you`
+  },
+  // Bloom - Bonus Track — The Paper Kites
+  "spotify:track:1HMQmOWrkieKYWlFsjUP3D": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · final v2.docx",
+    originalLyrics: `[Verse 1]
+In the morning when I wake
+And the sun is coming through
+Oh, you fill my lungs with sweetness
+And you fill my head with you
+Shall I write it in a letter?
+Shall I try to get it down?
+Oh, you fill my head with pieces
+Of a song I can't get out
+[Chorus]
+Can I be close to you?
+Ooh-oo-oo-ooh, ooh-oo-oo-ooh
+Can I be close to you?
+Ooh-oo-oo-ooh, ooh-oo-oo-ooh
+[Verse 2]
+Can I take you to a moment
+Where the fields are painted gold?
+And the trees are filled with memories
+Of the feelings never told?
+When the evening pulls the sun down
+And the day is almost through
+Oh, the whole world, it is sleeping
+But my world is you
+[Chorus]
+Can I be close to you?
+(Ah) ooh (aah), ooh (aah)
+Can I be close to you?
+(Ah) ooh (aah), ooh (aah)
+[Instrumental Interlude with Whistling]
+[Chorus]
+Can I be close to you?
+(Ah) ooh (aah), ooh (aah)
+Can I be close to you?
+(Ah) ooh (aah), ooh (aah)
+Can I be close to you?
+Ooh, ooh`
+  },
+  // Canada — LAUV & Alessia Cara
+  "spotify:track:6Rf3dWdNQs5LTqFOiavqQr": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · final v2.docx",
+    originalLyrics: `[Verse 1: Lauv]
+Waking up in your bed
+It's almost like I've been here forever
+I'm obsessed with your brain
+And I'd unfold it if you let me
+[Chorus: Lauv]
+What if we move to Canada
+And buy some things we don't need?
+Bring your mother's dog
+Your paintbrush and some candy
+And when they talk about those
+People who up and leave
+That could be us
+That could be you and me
+[Verse 2: Alessia Cara]
+How you talk with your hands
+And how you sigh like a movie
+And we got luck so bad we have to laugh
+I guess we're lucky that we don't need much outside of us, do we?
+[Chorus: Lauv & Alessia Cara]
+What if we move to Canada
+And buy some things we don't need?
+Bring your mother's dog
+Your paintbrush and some candy
+And when they talk about those
+People who up and leave
+That could be us
+That could be you and me
+[Bridge: Lauv & Alessia Cara]
+Ah, that could be you and me
+Ah, that could be you and me
+Ah, that could be you and me
+Ah
+[Chorus: Lauv & Alessia Cara, Alessia Cara & Lauv]
+So, why don't we move to Canada
+And buy some things we don't need?
+Bring your mother's dog
+Your paintbrush and some candy
+And when they talk about those
+People who up and leave
+That could be us
+That could be you and me
+Move to Canada
+And buy some things we don't need
+Bring your mother's dog
+Your paintbrush and some candy
+And when they talk about those
+People who up and leave
+That could be us
+That could be you and me
+[Outro: Lauv]
+That could be you and me`
+  },
+  // When The Sun Goes Down — Leslie Grace & Corey Hawkins
+  "spotify:track:322nU6eXT4j7dj5ytj73SX": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · final v2.docx",
+    originalLyrics: `[BENNY]
+When the sun goes down
+You're gonna need a flashlight
+You're gonna need a candle—
+[NINA]
+I think I can handle that
+[BENNY]
+When you leave town
+I'm gonna buy you a calling card
+[NINA (+BENNY)]
+'Cause I'm falling hard (for you)
+[NINA]
+I go back on Labor Day
+[BENNY]
+And I will try to make my way
+[BENNY/NINA]
+Out west to California
+[BENNY]
+So, we've got this summer
+[NINA]
+And we've got each other
+Perhaps even longer
+[BENNY]
+When you're on your own
+And suddenly without me
+Will you forget about me?
+[NINA]
+I couldn't if I tried
+[BENNY]
+When I'm all alone
+And I close my eyes
+[BENNY/NINA]
+That's when I'll see your face again
+[BENNY]
+And when you're gone
+You know that I'll be waiting whеn you're gone
+[NINA]
+But you're hеre with me right now...
+[BENNY]
+We'll be working hard, but if we should drift apart
+[NINA]
+Benny—
+[BENNY]
+Let me take this moment just to say—
+[NINA]
+No, no—
+[BENNY]
+You are gonna change the world someday—
+[NINA]
+I'll be thinking of home—
+[BENNY/NINA]
+And I'll think of you every night
+At the same time—
+[BENNY]
+When the sun goes down
+[NINA]
+When the sun goes down
+[BENNY]
+When the sun goes down`
+  },
+  // Would You Fall in Love with Me Again — Jorge Rivera-Herrans & Anna Lea
+  "spotify:track:3iYeXCdD3d0zlex2v0CpVt": {
+    originalLanguage: "English",
+    originalLabel: "Lyrics",
+    sourceLabel: "Lyrics supplied for this project · final v2.docx",
+    originalLyrics: `[ODYSSEUS breathes out]
+[ODYSSEUS]
+Penelope
+[ODYSSEUS opens the bedroom door]
+[PENELOPE]
+Is it you? Have my prayers been answered?
+Is it really you standing there, or am I dreaming once more?
+You look different, your eyes look tired
+Your frame is lighter, your smile torn
+Is it really you, my love?
+[ODYSSEUS]
+I am not the man you fell in love with
+I am not the man you once adored
+I am not your kind and gentle husband
+And I am not the love you knew before
+Would you fall in love with me again
+If you knew all I've done?
+The things I cannot change
+Would you love me all the same?
+I know that you've been waiting, waiting for love
+[PENELOPE]
+What kinds of things did you do?
+[ODYSSEUS]
+Left a trail of red on every island
+As I traded friends like objects I could use
+Hurt more lives than I can count on my hands
+But all of that was to bring me back to you
+So tell me
+Would you fall in love with me again
+If you knew all I've done?
+The things I can't undo
+I am not the man you knew
+I know that you've been waiting, waiting
+[PENELOPE]
+If that's true, could you do me a favor?
+Just a moment of labor that would bring me some peace
+See that wedding bed? Could you carry it over?
+Lift it high on your shoulders and take it far away from here
+[ODYSSEUS]
+How could you say this?
+I had built that wedding bed with my blood and sweat
+Carved it into the olive tree where we first met
+A symbol of our love everlasting
+Do you realize what you have asked me?
+The only way to move it is to cut it from its roots
+[PENELOPE]
+Only my husband knew that
+So I guess that makes him you
+[ODYSSEUS]
+Penelope
+[PENELOPE]
+I will fall in love with you over and over again
+I don't care how, where, or when
+No matter how long it's been, you're mine
+Don't tell me you're not the same person
+You're always my husband and I've been waiting, waiting
+[ODYSSEUS]
+Penelope
+[PENELOPE, ODYSSEUS]
+Waiting, waiting (Penelope)
+Waiting, waiting
+Waiting, oh
+For you
+[Instrumental Break]
+[PENELOPE]
+How long has it been?
+[ODYSSEUS]
+Twenty years
+[PENELOPE, PENELOPE & ODYSSEUS]
+I-I love you`
   }
 
 };

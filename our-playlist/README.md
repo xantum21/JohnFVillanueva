@@ -194,3 +194,8 @@ The main playlist page is again protected by a client-side password gate. The co
 ## V30 — Five-part trim
 
 The playlist now contains **37 tracks across five parts**. The former “Wait… You Like Me Too?” chapter was removed, **Kiss Me Slowly** now opens **Part II — Falling Hard**, later chapters were renumbered, **The Book of Love** moved to **Part V — Forever**, and the requested tracks were removed from the active playlist. The password gate from V29 remains unchanged.
+
+
+## V35 — Supplied lyrics integrated
+
+Added user-supplied lyrics from `final v2.docx` for **Bloom**, **Canada**, **When The Sun Goes Down**, and **Would You Fall in Love with Me Again**. The Part V / Part VI structure from V34 is unchanged; per-song personal meaning notes remain intentionally deferred.
