@@ -1075,3 +1075,38 @@ html.access-locked body > :not(#access-gate){display:none!important}
 .why-link.is-open{background:var(--blush);color:var(--ink)}
 @keyframes whyReveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media(max-width:760px){.track-why-note{margin:0 10px 10px;padding:12px 14px}.track-why-note p{font-size:.92rem}}
+
+
+/* Meaning / Why-this-song modal */
+body.meaning-open{overflow:hidden}
+.meaning-modal{position:fixed;inset:0;z-index:101;display:grid;place-items:center;padding:18px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
+.meaning-modal.is-visible{opacity:1;visibility:visible}
+.meaning-backdrop{position:absolute;inset:0;background:rgba(41,22,30,.5);backdrop-filter:blur(10px)}
+.meaning-panel{--meaning-paper:#fff8f6;--meaning-ink:#402631;--meaning-accent:#d85b7a;--meaning-accent-2:#f6c8d6;position:relative;width:min(720px,calc(100vw - 36px));max-height:min(88vh,940px);overflow:hidden;border-radius:30px;border:1px solid color-mix(in srgb,var(--meaning-accent) 18%,transparent);background:linear-gradient(180deg,color-mix(in srgb,var(--meaning-paper) 98%,#fff),color-mix(in srgb,var(--meaning-paper) 92%,var(--meaning-accent-2)));box-shadow:0 36px 110px rgba(47,22,32,.36);color:var(--meaning-ink)}
+.meaning-panel:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 12%,color-mix(in srgb,var(--meaning-accent-2) 48%,transparent) 0 90px,transparent 91px),radial-gradient(circle at 12% 100%,color-mix(in srgb,var(--meaning-accent) 10%,transparent) 0 120px,transparent 121px);pointer-events:none}
+.meaning-shell{position:relative;padding:28px 28px 22px}
+.meaning-close{position:absolute;top:14px;right:14px;width:40px;height:40px;border:none;border-radius:999px;background:rgba(255,255,255,.8);color:var(--meaning-ink);font-size:1.5rem;cursor:pointer;box-shadow:0 10px 24px rgba(64,38,49,.12)}
+.meaning-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding-right:52px;margin-bottom:12px}
+.meaning-theme-label{margin:0;color:var(--meaning-accent);text-transform:uppercase;letter-spacing:.18em;font-size:.66rem;font-weight:900}
+.meaning-kicker{margin:.45rem 0 0;color:color-mix(in srgb,var(--meaning-ink) 76%,transparent);font-size:.9rem;font-weight:700}
+.meaning-panel h2{margin:.2rem 0 .25rem;font-family:"Playfair Display",serif;font-size:clamp(2rem,4vw,3.1rem);line-height:1.04;letter-spacing:-.035em;color:var(--meaning-ink)}
+.meaning-artist{margin:0;color:color-mix(in srgb,var(--meaning-ink) 68%,transparent);font-size:.96rem}
+.meaning-motif{font-family:"Caveat",cursive;font-size:2rem;color:var(--meaning-accent);transform:rotate(5deg)}
+.meaning-scroll{position:relative;max-height:min(62vh,680px);overflow:auto;padding-right:6px;scroll-behavior:smooth;mask-image:linear-gradient(to bottom,transparent 0,black 18px,black calc(100% - 28px),transparent 100%)}
+.meaning-scroll::-webkit-scrollbar{width:12px}.meaning-scroll::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--meaning-accent) 34%,transparent);border:3px solid transparent;border-radius:999px;background-clip:padding-box}
+.meaning-scroll-prompt{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;margin:0 0 14px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.84);border:1px solid color-mix(in srgb,var(--meaning-accent) 18%,transparent);font-size:.78rem;color:color-mix(in srgb,var(--meaning-ink) 74%,transparent);backdrop-filter:blur(10px);transition:opacity .22s ease,transform .22s ease}
+.meaning-scroll-prompt strong{font-size:.78rem;color:var(--meaning-ink)}
+.meaning-scroll-prompt.is-hidden{opacity:0;transform:translateY(-6px);pointer-events:none}
+.meaning-body{display:grid;gap:14px;padding-bottom:16px}
+.meaning-body p{margin:0;padding:18px 18px 19px;border-radius:22px;background:rgba(255,255,255,.68);border:1px solid color-mix(in srgb,var(--meaning-accent) 16%,transparent);box-shadow:0 14px 34px rgba(76,39,54,.07);font-size:1.03rem;line-height:1.78;color:color-mix(in srgb,var(--meaning-ink) 92%,transparent)}
+.meaning-highlight-wrap{padding:8px 0 6px;border-top:1px dashed color-mix(in srgb,var(--meaning-accent) 24%,transparent)}
+.meaning-highlight-toggle{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 16px;border:none;border-radius:999px;background:linear-gradient(135deg,color-mix(in srgb,var(--meaning-accent-2) 58%,#fff),color-mix(in srgb,var(--meaning-accent) 12%,#fff));color:var(--meaning-ink);font-weight:800;letter-spacing:.01em;cursor:pointer;box-shadow:0 10px 26px rgba(89,45,60,.08)}
+.meaning-highlight-card{margin-top:14px;padding:20px 18px 18px;border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,244,247,.98));border:1px solid color-mix(in srgb,var(--meaning-accent) 20%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.84),0 18px 44px rgba(88,42,58,.1);transform-origin:top center;animation:meaningUnfurl .34s cubic-bezier(.2,.8,.2,1) both}
+.meaning-highlight-label{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;padding:6px 11px;border-radius:999px;background:color-mix(in srgb,var(--meaning-accent-2) 48%,#fff);color:var(--meaning-accent);font-size:.76rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.meaning-highlight-text{display:grid;gap:10px}
+.meaning-highlight-line,.meaning-highlight-section,.meaning-highlight-empty{font-family:"Playfair Display",serif;color:var(--meaning-ink)}
+.meaning-highlight-line{font-size:1.12rem;line-height:1.75;padding-left:14px;border-left:3px solid color-mix(in srgb,var(--meaning-accent) 35%,transparent)}
+.meaning-highlight-section{font-size:.76rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--meaning-accent);margin-top:2px}
+.meaning-highlight-empty{font-size:1rem;line-height:1.65;font-style:italic}
+@keyframes meaningUnfurl{from{opacity:0;transform:scaleY(.86) translateY(-8px)}to{opacity:1;transform:scaleY(1) translateY(0)}}
+@media (max-width:760px){.meaning-modal{padding:10px;align-items:end}.meaning-panel{width:100%;max-height:90vh;border-radius:26px}.meaning-shell{padding:22px 18px 18px}.meaning-head{padding-right:44px}.meaning-panel h2{font-size:2.15rem}.meaning-body p{font-size:.98rem;line-height:1.72;padding:16px}.meaning-highlight-line{font-size:1.02rem;line-height:1.68}}
