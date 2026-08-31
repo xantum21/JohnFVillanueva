@@ -1,10 +1,5 @@
-# V28 Lyrics Coverage Audit
+# V32 Lyrics Coverage Audit
 
-The playlist now contains **46 tracks**.
+The track list is synced to the current 36-song Spotify order. Lyrics were intentionally not updated in V32.
 
-## V28 additions
-
-- **Nice To Meet You — Myles Smith** — lyrics supplied by the user in `final v(1).docx` and wired to the new Part I opener.
-- **Imagine - Acoustic — Ben Platt** — lyrics supplied by the user in `final v(1).docx` and wired to the new Part VI placement.
-
-Both songs have dedicated lyric-letter entries and custom stationery themes. Existing V27 lyric data remains intact.
+New current-list tracks without a dedicated lyric entry may display the site's normal lyrics-unavailable state until a later lyrics pass. Removed-song lyric entries may remain in `lyrics-data.js` but are no longer referenced by the playlist.

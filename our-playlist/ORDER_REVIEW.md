@@ -1,17 +1,12 @@
-# V30 Order Review
+# Playlist order review — V32
 
-V30 reduces the playlist to **37 tracks across five parts**.
+Synced to the current Spotify playlist order (36 tracks).
 
-## Structural changes
-
-- Removed **this is what having a massive crush on someone feels like**, **From the Start**, **Everything Has Changed**, **Our First Song**, and **Slow Dance**.
-- Moved **Kiss Me Slowly — Parachute** into the opening of the new **Part II — Falling Hard**.
-- Removed **When I'm With You — Ross David** from Falling Hard.
-- The former **You’re My Person** is now **Part III**; **Still Falling For You — Ellie Goulding** was removed.
-- The former **Building a Life** is now **Part IV**.
-- The former **Forever** is now **Part V**; **The Book of Love — Gavin James** now opens that chapter.
-- Removed **Luckiest Man Alive — Ross David** and **A Thousand Years — Christina Perri**.
-
-## Final count
-
-**37 tracks across five parts.**
+- Added **Bloom - Bonus Track — The Paper Kites** at #19.
+- Removed **Just You and I — Tom Walker**, **Photograph — Boyce Avenue & Bea Miller**, and **Better Half of Me — Tom Walker**.
+- Added **Canada (feat. Alessia Cara) — LAUV & Alessia Cara** at #25.
+- Added **When The Sun Goes Down — Leslie Grace & Corey Hawkins** at #26.
+- Removed **Never Seen Anything “Quite Like You” — The Script** and **Perfect — Ed Sheeran**.
+- Added **Would You Fall in Love with Me Again — Jorge Rivera-Herrans & Anna Lea** as the finale at #36.
+- Chapter boundaries now follow the Spotify sequence: 1–5, 6–14, 15–19, 20–26, 27–36.
+- **lyrics-data.js was not edited** in this pass.

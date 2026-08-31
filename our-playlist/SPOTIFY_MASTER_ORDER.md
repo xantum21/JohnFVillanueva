@@ -1,8 +1,8 @@
-# Spotify Master Order — V30
+# Spotify Master Order — V32
 
-**Tracks:** 37
+**Tracks:** 36
 
-V30 trims the opening sequence, folds the former Part II into **Falling Hard**, reduces the story to five parts, and moves **The Book of Love — Gavin James** into **Forever**.
+V32 mirrors the current public Spotify playlist order as checked on August 30, 2026. Lyrics data was intentionally left unchanged.
 
 ## Part I — The Crush
 
@@ -30,28 +30,27 @@ V30 trims the opening sequence, folds the former Part II into **Falling Hard**, 
 16. **You & Me** — James TW
 17. **Please Keep Loving Me** — James TW
 18. **I Love You Always Forever** — Betty Who
+19. **Bloom - Bonus Track** — The Paper Kites
 
 ## Part IV — Building a Life
 
-19. **Grow as We Go** — Ben Platt & Sara Bareilles
-20. **Just You and I** — Tom Walker
-21. **Photograph** — Boyce Avenue & Bea Miller
-22. **Palagi** — TJ Monterde & KZ Tandingan
-23. **Whole Lives** — Jake Scott
-24. **Carry You Home** — Alex Warren & Ella Henderson
-25. **Better Half of Me** — Tom Walker
-26. **Dandelion Hair (feat. Melissa Polinar)** — Joe Brooks & Melissa Polinar
+20. **Grow as We Go** — Ben Platt & Sara Bareilles
+21. **Palagi** — TJ Monterde & KZ Tandingan
+22. **Whole Lives** — Jake Scott
+23. **Carry You Home** — Alex Warren & Ella Henderson
+24. **Dandelion Hair (feat. Melissa Polinar)** — Joe Brooks & Melissa Polinar
+25. **Canada (feat. Alessia Cara)** — LAUV & Alessia Cara
+26. **When The Sun Goes Down** — Leslie Grace & Corey Hawkins
 
 ## Part V — Forever
 
 27. **The Book of Love** — Gavin James
 28. **Marry Me** — Train
 29. **Make You Mine** — Us The Duo
-30. **Never Seen Anything “Quite Like You”** — The Script
-31. **Never Stop (Wedding Version)** — SafetySuit
-32. **Perfect** — Ed Sheeran
-33. **Ordinary - Wedding Version** — Alex Warren
-34. **115 Million Kilometer Film** — OFFICIAL HIGE DANDISM
-35. **Imagine - Acoustic** — Ben Platt
-36. **I Will Spend My Whole Life Loving You** — Imaginary Future & Kina Grannis
-37. **Kahit Maputi Na Ang Buhok Ko** — Joseph Vincent
+30. **Never Stop (Wedding Version)** — SafetySuit
+31. **Ordinary - Wedding Version** — Alex Warren
+32. **115 Million Kilometer Film** — OFFICIAL HIGE DANDISM
+33. **Imagine - Acoustic** — Ben Platt
+34. **I Will Spend My Whole Life Loving You** — Imaginary Future & Kina Grannis
+35. **Kahit Maputi Na Ang Buhok Ko** — Joseph Vincent
+36. **Would You Fall in Love with Me Again** — Jorge Rivera-Herrans & Anna Lea

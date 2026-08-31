@@ -2,14 +2,14 @@
 window.VALENTINE_PAGE = {
   "eyebrow": "For you, in five parts",
   "title": "A Little Love Story",
-  "subtitle": "37 songs from “oh no, I like you” to “okay, grow old with me.”",
+  "subtitle": "36 songs from “oh no, I like you” to “okay, grow old with me.”",
   "note": "I made this instead of trying to say all of it normally. ♡",
   "signoff": "Made with a ridiculous amount of affection. ♡",
   "recipient": "",
   "date": "",
   "envelopeFor": "",
   "finalTitle": "Okay, that’s the playlist.",
-  "finalNote": "37 songs later, I think you get the idea. ♡",
+  "finalNote": "36 songs later, I think you get the idea. ♡",
   "finalAside": "Start it over if you want. I won’t complain."
 };
 
@@ -189,10 +189,18 @@ window.VALENTINE_CHAPTERS = [
         "uri": "spotify:track:1p6rk9R8SCum97WnvGNt6O",
         "spotifyUrl": "https://open.spotify.com/track/1p6rk9R8SCum97WnvGNt6O",
         "youtubeMusicUrl": "https://music.youtube.com/search?q=I+Love+You+Always+Forever+Betty+Who"
+      },
+      {
+        "title": "Bloom - Bonus Track",
+        "artist": "The Paper Kites",
+        "uri": "spotify:track:1HMQmOWrkieKYWlFsjUP3D",
+        "spotifyUrl": "https://open.spotify.com/track/1HMQmOWrkieKYWlFsjUP3D",
+        "youtubeMusicUrl": "https://music.youtube.com/search?q=Bloom+-+Bonus+Track+The+Paper+Kites",
+        "number": 19
       }
     ],
     "start": 15,
-    "end": 18
+    "end": 19
   },
   {
     "part": "IV",
@@ -203,7 +211,7 @@ window.VALENTINE_CHAPTERS = [
     "transition": "So… how about forever? ♡",
     "tracks": [
       {
-        "number": 19,
+        "number": 20,
         "title": "Grow as We Go",
         "artist": "Ben Platt & Sara Bareilles",
         "uri": "spotify:track:1xscBC6UV21t0sMCgu0mLi",
@@ -211,23 +219,7 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Grow+as+We+Go+Ben+Platt+%26+Sara+Bareilles"
       },
       {
-        "number": 20,
-        "title": "Just You and I",
-        "artist": "Tom Walker",
-        "uri": "spotify:track:03x2rVJRFUrvwlfxoHd9Mo",
-        "spotifyUrl": "https://open.spotify.com/track/03x2rVJRFUrvwlfxoHd9Mo",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=Just+You+and+I+Tom+Walker"
-      },
-      {
         "number": 21,
-        "title": "Photograph",
-        "artist": "Boyce Avenue & Bea Miller",
-        "uri": "spotify:track:6CgNoAbFJ4Q4Id4EjtbXlC",
-        "spotifyUrl": "https://open.spotify.com/track/6CgNoAbFJ4Q4Id4EjtbXlC",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=Photograph+Boyce+Avenue+%26+Bea+Miller"
-      },
-      {
-        "number": 22,
         "title": "Palagi",
         "artist": "TJ Monterde & KZ Tandingan",
         "uri": "spotify:track:4WgViu9gw3qYOr3iF9OuLG",
@@ -235,7 +227,7 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Palagi+TJ+Monterde+%26+KZ+Tandingan"
       },
       {
-        "number": 23,
+        "number": 22,
         "title": "Whole Lives",
         "artist": "Jake Scott",
         "uri": "spotify:track:1hzWoLgh1yQ4H9fqIvOFMP",
@@ -243,7 +235,7 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Whole+Lives+Jake+Scott"
       },
       {
-        "number": 24,
+        "number": 23,
         "title": "Carry You Home",
         "artist": "Alex Warren & Ella Henderson",
         "uri": "spotify:track:2yCte16wVT6slIJ2Tqm9ML",
@@ -251,23 +243,31 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Carry+You+Home+Alex+Warren+%26+Ella+Henderson"
       },
       {
-        "number": 25,
-        "title": "Better Half of Me",
-        "artist": "Tom Walker",
-        "uri": "spotify:track:114xcQz8sZ6fxRBTZmgmNE",
-        "spotifyUrl": "https://open.spotify.com/track/114xcQz8sZ6fxRBTZmgmNE",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=Better+Half+of+Me+Tom+Walker"
-      },
-      {
-        "number": 26,
+        "number": 24,
         "title": "Dandelion Hair (feat. Melissa Polinar)",
         "artist": "Joe Brooks & Melissa Polinar",
         "uri": "spotify:track:416dC1qBvWJcbgub6zCnJI",
         "spotifyUrl": "https://open.spotify.com/track/416dC1qBvWJcbgub6zCnJI",
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Dandelion+Hair+%28feat.+Melissa+Polinar%29+Joe+Brooks+%26+Melissa+Polinar"
+      },
+      {
+        "title": "Canada (feat. Alessia Cara)",
+        "artist": "LAUV & Alessia Cara",
+        "uri": "spotify:track:6Rf3dWdNQs5LTqFOiavqQr",
+        "spotifyUrl": "https://open.spotify.com/track/6Rf3dWdNQs5LTqFOiavqQr",
+        "youtubeMusicUrl": "https://music.youtube.com/search?q=Canada+%28feat.+Alessia+Cara%29+LAUV+%26+Alessia+Cara",
+        "number": 25
+      },
+      {
+        "title": "When The Sun Goes Down",
+        "artist": "Leslie Grace & Corey Hawkins",
+        "uri": "spotify:track:322nU6eXT4j7dj5ytj73SX",
+        "spotifyUrl": "https://open.spotify.com/track/322nU6eXT4j7dj5ytj73SX",
+        "youtubeMusicUrl": "https://music.youtube.com/search?q=When+The+Sun+Goes+Down+Leslie+Grace+%26+Corey+Hawkins",
+        "number": 26
       }
     ],
-    "start": 19,
+    "start": 20,
     "end": 26
   },
   {
@@ -304,14 +304,6 @@ window.VALENTINE_CHAPTERS = [
       },
       {
         "number": 30,
-        "title": "Never Seen Anything “Quite Like You”",
-        "artist": "The Script",
-        "uri": "spotify:track:018Idkvf82hi44UZmIXiGB",
-        "spotifyUrl": "https://open.spotify.com/track/018Idkvf82hi44UZmIXiGB",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=Never+Seen+Anything+%E2%80%9CQuite+Like+You%E2%80%9D+The+Script"
-      },
-      {
-        "number": 31,
         "title": "Never Stop (Wedding Version)",
         "artist": "SafetySuit",
         "uri": "spotify:track:5himtcBG5IetEOAYuB1Lu1",
@@ -319,15 +311,7 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Never+Stop+%28Wedding+Version%29+SafetySuit"
       },
       {
-        "number": 32,
-        "title": "Perfect",
-        "artist": "Ed Sheeran",
-        "uri": "spotify:track:0tgVpDi06FyKpA1z0VMD4v",
-        "spotifyUrl": "https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v",
-        "youtubeMusicUrl": "https://music.youtube.com/search?q=Perfect+Ed+Sheeran"
-      },
-      {
-        "number": 33,
+        "number": 31,
         "title": "Ordinary - Wedding Version",
         "artist": "Alex Warren",
         "uri": "spotify:track:4t6qMeHgbxWod2SLokiSQp",
@@ -335,7 +319,7 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Ordinary+-+Wedding+Version+Alex+Warren"
       },
       {
-        "number": 34,
+        "number": 32,
         "title": "115 Million Kilometer Film",
         "artist": "OFFICIAL HIGE DANDISM",
         "uri": "spotify:track:4mdOqt3AiUJbBXL02aa5iw",
@@ -348,10 +332,10 @@ window.VALENTINE_CHAPTERS = [
         "uri": "spotify:track:3m9MKNTdPmsKJRqrhqQnhW",
         "spotifyUrl": "https://open.spotify.com/track/3m9MKNTdPmsKJRqrhqQnhW",
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Imagine+Acoustic+Ben+Platt",
-        "number": 35
+        "number": 33
       },
       {
-        "number": 36,
+        "number": 34,
         "title": "I Will Spend My Whole Life Loving You",
         "artist": "Imaginary Future & Kina Grannis",
         "uri": "spotify:track:77enz5hl8RicxrbPB56VXQ",
@@ -359,16 +343,24 @@ window.VALENTINE_CHAPTERS = [
         "youtubeMusicUrl": "https://music.youtube.com/search?q=I+Will+Spend+My+Whole+Life+Loving+You+Imaginary+Future+%26+Kina+Grannis"
       },
       {
-        "number": 37,
+        "number": 35,
         "title": "Kahit Maputi Na Ang Buhok Ko",
         "artist": "Joseph Vincent",
         "uri": "spotify:track:6r9o3XGxSYFlX6ktsEqIbK",
         "spotifyUrl": "https://open.spotify.com/track/6r9o3XGxSYFlX6ktsEqIbK",
         "youtubeMusicUrl": "https://music.youtube.com/search?q=Kahit+Maputi+Na+Ang+Buhok+Ko+Joseph+Vincent"
+      },
+      {
+        "title": "Would You Fall in Love with Me Again",
+        "artist": "Jorge Rivera-Herrans & Anna Lea",
+        "uri": "spotify:track:3iYeXCdD3d0zlex2v0CpVt",
+        "spotifyUrl": "https://open.spotify.com/track/3iYeXCdD3d0zlex2v0CpVt",
+        "youtubeMusicUrl": "https://music.youtube.com/search?q=Would+You+Fall+in+Love+with+Me+Again+Jorge+Rivera-Herrans+%26+Anna+Lea",
+        "number": 36
       }
     ],
     "start": 27,
-    "end": 37
+    "end": 36
   }
 ];
 // Optional personal sentences for individual lyric letters.
