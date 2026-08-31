@@ -189,3 +189,8 @@ Added **Nice To Meet You — Myles Smith** as the new opening song of Part I so 
 
 ## V29 password restored
 The main playlist page is again protected by a client-side password gate. The configured PIN is `5816`; the script stores only its SHA-256 digest and remembers a successful unlock for the current browser session via `sessionStorage`. This is a casual privacy gate for a static site, not server-side authentication: someone intentionally inspecting the deployed source can still retrieve static assets.
+
+
+## V30 — Five-part trim
+
+The playlist now contains **37 tracks across five parts**. The former “Wait… You Like Me Too?” chapter was removed, **Kiss Me Slowly** now opens **Part II — Falling Hard**, later chapters were renumbered, **The Book of Love** moved to **Part V — Forever**, and the requested tracks were removed from the active playlist. The password gate from V29 remains unchanged.

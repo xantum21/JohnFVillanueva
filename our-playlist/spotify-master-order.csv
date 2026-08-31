@@ -1,47 +1,38 @@
 index,number,chapter,title,artist,spotify_url,spotify_uri
 0,1,Part I — The Crush,Nice To Meet You,Myles Smith,https://open.spotify.com/track/2gl06oGDmIatJLXusFlqAf,spotify:track:2gl06oGDmIatJLXusFlqAf
-1,2,Part I — The Crush,this is what having a massive crush on someone feels like,Clinton Kane,https://open.spotify.com/track/782sFc96ACqG89GlvPN9S2,spotify:track:782sFc96ACqG89GlvPN9S2
-2,3,Part I — The Crush,From the Start,Good Kid,https://open.spotify.com/track/6BJHsLiE47Sk0wQkuppqhr,spotify:track:6BJHsLiE47Sk0wQkuppqhr
-3,4,Part I — The Crush,Superman,Joe Brooks,https://open.spotify.com/track/2AHZHeLTPuGILKyr4l8uTU,spotify:track:2AHZHeLTPuGILKyr4l8uTU
-4,5,Part I — The Crush,I Won't Say (I'm In Love),a!ka,https://open.spotify.com/track/1gOLlylQkWzriT4HZUhVBK,spotify:track:1gOLlylQkWzriT4HZUhVBK
-5,6,Part I — The Crush,How Will I Know,Sam Smith,https://open.spotify.com/track/1I75ohulScHJpoMmE9Xbfl,spotify:track:1I75ohulScHJpoMmE9Xbfl
-6,7,Part I — The Crush,Like Me,AJ Rafael,https://open.spotify.com/track/5JJ8C9f06xhUrVRk44maoI,spotify:track:5JJ8C9f06xhUrVRk44maoI
-7,8,Part II — Wait… You Like Me Too?,Everything Has Changed,Taylor Swift & Ed Sheeran,https://open.spotify.com/track/3Z1kZKYfRC8iRXnYeC5sCJ,spotify:track:3Z1kZKYfRC8iRXnYeC5sCJ
-8,9,Part II — Wait… You Like Me Too?,Our First Song,Joseph Vincent,https://open.spotify.com/track/6J9tgHIE8qdy5ulg3c9SwG,spotify:track:6J9tgHIE8qdy5ulg3c9SwG
-9,10,Part II — Wait… You Like Me Too?,Slow Dance,AJ Mitchell & Ava Max,https://open.spotify.com/track/5FNS5Vj69AhRGJWjhrAd01,spotify:track:5FNS5Vj69AhRGJWjhrAd01
-10,11,Part II — Wait… You Like Me Too?,Kiss Me Slowly,Parachute,https://open.spotify.com/track/72R0X0h8YaxYNpegeoOl0M,spotify:track:72R0X0h8YaxYNpegeoOl0M
-11,12,Part III — Falling Hard,Adorn,Miguel,https://open.spotify.com/track/25cUhiAod71TIQSNicOaW3,spotify:track:25cUhiAod71TIQSNicOaW3
-12,13,Part III — Falling Hard,Just Like You,Emotional Oranges,https://open.spotify.com/track/0sYfwwEy0UyNizk6na4zGm,spotify:track:0sYfwwEy0UyNizk6na4zGm
-13,14,Part III — Falling Hard,LOVE YOU FOR LIFE.,Loud Luxury & Emily Roberts,https://open.spotify.com/track/3acMyDFxlQ2O5l3c9pJeQ4,spotify:track:3acMyDFxlQ2O5l3c9pJeQ4
-14,15,Part III — Falling Hard,Let Me,ZAYN,https://open.spotify.com/track/0aVsVsOYDSEEigiwTrIab9,spotify:track:0aVsVsOYDSEEigiwTrIab9
-15,16,Part III — Falling Hard,When I'm With You,Ross David,https://open.spotify.com/track/2amIuarebiXTBtwMubGA3S,spotify:track:2amIuarebiXTBtwMubGA3S
-16,17,Part III — Falling Hard,愛とか恋とか,Novelbright,https://open.spotify.com/track/4McP7SOTK2NWkydOcDCajC,spotify:track:4McP7SOTK2NWkydOcDCajC
-17,18,Part III — Falling Hard,I GUESS I'M IN LOVE,Clinton Kane,https://open.spotify.com/track/1dB1kzLOjTcmSHttRd8bnV,spotify:track:1dB1kzLOjTcmSHttRd8bnV
-18,19,Part III — Falling Hard,I Was Made For Loving You,Tori Kelly & Ed Sheeran,https://open.spotify.com/track/1Xwh83YOFQARZ3QXscP123,spotify:track:1Xwh83YOFQARZ3QXscP123
-19,20,Part III — Falling Hard,I Knew I Loved You,Music Travel Love,https://open.spotify.com/track/3J4eGb9Ufadl5eNUgktO9t,spotify:track:3J4eGb9Ufadl5eNUgktO9t
-20,21,Part IV — You’re My Person,Better Together,Jack Johnson,https://open.spotify.com/track/2iXdwVdzA0KrI2Q0iZNJbX,spotify:track:2iXdwVdzA0KrI2Q0iZNJbX
-21,22,Part IV — You’re My Person,You & Me,James TW,https://open.spotify.com/track/1bQhZOoXYqjXs7u7rFXo0h,spotify:track:1bQhZOoXYqjXs7u7rFXo0h
-22,23,Part IV — You’re My Person,Please Keep Loving Me,James TW,https://open.spotify.com/track/78zUxUPvONPgMIt46q5be6,spotify:track:78zUxUPvONPgMIt46q5be6
-23,24,Part IV — You’re My Person,I Love You Always Forever,Betty Who,https://open.spotify.com/track/1p6rk9R8SCum97WnvGNt6O,spotify:track:1p6rk9R8SCum97WnvGNt6O
-24,25,Part IV — You’re My Person,Still Falling For You,Ellie Goulding,https://open.spotify.com/track/3odrUVQ9tvRpkC9II2oWzx,spotify:track:3odrUVQ9tvRpkC9II2oWzx
-25,26,Part V — Building a Life,Grow as We Go,Ben Platt & Sara Bareilles,https://open.spotify.com/track/1xscBC6UV21t0sMCgu0mLi,spotify:track:1xscBC6UV21t0sMCgu0mLi
-26,27,Part V — Building a Life,Just You and I,Tom Walker,https://open.spotify.com/track/03x2rVJRFUrvwlfxoHd9Mo,spotify:track:03x2rVJRFUrvwlfxoHd9Mo
-27,28,Part V — Building a Life,Photograph,Boyce Avenue & Bea Miller,https://open.spotify.com/track/6CgNoAbFJ4Q4Id4EjtbXlC,spotify:track:6CgNoAbFJ4Q4Id4EjtbXlC
-28,29,Part V — Building a Life,Palagi,TJ Monterde & KZ Tandingan,https://open.spotify.com/track/4WgViu9gw3qYOr3iF9OuLG,spotify:track:4WgViu9gw3qYOr3iF9OuLG
-29,30,Part V — Building a Life,Whole Lives,Jake Scott,https://open.spotify.com/track/1hzWoLgh1yQ4H9fqIvOFMP,spotify:track:1hzWoLgh1yQ4H9fqIvOFMP
-30,31,Part V — Building a Life,Carry You Home,Alex Warren & Ella Henderson,https://open.spotify.com/track/2yCte16wVT6slIJ2Tqm9ML,spotify:track:2yCte16wVT6slIJ2Tqm9ML
-31,32,Part V — Building a Life,Better Half of Me,Tom Walker,https://open.spotify.com/track/114xcQz8sZ6fxRBTZmgmNE,spotify:track:114xcQz8sZ6fxRBTZmgmNE
-32,33,Part V — Building a Life,Dandelion Hair (feat. Melissa Polinar),Joe Brooks & Melissa Polinar,https://open.spotify.com/track/416dC1qBvWJcbgub6zCnJI,spotify:track:416dC1qBvWJcbgub6zCnJI
-33,34,Part V — Building a Life,The Book of Love,Gavin James,https://open.spotify.com/track/4HcSK64Cy7JJ5gv1Txzhzo,spotify:track:4HcSK64Cy7JJ5gv1Txzhzo
-34,35,Part VI — Forever,Marry Me,Train,https://open.spotify.com/track/2MWOqewf5j0qf2b6S5J6cS,spotify:track:2MWOqewf5j0qf2b6S5J6cS
-35,36,Part VI — Forever,Make You Mine,Us The Duo,https://open.spotify.com/track/1ZWFt1f25IDDHsyx2rlcSV,spotify:track:1ZWFt1f25IDDHsyx2rlcSV
-36,37,Part VI — Forever,Never Seen Anything “Quite Like You”,The Script,https://open.spotify.com/track/018Idkvf82hi44UZmIXiGB,spotify:track:018Idkvf82hi44UZmIXiGB
-37,38,Part VI — Forever,Never Stop (Wedding Version),SafetySuit,https://open.spotify.com/track/5himtcBG5IetEOAYuB1Lu1,spotify:track:5himtcBG5IetEOAYuB1Lu1
-38,39,Part VI — Forever,Perfect,Ed Sheeran,https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v,spotify:track:0tgVpDi06FyKpA1z0VMD4v
-39,40,Part VI — Forever,Luckiest Man Alive,Ross David,https://open.spotify.com/track/6XPmY4NWIqq0CofdhhjyP4,spotify:track:6XPmY4NWIqq0CofdhhjyP4
-40,41,Part VI — Forever,Ordinary - Wedding Version,Alex Warren,https://open.spotify.com/track/4t6qMeHgbxWod2SLokiSQp,spotify:track:4t6qMeHgbxWod2SLokiSQp
-41,42,Part VI — Forever,A Thousand Years,Christina Perri,https://open.spotify.com/track/6lanRgr6wXibZr8KgzXxBl,spotify:track:6lanRgr6wXibZr8KgzXxBl
-42,43,Part VI — Forever,115 Million Kilometer Film,OFFICIAL HIGE DANDISM,https://open.spotify.com/track/4mdOqt3AiUJbBXL02aa5iw,spotify:track:4mdOqt3AiUJbBXL02aa5iw
-43,44,Part VI — Forever,Imagine - Acoustic,Ben Platt,https://open.spotify.com/track/3m9MKNTdPmsKJRqrhqQnhW,spotify:track:3m9MKNTdPmsKJRqrhqQnhW
-44,45,Part VI — Forever,I Will Spend My Whole Life Loving You,Imaginary Future & Kina Grannis,https://open.spotify.com/track/77enz5hl8RicxrbPB56VXQ,spotify:track:77enz5hl8RicxrbPB56VXQ
-45,46,Part VI — Forever,Kahit Maputi Na Ang Buhok Ko,Joseph Vincent,https://open.spotify.com/track/6r9o3XGxSYFlX6ktsEqIbK,spotify:track:6r9o3XGxSYFlX6ktsEqIbK
+1,2,Part I — The Crush,Superman,Joe Brooks,https://open.spotify.com/track/2AHZHeLTPuGILKyr4l8uTU,spotify:track:2AHZHeLTPuGILKyr4l8uTU
+2,3,Part I — The Crush,I Won't Say (I'm In Love),a!ka,https://open.spotify.com/track/1gOLlylQkWzriT4HZUhVBK,spotify:track:1gOLlylQkWzriT4HZUhVBK
+3,4,Part I — The Crush,How Will I Know,Sam Smith,https://open.spotify.com/track/1I75ohulScHJpoMmE9Xbfl,spotify:track:1I75ohulScHJpoMmE9Xbfl
+4,5,Part I — The Crush,Like Me,AJ Rafael,https://open.spotify.com/track/5JJ8C9f06xhUrVRk44maoI,spotify:track:5JJ8C9f06xhUrVRk44maoI
+5,6,Part II — Falling Hard,Kiss Me Slowly,Parachute,https://open.spotify.com/track/72R0X0h8YaxYNpegeoOl0M,spotify:track:72R0X0h8YaxYNpegeoOl0M
+6,7,Part II — Falling Hard,Adorn,Miguel,https://open.spotify.com/track/25cUhiAod71TIQSNicOaW3,spotify:track:25cUhiAod71TIQSNicOaW3
+7,8,Part II — Falling Hard,Just Like You,Emotional Oranges,https://open.spotify.com/track/0sYfwwEy0UyNizk6na4zGm,spotify:track:0sYfwwEy0UyNizk6na4zGm
+8,9,Part II — Falling Hard,LOVE YOU FOR LIFE.,Loud Luxury & Emily Roberts,https://open.spotify.com/track/3acMyDFxlQ2O5l3c9pJeQ4,spotify:track:3acMyDFxlQ2O5l3c9pJeQ4
+9,10,Part II — Falling Hard,Let Me,ZAYN,https://open.spotify.com/track/0aVsVsOYDSEEigiwTrIab9,spotify:track:0aVsVsOYDSEEigiwTrIab9
+10,11,Part II — Falling Hard,愛とか恋とか,Novelbright,https://open.spotify.com/track/4McP7SOTK2NWkydOcDCajC,spotify:track:4McP7SOTK2NWkydOcDCajC
+11,12,Part II — Falling Hard,I GUESS I'M IN LOVE,Clinton Kane,https://open.spotify.com/track/1dB1kzLOjTcmSHttRd8bnV,spotify:track:1dB1kzLOjTcmSHttRd8bnV
+12,13,Part II — Falling Hard,I Was Made For Loving You,Tori Kelly & Ed Sheeran,https://open.spotify.com/track/1Xwh83YOFQARZ3QXscP123,spotify:track:1Xwh83YOFQARZ3QXscP123
+13,14,Part II — Falling Hard,I Knew I Loved You,Music Travel Love,https://open.spotify.com/track/3J4eGb9Ufadl5eNUgktO9t,spotify:track:3J4eGb9Ufadl5eNUgktO9t
+14,15,Part III — You’re My Person,Better Together,Jack Johnson,https://open.spotify.com/track/2iXdwVdzA0KrI2Q0iZNJbX,spotify:track:2iXdwVdzA0KrI2Q0iZNJbX
+15,16,Part III — You’re My Person,You & Me,James TW,https://open.spotify.com/track/1bQhZOoXYqjXs7u7rFXo0h,spotify:track:1bQhZOoXYqjXs7u7rFXo0h
+16,17,Part III — You’re My Person,Please Keep Loving Me,James TW,https://open.spotify.com/track/78zUxUPvONPgMIt46q5be6,spotify:track:78zUxUPvONPgMIt46q5be6
+17,18,Part III — You’re My Person,I Love You Always Forever,Betty Who,https://open.spotify.com/track/1p6rk9R8SCum97WnvGNt6O,spotify:track:1p6rk9R8SCum97WnvGNt6O
+18,19,Part IV — Building a Life,Grow as We Go,Ben Platt & Sara Bareilles,https://open.spotify.com/track/1xscBC6UV21t0sMCgu0mLi,spotify:track:1xscBC6UV21t0sMCgu0mLi
+19,20,Part IV — Building a Life,Just You and I,Tom Walker,https://open.spotify.com/track/03x2rVJRFUrvwlfxoHd9Mo,spotify:track:03x2rVJRFUrvwlfxoHd9Mo
+20,21,Part IV — Building a Life,Photograph,Boyce Avenue & Bea Miller,https://open.spotify.com/track/6CgNoAbFJ4Q4Id4EjtbXlC,spotify:track:6CgNoAbFJ4Q4Id4EjtbXlC
+21,22,Part IV — Building a Life,Palagi,TJ Monterde & KZ Tandingan,https://open.spotify.com/track/4WgViu9gw3qYOr3iF9OuLG,spotify:track:4WgViu9gw3qYOr3iF9OuLG
+22,23,Part IV — Building a Life,Whole Lives,Jake Scott,https://open.spotify.com/track/1hzWoLgh1yQ4H9fqIvOFMP,spotify:track:1hzWoLgh1yQ4H9fqIvOFMP
+23,24,Part IV — Building a Life,Carry You Home,Alex Warren & Ella Henderson,https://open.spotify.com/track/2yCte16wVT6slIJ2Tqm9ML,spotify:track:2yCte16wVT6slIJ2Tqm9ML
+24,25,Part IV — Building a Life,Better Half of Me,Tom Walker,https://open.spotify.com/track/114xcQz8sZ6fxRBTZmgmNE,spotify:track:114xcQz8sZ6fxRBTZmgmNE
+25,26,Part IV — Building a Life,Dandelion Hair (feat. Melissa Polinar),Joe Brooks & Melissa Polinar,https://open.spotify.com/track/416dC1qBvWJcbgub6zCnJI,spotify:track:416dC1qBvWJcbgub6zCnJI
+26,27,Part V — Forever,The Book of Love,Gavin James,https://open.spotify.com/track/4HcSK64Cy7JJ5gv1Txzhzo,spotify:track:4HcSK64Cy7JJ5gv1Txzhzo
+27,28,Part V — Forever,Marry Me,Train,https://open.spotify.com/track/2MWOqewf5j0qf2b6S5J6cS,spotify:track:2MWOqewf5j0qf2b6S5J6cS
+28,29,Part V — Forever,Make You Mine,Us The Duo,https://open.spotify.com/track/1ZWFt1f25IDDHsyx2rlcSV,spotify:track:1ZWFt1f25IDDHsyx2rlcSV
+29,30,Part V — Forever,Never Seen Anything “Quite Like You”,The Script,https://open.spotify.com/track/018Idkvf82hi44UZmIXiGB,spotify:track:018Idkvf82hi44UZmIXiGB
+30,31,Part V — Forever,Never Stop (Wedding Version),SafetySuit,https://open.spotify.com/track/5himtcBG5IetEOAYuB1Lu1,spotify:track:5himtcBG5IetEOAYuB1Lu1
+31,32,Part V — Forever,Perfect,Ed Sheeran,https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v,spotify:track:0tgVpDi06FyKpA1z0VMD4v
+32,33,Part V — Forever,Ordinary - Wedding Version,Alex Warren,https://open.spotify.com/track/4t6qMeHgbxWod2SLokiSQp,spotify:track:4t6qMeHgbxWod2SLokiSQp
+33,34,Part V — Forever,115 Million Kilometer Film,OFFICIAL HIGE DANDISM,https://open.spotify.com/track/4mdOqt3AiUJbBXL02aa5iw,spotify:track:4mdOqt3AiUJbBXL02aa5iw
+34,35,Part V — Forever,Imagine - Acoustic,Ben Platt,https://open.spotify.com/track/3m9MKNTdPmsKJRqrhqQnhW,spotify:track:3m9MKNTdPmsKJRqrhqQnhW
+35,36,Part V — Forever,I Will Spend My Whole Life Loving You,Imaginary Future & Kina Grannis,https://open.spotify.com/track/77enz5hl8RicxrbPB56VXQ,spotify:track:77enz5hl8RicxrbPB56VXQ
+36,37,Part V — Forever,Kahit Maputi Na Ang Buhok Ko,Joseph Vincent,https://open.spotify.com/track/6r9o3XGxSYFlX6ktsEqIbK,spotify:track:6r9o3XGxSYFlX6ktsEqIbK

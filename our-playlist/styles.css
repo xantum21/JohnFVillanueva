@@ -736,7 +736,7 @@ html,body{max-width:100%;overflow-x:hidden}
 .envelope-screen.is-transitioning .envelope-flap{opacity:0;transition:opacity .34s ease}
 .envelope-screen.is-transitioning .envelope-letter-blank{transform:translateY(-10%) scale(2.45);opacity:.13;box-shadow:none;transition:transform .65s cubic-bezier(.18,.76,.2,1),opacity .55s ease}
 
-/* Six chapters move through the relationship without becoming six different websites. */
+/* Five chapters move through the relationship without becoming five different websites. */
 .chapter{--chapter-accent:#d55379;--chapter-soft:rgba(247,211,222,.22);position:relative;padding:30px 24px 26px;border-radius:32px;background:linear-gradient(145deg,var(--chapter-soft),rgba(255,255,255,.08) 44%,transparent 76%);transition:background .3s ease}
 .chapter[data-part="i"]{--chapter-accent:#d85c82;--chapter-soft:rgba(250,214,226,.28)}
 .chapter[data-part="ii"]{--chapter-accent:#d97970;--chapter-soft:rgba(252,222,208,.27)}
