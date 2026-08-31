@@ -221,6 +221,9 @@
     <div class="meaning-backdrop" data-close-meaning></div>
     <section id="meaning-panel" class="meaning-panel" role="dialog" aria-modal="true" aria-labelledby="meaning-title">
       <button id="meaning-close" class="meaning-close" type="button" aria-label="Close song note">×</button>
+      <div class="meaning-decor meaning-decor--tape-left" aria-hidden="true"></div>
+      <div class="meaning-decor meaning-decor--tape-right" aria-hidden="true"></div>
+      <div class="meaning-decor meaning-decor--flower" aria-hidden="true">✿</div>
       <div class="meaning-shell">
         <div class="meaning-head">
           <div>
@@ -228,6 +231,10 @@
             <p class="meaning-kicker">Why this song ♡</p>
             <h2 id="meaning-title"></h2>
             <p id="meaning-artist" class="meaning-artist"></p>
+            <div class="meaning-chips" aria-label="Song details">
+              <span id="meaning-part-chip" class="meaning-chip">Part I</span>
+              <span id="meaning-number-chip" class="meaning-chip">Track 1</span>
+            </div>
           </div>
           <div id="meaning-motif" class="meaning-motif" aria-hidden="true">♡</div>
         </div>
@@ -239,9 +246,11 @@
             <button id="meaning-highlight-toggle" class="meaning-highlight-toggle" type="button" aria-expanded="false">Unfurl highlighted lyric ♡</button>
             <div id="meaning-highlight-card" class="meaning-highlight-card" hidden>
               <div class="meaning-highlight-label">Highlighted lyric ♡</div>
+              <div class="meaning-highlight-sub">the line I’d underline for you</div>
               <div id="meaning-highlight-text" class="meaning-highlight-text"></div>
             </div>
           </section>
+          <p id="meaning-signoff" class="meaning-signoff">A little keepsake note from the map. ♡</p>
         </div>
       </div>
     </section>

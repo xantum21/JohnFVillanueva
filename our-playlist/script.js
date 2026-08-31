@@ -186,10 +186,16 @@
     lyricsButton.type = 'button';
     const lyricInfo = lyricsConfig(track);
     const hasLyrics = lyricInfo.views.some((view) => String(view.text || '').trim());
-    lyricsButton.className = `stream-link lyrics-link${hasLyrics ? ' is-ready' : ' is-pending'}`;
-    lyricsButton.textContent = hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon';
-    lyricsButton.setAttribute('aria-label', `View lyrics for ${track.title}`);
-    lyricsButton.addEventListener('click', () => openLyrics(track));
+    const isInstrumental = track.uri === 'spotify:track:6m9mdoawCitwN8XKjpsBKb';
+    lyricsButton.className = `stream-link lyrics-link${isInstrumental ? ' is-instrumental' : (hasLyrics ? ' is-ready' : ' is-pending')}`;
+    lyricsButton.textContent = isInstrumental ? 'Instrumental ♫' : (hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon');
+    lyricsButton.setAttribute('aria-label', isInstrumental ? `${track.title} is an instrumental track` : `View lyrics for ${track.title}`);
+    if (isInstrumental) {
+      lyricsButton.disabled = true;
+      lyricsButton.title = 'Instrumental track — no lyrics';
+    } else {
+      lyricsButton.addEventListener('click', () => openLyrics(track));
+    }
 
     const whyText = String(track.why || '').trim();
     let whyButton = null;
@@ -294,9 +300,14 @@
     $('#sticky-player').dataset.part = track.chapter.part.toLowerCase();
     const lyricInfo = lyricsConfig(track);
     const hasLyrics = lyricInfo.views.some((view) => String(view.text || '').trim());
-    $('#player-lyrics').setAttribute('aria-label', `View lyrics for ${track.title}`);
-    $('#player-lyrics').textContent = hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon';
-    $('#player-lyrics').classList.toggle('is-ready', hasLyrics);
+    const isInstrumental = track.uri === 'spotify:track:6m9mdoawCitwN8XKjpsBKb';
+    const playerLyricsButton = $('#player-lyrics');
+    playerLyricsButton.setAttribute('aria-label', isInstrumental ? `${track.title} is an instrumental track` : `View lyrics for ${track.title}`);
+    playerLyricsButton.textContent = isInstrumental ? 'Instrumental ♫' : (hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon');
+    playerLyricsButton.classList.toggle('is-ready', hasLyrics && !isInstrumental);
+    playerLyricsButton.classList.toggle('is-instrumental', isInstrumental);
+    playerLyricsButton.disabled = isInstrumental;
+    playerLyricsButton.title = isInstrumental ? 'Instrumental track — no lyrics' : '';
 
     const whyButton = $('#player-why');
     const hasWhy = Boolean(String(track.why || '').trim());
@@ -387,12 +398,33 @@
     };
   }
 
+  function decorateMeaningMeta(track) {
+    const part = track?.chapter?.part || 'I';
+    const number = track?.number || allTracks.findIndex((item) => item.uri === track?.uri) + 1;
+    const partChip = $('#meaning-part-chip');
+    const numberChip = $('#meaning-number-chip');
+    const signoff = $('#meaning-signoff');
+    if (partChip) partChip.textContent = `Part ${part} · ${track?.chapter?.title || 'Map note'}`;
+    if (numberChip) numberChip.textContent = `Track ${number}`;
+
+    const signoffsByPart = {
+      I: 'Pressed into the page like a first spark. ♡',
+      II: 'A page from the part where feelings grow louder. ♡',
+      III: 'A keepsake from the part where someone becomes your person. ♡',
+      IV: 'A note from the stretch where love starts imagining a life together. ♡',
+      V: 'A keepsake from the detours, distance, and roadbumps. ♡',
+      VI: 'Filed under forever and kept close. ♡'
+    };
+    if (signoff) signoff.textContent = signoffsByPart[part] || 'A little keepsake note from the map. ♡';
+  }
+
   function openMeaning(track) {
     if (!track) return;
     activeMeaningTrack = track;
     applyMeaningTheme(track);
     $('#meaning-title').textContent = track.title;
     $('#meaning-artist').textContent = track.artist;
+    decorateMeaningMeta(track);
     renderMeaningBody(track);
     renderMeaningHighlight(track);
     const scroller = $('#meaning-scroll');
@@ -916,7 +948,11 @@
       setPlayerStatus('Playback was blocked by the browser — open the Spotify drawer and tap its play button.');
     }
   });
-  $('#player-lyrics').addEventListener('click', () => openLyrics(allTracks[currentTrackIndex]));
+  $('#player-lyrics').addEventListener('click', () => {
+    const track = allTracks[currentTrackIndex];
+    if (track?.uri === 'spotify:track:6m9mdoawCitwN8XKjpsBKb') return;
+    openLyrics(track);
+  });
   $('#player-why')?.addEventListener('click', revealCurrentWhy);
   $('#player-full-playlist')?.addEventListener('click', openFullPlaylist);
   $('#open-full-playlist')?.addEventListener('click', openFullPlaylist);
