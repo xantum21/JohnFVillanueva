@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="robots" content="noindex,nofollow,noarchive" />
   <meta name="theme-color" content="#f9dbe4" />
-  <meta name="description" content="A private playlist in five parts." />
+  <meta name="description" content="A private musical atlas in five parts." />
   <link rel="canonical" href="https://johnfvillanueva.com/our-playlist/" />
   <meta property="og:url" content="https://johnfvillanueva.com/our-playlist/" />
-  <meta property="og:title" content="A Little Love Story ♡" />
-  <meta property="og:description" content="A private playlist in five parts." />
-  <title>A Little Love Story ♡</title>
+  <meta property="og:title" content="A Map to My Heart ♡" />
+  <meta property="og:description" content="A private musical atlas in five parts." />
+  <title>A Map to My Heart ♡</title>
   <link rel="icon" type="image/svg+xml" href="favicon-playlist.svg" />
   <link rel="shortcut icon" href="favicon-playlist.svg" />
   <link rel="preconnect" href="https://open.spotify.com" />
@@ -23,9 +23,9 @@
     <div class="access-gate-glow" aria-hidden="true"></div>
     <section class="access-card">
       <div class="access-seal" aria-hidden="true">♡</div>
-      <p class="access-kicker">Private playlist</p>
-      <h1 id="access-title">A little something just for you.</h1>
-      <p class="access-copy">Enter the password to open the letter.</p>
+      <p class="access-kicker">Private map</p>
+      <h1 id="access-title">A map to my heart.</h1>
+      <p class="access-copy">Enter the password to unfold the map.</p>
       <form id="access-form" class="access-form" novalidate>
         <label for="access-password" class="sr-only">Password</label>
         <input
@@ -39,7 +39,7 @@
           placeholder="Password"
           aria-describedby="access-error"
         />
-        <button id="access-submit" type="submit">Open the playlist</button>
+        <button id="access-submit" type="submit">Open the map</button>
         <p id="access-error" class="access-error" aria-live="polite"></p>
       </form>
       <p class="access-footnote">♡</p>
@@ -47,24 +47,45 @@
   </div>
   <div class="ambient" aria-hidden="true"></div>
 
-  <div id="envelope" class="envelope-screen" aria-label="Sealed playlist letter">
-    <div class="envelope-stage">
-      <div class="real-envelope" id="real-envelope">
-        <div class="envelope-back" aria-hidden="true"></div>
-        <div class="envelope-letter-blank">
-          <div class="letter-idle-mark" aria-hidden="true">
-            <span class="letter-line line-one"></span>
-            <span class="letter-line line-two"></span>
-            <span class="letter-line line-three"></span>
-            <span class="letter-heart">♡</span>
+  <div id="envelope" class="envelope-screen map-screen" aria-label="Playlist map intro">
+    <div class="map-intro">
+      <section class="map-card" aria-labelledby="map-intro-title">
+        <div class="map-stamp" aria-hidden="true">♡</div>
+        <p class="map-kicker">A route in five parts</p>
+        <h2 id="map-intro-title">Unfold the map.</h2>
+        <p class="map-copy">This isn’t a roadmap for anyone else. It’s a little atlas of how I love — from first sparks to forever.</p>
+        <div class="map-path" aria-hidden="true">
+          <div class="map-stop">
+            <span class="map-stop-dot">I</span>
+            <span class="map-stop-label">The Crush</span>
+            <span class="map-stop-name">the first spark</span>
+          </div>
+          <div class="map-stop">
+            <span class="map-stop-dot">II</span>
+            <span class="map-stop-label">Falling Hard</span>
+            <span class="map-stop-name">feelings get louder</span>
+          </div>
+          <div class="map-stop">
+            <span class="map-stop-dot">III</span>
+            <span class="map-stop-label">My Person</span>
+            <span class="map-stop-name">closeness & comfort</span>
+          </div>
+          <div class="map-stop">
+            <span class="map-stop-dot">IV</span>
+            <span class="map-stop-label">Building a Life</span>
+            <span class="map-stop-name">shared dreams</span>
+          </div>
+          <div class="map-stop">
+            <span class="map-stop-dot">V</span>
+            <span class="map-stop-label">Forever</span>
+            <span class="map-stop-name">the long horizon</span>
           </div>
         </div>
-        <div class="envelope-front" aria-hidden="true"></div>
-        <div class="envelope-flap" aria-hidden="true"></div>
-        <button id="open-envelope" class="envelope-seal-button" type="button" aria-label="Open sealed letter">
-          <span aria-hidden="true">♡</span>
+        <button id="open-envelope" class="map-open-button" type="button" aria-label="Unfold the map">
+          <span>Unfold the map</span>
+          <strong aria-hidden="true">♡</strong>
         </button>
-      </div>
+      </section>
     </div>
   </div>
 
@@ -80,18 +101,53 @@
         <p id="note"></p>
       </div>
       <div class="hero-actions">
-        <a class="primary-button hero-button" href="#playlist">Start at the beginning <span aria-hidden="true">↓</span></a>
+        <a class="primary-button hero-button" href="#playlist">Start the route <span aria-hidden="true">↓</span></a>
         <button id="open-full-playlist" class="secondary-button hero-secondary" type="button">Full Spotify playlist ♫</button>
       </div>
       <button id="continue-story" class="continue-story" type="button" hidden>
         <span>Continue where you left off ♡</span>
         <strong id="continue-story-title"></strong>
       </button>
+
+      <section class="heart-map" aria-label="Map overview">
+        <div class="heart-map-header">
+          <p class="tiny-caps">The route at a glance</p>
+          <h2>Five regions of the same heart.</h2>
+          <p>This playlist works best as a map, not a script — each part marks a different emotional place.</p>
+        </div>
+        <div class="heart-map-route">
+          <a class="map-region" href="#chapter-i">
+            <span class="map-region-dot">I</span>
+            <strong>The Crush</strong>
+            <span>the beginning</span>
+          </a>
+          <a class="map-region" href="#chapter-ii">
+            <span class="map-region-dot">II</span>
+            <strong>Falling Hard</strong>
+            <span>the pull gets stronger</span>
+          </a>
+          <a class="map-region" href="#chapter-iii">
+            <span class="map-region-dot">III</span>
+            <strong>You’re My Person</strong>
+            <span>comfort and belonging</span>
+          </a>
+          <a class="map-region" href="#chapter-iv">
+            <span class="map-region-dot">IV</span>
+            <strong>Building a Life</strong>
+            <span>shared hopes and plans</span>
+          </a>
+          <a class="map-region" href="#chapter-v">
+            <span class="map-region-dot">V</span>
+            <strong>Forever</strong>
+            <span>the long view</span>
+          </a>
+        </div>
+      </section>
     </div>
   </header>
 
   <main id="playlist">
-    <nav class="chapter-nav" aria-label="Playlist chapters">
+    <nav class="chapter-nav" aria-label="Map regions">
       <div id="chapter-nav-inner" class="chapter-nav-inner"></div>
     </nav>
 
@@ -99,20 +155,20 @@
       <div class="player-explainer-icon" aria-hidden="true">♫</div>
       <div>
         <p class="tiny-caps">Quick note</p>
-        <h2>The player follows you.</h2>
-        <p>Pick a song and keep scrolling. Open the lyrics whenever you want.</p>
+        <h2>The route keeps playing.</h2>
+        <p>Pick a song, keep scrolling, and open the lyrics whenever you want.</p>
       </div>
     </section>
 
     <div id="chapters" class="chapters"></div>
 
-    <section id="finale" class="finale-card" aria-label="Playlist ending">
+    <section id="finale" class="finale-card" aria-label="Map ending">
       <p class="tiny-caps">That’s all 36</p>
       <div class="finale-mark" aria-hidden="true">♡</div>
       <h2 id="final-title">End of playlist.</h2>
       <p id="final-note"></p>
       <p id="final-aside" class="finale-aside"></p>
-      <button id="replay-story" class="primary-button finale-button" type="button">Replay from the beginning ↺</button>
+      <button id="replay-story" class="primary-button finale-button" type="button">Start the route again ↺</button>
     </section>
   </main>
 
@@ -177,14 +233,14 @@
     </section>
   </div>
 
-  <aside id="sticky-player" class="sticky-player" aria-label="Playlist player" aria-hidden="true">
+  <aside id="sticky-player" class="sticky-player" aria-label="Map player" aria-hidden="true">
     <div class="player-progress" aria-hidden="true">
       <div id="player-progress-fill" class="player-progress-fill"></div>
     </div>
 
     <div class="player-main-row">
       <button id="player-track-button" class="player-track-copy" type="button" aria-label="Show current song in playlist">
-        <span id="player-track-number" class="player-track-number">01 / 37</span>
+        <span id="player-track-number" class="player-track-number">01 / 36</span>
         <span class="player-track-text">
           <span id="player-chapter" class="player-track-chapter">I · The Crush</span>
           <strong id="now-title">Nice To Meet You</strong>

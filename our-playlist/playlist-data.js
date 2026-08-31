@@ -1,16 +1,16 @@
 // Easy-edit content for the page. Change the text below; the Spotify song IDs are already wired in.
 window.VALENTINE_PAGE = {
-  "eyebrow": "For you, in five parts",
-  "title": "A Little Love Story",
-  "subtitle": "36 songs from “oh no, I like you” to “okay, grow old with me.”",
-  "note": "I made this instead of trying to say all of it normally. ♡",
+  "eyebrow": "A route in five parts",
+  "title": "A Map to My Heart",
+  "subtitle": "36 songs tracing the route from first spark to forever.",
+  "note": "Not a prediction. Not a promise. Just a little atlas of how I love, what moves me, and what matters to my heart. ♡",
   "signoff": "Made with a ridiculous amount of affection. ♡",
   "recipient": "",
   "date": "",
   "envelopeFor": "",
-  "finalTitle": "Okay, that’s the playlist.",
-  "finalNote": "36 songs later, I think you get the idea. ♡",
-  "finalAside": "Start it over if you want. I won’t complain."
+  "finalTitle": "End of the map.",
+  "finalNote": "36 songs later, that’s the route — five regions, one heart. ♡",
+  "finalAside": "Start it over any time if you want another look around."
 };
 
 window.VALENTINE_CHAPTERS = [
