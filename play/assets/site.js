@@ -192,7 +192,7 @@
         placeholder: 'Tell me the unit, shift, cohort start date, and whether the posting is a new-graduate residency.'
       },
       'Recruiting or hiring': {
-        hint: 'For recruiters, talent teams, and hiring managers outside of a specific clinical posting.',
+        hint: 'General hiring or talent-team inquiries that are not tied to a specific clinical posting.',
         placeholder: 'Tell me the organization, the role, and the timeline you are working against.'
       },
       'Project or collaboration': {

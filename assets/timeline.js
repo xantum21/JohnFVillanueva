@@ -139,7 +139,7 @@
     "date": "2014",
     "body": "Reached the semifinals in a Pokémon Video Game Championship tournament at Fanime.",
     "details": [
-      "A small but real part of the archive: strategy, preparation, adapting under pressure, and enjoying a complicated system."
+      "Competitive team-building, matchup planning, and adaptation under pressure."
     ],
     "skills": [
       "Strategy",
@@ -173,7 +173,7 @@
     "date": "May 2015",
     "body": "Presented honors research at Stanford University through the Los Medanos College honors program.",
     "details": [
-      "I kept this certificate on the site because it is part of the story."
+      "Presented through the Los Medanos College honors program."
     ],
     "skills": [
       "Research",
@@ -192,7 +192,7 @@
     "date": "2012–2015",
     "body": "Served as Honors Club historian and Anime Club secretary, helped host a Chinese New Year event, and stayed involved beyond coursework.",
     "details": [
-      "These roles belong in the archive even though they are not résumé headline material."
+      "Served in student organizations and helped support campus cultural programming."
     ],
     "skills": [
       "Organization",
@@ -325,6 +325,40 @@
     ]
   },
   {
+    "year": 2016,
+    "lane": "culture",
+    "title": "AMV competition entry — SacAnime",
+    "org": "SacAnime",
+    "type": "Creative competition",
+    "date": "2016",
+    "body": "Entered an anime music video in SacAnime’s AMV competition.",
+    "details": [
+      "One of three AMVs entered in convention competitions during 2016."
+    ],
+    "skills": [
+      "Video Editing",
+      "Music & Storytelling",
+      "Creative Competition"
+    ]
+  },
+  {
+    "year": 2016,
+    "lane": "culture",
+    "title": "Two AMV competition entries — Fanime",
+    "org": "Fanime",
+    "type": "Creative competition",
+    "date": "2016",
+    "body": "Entered two anime music videos in Fanime’s AMV competition.",
+    "details": [
+      "Together with the SacAnime entry, this made three AMVs entered in convention competitions in 2016."
+    ],
+    "skills": [
+      "Video Editing",
+      "Creative Direction",
+      "Anime Fandom"
+    ]
+  },
+  {
     "year": 2018,
     "lane": "recognition",
     "title": "Honors Consortium presentation",
@@ -333,7 +367,7 @@
     "date": "April 2018",
     "body": "Presented honors work at the UC Berkeley Honors Research Symposium.",
     "details": [
-      "A second public academic-research receipt, following the Stanford presentation in 2015."
+      "Continued honors research presentation work following the 2015 Stanford presentation."
     ],
     "skills": [
       "Research",
@@ -390,7 +424,7 @@
     "date": "2019",
     "body": "Worked in a customer-facing sales role during a year that also included insurance, retail leadership, and restaurant work.",
     "details": [
-      "Part of a deliberately complete work-history archive rather than a curated résumé selection."
+      "Built additional customer-facing sales experience during 2019."
     ],
     "skills": [
       "Sales",
@@ -514,6 +548,23 @@
   },
   {
     "year": 2021,
+    "lane": "competition",
+    "title": "Tekken 7 — Vanquisher",
+    "org": "Ranked ladder",
+    "type": "Competitive gaming",
+    "date": "2021",
+    "body": "Reached Vanquisher in Tekken 7 ranked play.",
+    "details": [
+      "An early Tekken ladder milestone before returning to the series in Tekken 8."
+    ],
+    "skills": [
+      "Matchup Learning",
+      "Execution",
+      "Competitive Progression"
+    ]
+  },
+  {
+    "year": 2021,
     "lane": "culture",
     "title": "Japanese Teacher Assistant & Tutor",
     "org": "CSU East Bay",
@@ -586,6 +637,23 @@
       "Cash Handling",
       "Customer Service",
       "Retail Quality"
+    ]
+  },
+  {
+    "year": 2022,
+    "lane": "competition",
+    "title": "Pokémon Sword / Shield — Master Ball Tier",
+    "org": "Ranked battles",
+    "type": "Competitive gaming",
+    "date": "2022",
+    "body": "Reached Master Ball Tier in Pokémon Sword and Shield ranked battles.",
+    "details": [
+      "A ranked milestone built around team construction, prediction, and matchup planning."
+    ],
+    "skills": [
+      "Team Building",
+      "Prediction",
+      "Competitive Strategy"
     ]
   },
   {
@@ -1257,6 +1325,23 @@
   },
   {
     "year": 2024,
+    "lane": "competition",
+    "title": "Tekken 8 — Tenryu",
+    "org": "Ranked ladder",
+    "type": "Competitive gaming",
+    "date": "2024",
+    "body": "Reached Tenryu in Tekken 8 with Jack-8.",
+    "details": [
+      "The first major Tekken 8 ranked milestone before the later Season 3 Kunimitsu climb to Tekken King."
+    ],
+    "skills": [
+      "Fundamentals",
+      "Matchup Learning",
+      "Competitive Progression"
+    ]
+  },
+  {
+    "year": 2024,
     "lane": "credentials",
     "title": "Leading in a Remote Environment",
     "org": "HarvardX",
@@ -1429,9 +1514,7 @@
     "type": "Active credential",
     "date": "January 2026–April 2028",
     "body": "Earned active California Certified Nursing Assistant status after passing the required examinations in January 2026.",
-    "details": [
-      "I keep the certificate number off the public site."
-    ],
+    "details": [],
     "skills": [
       "Patient Care",
       "Safety",
@@ -1446,9 +1529,7 @@
     "type": "Current credential",
     "date": "Current through October 2026",
     "body": "Maintains current Basic Life Support provider status.",
-    "details": [
-      "I can provide the credential card when it is needed."
-    ],
+    "details": [],
     "skills": [
       "BLS",
       "CPR",
@@ -1531,8 +1612,7 @@
     "date": "August 2026",
     "body": "Completed Basic EKG Interpretation and earned current ACLS and PALS provider status in August 2026.",
     "details": [
-      "ACLS and PALS completed August 12, 2026.",
-      "Credential identifiers stay off the public site."
+      "ACLS and PALS completed August 12, 2026."
     ],
     "skills": [
       "Advanced Life Support",
@@ -1754,7 +1834,7 @@
     const proofClass = event.proof?.includes('/photos/')
       ? 'archive-proof archive-proof-personal'
       : 'archive-proof';
-    const proofCaption = event.proofCaption || 'A certificate image I chose to keep on the site.';
+    const proofCaption = event.proofCaption || 'Supporting certificate.';
     const proof = event.proof
       ? `<figure class="${proofClass}">
           <img src="${escapeHtml(event.proof)}" alt="${escapeHtml(event.proofAlt || '')}"

@@ -832,42 +832,41 @@ details[open] summary::after { content: "−"; }
 }
 .rank-badge-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
 }
 .rank-badge-card {
-  --rank-accent: var(--red);
   min-width: 0;
   display: grid;
-  grid-template-columns: 52px minmax(0, 1fr);
-  gap: 12px;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 14px;
   align-items: center;
-  padding: 12px;
+  min-height: 126px;
+  padding: 14px;
   border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.62);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.68);
   box-shadow: 0 10px 26px rgba(16, 42, 52, 0.06);
 }
-.rank-badge-rivals { --rank-accent: #b98b37; }
-.rank-badge-tekken { --rank-accent: var(--red); }
-.rank-badge-starcraft { --rank-accent: #4f728a; }
-.rank-emblem {
-  width: 52px;
-  aspect-ratio: 1;
+.rank-badge-art {
+  width: 112px;
+  height: 96px;
   display: grid;
   place-items: center;
-  clip-path: polygon(50% 0, 91% 24%, 91% 74%, 50% 100%, 9% 74%, 9% 24%);
-  background: linear-gradient(145deg, color-mix(in srgb, var(--rank-accent) 76%, white), var(--rank-accent));
-  color: white;
-  filter: drop-shadow(0 7px 10px rgba(16, 42, 52, 0.16));
 }
-.rank-emblem span {
-  font-family: var(--sans);
-  font-size: 0.83rem;
-  font-weight: 900;
-  letter-spacing: 0.04em;
+.rank-badge-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 10px rgba(16, 42, 52, 0.14));
 }
+.rank-badge-art-wide { height: 72px; }
+.rank-badge-art-starcraft img {
+  clip-path: polygon(50% 0%, 95% 23%, 95% 74%, 50% 100%, 5% 74%, 5% 23%);
+}
+.rank-badge-art-pokemon { height: 76px; }
 .rank-badge-copy { min-width: 0; }
 .rank-badge-copy strong,
 .rank-badge-copy span,
@@ -879,6 +878,27 @@ details[open] summary::after { content: "−"; }
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
+.rank-badge-copy .rank-title {
+  margin-top: 3px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.14rem;
+  font-weight: 700;
+  line-height: 1.08;
+}
+.rank-badge-copy small {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+.rank-history {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+.rank-history strong { color: var(--ink); }
 .rank-badge-copy .rank-title {
   margin-top: 2px;
   color: var(--ink);
@@ -1111,6 +1131,10 @@ details[open] summary::after { content: "−"; }
   .contact-grid,
   .interest-grid { grid-template-columns: 1fr; }
   .rank-badge-grid { grid-template-columns: 1fr; }
+  .rank-badge-card { grid-template-columns: 96px minmax(0, 1fr); min-height: 112px; }
+  .rank-badge-art { width: 96px; height: 84px; }
+  .rank-badge-art-wide { height: 62px; }
+  .rank-badge-art-pokemon { height: 68px; }
   .milestone-heading { grid-template-columns: 1fr; gap: 8px; }
   .section-heading h2 { font-size: 2.75rem; }
   .stat-band { grid-template-columns: 1fr 1fr; }
