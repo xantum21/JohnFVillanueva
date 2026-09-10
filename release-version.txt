@@ -1,9 +1,11 @@
-JohnFVillanueva website release: 2026-09-10-v8.1
+JohnFVillanueva website release: 2026-09-10-v8.2
 
 Prepared for deployment on September 10, 2026.
 
 Verification markers:
-- Life / Gaming: competitive milestone badges for Marvel Rivals Grandmaster, Tekken 8 Tekken King, and StarCraft II Masters
-- Timeline archive: 86 dated entries across 2011–2026
-- New 2026 competition entries: Marvel Rivals Grandmaster and Tekken 8 Tekken King
-- Existing site structure, editorial visual system, responsive navigation, project library, résumé, and personal-photo refresh preserved
+- Life / Gaming: user-supplied rank artwork for Marvel Rivals Grandmaster, Tekken 8 Tekken King, StarCraft II Masters, and Pokémon Sword / Shield Master Ball Tier
+- Gaming history: Tekken 7 Vanquisher (2021) and Tekken 8 Tenryu with Jack-8 (2024)
+- Timeline archive: 91 dated entries across 2011–2026
+- Fanime Pokémon VGC semifinalist correctly remains under 2014
+- 2016 AMV history: one SacAnime entry and two Fanime entries
+- Public-facing timeline/recruiter meta commentary cleaned up
