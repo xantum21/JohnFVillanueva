@@ -5,92 +5,39 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="robots" content="noindex,nofollow,noarchive" />
   <meta name="theme-color" content="#f9dbe4" />
-  <meta name="description" content="A private musical atlas in six parts." />
+  <meta name="description" content="A private playlist in six parts." />
   <link rel="canonical" href="https://johnfvillanueva.com/our-playlist/" />
   <meta property="og:url" content="https://johnfvillanueva.com/our-playlist/" />
-  <meta property="og:title" content="A Map to My Heart ♡" />
-  <meta property="og:description" content="A private musical atlas in six parts." />
-  <title>A Map to My Heart ♡</title>
+  <meta property="og:title" content="A Little Love Story ♡" />
+  <meta property="og:description" content="A private playlist in six parts." />
+  <title>A Little Love Story ♡</title>
   <link rel="icon" type="image/svg+xml" href="favicon-playlist.svg" />
   <link rel="shortcut icon" href="favicon-playlist.svg" />
   <link rel="preconnect" href="https://open.spotify.com" />
   <link rel="preconnect" href="https://i.scdn.co" />
-  <script>document.documentElement.classList.add('access-locked');</script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="access-gate" class="access-gate" role="dialog" aria-modal="true" aria-labelledby="access-title">
-    <div class="access-gate-glow" aria-hidden="true"></div>
-    <section class="access-card">
-      <div class="access-seal" aria-hidden="true">♡</div>
-      <p class="access-kicker">Private map</p>
-      <h1 id="access-title">A map to my heart.</h1>
-      <p class="access-copy">Enter the password to unfold the map.</p>
-      <form id="access-form" class="access-form" novalidate>
-        <label for="access-password" class="sr-only">Password</label>
-        <input
-          id="access-password"
-          name="password"
-          type="password"
-          inputmode="numeric"
-          pattern="[0-9]*"
-          maxlength="4"
-          autocomplete="off"
-          placeholder="Password"
-          aria-describedby="access-error"
-        />
-        <button id="access-submit" type="submit">Open the map</button>
-        <p id="access-error" class="access-error" aria-live="polite"></p>
-      </form>
-      <p class="access-footnote">♡</p>
-    </section>
-  </div>
   <div class="ambient" aria-hidden="true"></div>
 
-  <div id="envelope" class="envelope-screen map-screen" aria-label="Playlist map intro">
-    <div class="map-intro">
-      <section class="map-card" aria-labelledby="map-intro-title">
-        <div class="map-stamp" aria-hidden="true">♡</div>
-        <p class="map-kicker">A route in six parts</p>
-        <h2 id="map-intro-title">Unfold the map.</h2>
-        <p class="map-copy">This isn’t a roadmap for anyone else. It’s a little atlas of how I love — from first sparks to forever.</p>
-        <div class="map-path" aria-hidden="true">
-          <div class="map-stop">
-            <span class="map-stop-dot">I</span>
-            <span class="map-stop-label">The Crush</span>
-            <span class="map-stop-name">the first spark</span>
-          </div>
-          <div class="map-stop">
-            <span class="map-stop-dot">II</span>
-            <span class="map-stop-label">Falling Hard</span>
-            <span class="map-stop-name">feelings get louder</span>
-          </div>
-          <div class="map-stop">
-            <span class="map-stop-dot">III</span>
-            <span class="map-stop-label">My Person</span>
-            <span class="map-stop-name">closeness & comfort</span>
-          </div>
-          <div class="map-stop">
-            <span class="map-stop-dot">IV</span>
-            <span class="map-stop-label">Building a Life</span>
-            <span class="map-stop-name">shared dreams</span>
-          </div>
-          <div class="map-stop">
-            <span class="map-stop-dot">V</span>
-            <span class="map-stop-label">Detours & Distance</span>
-            <span class="map-stop-name">the hard stretch</span>
-          </div>
-          <div class="map-stop">
-            <span class="map-stop-dot">VI</span>
-            <span class="map-stop-label">Forever</span>
-            <span class="map-stop-name">the long horizon</span>
+  <div id="envelope" class="envelope-screen" aria-label="Sealed playlist letter">
+    <div class="envelope-stage">
+      <div class="real-envelope" id="real-envelope">
+        <div class="envelope-back" aria-hidden="true"></div>
+        <div class="envelope-letter-blank">
+          <div class="letter-idle-mark" aria-hidden="true">
+            <span class="letter-line line-one"></span>
+            <span class="letter-line line-two"></span>
+            <span class="letter-line line-three"></span>
+            <span class="letter-heart">♡</span>
           </div>
         </div>
-        <button id="open-envelope" class="map-open-button" type="button" aria-label="Unfold the map">
-          <span>Unfold the map</span>
-          <strong aria-hidden="true">♡</strong>
+        <div class="envelope-front" aria-hidden="true"></div>
+        <div class="envelope-flap" aria-hidden="true"></div>
+        <button id="open-envelope" class="envelope-seal-button" type="button" aria-label="Open sealed letter">
+          <span aria-hidden="true">♡</span>
         </button>
-      </section>
+      </div>
     </div>
   </div>
 
@@ -106,58 +53,18 @@
         <p id="note"></p>
       </div>
       <div class="hero-actions">
-        <a class="primary-button hero-button" href="#playlist">Start the route <span aria-hidden="true">↓</span></a>
+        <a class="primary-button hero-button" href="#playlist">Start at the beginning <span aria-hidden="true">↓</span></a>
         <button id="open-full-playlist" class="secondary-button hero-secondary" type="button">Full Spotify playlist ♫</button>
       </div>
       <button id="continue-story" class="continue-story" type="button" hidden>
         <span>Continue where you left off ♡</span>
         <strong id="continue-story-title"></strong>
       </button>
-
-      <section class="heart-map" aria-label="Map overview">
-        <div class="heart-map-header">
-          <p class="tiny-caps">The route at a glance</p>
-          <h2>Six regions of the same heart.</h2>
-          <p>This playlist works best as a map, not a script — each part marks a different emotional place.</p>
-        </div>
-        <div class="heart-map-route six-up">
-          <a class="map-region" href="#chapter-i">
-            <span class="map-region-dot">I</span>
-            <strong>The Crush</strong>
-            <span>the beginning</span>
-          </a>
-          <a class="map-region" href="#chapter-ii">
-            <span class="map-region-dot">II</span>
-            <strong>Falling Hard</strong>
-            <span>the pull gets stronger</span>
-          </a>
-          <a class="map-region" href="#chapter-iii">
-            <span class="map-region-dot">III</span>
-            <strong>You’re My Person</strong>
-            <span>comfort and belonging</span>
-          </a>
-          <a class="map-region" href="#chapter-iv">
-            <span class="map-region-dot">IV</span>
-            <strong>Building a Life</strong>
-            <span>shared hopes and plans</span>
-          </a>
-          <a class="map-region" href="#chapter-v">
-            <span class="map-region-dot">V</span>
-            <strong>Detours & Distance</strong>
-            <span>roadbumps and longing</span>
-          </a>
-          <a class="map-region" href="#chapter-vi">
-            <span class="map-region-dot">VI</span>
-            <strong>Forever</strong>
-            <span>the long view</span>
-          </a>
-        </div>
-      </section>
     </div>
   </header>
 
   <main id="playlist">
-    <nav class="chapter-nav" aria-label="Map regions">
+    <nav class="chapter-nav" aria-label="Playlist chapters">
       <div id="chapter-nav-inner" class="chapter-nav-inner"></div>
     </nav>
 
@@ -165,20 +72,20 @@
       <div class="player-explainer-icon" aria-hidden="true">♫</div>
       <div>
         <p class="tiny-caps">Quick note</p>
-        <h2>The route keeps playing.</h2>
-        <p>Pick a song, keep scrolling, and open the lyrics whenever you want.</p>
+        <h2>The player follows you.</h2>
+        <p>Pick a song and keep scrolling. Open the lyrics whenever you want.</p>
       </div>
     </section>
 
     <div id="chapters" class="chapters"></div>
 
-    <section id="finale" class="finale-card" aria-label="Map ending">
-      <p class="tiny-caps">That’s all 37</p>
+    <section id="finale" class="finale-card" aria-label="Playlist ending">
+      <p class="tiny-caps">That’s all 44</p>
       <div class="finale-mark" aria-hidden="true">♡</div>
       <h2 id="final-title">End of playlist.</h2>
       <p id="final-note"></p>
       <p id="final-aside" class="finale-aside"></p>
-      <button id="replay-story" class="primary-button finale-button" type="button">Start the route again ↺</button>
+      <button id="replay-story" class="primary-button finale-button" type="button">Replay from the beginning ↺</button>
     </section>
   </main>
 
@@ -217,45 +124,6 @@
     </section>
   </div>
 
-  <div id="meaning-modal" class="meaning-modal" aria-hidden="true">
-    <div class="meaning-backdrop" data-close-meaning></div>
-    <section id="meaning-panel" class="meaning-panel" role="dialog" aria-modal="true" aria-labelledby="meaning-title">
-      <button id="meaning-close" class="meaning-close" type="button" aria-label="Close song note">×</button>
-      <div class="meaning-decor meaning-decor--tape-left" aria-hidden="true"></div>
-      <div class="meaning-decor meaning-decor--tape-right" aria-hidden="true"></div>
-      <div class="meaning-decor meaning-decor--flower" aria-hidden="true">✿</div>
-      <div class="meaning-shell">
-        <div class="meaning-head">
-          <div>
-            <p id="meaning-theme-label" class="meaning-theme-label">Map note</p>
-            <p class="meaning-kicker">Why this song ♡</p>
-            <h2 id="meaning-title"></h2>
-            <p id="meaning-artist" class="meaning-artist"></p>
-            <div class="meaning-chips" aria-label="Song details">
-              <span id="meaning-part-chip" class="meaning-chip">Part I</span>
-              <span id="meaning-number-chip" class="meaning-chip">Track 1</span>
-            </div>
-          </div>
-          <div id="meaning-motif" class="meaning-motif" aria-hidden="true">♡</div>
-        </div>
-
-        <div id="meaning-scroll" class="meaning-scroll">
-          <div class="meaning-scroll-prompt"><span aria-hidden="true">↡</span><strong>Keep scrolling</strong><span>There’s a highlighted line waiting below. ♡</span></div>
-          <div id="meaning-body" class="meaning-body"></div>
-          <section id="meaning-highlight-wrap" class="meaning-highlight-wrap">
-            <button id="meaning-highlight-toggle" class="meaning-highlight-toggle" type="button" aria-expanded="false">Unfurl highlighted lyric ♡</button>
-            <div id="meaning-highlight-card" class="meaning-highlight-card" hidden>
-              <div class="meaning-highlight-label">Highlighted lyric ♡</div>
-              <div class="meaning-highlight-sub">the line I’d underline for you</div>
-              <div id="meaning-highlight-text" class="meaning-highlight-text"></div>
-            </div>
-          </section>
-          <p id="meaning-signoff" class="meaning-signoff">A little keepsake note from the map. ♡</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
 
   <div id="full-playlist-modal" class="full-playlist-modal" aria-hidden="true">
     <div class="full-playlist-backdrop" data-close-full-playlist></div>
@@ -264,12 +132,12 @@
       <div class="full-playlist-heading">
         <p class="tiny-caps">Spotify</p>
         <h2 id="full-playlist-title">The whole playlist ♡</h2>
-        <a class="full-playlist-external" href="https://open.spotify.com/playlist/22DITzRc1C2YIDVDcQww5d?si=d8ea4f7c11c546f6" target="_blank" rel="noopener">Open in Spotify ↗</a>
+        <a class="full-playlist-external" href="https://open.spotify.com/playlist/4WgQR20AgZJ4i7o3nDNQzk?si=07a312978dbf4022" target="_blank" rel="noopener noreferrer">Open in Spotify ↗</a>
       </div>
       <div class="full-playlist-embed-wrap">
         <iframe
           id="full-playlist-embed"
-          data-src="https://open.spotify.com/embed/playlist/22DITzRc1C2YIDVDcQww5d?utm_source=generator&si=d8ea4f7c11c546f6"
+          data-src="https://open.spotify.com/embed/playlist/4WgQR20AgZJ4i7o3nDNQzk?utm_source=generator&si=07a312978dbf4022"
           title="Full Spotify playlist"
           style="border-radius:12px"
           width="100%"
@@ -282,18 +150,18 @@
     </section>
   </div>
 
-  <aside id="sticky-player" class="sticky-player" aria-label="Map player" aria-hidden="true">
+  <aside id="sticky-player" class="sticky-player" aria-label="Playlist player" aria-hidden="true">
     <div class="player-progress" aria-hidden="true">
       <div id="player-progress-fill" class="player-progress-fill"></div>
     </div>
 
     <div class="player-main-row">
       <button id="player-track-button" class="player-track-copy" type="button" aria-label="Show current song in playlist">
-        <span id="player-track-number" class="player-track-number">01 / 37</span>
+        <span id="player-track-number" class="player-track-number">01 / 44</span>
         <span class="player-track-text">
           <span id="player-chapter" class="player-track-chapter">I · The Crush</span>
-          <strong id="now-title">Nice To Meet You</strong>
-          <span id="now-artist">Myles Smith</span>
+          <strong id="now-title">this is what having a massive crush on someone feels like</strong>
+          <span id="now-artist">Clinton Kane</span>
         </span>
       </button>
 
@@ -308,7 +176,6 @@
 
       <div class="player-actions">
         <button id="player-lyrics" class="player-action" type="button">Lyrics ♡</button>
-        <button id="player-why" class="player-action" type="button" hidden>Why this song ♡</button>
         <button id="player-full-playlist" class="player-action" type="button">Full playlist ♫</button>
         <button id="player-spotify-toggle" class="player-action" type="button" aria-expanded="false" aria-controls="spotify-drawer">Spotify ▴</button>
       </div>
@@ -332,7 +199,6 @@
     <a href="#top">Back to the top ↑</a>
   </footer>
 
-  <script src="auth.js"></script>
   <script src="playlist-data.js"></script>
   <script src="lyrics-data.js"></script>
   <script src="lyric-themes.js"></script>

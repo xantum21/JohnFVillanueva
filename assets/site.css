@@ -805,6 +805,95 @@ details[open] summary::after { content: "−"; }
 .interest strong { display: block; }
 .interest span { display: block; margin-top: 4px; color: var(--muted); font-size: 0.8rem; }
 
+.competitive-milestones {
+  margin-top: 26px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.milestone-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: 20px;
+  align-items: start;
+}
+.milestone-heading .eyebrow {
+  margin: 0;
+  color: var(--red-dark);
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.milestone-heading > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.65;
+}
+.rank-badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+.rank-badge-card {
+  --rank-accent: var(--red);
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 10px 26px rgba(16, 42, 52, 0.06);
+}
+.rank-badge-rivals { --rank-accent: #b98b37; }
+.rank-badge-tekken { --rank-accent: var(--red); }
+.rank-badge-starcraft { --rank-accent: #4f728a; }
+.rank-emblem {
+  width: 52px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  clip-path: polygon(50% 0, 91% 24%, 91% 74%, 50% 100%, 9% 74%, 9% 24%);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--rank-accent) 76%, white), var(--rank-accent));
+  color: white;
+  filter: drop-shadow(0 7px 10px rgba(16, 42, 52, 0.16));
+}
+.rank-emblem span {
+  font-family: var(--sans);
+  font-size: 0.83rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+.rank-badge-copy { min-width: 0; }
+.rank-badge-copy strong,
+.rank-badge-copy span,
+.rank-badge-copy small { display: block; }
+.rank-badge-copy strong {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.rank-badge-copy .rank-title {
+  margin-top: 2px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.05;
+}
+.rank-badge-copy small {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.65rem;
+  line-height: 1.35;
+}
+
 .life-photo-journal {
   padding: clamp(66px, 8vw, 100px) 0;
   border-bottom: 1px solid var(--line);
@@ -1021,6 +1110,8 @@ details[open] summary::after { content: "−"; }
   .grid-4,
   .contact-grid,
   .interest-grid { grid-template-columns: 1fr; }
+  .rank-badge-grid { grid-template-columns: 1fr; }
+  .milestone-heading { grid-template-columns: 1fr; gap: 8px; }
   .section-heading h2 { font-size: 2.75rem; }
   .stat-band { grid-template-columns: 1fr 1fr; }
   .email-panel { grid-template-columns: 1fr; }

@@ -1,12 +1,16 @@
-# Playlist order review — V32
+# V28 Order Review
 
-Synced to the current Spotify playlist order (36 tracks).
+V28 keeps the V27 vibe-first sequence and adds two new narrative beats without removing any existing songs.
 
-- Added **Bloom - Bonus Track — The Paper Kites** at #19.
-- Removed **Just You and I — Tom Walker**, **Photograph — Boyce Avenue & Bea Miller**, and **Better Half of Me — Tom Walker**.
-- Added **Canada (feat. Alessia Cara) — LAUV & Alessia Cara** at #25.
-- Added **When The Sun Goes Down — Leslie Grace & Corey Hawkins** at #26.
-- Removed **Never Seen Anything “Quite Like You” — The Script** and **Perfect — Ed Sheeran**.
-- Added **Would You Fall in Love with Me Again — Jorge Rivera-Herrans & Anna Lea** as the finale at #36.
-- Chapter boundaries now follow the Spotify sequence: 1–5, 6–14, 15–19, 20–26, 27–36.
-- **lyrics-data.js was not edited** in this pass.
+## New opener
+
+1. **Nice To Meet You — Myles Smith** now opens Part I. It functions as the inciting encounter before the existing crush material.
+2. The former tracks shift down by one through the rest of the playlist.
+
+## New late-Forever beat
+
+**Imagine - Acoustic — Ben Platt** is placed immediately before **I Will Spend My Whole Life Loving You — Imaginary Future & Kina Grannis**. This gives the finale a quiet “I cannot picture my life without you” beat before the explicit whole-life promise.
+
+## Final count
+
+**46 tracks across six parts.**

@@ -1,21 +1,9 @@
-JohnFVillanueva website release: 2026-08-17-v7.9
+JohnFVillanueva website release: 2026-09-10-v8.1
 
-Prepared for deployment on August 17, 2026.
+Prepared for deployment on September 10, 2026.
 
 Verification markers:
-- Timeline archive: 84 dated entries across 2011–2026
-- Personal milestones added: 2012 high-school graduation; StarCraft II Gold-to-Masters progression; PlayStation Experience 2015 tournament semifinalist; Marvel Rivals Gold-to-Diamond progression
-- Incomplete Columbia Corporate Finance and NYIF Mergers & Acquisitions programs removed
-- Timeline controls: search, category filters, year rail, era jumps, autoplay, expandable entries, and deep links
-- BSN expected completion: April 2027
-- Current BSN GPA: 3.84
-- Sigma Theta Tau: inducted August 2026
-- California CNA: active; Rosewood Post Acute, January 2026–present
-- AHA BLS: current
-- ACLS and PALS: current; completed August 12, 2026
-- Basic EKG Interpretation: completed August 2026
-- Personal-photo refresh: About, Life, Timeline, and the unlisted Dating page
-- Credential wording audit: no remaining public-facing pre-course status language
-- Dating photo refresh: five distinct activity, event, travel, and dressed-up images with no Life-page reuse
-- Public resume: one-page, single-column ATS-friendly edition
-- Interactive library: 23 playable experiences across 6 collections
+- Life / Gaming: competitive milestone badges for Marvel Rivals Grandmaster, Tekken 8 Tekken King, and StarCraft II Masters
+- Timeline archive: 86 dated entries across 2011–2026
+- New 2026 competition entries: Marvel Rivals Grandmaster and Tekken 8 Tekken King
+- Existing site structure, editorial visual system, responsive navigation, project library, résumé, and personal-photo refresh preserved

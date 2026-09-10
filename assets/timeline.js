@@ -1562,6 +1562,42 @@
   },
   {
     "year": 2026,
+    "lane": "competition",
+    "title": "Marvel Rivals — Grandmaster",
+    "org": "Competitive ranked play",
+    "type": "Competitive gaming",
+    "date": "August 2026",
+    "body": "Reached Grandmaster after a sustained support climb, turning the earlier Gold-to-Diamond progression into a completed top-rank milestone.",
+    "details": [
+      "Reached Grandmaster in August 2026 after climbing through Diamond.",
+      "Support remained the primary role, with Rocket Raccoon among the long-term mains."
+    ],
+    "skills": [
+      "Team Play",
+      "Adaptation",
+      "Competitive Progression"
+    ]
+  },
+  {
+    "year": 2026,
+    "lane": "competition",
+    "title": "Tekken 8 — Tekken King",
+    "org": "Ranked ladder",
+    "type": "Competitive gaming",
+    "date": "September 2026",
+    "body": "Reached Tekken King in Season 3 with Kunimitsu, the highest named Tekken rank milestone reached to date.",
+    "details": [
+      "The climb moved through the blue ranks before breaking into Tekken King.",
+      "Kunimitsu is the primary character for the Season 3 run."
+    ],
+    "skills": [
+      "Matchup Learning",
+      "Execution",
+      "Adaptation"
+    ]
+  },
+  {
+    "year": 2026,
     "lane": "clinical",
     "title": "Certified Nursing Assistant",
     "org": "Rosewood Post Acute (formerly Windsor Rosewood Care Center)",

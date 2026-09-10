@@ -186,16 +186,3 @@ Reordered selected tracks for smoother genre/energy/production flow while keepin
 ## V28 first-hello + imagine additions
 
 Added **Nice To Meet You — Myles Smith** as the new opening song of Part I so the story begins with the encounter itself before the crush fully lands. Added **Imagine - Acoustic — Ben Platt** in Part VI immediately before **I Will Spend My Whole Life Loving You**. The full narrative now contains 46 tracks. Spotify mappings, YouTube Music links, chapter ranges, track numbering, lyric data, lyric-letter themes, letter details, copy counts, and the master-order files were updated together. Lyrics for both new tracks come from the user-supplied `final v(1).docx`.
-
-## V29 password restored
-The main playlist page is again protected by a client-side password gate. The configured PIN is `5816`; the script stores only its SHA-256 digest and remembers a successful unlock for the current browser session via `sessionStorage`. This is a casual privacy gate for a static site, not server-side authentication: someone intentionally inspecting the deployed source can still retrieve static assets.
-
-
-## V30 — Five-part trim
-
-The playlist now contains **37 tracks across five parts**. The former “Wait… You Like Me Too?” chapter was removed, **Kiss Me Slowly** now opens **Part II — Falling Hard**, later chapters were renumbered, **The Book of Love** moved to **Part V — Forever**, and the requested tracks were removed from the active playlist. The password gate from V29 remains unchanged.
-
-
-## V35 — Supplied lyrics integrated
-
-Added user-supplied lyrics from `final v2.docx` for **Bloom**, **Canada**, **When The Sun Goes Down**, and **Would You Fall in Love with Me Again**. The Part V / Part VI structure from V34 is unchanged; per-song personal meaning notes remain intentionally deferred.
