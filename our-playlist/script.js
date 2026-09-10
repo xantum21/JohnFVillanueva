@@ -7,6 +7,7 @@
   let currentTrackIndex = 0;
   let activeLyricsTrack = null;
   let activeLyricsLanguage = 'original';
+  let activeMeaningTrack = null;
   let playerIsPaused = true;
   let playerHasStarted = false;
   let spotifyReady = false;
@@ -185,14 +186,32 @@
     lyricsButton.type = 'button';
     const lyricInfo = lyricsConfig(track);
     const hasLyrics = lyricInfo.views.some((view) => String(view.text || '').trim());
-    lyricsButton.className = `stream-link lyrics-link${hasLyrics ? ' is-ready' : ' is-pending'}`;
-    lyricsButton.textContent = hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon';
-    lyricsButton.setAttribute('aria-label', `View lyrics for ${track.title}`);
-    lyricsButton.addEventListener('click', () => openLyrics(track));
+    const isInstrumental = track.uri === 'spotify:track:6m9mdoawCitwN8XKjpsBKb';
+    lyricsButton.className = `stream-link lyrics-link${isInstrumental ? ' is-instrumental' : (hasLyrics ? ' is-ready' : ' is-pending')}`;
+    lyricsButton.textContent = isInstrumental ? 'Instrumental ♫' : (hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon');
+    lyricsButton.setAttribute('aria-label', isInstrumental ? `${track.title} is an instrumental track` : `View lyrics for ${track.title}`);
+    if (isInstrumental) {
+      lyricsButton.disabled = true;
+      lyricsButton.title = 'Instrumental track — no lyrics';
+    } else {
+      lyricsButton.addEventListener('click', () => openLyrics(track));
+    }
+
+    const whyText = String(track.why || '').trim();
+    let whyButton = null;
+    if (whyText) {
+      whyButton = document.createElement('button');
+      whyButton.type = 'button';
+      whyButton.className = 'stream-link why-link';
+      whyButton.textContent = 'Why this song ♡';
+      whyButton.setAttribute('aria-label', `Read why ${track.title} is on this map`);
+      whyButton.addEventListener('click', () => openMeaning(allTracks[index]));
+    }
 
     actions.innerHTML = `
       <a class="stream-link" href="${track.spotifyUrl}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(track.title)} in Spotify">Spotify ↗</a>
       <a class="stream-link" href="${track.youtubeMusicUrl}" target="_blank" rel="noopener noreferrer" aria-label="Search ${escapeHtml(track.title)} in YouTube Music">YT Music ↗</a>`;
+    if (whyButton) actions.prepend(whyButton);
     actions.prepend(lyricsButton);
 
     row.append(button, actions);
@@ -281,9 +300,150 @@
     $('#sticky-player').dataset.part = track.chapter.part.toLowerCase();
     const lyricInfo = lyricsConfig(track);
     const hasLyrics = lyricInfo.views.some((view) => String(view.text || '').trim());
-    $('#player-lyrics').setAttribute('aria-label', `View lyrics for ${track.title}`);
-    $('#player-lyrics').textContent = hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon';
-    $('#player-lyrics').classList.toggle('is-ready', hasLyrics);
+    const isInstrumental = track.uri === 'spotify:track:6m9mdoawCitwN8XKjpsBKb';
+    const playerLyricsButton = $('#player-lyrics');
+    playerLyricsButton.setAttribute('aria-label', isInstrumental ? `${track.title} is an instrumental track` : `View lyrics for ${track.title}`);
+    playerLyricsButton.textContent = isInstrumental ? 'Instrumental ♫' : (hasLyrics ? 'Lyrics ♡' : 'Lyrics · soon');
+    playerLyricsButton.classList.toggle('is-ready', hasLyrics && !isInstrumental);
+    playerLyricsButton.classList.toggle('is-instrumental', isInstrumental);
+    playerLyricsButton.disabled = isInstrumental;
+    playerLyricsButton.title = isInstrumental ? 'Instrumental track — no lyrics' : '';
+
+    const whyButton = $('#player-why');
+    const hasWhy = Boolean(String(track.why || '').trim());
+    if (whyButton) {
+      whyButton.hidden = !hasWhy;
+      whyButton.setAttribute('aria-label', `Read why ${track.title} is on this map`);
+    }
+  }
+
+
+  function revealCurrentWhy() {
+    openMeaning(allTracks[currentTrackIndex]);
+  }
+
+  function applyMeaningTheme(track) {
+    const theme = lyricsTheme(track);
+    const panel = $('#meaning-panel');
+    if (!panel) return;
+    panel.style.setProperty('--meaning-paper', theme.paper || '#fffaf8');
+    panel.style.setProperty('--meaning-ink', theme.ink || '#3d2430');
+    panel.style.setProperty('--meaning-accent', theme.accent || '#d94f70');
+    panel.style.setProperty('--meaning-accent-2', theme.accent2 || '#f5b6c6');
+    panel.dataset.texture = theme.texture || 'soft';
+    $('#meaning-theme-label').textContent = theme.name || 'Map note';
+    $('#meaning-motif').textContent = theme.motif || '♡';
+  }
+
+  function renderMeaningBody(track) {
+    const body = $('#meaning-body');
+    const text = String(track?.why || '').trim();
+    body.innerHTML = '';
+    const paragraphs = text ? text.split(/\n\s*\n/g) : [];
+    if (!paragraphs.length) paragraphs.push('A little note is still coming for this one. ♡');
+
+    paragraphs.forEach((paragraph) => {
+      const p = document.createElement('p');
+      p.textContent = paragraph.trim();
+      body.appendChild(p);
+    });
+  }
+
+  function renderMeaningHighlight(track) {
+    const toggle = $('#meaning-highlight-toggle');
+    const card = $('#meaning-highlight-card');
+    const textWrap = $('#meaning-highlight-text');
+    const raw = String(track?.highlight || '').trim();
+    textWrap.innerHTML = '';
+    card.hidden = true;
+    card.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+
+    if (!raw) {
+      toggle.textContent = 'Unfurl the feeling ♡';
+      const empty = document.createElement('p');
+      empty.className = 'meaning-highlight-empty';
+      empty.textContent = 'Instrumental interlude ♡ Sometimes the feeling is the lyric.';
+      textWrap.appendChild(empty);
+      return;
+    }
+
+    toggle.textContent = 'Unfurl highlighted lyric ♡';
+    parseLyricsLines(raw).forEach((item) => {
+      if (item.type === 'gap') return;
+      const line = document.createElement('div');
+      line.className = item.type === 'section' ? 'meaning-highlight-section' : 'meaning-highlight-line';
+      line.textContent = item.text;
+      textWrap.appendChild(line);
+    });
+  }
+
+  function toggleMeaningHighlight() {
+    const button = $('#meaning-highlight-toggle');
+    const card = $('#meaning-highlight-card');
+    const opening = card.hidden;
+    card.hidden = !opening;
+    card.classList.toggle('is-open', opening);
+    button.setAttribute('aria-expanded', opening ? 'true' : 'false');
+    if (opening) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function attachMeaningPrompt() {
+    const scroller = $('#meaning-scroll');
+    const prompt = scroller?.querySelector('.meaning-scroll-prompt');
+    if (!scroller || !prompt) return;
+    prompt.classList.remove('is-hidden');
+    scroller.onscroll = () => {
+      prompt.classList.toggle('is-hidden', scroller.scrollTop > 22);
+    };
+  }
+
+  function decorateMeaningMeta(track) {
+    const part = track?.chapter?.part || 'I';
+    const number = track?.number || allTracks.findIndex((item) => item.uri === track?.uri) + 1;
+    const partChip = $('#meaning-part-chip');
+    const numberChip = $('#meaning-number-chip');
+    const signoff = $('#meaning-signoff');
+    if (partChip) partChip.textContent = `Part ${part} · ${track?.chapter?.title || 'Map note'}`;
+    if (numberChip) numberChip.textContent = `Track ${number}`;
+
+    const signoffsByPart = {
+      I: 'Pressed into the page like a first spark. ♡',
+      II: 'A page from the part where feelings grow louder. ♡',
+      III: 'A keepsake from the part where someone becomes your person. ♡',
+      IV: 'A note from the stretch where love starts imagining a life together. ♡',
+      V: 'A keepsake from the detours, distance, and roadbumps. ♡',
+      VI: 'Filed under forever and kept close. ♡'
+    };
+    if (signoff) signoff.textContent = signoffsByPart[part] || 'A little keepsake note from the map. ♡';
+  }
+
+  function openMeaning(track) {
+    if (!track) return;
+    activeMeaningTrack = track;
+    applyMeaningTheme(track);
+    $('#meaning-title').textContent = track.title;
+    $('#meaning-artist').textContent = track.artist;
+    decorateMeaningMeta(track);
+    renderMeaningBody(track);
+    renderMeaningHighlight(track);
+    const scroller = $('#meaning-scroll');
+    if (scroller) scroller.scrollTop = 0;
+    attachMeaningPrompt();
+
+    const modal = $('#meaning-modal');
+    modal.classList.add('is-visible');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('meaning-open');
+    $('#meaning-close').focus();
+  }
+
+  function closeMeaning() {
+    const modal = $('#meaning-modal');
+    modal.classList.remove('is-visible');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('meaning-open');
+    activeMeaningTrack = null;
   }
 
   function updateNavigationButtons() {
@@ -788,7 +948,12 @@
       setPlayerStatus('Playback was blocked by the browser — open the Spotify drawer and tap its play button.');
     }
   });
-  $('#player-lyrics').addEventListener('click', () => openLyrics(allTracks[currentTrackIndex]));
+  $('#player-lyrics').addEventListener('click', () => {
+    const track = allTracks[currentTrackIndex];
+    if (track?.uri === 'spotify:track:6m9mdoawCitwN8XKjpsBKb') return;
+    openLyrics(track);
+  });
+  $('#player-why')?.addEventListener('click', revealCurrentWhy);
   $('#player-full-playlist')?.addEventListener('click', openFullPlaylist);
   $('#open-full-playlist')?.addEventListener('click', openFullPlaylist);
   $('#full-playlist-close')?.addEventListener('click', closeFullPlaylist);
@@ -806,10 +971,14 @@
     window.setTimeout(() => document.querySelector('.track[data-index="0"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
   });
 
+  $('#meaning-highlight-toggle')?.addEventListener('click', toggleMeaningHighlight);
+  $('#meaning-close')?.addEventListener('click', closeMeaning);
+  $$('[data-close-meaning]').forEach((el) => el.addEventListener('click', closeMeaning));
   $('#lyrics-close').addEventListener('click', closeLyrics);
   $$('[data-close-lyrics]').forEach((el) => el.addEventListener('click', closeLyrics));
   document.addEventListener('keydown', (event) => {
     const modalOpen = $('#lyrics-modal').classList.contains('is-visible');
+    const meaningOpen = $('#meaning-modal')?.classList.contains('is-visible');
     const playerVisible = document.body.classList.contains('player-visible');
     const typingOrControl = /INPUT|TEXTAREA|BUTTON|A/.test(document.activeElement?.tagName || '');
 
@@ -817,16 +986,20 @@
       closeFullPlaylist();
       return;
     }
+    if (event.key === 'Escape' && meaningOpen) {
+      closeMeaning();
+      return;
+    }
     if (event.key === 'Escape' && modalOpen) closeLyrics();
-    if (event.key === ' ' && playerVisible && !modalOpen && !typingOrControl) {
+    if (event.key === ' ' && playerVisible && !modalOpen && !meaningOpen && !typingOrControl) {
       event.preventDefault();
       $('#player-play').click();
     }
-    if (event.key === 'ArrowRight' && playerVisible && !modalOpen && !typingOrControl && currentTrackIndex < allTracks.length - 1) {
+    if (event.key === 'ArrowRight' && playerVisible && !modalOpen && !meaningOpen && !typingOrControl && currentTrackIndex < allTracks.length - 1) {
       event.preventDefault();
       setActiveTrack(currentTrackIndex + 1, { play: true });
     }
-    if (event.key === 'ArrowLeft' && playerVisible && !modalOpen && !typingOrControl && currentTrackIndex > 0) {
+    if (event.key === 'ArrowLeft' && playerVisible && !modalOpen && !meaningOpen && !typingOrControl && currentTrackIndex > 0) {
       event.preventDefault();
       setActiveTrack(currentTrackIndex - 1, { play: true });
     }

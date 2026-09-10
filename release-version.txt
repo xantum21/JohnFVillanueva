@@ -1,4 +1,4 @@
-JohnFVillanueva website release: 2026-09-10-v8.2
+JohnFVillanueva website release: 2026-09-10-v8.3
 
 Prepared for deployment on September 10, 2026.
 
@@ -9,3 +9,4 @@ Verification markers:
 - Fanime Pokémon VGC semifinalist correctly remains under 2014
 - 2016 AMV history: one SacAnime entry and two Fanime entries
 - Public-facing timeline/recruiter meta commentary cleaned up
+- /our-playlist/ synchronized to standalone playlist v42 (superseding the v28 copy embedded in v8.2)

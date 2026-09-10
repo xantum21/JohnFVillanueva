@@ -94,4 +94,8 @@ window.VALENTINE_LYRIC_THEMES = {
   "spotify:track:6r9o3XGxSYFlX6ktsEqIbK": {"name": "Old Love Letter", "motif": "♡  hanggang pagtanda  ♡", "texture": "soft", "paper": "#fff9e9", "ink": "#3f3328", "accent": "#a66d51", "accent2": "#e8d2ad"},
   // Imagine - Acoustic — Ben Platt
   "spotify:track:3m9MKNTdPmsKJRqrhqQnhW": {"name": "Life Without You", "motif": "you  ∞  me", "texture": "stars", "paper": "#fbfaff", "ink": "#303044", "accent": "#6e6fa6", "accent2": "#d5d3ef"},
+  "spotify:track:1HMQmOWrkieKYWlFsjUP3D": {"name":"Golden Field","motif":"field  ♡  bloom","texture":"garden","paper":"#fffdf3","ink":"#353229","accent":"#b68a45","accent2":"#e7d6a8"},
+  "spotify:track:6Rf3dWdNQs5LTqFOiavqQr": {"name":"Runaway Postcard","motif":"→  north  ♡","texture":"postcard","paper":"#fbfcf7","ink":"#303734","accent":"#6f8e7d","accent2":"#d5dfca"},
+  "spotify:track:322nU6eXT4j7dj5ytj73SX": {"name":"Two Coasts at Sunset","motif":"CA  ☀  TX","texture":"watercolor","paper":"#fff9f3","ink":"#3b302d","accent":"#c36d58","accent2":"#f0c9a9"},
+  "spotify:track:3iYeXCdD3d0zlex2v0CpVt": {"name":"The Long Return","motif":"home  ←  ♡","texture":"vellum","paper":"#fffaf0","ink":"#342f2c","accent":"#9b7655","accent2":"#dbc9a8"}
 };
