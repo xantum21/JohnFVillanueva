@@ -38,7 +38,7 @@ h2{font-size:24px;color:#ffd84a;text-shadow:3px 3px 0 #5a1f1f;letter-spacing:1px
 #menubtns{display:flex;flex-direction:column;gap:10px;width:400px}
 #menubtns .btn{width:100%}
 #menuhero{font-size:22px;color:#c9bda0;margin-bottom:6px;text-shadow:2px 2px 0 #1b1622}#menuhero b{color:#ffd84a;font-weight:400}
-#menu .foot{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:19px;color:#a89c84;padding:0 120px}
+#menu .foot{margin-top:auto;width:100%;text-align:center;font-size:19px;color:#a89c84;padding:0 80px}
 
 /* ---- character select ---- */
 #heroes{display:flex;gap:18px}
@@ -120,7 +120,7 @@ input[type=range]{width:240px;accent-color:#ffd84a}
 #shopgoldbox{display:flex;align-items:center;gap:10px;font-family:'Press Start 2P',monospace;font-size:26px;color:#ffd84a;background:#1c1529;border:3px solid #0d0a14;padding:10px 16px;margin-top:6px;white-space:nowrap}
 #shopgoldbox small{font-family:'VT323',monospace;font-size:18px;color:#c9bda0;display:block}
 #shopstats{display:flex;gap:22px;font-size:20px;color:#c9bda0;flex-wrap:wrap;justify-content:center}#shopstats b{color:#f4e9c8;font-weight:400}#shopstats i{color:#8f84a0;font-style:normal;font-size:17px}
-.shopc{width:292px;height:396px;gap:5px;padding:14px 13px 12px}
+.shopc{width:292px;min-height:396px;gap:5px;padding:14px 13px 12px}
 .shopc.supply{box-shadow:0 0 0 3px #b8493a}.shopc.gear{box-shadow:0 0 0 3px #8f97a3}.shopc.myth{box-shadow:0 0 0 3px #3fc0a0;background:#16202c}
 .shopc.done{opacity:.6}.shopc .cicon{width:60px;height:60px}.shopc .cname{min-height:34px;font-size:11px}.shopc .cdesc{font-size:22px}.shopc .ctag{font-size:19px}
 .shopc .buy{width:100%;font-size:11px;padding:11px 6px;margin-top:6px}
@@ -141,7 +141,7 @@ input[type=range]{width:240px;accent-color:#ffd84a}
 .navfocus{outline:4px solid #7fe0ff!important;outline-offset:3px;filter:brightness(1.15)}
 #menu{padding-top:40px;gap:8px}
 #menu h1 span{font-size:72px;margin-top:6px}
-#menubtns{gap:9px}#menubtns .btn{padding:12px 22px}
+#menubtns{gap:5px}#menubtns .btn{padding:7px 22px}
 #menufunds{position:absolute;right:22px;top:18px;display:flex;align-items:center;gap:8px;font-size:22px;color:#c9e9ff;background:#14202e;border:3px solid #0d0a14;box-shadow:0 0 0 2px #3f7fb8;padding:6px 12px}
 #menufunds img{width:24px;height:24px}#menufunds b{font-family:'Press Start 2P',monospace;font-size:14px;color:#7fe0ff;font-weight:400}
 /* mode select */
@@ -161,8 +161,8 @@ input[type=range]{width:240px;accent-color:#ffd84a}
 /* database */
 .dbwrap{display:flex;gap:16px;align-items:flex-start}#dbtabs{display:flex;flex-direction:column;gap:10px;width:210px}
 .dbtab{display:flex;align-items:center;gap:10px;text-transform:none;padding:10px 12px}.dbtab img{height:40px}
-#dbbody{width:980px;height:520px;display:flex;gap:26px;font-size:19.5px;line-height:1.05;color:#e0d6ba;overflow:hidden}
-.dbcol{flex:1}.dbhead{display:flex;gap:14px;align-items:center;margin-bottom:8px}.dbhead img{height:64px}.dbname{font-size:22px;color:#ffd84a;margin-bottom:6px}
+#dbbody{width:980px;height:520px;display:flex;align-items:flex-start;gap:26px;font-size:19.5px;line-height:1.05;color:#e0d6ba}
+.dbcol{flex:1;min-width:0}.dbhead{display:flex;gap:14px;align-items:center;margin-bottom:8px}.dbhead img{height:64px}.dbname{font-size:22px;color:#ffd84a;margin-bottom:6px}
 #dbbody h3{font-family:'Press Start 2P',monospace;font-size:10.5px;color:#ffd84a;font-weight:400;margin:11px 0 5px;line-height:1.5}
 #dbbody ul{margin-left:20px}#dbbody li{margin-bottom:1px}
 .tagf,.tagh{font-size:8px;padding:3px 5px;color:#1b1622;margin-right:6px}.tagf{background:#c58cff}.tagh{background:#7be38a}
@@ -203,6 +203,8 @@ table.ctl td.k2{color:#ffb02e}table.ctl td.k3{color:#4fd0e0}table.ctl i{color:#8
 .vicsub{font-size:16px;color:#f4e9c8;text-shadow:2px 2px 0 #1b1622;letter-spacing:4px;animation:vicin 1.2s .9s both}
 #vicline{font-size:27px;color:#fffbe0;text-shadow:2px 2px 0 #1b1622,-1px -1px 0 #1b1622;max-width:900px;animation:vicin 1.2s 2.2s both}
 #vicskip{margin-top:6px;font-size:10px;padding:9px 14px;animation:vicin 1s 3.5s both}
+#vicname{font-size:11px;color:#ffd84a;text-shadow:2px 2px 0 #1b1622;letter-spacing:2px;animation:vicin 1.2s 1.6s both}#victory.results #vicname{display:none}
+#vicend{width:1136px;max-width:none;font-size:21px;padding:8px 14px;text-align:center}#vicend b{color:#ffd84a;font-weight:400}.endhint{font-size:18px;color:#b9b0c8}
 @keyframes vicin{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
 .vicpanel{display:none;flex-direction:column;align-items:center;gap:10px}
 #victory.results{background:rgba(9,6,16,.84)}#victory.results .vicpanel{display:flex}#victory.results #vicskip{display:none}#victory.results .vichead h1{font-size:40px}#victory.results #vicline{font-size:22px}
@@ -214,14 +216,15 @@ table.ctl td.k2{color:#ffb02e}table.ctl td.k3{color:#4fd0e0}table.ctl i{color:#8
 .tbtn.sm{width:74px;height:74px}.tbtn.sp{border-color:#ffb02e;color:#ffb02e}.tbtn.ab{border-color:#4fd0e0;color:#4fd0e0}.tbtn.pw{border-color:#c58cff;color:#c58cff}.tbtn.down{background:rgba(244,233,200,.5);transform:scale(.94)}
 .thint{position:absolute;left:0;right:0;bottom:92px;text-align:center;font-size:19px;color:rgba(244,233,200,.6);pointer-events:none;padding-right:260px}
 body[data-input=touch] #slots .key{display:none}
-html,body{touch-action:none;overscroll-behavior:none}
+html,body{overscroll-behavior:none}
+#game{touch-action:none}
 /* ---------- Alpha 0.3 additions ---------- */
 .chip.v{background:#4a2a6b}
 #banner.deed #banner-t{color:#c08aff;font-size:28px}
 #charmcards .card{min-height:300px;cursor:pointer;box-shadow:0 0 0 3px #c08aff}
 #charmcards .card:hover{background:#2a2244;transform:translateY(-6px);box-shadow:0 0 0 4px #e0c8ff}
 #charm h2{color:#c08aff}
-#deeds{gap:9px;padding:14px 30px}
+#deeds{gap:5px;padding:8px 30px}#deeds h2{margin:0}
 #deedgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;width:100%}
 .deedcard{background:#181222;border:3px solid #0d0a14;box-shadow:0 0 0 2px #3a2f48;padding:7px 9px;display:flex;flex-direction:column;gap:4px;min-height:150px;opacity:.78}
 .deedcard.done{box-shadow:0 0 0 2px #c08aff;opacity:1;background:#221a36}
@@ -232,6 +235,52 @@ html,body{touch-action:none;overscroll-behavior:none}
 .deedcard .dcharm b{display:block;color:#c08aff;font-weight:normal}.deedcard .dcharm span{color:#9a90aa}
 .deedcard.done .dcharm span{color:#d8cfe6}
 #deedbase{justify-content:center}
+.dkind{font-size:7px;letter-spacing:1px;color:#7be38a}.dkind.v{color:#c08aff;border-top:2px solid #0d0a14;padding-top:4px}.deedcard .dcharm{border-top:none;padding-top:0}.deedcard{min-height:120px;padding:5px 9px;gap:2px}
+/* wardrobe (0.4) */
+#wardrobe{gap:8px;padding:10px 26px;justify-content:flex-start}
+.wdtop{display:flex;align-items:center;gap:14px;width:100%}.wdtop h2{margin:0;flex:1;text-align:left}
+#wdtabs{display:flex;gap:8px}.wdtab{display:flex;align-items:center;gap:8px;font-size:10px;padding:6px 12px;text-transform:none}.wdtab img{height:32px;image-rendering:pixelated}.wdtab.sel{box-shadow:0 0 0 3px #ffd84a}.wdtab small{color:#9fd0ff;font-size:8px}
+#wdbank{font-family:'Press Start 2P',monospace;font-size:14px;color:#c9e9ff;text-align:right}#wdbank small{display:block;font-size:7px;color:#7fb8d8;margin-top:4px}
+#wdgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;width:100%}
+.wdcard{background:#181222;border:3px solid #0d0a14;box-shadow:0 0 0 2px #3a2f48;padding:6px 7px;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:262px}
+.wdcard.has{box-shadow:0 0 0 2px #3f7fb8}.wdcard.on{box-shadow:0 0 0 3px #ffd84a;background:#2a2238}
+.wdimg{width:60px;height:80px;image-rendering:pixelated}
+.wdname{font-size:8.5px;line-height:1.4;color:#ffd84a;text-align:center}
+.wdkind{font-size:6.5px;letter-spacing:1px;color:#9fd0ff}.wdkind.costume{color:#c08aff}.wdkind.default{color:#7be38a}
+.wdnote{font-size:15px;line-height:1;color:#c8bfd6;text-align:center;flex:1}
+.wdcard .btn{font-size:8.5px;padding:7px 4px;width:100%}
+#wdmsg{font-size:20px;color:#f4e9c8;min-height:22px}
+/* chronicle (0.4) */
+#codex{gap:9px;padding:14px 30px}
+.cxwrap{display:flex;gap:14px;align-items:flex-start}
+#cxlist{width:300px;height:470px;overflow-y:auto;display:flex;flex-direction:column;gap:4px;padding-right:6px}
+#cxlist h3{font-family:'Press Start 2P',monospace;font-size:9px;color:#ffd84a;font-weight:400;margin:6px 0 2px}
+.cxbtn{text-transform:none;font-size:9px;padding:7px 9px;text-align:left;width:100%}.cxbtn.sel{box-shadow:0 0 0 3px #7be38a}.cxbtn.locked{opacity:.55;color:#9a90aa}
+#cxbody{width:860px;height:470px;font-size:21px;line-height:1.08;color:#e0d6ba;overflow-y:auto}
+#cxbody .cxname{font-family:'Press Start 2P',monospace;font-size:18px;color:#ffd84a;margin-bottom:10px;line-height:1.4}
+#cxbody p{margin-bottom:9px}
+.tagg,.tagl{font-size:8px;padding:3px 5px;color:#1b1622;margin-right:6px}.tagg{background:#6ac8ff}.tagl{background:#ffb02e}
+.cxlock{color:#9a90aa;font-size:23px}
+/* 0.4 readability update */
+.screen{justify-content:safe center;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y;overflow-wrap:anywhere}
+.screen > *{flex-shrink:0}
+#menu{padding-bottom:14px}
+.scroll-pane{min-height:0;max-width:100%;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y;overflow-wrap:anywhere}
+.screen > .scroll-pane,.screen > .vichead,.screen > .vicpanel{flex-shrink:1;min-height:0}
+.scroll-flow{display:flex;flex-direction:column;align-items:center;gap:inherit;padding:6px;margin:-6px;max-width:calc(100% + 12px);width:calc(100% + 12px)}
+.scroll-flow > *,.vichead > *,.vicpanel > *,#cxlist > *{flex-shrink:0}
+.scroll-flow > *{max-width:100%}
+.vichead > .scroll-pane,.vicpanel > .scroll-pane{flex-shrink:1}
+.screen,.scroll-pane{scrollbar-color:#c9952a #221a30;scroll-padding-block:6px}
+.screen :is(.scroll-pane,[role="button"]):focus-visible,.screen:focus-visible{outline:2px solid #7fe0ff;outline-offset:-3px}
+#dbbody,#cxbody{scrollbar-gutter:stable}
+#cxlist{padding:4px 6px 6px 4px}
+#cxlist,#wdscroll{overflow-anchor:none}
+#notes .cols{width:100%}
+#victory #vicstory{padding:4px;margin:-4px}
+.vicpanel{width:100%}
+.scroll-pad-hint{display:none;font-size:18px;color:#9fd0ff;text-align:center}
+body[data-input="pad"] .scroll-pad-hint{display:block}
 </style>
 </head>
 <body>
@@ -259,30 +308,32 @@ html,body{touch-action:none;overscroll-behavior:none}
     <div class="thint">Left thumb: move &nbsp;·&nbsp; Right thumb: drag to aim and attack</div>
   </div>
 
-  <div id="menu" class="screen">
+  <div id="menu" class="screen" role="region" tabindex="0" aria-label="Main menu">
     <div id="menufunds"></div>
-    <div class="kicker px">A HISTORICAL FANTASY HORDE SURVIVAL &middot; ALPHA 0.3</div>
+    <div class="kicker px">A HISTORICAL FANTASY HORDE SURVIVAL &middot; ALPHA 0.4.3</div>
     <h1>THE SIEGE OF MANILA<span>1574</span></h1>
     <div class="tag">Limahong's fleet is in the bay. Three unlikely defenders hold the palisade.</div>
     <div id="menubtns">
       <button class="btn gold" data-act="play" data-focus="1">Play</button>
       <button class="btn" data-act="database">Character Database</button>
       <button class="btn" data-act="perm">Permanent Upgrades</button>
-      <button class="btn" data-act="deeds">Deeds &amp; Anting-anting</button>
+      <button class="btn" data-act="wardrobe">Wardrobe</button>
+      <button class="btn" data-act="deeds">Deeds &amp; Perks</button>
+      <button class="btn" data-act="codex">Chronicle</button>
+      <button class="btn" data-act="notes">Historical Notes</button>
       <button class="btn" data-act="controls">Controls</button>
       <button class="btn" data-act="settings">Settings</button>
-      <button class="btn" data-act="notes">Historical Notes</button>
     </div>
     <div class="foot">Historical fantasy. The 1574 attack on Manila happened; Mateo, Datu, Diego and the spirits who aid them are invention.</div>
   </div>
 
-  <div id="modesel" class="screen hidden">
+  <div id="modesel" class="screen hidden" role="region" tabindex="0" aria-label="Mode selection">
     <h2>CHOOSE A MODE</h2>
     <div id="modes"></div>
     <button class="btn" data-act="back">Back</button>
   </div>
 
-  <div id="charsel" class="screen hidden">
+  <div id="charsel" class="screen hidden" role="region" tabindex="0" aria-label="Character selection">
     <h2 id="charhead">CHOOSE YOUR DEFENDER</h2>
     <div id="heroes"></div>
     <div class="sub" id="startsum"></div>
@@ -291,19 +342,21 @@ html,body{touch-action:none;overscroll-behavior:none}
 
   <div id="database" class="screen hidden">
     <h2>CHARACTER DATABASE</h2>
-    <div class="dbwrap"><div id="dbtabs"></div><div id="dbbody" class="panel"></div></div>
+    <div class="dbwrap"><div id="dbtabs"></div><div id="dbbody" class="scroll-pane panel" data-reading role="region" tabindex="0" aria-label="Character article"></div></div>
     <button class="btn" data-act="back">Back</button>
   </div>
 
   <div id="perm" class="screen hidden">
     <div class="permtop"><div><h2>PERMANENT UPGRADES</h2><div class="sub">Campaign Funds are earned by clearing waves, beating bosses and winning Arcade mode. They are separate from XP and gold, and what you buy here lasts across runs.</div></div>
       <div id="permbank"><span id="permfunds">0</span><small>Campaign Funds</small></div></div>
-    <div id="permgrid"></div>
+    <div class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Upgrade cards">
+      <div id="permgrid"></div>
+    </div>
     <div id="permmsg"></div>
     <div class="row"><button class="btn" data-act="back" data-focus="1">Back</button><button class="btn red" data-act="reset">Reset progression</button></div>
   </div>
 
-  <div id="confirm" class="screen hidden">
+  <div id="confirm" class="screen hidden" role="dialog" aria-modal="true" tabindex="0" aria-label="Reset confirmation">
     <div class="panel" style="display:flex;flex-direction:column;gap:16px;align-items:center;max-width:760px">
       <h2>ERASE ALL PROGRESS?</h2>
       <div class="sub">This deletes your Campaign Funds, permanent upgrades, victories and records. Sound and display settings are kept. It cannot be undone.</div>
@@ -313,93 +366,123 @@ html,body{touch-action:none;overscroll-behavior:none}
 
   <div id="controls" class="screen hidden">
     <h2>CONTROLS</h2>
-    <div class="ctlwrap">
-      <table class="ctl panel">
-        <tr><th colspan="2">KEYBOARD AND MOUSE</th></tr>
-        <tr><td>W A S D</td><td>Move (arrow keys also work)</td></tr>
-        <tr><td>MOUSE</td><td>Aim</td></tr>
-        <tr><td>LEFT MOUSE</td><td>Primary weapon. Hold to keep attacking</td></tr>
-        <tr><td class="k2">RIGHT MOUSE</td><td>Offensive special <i>(orange ring)</i></td></tr>
-        <tr><td class="k3">SHIFT</td><td>Movement / defensive ability <i>(cyan ring)</i></td></tr>
-        <tr><td>SPACE</td><td>Dodge. You cannot be hit mid-dodge</td></tr>
-        <tr><td>Q</td><td>Mythological active power</td></tr>
-        <tr><td>E</td><td>Open a supply chest</td></tr>
-        <tr><td>1 2 3 / ENTER</td><td>Pick a card; 1-4 buy in the shop</td></tr>
-        <tr><td>ESC or P</td><td>Pause</td></tr>
-      </table>
-      <table class="ctl panel">
-        <tr><th colspan="2">GAMEPAD</th></tr>
-        <tr><td>LEFT STICK</td><td>Move</td></tr>
-        <tr><td>RIGHT STICK</td><td>Aim (keeps the last direction)</td></tr>
-        <tr><td>RT / R2</td><td>Primary weapon</td></tr>
-        <tr><td class="k2">RB / R1</td><td>Offensive special</td></tr>
-        <tr><td class="k3">LB / L1</td><td>Movement / defensive ability</td></tr>
-        <tr><td>A / CROSS</td><td>Dodge. Confirm in menus</td></tr>
-        <tr><td>LT / L2</td><td>Mythological active power</td></tr>
-        <tr><td>X / SQUARE</td><td>Open a supply chest</td></tr>
-        <tr><td>D-PAD / STICK</td><td>Move through menus; B / Circle goes back</td></tr>
-        <tr><td>START</td><td>Pause</td></tr>
-      </table>
+    <div class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Control instructions">
+      <div class="ctlwrap">
+        <table class="ctl panel">
+          <tr><th colspan="2">KEYBOARD AND MOUSE</th></tr>
+          <tr><td>W A S D</td><td>Move (arrow keys also work)</td></tr>
+          <tr><td>MOUSE</td><td>Aim</td></tr>
+          <tr><td>LEFT MOUSE</td><td>Primary weapon. Hold to keep attacking</td></tr>
+          <tr><td class="k2">RIGHT MOUSE</td><td>Offensive special <i>(orange ring)</i></td></tr>
+          <tr><td class="k3">SHIFT</td><td>Movement / defensive ability <i>(cyan ring)</i></td></tr>
+          <tr><td>SPACE</td><td>Dodge. You cannot be hit mid-dodge</td></tr>
+          <tr><td>Q</td><td>Mythological active power</td></tr>
+          <tr><td>E</td><td>Open a supply chest</td></tr>
+          <tr><td>1 2 3 / ENTER</td><td>Pick a card; 1-4 buy in the shop</td></tr>
+          <tr><td>ESC or P</td><td>Pause</td></tr>
+        </table>
+        <table class="ctl panel">
+          <tr><th colspan="2">GAMEPAD</th></tr>
+          <tr><td>LEFT STICK</td><td>Move</td></tr>
+          <tr><td>RIGHT STICK</td><td>Aim or scroll in menus</td></tr>
+          <tr><td>RT / R2</td><td>Primary weapon</td></tr>
+          <tr><td class="k2">RB / R1</td><td>Offensive special</td></tr>
+          <tr><td class="k3">LB / L1</td><td>Movement / defensive ability</td></tr>
+          <tr><td>A / CROSS</td><td>Dodge. Confirm in menus</td></tr>
+          <tr><td>LT / L2</td><td>Mythological active power</td></tr>
+          <tr><td>X / SQUARE</td><td>Open a supply chest</td></tr>
+          <tr><td>D-PAD / STICK</td><td>Move through menus; B / Circle goes back</td></tr>
+          <tr><td>START</td><td>Pause</td></tr>
+        </table>
+      </div>
+      <div class="sub">Touch screens: left thumb moves, right thumb aims and attacks, with buttons for the rest. Two rings sit under your hero: the inner <b style="color:#4fd0e0">cyan</b> ring is Shift, the outer <b style="color:#ffb02e">orange</b> pips are the special.</div>
     </div>
-    <div class="sub">Touch screens: left thumb moves, right thumb aims and attacks, with buttons for the rest. Two rings sit under your hero: the inner <b style="color:#4fd0e0">cyan</b> ring is Shift, the outer <b style="color:#ffb02e">orange</b> pips are the special.</div>
     <button class="btn" data-act="back">Back</button>
   </div>
 
   <div id="settings" class="screen hidden">
     <h2>SETTINGS</h2>
-    <div class="panel">
-      <div class="setrow"><span>Effects volume</span><span><input type="range" id="vol" min="0" max="100" step="5"> <span id="volv"></span></span></div>
-      <div class="setrow"><span>Music volume</span><span><input type="range" id="musicvol" min="0" max="100" step="5"> <span id="musicvolv"></span></span></div>
-      <div class="setrow"><span>Screen shake</span><button class="btn" data-act="shake" id="opt-shake">ON</button></div>
-      <div class="setrow"><span>Damage numbers</span><button class="btn" data-act="nums" id="opt-nums">ON</button></div>
-      <div class="setrow"><span>Screen flashes</span><button class="btn" data-act="flash" id="opt-flash">ON</button></div>
-      <div class="setrow"><span>Evening and night lighting</span><button class="btn" data-act="light" id="opt-light">FULL</button></div>
-      <div class="setrow"><span>Display</span><button class="btn" data-act="fullscreen">Toggle fullscreen</button></div>
+    <div class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Game settings">
+      <div class="panel">
+        <div class="setrow"><span>Effects volume</span><span><input type="range" id="vol" min="0" max="100" step="5"> <span id="volv"></span></span></div>
+        <div class="setrow"><span>Music volume</span><span><input type="range" id="musicvol" min="0" max="100" step="5"> <span id="musicvolv"></span></span></div>
+        <div class="setrow"><span>Screen shake</span><button class="btn" data-act="shake" id="opt-shake">ON</button></div>
+        <div class="setrow"><span>Damage numbers</span><button class="btn" data-act="nums" id="opt-nums">ON</button></div>
+        <div class="setrow"><span>Screen flashes</span><button class="btn" data-act="flash" id="opt-flash">ON</button></div>
+        <div class="setrow"><span>Evening and night lighting</span><button class="btn" data-act="light" id="opt-light">FULL</button></div>
+        <div class="setrow"><span>Display</span><button class="btn" data-act="fullscreen">Toggle fullscreen</button></div>
+      </div>
+      <div class="sub">Thirty tracks follow the game: menus, each hero's four battle themes, the merchant, low health and game over. Each boss fight plays one theme from that boss's pool, start to finish, and the pool is shuffled so fights do not repeat a theme until all have played.</div>
     </div>
-    <div class="sub">Thirty tracks follow the game: menus, each hero's four battle themes, the merchant, low health and game over. Each boss fight plays one theme from that boss's pool, start to finish, and the pool is shuffled so fights do not repeat a theme until all have played.</div>
     <button class="btn" data-act="back">Back</button>
   </div>
 
   <div id="notes" class="screen hidden">
     <h2>HISTORICAL NOTES</h2>
-    <div class="cols">
-      <div class="panel">
-        <h3>WHAT HAPPENED</h3>
-        <p>In the last days of November 1574 the corsair <b>Limahong</b> (Lin Feng) sailed into Manila Bay with a large fleet and struck the three-year-old Spanish settlement twice within days. His force was a maritime coalition that included Chinese and Japanese fighters.</p>
-        <p>Manila was then a town of timber, bamboo and nipa thatch behind a wooden palisade. The stone walls of Intramuros were built in later decades, so you will not find them here.</p>
-        <p>The defenders, Spaniards together with local and other allies, held the town and the fleet withdrew north.</p>
-        <h3 style="margin-top:14px">WHAT IS INVENTED</h3>
-        <p>Mateo, Datu and Diego are fictional. So are the bosses, the martial-arts mercenary, Datu's stone yo-yo, and every supernatural event. No nationality here is a villain: these are individual raiders in one fleet.</p>
-      </div>
-      <div class="panel">
-        <h3>THE SPIRITS</h3>
-        <p>The Philippines holds many peoples and many bodies of lore. The powers sold between waves borrow from different traditions and are not one shared mythology.</p>
-        <div id="lore"></div>
+    <div class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Historical notes articles">
+      <div class="cols">
+        <div class="panel">
+          <h3>WHAT HAPPENED</h3>
+          <p>In the last days of November 1574 the corsair <b>Limahong</b> (Lin Feng) sailed into Manila Bay with a large fleet and struck the three-year-old Spanish settlement twice within days. His force was a maritime coalition that included Chinese and Japanese fighters.</p>
+          <p>Manila was then a town of timber, bamboo and nipa thatch behind a wooden palisade. The stone walls of Intramuros were built in later decades, so you will not find them here.</p>
+          <p>The defenders, Spaniards together with local and other allies, held the town and the fleet withdrew north.</p>
+          <h3 style="margin-top:14px">WHAT IS INVENTED</h3>
+          <p>Mateo, Datu and Diego are fictional. So are the bosses, the martial-arts mercenary, Datu's stone yo-yo, and every supernatural event. No nationality here is a villain: these are individual raiders in one fleet.</p>
+        </div>
+        <div class="panel">
+          <h3>THE SPIRITS</h3>
+          <p>The Philippines holds many peoples and many bodies of lore. The powers sold between waves borrow from different traditions and are not one shared mythology.</p>
+          <div id="lore"></div>
+        </div>
       </div>
     </div>
     <button class="btn" data-act="back">Back</button>
   </div>
 
   <div id="charm" class="screen hidden">
-    <h2>AN ANTING-ANTING</h2>
+    <h2>AN ANTING-ANTING (PERK)</h2>
     <div class="sub" id="charmsub"></div>
-    <div class="cards" id="charmcards"></div>
-    <div class="hint">Click a card or press 1, 2 or 3. An anting-anting lasts the whole run and is never sold.</div>
+    <div class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Perk choices">
+      <div class="cards" id="charmcards"></div>
+    </div>
+    <div class="hint">Click a card or press 1, 2 or 3. An anting-anting is a perk: it lasts the whole run and is never sold.</div>
+  </div>
+
+  <div id="wardrobe" class="screen hidden">
+    <div class="wdtop"><h2>WARDROBE</h2><div id="wdtabs"></div><div id="wdbank"><span id="wdfunds">0</span><small>Campaign Funds</small></div></div>
+    <div id="wdscroll" class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Costume cards">
+      <div id="wdgrid"></div>
+    </div>
+    <div id="wdmsg"></div>
+    <button class="btn" data-act="back" data-focus="1">Back</button>
+  </div>
+
+  <div id="codex" class="screen hidden">
+    <h2>CHRONICLE OF THE SIEGE</h2>
+    <div class="sub" id="cxhead"></div>
+    <div class="cxwrap"><div id="cxlist" class="scroll-pane" role="region" tabindex="0" aria-label="Chronicle page list"></div><div id="cxbody" class="scroll-pane panel" data-reading role="region" tabindex="0" aria-label="Chronicle article"></div></div>
+    <div class="scroll-pad-hint">D-pad: browse pages &middot; Right stick: scroll the article</div>
+    <div class="sub">Dates and figures follow the Spanish accounts of 1574 and 1575, which do not always agree with each other.</div>
+    <button class="btn" data-act="back" data-focus="1">Back</button>
   </div>
 
   <div id="deeds" class="screen hidden">
-    <h2>DEEDS &amp; ANTING-ANTING</h2>
+    <h2>DEEDS &amp; ANTING-ANTING (PERKS)</h2>
     <div class="sub" id="deedhead"></div>
-    <div id="deedgrid"></div>
-    <div class="brow" id="deedbase"></div>
-    <div class="sub">Each deed adds one anting-anting to the three you are offered after waves 3 and 7 and after every boss. Deeds never raise your stats.</div>
+    <div class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Deeds and perks list">
+      <div id="deedgrid"></div>
+      <div class="brow" id="deedbase"></div>
+    </div>
+    <div class="sub"><b>Deeds</b> are achievements, done once. Each adds one <b>anting-anting</b> (perk) to those offered during a run. Deeds never raise stats.</div>
     <button class="btn" data-act="back" data-focus="1">Back</button>
   </div>
 
   <div id="levelup" class="screen hidden">
     <h2 id="lutitle">LEVEL UP</h2>
     <div class="sub">Battle experience has made you stronger. Choose one.</div>
-    <div class="cards" id="lucards"></div>
+    <div class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Level-up choices">
+      <div class="cards" id="lucards"></div>
+    </div>
     <div class="hint" id="luhint">Click a card or press 1, 2 or 3. Level-ups come from XP and never cost gold.</div>
   </div>
 
@@ -409,14 +492,16 @@ html,body{touch-action:none;overscroll-behavior:none}
       <div id="shopgoldbox"><img id="shopcoin" width="36" height="36" alt=""><div><span id="shopgold">0</span><small>gold to spend</small></div></div>
     </div>
     <div id="shopstats"></div>
-    <div class="cards" id="shopcards"></div>
+    <div class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Merchant stock">
+      <div class="cards" id="shopcards"></div>
+    </div>
     <div id="shopfoot">
       <div id="owned"></div>
       <div id="shopbtns"><div id="shopmsg"></div><button class="btn" data-act="reroll" id="rerollbtn">New stock</button><button class="btn gold" data-act="continue" data-focus="1">Continue to Next Wave</button></div>
     </div>
   </div>
 
-  <div id="replace" class="screen hidden">
+  <div id="replace" class="screen hidden" role="dialog" aria-modal="true" tabindex="0" aria-label="Replacement choices">
     <div class="panel" style="display:flex;flex-direction:column;gap:16px;align-items:center;max-width:760px">
       <h2 id="reptitle"></h2><div class="sub" id="repsub"></div><div id="replist"></div>
       <button class="btn" data-act="cancelreplace">Keep what I have</button>
@@ -425,27 +510,234 @@ html,body{touch-action:none;overscroll-behavior:none}
 
   <div id="pause" class="screen hidden">
     <h2>PAUSED</h2>
-    <div id="pausebuild" class="panel"></div>
+    <div id="pausebuild" class="scroll-pane panel" data-reading role="region" tabindex="0" aria-label="Current build summary"></div>
     <div class="row"><button class="btn gold" data-act="resume" data-focus="1">Resume</button><button class="btn" data-act="controls">Controls</button><button class="btn" data-act="settings">Settings</button><button class="btn" data-act="restart">Restart Run</button><button class="btn red" data-act="menu">Quit to Menu</button></div>
   </div>
 
   <div id="gameover" class="screen hidden">
     <h2 id="gotitle"></h2><div class="sub" id="gosub"></div>
-    <div class="resrow"><div id="gostats" class="panel stats"></div><div id="gofunds" class="panel receipt"></div></div>
-    <div id="gobuild" class="panel"></div>
+    <div class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Run results">
+      <div class="resrow"><div id="gostats" class="panel stats"></div><div id="gofunds" class="panel receipt"></div></div>
+      <div id="gobuild" class="panel"></div>
+    </div>
     <div class="row"><button class="btn gold" data-act="restart" data-focus="1">Try Again</button><button class="btn" data-act="menu">Return to Menu</button></div>
   </div>
 
   <div id="victory" class="screen hidden">
-    <div class="vichead"><h1 class="px">VICTORY</h1><div class="px vicsub">MANILA STANDS</div><div id="vicline"></div><button class="btn" data-act="results" id="vicskip">Show results</button></div>
+    <div class="vichead"><h1 class="px">VICTORY</h1><div class="px vicsub">MANILA STANDS</div><div class="px" id="vicname"></div><div id="vicstory" class="scroll-pane" data-reading role="region" tabindex="0" aria-label="Ending story"><div id="vicline"></div></div><button class="btn gold" data-act="results" id="vicskip" data-focus="1">Continue</button></div>
     <div class="vicpanel">
-      <div class="resrow"><div id="vicstats" class="panel stats"></div><div id="vicfunds" class="panel receipt"></div></div>
-      <div id="vicbuild" class="panel"></div>
+      <div class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Victory results">
+        <div id="vicend" class="panel"></div>
+        <div class="resrow"><div id="vicstats" class="panel stats"></div><div id="vicfunds" class="panel receipt"></div></div>
+        <div id="vicbuild" class="panel"></div>
+      </div>
       <div class="row"><button class="btn gold" data-act="restart" data-focus="1">Play Again</button><button class="btn" data-act="menu">Return to Menu</button></div>
     </div>
   </div>
 </div>
 <script>
+/* ============================================================
+   Alpha 0.4: the Chronicle (codex).
+   One entry per thing the player meets. Each entry is unlocked by
+   an event in play (see `codex(id)` in 05_game_04.js) and stored
+   in the save. Text follows the project rule: record and invention
+   are labelled separately, and traditions are attributed.
+
+   To add an entry: add it here, then call codex('<id>') where the
+   event happens. Nothing else is needed; the screen, the save and
+   the count all read this table.
+
+   `sec` rows are [kind, text] where kind is:
+     'game'   what it does in play
+     'record' what the historical sources support
+     'lore'   folklore, attributed to the people it comes from
+     'made'   invented for this game
+   ============================================================ */
+/* ---------- Endings (0.4 stage 1b) ----------
+   Three per hero. Which one plays is decided in pickEnding() (05_game_04.js):
+     'dawn'   any Arcade win
+     'whole'  the hero's health never fell below ENDING_RULES.whole of maximum during the run
+     'sign'   the hero's signature move did the work: ENDING_RULES.sign[hero] defeats by the RMB special
+              (for Datu, by the Manananggal)
+   When more than one is earned, an ending not yet seen is shown first; otherwise sign > whole > dawn.
+   All nine are fiction. The thresholds are first guesses: no person has played for them yet. */
+const ENDING_RULES = { whole: 0.30, sign: { mateo: 220, datu: 300, diego: 220 } };
+const ENDINGS = {
+  mateo: [
+    { key: 'dawn', name: 'The Palisade Stands', how: 'Win Arcade mode as Mateo.', beats: [
+      'Dawn. Mateo plants the macuahuitl in the sand. The sails turn north, and the palisade still stands.',
+      'Someone brings him rice and salted fish. He eats standing up, watching the gap he held all night.',
+      'He counts the obsidian teeth left in the club. Enough for one more night, if one comes.'] },
+    { key: 'whole', name: 'The Wall', how: 'Win Arcade mode as Mateo without ever falling below 30% health.', beats: [
+      'Full morning, and nobody has had to carry Mateo anywhere. He walks the palisade end to end to see what is left of it.',
+      'Children follow him at a distance. One reaches for the edge of the club and is pulled back by the collar.',
+      'The sergeant offers him a berth on the next ship east, toward home. Mateo looks at the wall and says he will think about it.'] },
+    { key: 'sign', name: 'The Blade of Light', how: `Win Arcade mode as Mateo with ${ENDING_RULES.sign.mateo} defeats by Obsidian Crescent.`, beats: [
+      'Before sunrise the town is already telling it: a blade of light crossed the beach, and where it passed nobody was left standing.',
+      'Mateo does not correct them. His grandfather told stories like that about a city on a lake, and those were true too.',
+      'He sits facing east, the way the ocean brought him, and waits for the sun to come up over it.'] }
+  ],
+  datu: [
+    { key: 'dawn', name: 'The Bay Is Quiet', how: 'Win Arcade mode as Datu.', beats: [
+      'First light. Datu winds the cord around his wrist and watches the junks shrink on the horizon. The bay is quiet again.',
+      'His boat is still at the pier, scorched down one side and floating. The crew are already bailing.',
+      'There is cargo to sell, and a town still here to buy it. He goes to find out what rice costs this morning.'] },
+    { key: 'whole', name: 'Fast Feet', how: 'Win Arcade mode as Datu without ever falling below 30% health.', beats: [
+      'Morning. The crew look Datu over for wounds and find a torn sleeve.',
+      'Money changes hands. Half of them had bet he would not see the sun; the other half are buying.',
+      'He lets them call him Datu a little louder than usual, then tells them to load the boat. The wind is right for going south.'] },
+    { key: 'sign', name: 'The Winged Half', how: `Win Arcade mode as Datu with ${ENDING_RULES.sign.datu} defeats by the Manananggal.`, beats: [
+      'Before sunrise something with wings crosses the bay, low and fast, making for the hills.',
+      'Datu does not watch it go. Some debts are better left uncounted.',
+      'All the same, he ties a pinch of salt in a cloth and hangs it from the bow before they sail.'] }
+  ],
+  diego: [
+    { key: 'dawn', name: 'The Match Burns Out', how: 'Win Arcade mode as Diego.', beats: [
+      'Sunrise. Diego lets the match burn out. For the first time since the alarm, nobody is shooting at Manila.',
+      'He counts his powder: eleven charges, and one of them damp.',
+      'They give him the watch again that night. He takes it, and loads before he sits down.'] },
+    { key: 'whole', name: 'Dry Powder', how: 'Win Arcade mode as Diego without ever falling below 30% health.', beats: [
+      'Morning. Diego cleans the arquebus before he eats, lock first, the way he was taught.',
+      'A boy from the town asks whether he was afraid. Diego says he was busy, which is nearly the truth.',
+      'He thinks of a farm in Extremadura that was never going to be his, and finds he has stopped minding.'] },
+    { key: 'sign', name: 'Fire on the Beach', how: `Win Arcade mode as Diego with ${ENDING_RULES.sign.diego} defeats by Fire Pot.`, beats: [
+      'Before sunrise the beach is still burning in a dozen places. Nobody goes down to put the fires out.',
+      'The potter who made the pots comes to look at what they did. He does not stay long.',
+      'Diego asks him for twenty more by nightfall, and pays in advance.'] }
+  ]
+};
+const CODEX_CATS = [
+  ['siege', 'The Siege'],
+  ['raiders', 'The Raiders'],
+  ['bay', 'Bay and Weather'],
+  ['spirits', 'Spirits and Charms'],
+  ['endings', 'Endings']
+];
+const CODEX = [
+  /* ---------- the siege: unlocked by progress through a run ---------- */
+  { id: 'manila', cat: 'siege', name: 'Manila, 1574', how: 'Begin a run.', sec: [
+    ['record', 'Spanish Manila was three years old. Miguel Lopez de Legazpi had taken the Tagalog settlement of Maynila, at the mouth of the Pasig, and declared it a city in 1571. He died the next year.'],
+    ['record', 'It was a town of timber, bamboo and nipa thatch behind a wooden palisade, with a garrison of a few hundred, many of them away on other islands. The stone walls of Intramuros came decades later.'],
+    ['game', 'The one map is this town: the palisade, the market, the gates and the piers on the bay.']
+  ] },
+  { id: 'limahong', cat: 'siege', name: 'Limahong', how: 'Begin a run.', sec: [
+    ['record', 'Limahong (Lin Feng) was a sea-raider from the Chaozhou coast of Guangdong, hunted by Ming fleets. In late 1574 he sailed for Luzon. Spanish accounts give him about sixty ships and several thousand people, including families and craftsmen: he came to settle, not only to plunder.'],
+    ['record', 'The same accounts say he learned how thinly Manila was held from the crew of a trading vessel he captured on the way.'],
+    ['made', 'Limahong never appears on the field in this game. The two bosses are invented officers of his fleet.']
+  ] },
+  { id: 'first', cat: 'siege', name: 'The First Assault', how: 'Clear wave 3.', sec: [
+    ['record', 'On 30 November 1574 a landing force of several hundred came ashore south of the town and marched on it. The first house they reached was that of the master-of-camp, Martin de Goiti, the garrison\'s commander. He was killed defending it, and the house was burned.'],
+    ['record', 'The delay gave the garrison time to form up. The attackers were driven back to their boats.'],
+    ['game', 'Waves 1 to 4 stand in for this first day, in daylight.']
+  ] },
+  { id: 'salcedo', cat: 'siege', name: 'Juan de Salcedo', how: 'Clear wave 5.', sec: [
+    ['record', 'Salcedo, Legazpi\'s grandson and about twenty-five, was in the Ilocos when the fleet passed down the coast. He guessed where it was going and followed with some fifty men, reaching Manila between the two assaults. He took over the command Goiti had held.'],
+    ['record', 'He died of a fever in the Ilocos two years later.'],
+    ['made', 'Salcedo is not a character here. The three defenders hold the same gaps his men would have.']
+  ] },
+  { id: 'uprising', cat: 'siege', name: 'Lakandula and Sulayman', how: 'Clear wave 7.', sec: [
+    ['record', 'While the fleet lay in the bay, the Tagalog rulers Lakandula of Tondo and Rajah Sulayman rose against the Spanish over grievances that had built up since the conquest, chiefly abuses by the men granted their lands and people.'],
+    ['record', 'Accounts say the rising was ended by negotiation, with Salcedo and the friar Geronimo Marin going to speak with Lakandula, and promises that the grievances would be answered.'],
+    ['record', 'People of the islands were on every side of 1574: beside the Spanish, against them, and apart from both.']
+  ] },
+  { id: 'second', cat: 'siege', name: 'The Second Assault', how: 'Clear wave 9.', sec: [
+    ['record', 'Two or three days after the first attack the fleet came in close and landed a larger force. It broke into the palisade in places and set fires in the town before it was thrown back with heavy loss. Sioco, the Japanese officer who had led the first landing, was among the dead.'],
+    ['game', 'Waves 6 to 10 stand in for this second day, running from late afternoon into night.'],
+    ['made', 'The real fighting was in daylight. The night battle is this game\'s choice.']
+  ] },
+  { id: 'after', cat: 'siege', name: 'Pangasinan', how: 'Complete Arcade mode.', sec: [
+    ['record', 'Limahong sailed north and built a fortified settlement in Pangasinan, near the mouth of the Agno. In 1575 Salcedo followed with about 250 Spaniards and a much larger force of allies from the islands, burned the fleet at anchor and laid siege.'],
+    ['record', 'After roughly four months Limahong slipped away in boats built inside the fort. Local tradition says his people dug a channel to the sea to do it. He then passes out of the record.'],
+    ['record', 'So the ending here is true as far as it goes: Manila held, and the sails turned north.']
+  ] },
+  { id: 'embassy', cat: 'siege', name: 'The Road to China', how: 'Clear wave 15 in Endless mode.', sec: [
+    ['record', 'During the Pangasinan siege a Ming officer hunting Limahong, Wang Wanggao (the Spanish wrote "Omoncon"), arrived in Luzon. He agreed to carry Spanish envoys home with him.'],
+    ['record', 'The Augustinians Martin de Rada and Geronimo Marin sailed with him to Fujian in 1575, the first Spanish mission to China. Limahong\'s escape soured the welcome, and no lasting agreement came of it.']
+  ] },
+
+  /* ---------- the raiders: unlocked by defeating one ---------- */
+  { id: 'e_raider', cat: 'raiders', name: 'Wokou Raider', how: 'Defeat a Wokou Raider.', sec: [
+    ['game', 'The common fighter of every wave. Walks straight at the hero and cuts at close range.'],
+    ['record', '"Wokou" was the Chinese name for the sea-raiders of the East Asian coast. The word points at Japan, but by the sixteenth century most crews were Chinese, joined by Japanese and others. Ming bans on private sea trade had turned many traders into smugglers and many smugglers into raiders.']
+  ] },
+  { id: 'e_archer', cat: 'raiders', name: 'Pirate Archer', how: 'Defeat a Pirate Archer.', sec: [
+    ['game', 'Keeps its distance and looses a slow arrow after a visible draw. Fog shortens its sight.'],
+    ['made', 'A role invented for play. The accounts of the attack do not single out archers.']
+  ] },
+  { id: 'e_spearman', cat: 'raiders', name: 'Chinese Spearman', how: 'Defeat a Chinese Spearman.', sec: [
+    ['game', 'Sturdier than a raider, with a thrust that reaches further than it looks.'],
+    ['record', 'Spanish reports describe the landing force as carrying pikes alongside firearms and fire weapons.'],
+    ['made', 'No nationality in this game is a villain. These are individual men in one fleet.']
+  ] },
+  { id: 'e_swordsman', cat: 'raiders', name: 'Japanese Swordsman', how: 'Defeat a Japanese Swordsman.', sec: [
+    ['game', 'An elite: fast, tough, and quick to strike once he closes.'],
+    ['record', 'Japanese fighters served in Limahong\'s fleet. Sioco, who led the first landing, is called a Japanese in the Spanish accounts.']
+  ] },
+  { id: 'e_martial', cat: 'raiders', name: 'Martial-Arts Mercenary', how: 'Defeat a Martial-Arts Mercenary.', sec: [
+    ['game', 'The fastest raider. Hits lightly and often, and slips about three weapon blows in ten. Powers and area attacks cannot be slipped.'],
+    ['made', 'Entirely invented.']
+  ] },
+  { id: 'e_gunner', cat: 'raiders', name: 'Pirate Gunner', how: 'Defeat a Pirate Gunner.', sec: [
+    ['game', 'The hardest single hit among ordinary raiders, after a full second of aiming and before a long reload.'],
+    ['record', 'Matchlock guns were common on these seas by the 1570s. Japan had been making them since the 1540s, and the Spanish noted arquebusiers among the attackers.']
+  ] },
+  { id: 'e_captain', cat: 'raiders', name: 'The Pirate Captain', how: 'Defeat the Japanese Pirate Captain.', sec: [
+    ['game', 'Boss of wave 5. Three phases: sword combos, chained dashes, then crossing cuts drawn through wherever the hero stands.'],
+    ['made', 'An invented officer. He is not Sioco, the recorded leader of the landings, and nothing he does here is drawn from an account.']
+  ] },
+  { id: 'e_commander', cat: 'raiders', name: 'The Fleet Commander', how: 'Defeat the Wokou Fleet Commander.', sec: [
+    ['game', 'Boss of wave 10. Slow and heavy, he fights with his fleet: reinforcements in formation, a shockwave with two safe gaps, and a walking barrage.'],
+    ['record', 'His weapon is a guandao, a heavy Chinese pole-arm with a broad curved blade. Tradition credits it to the general Guan Yu, who lived long before any such weapon is attested.'],
+    ['made', 'An invented officer of Limahong\'s fleet.']
+  ] },
+  { id: 'champ', cat: 'raiders', name: 'Champions', how: 'Defeat a champion.', sec: [
+    ['game', 'Gold-ringed raiders with 2.6 times the health, one trait each, triple XP and guaranteed gold. Shielded blocks one weapon hit every 2.5 seconds. Swift is 30% faster with 20% less health. Volatile bursts 0.9 seconds after falling and hurts both sides.'],
+    ['game', 'Rallying champions are marked RALLY. Their pale dashed ring speeds up other raiders, including champions. Bosses are immune, and overlapping rings give only one bonus.'],
+    ['made', 'Invented for variety.']
+  ] },
+
+  /* ---------- bay and weather ---------- */
+  { id: 'junks', cat: 'bay', name: 'The Junks', how: 'Draw fire from the fleet by lingering on a pier.', sec: [
+    ['game', 'Eight seconds on a pier draws a warning, then shells. They are aimed at the hero and out to sea, never inland, so walking toward the shore always escapes.'],
+    ['record', 'The junk was the working ship of the China seas: battened sails, a flat bottom and a hull divided by watertight bulkheads. Limahong\'s were armed.'],
+    ['made', 'The pier bombardment is a rule of this game, added to stop the piers being a safe corner.']
+  ] },
+  { id: 'tw_squall', cat: 'bay', name: 'Monsoon Squall', how: 'Fight through a squall.', sec: [
+    ['game', 'Everyone moves a little slower and enemy shots slow by a quarter. Lightning lands on marked spots and strikes raiders as readily as the hero.'],
+    ['record', 'Luzon has two monsoons: the habagat from the southwest, roughly June to October, and the amihan from the northeast for the rest of the year. The attack fell at the start of the amihan.'],
+    ['made', 'No storm is recorded on the days of the fighting.']
+  ] },
+  { id: 'tw_fog', cat: 'bay', name: 'Fog off the Bay', how: 'Fight through the fog.', sec: [
+    ['game', 'Archers and gunners see 45% less far. The screen is veiled beyond a clear pocket around the hero.'],
+    ['made', 'Invented. It is here because it changes which raiders are dangerous.']
+  ] },
+  { id: 'tw_fire', cat: 'bay', name: 'The Burning Quarter', how: 'Fight through the burning quarter.', sec: [
+    ['game', 'Fires break out near the hero after a one-second warning and burn for six, hurting raiders and hero alike.'],
+    ['record', 'A town of bamboo and nipa burns fast. Houses were set alight in both assaults. Goiti\'s burned in the first.']
+  ] },
+
+  { id: 'tw_high_tide', cat: 'bay', name: 'High Tide', how: 'Begin a wave with the High Tide twist.', sec: [
+    ['game', 'Pale edges mark the flooded shallows on the west bank. Walking slows for both the defender and the raiders. Wooden piers stay dry, and you can still dodge and use movement abilities across the shallows.'],
+    ['made', 'The flood zone and its timing are invented for this game. This entry does not claim a particular tide during the siege.']
+  ] },
+
+  /* ---------- spirits and charms ---------- */
+  { id: 'mana', cat: 'spirits', name: 'The Manananggal', how: 'As Datu, call down the Manananggal.', sec: [
+    ['game', 'Datu\'s right-button special. She crashes down on the marked spot, then hunts nearby raiders for six seconds.'],
+    ['lore', 'In the aswang lore of the Visayas and much of the archipelago she passes for an ordinary woman by day. At night her upper body grows wings and tears free at the waist to hunt. The stories say that salt, ash or garlic put on the half she leaves behind keeps her from rejoining it, and the sun does the rest.'],
+    ['made', 'In the stories she is a terror and nobody\'s ally. One answering Datu is this game\'s invention, and only her winged half is shown.']
+  ] },
+  { id: 'anting', cat: 'spirits', name: 'Anting-anting', how: 'Take your first anting-anting.', sec: [
+    ['game', 'Perks. You choose one of three after waves 3 and 7 and after each boss, and it lasts the run. Deeds add more to the pool.'],
+    ['lore', 'Anting-anting, also called agimat, are amulets of Philippine folk belief: a stone, a tooth, a medal, a scrap of written prayer, carried for protection or luck. Many stories say one must be won or tested, often during Holy Week. They are best documented from the nineteenth century, when rebels and bandits alike were said to carry them against bullets.'],
+    ['made', 'Each charm here names the tradition it borrows from on its own card. The powers attached to them are inventions.']
+  ] }
+];
+// one page per ending, found by seeing it
+for (const h of ['mateo', 'datu', 'diego']) for (const e of ENDINGS[h])
+  CODEX.push({ id: `end_${h}_${e.key}`, cat: 'endings', name: `${h[0].toUpperCase() + h.slice(1)}: ${e.name}`, how: e.how, sec: e.beats.map(b => ['made', b]) });
+const CODEX_BY_ID = {}; for (const c of CODEX) CODEX_BY_ID[c.id] = c;
+
 'use strict';
 /* ============================================================
    THE SIEGE OF MANILA: 1574  --  data & tuning tables
@@ -743,9 +1035,10 @@ SPECIAL.mana = {
 };
 
 /* ---------------- Champion traits ---------------- */
-// Every gold-ringed champion carries exactly one. No new art: a coloured ring and one rule each.
+// Every gold-ringed champion carries exactly one trait.
 const TRAITS = {
   shield:   { name: 'Shielded', color: '#6ac8ff', cd: 2.5 },                 // blocks one weapon hit, then needs `cd` seconds to raise the guard again
+  rallying: { name: 'Rallying', color: '#e8b8ff', radius: 60, moveScale: 1.15 },
   swift:    { name: 'Swift', color: '#7be38a', speed: 1.3, hp: 0.8 },        // faster, a little frailer
   volatile: { name: 'Volatile', color: '#ff7a2a', r: 34, fuse: 0.9, dmg: 1.2, foe: 30 }   // bursts where it falls: hurts the hero and other raiders
 };
@@ -754,10 +1047,12 @@ const TRAIT_IDS = Object.keys(TRAITS);
 /* ---------------- Wave twists ---------------- */
 // A twist changes the rules of one wave. `tint` = [colour, amount]: the ambient light is pulled that far toward the colour.
 // A twist changes the rules of one wave. Arcade rolls two per run on ordinary (non-boss) waves; Endless keeps rolling them.
+const HIGH_TIDE = { firstRow: 10, inlandTiles: 7, moveScale: 0.7 };
 const TWISTS = {
   squall: { name: 'Monsoon squall', sub: 'Mud slows everyone. Lightning strikes raider and defender alike.', foe: 0.9, hero: 0.93, shot: 0.75, tint: [[128, 142, 172], 0.6], bolt: [2.2, 3.4], boltR: 30, boltDmg: 14, boltFoe: 45 },
   fog:    { name: 'Fog off the bay', sub: 'Archers and gunners must come close to find you.', sight: 0.55, tint: [[226, 231, 238], 0.45], clear: 118 },
-  fire:   { name: 'The burning quarter', sub: 'Fires break out underfoot. They burn raiders too.', every: 3.2, max: 7, r: 26, warm: 1.0, dur: 6, tick: 0.5, dmg: 6, foeDmg: 7 }
+  fire:   { name: 'The burning quarter', sub: 'Fires break out underfoot. They burn raiders too.', every: 3.2, max: 7, r: 26, warm: 1.0, dur: 6, tick: 0.5, dmg: 6, foeDmg: 7 },
+  high_tide: { name: 'High Tide', sub: `Blue shallows on the west shore slow walking by ${Math.round((1 - HIGH_TIDE.moveScale) * 100)}%. Piers stay dry.` }
 };
 // NOTE: the keys foe / hero / shot / sight are read by setTwist() as speed and sight multipliers for ANY twist. Do not reuse those names for anything else.
 const TWIST_IDS = Object.keys(TWISTS);
@@ -863,19 +1158,124 @@ const VICTORY_LINES = {
 };
 
 /* ============================================================
+   Alpha 0.4: the Wardrobe. Ten skins per hero, bought with
+   Campaign Funds: five recolours and five costumes each.
+
+   A skin is cosmetic only. It never changes a number.
+
+   RECOLOUR  { id, name, note, pal }            the hero's own grid with some palette letters replaced
+   COSTUME   { id, name, note, pal, rows }      a new 12 x 14 grid with its own palette
+                                                (letters l and f colour the shared walking legs and feet;
+                                                 o, w, k and e fall back to the global PAL)
+
+   `note` follows the project rule: say what is real, what is from a later century, and what is a joke.
+   To add a skin, add a row. buildSkins() bakes it, the Wardrobe lists it, and the save accepts its id.
+   ============================================================ */
+const SKIN_COST = { recolor: 30, costume: 90 };
+const FACE = ['..okssssko..', '..osesseso..', '..osssssso..', '...ossSso...'];              // Mateo and Datu
+const FACE_D = ['..osssssso..', '..osesseso..', '..obsssbbo..', '...obbbbo...'];           // Diego, bearded
+const SKINS = {
+  mateo: [
+    { id: 'jade', name: 'Jade and Teal', note: 'A recolour. Jade was prized above gold in Mesoamerica.', pal: { c: '#1f6a62', C: '#174a46', g: '#7fe08a', G: '#c8ffd0', r: '#e8b23a' } },
+    { id: 'ember', name: 'Ember Plumes', note: 'A recolour.', pal: { g: '#e07b1f', G: '#ffd84a', r: '#e8b23a', c: '#2a2230', C: '#1b1622', t: '#ff9a4a' } },
+    { id: 'quetzal', name: 'Quetzal Blue', note: 'A recolour. The long tail feathers of the quetzal were worn by rulers.', pal: { g: '#2f6fd0', G: '#7fc0ff', r: '#35c2c2', c: '#f4f0e6', C: '#c8d4e0' } },
+    { id: 'maize', name: 'Maize Gold', note: 'A recolour.', pal: { g: '#e8b23a', G: '#ffe08a', c: '#8f5630', C: '#6b4a2b', r: '#2fae6a', t: '#e9dfc4' } },
+    { id: 'obsidian', name: 'Obsidian', note: 'A recolour, in the black glass his weapon is edged with.', pal: { g: '#5a2a6b', G: '#c08aff', c: '#2a2230', C: '#1b1622', r: '#7d3f94', y: '#c3ccd6', t: '#c08aff' } },
+    { id: 'eagle', name: 'Eagle Warrior', note: 'Real, and a generation before him: the cuauhtli were one of the Mexica military orders, dressed as eagles.',
+      pal: { s: '#b8733f', S: '#8f5630', q: '#6b4a2b', Q: '#b08a58', y: '#e8b23a', b: '#f0c040', r: '#d43d3d', l: '#b8733f', f: '#6b4a2b' },
+      rows: ['...qQQQQq...', '..qQQQQQQq..', '..qQwQQwQq..', '..qybbbbyq..', '..oqssssqo..', '..osesseso..', '..osssssso..', '...ossSso...',
+        '..qQQQQQQq..', 'qqQQwQQwQQqq', '.sqQQQQQQqs.', '..SqQQQQqS..', '...rrrrrr...', '...ry..yr...'] },
+    { id: 'vaquero', name: 'Vaquero', note: 'From later centuries. The vaqueros of New Spain were the first cowboys, but their dress took this shape long after 1574.',
+      pal: { s: '#b8733f', S: '#8f5630', h: '#8a5a2b', H: '#b07a3f', b: '#3c281a', r: '#d43d3d', c: '#e9dfc4', v: '#6b4a2b', y: '#e8b23a', d: '#3a5a8f', l: '#3a5a8f', f: '#3c281a' },
+      rows: ['............', '....hHHh....', '...hHHHHh...', '.hhhbbbbhhh.', ...FACE,
+        '..vcrrrrcv..', '.svvccccvvs.', '.svvccccvvs.', '..SvccccvS..', '...bbyybb...', '...dd..dd...'] },
+    { id: 'mariachi', name: 'Mariachi', note: 'From the nineteenth century. Nobody dressed like this in 1574, and he does not care.',
+      pal: { s: '#b8733f', S: '#8f5630', k: '#221c26', K: '#3a3340', y: '#e8c05a', r: '#d43d3d', l: '#221c26', f: '#1c1a22' },
+      rows: ['....kKKk....', '...kKyyKk...', '.kkkKKKKkkk.', 'kyyyyyyyyyyk', ...FACE,
+        '..kkwrrwkk..', '.skywwwwyks.', '.skywwwwyks.', '..SkkyykkS..', '...kkkkkk...', '...ky..yk...'] },
+    { id: 'luchador', name: 'Luchador', note: 'A joke. Lucha libre is a twentieth-century art. The belt is self-awarded.',
+      pal: { s: '#b8733f', S: '#8f5630', m: '#2f6fd0', M: '#ffd84a', R: '#d43d3d', y: '#ffd84a', l: '#2f6fd0', f: '#ffd84a' },
+      rows: ['............', '...mmmmmm...', '..mmMMMMmm..', '..mMmmmmMm..', '..mwwmmwwm..', '..mwemmewm..', '..mmmssmmm..', '...mmssmm...',
+        '.RRssssssRR.', '.RssSssSssR.', '.RsssSSsssR.', '.RSyyyyyySR.', '...mmmmmm...', '...mm..mm...'] },
+    { id: 'disco', name: 'Disco', note: 'A joke, four centuries early.',
+      pal: { s: '#b8733f', S: '#8f5630', a: '#2a1a14', W: '#f4f0e6', P: '#7d3f94', y: '#e8b23a', l: '#f4f0e6', f: '#e8b23a' },
+      rows: ['...aaaaaa...', '..aaaaaaaa..', '.aaaaaaaaaa.', '.aaaaaaaaaa.', '.aossssssoa.', '.aosessesoa.', '..osssssso..', '...ossSso...',
+        '..WPsyysPW..', '.sWWWssWWWs.', '.sWWWWWWWWs.', '..SWWWWWWS..', '...WWWWWW...', '..WWW..WWW..'] }
+  ],
+  datu: [
+    { id: 'seagreen', name: 'Sea Green', note: 'A recolour.', pal: { v: '#1f6b5c', V: '#2f9c84', p: '#e8b23a', P: '#ffe08a' } },
+    { id: 'purple', name: 'Royal Purple', note: 'A recolour.', pal: { v: '#5a2a6b', V: '#7d3f94', p: '#27406b', P: '#3a62a0', n: '#e8b23a' } },
+    { id: 'sunrise', name: 'Sunrise', note: 'A recolour.', pal: { v: '#d98a2b', V: '#f0b04a', p: '#f4f0e6', P: '#ffffff', n: '#b3263a', t: '#6b4a2b', l: '#6b4a2b' } },
+    { id: 'nightsail', name: 'Night Sail', note: 'A recolour, for leaving harbour unseen.', pal: { v: '#2a2230', V: '#3a3340', p: '#2b2b3b', P: '#55448a', n: '#c3ccd6' } },
+    { id: 'pearl', name: 'White Pearl', note: 'A recolour. The southern seas were known for their pearls.', pal: { v: '#e9dfc4', V: '#f4f0e6', p: '#4fd0e0', P: '#bfe9ff', n: '#4fd0e0', t: '#27406b', l: '#27406b' } },
+    { id: 'pintado', name: 'Tattooed Warrior', note: 'Real and of his time. The Spanish called the Visayans "Pintados", the painted ones, for tattoos that recorded a fighter\'s deeds.',
+      pal: { s: '#a9713f', S: '#85552d', T: '#2a4a6b', r: '#b3263a', y: '#e8b23a', l: '#a9713f', f: '#a9713f' },
+      rows: ['............', '............', '...kkkkkk...', '..rrrrrrrrr.', ...FACE,
+        '..sTyyyyTs..', '.sTsTssTsTs.', '.sTTsTTsTTs.', '..STsTTsTS..', '...rrrrrr...', '...sr..rs...'] },
+    { id: 'gold', name: 'Datu in Gold', note: 'Real in spirit. Gold work from the islands before the Spanish is plentiful and very fine. This outfit is an invention.',
+      pal: { s: '#a9713f', S: '#85552d', p: '#5a2a6b', P: '#7d3f94', y: '#e8b23a', Y: '#ffe08a', r: '#b3263a', l: '#5a2a6b', f: '#a9713f' },
+      rows: ['............', '....yYYy....', '...yYrrYy...', '..yyyyyyyy..', ...FACE,
+        '..pYyyyyYp..', '.spPyYYyPps.', '.ypPPyyPPpy.', '..SpPPPPpS..', '...yyyyyy...', '...pp..pp...'] },
+    { id: 'barong', name: 'Barong Tagalog', note: 'From later centuries. The embroidered barong took this form under Spanish rule, long after 1574.',
+      pal: { s: '#a9713f', S: '#85552d', k: '#1b1622', b: '#efe6c8', B: '#d8cba0', y: '#c9a45a', t: '#2b2b3b', l: '#2b2b3b', f: '#1b1622' },
+      rows: ['............', '............', '...kkkkkk...', '..kkkkkkkk..', ...FACE,
+        '..bbBssBbb..', '.bbBbyybBbb.', '.sbBbyybBbs.', '..bBbyybBb..', '..bbbbbbbb..', '...tt..tt...'] },
+    { id: 'liga', name: 'Liga Jersey', note: 'A joke. Basketball reached the islands in the 1900s and never left.',
+      pal: { s: '#a9713f', S: '#85552d', k: '#1b1622', J: '#c0392b', l: '#a9713f', f: '#f4f0e6' },
+      rows: ['............', '............', '...kkkkkk...', '..wwwwwwww..', ...FACE,
+        '..sJJJJJJs..', '.ssJwJJwJss.', '.ssJwJJwJss.', '..SJJJJJJS..', '...JJJJJJ...', '...Jw..wJ...'] },
+    { id: 'dino', name: 'Dinosaur', note: 'A joke. No dinosaur took part in the defence of Manila.',
+      pal: { s: '#a9713f', S: '#85552d', g: '#3f9a4a', G: '#6fd06a', y: '#f0e08a', l: '#3f9a4a', f: '#2f7a3a' },
+      rows: ['.....gg.....', '...gGGGGg...', '..gGwGGwGg..', '..gwwwwwwg..', '..gossssog..', '..gsessesg..', '..gssssssg..', '..ggwwwwgg..',
+        '..gGyyyyGg..', '.ggGyyyyGgg.', '.sgGyyyyGgsg', '..gGyyyyGggg', '...gggggg.g.', '...gg..gg...'] }
+  ],
+  diego: [
+    { id: 'black', name: 'Blackened Steel', note: 'A recolour. Armour was often blackened against rust at sea.', pal: { M: '#3a3340', m: '#59616b', N: '#221c26', C: '#3a3340', c: '#59616b', r: '#e8b23a' } },
+    { id: 'gilded', name: 'Gilded', note: 'A recolour, and far above his pay.', pal: { M: '#e8b23a', m: '#ffe08a', N: '#a8842f', C: '#e8b23a', c: '#ffe08a', r: '#5a2a6b', y: '#f4f0e6' } },
+    { id: 'forest', name: 'Forest', note: 'A recolour.', pal: { r: '#2f6b3a', y: '#6b4a2b', C: '#8b95a1', l: '#3c281a' } },
+    { id: 'blue', name: 'Royal Blue', note: 'A recolour.', pal: { r: '#27406b', y: '#f4f0e6' } },
+    { id: 'rust', name: 'Rust and Bone', note: 'A recolour. Two years in the tropics does this to steel.', pal: { M: '#8a5a3a', m: '#b07a4a', N: '#5a3a22', C: '#c4b494', c: '#e9dfc4', r: '#6b4a2b', y: '#3c281a' } },
+    { id: 'friar', name: 'Friar', note: 'Of his time. Augustinian friars came to Manila with the first expedition. Diego is not one, and it shows.',
+      pal: { s: '#e2b08a', b: '#5a3a22', h: '#6b4a2b', H: '#8a6238', y: '#e8b23a', l: '#6b4a2b', f: '#5b3d28' },
+      rows: ['............', '............', '....bbbb....', '...bssssb...', '..obssssbo..', '..osesseso..', '..obsssbbo..', '...obbbbo...',
+        '..hHHhhHHh..', '.hhHhhhhHhh.', '.shhhhyhhhs.', '..hwwwwwwh..', '..hhhhhhhh..', '..hhhhhhhh..'] },
+    { id: 'knight', name: 'Knight Errant', note: 'Out of date even then. Full plate was already old-fashioned in 1574, as a certain novel of 1605 would point out.',
+      pal: { M: '#b9c2cc', m: '#e6ecf2', N: '#7b8794', r: '#b3262e', y: '#d9a531', k: '#1b1622', l: '#7b8794', f: '#59616b' },
+      rows: ['......rr....', '....rrMM....', '...MMmMMM...', '..MMmMMMMM..', '..MMMMMMMM..', '..MkkkkkkM..', '..MMmMMMMM..', '...MNMNMN...',
+        '..NMMmMMMN..', '.MMMmMMMMMM.', '.NMMMMMMNMN.', '...MMMMNN...', '..MMyMMyMM..', '..MMN..NMM..'] },
+    { id: 'guayabera', name: 'Guayabera', note: 'From later centuries. Cuba, Mexico and the Philippines all claim the pleated shirt. None of them had it in 1574.',
+      pal: { s: '#e2b08a', b: '#5a3a22', h: '#d9c487', H: '#efe0a8', k: '#3c281a', g: '#bfe0ea', G: '#d8eef4', W: '#ffffff', t: '#b8a070', l: '#b8a070', f: '#5b3d28' },
+      rows: ['............', '....hHHh....', '...hHHHHh...', '.hhkkkkkkhh.', ...FACE_D,
+        '..gGgssgGg..', '.sgWgGGgWgs.', '.sgWgGGgWgs.', '..gWgGGgWg..', '..gggggggg..', '...tt..tt...'] },
+    { id: 'matador', name: 'Matador', note: 'From the eighteenth century. The suit of lights came two hundred years later.',
+      pal: { s: '#e2b08a', b: '#5a3a22', R: '#c0392b', y: '#e8b23a', k: '#1b1622', l: '#f4a0c0', f: '#1b1622' },
+      rows: ['............', '............', '..kkkkkkkk..', '.kkkkkkkkkk.', ...FACE_D,
+        '..yRyssyRy..', '.yyRywwyRyy.', '.syRywwyRys.', '..yRRRRRRy..', '...yRyyRy...', '...RR..RR...'] },
+    { id: 'chef', name: 'Camp Cook', note: 'A joke. Somebody had to feed the garrison.',
+      pal: { s: '#e2b08a', b: '#5a3a22', W: '#c8c2b4', A: '#59616b', r: '#b3262e', l: '#2b2b3b', f: '#1b1622' },
+      rows: ['...wwwwww...', '...wWwwWw...', '...wwwwww...', '...WWWWWW...', ...FACE_D,
+        '..wwwrrwww..', '.swwwwwwwws.', '.swwAwwAwws.', '..wwwwwwww..', '..wwwwwwww..', '...ww..ww...'] }
+  ]
+};
+const SKIN_BY_KEY = {}; for (const h in SKINS) for (const s of SKINS[h]) { s.kind = s.rows ? 'costume' : 'recolor'; s.cost = SKIN_COST[s.kind]; SKIN_BY_KEY[h + ':' + s.id] = s; }
+
+/* ============================================================
    Persistent save (browser localStorage), versioned.
    Key 'siege1574save' holds progression. The older keys are left
    in place: 'siege1574' (settings + last hero) is still the settings
    store, and 'siege1574best' (pre-0.2 personal best) is read once
    during migration and never deleted by it.
    ============================================================ */
-const SAVE_KEY = 'siege1574save', SAVE_VERSION = 3;      // v3 (Alpha 0.3) adds `deeds` and stats.champKills; v2 saves load unchanged
+const SAVE_KEY = 'siege1574save', SAVE_VERSION = 6;      // v3 (Alpha 0.3) adds `deeds` and stats.champKills; v2 saves load unchanged
 const Save = {
   data: null, ok: true,
   defaults() {
     return {
       v: SAVE_VERSION, funds: 0, fundsEarned: 0, perm: {}, challengeTier: 0,
       stats: { runs: 0, kills: 0, bossKills: 0, champKills: 0, arcadeWins: {}, bestArcade: null, bestArcadeWave: 0, bestEndless: null },
+      skins: { owned: {}, worn: {} },        // 0.4: owned 'hero:skin' -> true; worn hero -> skin id (see SKINS)
+      endings: {},                           // 0.4: hero id -> { dawn, whole, sign } seen (see ENDINGS)
+      codex: {},                             // 0.4: Chronicle entry id -> true (see CODEX)
       deeds: {},                             // deed id -> true; each one unlocks an anting-anting (see DEEDS)
       music: { bags: {}, last: {} }          // boss-theme shuffle bags, so rotation continues across sessions
     };
@@ -891,6 +1291,11 @@ const Save = {
       if (raw.stats && typeof raw.stats === 'object') { const s = raw.stats; d.stats.runs = num(s.runs, 0); d.stats.kills = num(s.kills, 0); d.stats.bossKills = num(s.bossKills, 0); d.stats.bestArcadeWave = num(s.bestArcadeWave, 0); d.stats.champKills = num(s.champKills, 0);
         if (s.arcadeWins && typeof s.arcadeWins === 'object') for (const h in HEROES) if (s.arcadeWins[h]) d.stats.arcadeWins[h] = num(s.arcadeWins[h], 0);
         for (const k of ['bestArcade', 'bestEndless']) if (s[k] && typeof s[k] === 'object' && typeof s[k].time === 'number') d.stats[k] = { wave: num(s[k].wave, 0), time: s[k].time, hero: String(s[k].hero || '') }; }
+      if (raw.skins && typeof raw.skins === 'object') { const k = raw.skins;
+        if (k.owned && typeof k.owned === 'object') for (const id in SKIN_BY_KEY) if (k.owned[id] === true) d.skins.owned[id] = true;
+        if (k.worn && typeof k.worn === 'object') for (const h in SKINS) if (typeof k.worn[h] === 'string' && d.skins.owned[h + ':' + k.worn[h]]) d.skins.worn[h] = k.worn[h]; }
+      if (raw.endings && typeof raw.endings === 'object') for (const h in ENDINGS) if (raw.endings[h] && typeof raw.endings[h] === 'object') for (const e of ENDINGS[h]) if (raw.endings[h][e.key] === true) (d.endings[h] || (d.endings[h] = {}))[e.key] = true;
+      if (raw.codex && typeof raw.codex === 'object') for (const q of CODEX) if (raw.codex[q.id] === true) d.codex[q.id] = true;
       if (raw.deeds && typeof raw.deeds === 'object') for (const q of DEEDS) if (raw.deeds[q.id] === true) d.deeds[q.id] = true;      // unknown ids are dropped
       // a save written before boss-music rotation existed simply has no music block: start empty bags, keep everything else
       if (raw.music && typeof raw.music === 'object') { const m = raw.music;
@@ -1510,6 +1915,7 @@ function buildMap() {
     trees.push([x, y, T[i] === T_SAND || R() < 0.7 ? 'palm' : 'leaf']); S[i] = 1; occ[i] = 1; occ[i + 1] = 1; occ[i - 1] = 1; occ[i + MAPW] = 1; occ[i - MAPW] = 1;
   }
   for (let i = 0; i < T.length; i++) { if ((T[i] === T_WATER) || T[i] === T_JUNGLE) S[i] = 1; if (!S[i]) MAP.walk.push(i); }
+  buildHighTide(coast);
   // 0.3: torch posts are pure decoration (no collision). They stand on palisade posts or open ground, never on water, roofs or trees.
   MAP.torches = TORCHES.filter(([x, y]) => { const i = x + y * MAPW; return T[i] !== T_WATER && T[i] !== T_JUNGLE && (!S[i] || walls.some(w => w[0] === x && w[1] === y)); }).map(([x, y]) => ({ x: x * TILE + 8, y: y * TILE + 10 }));
 
@@ -1626,6 +2032,71 @@ function buildMap() {
 }
 function pick2(R, a) { return a[Math.floor(R() * a.length)]; }
 
+/* High Tide (0.4.2): the mask and artwork share the map's walkable shore tiles. */
+const TIDE_GROUND = { cells: new Uint8Array(MAPW * MAPH), overlay: null };
+
+function buildHighTide(coast) {
+  const { cells } = TIDE_GROUND;
+  cells.fill(0);
+  let width = 0;
+
+  // Use the original bay edge, before roads and piers dress the map.
+  for (let y = HIGH_TIDE.firstRow; y < MAPH; y++) {
+    const shore = coast(y);
+    for (let x = shore; x < Math.min(shore + HIGH_TIDE.inlandTiles, MAPW); x++) {
+      const i = x + y * MAPW;
+      const type = MAP.type[i];
+      if (MAP.solid[i] || (type !== T_GRASS && type !== T_SAND && type !== T_DIRT)) continue;
+      cells[i] = 1;
+      width = Math.max(width, (x + 1) * TILE);
+    }
+  }
+
+  TIDE_GROUND.overlay = width ? mkCanvas(width, WORLD_H) : null;
+  if (!TIDE_GROUND.overlay) return;
+  const g = TIDE_GROUND.overlay.getContext('2d');
+  const bank = (x, y) => {
+    if (x < 0 || y < 0 || x >= MAPW || y >= MAPH) return false;
+    const i = x + y * MAPW;
+    return !cells[i] && !MAP.solid[i];
+  };
+
+  for (let i = 0; i < cells.length; i++) {
+    if (!cells[i]) continue;
+    const x = i % MAPW, y = Math.floor(i / MAPW);
+    const px = x * TILE, py = y * TILE;
+    g.fillStyle = 'rgba(29,135,169,0.58)';
+    g.fillRect(px, py, TILE, TILE);
+    // Sparse horizontal ripples read as shallow water without covering pickups.
+    const ripple = (x * 7 + y * 11) % 9;
+    g.fillStyle = 'rgba(172,236,237,0.55)';
+    g.fillRect(px + 2 + ripple, py + 4 + ripple, 4, 1);
+    g.fillStyle = 'rgba(37,80,108,0.45)';
+    g.fillRect(px + 9 - ripple, py + 13, 5, 1);
+    // Trace the dry bank inside the flooded tile, never on pier boards.
+    g.fillStyle = '#9ff1ef';
+    if (bank(x - 1, y)) g.fillRect(px, py, 1, TILE);
+    if (bank(x + 1, y)) g.fillRect(px + TILE - 1, py, 1, TILE);
+    if (bank(x, y - 1)) g.fillRect(px, py, TILE, 1);
+    if (bank(x, y + 1)) g.fillRect(px, py + TILE - 1, TILE, 1);
+  }
+}
+
+function tideMoveScale(x, y) {
+  if (G.twist !== 'high_tide' || x < 0 || y < 0 || x >= WORLD_W || y >= WORLD_H) return 1;
+  const tile = Math.floor(x / TILE) + Math.floor(y / TILE) * MAPW;
+  return TIDE_GROUND.cells[tile] ? HIGH_TIDE.moveScale : 1;
+}
+
+function raiderTideScale(e) {
+  return e.d.boss ? 1 : tideMoveScale(e.x, e.y);
+}
+
+function drawHighTide(g, cameraX) {
+  const layer = TIDE_GROUND.overlay;
+  if (G.twist === 'high_tide' && layer && cameraX < layer.width) g.drawImage(layer, 0, 0);
+}
+
 /* ============================================================
    Core simulation: player, heroes, enemies, bosses, waves, pickups, powers
    ============================================================ */
@@ -1706,7 +2177,7 @@ function pathDir(e, dt) {
   }
   const d = Math.hypot(dx, dy) || 1; DIR.x = dx / d; DIR.y = dy / d;
 }
-function walk(e, dt, mul) { pathDir(e, dt); const v = e.speed * mul * G.mods.foe * dt; e.x += DIR.x * v; e.y += DIR.y * v; e.moving = true; }
+function walk(e, dt, mul) { pathDir(e, dt); const v = e.speed * mul * G.mods.foe * raiderMoveScale(e) * dt; e.x += DIR.x * v; e.y += DIR.y * v; e.moving = true; }
 
 /* ---------- player ---------- */
 function newPlayer(heroId) {
@@ -1926,7 +2397,7 @@ function updatePlayer(dt) {
     if (d.kind !== 'dodge' || d.dmg) dashHits(d);          // 0.3: Tidecaller's Shell gives the plain dodge a cutting edge
     if (d.t >= d.dur) { p.dash = null; p.iframes = Math.max(p.iframes, 0.12); if (d.kind !== 'charge' && lv('counter')) p.counterT = 3; if (d.kind === 'dodge' && has('sigbin')) p.shadowT = 2; }
   } else {
-    const sp = s.speed * (p.speedT > 0 ? 1.2 : 1) * G.mods.hero;
+    const sp = s.speed * (p.speedT > 0 ? 1.2 : 1) * G.mods.hero * tideMoveScale(p.x, p.y);
     p.x += mx * sp * dt; p.y += my * sp * dt; collide(p); p.moving = ml > 0.05; if (p.moving) p.animT += dt * Math.max(0.5, ml);
     if (p.bufDodge > 0 && p.dashT <= 0) {
       const dx = ml > 0.05 ? mx / ml : Math.cos(p.aim), dy = ml > 0.05 ? my / ml : Math.sin(p.aim);
@@ -2052,10 +2523,25 @@ const AI = {
       if (e.st <= 0) { fireAt(e, d.shotSpeed, d.reload ? 'ball' : 'arrow'); if (d.reload) { e.state = 'reload'; e.st = d.reload; } else { e.state = 'move'; e.cd = d.atkCd + rand(0, 0.8); } }
       return;
     }
-    if (e.state === 'reload') { e.st -= dt; if (e.st <= 0) { e.state = 'move'; e.cd = d.atkCd; } if (dist < near) { e.x -= dx / dist * e.speed * 0.5 * dt; e.y -= dy / dist * e.speed * 0.5 * dt; e.moving = true; } return; }
+    if (e.state === 'reload') {
+      e.st -= dt; if (e.st <= 0) { e.state = 'move'; e.cd = d.atkCd; }
+      if (dist < near) {
+        const v = e.speed * raiderMoveScale(e) * 0.5 * dt;
+        e.x -= dx / dist * v; e.y -= dy / dist * v; e.moving = true;
+      }
+      return;
+    }
     if (dist > far) walk(e, dt, 1);
-    else if (dist < near) { e.x -= dx / dist * e.speed * dt; e.y -= dy / dist * e.speed * dt; e.moving = true; }
-    else { e.x += -dy / dist * e.speed * 0.45 * e.strafe * dt; e.y += dx / dist * e.speed * 0.45 * e.strafe * dt; e.moving = true; if (Math.random() < dt * 0.3) e.strafe *= -1; }
+    else {
+      const v = e.speed * raiderMoveScale(e) * dt;
+      if (dist < near) { e.x -= dx / dist * v; e.y -= dy / dist * v; }
+      else {
+        const sidestep = v * 0.45 * e.strafe;
+        e.x -= dy / dist * sidestep; e.y += dx / dist * sidestep;
+        if (Math.random() < dt * 0.3) e.strafe *= -1;
+      }
+      e.moving = true;
+    }
     if (e.cd <= 0 && dist < d.range * sight && onScreen(e, -6) && lineClear(e.x, e.y, p.x, p.y, MAP.shot)) { e.state = 'aim'; e.st = d.windup; e.aimA = Math.atan2(dy, dx); }
   },
   spearman(e, dt, p, dist, dx, dy) {
@@ -2205,9 +2691,14 @@ function updateEnemies(dt) {
     e.x += e.kx * dt; e.y += e.ky * dt; e.kx *= damp; e.ky *= damp;
     const dx = p.x - e.x, dy = p.y - e.y, dist = Math.hypot(dx, dy) || 0.01;
     if (e.flee) {      // end-of-wave retreat: run from the hero, fade, and leave without counting as a kill
-      e.fleeT += dt; e.x -= dx / dist * e.baseSpeed * 1.8 * dt; e.y -= dy / dist * e.baseSpeed * 1.8 * dt; e.moving = true; e.face = dx >= 0 ? -1 : 1; e.state = 'move'; collide(e);
+      const v = e.baseSpeed * 1.8 * raiderMoveScale(e) * dt;
+      e.fleeT += dt; e.x -= dx / dist * v; e.y -= dy / dist * v; e.moving = true; e.face = dx >= 0 ? -1 : 1; e.state = 'move'; collide(e);
       if (Math.random() < dt * 8) part(e.x, e.y, rand(-8, 8), -6, 0.4, '#d9c487', 2);
-      if (e.fleeT > 0.8 && (!onScreen(e, 12) || e.fleeT > 4.5)) { e.dead = true; burst(e.x, e.y - 6, 5, '#e6ecf2', 40, 0.4, 2); }
+      if (e.fleeT > 0.8 && (!onScreen(e, 12) || e.fleeT > 4.5)) {
+        e.dead = true;
+        if (e.trait === 'rallying') RALLYING_CHAMPIONS.delete(e);
+        burst(e.x, e.y - 6, 5, '#e6ecf2', 40, 0.4, 2);
+      }
       continue;
     }
     if (e.stun > 0) e.stun -= dt;
@@ -2446,7 +2937,7 @@ function startNextWave() {
   G.waveStats = { kills: 0, gold: 0, xp: 0 }; G.mouse.l = G.mouse.r = false; G.pressed = {};
   updateField(); placeCrates(); G.state = 'playing'; startWave03();
   const endless = G.mode === 'endless' && G.wave > WAVES.length;
-  waveBanner(); if (endless && G.wave === WAVES.length + 1) UI.banner('Wave 11', 'The endless tide begins');
+  waveBanner(); if (endless && G.wave === WAVES.length + 1 && G.twist !== 'high_tide') UI.banner('Wave 11', 'The endless tide begins');
   sfx('wave'); UI.show('hud');
 }
 const MOP_LIMIT = 22;   // seconds survivors get after reinforcements stop before they break and run
@@ -2468,7 +2959,7 @@ function updateWave(dt) {
       G.mopT += dt;
       // Survivors used to be deleted on the spot here, which looked like enemies dying for no reason.
       // Now they visibly break and run; a fleeing enemy that gets away gives no kill, XP or gold.
-      if (G.enemies.length && G.mopT > MOP_LIMIT && !G.retreat) { G.retreat = true; for (const e of G.enemies) { e.flee = true; e.fleeT = 0; } G.shots = G.shots.filter(s => !s.enemy); G.hazards.length = 0; UI.banner('The raiders fall back', 'Survivors are retreating'); sfx('wave'); }
+      if (G.enemies.length && G.mopT > MOP_LIMIT && !G.retreat) { G.retreat = true; for (const e of G.enemies) { e.flee = true; e.fleeT = 0; } G.shots = G.shots.filter(s => !s.enemy); G.hazards.length = 0; UI.banner('The raiders fall back', 'The wave is won. Survivors retreat and give no rewards.'); sfx('wave'); }
       if (!G.enemies.length) { G.phase = 'vacuum'; G.phaseT = 0; G.hazards.length = 0; G.rings.length = 0; G.shots.length = 0; for (const k of G.pickups) k.mag = true; }
     }
   } else if (G.phase === 'vacuum') {
@@ -2609,7 +3100,7 @@ function updateDock(dt) {
   } else if (D.away >= DOCK.cool) {                         // off the pier long enough: the guns fall silent
     D.state = 'idle'; D.t = 0; floatText(p.x, p.y - 26, 'OUT OF RANGE', '#7be38a');
   } else if (D.state === 'warn') {
-    D.st -= dt; if (D.st <= 0) { D.state = 'fire'; D.acc = DOCK.salvo; }
+    D.st -= dt; if (D.st <= 0) { D.state = 'fire'; D.acc = DOCK.salvo; codex('junks'); }
   } else {
     D.acc += dt;
     if (D.acc >= DOCK.salvo) {
@@ -2644,6 +3135,7 @@ function updateLight(dt, snap) {
    States: dive -> hunt -> (rise -> dive, Blood Moon 3 only) -> leave.
    ============================================================ */
 function summonMana() {
+  codex('mana');
   const p = G.p, M = SPECIAL.mana, L = lv('bloodmoon'), d = clamp(p.aimDist, M.minRange, M.range * p.stats.reach);
   for (const a of G.allies) if (a.kind === 'mana' && a.state !== 'leave') { a.state = 'leave'; a.t = 0; }      // a new call always replaces the old one
   G.allies.push({ kind: 'mana', x: clamp(p.x + Math.cos(p.aim) * d, 12, WORLD_W - 12), y: clamp(p.y + Math.sin(p.aim) * d, 12, WORLD_H - 12), z: 150,
@@ -2706,7 +3198,7 @@ function updateAllies(dt) {
    ============================================================ */
 function charmPool() { const p = G.p; return CHARMS.filter(c => !p.charms[c.id] && (!c.deed || Save.data.deeds[c.deed])); }
 function rollCharms() { const pool = charmPool(), out = []; while (out.length < 3 && pool.length) out.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0].id); return out; }
-function gainCharm(id) { const p = G.p; if (!CHARM_BY_ID[id] || p.charms[id]) return; p.charms[id] = true; p.charmList.push(id); recalc(p); if (p.charmList.length >= DEED.collector) deed('collector'); }
+function gainCharm(id) { const p = G.p; if (!CHARM_BY_ID[id] || p.charms[id]) return; p.charms[id] = true; p.charmList.push(id); codex('anting'); recalc(p); if (p.charmList.length >= DEED.collector) deed('collector'); }
 // Called by endWave() once the wave is settled. Returns true when the charm screen has taken over; UI.chooseCharm() then opens the shop.
 function offerCharm() {
   const due = G.charmDue > 0 || CHARM_WAVES.includes(G.wave); G.charmDue = 0; if (!due) return false;
@@ -2737,6 +3229,8 @@ function charmOnHit(e, o) {                     // queued, never resolved inside
   if (++p.emberN >= 5) { p.emberN = 0; G.bursts.push({ x: e.x, y: e.y - 4, r: 32, dmg: 22, color: '#7fe0ff' }); }
 }
 function onKill03(e) {
+  if (e.trait === 'rallying') RALLYING_CHAMPIONS.delete(e);
+  onKill04(e);
   const p = G.p, C = p.charms;
   if (e.d.boss) { G.charmDue++; if (e.type === 'captain') deed('captain'); }
   if (e.champ) { Save.data.stats.champKills++; if (Save.data.stats.champKills >= DEED.champ) deed('champ'); }
@@ -2761,13 +3255,14 @@ function updateCharms(dt) {
 // a lightning bolt on one spot (used by Habagat's Wrath; the squall's bolts go through the hazard system so they can be dodged)
 function strike(x, y, dmg) { G.bolts.push({ x, y, t: 0.22 }); G.bursts.push({ x, y: y - 4, r: 12, dmg, color: '#ffd84a', stun: 0.4 }); }
 function updateBursts(dt) {
+  // 0.4: bolt streaks fade here on every step. They used to fade only below the early return, so squall lightning (which queues no burst) never expired.
+  for (let i = G.bolts.length - 1; i >= 0; i--) { G.bolts[i].t -= dt; if (G.bolts[i].t <= 0) G.bolts.splice(i, 1); }
   const B = G.bursts; if (!B.length) return; const list = B.splice(0, B.length);       // bursts caused by these bursts wait for the next frame, so chains ripple instead of recursing
   for (const b of list) {
     if (b.one) { if (!b.one.dead) hitEnemy(b.one, b.dmg, { power: true }); continue; }
     for (const e of G.enemies.slice()) if (!e.dead && Math.hypot(e.x - b.x, e.y - 4 - b.y) < b.r + e.r) hitEnemy(e, b.dmg, { power: true, kb: 70, ax: b.x, ay: b.y, stun: b.stun });
     G.fx.push({ kind: 'ring', x: b.x, y: b.y, r0: 3, r1: b.r, t: 0, dur: 0.22, color: b.color }); burst(b.x, b.y, 8, [b.color, '#ffffff'], 90, 0.3, 1);
   }
-  for (let i = G.bolts.length - 1; i >= 0; i--) { G.bolts[i].t -= dt; if (G.bolts[i].t <= 0) G.bolts.splice(i, 1); }
 }
 
 /* ============================================================
@@ -2777,7 +3272,7 @@ function deed(id) {
   const D = Save.data.deeds; if (D[id] || !DEED_BY_ID[id]) return false;
   D[id] = true; Save.write(); if (G.run && G.run.deeds) G.run.deeds.push(id);
   const d = DEED_BY_ID[id], c = CHARM_BY_ID[d.charm];
-  UI.banner('Deed: ' + d.name, c ? 'New anting-anting unlocked: ' + c.name : '', 'deed'); sfx('level'); return true;
+  UI.banner('Deed: ' + d.name, c ? 'New anting-anting (perk) unlocked: ' + c.name : '', 'deed'); sfx('level'); return true;
 }
 function deedTick() {                            // the handful of deeds that are simple thresholds
   const p = G.p, st = Save.data.stats;
@@ -2786,13 +3281,18 @@ function deedTick() {                            // the handful of deeds that ar
   if (st.kills + p.kills >= DEED.thousand) deed('thousand');
 }
 function endWave03() {
+  RALLYING_CHAMPIONS.clear();
   const p = G.p;
   if (!p.waveHurt && G.wave >= DEED.untouchWave) deed('untouch');
   if (G.mode === 'endless') { if (G.wave >= 15) deed('tide15'); if (G.wave >= 20) deed('tide20'); }
+  endWave04();
+  if (G.twist === 'high_tide') setTwist(null);
   G.allies.length = 0; G.burns.length = 0; G.bursts.length = 0; G.bolts.length = 0;
 }
 function finishRun03(outcome) {
-  if (outcome !== 'victory') return; deed('defender');
+  RALLYING_CHAMPIONS.clear();
+  if (G.twist === 'high_tide') setTwist(null);
+  if (outcome !== 'victory') return; deed('defender'); codex('after');
   const w = Save.data.stats.arcadeWins; if (w.mateo && w.datu && w.diego) deed('three');
 }
 
@@ -2803,17 +3303,20 @@ function setupRun03() {
   const r = G.run, w = TWIST_WAVES.slice(), ids = TWIST_IDS.slice(); r.twists = {}; r.deeds = [];
   for (let k = 0; k < 2 && w.length && ids.length; k++) r.twists[w.splice(Math.floor(Math.random() * w.length), 1)[0]] = ids.splice(Math.floor(Math.random() * ids.length), 1)[0];
   G.allies.length = 0; G.burns.length = 0; G.bursts.length = 0; G.bolts.length = 0; G.charmDue = 0; G.flashT = 0; G.twist = null;
-  G.dock.t = 0; G.dock.state = 'idle'; G.dock.away = 0; Object.assign(G.mods, { foe: 1, hero: 1, shot: 1, sight: 1 });
+  G.dock.t = 0; G.dock.state = 'idle'; G.dock.away = 0; Object.assign(G.mods, { foe: 1, hero: 1, shot: 1, sight: 1 }); setupRun04();
 }
 function setTwist(id) {
   G.twist = TWISTS[id] ? id : null; const t = G.twist ? TWISTS[id] : {};
   Object.assign(G.mods, { foe: t.foe || 1, hero: t.hero || 1, shot: t.shot || 1, sight: t.sight || 1 }); G.tw.acc = 0; G.tw.next = 2.5;
 }
 function startWave03() {
+  RALLYING_CHAMPIONS.clear();
   const p = G.p, r = G.run; let id = r.twists[G.wave] || null;
   if (!id && G.wave > WAVES.length && !G.def.boss && Math.random() < TWIST_ENDLESS) id = pick(TWIST_IDS);
+  if (id === 'high_tide' && (G.def.boss || (G.wave <= WAVES.length && !TWIST_WAVES.includes(G.wave)))) id = null;
   setTwist(id); p.baleteUsed = false; p.waveHurt = false;
   G.allies.length = 0; G.burns.length = 0; G.bursts.length = 0; G.bolts.length = 0; G.dock.t = 0; G.dock.state = 'idle'; G.dock.away = 0;
+  startWave04();                                   // 0.4: cooldowns ready, Chronicle entries
   if (G.wave === 1) updateLight(0, true);         // a new run starts in plain daylight, not in the last run's dusk
 }
 function waveBanner() {
@@ -2868,6 +3371,7 @@ function hazardBoth(h) {
 function applyTrait(e) {
   e.trait = pick(TRAIT_IDS); e.guardT = 0; e.seen = false;
   if (e.trait === 'swift') { e.speed *= TRAITS.swift.speed; e.hp = Math.round(e.hp * TRAITS.swift.hp); }
+  else if (e.trait === 'rallying') RALLYING_CHAMPIONS.add(e);
 }
 // returns true when a shielded champion's guard swallowed the hit
 function traitBlocks(e, o) {
@@ -2877,8 +3381,90 @@ function traitBlocks(e, o) {
 
 /* ---------- one call per simulated frame (from update(), only while playing) ---------- */
 function update03(dt) {
-  updateDock(dt); updateTwist(dt); updateAllies(dt); updateCharms(dt); updateBursts(dt); updateLight(dt); deedTick();
+  updateDock(dt); updateTwist(dt); updateAllies(dt); updateCharms(dt); updateBursts(dt); updateLight(dt); deedTick(); tick04();
   if (G.flashT > 0) G.flashT -= dt;
+}
+
+/* ============================================================
+   Alpha 0.4 game hooks: the Chronicle (codex) unlocks, and the
+   per-wave cooldown reset. Called from hooks marked `0.4:`.
+   ============================================================ */
+// Unlock one Chronicle entry. Idempotent, like deed(). Shows a small line over the hero, never a banner, so it cannot hide the fight.
+function codex(id) {
+  const C = Save.data.codex; if (C[id] || !CODEX_BY_ID[id]) return false;
+  C[id] = true; Save.write(); if (G.run && G.run.codex) G.run.codex.push(id);
+  if (G.p && G.state === 'playing') floatText(G.p.x, G.p.y - 30, 'CHRONICLE: ' + CODEX_BY_ID[id].name.toUpperCase(), '#7be38a');
+  return true;
+}
+function codexCount() { let n = 0; for (const c of CODEX) if (Save.data.codex[c.id]) n++; return n; }
+function setupRun04() { G.run.codex = []; G.run.minHp = 1; }
+function tick04() { const p = G.p, r = G.run; if (r && p.maxHp > 0 && p.hp > 0) r.minHp = Math.min(r.minHp, p.hp / p.maxHp); }
+// Which endings this run earned, strongest claim first.
+function endingsEarned() {
+  const p = G.p, r = G.run, got = [];
+  if ((p.hero === 'datu' ? p.manaKills : p.spKills) >= ENDING_RULES.sign[p.hero]) got.push('sign');
+  if (r.minHp >= ENDING_RULES.whole) got.push('whole');
+  got.push('dawn'); return got;
+}
+// Called once when Arcade is won. Prefers an earned ending the player has not seen yet.
+function pickEnding() {
+  const p = G.p, seen = Save.data.endings[p.hero] || (Save.data.endings[p.hero] = {}), got = endingsEarned();
+  const key = got.find(k => !seen[k]) || got[0], e = ENDINGS[p.hero].find(x => x.key === key);
+  const fresh = !seen[key]; seen[key] = true; Save.write(); codex(`end_${p.hero}_${key}`);
+  G.ending = { key, name: e.name, beats: e.beats, fresh, earned: got }; G.vicBeat = 0; return G.ending;
+}
+// Every wave starts with RMB, Shift, dodge and the Q power ready, so no wave is harder because of when the last one ended.
+function startWave04() {
+  const p = G.p; p.secT = 0; p.spT = 0; p.dashT = 0; p.bufA = p.bufS = p.bufDodge = 0; if (p.active) p.active.cd = 0;
+  if (p.ring) { p.ring.aPrev = 0; p.ring.sPrev = 0; }
+  codex('manila'); codex('limahong');
+  if (G.twist) codex('tw_' + G.twist);
+}
+function endWave04() {
+  const w = G.wave;
+  if (w >= 3) codex('first'); if (w >= 5) codex('salcedo'); if (w >= 7) codex('uprising'); if (w >= 9) codex('second');
+  if (G.mode === 'endless' && w >= 15) codex('embassy');
+}
+function onKill04(e) { codex('e_' + e.type); if (e.champ) codex('champ'); }
+
+/* ---------- Wardrobe (skins). Cosmetic only: nothing here touches a stat. ---------- */
+// Every skin is baked once at boot, like every other sprite. Wearing one swaps SPR[hero], so the field, the HUD portrait,
+// the character cards and the ending scene all show it without knowing skins exist.
+const SKINSPR = {};
+function buildSkins() {
+  for (const h in SKINS) { SKINSPR[h] = { default: SPR[h] }; for (const s of SKINS[h]) SKINSPR[h][s.id] = bakeWalker(s.rows || HUMAN[h].rows, LEGS, s.rows ? s.pal : Object.assign({}, HUMAN[h].pal, s.pal)); }
+}
+function applySkins() { if (!SKINSPR.mateo || !Save.data) return; const w = Save.data.skins.worn; for (const h in SKINS) SPR[h] = SKINSPR[h][w[h]] || SKINSPR[h].default; }
+Object.assign(Save, {
+  hasSkin(h, id) { return id === 'default' || !!this.data.skins.owned[h + ':' + id]; },
+  wornSkin(h) { const id = this.data.skins.worn[h]; return id && this.hasSkin(h, id) && SKIN_BY_KEY[h + ':' + id] ? id : 'default'; },
+  buySkin(h, id) {
+    const s = SKIN_BY_KEY[h + ':' + id]; if (!s) return 'none'; if (this.hasSkin(h, id)) return 'owned';
+    if (this.data.funds < s.cost) return 'poor';
+    this.data.funds -= s.cost; this.data.skins.owned[h + ':' + id] = true; this.data.skins.worn[h] = id; this.write(); applySkins(); return 'ok';
+  },
+  wearSkin(h, id) { if (!SKINS[h] || !this.hasSkin(h, id) || (id !== 'default' && !SKIN_BY_KEY[h + ':' + id])) return false; this.data.skins.worn[h] = id; this.write(); applySkins(); return true; }
+});
+{ const load0 = Save.load, reset0 = Save.reset; Save.load = function () { load0.call(this); applySkins(); }; Save.reset = function () { reset0.call(this); applySkins(); }; }
+
+/* Rallying (0.4.3). Only aura sources are indexed. Membership is queried from
+   live positions, so there are no per-recipient timers or stored speed changes. */
+const RALLYING_CHAMPIONS = new Set();
+
+function rallyMoveScale(e) {
+  if (!RALLYING_CHAMPIONS.size || e.dead || e.d.boss) return 1;
+  const { radius, moveScale } = TRAITS.rallying;
+  const radiusSq = radius * radius;
+  for (const source of RALLYING_CHAMPIONS) {
+    if (source === e || source.dead || source.trait !== 'rallying') continue;
+    const dx = e.x - source.x, dy = e.y - source.y;
+    if (dx * dx + dy * dy <= radiusSq) return moveScale;
+  }
+  return 1;
+}
+
+function raiderMoveScale(e) {
+  return raiderTideScale(e) * rallyMoveScale(e);
 }
 
 /* ============================================================
@@ -2899,6 +3485,7 @@ function drawEnemy(g, e) {
   const x = Math.round(e.x - spr.w / 2), y = Math.round(e.y - spr.h + 3);
   drawBossAura(g, e);
   g.fillStyle = 'rgba(0,0,0,0.28)'; g.fillRect(x + 2, Math.round(e.y) + 2, spr.w - 4, 2);
+  drawRallyRecipient(g, e);
   if (e.flee) g.globalAlpha = Math.max(0.25, 1 - e.fleeT / 4.5);
   if (e.champ) { pxArc(g, e.x, e.y + 1, 9, 0, 6.283, (G.time * 6 | 0) % 2 ? '#ffd84a' : (e.trait ? TRAITS[e.trait].color : '#e8b23a'), 1); traitRing(g, e); g.drawImage(img, x - 1, y - 4, spr.w + 3, spr.h + 4); } else g.drawImage(img, x, y);
   if (d.wpn) {
@@ -2974,9 +3561,11 @@ function render() {
   const cx = clamp(Math.round(c.x + c.sx), 0, WORLD_W - VW), cy = clamp(Math.round(c.y + c.sy), 0, WORLD_H - VH);
   g.drawImage(MAP.ground, cx, cy, VW, VH, 0, 0, VW, VH);
   g.save(); g.translate(-cx, -cy);
+  if (inRun) drawHighTide(g, cx);
   for (const [jx, jy] of MAP.junks) if (jx < cx + VW && jx + 46 > cx && jy < cy + VH && jy + 44 > cy) { g.fillStyle = 'rgba(10,30,50,0.35)'; g.fillRect(jx + 4, jy + 37, 38, 3); g.drawImage(SPR.junk, jx, jy + Math.round(Math.sin(G.time * 1.3 + jx) * 1.5)); }
   drawTorches(g, cx, cy);
   if (inRun) {
+    drawRallyBoundaries(g, cx, cy);
     for (const z of G.zones) { const a = Math.min(1, (z.dur - z.t) / 0.5, z.t / 0.2); fillCircle(g, z.x, z.y, z.r, '#7be38a', 0.28 * a); pxArc(g, z.x, z.y, z.r, G.time, G.time + 2.4, '#d8ffd0', 1); pxArc(g, z.x, z.y, z.r, G.time + 3.14, G.time + 5.5, '#d8ffd0', 1); }
     drawBurns(g);
     for (const h of G.hazards) drawHazard(g, h);
@@ -3034,6 +3623,7 @@ function render() {
       } else { g.globalAlpha = 1 - k; pxArc(g, f.x, f.y, lerp(f.r0, f.r1, k), 0, 6.283, f.color, 2); g.globalAlpha = 1; }
     }
     drawBolts(g);
+    drawRallyLabels(g, cx, cy);
     for (let i = 0; i < TEXTS.length; i++) { const t = TEXTS[i]; if (t.life <= 0) continue; g.globalAlpha = Math.min(1, t.life / t.max * 2.5); drawText3(g, t.text, t.x, t.y, t.color, t.scale); }
     g.globalAlpha = 1;
   }
@@ -3180,7 +3770,7 @@ function traitRing(g, e) {
   const T = TRAITS[e.trait]; if (!T) return;
   if (e.trait === 'shield') { if (e.guardT <= 0) { const a = Math.atan2(G.p.y - e.y, G.p.x - e.x); pxArc(g, e.x, e.y - 5, 11, a - 1, a + 1, '#6ac8ff', 2); pxArc(g, e.x, e.y - 5, 12, a - 0.7, a + 0.7, '#e6fbff', 1); } }
   else if (e.trait === 'swift') { g.fillStyle = T.color; for (let i = 1; i <= 3; i++) g.fillRect(Math.round(e.x - e.face * (5 + i * 4)), Math.round(e.y - 9 + i * 2), 4 - i, 1); }
-  else { g.fillStyle = (G.time * 8 | 0) % 2 ? '#ffd84a' : T.color; g.fillRect(Math.round(e.x) - 1, Math.round(e.y) - 22, 2, 2); g.fillStyle = '#3a2a22'; g.fillRect(Math.round(e.x), Math.round(e.y) - 20, 1, 2); }
+  else if (e.trait === 'volatile') { g.fillStyle = (G.time * 8 | 0) % 2 ? '#ffd84a' : T.color; g.fillRect(Math.round(e.x) - 1, Math.round(e.y) - 22, 2, 2); g.fillStyle = '#3a2a22'; g.fillRect(Math.round(e.x), Math.round(e.y) - 20, 1, 2); }
 }
 
 /* ============================================================
@@ -3285,14 +3875,22 @@ function drawBossAura(g, e) {
 
 /* ---------- Arcade ending: a short animated tableau behind the victory screen ---------- */
 function renderVictory(g) {
-  const t = G.vicT || 0, p = G.p;
-  const bands = [['#2a1f4a', 0, 44], ['#4a2a5c', 44, 34], ['#8f3a4a', 78, 30], ['#d8643a', 108, 24], ['#f09a4a', 132, 14], ['#ffd08a', 146, 8]];
+  const t = G.vicT || 0, p = G.p, K = G.ending ? G.ending.key : 'dawn';     // 0.4: 'dawn' sunrise, 'whole' full morning, 'sign' the hour before dawn
+  const bands = K === 'whole' ? [['#3a78b8', 0, 44], ['#5a9ad0', 44, 34], ['#8fc0e0', 78, 30], ['#c8e0e8', 108, 24], ['#f4e8b8', 132, 14], ['#fff4d0', 146, 8]]
+    : K === 'sign' ? [['#0e0b20', 0, 44], ['#18123a', 44, 34], ['#241a4a', 78, 30], ['#3a2458', 108, 24], ['#5a2f5c', 132, 14], ['#8f3a4a', 146, 8]]
+    : [['#2a1f4a', 0, 44], ['#4a2a5c', 44, 34], ['#8f3a4a', 78, 30], ['#d8643a', 108, 24], ['#f09a4a', 132, 14], ['#ffd08a', 146, 8]];
+  const sunX = K === 'whole' ? 44 : 150, sunY = K === 'whole' ? 58 : 154;       // the high sun sits left of the text block
+  const  glow = K === 'sign' ? ['#c8d4ff', '#8f9ad0'] : ['#ffd08a', '#f09a4a'];
   for (const [c, y, h] of bands) { g.fillStyle = c; g.fillRect(0, y, VW, h); }
   for (let i = 0; i < 5; i++) { g.fillStyle = bands[i + 1][0]; for (let x = (i * 3) % 4; x < VW; x += 4) g.fillRect(x, bands[i + 1][1] - 2, 2, 1); }     // dithered joins
-  disc(g, 150, 154, 30, '#fff0b8'); disc(g, 150, 154, 24, '#fffbe0');
+  if (K === 'sign') {                                          // stars and a low moon; the sun is not up yet
+    for (let i = 0; i < 60; i++) { g.fillStyle = (i + (t * 2 | 0)) % 9 ? '#c8d4ff' : '#ffffff'; g.fillRect((i * 97) % VW, (i * 53) % 120, 1 + (i % 7 === 0), 1 + (i % 7 === 0)); }
+    disc(g, 150, 132, 15, '#e8ecff'); g.fillStyle = '#c8d0ee'; g.fillRect(144, 126, 4, 3); g.fillRect(153, 134, 5, 4); g.fillRect(146, 138, 3, 2);      // a low full moon, below the text
+    if (p.hero === 'datu') { const S = (t * 7 | 0) % 2 ? SPR.manaB : SPR.manaA, x = (t * 34) % (VW + 120) - 60, y = 112 + Math.sin(t * 1.7) * 6; g.drawImage(S.r, Math.round(x), Math.round(y), S.r.width * 2, S.r.height * 2); }
+  } else { disc(g, sunX, sunY, 30, '#fff0b8'); disc(g, sunX, sunY, 24, '#fffbe0'); }
   g.fillStyle = '#245a86'; g.fillRect(0, 154, VW, 92); g.fillStyle = '#2f6f9c'; g.fillRect(0, 154, VW, 10);
   for (let i = 0; i < 46; i++) { const y = 158 + (i * 37 % 84), x = (i * 97 + t * (6 + i % 5)) % (VW + 20) - 10; g.fillStyle = i % 3 ? '#4a8fb8' : '#7fb8d8'; g.fillRect(Math.round(x), y, 5 + i % 6, 1); }
-  for (let y = 156; y < 240; y += 3) { g.fillStyle = y % 2 ? '#ffd08a' : '#f09a4a'; const w = 10 + (y - 156) * 0.25 + Math.sin(t * 3 + y) * 3; g.fillRect(Math.round(150 - w / 2), y, Math.round(w), 1); }
+  for (let y = 156; y < 240; y += 3) { g.fillStyle = y % 2 ? glow[0] : glow[1]; const w = 10 + (y - 156) * 0.25 + Math.sin(t * 3 + y) * 3; g.fillRect(Math.round(sunX - w / 2), y, Math.round(w), 1); }
   // the fleet withdrawing toward the horizon
   for (let i = 0; i < 5; i++) {
     const far = 0.38 + i * 0.1, x = 470 - i * 84 - t * (5 + i * 1.5), y = 150 + i * 5 + Math.sin(t * 1.2 + i) * 1.2, w = Math.round(46 * far), h = Math.round(40 * far);
@@ -3311,6 +3909,13 @@ function renderVictory(g) {
     if (id === p.hero) continue; const s = SPR[id], hop = Math.max(0, Math.sin(t * 5 + ph)) * 6, f = hop > 1 ? 1 : 0;
     g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(x - s.w * sc / 2 + 4, y, s.w * sc - 8, 3); g.drawImage(s.l[f], Math.round(x - s.w * sc / 2), Math.round(y - s.h * sc - hop), s.w * sc, s.h * sc);
   }
+  if (K === 'sign') { g.fillStyle = 'rgba(14,11,32,0.42)'; g.fillRect(0, 154, VW, VH - 154); }      // the shore is still in shadow; the hero is drawn after this and stays lit
+  if (K === 'sign' && p.hero === 'mateo') { for (let i = 0; i < 90; i++) { const a = 0.2 + i * 0.03, lit = ((i - t * 30) % 90 + 90) % 90; g.fillStyle = lit < 14 ? '#ffffff' : lit < 34 ? '#7fe0ff' : '#35708a'; g.fillRect(Math.round(230 - Math.cos(a) * 215), Math.round(236 - Math.sin(a) * 44), 3, lit < 34 ? 3 : 1); } }      // a blade of light still crossing the water
+  if (K === 'sign' && p.hero === 'diego') for (let i = 0; i < 7; i++) {                              // the beach is still burning
+    const fx = 40 + i * 86 + (i % 2) * 22, fy = 262 + (i * 37) % 70, fl = Math.sin(t * 9 + i * 2) * 2;
+    g.fillStyle = 'rgba(255,122,42,0.22)'; g.fillRect(fx - 16, fy - 6, 32, 12); g.fillStyle = '#ff7a2a'; g.fillRect(fx - 5, Math.round(fy - 10 - fl), 10, 12); g.fillStyle = '#ffd84a'; g.fillRect(fx - 2, Math.round(fy - 6 - fl), 5, 8);
+    for (let k = 0; k < 4; k++) { const ey = fy - 14 - ((t * 22 + k * 17 + i * 9) % 60); g.fillStyle = k % 2 ? '#ffd84a' : '#ff7a2a'; g.fillRect(Math.round(fx + Math.sin(t * 2 + k + i) * 6), Math.round(ey), 1, 1); }
+  }
   // the hero, weapon raised
   { const s = SPR[p.hero], sc = 5, x = 286, y = 322, bob = Math.round(Math.sin(t * 2.2) * 2);
     g.fillStyle = 'rgba(0,0,0,0.3)'; g.fillRect(x - 24, y, 48, 5); g.drawImage(s.l[0], x - s.w * sc / 2, y - s.h * sc + bob, s.w * sc, s.h * sc);
@@ -3320,9 +3925,55 @@ function renderVictory(g) {
       g.fillStyle = '#f4ead0'; for (let i = 0; i <= 20; i++) g.fillRect(Math.round(lerp(hx, sx, i / 20)), Math.round(lerp(hy, sy, i / 20)), 2, 2);
       g.drawImage(w, Math.round(sx) - 13, Math.round(sy) - 4, 28, 28);
     } else { g.save(); g.translate(x - 22, y - 46 + bob); g.rotate(-2.2 + Math.sin(t * 2.2) * 0.08); g.drawImage(w, -(w.ox || 3) * 4, -(w.oy || 3) * 4, w.width * 4, w.height * 4); g.restore(); } }
-  // drifting petals
-  for (let i = 0; i < 40; i++) { const x = (i * 53 + Math.sin(t + i) * 20 + t * 12) % VW, y = (i * 29 + t * (18 + i % 7)) % VH; g.fillStyle = ['#ffd84a', '#ff9ad1', '#f4f0e6', '#7be38a'][i % 4]; g.fillRect(Math.round(x), Math.round(y), 2, 2); }
+  // drifting petals (not before dawn)
+  if (K !== 'sign') for (let i = 0; i < 40; i++) { const x = (i * 53 + Math.sin(t + i) * 20 + t * 12) % VW, y = (i * 29 + t * (18 + i % 7)) % VH; g.fillStyle = ['#ffd84a', '#ff9ad1', '#f4f0e6', '#7be38a'][i % 4]; g.fillRect(Math.round(x), Math.round(y), 2, 2); }
   if (t < 1) { g.globalAlpha = 1 - t; g.fillStyle = '#fffbe0'; g.fillRect(0, 0, VW, VH); g.globalAlpha = 1; }
+}
+
+/* Champion colors follow the existing ring system. Mark the source with a
+   persistent label and recipients with a single pair of small ground marks. */
+let rallyBoundary = null, rallyLabel = null;
+
+function drawRallyBoundaries(g, cx, cy) {
+  if (!RALLYING_CHAMPIONS.size) return;
+  const { radius, color } = TRAITS.rallying;
+  if (!rallyBoundary) {
+    const side = radius * 2 + 3, center = radius + 1;
+    rallyBoundary = mkCanvas(side, side);
+    const layer = rallyBoundary.getContext('2d');
+    layer.globalAlpha = 0.62;
+    const step = Math.PI / 12;
+    for (let i = 0; i < 24; i++) {
+      pxArc(layer, center, center, radius, i * step, (i + 0.58) * step, color, 1);
+    }
+  }
+
+  for (const e of RALLYING_CHAMPIONS) {
+    if (e.dead || e.trait !== 'rallying' || e.x + radius < cx || e.x - radius >= cx + VW ||
+        e.y + radius < cy || e.y - radius >= cy + VH) continue;
+    g.drawImage(rallyBoundary, Math.round(e.x) - radius - 1, Math.round(e.y) - radius - 1);
+  }
+}
+
+function drawRallyRecipient(g, e) {
+  if (rallyMoveScale(e) === 1) return;
+  const x = Math.round(e.x), y = Math.round(e.y);
+  g.fillStyle = TRAITS.rallying.color;
+  g.fillRect(x - 6, y + 4, 3, 1);
+  g.fillRect(x + 4, y + 4, 3, 1);
+}
+
+function drawRallyLabels(g, cx, cy) {
+  if (!RALLYING_CHAMPIONS.size) return;
+  if (!rallyLabel) {
+    rallyLabel = mkCanvas(21, 7);
+    drawText3(rallyLabel.getContext('2d'), 'RALLY', 10, 1, TRAITS.rallying.color, 1);
+  }
+  for (const e of RALLYING_CHAMPIONS) {
+    if (e.dead || e.trait !== 'rallying' || e.x < cx - 12 || e.x >= cx + VW + 12 ||
+        e.y < cy || e.y >= cy + VH + 34) continue;
+    g.drawImage(rallyLabel, Math.round(e.x) - 10, Math.round(e.y) - 35);
+  }
 }
 
 /* ============================================================
@@ -3393,6 +4044,8 @@ const Input = {
   /* ---- menu poll: called every frame while the simulation is not running ---- */
   pollUI(dt) {
     const g = this.readPad(); if (!g) return; const P = this.pad;
+    if (g.any) this.setDevice('pad');
+    MenuScroll.stick(g.ry, dt);
     let dx = (g.cur[15] ? 1 : 0) - (g.cur[14] ? 1 : 0), dy = (g.cur[13] ? 1 : 0) - (g.cur[12] ? 1 : 0);
     if (!dx && !dy) { if (Math.abs(g.lx) > 0.55 && Math.abs(g.lx) >= Math.abs(g.ly)) dx = Math.sign(g.lx); else if (Math.abs(g.ly) > 0.55) dy = Math.sign(g.ly); }
     const key = dx + ',' + dy; P.navT -= dt;
@@ -3401,7 +4054,6 @@ const Input = {
     if (g.edge(0)) UI.navConfirm();
     if (g.edge(1)) UI.goBack();
     if (g.edge(9)) UI.goBack(true);
-    if (g.any) this.setDevice('pad');
     P.prev = g.cur;
   },
 
@@ -3461,31 +4113,42 @@ const CAT_LABEL = { supply: 'Supplies', gear: 'Equipment', myth: 'Mythological' 
 const WEAPON_SPR = { mateo: 'macuahuitl', datu: 'yoyo', diego: 'arquebus' };
 const SP_GLYPH = { mateo: ['arc', '#35c2c2', '#1c1826'], datu: ['wing', '#c08aff', '#fff'], diego: ['flame', '#ffb02e', '#fff7d0'] };
 const AB_GLYPH = { mateo: ['wing', '#4fd0e0', '#fff'], datu: ['wave', '#4fd0e0', '#fff'], diego: ['shield', '#4fd0e0', '#e6fbff'] };
-const SCREEN_PARENT = { modesel: 'menu', charsel: 'modesel', database: 'menu', perm: 'menu', notes: 'menu', deeds: 'menu' };
+const SCREEN_PARENT = { modesel: 'menu', charsel: 'modesel', database: 'menu', perm: 'menu', notes: 'menu', deeds: 'menu', codex: 'menu' };
 const MODES = {
   arcade: { name: 'Arcade', tag: 'Ten waves. Two bosses. An ending.', desc: 'The campaign: survive ten waves, beat the Pirate Captain on wave 5 and the Fleet Commander on wave 10, and Manila is saved.' },
   endless: { name: 'Endless', tag: 'No ending. Only a record.', desc: 'The same opening ten waves, then the tide keeps coming: denser, meaner mixes, gold-ringed champions, and bosses that return every five waves.' }
 };
 
 const UI = {
-  screens: ['menu', 'modesel', 'charsel', 'database', 'perm', 'controls', 'settings', 'notes', 'levelup', 'shop', 'pause', 'gameover', 'victory', 'replace', 'confirm', 'charm', 'deeds'],
+  screens: ['menu', 'modesel', 'charsel', 'database', 'perm', 'controls', 'settings', 'notes', 'levelup', 'shop', 'pause', 'gameover', 'victory', 'replace', 'confirm', 'charm', 'deeds', 'codex'],
   current: 'menu', back: 'menu', lock: 0, luIds: [], offer: [], sold: {}, rerolls: 0, cache: {}, pendingItem: null, dbHero: 'mateo', focus: null, focusIx: 0, permMsg: '',
 
   init() {
     document.addEventListener('click', e => { const t = e.target.closest('[data-act]'); if (!t || t.disabled) return; AudioSys.init(); this.act(t.dataset.act, t.dataset.arg); });
     $('vol').addEventListener('input', e => { G.settings.vol = e.target.value / 100; AudioSys.setVol(G.settings.vol); $('volv').textContent = e.target.value + '%'; saveSettings(); });
     $('musicvol').addEventListener('input', e => { G.settings.musicVol = e.target.value / 100; $('musicvolv').textContent = e.target.value + '%'; saveSettings(); });
-    $('victory').addEventListener('click', e => { if (!e.target.closest('[data-act]')) $('victory').classList.add('results'); });
+    // 0.4: the ending no longer moves on by itself. A stray click in the first two seconds (still firing) is ignored.
+    $('victory').addEventListener('click', e => { if (!e.target.closest('[data-act],.scroll-pane') && G.vicT > 2) this.vicNext(); });
     $('lore').innerHTML = SHOP.filter(i => i.lore).map(i => `<p><b>${i.name}.</b> ${i.lore}</p>`).join('');
     this.syncSettings(); this.show('menu');
   },
-  family(n) { return n === 'modesel' || n === 'charsel' ? 'select' : ['menu', 'database', 'perm', 'controls', 'settings', 'notes', 'confirm', 'deeds'].includes(n) ? 'menu' : 'run'; },
+  family(n) { return n === 'modesel' || n === 'charsel' ? 'select' : ['menu', 'database', 'perm', 'controls', 'settings', 'notes', 'confirm', 'deeds', 'codex'].includes(n) ? 'menu' : 'run'; },
   show(name) {
     if (G.state === 'menu' && this.family(name) !== 'run' && this.family(name) !== this.family(this.current)) MusicSys.screenVisit(this.family(name));
     if (name === 'menu') this.renderMenu(); else if (name === 'modesel') this.renderModes(); else if (name === 'charsel') this.renderHeroes(); else if (name === 'database') this.renderDatabase(); else if (name === 'perm') this.renderPerm(); else if (name === 'deeds') this.renderDeeds();
+    const previous = this.current;
     this.current = name;
     const under = name === 'replace' ? 'shop' : name === 'confirm' ? 'perm' : null;
-    for (const s of this.screens) $(s).classList.toggle('hidden', s !== name && s !== under);
+    for (const s of this.screens) {
+      const screen = $(s);
+      screen.inert = s === under;
+      screen.classList.toggle('hidden', s !== name && s !== under);
+    }
+    const screen = $(name);
+    if (name !== 'hud' && name !== previous && previous !== 'replace' && previous !== 'confirm') {
+      screen.scrollTop = 0;
+      for (const region of screen.querySelectorAll('.scroll-pane')) region.scrollTop = 0;
+    }
     $('hud').classList.toggle('hidden', !['hud', 'levelup', 'shop', 'pause', 'gameover', 'replace', 'charm'].includes(name));
     this.clearFocus(); if (Input.device === 'pad' && name !== 'hud') this.navMove(0, 0);
   },
@@ -3503,10 +4166,11 @@ const UI = {
       case 'pickhero': G.heroId = arg; saveSettings(); this.renderHeroes(); break;
       case 'start': case 'restart': startRun(G.heroId, G.mode); break;
       case 'database': case 'perm': case 'notes': case 'deeds': this.show(a); break;
+      case 'codex': if (arg) { const changed = arg !== this.cxId; this.cxId = arg; this.renderCodex(); if (changed) $('cxbody').scrollTop = 0; } else this.show('codex'); break;
       case 'charm': this.chooseCharm(+arg); break;
       case 'flash': G.settings.flash = !G.settings.flash; this.syncSettings(); saveSettings(); break;
       case 'light': G.settings.light = { full: 'soft', soft: 'off', off: 'full' }[G.settings.light] || 'full'; this.syncSettings(); saveSettings(); break;
-      case 'dbhero': this.dbHero = arg; this.renderDatabase(); break;
+      case 'dbhero': { const changed = arg !== this.dbHero; this.dbHero = arg; this.renderDatabase(); if (changed) $('dbbody').scrollTop = 0; break; }
       case 'controls': case 'settings': this.back = this.current === 'pause' ? 'pause' : 'menu'; this.show(a); break;
       case 'back': this.show(SCREEN_PARENT[this.current] || this.back); break;
       case 'resume': G.state = 'playing'; this.show('hud'); break;
@@ -3525,7 +4189,7 @@ const UI = {
       case 'reset': this.show('confirm'); break;
       case 'confirmreset': Save.reset(); this.permMsg = 'Progress erased. Settings were kept.'; this.show('perm'); break;
       case 'cancelreset': this.show('perm'); break;
-      case 'results': $('victory').classList.add('results'); break;
+      case 'results': this.vicNext(); break;
     }
     if (Input.device === 'pad' && this.current !== 'hud') this.navMove(0, 0);
   },
@@ -3536,7 +4200,7 @@ const UI = {
     if (c === 'pause') { this.act('resume'); return; }
     if (start) return;
     if (c === 'replace') this.act('cancelreplace'); else if (c === 'confirm') this.act('cancelreset');
-    else if (c === 'victory') $('victory').classList.add('results');
+    else if (c === 'victory') this.vicNext();
     else if (SCREEN_PARENT[c] || c === 'controls' || c === 'settings') this.act('back');
   },
   banner(t, s, cls) { const b = $('banner'); $('banner-t').textContent = t; $('banner-s').textContent = s || ''; b.className = 'layer ' + (cls || ''); void b.offsetWidth; b.classList.add('showing'); },
@@ -3545,7 +4209,7 @@ const UI = {
   /* ----- gamepad menu navigation: move a focus ring between the visible buttons ----- */
   focusables() { const root = $(this.current); return root ? [...root.querySelectorAll('[data-act]:not([disabled]), input[type=range]')].filter(el => el.offsetParent !== null) : []; },
   clearFocus() { if (this.focus) this.focus.classList.remove('navfocus'); this.focus = null; },
-  setFocus(el, list) { if (this.focus) this.focus.classList.remove('navfocus'); this.focus = el; if (el) { el.classList.add('navfocus'); this.focusIx = list.indexOf(el); this.focusScreen = this.current; } },
+  setFocus(el, list) { if (this.focus) this.focus.classList.remove('navfocus'); this.focus = el; if (el) { el.classList.add('navfocus'); MenuScroll.reveal(el); this.focusIx = list.indexOf(el); this.focusScreen = this.current; } },
   navMove(dx, dy) {
     const list = this.focusables(); if (!list.length) { this.clearFocus(); return; }
     let cur = this.focus && this.focus.isConnected && list.includes(this.focus) ? this.focus : null;
@@ -3563,7 +4227,7 @@ const UI = {
     if (best) { this.setFocus(best, list); sfx('click'); }
   },
   navConfirm() {
-    if (this.current === 'victory' && !$('victory').classList.contains('results')) { $('victory').classList.add('results'); this.navMove(0, 0); return; }
+    if (this.current === 'victory' && !$('victory').classList.contains('results')) { this.vicNext(); this.navMove(0, 0); return; }
     const list = this.focusables(); if (!this.focus || !this.focus.isConnected) { this.navMove(0, 0); return; }
     if (this.focus.tagName !== 'INPUT') { this.lock = Math.min(this.lock, performance.now()); AudioSys.init(); this.focus.click(); }
   },
@@ -3581,13 +4245,13 @@ const UI = {
     const st = Save.data.stats, wins = Object.values(st.arcadeWins).reduce((a, b) => a + b, 0);
     const rec = { arcade: wins ? `Victories: <b>${wins}</b>${st.bestArcade ? ` &middot; fastest <b>${fmtTime(st.bestArcade.time)}</b>` : ''}` : st.bestArcadeWave ? `Furthest: wave <b>${st.bestArcadeWave}</b> cleared` : 'Not yet attempted',
       endless: st.bestEndless ? `Best: <b>${st.bestEndless.wave}</b> waves in <b>${fmtTime(st.bestEndless.time)}</b>` : 'No record yet' };
-    $('modes').innerHTML = ['arcade', 'endless'].map(m => `<div class="modecard ${m}" data-act="mode" data-arg="${m}" ${m === G.mode ? 'data-focus="1"' : ''}>
+    $('modes').innerHTML = ['arcade', 'endless'].map(m => `<div class="modecard ${m}" role="button" tabindex="0" data-act="mode" data-arg="${m}" ${m === G.mode ? 'data-focus="1"' : ''}>
       <div class="mname px">${MODES[m].name}</div><div class="mtag">${MODES[m].tag}</div><div class="mdesc">${MODES[m].desc}</div><div class="mrec">${rec[m]}</div><div class="mgo px">SELECT</div></div>`).join('');
   },
   renderHeroes() {
     $('charhead').textContent = MODES[G.mode].name.toUpperCase() + ' MODE: CHOOSE YOUR DEFENDER';
-    $('heroes').innerHTML = Object.values(HEROES).map(h => `
-      <div class="hero ${h.id === G.heroId ? 'sel' : ''}" data-act="pickhero" data-arg="${h.id}" id="hero-${h.id}">
+    MenuScroll.replaceContents($('heroes'), Object.values(HEROES).map(h => `
+      <div class="hero ${h.id === G.heroId ? 'sel' : ''}" role="button" tabindex="0" data-act="pickhero" data-arg="${h.id}" id="hero-${h.id}">
         <div class="hport"><img src="${iconURL(SPR[h.id].r[0])}" alt=""><img class="hwpn ${h.id}" src="${iconURL(SPR[WEAPON_SPR[h.id]])}" alt=""></div>
         <div class="hname px">${h.name}</div><div class="htitle">${h.title} &middot; ${h.weapon}</div>
         <div class="hrole"><span class="chip y">${h.role}</span><span class="chip">Difficulty ${'&#9733;'.repeat(h.difficulty)}${'&#9734;'.repeat(3 - h.difficulty)}</span><span class="chip">${h.hp} HP</span></div>
@@ -3596,12 +4260,12 @@ const UI = {
         <div class="hmove"><b class="k2">RMB</b> ${h.sp[0]}: ${h.sp[1]}</div>
         <div class="hmove"><b class="k3">SHIFT</b> ${h.sec[0]}: ${h.sec[1]}</div>
         <div class="hdesc">${h.style}</div>
-      </div>`).join('');
+      </div>`).join(''));
     $('startbtn').textContent = `Begin as ${HEROES[G.heroId].name}`; $('startsum').innerHTML = `Mode: <b>${MODES[G.mode].name}</b> &middot; Defender: <b>${HEROES[G.heroId].name}</b>${Save.data.challengeTier ? ` &middot; Raider's Challenge tier <b>${Save.data.challengeTier}</b>` : ''}`;
   },
   renderDatabase() {
     const h = HEROES[this.dbHero], d = DATABASE[this.dbHero];
-    $('dbtabs').innerHTML = Object.values(HEROES).map(x => `<button class="btn dbtab ${x.id === this.dbHero ? 'gold' : ''}" data-act="dbhero" data-arg="${x.id}"><img src="${iconURL(SPR[x.id].r[0])}" alt="">${x.name}</button>`).join('');
+    MenuScroll.replaceContents($('dbtabs'), Object.values(HEROES).map(x => `<button class="btn dbtab ${x.id === this.dbHero ? 'gold' : ''}" aria-pressed="${x.id === this.dbHero}" data-act="dbhero" data-arg="${x.id}"><img src="${iconURL(SPR[x.id].r[0])}" alt="">${x.name}</button>`).join(''));
     $('dbbody').innerHTML = `<div class="dbcol">
         <div class="dbhead"><img src="${iconURL(SPR[h.id].r[0])}" alt=""><div><div class="px dbname">${h.name}</div><div>${h.title} &middot; ${h.role}</div></div></div>
         <h3><span class="tagf">FICTION</span> ${d.fiction[0][0]}</h3><p>${d.fiction[0][1]}</p>
@@ -3617,14 +4281,14 @@ const UI = {
   renderPerm() {
     const d = Save.data;
     $('permfunds').textContent = d.funds; $('permmsg').textContent = this.permMsg || (Save.ok ? '' : 'This browser is blocking storage, so progress cannot be saved.');
-    $('permgrid').innerHTML = PERM.map(u => {
+    MenuScroll.replaceContents($('permgrid'), PERM.map(u => {
       const l = Save.owned(u.id), maxed = l >= u.max, cost = permCost(u, l), can = !maxed && d.funds >= cost;
       const pips = '<b></b>'.repeat(l) + '<u></u>'.repeat(u.max - l);
       const tiers = u.id === 'challenge' && l ? `<div class="tiers">${[0, 1, 2, 3].filter(t => t <= l).map(t => `<button class="btn tier ${d.challengeTier === t ? 'gold' : ''}" data-act="challenge" data-arg="${t}">${t ? 'TIER ' + t : 'OFF'}</button>`).join('')}</div>` : '';
       return `<div class="permcard ${u.optIn ? 'optin' : ''}"><div class="phead"><img src="${iconURL(iconFor(u))}" alt=""><div><div class="pname px">${u.name}</div><div class="pips">${pips}</div></div></div>
         <div class="pdesc">${l ? `<span class="now">${u.desc(l)}</span>` : u.optIn ? 'An optional dare, not a power-up. Off unless you switch it on.' : 'Not yet purchased.'}${!maxed && !(u.optIn && !l) ? `<br><span class="next">Next: ${u.desc(l + 1)}</span>` : !maxed ? `<br><span class="next">${u.desc(1)}</span>` : ''}</div>${tiers}
         <button class="btn ${can ? 'gold' : ''}" data-act="permbuy" data-arg="${u.id}" ${can ? '' : 'disabled'}>${maxed ? 'Complete' : `${l ? 'Upgrade' : 'Buy'}  ${cost} funds`}</button></div>`;
-    }).join('');
+    }).join(''));
   },
 
   /* ----- HUD ----- */
@@ -3695,9 +4359,9 @@ const UI = {
     const p = G.p, ids = rollUpgrades(); this.luIds = ids.length ? ids : ['_rations'];
     $('lutitle').textContent = 'LEVEL ' + p.level + (p.pending > 1 ? `  (+${p.pending - 1} more)` : '');
     $('lucards').innerHTML = this.luIds.map((id, i) => {
-      if (id === '_rations') return `<div class="card" data-act="up" data-arg="${i}"><span class="ckey px">${i + 1}</span><img class="cicon" src="${iconURL(glyphCanvas('potion', '#e0503f', '#ffd0c0'))}"><div class="cname px">Field Rations</div><div class="ctag">Every skill is mastered</div><div class="cdesc">Restore 30 HP.</div></div>`;
+      if (id === '_rations') return `<div class="card" role="button" tabindex="0" data-act="up" data-arg="${i}"><span class="ckey px">${i + 1}</span><img class="cicon" src="${iconURL(glyphCanvas('potion', '#e0503f', '#ffd0c0'))}"><div class="cname px">Field Rations</div><div class="ctag">Every skill is mastered</div><div class="cdesc">Restore 30 HP.</div></div>`;
       const u = UPGRADES[id], l = p.up[id] || 0;
-      return `<div class="card ${u.hero ? 'heroup' : ''}" data-act="up" data-arg="${i}"><span class="ckey px">${i + 1}</span><img class="cicon" src="${iconURL(iconFor(u))}">
+      return `<div class="card ${u.hero ? 'heroup' : ''}" role="button" tabindex="0" data-act="up" data-arg="${i}"><span class="ckey px">${i + 1}</span><img class="cicon" src="${iconURL(iconFor(u))}">
         <div class="cname px">${u.name}</div><div class="ctag">${u.hero ? HEROES[u.hero].name + ' technique' : 'Attribute'}</div>
         <div class="cdesc">${u.per}</div><div class="ctot">${l ? u.tot(l) + ' &rarr; ' : ''}<b>${u.tot(l + 1)}</b></div>
         <div class="clvl px">LV ${l} &gt;&gt; ${l + 1} <span>&nbsp;MAX ${u.max}</span></div></div>`;
@@ -3718,7 +4382,7 @@ const UI = {
     $('shopsub').textContent = G.wave === WAVES.length ? 'The Fleet Commander is beaten, yet more sails are coming. This is where the endless tide begins.' : 'The merchant has reopened her stall. Spend gold on supplies, gear and stranger things.';
     $('shopstats').innerHTML = `<span>Defeated <b>${ws.kills}</b></span><span>Gold earned <b>${ws.gold}</b> <i>(incl. ${ROUND_BONUS} wave bonus)</i></span><span>XP gained <b>${Math.round(ws.xp)}</b></span><span>Level <b>${p.level}</b></span><span>Time <b>${fmtTime(G.runTime)}</b></span>${ws.rest ? `<span>Rested <b>+${ws.rest} HP</b></span>` : ''}`;
     $('shopgold').textContent = p.gold;
-    $('shopcards').innerHTML = this.offer.map((it, i) => {
+    MenuScroll.replaceContents($('shopcards'), this.offer.map((it, i) => {
       const l = itemLevel(p, it), maxed = it.max && l >= it.max, sold = this.sold[it.id], chk = canBuy(p, it), price = itemPrice(p, it);
       const lvl = it.max ? (maxed ? `LV ${l} - MAXED` : l ? `LV ${l} &gt;&gt; ${l + 1} <span>&nbsp;MAX ${it.max}</span>` : `NEW <span>&nbsp;MAX LV ${it.max}</span>`) : 'SINGLE USE';
       const label = sold ? 'PURCHASED' : maxed ? 'MAXED' : !chk.ok ? chk.reason : (l ? 'UPGRADE' : 'BUY') + '  ' + price + 'g';
@@ -3727,7 +4391,7 @@ const UI = {
         <div class="cdesc">${it.desc(Math.min(it.max || 1, l + 1))}</div>${it.lore ? `<div class="clore">${it.lore}</div>` : ''}
         <div class="clvl px">${lvl}</div>
         <button class="btn buy ${chk.ok && !sold ? 'gold' : ''}" data-act="buy" data-arg="${i}" ${chk.ok && !sold ? '' : 'disabled'}>${label}</button></div>`;
-    }).join('');
+    }).join(''));
     const cost = REROLL_BASE + REROLL_STEP * this.rerolls;
     $('rerollbtn').textContent = `New stock  ${cost}g`; $('rerollbtn').disabled = p.gold < cost;
     $('shopmsg').textContent = this.msg || '';
@@ -3785,12 +4449,13 @@ const UI = {
   victory() {
     const p = G.p, h = p.h, run = G.run, res = run.result, best = res ? res.best : {};
     G.vicT = 0; $('victory').classList.remove('results');
-    $('vicline').textContent = VICTORY_LINES[p.hero];
+    const E = pickEnding();                                   // 0.4: one of three endings for this hero
+    $('vicline').textContent = E.beats[0]; $('vicline').style.animation = ''; $('vicname').textContent = E.name.toUpperCase(); $('vicend').innerHTML = this.endingHTML();
     $('vicstats').innerHTML = this.statsHTML([['Hero', `${h.name}, ${h.title}`], ['Waves survived', `${WAVES.length} of ${WAVES.length}`], ['Time', fmtTime(G.runTime), best.time], ['Enemies defeated', p.kills],
       ['Bosses defeated', 'Pirate Captain, Fleet Commander'], ['Final level', p.level], ['Gold earned', p.goldEarned], ['Victories as ' + h.name, Save.data.stats.arcadeWins[p.hero] || 1]]);
     $('vicfunds').innerHTML = this.receiptHTML(res); $('vicbuild').innerHTML = this.buildHTML();
     this.show('victory'); sfx('victory');
-    clearTimeout(this.vicTimer); this.vicTimer = setTimeout(() => { if (G.state === 'victory') { $('victory').classList.add('results'); if (Input.device === 'pad') this.navMove(0, 0); } }, 7000);
+    clearTimeout(this.vicTimer);      // 0.4: no timer. The scene stays until the player chooses Continue.
   }
 };
 function saveSettings() { try { localStorage.setItem('siege1574', JSON.stringify({ s: G.settings, hero: G.heroId, mode: G.mode })); } catch (e) { } }
@@ -3801,11 +4466,12 @@ function loadSettings() { try { const d = JSON.parse(localStorage.getItem('siege
    extra HUD chips. Added onto the UI object from 07_ui.js.
    ============================================================ */
 function charmRow(p) {
-  return p.charmList.length ? `<div class="brow"><i>Anting-anting</i>${p.charmList.map(id => `<span class="chip v" title="${CHARM_BY_ID[id].desc}">${CHARM_BY_ID[id].name}</span>`).join('')}</div>` : '';
+  return p.charmList.length ? `<div class="brow"><i>Anting-anting (perks)</i>${p.charmList.map(id => `<span class="chip v" title="${CHARM_BY_ID[id].desc}">${CHARM_BY_ID[id].name}</span>`).join('')}</div>` : '';
 }
 function hudChips03(p) {
   let b = ''; const D = G.dock;
   if (G.twist) b += `<span class="chip v">${TWISTS[G.twist].name.toUpperCase()}</span>`;
+  if (tideMoveScale(p.x, p.y) < 1) b += '<span class="chip b">WADING</span>';
   if (D.state === 'fire') b += '<span class="chip r">BOMBARDMENT: LEAVE THE PIER</span>';
   else if (D.state === 'warn') b += '<span class="chip r">THE JUNKS ARE TAKING AIM</span>';
   else if (D.t > DOCK.linger * 0.5) b += '<span class="chip o">EXPOSED ON THE PIER</span>';
@@ -3820,8 +4486,8 @@ Object.assign(UI, {
     $('charmsub').textContent = G.def && G.def.boss ? `The ${ENEMIES[G.def.boss].name} carried these. Take one.` : 'An offering has been left at the palisade shrine. Take one.';
     $('charmcards').innerHTML = ids.map((id, i) => {
       const c = CHARM_BY_ID[id];
-      return `<div class="card charm" data-act="charm" data-arg="${i}" ${i === 0 ? 'data-focus="1"' : ''}><span class="ckey px">${i + 1}</span><img class="cicon" src="${iconURL(iconFor(c))}" alt="">
-        <div class="cname px">${c.name}</div><div class="ctag">Anting-anting</div><div class="cdesc">${c.desc}</div><div class="clore">${c.lore}</div></div>`;
+      return `<div class="card charm" role="button" tabindex="0" data-act="charm" data-arg="${i}" ${i === 0 ? 'data-focus="1"' : ''}><span class="ckey px">${i + 1}</span><img class="cicon" src="${iconURL(iconFor(c))}" alt="">
+        <div class="cname px">${c.name}</div><div class="ctag">Anting-anting &middot; Perk</div><div class="cdesc">${c.desc}</div><div class="clore">${c.lore}</div></div>`;
     }).join('');
     this.lock = performance.now() + 450; this.show('charm'); sfx('spirit');
   },
@@ -3831,15 +4497,157 @@ Object.assign(UI, {
   },
   renderDeeds() {
     const D = Save.data.deeds, done = DEEDS.filter(d => D[d.id]).length, base = CHARMS.filter(c => !c.deed);
-    $('deedhead').innerHTML = `<b>${done}</b> of <b>${DEEDS.length}</b> deeds done &middot; <b>${base.length + done}</b> of <b>${CHARMS.length}</b> anting-anting can appear in your runs`;
+    $('deedhead').innerHTML = `<b>${done}</b> of <b>${DEEDS.length}</b> deeds (achievements) done &middot; <b>${base.length + done}</b> of <b>${CHARMS.length}</b> anting-anting (perks) can appear in your runs`;
     $('deedgrid').innerHTML = DEEDS.map(d => {
       const c = CHARM_BY_ID[d.charm], ok = !!D[d.id];
-      return `<div class="deedcard ${ok ? 'done' : ''}"><div class="dname px">${d.name}${ok ? ' <span class="chip g">DONE</span>' : ''}</div><div class="dhow">${d.how}</div>
-        <div class="dcharm"><img src="${iconURL(iconFor(c))}" alt=""><div><b>${c.name}</b><span>${c.desc}</span></div></div></div>`;
+      return `<div class="deedcard ${ok ? 'done' : ''}"><div class="dkind px">DEED</div><div class="dname px">${d.name}${ok ? ' <span class="chip g">DONE</span>' : ''}</div><div class="dhow">${d.how}</div>
+        <div class="dkind v px">${ok ? 'PERK UNLOCKED' : 'UNLOCKS PERK'}</div><div class="dcharm"><img src="${iconURL(iconFor(c))}" alt=""><div><b>${c.name}</b><span>${c.desc}</span></div></div></div>`;
     }).join('');
-    $('deedbase').innerHTML = '<i>Always available:</i> ' + base.map(c => `<span class="chip v" title="${c.desc}">${c.name}</span>`).join('');
+    $('deedbase').innerHTML = '<i>Perks available from the start:</i> ' + base.map(c => `<span class="chip v" title="${c.desc}">${c.name}</span>`).join('');
   }
 });
+
+/* ============================================================
+   Alpha 0.4 UI: the Chronicle screen. Added onto the UI object.
+   Locked entries show their name's place and how to unlock them,
+   never their text.
+   ============================================================ */
+const CX_TAG = { game: ['tagg', 'IN PLAY'], record: ['tagh', 'RECORD'], lore: ['tagl', 'FOLKLORE'], made: ['tagf', 'INVENTED'] };
+Object.assign(UI, {
+  // The ending is told in three beats. Continue shows the next one; after the last it opens the results. Nothing advances on a timer.
+  vicNext() {
+    const v = $('victory'); if (G.state !== 'victory' || v.classList.contains('results')) return;
+    const E = G.ending;
+    if (E && G.vicBeat < E.beats.length - 1) { G.vicBeat++; $('vicstory').scrollTop = 0; const l = $('vicline'); l.textContent = E.beats[G.vicBeat]; l.style.animation = 'none'; void l.offsetWidth; l.style.animation = 'vicin .7s both'; sfx('click'); return; }
+    v.classList.add('results');
+  },
+  endingHTML() {
+    const p = G.p, E = G.ending, seen = Save.data.endings[p.hero] || {}, all = ENDINGS[p.hero], n = all.filter(e => seen[e.key]).length;
+    return `<b>Ending: ${E.name}</b>${E.fresh ? ' <span class="chip g">NEW</span>' : ''} &middot; ${n} of ${all.length} endings seen as ${p.h.name}` +
+      all.filter(e => !seen[e.key]).map(e => `<div class="endhint">Not yet seen: ${e.how}</div>`).join('');
+  },
+  cxId: null,
+  renderCodex() {
+    const D = Save.data.codex, got = codexCount();
+    if (!this.cxId || !CODEX_BY_ID[this.cxId]) this.cxId = (CODEX.find(c => D[c.id]) || CODEX[0]).id;
+    $('cxhead').innerHTML = `<b>${got}</b> of <b>${CODEX.length}</b> pages found. Pages are found by playing.`;
+    MenuScroll.replaceContents($('cxlist'), CODEX_CATS.map(([cat, title]) => `<h3>${title.toUpperCase()}</h3>` + CODEX.filter(c => c.cat === cat).map(c =>
+      `<button class="btn cxbtn ${D[c.id] ? '' : 'locked'} ${c.id === this.cxId ? 'sel' : ''}" aria-pressed="${c.id === this.cxId}" data-act="codex" data-arg="${c.id}">${D[c.id] ? c.name : 'Not yet found'}</button>`).join('')).join(''));
+    const c = CODEX_BY_ID[this.cxId];
+    $('cxbody').innerHTML = D[c.id]
+      ? `<div class="cxname">${c.name}</div>` + c.sec.map(([k, t]) => `<p><span class="px ${CX_TAG[k][0]}">${CX_TAG[k][1]}</span>${t}</p>`).join('')
+      : `<div class="cxname">Not yet found</div><p class="cxlock">To find this page: ${c.how}</p>`;
+  }
+});
+{ const show0 = UI.show; UI.show = function (name) { if (name === 'codex') this.renderCodex(); return show0.call(this, name); }; }
+{ const menu0 = UI.renderMenu; UI.renderMenu = function () { menu0.call(this); const b = document.querySelector('#menubtns [data-act="codex"]'); if (b) b.textContent = `Chronicle ${codexCount()}/${CODEX.length}`; }; }
+
+/* ---------- Wardrobe ---------- */
+UI.screens.push('wardrobe'); SCREEN_PARENT.wardrobe = 'menu';
+Object.assign(UI, {
+  wdHero: 'mateo', wdMsg: '',
+  renderWardrobe() {
+    const h = this.wdHero, worn = Save.wornSkin(h), list = [{ id: 'default', name: 'As He Came', note: `${HEROES[h].name} as he appears in the story.`, kind: 'default', cost: 0 }].concat(SKINS[h]);
+    const own = SKINS[h].filter(s => Save.hasSkin(h, s.id)).length;
+    $('wdfunds').textContent = Save.data.funds;
+    MenuScroll.replaceContents($('wdtabs'), Object.keys(SKINS).map(k => `<button class="btn wdtab ${k === h ? 'sel' : ''}" aria-pressed="${k === h}" data-act="wdhero" data-arg="${k}"><img src="${iconURL(SPR[k].r[0])}" alt="">${HEROES[k].name} <small>${SKINS[k].filter(s => Save.hasSkin(k, s.id)).length}/${SKINS[k].length}</small></button>`).join(''));
+    MenuScroll.replaceContents($('wdgrid'), list.map(s => {
+      const has = Save.hasSkin(h, s.id), on = worn === s.id;
+      const btn = on ? '<button class="btn" disabled>Wearing</button>' : has ? `<button class="btn" data-act="skin" data-arg="${s.id}">Wear</button>` : `<button class="btn gold" data-act="skin" data-arg="${s.id}" ${Save.data.funds < s.cost ? 'disabled' : ''}>Buy &middot; ${s.cost}</button>`;
+      return `<div class="wdcard ${on ? 'on' : ''} ${has ? 'has' : ''}"><img class="wdimg" src="${iconURL(SKINSPR[h][s.id].r[0])}" alt=""><div class="wdname px">${s.name}</div>
+        <div class="wdkind px ${s.kind}">${s.kind === 'costume' ? 'COSTUME' : s.kind === 'recolor' ? 'RECOLOUR' : 'ORIGINAL'}</div><div class="wdnote">${s.note}</div>${btn}</div>`;
+    }).join(''));
+    $('wdmsg').textContent = this.wdMsg || `${own} of ${SKINS[h].length} owned for ${HEROES[h].name}. Skins change looks only, never numbers.`;
+  }
+});
+{ const act0 = UI.act; UI.act = function (a, arg) {
+    if (a === 'wardrobe') { this.wdMsg = ''; this.show('wardrobe'); }
+    else if (a === 'wdhero') { if (SKINS[arg]) { const changed = this.wdHero !== arg; this.wdHero = arg; this.wdMsg = ''; this.renderWardrobe(); if (changed) $('wdscroll').scrollTop = 0; } }
+    else if (a === 'skin') {
+      const h = this.wdHero, s = SKIN_BY_KEY[h + ':' + arg];
+      if (Save.hasSkin(h, arg)) { Save.wearSkin(h, arg); sfx('click'); this.wdMsg = `${HEROES[h].name} is wearing ${s ? s.name : 'his own clothes'}.`; }
+      else { const r = Save.buySkin(h, arg); if (r === 'ok') { sfx('buy'); this.wdMsg = `${s.name} bought and put on.`; } else { sfx('deny'); this.wdMsg = r === 'poor' ? 'Not enough Campaign Funds.' : ''; } }
+      this.renderWardrobe();
+    } else return act0.call(this, a, arg);
+    if (Input.device === 'pad' && this.current !== 'hud') this.navMove(0, 0);
+  };
+  const fam0 = UI.family; UI.family = function (n) { return n === 'wardrobe' ? 'menu' : fam0.call(this, n); };
+  const show1 = UI.show; UI.show = function (name) { if (name === 'wardrobe') this.renderWardrobe(); return show1.call(this, name); }; }
+
+// 0.4 menu scrolling. The game stage keeps its original coordinate system.
+const MenuScroll = {
+  canScroll(panel) {
+    return panel && !panel.inert && panel.clientHeight > 0 && panel.scrollHeight - panel.clientHeight > 1;
+  },
+
+  target(focused, controller = false) {
+    const screen = $(UI.current);
+    if (!screen || screen.inert || G.state === 'playing') return null;
+    // The Chronicle D-pad already follows the list. The right stick always reads the article.
+    if (controller && UI.current === 'codex') return $('cxbody');
+    const focusedPane = focused?.closest('.scroll-pane');
+    if (screen.contains(focusedPane) && this.canScroll(focusedPane)) return focusedPane;
+    const reading = screen.matches('#victory.results') ? screen.querySelector('.vicpanel [data-reading]') : screen.querySelector('[data-reading]');
+    return this.canScroll(reading) ? reading : screen;
+  },
+
+  key(event) {
+    if (event.ctrlKey || event.metaKey || event.altKey) return false;
+    const focused = document.activeElement;
+    if (focused?.matches('input,textarea,select,[contenteditable]')) return false;
+    const panel = this.target(focused);
+    if (!this.canScroll(panel)) return false;
+    const step = panel.clientHeight * 0.85;
+    switch (event.code) {
+      case 'PageUp': panel.scrollTop -= step; break;
+      case 'PageDown': panel.scrollTop += step; break;
+      case 'Home': panel.scrollTop = 0; break;
+      case 'End': panel.scrollTop = panel.scrollHeight; break;
+      default: return false;
+    }
+    event.preventDefault();
+    return true;
+  },
+
+  stick(vertical, dt) {
+    const deadzone = 0.4;
+    const strength = (Math.abs(vertical) - deadzone) / (1 - deadzone);
+    if (strength <= 0) return;
+    const panel = this.target(UI.focus, true);
+    if (this.canScroll(panel)) panel.scrollTop += Math.sign(vertical) * strength * 680 * dt;
+  },
+
+  reveal(control) {
+    for (let panel = control.parentElement; panel && panel !== $('stage'); panel = panel.parentElement) {
+      if (!panel.matches('.scroll-pane,.screen') || !this.canScroll(panel)) continue;
+      const rect = panel.getBoundingClientRect();
+      const scale = rect.height / panel.offsetHeight;
+      if (!scale) continue;
+      const bounds = control.getBoundingClientRect();
+      const top = rect.top + (panel.clientTop + 6) * scale;
+      const bottom = top + (panel.clientHeight - 12) * scale;
+      if (bounds.top < top || bounds.height > bottom - top && bounds.bottom > bottom) {
+        panel.scrollTop += (bounds.top - top) / scale;
+      } else if (bounds.bottom > bottom) {
+        panel.scrollTop += (bounds.bottom - bottom) / scale;
+      }
+    }
+  },
+
+  replaceContents(container, html) {
+    const active = document.activeElement;
+    const pane = container.closest('.scroll-pane');
+    const scrollTop = pane?.scrollTop;
+    const action = container.contains(active) && active.closest('[data-act]');
+    container.innerHTML = html;
+    if (pane) pane.scrollTop = scrollTop;
+    if (!action) return;
+    const next = [...container.querySelectorAll('[data-act]:not([disabled])')].find(
+      el => el.dataset.act === action.dataset.act && el.dataset.arg === action.dataset.arg
+    );
+    (next || pane)?.focus({ preventScroll: true });
+  }
+};
 
 /* ============================================================
    Boot, device event wiring and main loop
@@ -3860,18 +4668,33 @@ function frame(ts) {
 }
 function boot() {
   G.canvas = $('game'); G.ctx = G.canvas.getContext('2d');
-  buildSprites(); buildMap(); Save.load(); loadSettings(); UI.init(); Input.initTouch(); UI.refreshHints(); resize();
+  buildSprites(); buildSkins(); buildMap(); Save.load(); loadSettings(); UI.init(); Input.initTouch(); UI.refreshHints(); resize();
   window.addEventListener('resize', resize);
   const stage = $('stage'), mouseIsReal = () => performance.now() - Input.lastTouchT > 900;   // ignore the mouse events browsers synthesise after a touch
+  stage.addEventListener('focusin', e => {
+    if (e.target.closest('[data-act],input[type=range]')) MenuScroll.reveal(e.target);
+  });
   window.addEventListener('keydown', e => {
+    if (MenuScroll.key(e)) { Input.setDevice('kbm'); return; }
     if (e.repeat) { if (e.code === 'Space' && G.state === 'playing') e.preventDefault(); return; }
     AudioSys.init(); Input.setDevice('kbm'); const st = G.state, c = e.code;
     if (c === 'Escape' || c === 'KeyP') { UI.goBack(); e.preventDefault(); return; }
+    const active = document.activeElement;
+    const keyActivates = c === 'Enter' || c === 'Space';
+    if (st !== 'playing' && keyActivates && active?.closest('.screen')?.id === UI.current) {
+      if (active.matches('[role="button"][data-act]')) {
+        e.preventDefault();
+        active.click();
+        return;
+      }
+      // A focused native control gets its normal key activation.
+      if (active.matches('button,input')) return;
+    }
     const digit = c.startsWith('Digit') ? +c.slice(5) : c.startsWith('Numpad') ? +c.slice(6) : 0;
     if (st === 'levelup') { if (digit >= 1 && digit <= 3) UI.chooseUpgrade(digit - 1); return; }
     if (st === 'charm') { if (digit >= 1 && digit <= 3) UI.chooseCharm(digit - 1); return; }
     if (st === 'shop') { if (UI.current === 'shop') { if (digit >= 1 && digit <= 4) UI.buy(digit - 1); else if (c === 'Enter') UI.act('continue'); } return; }
-    if (st === 'victory' && (c === 'Enter' || c === 'Space')) { $('victory').classList.add('results'); return; }
+    if (st === 'victory' && (c === 'Enter' || c === 'Space')) { UI.vicNext(); return; }
     if (st === 'playing') { G.keys[c] = true; G.pressed[c] = true; if (c === 'Space' || c === 'Tab' || c.startsWith('Arrow') || c.startsWith('Shift')) e.preventDefault(); }
   });
   window.addEventListener('keyup', e => { G.keys[e.code] = false; });
@@ -3885,7 +4708,7 @@ function boot() {
   stage.addEventListener('contextmenu', e => e.preventDefault());
   window.addEventListener('blur', () => { G.keys = {}; G.mouse.l = G.mouse.r = false; if (G.state === 'playing') UI.pause(); });
   window.addEventListener('gamepadconnected', () => { });        // polling does the work; the listener makes some browsers expose the pad sooner
-  window.__siege = { G, UI, Input, Save, AudioSys, MusicSys, MUSIC_DATA, MAP, SPR, SHOP, SHOP_BY_ID, UPGRADES, HEROES, ENEMIES, PERM, PERM_BY_ID, BOSS_MUSIC, WAVES, YO, FIELD, SPECIAL, DOCK, LIGHT, CHARMS, DEEDS, TWISTS, TRAITS, T_DOCK, deed, gainCharm, setTwist, summonMana, onDock, updateLight,
+  window.__siege = { G, UI, Input, Save, AudioSys, MusicSys, MUSIC_DATA, MAP, SPR, SHOP, SHOP_BY_ID, UPGRADES, HEROES, ENEMIES, PERM, PERM_BY_ID, BOSS_MUSIC, WAVES, YO, FIELD, SPECIAL, DOCK, LIGHT, CHARMS, DEEDS, TWISTS, TRAITS, T_DOCK, deed, gainCharm, SKINS, SKINSPR, SKIN_BY_KEY, SKIN_COST, applySkins, pickEnding, endingsEarned, ENDINGS, ENDING_RULES, codex, codexCount, CODEX, setTwist, summonMana, onDock, updateLight,
     update, render, startRun, startNextWave, spawnEnemy, buyItem, hurtPlayer, hitEnemy, gainXp, xpNeed, rollShop, itemLevel, recalc, waveDef, waveHpMul, permCost, finishRun, endWave };
   requestAnimationFrame(frame);
 }
