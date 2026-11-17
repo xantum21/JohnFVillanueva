@@ -86,6 +86,7 @@ input[type=range]{width:240px;accent-color:#ffd84a}
 .slot .cd{position:absolute;left:0;right:0;bottom:0;height:0;background:rgba(10,6,18,.78);border-top:2px solid #ffd84a}
 .slot .key{position:absolute;left:2px;bottom:2px;font-size:7px;color:#1b1622;background:#f4e9c8;padding:2px 3px}
 .slot.empty{opacity:.6}.slot.power.ready{box-shadow:0 0 0 3px #4fd0e0}.slot.comp{box-shadow:0 0 0 2px #2f8f5a}
+.gap-guard{position:relative}.gap-guard i{position:absolute;left:2px;right:2px;bottom:1px;height:2px;background:#aad5ff;transform-origin:left}
 #buffs{position:absolute;left:300px;right:170px;bottom:16px;display:flex;gap:6px;flex-wrap:wrap}
 .chip{display:inline-block;font-size:17px;line-height:1;padding:3px 7px 4px;background:#3a2f48;border:2px solid #0d0a14;color:#f4e9c8;white-space:nowrap}
 .chip.o{background:#7a4a1a}.chip.b{background:#1f4f7a}.chip.y{background:#7a6414}.chip.r{background:#7a2020}.chip.g{background:#1f5a34}.chip.e{background:#1c1529;color:#6f6480;border-style:dashed}
@@ -156,6 +157,7 @@ input[type=range]{width:240px;accent-color:#ffd84a}
 .hero{width:398px;gap:5px;padding:12px 16px}.hport{height:86px}.hport img{height:70px}.hport .hwpn{width:92px;height:auto;margin-bottom:14px}.hport .hwpn.datu{width:34px;margin-bottom:22px}
 .hname{font-size:18px;margin-top:2px}.htitle{font-size:21px}.hrole{display:flex;gap:6px;flex-wrap:wrap}
 .hmove{font-size:18px;line-height:1.02}.hmove b{white-space:nowrap}.hmove .k2{background:#ffb02e}.hmove .k3{background:#4fd0e0}
+.hpassive{color:#e2c8ff}.hpassive strong{font-weight:400;color:#ffd84a}
 .hdesc{font-size:18.5px;min-height:0;color:#9fd0ff;border-top:2px solid #3a2f48;padding-top:5px;margin-top:2px;line-height:1.02}
 #startsum{font-size:21px}#startsum b{color:#ffd84a;font-weight:400}
 /* database */
@@ -248,6 +250,8 @@ html,body{overscroll-behavior:none}
 .wdname{font-size:8.5px;line-height:1.4;color:#ffd84a;text-align:center}
 .wdkind{font-size:6.5px;letter-spacing:1px;color:#9fd0ff}.wdkind.costume{color:#c08aff}.wdkind.default{color:#7be38a}
 .wdnote{font-size:15px;line-height:1;color:#c8bfd6;text-align:center;flex:1}
+.wdkind.reward{color:#ffe08a;text-align:center;line-height:1.5}
+.wdhint{font-size:15px;line-height:1;color:#f4e9c8;text-align:center}
 .wdcard .btn{font-size:8.5px;padding:7px 4px;width:100%}
 #wdmsg{font-size:20px;color:#f4e9c8;min-height:22px}
 /* chronicle (0.4) */
@@ -310,7 +314,7 @@ body[data-input="pad"] .scroll-pad-hint{display:block}
 
   <div id="menu" class="screen" role="region" tabindex="0" aria-label="Main menu">
     <div id="menufunds"></div>
-    <div class="kicker px">A HISTORICAL FANTASY HORDE SURVIVAL &middot; ALPHA 0.4.3</div>
+    <div class="kicker px">A HISTORICAL FANTASY HORDE SURVIVAL &middot; ALPHA 0.4.15</div>
     <h1>THE SIEGE OF MANILA<span>1574</span></h1>
     <div class="tag">Limahong's fleet is in the bay. Three unlikely defenders hold the palisade.</div>
     <div id="menubtns">
@@ -396,6 +400,7 @@ body[data-input="pad"] .scroll-pad-hint{display:block}
         </table>
       </div>
       <div class="sub">Touch screens: left thumb moves, right thumb aims and attacks, with buttons for the rest. Two rings sit under your hero: the inner <b style="color:#4fd0e0">cyan</b> ring is Shift, the outer <b style="color:#ffb02e">orange</b> pips are the special.</div>
+      <div class="sub">Dodge in your movement direction, or toward your aim while standing. Diego's dodge also halves the reload he has left.</div>
     </div>
     <button class="btn" data-act="back">Back</button>
   </div>
@@ -450,10 +455,10 @@ body[data-input="pad"] .scroll-pad-hint{display:block}
 
   <div id="wardrobe" class="screen hidden">
     <div class="wdtop"><h2>WARDROBE</h2><div id="wdtabs"></div><div id="wdbank"><span id="wdfunds">0</span><small>Campaign Funds</small></div></div>
-    <div id="wdscroll" class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Costume cards">
+    <div id="wdscroll" class="scroll-pane scroll-flow" data-reading role="region" tabindex="0" aria-label="Wardrobe cosmetics">
       <div id="wdgrid"></div>
     </div>
-    <div id="wdmsg"></div>
+    <div id="wdmsg" role="status"></div>
     <button class="btn" data-act="back" data-focus="1">Back</button>
   </div>
 
@@ -721,6 +726,31 @@ const CODEX = [
     ['made', 'The flood zone and its timing are invented for this game. This entry does not claim a particular tide during the siege.']
   ] },
 
+  { id: 'tw_fire_arrows', cat: 'bay', name: 'Fire Arrows', how: 'Begin a wave with the Fire Arrows twist.', sec: [
+    ['game', 'Archer arrows can leave a dashed ring where they land. The ring turns solid when the ground ignites. The flames hurt you and nearby raiders, and fires that would overlap an existing patch fizzle.'],
+    ['made', 'The burning arrows and their effect on the ground are invented for play.']
+  ] },
+
+  { id: 'tw_loose_carabao', cat: 'bay', name: 'Loose Carabao', how: 'Begin a wave with the Loose Carabao twist.', sec: [
+    ['game', 'Arrows mark the direction of a crossing along the central road. Step outside the lane. The animal shoves and briefly staggers the defender and nearby raiders, and a well-timed dodge lets it pass.'],
+    ['made', 'The runaway carabao is a fictional battlefield event.']
+  ] },
+
+  { id: 'tw_night_raid', cat: 'bay', name: 'Night Raid', how: 'Begin a Night Raid wave from wave seven onward.', sec: [
+    ['game', 'In Full lighting, decorative torch flames and their light go out for this wave. Your light, enemy lights, fires, supplies and combat warnings stay visible. Soft and Off lighting keep their usual visibility.'],
+    ['made', 'The extinguished torches and wave timing are invented for this game.']
+  ] },
+
+  { id: 'champ_banner', cat: 'raiders', name: 'Banner Champion', how: 'Defeat a Banner champion.', sec: [
+    ['game', 'A fallen Banner champion leaves a raider standard for four seconds. The outer ring marks the area it can heal. Stand inside the small ring to stop the pulses while the timer keeps counting down.'],
+    ['made', 'The healing standard is a fictional champion trait.']
+  ] },
+
+  { id: 'powder_barrels', cat: 'bay', name: 'Powder Barrels', how: 'Reach a wave with powder barrels.', sec: [
+    ['game', 'Strike a barrel to light its fuse. The ring shows how far the blast reaches. It can hurt defenders and raiders and light another barrel, which gets its own warning.'],
+    ['made', 'These barrel placements and their chain reactions are invented for play.']
+  ] },
+
   /* ---------- spirits and charms ---------- */
   { id: 'mana', cat: 'spirits', name: 'The Manananggal', how: 'As Datu, call down the Manananggal.', sec: [
     ['game', 'Datu\'s right-button special. She crashes down on the marked spot, then hunts nearby raiders for six seconds.'],
@@ -756,6 +786,29 @@ function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; le
 function mkCanvas(w, h) { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
 
 /* ---------------- Heroes ---------------- */
+const HERO_PASSIVES = {
+  mateo: {
+    name: 'Hold the Gap', radius: 48, reduction: 0.12, seconds: 1.2,
+    short() { return `Close cleaves cut incoming damage by ${Math.round(this.reduction * 100)}% for ${this.seconds}s.`; },
+    detail() { return `Damage an enemy within ${this.radius} pixels with a cleave to refresh the guard. Charge and Crescent do not trigger it.`; }
+  },
+  datu: {
+    name: 'Marked Prey', seconds: 3, clawMultiplier: 1.20,
+    short() { return 'Your outward stone throws mark prey for the Manananggal to hunt.'; },
+    detail() { return `The first enemy hurt is marked for ${this.seconds}s. The Manananggal prioritizes marked prey within reach and her claws hit it ${Math.round((this.clawMultiplier - 1) * 100)}% harder.`; }
+  },
+  diego: {
+    name: 'Enfilade', retention: 1,
+    short() { return 'Your central gunshot keeps full damage as it pierces enemies.'; },
+    detail() { return 'Piercing Lead lets it reach more targets. Side bullets and Fire Pot work as usual.'; }
+  }
+};
+
+const SHIFT_FIELDS = {
+  snare: { radius: 30, range: 100, duration: 3, chip: 6, speedScale: 0.65, slowDuration: 2 },
+  smoke: { radius: 44, duration: 2, chip: 2, interval: 0.5, playerSpeed: 1.2, spread: Math.PI / 6, searchRange: 140 }
+};
+
 const HEROES = {
   mateo: {
     id: 'mateo', name: 'Mateo', title: 'Mexica Warrior', weapon: 'Macuahuitl', cls: 'Heavy melee / crowd control',
@@ -766,31 +819,34 @@ const HEROES = {
     sec: ["Warrior's Charge", 'Armored rush that tramples and scatters enemies.'],
     sp: ['Obsidian Crescent', 'Hurls a crescent of obsidian and azure light that cuts through a line of enemies.'],
     style: 'Stand your ground. Sweep crowds off you, charge out of trouble, and use the crescent on anything you cannot reach.',
-    bars: [5, 2, 4, 2], ups: ['obsidian', 'serrated', 'eagle', 'resolve', 'laststand', 'azure']
+    bars: [5, 2, 4, 2], ups: ['obsidian', 'serrated', 'eagle', 'resolve', 'laststand', 'azure', 'countercharge']
   },
   datu: {
     id: 'datu', name: 'Datu', title: 'Maritime Fighter', weapon: 'Stone yo-yo', cls: 'Mobile mid-range area control',
     blurb: 'A sea-roving fighter with kin in the southern islands. "Datu" is a nickname his crew gave him, not his name. He whirls a stone on a cord through whole knots of raiders.',
-    hp: 120, speed: 100, dmg: 14, atkCd: 0.8, range: 80, arc: 0, kb: 110, crit: 0.12, critMul: 2.0, melee: true, dashCd: 1.5, secCd: 4, spCd: 14,
+    hp: 120, speed: 100, dmg: 14, atkCd: 0.8, range: 80, arc: 0, kb: 110, crit: 0.12, critMul: 2.0, melee: true, dashCd: 1.5, secCd: 5, spCd: 14,
     role: 'Medium range', difficulty: 3,
     prim: ['Stone Yo-Yo', 'Hold to cast a stone on a tether. It swings where you aim and lags behind your movement.'],
-    sec: ['Tidal Step', 'Evasive dash that cuts every enemy along its path.'],
+    sec: ['Tidal Snare', 'Aim a snare that chips raiders and slows them 35% for 2s.'],
     sp: ['Manananggal Descent', 'The winged half of a manananggal crashes onto the spot you aim at, then hunts nearby raiders for a few seconds.'],
-    style: 'Keep moving. Sweep the stone across groups by turning your aim, step through gaps, and drop the manananggal on the thickest knot of raiders.',
-    bars: [2, 5, 3, 3], ups: ['flowing', 'serpent', 'footwork', 'counter', 'twincut', 'bloodmoon']
+    style: 'Snare a group, mark your target with the stone, and call down the Manananggal.',
+    bars: [2, 5, 3, 3], ups: ['flowing', 'serpent', 'footwork', 'counter', 'twincut', 'bloodmoon', 'returntrail']
   },
   diego: {
     id: 'diego', name: 'Diego', title: 'Spanish Arquebusier', weapon: 'Matchlock arquebus', cls: 'Long-range specialist',
     blurb: 'A garrison soldier with a smoking matchlock. Devastating at range, slow to reload, and in trouble when surrounded.',
-    hp: 115, speed: 84, dmg: 46, atkCd: 1.05, range: 330, arc: 0, kb: 110, crit: 0.10, critMul: 2.0, melee: false, dashCd: 2.2, secCd: 3.5, spCd: 7, basePierce: 1,
+    hp: 115, speed: 84, dmg: 46, atkCd: 1.05, range: 330, arc: 0, kb: 110, crit: 0.10, critMul: 2.0, melee: false, dashCd: 2.2, secCd: 7, spCd: 7, basePierce: 1,
     role: 'Long range', difficulty: 2,
     prim: ['Arquebus Shot', 'Aimed lead ball. Smoke, recoil and a visible reload.'],
-    sec: ['Gunstock Strike', 'Close-range butt strike that stuns and knocks back.'],
+    sec: ['Smoke Escape', 'Drop smoke at your feet. Move faster inside while raiders take chip damage and aim worse.'],
     sp: ['Fire Pot', 'Lobs a fused clay pot of powder that bursts where you aim, blasting a crowd apart.'],
-    style: 'Keep your distance and line up shots. When they reach you, club them back and drop a fire pot at your feet as you leave.',
-    bars: [3, 3, 5, 5], ups: ['quickreload', 'powder', 'piercing', 'barrage', 'steady', 'charge']
+    style: 'Keep your distance and line up shots. Drop smoke to slip away and find another angle. Dodging halves the reload you have left.',
+    bars: [3, 3, 5, 5], ups: ['quickreload', 'powder', 'piercing', 'barrage', 'steady', 'charge', 'screenblast']
   }
 };
+
+// Approved dodge change: preserve direction/travel; cut only Diego's active reload.
+const HERO_DODGE = { diego: { reloadCut: 0.5, cueSeconds: 0.15 } };
 
 /* ---------------- Stone yo-yo (Datu) ---------------- */
 // A damped spring pulls the stone toward a point one tether-length along the aim; the cord is a hard length limit.
@@ -828,22 +884,41 @@ const UPGRADES = {
   resolve:   { hero: 'mateo', name: "Warrior's Resolve", icon: ['shield', '#d43d3d', '#ffd0c0'], max: 3, per: 'After being hit, resist damage for 3s', tot: l => `${20 + 10 * l}% resistance for 3s after a hit` },
   azure:     { hero: 'mateo', name: 'Azure Edge', icon: ['arc', '#35c2c2', '#1c1826'], max: 3, per: 'Obsidian Crescent: +30% damage, +2 pierce, -10% cooldown', tot: l => `+${30 * l}% crescent damage, ${5 + 2 * l} pierce, -${10 * l}% cooldown` },
   laststand: { hero: 'mateo', name: 'Last Stand', icon: ['skull', '#f4f0e6', '#1b1622'], max: 3, per: '+20% attack speed while below 40% HP', tot: l => `+${20 * l}% attack speed below 40% HP` },
+  countercharge: {
+    hero: 'mateo', name: 'Countercharge', icon: ['shield', '#57c1df', '#f4f0e6'], max: 2, rarity: 'Standard',
+    seconds: [0, 0.25, 0.50],
+    per: 'A close cleave cuts Charge recovery once per swing.',
+    tot: l => `-${UPGRADES.countercharge.seconds[l].toFixed(2)}s per swing`
+  },
   // Datu
   flowing:   { hero: 'datu', name: 'Flowing Blade', icon: ['wave', '#6ac8ff', '#fff'], max: 5, per: '+10% yo-yo swing speed', tot: l => `+${10 * l}% swing speed` },
   serpent:   { hero: 'datu', name: "Serpent's Edge", icon: ['drop', '#7be38a', '#eaffea'], max: 4, per: 'Yo-yo and Manananggal hits cause bleeding: +3 damage/sec for 3s', tot: l => `${3 * l} damage/sec for 3s` },
-  footwork:  { hero: 'datu', name: 'Island Footwork', icon: ['boot', '#e8b23a', '#7a5a14'], max: 3, per: '-15% dodge and Tidal Step recovery', tot: l => `-${Math.round((1 - Math.pow(0.85, l)) * 100)}% dash recovery` },
-  counter:   { hero: 'datu', name: 'Countercurrent', icon: ['wing', '#58c2e0', '#fff'], max: 3, per: '+30% damage for 3s after evading', tot: l => `+${30 * l}% damage for 3s after a dodge` },
+  footwork:  { hero: 'datu', name: 'Island Footwork', icon: ['boot', '#e8b23a', '#7a5a14'], max: 3, per: '-15% dodge and Tidal Snare recovery', tot: l => `-${Math.round((1 - Math.pow(0.85, l)) * 100)}% dodge and snare recovery` },
+  counter:   { hero: 'datu', name: 'Countercurrent', icon: ['wing', '#58c2e0', '#fff'], max: 3, per: '+30% damage for 3s after a dodge', tot: l => `+${30 * l}% damage for 3s after a dodge` },
   twincut:   { hero: 'datu', name: 'Twin-Cut', icon: ['twin', '#e6ecf2', '#fff'], max: 3, per: 'The returning stone strikes everything in its path again', tot: l => `return pass deals ${YO.retDmg[l] * 100}% damage (was ${YO.retDmg[0] * 100}%)` },
   bloodmoon: { hero: 'datu', name: 'Blood Moon', icon: ['wing', '#c08aff', '#fff'], max: 3, per: 'Manananggal: +20% impact and claw damage, +1s hunting time, wider impact. At level 3 she dives once more as she leaves.',
     tot: l => `+${20 * l}% damage, hunts ${6 + l}s${l >= 3 ? ', parting dive' : ''}` },
+  returntrail: {
+    hero: 'datu', name: 'Returning Trail', icon: ['twin', '#c08aff', '#f4f0e6'], max: 2, rarity: 'Standard',
+    seconds: [0, 0.75, 1.50],
+    per: 'A return hit on marked prey extends its mark once.',
+    tot: l => `+${UPGRADES.returntrail.seconds[l].toFixed(2)}s per mark`
+  },
   // Diego
   quickreload: { hero: 'diego', name: 'Quick Reload', icon: ['clock', '#f0c040', '#fff'], max: 5, per: '-12% reload time', tot: l => `-${Math.round((1 - Math.pow(0.88, l)) * 100)}% reload time` },
   powder:    { hero: 'diego', name: 'Improved Powder', icon: ['flame', '#ff7a2a', '#ffe58a'], max: 5, per: '+15% arquebus damage', tot: l => `+${15 * l}% damage` },
   piercing:  { hero: 'diego', name: 'Piercing Lead', icon: ['pierce', '#b9c2cc', '#fff'], max: 3, per: 'Shots pass through +1 enemy', tot: l => `pierces ${1 + l} enemies` },
   barrage:   { hero: 'diego', name: 'Lead Barrage', icon: ['pellets', '#9aa5b1', '#fff'], max: 3, per: '+1 extra projectile (60% damage)', tot: l => `${1 + l} projectiles per shot` },
   charge:    { hero: 'diego', name: 'Heavy Charge', icon: ['flame', '#ffb02e', '#fff7d0'], max: 3, per: 'Fire Pot: +25% damage, +15% blast radius', tot: l => `+${25 * l}% fire-pot damage, +${15 * l}% radius` },
-  steady:    { hero: 'diego', name: 'Steady Aim', icon: ['eye', '#f4f0e6', '#2a2230'], max: 4, per: '+25% critical damage', tot: l => `+${25 * l}% critical damage` }
+  steady:    { hero: 'diego', name: 'Steady Aim', icon: ['eye', '#f4f0e6', '#2a2230'], max: 4, per: '+25% critical damage', tot: l => `+${25 * l}% critical damage` },
+  screenblast: {
+    hero: 'diego', name: 'Screening Blast', icon: ['flame', '#81d8ee', '#f4f0e6'], max: 2, rarity: 'Standard',
+    pixels: [0, 14, 28],
+    per: "Fire Pot's blue ring clears hostile shots.",
+    tot: l => `+${UPGRADES.screenblast.pixels[l]} px past blast`
+  }
 };
+const UPGRADE_WEIGHTS = { attribute: 1, technique: 1.7 };
 const ATTRIBUTE_IDS = ['vitality', 'strength', 'agility', 'ferocity', 'precision', 'fortitude', 'recovery', 'reach'];
 
 /* ---------------- Enemies ---------------- */
@@ -1040,7 +1115,8 @@ const TRAITS = {
   shield:   { name: 'Shielded', color: '#6ac8ff', cd: 2.5 },                 // blocks one weapon hit, then needs `cd` seconds to raise the guard again
   rallying: { name: 'Rallying', color: '#e8b8ff', radius: 60, moveScale: 1.15 },
   swift:    { name: 'Swift', color: '#7be38a', speed: 1.3, hp: 0.8 },        // faster, a little frailer
-  volatile: { name: 'Volatile', color: '#ff7a2a', r: 34, fuse: 0.9, dmg: 1.2, foe: 30 }   // bursts where it falls: hurts the hero and other raiders
+  volatile: { name: 'Volatile', color: '#ff7a2a', r: 34, fuse: 0.9, dmg: 1.2, foe: 30 },  // bursts where it falls: hurts the hero and other raiders
+  banner:   { name: 'Banner', color: '#ffa4be', radius: 56, suppressRadius: 20, duration: 4, tick: 0.5, heal: 3, cap: 4 }
 };
 const TRAIT_IDS = Object.keys(TRAITS);
 
@@ -1048,11 +1124,16 @@ const TRAIT_IDS = Object.keys(TRAITS);
 // A twist changes the rules of one wave. `tint` = [colour, amount]: the ambient light is pulled that far toward the colour.
 // A twist changes the rules of one wave. Arcade rolls two per run on ordinary (non-boss) waves; Endless keeps rolling them.
 const HIGH_TIDE = { firstRow: 10, inlandTiles: 7, moveScale: 0.7 };
+const NIGHT_RAID = { firstWave: 7, torchScale: 0 };
 const TWISTS = {
   squall: { name: 'Monsoon squall', sub: 'Mud slows everyone. Lightning strikes raider and defender alike.', foe: 0.9, hero: 0.93, shot: 0.75, tint: [[128, 142, 172], 0.6], bolt: [2.2, 3.4], boltR: 30, boltDmg: 14, boltFoe: 45 },
   fog:    { name: 'Fog off the bay', sub: 'Archers and gunners must come close to find you.', sight: 0.55, tint: [[226, 231, 238], 0.45], clear: 118 },
   fire:   { name: 'The burning quarter', sub: 'Fires break out underfoot. They burn raiders too.', every: 3.2, max: 7, r: 26, warm: 1.0, dur: 6, tick: 0.5, dmg: 6, foeDmg: 7 },
-  high_tide: { name: 'High Tide', sub: `Blue shallows on the west shore slow walking by ${Math.round((1 - HIGH_TIDE.moveScale) * 100)}%. Piers stay dry.` }
+  high_tide: { name: 'High Tide', sub: `Blue shallows on the west shore slow walking by ${Math.round((1 - HIGH_TIDE.moveScale) * 100)}%. Piers stay dry.` },
+  fire_arrows: { name: 'Fire Arrows', sub: 'Archer arrows leave small fires. Move out of the dashed ring before it ignites.',
+    r: 17, warm: 0.75, dur: 2.6, tick: 0.65, dmg: 3, foeDmg: 4, max: 8, maxArrows: 32 },
+  loose_carabao: { name: 'Loose Carabao', sub: 'A carabao charges along the road. Step out of the marked lane.' },
+  night_raid: { name: 'Night Raid', sub: 'Decorative torches go out in Full lighting. Soft and Off keep their normal visibility.' }
 };
 // NOTE: the keys foe / hero / shot / sight are read by setTwist() as speed and sight multipliers for ANY twist. Do not reuse those names for anything else.
 const TWIST_IDS = Object.keys(TWISTS);
@@ -1110,6 +1191,44 @@ const DEEDS = [
 ];
 const DEED_BY_ID = {}; DEEDS.forEach(d => { DEED_BY_ID[d.id] = d; d.charm = (CHARMS.find(c => c.deed === d.id) || {}).id; });
 
+/* Original run perks. Each is a single selection, with no deed gate. */
+const HERO_CHARM_TUNING = {
+  hearthguard: { seconds: 0.6 },
+  chargingember: { seconds: 2, radius: 32, damage: 12 },
+  sharedbowl: { targets: 3, heal: 2, cooldown: 3 },
+  returnhook: { seconds: 1 },
+  huntersknot: { recovery: 1.5 },
+  huntingcord: { radiusScale: 1.25 },
+  longmatch: { distance: 120, damageScale: 1.25 },
+  thirdreport: { targets: 3, radius: 24, damage: 14 },
+  smokeseal: { stun: 0.45 }
+};
+const HERO_CHARMS = [
+  { id: 'hearthguard', name: 'Hearthguard Bead', heroes: ['mateo'], icon: ['shield', '#e9bf76', '#fff0c8'],
+    desc: 'Mateo: Hold the Gap lasts 0.6s longer after a damaging close cleave.' },
+  { id: 'chargingember', name: 'Charging Ember', heroes: ['mateo'], icon: ['flame', '#ffae66', '#fff0c8'],
+    desc: 'Mateo: Charge readies one close cleave for 2s. That cleave bursts for 12 damage within 32px of you.' },
+  { id: 'sharedbowl', name: 'Shared Bowl', heroes: ['mateo'], icon: ['potion', '#d5ad72', '#ffe8b0'],
+    desc: 'Mateo: Damage 3 raiders with one close cleave to heal 2 HP. Recovers in 3s.' },
+  { id: 'returnhook', name: 'Returning Hook', heroes: ['datu'], icon: ['twin', '#75d8db', '#e5ffff'],
+    desc: 'Datu: A return hit on marked prey slows it by 35% for 1s, once per mark. Bosses are immune.' },
+  { id: 'huntersknot', name: "Hunter's Knot", heroes: ['datu'], icon: ['amulet', '#bb9ce8', '#f5e6ff'],
+    desc: 'Datu: Defeating your marked prey removes 1.5s from Manananggal recovery, once per mark.' },
+  { id: 'huntingcord', name: 'Hunting Cord', heroes: ['datu'], icon: ['reach', '#75d8db', '#e5ffff'],
+    desc: 'Datu: Aim Manananggal at marked prey to widen its descent radius by 25%. Checks your mark when cast.' },
+  { id: 'longmatch', name: 'Long Match', heroes: ['diego'], icon: ['pierce', '#f1bd73', '#fff2d8'],
+    desc: 'Diego: The main bullet deals 25% more damage to its first raider if it has traveled at least 120px.' },
+  { id: 'thirdreport', name: 'Third Report', heroes: ['diego'], icon: ['bolt', '#f1bd73', '#fff2d8'],
+    desc: 'Diego: When the main bullet damages its third raider, it bursts for 14 damage in a 24px radius.' },
+  { id: 'smokeseal', name: 'Smoke Seal', heroes: ['diego'], icon: ['dome', '#b6d8e4', '#f3ffff'],
+    desc: 'Diego: Fire from inside your smoke to give the main bullet a 0.45s stun on its first raider. Bosses are immune.' }
+];
+for (const c of HERO_CHARMS) {
+  c.lore = 'An original invention for this game.';
+  CHARMS.push(c);
+  CHARM_BY_ID[c.id] = c;
+}
+
 /* ============================================================
    Character Database text. Every entry keeps invention and record
    apart: "fiction" is this game's story, "history" is what the
@@ -1132,9 +1251,9 @@ const DATABASE = {
       ['Background', 'Datu is an invented character. He grew up on boats, with family among the sea peoples of the southern islands, and came north trading. "Datu" is a title for a chief in many Philippine societies; his crew gave it to him as a joke that stuck, and it is not his name.'],
       ['Role in the siege', 'In this story he was in Manila selling cargo when the fleet came in. He fights for the town because his boat, his crew and his customers are all inside it.']
     ],
-    weapon: ['Stone yo-yo and kris', 'His stone on a cord is this game\'s invention. A popular story says the yo-yo began as a Philippine hunting weapon, but historians have found no sound evidence for it, and nothing here presents it as a real sixteenth-century arm. The kris he draws for Tidal Step is real: an asymmetrical dagger or sword, often wavy-bladed, long associated with Mindanao, Sulu and the wider Malay world.'],
+    weapon: ['Stone yo-yo and kris', 'His stone on a cord is this game\'s invention. A popular story says the yo-yo began as a Philippine hunting weapon, but historians have found no sound evidence for it, and nothing here presents it as a real sixteenth-century arm. The kris he carries is real: an asymmetrical dagger or sword, often wavy-bladed, long associated with Mindanao, Sulu and the wider Malay world.'],
     identity: 'Medium range. A tethered stone that sweeps wherever he aims, fast feet, and a winged horror he can call down on any knot of raiders.',
-    strengths: ['Hits many enemies at once without standing next to them', 'The Manananggal keeps fighting for several seconds while he moves on', 'Fastest hero, with the shortest dodge cooldown', 'Tidal Step is both an escape and an attack', 'Critical hits and bleeding scale well'],
+    strengths: ['Hits many enemies at once without standing next to them', 'The Manananggal keeps fighting for several seconds while he moves on', 'Fastest hero, with the shortest dodge cooldown', 'Tidal Snare slows ordinary enemies without interrupting the stone', 'Critical hits and bleeding scale well'],
     weaknesses: ['Less health than Mateo', 'The stone is away from him while it swings, so close gaps are dangerous', 'Rewards practice: sloppy aim wastes each throw'],
     myth: 'The manananggal belongs to the aswang lore of the Visayas and much of the archipelago: by night her upper body sprouts wings, tears free at the waist and flies off to hunt. In the stories she is a terror, not a helper. Having one answer Datu is this game\'s invention.',
     history: 'People of the islands fought on both sides of the Spanish arrival, and local allies are recorded alongside the Spanish against Limahong: the following year thousands of them sailed with Juan de Salcedo to his camp in Pangasinan. No source describes a fighter like Datu.'
@@ -1145,9 +1264,9 @@ const DATABASE = {
       ['Role in the siege', 'In this story he is an arquebusier of the Manila garrison, on the wall when the first boats land, shooting for as long as there is light to load by.']
     ],
     weapon: ['Matchlock arquebus and fire pots', 'The arquebus was the standard infantry firearm of the period: muzzle-loaded, fired by a smouldering match, powerful and slow. Pots of clay or iron filled with powder and lit by a fuse were also real weapons of sixteenth-century sieges and sea fights. Whether any were thrown at Manila in 1574 is not recorded.'],
-    identity: 'Long range. One heavy, precise shot at a time, an explosive for crowds, and a gunstock for whoever gets too close.',
-    strengths: ['Longest reach and highest single-hit damage', 'Shots pierce, and upgrades add more', 'Fire Pot scatters a whole pack', 'Strong against bosses from a safe distance'],
-    weaknesses: ['Helpless while reloading', 'Weak when surrounded', 'Needs open ground and a clear line of fire'],
+    identity: 'Long range. One heavy, precise shot at a time, an explosive for crowds, and smoke cover when he needs a new firing angle.',
+    strengths: ['Longest reach and highest single-hit damage', 'Shots pierce, and upgrades add more', 'Fire Pot scatters a whole pack', 'Strong against bosses from a safe distance', 'Dodging halves the reload you have left'],
+    weaknesses: ['Limited offense while reloading', 'Weak when surrounded', 'Needs open ground and a clear line of fire'],
     history: 'Manila\'s garrison in 1574 was small. Its commander, the master-of-camp Martin de Goiti, was killed in the first assault, and Juan de Salcedo arrived with about fifty arquebusiers before the second. Diego is not one of the recorded men.'
   }
 };
@@ -1158,8 +1277,8 @@ const VICTORY_LINES = {
 };
 
 /* ============================================================
-   Alpha 0.4: the Wardrobe. Ten skins per hero, bought with
-   Campaign Funds: five recolours and five costumes each.
+   The Wardrobe. Each hero has ten purchasable skins and one
+   recolour unlocked by a recorded ending.
 
    A skin is cosmetic only. It never changes a number.
 
@@ -1169,7 +1288,7 @@ const VICTORY_LINES = {
                                                  o, w, k and e fall back to the global PAL)
 
    `note` follows the project rule: say what is real, what is from a later century, and what is a joke.
-   To add a skin, add a row. buildSkins() bakes it, the Wardrobe lists it, and the save accepts its id.
+   Set ending to an ENDINGS key to unlock a recolour through the save's ending record.
    ============================================================ */
 const SKIN_COST = { recolor: 30, costume: 90 };
 const FACE = ['..okssssko..', '..osesseso..', '..osssssso..', '...ossSso...'];              // Mateo and Datu
@@ -1200,7 +1319,9 @@ const SKINS = {
     { id: 'disco', name: 'Disco', note: 'A joke, four centuries early.',
       pal: { s: '#b8733f', S: '#8f5630', a: '#2a1a14', W: '#f4f0e6', P: '#7d3f94', y: '#e8b23a', l: '#f4f0e6', f: '#e8b23a' },
       rows: ['...aaaaaa...', '..aaaaaaaa..', '.aaaaaaaaaa.', '.aaaaaaaaaa.', '.aossssssoa.', '.aosessesoa.', '..osssssso..', '...ossSso...',
-        '..WPsyysPW..', '.sWWWssWWWs.', '.sWWWWWWWWs.', '..SWWWWWWS..', '...WWWWWW...', '..WWW..WWW..'] }
+        '..WPsyysPW..', '.sWWWssWWWs.', '.sWWWWWWWWs.', '..SWWWWWWS..', '...WWWWWW...', '..WWW..WWW..'] },
+    { id: 'sunlit', name: 'Sunlit Obsidian', ending: 'sign', note: 'An invented ending recolour with gold plumes and dark indigo cloth.',
+      pal: { g: '#e6b554', G: '#fff1a0', r: '#a95a34', c: '#414363', C: '#31314d', y: '#ffe08a', t: '#f3b35f' } }
   ],
   datu: [
     { id: 'seagreen', name: 'Sea Green', note: 'A recolour.', pal: { v: '#1f6b5c', V: '#2f9c84', p: '#e8b23a', P: '#ffe08a' } },
@@ -1227,7 +1348,9 @@ const SKINS = {
     { id: 'dino', name: 'Dinosaur', note: 'A joke. No dinosaur took part in the defence of Manila.',
       pal: { s: '#a9713f', S: '#85552d', g: '#3f9a4a', G: '#6fd06a', y: '#f0e08a', l: '#3f9a4a', f: '#2f7a3a' },
       rows: ['.....gg.....', '...gGGGGg...', '..gGwGGwGg..', '..gwwwwwwg..', '..gossssog..', '..gsessesg..', '..gssssssg..', '..ggwwwwgg..',
-        '..gGyyyyGg..', '.ggGyyyyGgg.', '.sgGyyyyGgsg', '..gGyyyyGggg', '...gggggg.g.', '...gg..gg...'] }
+        '..gGyyyyGg..', '.ggGyyyyGgg.', '.sgGyyyyGgsg', '..gGyyyyGggg', '...gggggg.g.', '...gg..gg...'] },
+    { id: 'moonwake', name: 'Moonwake', ending: 'sign', note: 'An invented ending recolour with a silver cap and plum vest.',
+      pal: { p: '#aaa4bd', P: '#f2e9ff', v: '#573063', V: '#a064a5', y: '#f2dfb0', n: '#d4b9e4', t: '#382637', l: '#382637' } }
   ],
   diego: [
     { id: 'black', name: 'Blackened Steel', note: 'A recolour. Armour was often blackened against rust at sea.', pal: { M: '#3a3340', m: '#59616b', N: '#221c26', C: '#3a3340', c: '#59616b', r: '#e8b23a' } },
@@ -1254,10 +1377,26 @@ const SKINS = {
     { id: 'chef', name: 'Camp Cook', note: 'A joke. Somebody had to feed the garrison.',
       pal: { s: '#e2b08a', b: '#5a3a22', W: '#c8c2b4', A: '#59616b', r: '#b3262e', l: '#2b2b3b', f: '#1b1622' },
       rows: ['...wwwwww...', '...wWwwWw...', '...wwwwww...', '...WWWWWW...', ...FACE_D,
-        '..wwwrrwww..', '.swwwwwwwws.', '.swwAwwAwws.', '..wwwwwwww..', '..wwwwwwww..', '...ww..ww...'] }
+        '..wwwrrwww..', '.swwwwwwwws.', '.swwAwwAwws.', '..wwwwwwww..', '..wwwwwwww..', '...ww..ww...'] },
+    { id: 'cinderwatch', name: 'Cinderwatch', ending: 'sign', note: 'An invented ending recolour with copper armour and indigo trim.',
+      pal: { M: '#c97951', m: '#ffca83', N: '#78443d', C: '#ad594b', c: '#e39662', r: '#393e6b', y: '#818bc1', l: '#3b3052' } }
   ]
 };
-const SKIN_BY_KEY = {}; for (const h in SKINS) for (const s of SKINS[h]) { s.kind = s.rows ? 'costume' : 'recolor'; s.cost = SKIN_COST[s.kind]; SKIN_BY_KEY[h + ':' + s.id] = s; }
+const SKIN_BY_KEY = {};
+for (const h in SKINS) for (const s of SKINS[h]) {
+  s.kind = s.ending ? 'reward' : s.rows ? 'costume' : 'recolor';
+  if (!s.ending) s.cost = SKIN_COST[s.kind];
+  SKIN_BY_KEY[h + ':' + s.id] = s;
+}
+
+// Ending rewards have one source of ownership, shared by load validation and the Wardrobe.
+function skinOwned(data, hero, id) {
+  if (id === 'default') return Object.hasOwn(SKINS, hero);
+  const key = hero + ':' + id, skin = SKIN_BY_KEY[key];
+  if (!skin) return false;
+  if (skin.ending) return data.endings[hero]?.[skin.ending] === true;
+  return data.skins.owned[key] === true;
+}
 
 /* ============================================================
    Persistent save (browser localStorage), versioned.
@@ -1273,7 +1412,7 @@ const Save = {
     return {
       v: SAVE_VERSION, funds: 0, fundsEarned: 0, perm: {}, challengeTier: 0,
       stats: { runs: 0, kills: 0, bossKills: 0, champKills: 0, arcadeWins: {}, bestArcade: null, bestArcadeWave: 0, bestEndless: null },
-      skins: { owned: {}, worn: {} },        // 0.4: owned 'hero:skin' -> true; worn hero -> skin id (see SKINS)
+      skins: { owned: {}, worn: {} },        // Purchases only in owned; ending rewards use endings. Worn maps hero to skin id.
       endings: {},                           // 0.4: hero id -> { dawn, whole, sign } seen (see ENDINGS)
       codex: {},                             // 0.4: Chronicle entry id -> true (see CODEX)
       deeds: {},                             // deed id -> true; each one unlocks an anting-anting (see DEEDS)
@@ -1291,10 +1430,10 @@ const Save = {
       if (raw.stats && typeof raw.stats === 'object') { const s = raw.stats; d.stats.runs = num(s.runs, 0); d.stats.kills = num(s.kills, 0); d.stats.bossKills = num(s.bossKills, 0); d.stats.bestArcadeWave = num(s.bestArcadeWave, 0); d.stats.champKills = num(s.champKills, 0);
         if (s.arcadeWins && typeof s.arcadeWins === 'object') for (const h in HEROES) if (s.arcadeWins[h]) d.stats.arcadeWins[h] = num(s.arcadeWins[h], 0);
         for (const k of ['bestArcade', 'bestEndless']) if (s[k] && typeof s[k] === 'object' && typeof s[k].time === 'number') d.stats[k] = { wave: num(s[k].wave, 0), time: s[k].time, hero: String(s[k].hero || '') }; }
-      if (raw.skins && typeof raw.skins === 'object') { const k = raw.skins;
-        if (k.owned && typeof k.owned === 'object') for (const id in SKIN_BY_KEY) if (k.owned[id] === true) d.skins.owned[id] = true;
-        if (k.worn && typeof k.worn === 'object') for (const h in SKINS) if (typeof k.worn[h] === 'string' && d.skins.owned[h + ':' + k.worn[h]]) d.skins.worn[h] = k.worn[h]; }
       if (raw.endings && typeof raw.endings === 'object') for (const h in ENDINGS) if (raw.endings[h] && typeof raw.endings[h] === 'object') for (const e of ENDINGS[h]) if (raw.endings[h][e.key] === true) (d.endings[h] || (d.endings[h] = {}))[e.key] = true;
+      if (raw.skins && typeof raw.skins === 'object') { const k = raw.skins;
+        if (k.owned && typeof k.owned === 'object') for (const id in SKIN_BY_KEY) if (!SKIN_BY_KEY[id].ending && k.owned[id] === true) d.skins.owned[id] = true;
+        if (k.worn && typeof k.worn === 'object') for (const h in SKINS) if (typeof k.worn[h] === 'string' && skinOwned(d, h, k.worn[h])) d.skins.worn[h] = k.worn[h]; }
       if (raw.codex && typeof raw.codex === 'object') for (const q of CODEX) if (raw.codex[q.id] === true) d.codex[q.id] = true;
       if (raw.deeds && typeof raw.deeds === 'object') for (const q of DEEDS) if (raw.deeds[q.id] === true) d.deeds[q.id] = true;      // unknown ids are dropped
       // a save written before boss-music rotation existed simply has no music block: start empty bags, keep everything else
@@ -1545,6 +1684,58 @@ function buildSprites() {
   SPR.villager = bakeWalker(HUMAN.archer.rows, LEGS, { h: '#c9a45a', H: '#e6c98a', D: '#8a6a2a', s: '#a9713f', g: '#e9dfc4', G: '#f4f0e6', b: '#b3263a', l: '#7a3f24', f: '#a9713f' });
   SPR.villager2 = bakeWalker(HUMAN.archer.rows, LEGS, { h: '#b8863a', H: '#d9b56a', D: '#7a5a1a', s: '#b8733f', g: '#3a62a0', G: '#5a84c4', b: '#e8b23a', l: '#2b2b3b', f: '#b8733f' });
   for (const k in ART) { SPR[k] = bake(ART[k].rows, ART[k].pal); SPR[k].ox = ART[k].ox || 0; SPR[k].oy = ART[k].oy || 0; }
+  SPR.powderBarrel = bake([
+    '..ooooooo..', '.oHHHHHHHo.', 'oghhhhhhggo', 'oGGGGGGGGGo', 'ogHLrlhggo', 'ogHrLlhggo',
+    'ogHlrrhggo', 'ogHLLlhggo', 'oGGGGGGGGGo', 'oghhhhhgggo', '.ooooooooo.'
+  ], { H: '#e3b27b', h: '#a76e3a', g: '#634127', G: '#97939c', r: '#7e312b', L: '#ffd08b', l: '#b65532' });
+  SPR.raiderBanner = bake([
+    '.oo...........',
+    'oWoo..........',
+    '.ooffffffffo..',
+    '.oPFFFFFFFFFo.',
+    '.oPFFwwFFFFFo.',
+    '.oPFFwwFFFFo..',
+    '.oPFwwwwFFo...',
+    '.oPFFwwFFFFo..',
+    '.oPFFwwFFFFFo.',
+    '.oPFFFFFFFFFo.',
+    '.ooffffffffo..',
+    '.oPo..........',
+    '.oPo..........',
+    '.oPo..........',
+    '.oPo..........',
+    '.oPo..........',
+    '.oPo..........',
+    '.oPo..........',
+    'ooooo.........'
+  ], { P: '#ad8564', W: '#f3dcad', F: '#b84066', f: '#6d2845', w: '#ffe0df' });
+  const carabaoBody = [
+    '..............................HHH.....',
+    '............................HHhhHH....',
+    '...........................Hh....HH...',
+    '......................H...hh......HH..',
+    '......................HH...h......Hh..',
+    '.........ooooooo.......ho..o....hhH...',
+    '.....oooobbbbbbbboooooobboohoohhhh....',
+    '...oobbbbbBBBBBBBBbbbBBBBbbbbboo......',
+    '..obbbBBBBBBBBBBBBBBbbbbBBBBBBbbo.....',
+    '.obbBBBBBBBBBBBBBBBBBbbbbBBBBBBbo.....',
+    'oobbBBBBBBBBBBBBBBBBBbbbbbBoBBbbbo....',
+    'o..obBBBBBBBBBBBBBBBBbbbbbbBBoobbbo...',
+    'o..obBBBBBBBBBBBBBBBbbbbbbbbbBoobbbo..',
+    '..oobBBBBBBBBBBBBBBBbbbbbbbbbbbbbbso..',
+    '..o.obbbBBBBBBBBBBbbbbbbbboobbbbssso..',
+    '.....oobbbbbbbbbbbbbbbbbbo..oossssso..',
+    '......obbboboooooobbbobbo.....ooooo...',
+    '.......ooooo......oooooo..............'
+  ];
+  const carabaoLegs = [
+    ['.......obb..ob......obb..ob...........', '.......obb..ob......obb..ob...........', '......obbo.oob.....obbo.oob...........', '......oooo.ooo.....oooo.ooo...........'],
+    ['.......ob..obb......ob..obb...........', '........ob..obb......ob..obb..........', '........oo...obo.....oo...obo.........', '..............ooo..........ooo........']
+  ];
+  const carabao = carabaoLegs.map(legs => bake([...carabaoBody, ...legs],
+    { o: '#1b1926', b: '#46434d', B: '#6b6775', s: '#98909a', H: '#f4e2b4', h: '#bc9a72' }));
+  SPR.carabao = { right: carabao, left: carabao.map(flipCanvas) };
   SPR.tikbalangL = flipCanvas(SPR.tikbalang);
   for (const k of ['manaA', 'manaB']) { const c = SPR[k]; SPR[k] = { r: c, l: flipCanvas(c) }; }      // dark outline is not needed: she always carries a light
   SPR.sarimanokL = flipCanvas(SPR.sarimanok);
@@ -1601,6 +1792,7 @@ const AudioSys = {
         case 'coin': this.tone(1200, 1200, 0.05, 'square', 0.08); this.tone(1600, 1600, 0.09, 'square', 0.08, 0.05); break;
         case 'hurt': this.tone(200, 70, 0.22, 'sawtooth', 0.3); this.noise(0.15, 0.3, 300); break;
         case 'dash': this.noise(0.14, 0.2, 2200, 0, 2); break;
+        case 'tamp': this.noise(0.045, 0.08, 800, 0, 1.8); this.tone(170, 120, 0.045, 'triangle', 0.04); break;
         case 'level': [523, 659, 784, 1047].forEach((f, i) => this.tone(f, f, 0.14, 'square', 0.14, i * 0.08)); break;
         case 'buy': [784, 988, 1319].forEach((f, i) => this.tone(f, f, 0.1, 'triangle', 0.18, i * 0.06)); break;
         case 'deny': this.tone(140, 110, 0.18, 'square', 0.18); break;
@@ -2104,7 +2296,7 @@ const G = {
   state: 'menu', settings: { vol: 0.6, musicVol: 0.55, shake: true, nums: true }, heroId: 'mateo', p: null,
   enemies: [], shots: [], pickups: [], hazards: [], fx: [], zones: [], charges: [], crates: [], bombs: [], rings: [],
   mode: 'arcade', run: null, bossTrack: null, retreat: false,
-  wave: 0, def: null, waveT: 0, phase: 'idle', phaseT: 0, mopT: 0, spawnAcc: 0, boss: null, bossSpawned: false,
+  enemySpawnOrder: 0, wave: 0, def: null, waveT: 0, phase: 'idle', phaseT: 0, mopT: 0, spawnAcc: 0, boss: null, bossSpawned: false,
   cam: { x: 0, y: 0, shake: 0, sx: 0, sy: 0 }, keys: {}, pressed: {}, mouse: { x: VW / 2, y: VH / 2, l: false, r: false, wx: 0, wy: 0 },
   time: 0, runTime: 0, eclipse: null, fieldT: 0, waveStats: { kills: 0, gold: 0, xp: 0 }, ctx: null
 };
@@ -2177,7 +2369,21 @@ function pathDir(e, dt) {
   }
   const d = Math.hypot(dx, dy) || 1; DIR.x = dx / d; DIR.y = dy / d;
 }
-function walk(e, dt, mul) { pathDir(e, dt); const v = e.speed * mul * G.mods.foe * raiderMoveScale(e) * dt; e.x += DIR.x * v; e.y += DIR.y * v; e.moving = true; }
+function walk(e, dt, mul) {
+  const smoke = smokeSearchTarget(e);
+  if (smoke) {
+    const dx = smoke.x - e.x, dy = smoke.y - e.y, distance = Math.hypot(dx, dy);
+    if (distance < 3) return;
+    const step = Math.min(distance, e.speed * mul * G.mods.foe * raiderMoveScale(e) * dt);
+    e.x += dx / distance * step; e.y += dy / distance * step;
+    e.face = dx >= 0 ? 1 : -1;
+  } else {
+    pathDir(e, dt);
+    const step = e.speed * mul * G.mods.foe * raiderMoveScale(e) * dt;
+    e.x += DIR.x * step; e.y += DIR.y * step;
+  }
+  e.moving = true;
+}
 
 /* ---------- player ---------- */
 function newPlayer(heroId) {
@@ -2185,12 +2391,13 @@ function newPlayer(heroId) {
   return {
     hero: heroId, h, x: MAP.start.x, y: MAP.start.y, r: 6, hp: h.hp, maxHp: h.hp, aim: 0, aimDist: 100, face: 1, moving: false, animT: 0,
     atkT: 0, reloadMax: 1, swingT: 0, swingDur: 0.2, swingDir: 1, swingA: 0, recoilT: 0,
-    secT: 0, secMax: h.secCd,          // Shift ability (movement / defensive)
+    secT: 0, secMax: h.secCd, shiftField: null,          // Shift ability (movement / defensive)
     spT: 0, spMax: h.spCd,             // RMB special (offensive), an independent cooldown
     dashT: 0, dashMax: h.dashCd, dash: null,
     bufDodge: 0, bufQ: 0, bufA: 0, bufS: 0, bufP: 0, prevA: false, prevS: false, prevP: false,   // short input buffers
     ring: { aUse: 0, sUse: 0, aReady: 0, sReady: 0, aPrev: 0, sPrev: 0 },                     // ground cooldown-ring animation timers
-    yo: { state: 'held', x: MAP.start.x, y: MAP.start.y, vx: 0, vy: 0, t: 0, cool: 0, pass: 0, trail: [], bump: 0 },
+    yo: { state: 'held', x: MAP.start.x, y: MAP.start.y, vx: 0, vy: 0, t: 0, cool: 0, pass: 0, trail: [], bump: 0, designated: false },
+    guardUntil: 0, prey: null, preyUntil: 0,
     iframes: 0, hurtFlash: 0, level: 1, xp: 0, pending: 0, up: {}, perks: {}, companions: [], active: null,
     perm: {}, challenge: 0,            // permanent upgrades, copied once from the save when the run starts
     gold: 0, goldEarned: 0, spent: 0, kills: 0, armor: 0, boost: false, barrier: 0, barrierT: 0,
@@ -2235,7 +2442,9 @@ function rollDamage(base) {
   return { dmg: d * rand(0.92, 1.08), crit };
 }
 function meleeHit(x, y, a, range, arc, base, kb, opt) {
-  let n = 0; const list = nearEnemies(x, y, range + 18);
+  if (G.powderBarrels.length) contactPowderBarrels(x, y, range, a, arc);
+  let n = 0, closeCleave = false, closeHits = 0;
+  const list = nearEnemies(x, y, range + 18);
   for (let i = 0; i < list.length; i++) {
     const e = list[i]; if (e.dead) continue;
     const dx = e.x - x, dy = e.y - y, d = Math.hypot(dx, dy);
@@ -2243,7 +2452,15 @@ function meleeHit(x, y, a, range, arc, base, kb, opt) {
     if (d > e.r + 7 && Math.abs(angDiff(Math.atan2(dy, dx), a)) > arc / 2) continue;
     const r = rollDamage(base), o = { crit: r.crit, kb, ax: x, ay: y };
     if (opt) { if (opt.stun) o.stun = opt.stun; if (opt.bleed) o.bleed = opt.bleed; }
+    const hpBefore = e.hp;
     if (hitEnemy(e, r.dmg, o)) n++;
+    if (opt?.cleave && !e.flee && d <= HERO_PASSIVES.mateo.radius && e.hp < hpBefore) { closeCleave = true; closeHits++; }
+  }
+  if (closeCleave && passiveCombat()) {
+    G.p.guardUntil = G.time + HERO_PASSIVES.mateo.seconds + (heroHasCharm('hearthguard') ? HERO_CHARM_TUNING.hearthguard.seconds : 0);
+    heroCharmCleave(closeHits);
+    const recovery = UPGRADES.countercharge.seconds[lv('countercharge')];
+    if (recovery && G.p.secT > 0) G.p.secT = Math.max(0, G.p.secT - recovery);
   }
   return n;
 }
@@ -2254,7 +2471,18 @@ function doPrimary() {
     const n = 1 + s.extraShots, mx = p.x + Math.cos(p.aim) * 15, my = p.y - 4 + Math.sin(p.aim) * 15;
     for (let i = 0; i < n; i++) {
       const off = i === 0 ? 0 : (Math.ceil(i / 2) * 0.11) * (i % 2 ? 1 : -1), a = p.aim + off, r = rollDamage(h.dmg * (i === 0 ? 1 : 0.6));
-      G.shots.push({ x: mx, y: my, vx: Math.cos(a) * 520, vy: Math.sin(a) * 520, dmg: r.dmg, crit: r.crit, r: 2, life: h.range * s.reach / 520, pierce: s.pierce, hit: [], kb: h.kb, kind: 'ball' });
+      const shot = { x: mx, y: my, vx: Math.cos(a) * 520, vy: Math.sin(a) * 520, dmg: r.dmg, crit: r.crit, r: 2, life: h.range * s.reach / 520, pierce: s.pierce, hit: [], kb: h.kb, kind: 'ball' };
+      if (i === 0 && passiveCombat()) {
+        shot.keep = HERO_PASSIVES.diego.retention;
+        shot.enfiladeHits = 0;
+        shot.mainBullet = true;
+        shot.originX = mx; shot.originY = my;
+        shot.longMatch = heroHasCharm('longmatch');
+        shot.thirdReport = heroHasCharm('thirdreport');
+        const smoke = activeShiftField('smoke');
+        shot.smokeSeal = heroHasCharm('smokeseal') && !!smoke && inShiftField(smoke, p);
+      }
+      G.shots.push(shot);
     }
     for (let i = 0; i < 10; i++) part(mx, my, Math.cos(p.aim) * rand(20, 90) + rand(-18, 18), Math.sin(p.aim) * rand(20, 90) + rand(-18, 18) - 8, rand(0.4, 0.9), pick(['#e6ecf2', '#b9c2cc', '#8b95a1']), 3);
     burst(mx, my, 4, ['#ffd84a', '#ff9a2a'], 90, 0.12, 2);
@@ -2264,7 +2492,7 @@ function doPrimary() {
   if (p.hero !== 'mateo') return;                       // Datu's stone yo-yo is simulated in updateYoyo()
   p.atkT = h.atkCd / atkSpeed(p); p.swingDir *= -1; p.swingA = p.aim; p.swingT = p.swingDur = 0.2;
   const range = h.range * s.reach, arc = Math.min(5.6, h.arc * s.arcMul);
-  const n = meleeHit(p.x, p.y, p.aim, range, arc, h.dmg, h.kb, null); if (n >= DEED.reaper) deed('reaper');
+  const n = meleeHit(p.x, p.y, p.aim, range, arc, h.dmg, h.kb, { cleave: true }); if (n >= DEED.reaper) deed('reaper');
   G.fx.push({ kind: 'arc', x: p.x, y: p.y - 4, a: p.aim, arc, range, t: 0, dur: p.swingDur + 0.06, dir: p.swingDir, color: '#dff6ff', th: 3 });
   sfx('heavy'); if (n) shake(1.5 + Math.min(2, n * 0.3));
 }
@@ -2274,14 +2502,16 @@ function doAbility() {
   const p = G.p, h = p.h, ca = Math.cos(p.aim), sa = Math.sin(p.aim);
   if (p.hero === 'mateo') {
     const dist = 110 * (1 + 0.3 * lv('eagle')); p.dash = { kind: 'charge', t: 0, dur: dist / 380, vx: ca * 380, vy: sa * 380, hit: new Set(), dmg: h.dmg * 1.5 * (1 + 0.2 * lv('eagle')), kb: 330, rad: 12 };
+    if (heroHasCharm('chargingember')) p.heroCharms.chargeUntil = G.time + HERO_CHARM_TUNING.chargingember.seconds;
     p.secT = p.secMax = h.secCd; sfx('charge');
   } else if (p.hero === 'datu') {
-    p.dash = { kind: 'tidal', t: 0, dur: 92 / 520, vx: ca * 520, vy: sa * 520, hit: new Set(), dmg: h.dmg * 2.6, kb: 60, rad: 10 };
-    p.secT = p.secMax = h.secCd * p.stats.dashCdMul; sfx('dash');
+    placeShiftField(p, 'snare');
+    p.secT = p.secMax = h.secCd * p.stats.dashCdMul;
+    sfx('throw');
   } else {
-    meleeHit(p.x, p.y, p.aim, 34 * p.stats.reach, 2.7, 24, 320, { stun: 0.8 });
-    G.fx.push({ kind: 'arc', x: p.x, y: p.y - 4, a: p.aim, arc: 2.7, range: 30, t: 0, dur: 0.18, dir: 1, color: '#d9c9a0', th: 3 });
-    p.swingT = p.swingDur = 0.18; p.swingA = p.aim; p.secT = p.secMax = h.secCd; sfx('heavy'); shake(2);
+    placeShiftField(p, 'smoke');
+    p.secT = p.secMax = h.secCd;
+    sfx('dash');
   }
   p.ring.aUse = 0.28;
 }
@@ -2301,14 +2531,18 @@ function doSpecial() {
   } else {
     // Fire Pot: a fused clay grenade lobbed to the aimed spot
     const L = lv('charge'), d = clamp(p.aimDist, SPECIAL.pot.minRange, SPECIAL.pot.range * s.reach), r = rollDamage(SPECIAL.pot.dmg * (1 + 0.25 * L));
-    G.bombs.push({ x0: p.x, y0: p.y - 6, tx: clamp(p.x + ca * d, 8, WORLD_W - 8), ty: clamp(p.y + sa * d, 8, WORLD_H - 8), t: 0, dur: 0.38 + d / 380, r: SPECIAL.pot.radius * (1 + 0.15 * L), dmg: r.dmg, crit: r.crit });
+    const radius = SPECIAL.pot.radius * (1 + 0.15 * L);
+    const clearRadius = radius + UPGRADES.screenblast.pixels[lv('screenblast')];
+    G.bombs.push({ x0: p.x, y0: p.y - 6, tx: clamp(p.x + ca * d, 8, WORLD_W - 8), ty: clamp(p.y + sa * d, 8, WORLD_H - 8), t: 0, dur: 0.38 + d / 380, r: radius, clearRadius, dmg: r.dmg, crit: r.crit });
     p.spT = p.spMax = h.spCd; p.recoilT = 0.1; sfx('throw');
   }
   if (has('minokawa')) { p.spT *= 0.75; p.spMax *= 0.75; }      // 0.3
   p.ring.sUse = 0.28;
 }
 function dashHits(d) {
-  const p = G.p, list = nearEnemies(p.x, p.y, d.rad + 16);
+  const p = G.p;
+  if (G.powderBarrels.length) contactPowderBarrels(p.x, p.y, d.rad);
+  const list = nearEnemies(p.x, p.y, d.rad + 16);
   for (let i = 0; i < list.length; i++) {
     const e = list[i]; if (e.dead || d.hit.has(e)) continue;
     if (Math.hypot(e.x - p.x, e.y - p.y) < d.rad + e.r) {
@@ -2331,7 +2565,7 @@ function updateYoyo(dt, held) {
   if (y.state === 'held') {
     y.x = hx; y.y = hy; y.vx = y.vy = 0; y.cool -= dt; y.trail.length = 0;
     if (!held || y.cool > 0) return;
-    y.state = 'out'; y.t = 0; y.pass++; y.vx = Math.cos(p.aim) * YO.launch * a; y.vy = Math.sin(p.aim) * YO.launch * a; p.bufP = 0; sfx('yo');
+    y.state = 'out'; y.t = 0; y.pass++; y.designated = !passiveCombat(); y.vx = Math.cos(p.aim) * YO.launch * a; y.vy = Math.sin(p.aim) * YO.launch * a; p.bufP = 0; sfx('yo');
   }
   // The stone is drawn toward the aimed spot, no further than the cord allows: put the cursor on an enemy and the stone works on it,
   // sweep the cursor and the stone swings after it. (A stick or touch aim sets the distance by how far it is pushed.)
@@ -2360,15 +2594,35 @@ function updateYoyo(dt, held) {
   y.trail.push(y.x, y.y); if (y.trail.length > 10) y.trail.splice(0, 2);
 }
 function yoHits(y, a) {
-  const p = G.p, list = nearEnemies(y.x, y.y, YO.r + 22), ret = y.state === 'return', twin = lv('twincut'), gap = YO.hitGap / a;
+  const p = G.p, ret = y.state === 'return', twin = lv('twincut'), gap = YO.hitGap / a;
+  if (G.powderBarrels.length && (!ret || lineClear(p.x, p.y, y.x, y.y, MAP.shot))) contactPowderBarrels(y.x, y.y + 5, YO.r);
+  const canDesignate = y.state === 'out' && !y.designated && passiveCombat();
+  const distance = e => Math.hypot(e.x - y.x, e.y - 5 - y.y);
+  let list = nearEnemies(y.x, y.y, YO.r + 22);
+  // Sort a private copy of actual contacts only while this throw can designate prey.
+  if (canDesignate && list.length > 1) {
+    list = list.filter(e => !e.dead && distance(e) < e.r + YO.r);
+    list.sort((a, b) => distance(a) - distance(b) || a.spawnOrder - b.spawnOrder);
+  }
   const sp = Math.hypot(y.vx, y.vy), bleed = lv('serpent') ? 3 * lv('serpent') : 0;
   for (let i = 0; i < list.length; i++) {
-    const e = list[i]; if (e.dead || Math.hypot(e.x - y.x, e.y - 5 - y.y) >= e.r + YO.r) continue;
+    const e = list[i]; if (e.dead || distance(e) >= e.r + YO.r) continue;
     if (ret && twin) { if (e.yoRet === y.pass) continue; e.yoRet = y.pass; }           // Twin-Cut: the return pass strikes each enemy once more, regardless of the gap
     else if (G.time - (e.yoT || -9) < gap) continue;                                    // otherwise one enemy is struck at most once per gap
     e.yoT = G.time;
     const mul = ret ? YO.retDmg[twin] : clamp(sp / (260 * a), 0.75, 1.4), r = rollDamage(p.h.dmg * mul);
+    const hpBefore = e.hp;
     hitEnemy(e, r.dmg, { crit: r.crit, kb: p.h.kb, ax: y.x - y.vx * 0.05, ay: y.y - y.vy * 0.05, bleed });
+    if (e.hp >= hpBefore) continue;
+    if (ret) heroCharmReturn(e);
+    if (canDesignate && !y.designated) designatePrey(p, y, e);
+    else if (ret && !p.preyExtended && e === markedPrey(p) && passiveCombat()) {
+      const extension = UPGRADES.returntrail.seconds[lv('returntrail')];
+      if (extension) {
+        p.preyUntil += extension;
+        p.preyExtended = true;
+      }
+    }
   }
 }
 
@@ -2377,6 +2631,7 @@ function updatePlayer(dt) {
   if (I.stick) { p.aim = Input.aim; p.aimDist = 30 + I.mag * 130; }
   else { p.aim = Math.atan2(m.wy - (p.y - 4), m.wx - p.x); p.aimDist = Math.hypot(m.wx - p.x, m.wy - (p.y - 4)); }
   p.face = Math.cos(p.aim) >= 0 ? 1 : -1;
+  if (p.shiftField && p.shiftField.until <= G.time) p.shiftField = null;
   p.atkT -= dt; p.secT -= dt; p.spT -= dt; p.dashT -= dt; p.iframes -= dt; p.hurtFlash -= dt; p.swingT -= dt; p.recoilT -= dt;
   p.resolveT -= dt; p.counterT -= dt; p.speedT -= dt; p.radT -= dt; p.barrierT -= dt;
   // ground-ring animation: a pulse the moment an ability comes back
@@ -2389,19 +2644,29 @@ function updatePlayer(dt) {
   if (I.ability && !p.prevA) p.bufA = 0.22; if (I.special && !p.prevS) p.bufS = 0.22; if (I.primary && !p.prevP) p.bufP = 0.2;
   p.prevA = I.ability; p.prevS = I.special; p.prevP = I.primary;
   p.bufDodge -= dt; p.bufQ -= dt; p.bufA -= dt; p.bufS -= dt; p.bufP -= dt;
+  if (G.carabaoStunUntil > G.time) {
+    p.moving = false;
+    if (p.hero === 'datu') updateYoyo(dt, false);
+    return;
+  }
   const mx = I.mx, my = I.my, ml = Math.hypot(mx, my);
   if (p.dash) {
     const d = p.dash, step = Math.min(dt, d.dur - d.t); d.t += dt;
     p.x += d.vx * step; p.y += d.vy * step; collide(p); p.moving = true; p.animT += dt * 2;
-    part(p.x + rand(-3, 3), p.y - rand(0, 10), 0, 0, 0.25, d.kind === 'charge' ? '#e8b23a' : d.kind === 'tidal' ? '#6ac8ff' : '#f4f0e6', 2);
+    part(p.x + rand(-3, 3), p.y - rand(0, 10), 0, 0, 0.25, d.kind === 'charge' ? '#e8b23a' : '#f4f0e6', 2);
     if (d.kind !== 'dodge' || d.dmg) dashHits(d);          // 0.3: Tidecaller's Shell gives the plain dodge a cutting edge
-    if (d.t >= d.dur) { p.dash = null; p.iframes = Math.max(p.iframes, 0.12); if (d.kind !== 'charge' && lv('counter')) p.counterT = 3; if (d.kind === 'dodge' && has('sigbin')) p.shadowT = 2; }
+    if (d.t >= d.dur) { p.dash = null; p.iframes = Math.max(p.iframes, 0.12); if (d.kind === 'dodge' && lv('counter')) p.counterT = 3; if (d.kind === 'dodge' && has('sigbin')) p.shadowT = 2; }
   } else {
-    const sp = s.speed * (p.speedT > 0 ? 1.2 : 1) * G.mods.hero * tideMoveScale(p.x, p.y);
+    const sp = s.speed * (p.speedT > 0 ? 1.2 : 1) * G.mods.hero * tideMoveScale(p.x, p.y) * smokeMoveScale(p);
     p.x += mx * sp * dt; p.y += my * sp * dt; collide(p); p.moving = ml > 0.05; if (p.moving) p.animT += dt * Math.max(0.5, ml);
     if (p.bufDodge > 0 && p.dashT <= 0) {
       const dx = ml > 0.05 ? mx / ml : Math.cos(p.aim), dy = ml > 0.05 ? my / ml : Math.sin(p.aim);
       p.dash = { kind: 'dodge', t: 0, dur: 62 / 420, vx: dx * 420, vy: dy * 420 }; p.dashT = p.dashMax = p.h.dashCd * s.dashCdMul; p.bufDodge = 0; sfx('dash');
+      if (p.hero === 'diego' && p.atkT > 0) {
+        p.atkT *= 1 - HERO_DODGE.diego.reloadCut;
+        p.reloadCutUntil = G.settings.flash ? G.time + HERO_DODGE.diego.cueSeconds : 0;
+        sfx('tamp');
+      }
       if (has('tide')) Object.assign(p.dash, { hit: new Set(), dmg: 20, kb: 170, rad: 12 });
     } else if ((I.ability || p.bufA > 0) && p.secT <= 0) { doAbility(); p.bufA = 0; }
     if (!p.dash) {
@@ -2421,6 +2686,7 @@ function hurtPlayer(dmg, sx, sy) {
   if (an) { an.ready = false; an.cd = SHOP_BY_ID.anito.lv[an.lvl - 1].cd * compCdMul(); p.iframes = 0.45; floatText(p.x, p.y - 22, 'SHIELD', '#bfe9ff'); G.fx.push({ kind: 'ring', x: p.x, y: p.y - 4, r0: 8, r1: 26, t: 0, dur: 0.3, color: '#bfe9ff' }); sfx('shield'); return true; }
   if (pk('anting') && Math.random() < 0.12 * pk('anting')) { p.iframes = 0.35; floatText(p.x, p.y - 22, 'WARDED', '#ffd84a'); burst(p.x, p.y - 6, 10, '#ffd84a', 70, 0.35, 1); sfx('shield'); return true; }
   let res = p.stats.resist + (p.resolveT > 0 ? 0.2 + 0.1 * lv('resolve') : 0); res = Math.min(0.75, res); dmg *= (1 - res) * charmHurtMul(p);
+  if (p.hero === 'mateo' && p.guardUntil > G.time && passiveCombat()) dmg *= 1 - HERO_PASSIVES.mateo.reduction;
   if (p.armor > 0) { const a = Math.min(p.armor, dmg); p.armor -= a; dmg -= a; if (a > 0) floatText(p.x, p.y - 22, 'ARMOR', '#e8c05a'); }
   dmg = Math.round(dmg);
   if (dmg > 0) { p.hp -= dmg; floatText(p.x, p.y - 18, dmg, '#ff5a4a', 1); G.hitFlash = 0.25; }
@@ -2459,9 +2725,9 @@ function spawnEnemy(type, x, y) {
   const hm = d.boss ? Math.max(1, waveHpMul(G.wave) / 2) : waveHpMul(G.wave);
   const champ = !d.boss && x === undefined && G.def && G.def.champ && Math.random() < G.def.champ; if (x === undefined) { const s = spawnPoint(); if (!s) return null; x = s.x; y = s.y; }
   const e = {
-    type, d, x, y, r: d.r, hp: Math.round(d.hp * hm), dmg: d.dmg * waveDmgMul(G.wave), speed: d.speed * rand(0.92, 1.08), kx: 0, ky: 0, flash: 0, state: 'move', st: 0,
+    type, d, x, y, spawnOrder: G.enemySpawnOrder++, r: d.r, hp: Math.round(d.hp * hm), dmg: d.dmg * waveDmgMul(G.wave), speed: d.speed * rand(0.92, 1.08), kx: 0, ky: 0, flash: 0, state: 'move', st: 0,
     cd: rand(0.3, 1), face: 1, anim: rand(0, 1), stun: 0, bleedT: 0, bleedDps: 0, bleedAcc: 0, los: false, losT: rand(0, 0.3), evadeCd: 0, aimA: 0, moving: true,
-    strafe: Math.random() < 0.5 ? 1 : -1, dead: false, t1: 7, t2: d.boss ? 3.5 : rand(0.3, 1), t3: 1.5, t4: 4, t5: 5, n: 0, chain: 0, hitDone: false,
+    strafe: Math.random() < 0.5 ? 1 : -1, dead: false, snaredUntil: 0, t1: 7, t2: d.boss ? 3.5 : rand(0.3, 1), t3: 1.5, t4: 4, t5: 5, n: 0, chain: 0, hitDone: false,
     phase: 1, invuln: false, flee: false, fleeT: 0, champ: false
   };
   if (champ) { e.champ = true; e.hp = Math.round(e.hp * CHAMPION.hp); e.dmg *= CHAMPION.dmg; e.speed *= CHAMPION.speed; applyTrait(e); }
@@ -2491,7 +2757,8 @@ function dropXp(x, y, v) {
 }
 function dropGold(x, y, v) { G.pickups.push({ x, y, kind: 'gold', v, vx: rand(-45, 45), vy: rand(-45, 45), mag: G.phase === 'vacuum', t: 0 }); }
 function killEnemy(e) {
-  e.dead = true; const p = G.p, d = e.d; p.kills++; G.waveStats.kills++; onKill03(e);
+  heroCharmMarkedKill(e);
+  e.dead = true; clearMarkedPrey(e); const p = G.p, d = e.d; p.kills++; G.waveStats.kills++; onKill03(e);
   sfx('kill'); burst(e.x, e.y - 6, d.boss ? 46 : 9, [d.color, '#f4f0e6', '#3a3340'], d.boss ? 150 : 75, d.boss ? 0.9 : 0.45, 2);
   G.fx.push({ kind: 'ring', x: e.x, y: e.y - 5, r0: 3, r1: d.boss ? 40 : 12, t: 0, dur: d.boss ? 0.5 : 0.18, color: '#ffffff' });
   if (d.boss) {
@@ -2509,7 +2776,11 @@ function killEnemy(e) {
 // contact attacks need a moment in reach before they land, so slipping through a gap is possible
 function touch(e, dist, mul, cd) { if (dist < e.r + G.p.r + 2) { if (e.cd <= 0) { hurtPlayer(e.dmg * mul, e.x, e.y); e.cd = cd; } } else if (e.cd < 0.25) e.cd = 0.25; }
 function fireAt(e, speed, kind) {
-  const a = e.aimA; speed *= G.mods.shot; G.shots.push({ x: e.x + Math.cos(a) * 9, y: e.y - 5 + Math.sin(a) * 9, vx: Math.cos(a) * speed, vy: Math.sin(a) * speed, dmg: e.dmg, r: kind === 'ball' ? 2 : 2, life: 1.6, enemy: true, kind });
+  const a = e.aimA + smokeAimOffset(e); speed *= G.mods.shot;
+  const shot = { x: e.x + Math.cos(a) * 9, y: e.y - 5 + Math.sin(a) * 9, vx: Math.cos(a) * speed, vy: Math.sin(a) * speed, dmg: e.dmg, r: 2, life: 1.6, enemy: true, kind };
+  if (kind === 'arrow' && e.type === 'archer' && G.twist === 'fire_arrows' &&
+      G.shots.filter(s => s.fireArrow).length < TWISTS.fire_arrows.maxArrows) shot.fireArrow = true;
+  G.shots.push(shot);
   if (kind === 'ball') { burst(e.x + Math.cos(a) * 12, e.y - 5 + Math.sin(a) * 12, 7, ['#e6ecf2', '#b9c2cc'], 50, 0.6, 3); sfx('shot'); } else sfx('arrow');
 }
 function onScreen(e, m) { const c = G.cam; return e.x > c.x - m && e.x < c.x + VW + m && e.y > c.y - m && e.y < c.y + VH + m; }
@@ -2565,7 +2836,7 @@ const AI = {
     }
     if (e.state === 'rec') { e.st -= dt; if (e.st <= 0) { e.state = 'move'; e.t2 = d.atkCd; } return; }
     if (dist > e.r + p.r) walk(e, dt, 1);
-    if (dist < 82 && dist > 22 && e.t2 <= 0 && e.los) { e.state = 'wind'; e.st = d.windup; e.aimA = Math.atan2(dy, dx); }
+    if (dist < 82 && dist > 22 && e.t2 <= 0 && e.los && !smokeSearchTarget(e)) { e.state = 'wind'; e.st = d.windup; e.aimA = Math.atan2(dy, dx); }
     else touch(e, dist, 0.6, 1);
   },
   /* Japanese Pirate Captain: fast and technical.
@@ -2688,6 +2959,8 @@ function updateEnemies(dt) {
     e.anim += dt; e.flash -= dt; e.evadeCd -= dt; if (e.cd > 0) e.cd -= dt; e.moving = false;
     if (e.trait) { if (e.guardT > 0) e.guardT -= dt; if (!e.seen && onScreen(e, -14)) { e.seen = true; floatText(e.x, e.y - 24, TRAITS[e.trait].name, TRAITS[e.trait].color); } }
     if (e.bleedT > 0) { e.bleedT -= dt; e.bleedAcc += e.bleedDps * dt; if (e.bleedAcc >= 2) { const d = Math.floor(e.bleedAcc); e.bleedAcc -= d; hitEnemy(e, d, { dot: true }); if (e.dead) continue; } }
+    shiftFieldContact(e);
+    if (e.dead) continue;
     e.x += e.kx * dt; e.y += e.ky * dt; e.kx *= damp; e.ky *= damp;
     const dx = p.x - e.x, dy = p.y - e.y, dist = Math.hypot(dx, dy) || 0.01;
     if (e.flee) {      // end-of-wave retreat: run from the hero, fade, and leave without counting as a kill
@@ -2696,6 +2969,7 @@ function updateEnemies(dt) {
       if (Math.random() < dt * 8) part(e.x, e.y, rand(-8, 8), -6, 0.4, '#d9c487', 2);
       if (e.fleeT > 0.8 && (!onScreen(e, 12) || e.fleeT > 4.5)) {
         e.dead = true;
+        clearMarkedPrey(e);
         if (e.trait === 'rallying') RALLYING_CHAMPIONS.delete(e);
         burst(e.x, e.y - 6, 5, '#e6ecf2', 40, 0.4, 2);
       }
@@ -2712,6 +2986,7 @@ function updateEnemies(dt) {
     }
     if (dist < e.r + p.r - 1 && e.state !== 'lunge' && e.state !== 'dash' && e.state !== 'hop') { e.x -= dx / dist * (e.r + p.r - 1 - dist); e.y -= dy / dist * (e.r + p.r - 1 - dist); }
     collide(e);
+    shiftFieldContact(e);
   }
   for (let i = list.length - 1; i >= 0; i--) if (list[i].dead) { list[i] = list[list.length - 1]; list.pop(); }
 }
@@ -2720,24 +2995,48 @@ function updateEnemies(dt) {
 function updateShots(dt) {
   const p = G.p;
   for (let i = G.shots.length - 1; i >= 0; i--) {
-    const s = G.shots[i]; s.life -= dt; let dead = s.life <= 0;
-    const spd = Math.hypot(s.vx, s.vy), steps = Math.max(1, Math.ceil(spd * dt / 6)), sdt = dt / steps;
+    const s = G.shots[i], travel = s.fireArrow ? Math.min(dt, Math.max(0, s.life)) : dt;
+    s.life -= dt; let dead = !s.fireArrow && s.life <= 0;
+    const spd = Math.hypot(s.vx, s.vy), steps = Math.max(1, Math.ceil(spd * travel / 6)), sdt = travel / steps;
     for (let k = 0; k < steps && !dead; k++) {
+      const x0 = s.x, y0 = s.y;
       s.x += s.vx * sdt; s.y += s.vy * sdt;
       const tx = Math.floor(s.x / TILE), ty = Math.floor(s.y / TILE);
-      if (tx < 0 || ty < 0 || tx >= MAPW || ty >= MAPH || MAP.shot[tx + ty * MAPW]) { dead = true; burst(s.x, s.y, 4, '#d9c9a0', 50, 0.25, 1); break; }
-      if (s.enemy) { if (Math.hypot(p.x - s.x, p.y - 4 - s.y) < p.r + s.r && hurtPlayer(s.dmg, s.x, s.y)) dead = true; }
+      const inside = tx >= 0 && ty >= 0 && tx < MAPW && ty < MAPH;
+      if (!inside || MAP.shot[tx + ty * MAPW]) {
+        if (inside && s.fireArrow) landFireArrow(x0, y0);
+        dead = true; burst(s.x, s.y, 4, '#d9c9a0', 50, 0.25, 1); break;
+      }
+      if (s.enemy) {
+        if (Math.hypot(p.x - s.x, p.y - 4 - s.y) < p.r + s.r && hurtPlayer(s.dmg, s.x, s.y)) {
+          // A fatal hit settles the run and can remove passive projectiles.
+          // The old array indices are invalid once that cleanup has run.
+          if (G.state !== 'playing') return;
+          if (s.fireArrow) landFireArrow(s.x, s.y);
+          dead = true;
+        }
+      }
       else {
+        if (G.powderBarrels.length) shotTouchesPowderBarrels(s, x0, y0);
         const list = nearEnemies(s.x, s.y, s.r + 20);
         for (let j = 0; j < list.length; j++) {
           const e = list[j]; if (e.dead || s.hit.indexOf(e) >= 0) continue;
           if (Math.hypot(e.x - s.x, e.y - 5 - s.y) < e.r + s.r + 2) {
             s.hit.push(e);
-            if (hitEnemy(e, s.dmg, { crit: s.crit, kb: s.kb, ax: s.x - s.vx, ay: s.y - s.vy, bleed: s.bleed, sp: s.kind === 'crescent' })) { if (s.pierce > 0) { s.pierce--; s.dmg *= s.keep || 0.8; } else { dead = true; break; } }
+            const hpBefore = e.hp;
+            if (hitEnemy(e, heroCharmBulletDamage(s), { crit: s.crit, kb: s.kb, ax: s.x - s.vx, ay: s.y - s.vy, bleed: s.bleed, sp: s.kind === 'crescent', ...heroCharmBulletOptions(s) })) {
+              if (s.enfiladeHits !== undefined && e.hp < hpBefore) {
+                if (s.enfiladeHits++ > 0 && G.settings.flash) enfiladeImpact(e.x, e.y - 5, s.vx, s.vy);
+                heroCharmBulletHit(s, e);
+              }
+              if (s.pierce > 0) { s.pierce--; s.dmg *= s.keep ?? 0.8; }
+              else { dead = true; break; }
+            }
           }
         }
       }
     }
+    if (s.fireArrow && !dead && s.life <= 0) { landFireArrow(s.x, s.y); dead = true; }
     if (!s.enemy && !dead) { if (s.kind === 'crescent') part(s.x + rand(-s.r, s.r) * 0.7, s.y + rand(-s.r, s.r) * 0.7, -s.vx * 0.1, -s.vy * 0.1, 0.3, pick(['#35c2c2', '#7fe0ff', '#1c1826']), 2); else if (s.kind !== 'knife') part(s.x, s.y, 0, 0, 0.18, '#e6ecf2', 1); }
     if (dead) { G.shots[i] = G.shots[G.shots.length - 1]; G.shots.pop(); }
   }
@@ -2788,10 +3087,15 @@ function updateBombs(dt) {
     const b = G.bombs[i]; b.t += dt;
     if (Math.random() < dt * 30) { const k = Math.min(1, b.t / b.dur); part(lerp(b.x0, b.tx, k), lerp(b.y0, b.ty, k) - Math.sin(k * Math.PI) * 30, rand(-10, 10), rand(-10, 10), 0.25, pick(['#ffd84a', '#ff9a2a']), 1); }
     if (b.t < b.dur) continue;
+    if (G.powderBarrels.length) contactPowderBarrels(b.tx, b.ty, b.r);
     let caught = 0;
     for (const e of G.enemies) { if (e.dead) continue; const d = Math.hypot(e.x - b.tx, e.y - b.ty); if (d < b.r + e.r && hitEnemy(e, b.dmg * (1 - 0.4 * Math.min(1, d / b.r)), { crit: b.crit, aoe: true, kb: 300, ax: b.tx, ay: b.ty, stun: 0.5, sp: true })) caught++; }
     if (caught >= DEED.powder) deed('powder');
-    G.shots = G.shots.filter(s => !s.enemy || Math.hypot(s.x - b.tx, s.y - b.ty) > b.r);
+    const clearRadius = b.clearRadius ?? b.r;
+    G.shots = G.shots.filter(s => !s.enemy || Math.hypot(s.x - b.tx, s.y - b.ty) > clearRadius);
+    if (clearRadius > b.r) {
+      G.fx.push({ kind: 'ring', x: b.tx, y: b.ty, r0: b.r, r1: clearRadius, t: 0, dur: 0.28, color: '#a5deeb' });
+    }
     G.fx.push({ kind: 'ring', x: b.tx, y: b.ty, r0: 6, r1: b.r, t: 0, dur: 0.28, color: '#ffb02e' }); G.fx.push({ kind: 'ring', x: b.tx, y: b.ty, r0: 2, r1: b.r * 0.6, t: 0, dur: 0.36, color: '#ffffff' });
     burst(b.tx, b.ty, 26, ['#ffd84a', '#ff9a2a', '#e0503f'], 170, 0.55, 2); for (let k = 0; k < 8; k++) part(b.tx + rand(-12, 12), b.ty + rand(-8, 8), rand(-14, 14), rand(-30, -12), rand(0.7, 1.3), '#4a4450', 3);
     shake(6); sfx('boom'); G.bombs[i] = G.bombs[G.bombs.length - 1]; G.bombs.pop();
@@ -2881,6 +3185,7 @@ function updateCompanions(dt) {
     ec.t += dt;
     if (!ec.done && ec.t >= 0.8) {
       ec.done = true; const k0 = p.kills;
+      if (G.powderBarrels.length) contactPowderBarrels(ec.x, ec.y, ec.r);
       for (const e of G.enemies.slice()) { const d = Math.hypot(e.x - ec.x, e.y - ec.y); if (!e.dead && d < ec.r + e.r) hitEnemy(e, ec.dmg * (1 - 0.3 * d / ec.r), { power: true, kb: 240, ax: ec.x, ay: ec.y, stun: 0.8 }); }
       if (p.kills - k0 >= DEED.eclipse) deed('eclipse');
       G.shots = G.shots.filter(s => !s.enemy || Math.hypot(s.x - ec.x, s.y - ec.y) > ec.r);
@@ -2919,7 +3224,7 @@ function rollMix(mix) { let r = Math.random(), last = 'raider'; for (const k in 
 function startRun(heroId, mode) {
   if (G.p && G.run && !G.run.done && G.state !== 'menu') finishRun('quit');           // restarting mid-run still banks what was earned
   G.heroId = heroId; if (mode) G.mode = mode;
-  const p = G.p = newPlayer(heroId);
+  const p = G.p = newPlayer(heroId); G.enemySpawnOrder = 0;
   // permanent upgrades are copied in exactly once here; recalc() derives every stat from scratch each time it runs
   p.perm = Object.assign({}, Save.data.perm); p.challenge = Math.min(Save.data.challengeTier || 0, p.perm.challenge || 0);
   recalc(p); p.hp = p.maxHp; p.gold = PERM_BY_ID.sup.per * (p.perm.sup || 0);
@@ -2933,11 +3238,12 @@ function startRun(heroId, mode) {
   UI.buildHud(); updateField(); startNextWave();
 }
 function startNextWave() {
+  resetHeroPassive(); clearShiftField();
   G.wave++; G.def = waveDef(G.wave); G.waveT = 0; G.phase = 'intro'; G.phaseT = 0; G.mopT = 0; G.spawnAcc = 0; G.bossSpawned = false; G.boss = null; G.bossTrack = null; G.retreat = false;
   G.waveStats = { kills: 0, gold: 0, xp: 0 }; G.mouse.l = G.mouse.r = false; G.pressed = {};
-  updateField(); placeCrates(); G.state = 'playing'; startWave03();
+  updateField(); placeCrates(); G.state = 'playing'; startWave03(); placePowderBarrels();
   const endless = G.mode === 'endless' && G.wave > WAVES.length;
-  waveBanner(); if (endless && G.wave === WAVES.length + 1 && G.twist !== 'high_tide') UI.banner('Wave 11', 'The endless tide begins');
+  waveBanner(); if (endless && G.wave === WAVES.length + 1 && G.twist !== 'high_tide' && G.twist !== 'fire_arrows' && G.twist !== 'loose_carabao' && G.twist !== 'night_raid') UI.banner('Wave 11', 'The endless tide begins');
   sfx('wave'); UI.show('hud');
 }
 const MOP_LIMIT = 22;   // seconds survivors get after reinforcements stop before they break and run
@@ -2959,15 +3265,18 @@ function updateWave(dt) {
       G.mopT += dt;
       // Survivors used to be deleted on the spot here, which looked like enemies dying for no reason.
       // Now they visibly break and run; a fleeing enemy that gets away gives no kill, XP or gold.
-      if (G.enemies.length && G.mopT > MOP_LIMIT && !G.retreat) { G.retreat = true; for (const e of G.enemies) { e.flee = true; e.fleeT = 0; } G.shots = G.shots.filter(s => !s.enemy); G.hazards.length = 0; UI.banner('The raiders fall back', 'The wave is won. Survivors retreat and give no rewards.'); sfx('wave'); }
-      if (!G.enemies.length) { G.phase = 'vacuum'; G.phaseT = 0; G.hazards.length = 0; G.rings.length = 0; G.shots.length = 0; for (const k of G.pickups) k.mag = true; }
+      if (G.enemies.length && G.mopT > MOP_LIMIT && !G.retreat) { G.retreat = true; clearShiftField(); resetHeroPassive(p); for (const e of G.enemies) { e.flee = true; e.fleeT = 0; } G.shots = G.shots.filter(s => !s.enemy); G.hazards.length = 0; UI.banner('The raiders fall back', 'The wave is won. Survivors retreat and give no rewards.'); sfx('wave'); }
+      if (!G.enemies.length) { G.phase = 'vacuum'; resetHeroPassive(); clearShiftField(); G.phaseT = 0; G.hazards.length = 0; G.rings.length = 0; G.shots.length = 0; for (const k of G.pickups) k.mag = true; }
+      if ((G.retreat || G.phase === 'vacuum') && G.powderBarrels.length) clearPowderBarrels();
+      if (G.twist === 'fire_arrows' && (G.retreat || G.phase === 'vacuum') && G.burns.length) clearFireArrows();
     }
   } else if (G.phase === 'vacuum') {
     if ((G.phaseT >= 1.2 && !G.pickups.length && !p.pending) || G.phaseT > 5) endWave();
   }
 }
 function endWave() {
-  const p = G.p; p.gold += ROUND_BONUS; p.goldEarned += ROUND_BONUS; G.waveStats.gold += ROUND_BONUS; G.run.cleared = G.wave;
+  clearPowderBarrels();
+  const p = G.p; resetHeroPassive(p); clearShiftField(); p.gold += ROUND_BONUS; p.goldEarned += ROUND_BONUS; G.waveStats.gold += ROUND_BONUS; G.run.cleared = G.wave;
   G.pickups.length = 0; G.phase = 'idle'; G.mouse.l = G.mouse.r = false; endWave03();
   if (G.mode === 'arcade' && G.wave >= WAVES.length) { G.state = 'victory'; finishRun('victory'); UI.victory(); return; }   // the campaign ends here: no shop, no wave 11
   G.waveStats.rest = Math.min(p.maxHp - p.hp, Math.round(p.maxHp * REST_HEAL)); p.hp += G.waveStats.rest;
@@ -2978,14 +3287,23 @@ function endWave() {
 // Settles the run exactly once: pays Campaign Funds and updates records, whatever way the run ended.
 function finishRun(outcome) {
   const r = G.run; if (!r) return null; if (r.done) return r.result;
+  resetHeroPassive(); clearShiftField(); clearPowderBarrels();
   r.done = true; r.result = Save.settleRun(r, outcome, { time: G.runTime, kills: G.p.kills, level: G.p.level, wave: G.wave }); finishRun03(outcome); return r.result;
 }
 
 /* ---------- XP level-ups ---------- */
+function canTakeUpgrade(p, id) {
+  const u = Object.hasOwn(UPGRADES, id) && UPGRADES[id];
+  if (!u || (p.up[id] || 0) >= u.max) return false;
+  return u.hero ? u.hero === p.hero && p.h.ups.includes(id) : ATTRIBUTE_IDS.includes(id);
+}
+function availableUpgrades(p) {
+  return [...new Set([...ATTRIBUTE_IDS, ...p.h.ups])].filter(id => canTakeUpgrade(p, id));
+}
 function rollUpgrades() {
-  const p = G.p, pool = [];
-  for (const id of ATTRIBUTE_IDS) if ((p.up[id] || 0) < UPGRADES[id].max) pool.push({ id, w: 1 });
-  for (const id of p.h.ups) if ((p.up[id] || 0) < UPGRADES[id].max) pool.push({ id, w: 1.7 });
+  const pool = availableUpgrades(G.p).map(id => ({
+    id, w: UPGRADES[id].hero ? UPGRADE_WEIGHTS.technique : UPGRADE_WEIGHTS.attribute
+  }));
   const out = [];
   while (out.length < 3 && pool.length) {
     let tot = 0; for (const q of pool) tot += q.w; let r = Math.random() * tot, i = 0;
@@ -2996,9 +3314,18 @@ function rollUpgrades() {
 }
 function applyUpgrade(id) {
   const p = G.p;
-  if (id === '_rations') p.hp = Math.min(p.maxHp, p.hp + 30);
-  else { p.up[id] = (p.up[id] || 0) + 1; recalc(p); if (id === 'vitality') p.hp = Math.min(p.maxHp, p.hp + 15); }
+  if (p.pending <= 0) return false;
+  if (id === '_rations') {
+    if (availableUpgrades(p).length) return false;
+    p.hp = Math.min(p.maxHp, p.hp + 30);
+  } else {
+    if (!canTakeUpgrade(p, id)) return false;
+    p.up[id] = (p.up[id] || 0) + 1;
+    recalc(p);
+    if (id === 'vitality') p.hp = Math.min(p.maxHp, p.hp + 15);
+  }
   p.pending--;
+  return true;
 }
 
 /* ---------- shop logic ---------- */
@@ -3048,6 +3375,7 @@ function update(dt) {
   G.mouse.wx = G.mouse.x + G.cam.x; G.mouse.wy = G.mouse.y + G.cam.y;
   Input.poll();
   if (Input.wantPause) { Input.wantPause = false; G.pressed = {}; UI.pause(); return; }
+  if (p.prey && !markedPrey(p)) clearMarkedPrey(p.prey);
   rebuildGrid(); updatePlayer(dt);
   G.fieldT -= dt; if (G.fieldT <= 0) { updateField(); G.fieldT = 0.25; }
   updateWave(dt);
@@ -3127,6 +3455,10 @@ function updateLight(dt, snap) {
   L.r += (c[0] - L.r) * k; L.g += (c[1] - L.g) * k; L.b += (c[2] - L.b) * k;
   L.dark = 1 - (0.3 * L.r + 0.59 * L.g + 0.11 * L.b) / 255;
 }
+function nightRaidTorchScale() {
+  return G.twist === 'night_raid' && G.wave >= NIGHT_RAID.firstWave && G.run && !G.run.done &&
+    G.state !== 'menu' && G.settings.light === 'full' ? NIGHT_RAID.torchScale : 1;
+}
 
 /* ============================================================
    3. Datu's Manananggal
@@ -3137,9 +3469,12 @@ function updateLight(dt, snap) {
 function summonMana() {
   codex('mana');
   const p = G.p, M = SPECIAL.mana, L = lv('bloodmoon'), d = clamp(p.aimDist, M.minRange, M.range * p.stats.reach);
+  let radius = M.radius * (1 + 0.1 * L);
+  const prey = markedPrey(p), tx = clamp(p.x + Math.cos(p.aim) * d, 12, WORLD_W - 12), ty = clamp(p.y + Math.sin(p.aim) * d, 12, WORLD_H - 12);
+  if (heroHasCharm('huntingcord') && prey && Math.hypot(prey.x - tx, prey.y - ty) <= radius + prey.r) radius *= HERO_CHARM_TUNING.huntingcord.radiusScale;
   for (const a of G.allies) if (a.kind === 'mana' && a.state !== 'leave') { a.state = 'leave'; a.t = 0; }      // a new call always replaces the old one
   G.allies.push({ kind: 'mana', x: clamp(p.x + Math.cos(p.aim) * d, 12, WORLD_W - 12), y: clamp(p.y + Math.sin(p.aim) * d, 12, WORLD_H - 12), z: 150,
-    state: 'dive', t: 0, life: M.life + M.lifePer * L, target: null, look: 0, atk: 0.3, strike: 0, face: p.face, anim: 0, encore: L >= 3, mul: 1, r: M.radius * (1 + 0.1 * L) });
+    state: 'dive', t: 0, life: M.life + M.lifePer * L, target: null, look: 0, atk: 0.3, strike: 0, face: p.face, anim: 0, encore: L >= 3, mul: 1, r: radius });
   p.spT = p.spMax = p.h.spCd; sfx('mana');
 }
 function manaDamage(a, e, base, o) {
@@ -3149,6 +3484,7 @@ function manaDamage(a, e, base, o) {
   if (e.dead && h0 > 0) { p.manaKills++; if (p.manaKills >= DEED.guardian) deed('guardian'); }
 }
 function manaImpact(a) {
+  if (G.powderBarrels.length) contactPowderBarrels(a.x, a.y, a.r);
   const M = SPECIAL.mana;
   for (const e of G.enemies.slice()) if (!e.dead && Math.hypot(e.x - a.x, e.y - a.y) < a.r + e.r) manaDamage(a, e, G.p.h.dmg * M.impact * a.mul, { aoe: true, kb: 230, stun: 0.4 });
   G.shots = G.shots.filter(s => !s.enemy || Math.hypot(s.x - a.x, s.y - a.y) > a.r);
@@ -3167,15 +3503,22 @@ function updateAllies(dt) {
       } else if (a.state === 'hunt') {
         a.life -= h; a.atk -= h; a.look -= h; a.z += (12 - a.z) * Math.min(1, h * 8);
         let e = a.target; if (e && (e.dead || e.flee)) e = a.target = null;
+        const marked = passiveCombat() ? markedPrey(p) : null;
+        const preferred = marked && Math.hypot(marked.x - a.x, marked.y - a.y) <= M.leash ? marked : null;
         if (!e || a.look <= 0) {                                                   // nearest raider within her leash
-          a.look = 0.25; let bd = M.leash * M.leash; e = null;
-          for (const q of G.enemies) { if (q.dead || q.flee) continue; const d = (q.x - a.x) * (q.x - a.x) + (q.y - a.y) * (q.y - a.y); if (d < bd) { bd = d; e = q; } }
+          a.look = 0.25; e = preferred;
+          if (!e) {
+            let bd = M.leash * M.leash;
+            for (const q of G.enemies) { if (q.dead || q.flee) continue; const d = (q.x - a.x) * (q.x - a.x) + (q.y - a.y) * (q.y - a.y); if (d < bd) { bd = d; e = q; } }
+          }
           a.target = e;
         }
         const tx = e ? e.x : p.x - p.face * 18, ty = e ? e.y - 2 : p.y - 6, dx = tx - a.x, dy = ty - a.y, d = Math.hypot(dx, dy) || 0.01;
         if (d > (e ? 9 : 14)) { const st = Math.min(d, M.speed * h); a.x += dx / d * st; a.y += dy / d * st; if (Math.abs(dx) > 2) a.face = dx > 0 ? 1 : -1; }
         if (e && d < 13 + e.r && a.atk <= 0) {
-          a.atk = M.clawCd; a.strike = 0.18; manaDamage(a, e, p.h.dmg * M.claw, { kb: 90 });
+          a.atk = M.clawCd; a.strike = 0.18;
+          const clawMultiplier = e === preferred ? HERO_PASSIVES.datu.clawMultiplier : 1;
+          manaDamage(a, e, p.h.dmg * M.claw * clawMultiplier, { kb: 90 });
           G.fx.push({ kind: 'arc', x: a.x, y: a.y - 6, a: Math.atan2(dy, dx), arc: 2.2, range: 15, t: 0, dur: 0.16, dir: a.face, color: '#c08aff', th: 2 }); sfx('claw');
         }
         if (a.life <= 0) {
@@ -3196,9 +3539,10 @@ function updateAllies(dt) {
 /* ============================================================
    4. Anting-anting
    ============================================================ */
-function charmPool() { const p = G.p; return CHARMS.filter(c => !p.charms[c.id] && (!c.deed || Save.data.deeds[c.deed])); }
+function canGainCharm(c, p = G.p) { return !!c && !p.charms[c.id] && (!c.heroes || c.heroes.includes(p.hero)) && (!c.deed || Save.data.deeds[c.deed] === true); }
+function charmPool() { return CHARMS.filter(c => canGainCharm(c)); }
 function rollCharms() { const pool = charmPool(), out = []; while (out.length < 3 && pool.length) out.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0].id); return out; }
-function gainCharm(id) { const p = G.p; if (!CHARM_BY_ID[id] || p.charms[id]) return; p.charms[id] = true; p.charmList.push(id); codex('anting'); recalc(p); if (p.charmList.length >= DEED.collector) deed('collector'); }
+function gainCharm(id) { const p = G.p; if (!canGainCharm(CHARM_BY_ID[id])) return false; p.charms[id] = true; p.charmList.push(id); codex('anting'); recalc(p); if (p.charmList.length >= DEED.collector) deed('collector'); return true; }
 // Called by endWave() once the wave is settled. Returns true when the charm screen has taken over; UI.chooseCharm() then opens the shop.
 function offerCharm() {
   const due = G.charmDue > 0 || CHARM_WAVES.includes(G.wave); G.charmDue = 0; if (!due) return false;
@@ -3230,6 +3574,7 @@ function charmOnHit(e, o) {                     // queued, never resolved inside
 }
 function onKill03(e) {
   if (e.trait === 'rallying') RALLYING_CHAMPIONS.delete(e);
+  if (e.champ && e.trait === 'banner') dropRaiderBanner(e);
   onKill04(e);
   const p = G.p, C = p.charms;
   if (e.d.boss) { G.charmDue++; if (e.type === 'captain') deed('captain'); }
@@ -3259,6 +3604,7 @@ function updateBursts(dt) {
   for (let i = G.bolts.length - 1; i >= 0; i--) { G.bolts[i].t -= dt; if (G.bolts[i].t <= 0) G.bolts.splice(i, 1); }
   const B = G.bursts; if (!B.length) return; const list = B.splice(0, B.length);       // bursts caused by these bursts wait for the next frame, so chains ripple instead of recursing
   for (const b of list) {
+    if (b.powder) { resolvePowderBlast(b); continue; }
     if (b.one) { if (!b.one.dead) hitEnemy(b.one, b.dmg, { power: true }); continue; }
     for (const e of G.enemies.slice()) if (!e.dead && Math.hypot(e.x - b.x, e.y - 4 - b.y) < b.r + e.r) hitEnemy(e, b.dmg, { power: true, kb: 70, ax: b.x, ay: b.y, stun: b.stun });
     G.fx.push({ kind: 'ring', x: b.x, y: b.y, r0: 3, r1: b.r, t: 0, dur: 0.22, color: b.color }); burst(b.x, b.y, 8, [b.color, '#ffffff'], 90, 0.3, 1);
@@ -3282,16 +3628,18 @@ function deedTick() {                            // the handful of deeds that ar
 }
 function endWave03() {
   RALLYING_CHAMPIONS.clear();
+  clearRaiderBanners();
   const p = G.p;
   if (!p.waveHurt && G.wave >= DEED.untouchWave) deed('untouch');
   if (G.mode === 'endless') { if (G.wave >= 15) deed('tide15'); if (G.wave >= 20) deed('tide20'); }
   endWave04();
-  if (G.twist === 'high_tide') setTwist(null);
+  if (G.twist === 'high_tide' || G.twist === 'fire_arrows' || G.twist === 'loose_carabao' || G.twist === 'night_raid') setTwist(null);
   G.allies.length = 0; G.burns.length = 0; G.bursts.length = 0; G.bolts.length = 0;
 }
 function finishRun03(outcome) {
   RALLYING_CHAMPIONS.clear();
-  if (G.twist === 'high_tide') setTwist(null);
+  clearRaiderBanners();
+  if (G.twist === 'high_tide' || G.twist === 'fire_arrows' || G.twist === 'loose_carabao' || G.twist === 'night_raid') setTwist(null);
   if (outcome !== 'victory') return; deed('defender'); codex('after');
   const w = Save.data.stats.arcadeWins; if (w.mateo && w.datu && w.diego) deed('three');
 }
@@ -3300,20 +3648,32 @@ function finishRun03(outcome) {
    6. Wave twists
    ============================================================ */
 function setupRun03() {
+  clearCarabao();
+  clearRaiderBanners();
   const r = G.run, w = TWIST_WAVES.slice(), ids = TWIST_IDS.slice(); r.twists = {}; r.deeds = [];
-  for (let k = 0; k < 2 && w.length && ids.length; k++) r.twists[w.splice(Math.floor(Math.random() * w.length), 1)[0]] = ids.splice(Math.floor(Math.random() * ids.length), 1)[0];
+  for (let k = 0; k < 2 && w.length && ids.length; k++) {
+    const wave = w.splice(Math.floor(Math.random() * w.length), 1)[0];
+    const eligible = ids.filter(id => id !== 'night_raid' || wave >= NIGHT_RAID.firstWave);
+    const id = pick(eligible);
+    r.twists[wave] = id;
+    ids.splice(ids.indexOf(id), 1);
+  }
   G.allies.length = 0; G.burns.length = 0; G.bursts.length = 0; G.bolts.length = 0; G.charmDue = 0; G.flashT = 0; G.twist = null;
   G.dock.t = 0; G.dock.state = 'idle'; G.dock.away = 0; Object.assign(G.mods, { foe: 1, hero: 1, shot: 1, sight: 1 }); setupRun04();
 }
 function setTwist(id) {
+  if (id === 'night_raid' && (G.wave < NIGHT_RAID.firstWave || G.def?.boss)) id = null;
+  clearCarabao();
+  if (G.twist === 'fire_arrows' && id !== 'fire_arrows') clearFireArrows();
   G.twist = TWISTS[id] ? id : null; const t = G.twist ? TWISTS[id] : {};
-  Object.assign(G.mods, { foe: t.foe || 1, hero: t.hero || 1, shot: t.shot || 1, sight: t.sight || 1 }); G.tw.acc = 0; G.tw.next = 2.5;
+  Object.assign(G.mods, { foe: t.foe || 1, hero: t.hero || 1, shot: t.shot || 1, sight: t.sight || 1 }); G.tw.acc = 0; G.tw.next = id === 'loose_carabao' ? CARABAO.first : 2.5; G.tw.carabaoCount = 0;
 }
 function startWave03() {
   RALLYING_CHAMPIONS.clear();
+  clearRaiderBanners();
   const p = G.p, r = G.run; let id = r.twists[G.wave] || null;
   if (!id && G.wave > WAVES.length && !G.def.boss && Math.random() < TWIST_ENDLESS) id = pick(TWIST_IDS);
-  if (id === 'high_tide' && (G.def.boss || (G.wave <= WAVES.length && !TWIST_WAVES.includes(G.wave)))) id = null;
+  if ((id === 'high_tide' || id === 'fire_arrows' || id === 'loose_carabao' || id === 'night_raid') && (G.def.boss || (G.wave <= WAVES.length && !TWIST_WAVES.includes(G.wave)))) id = null;
   setTwist(id); p.baleteUsed = false; p.waveHurt = false;
   G.allies.length = 0; G.burns.length = 0; G.bursts.length = 0; G.bolts.length = 0; G.dock.t = 0; G.dock.state = 'idle'; G.dock.away = 0;
   startWave04();                                   // 0.4: cooldowns ready, Chronicle entries
@@ -3325,10 +3685,26 @@ function waveBanner() {
   const n = G.wave <= LIGHT.names.length ? LIGHT.names[G.wave - 1] : 'Night', prev = G.wave > 1 && G.wave - 1 <= LIGHT.names.length ? LIGHT.names[G.wave - 2] : (G.wave > 1 ? 'Night' : '');
   if (n !== prev && G.wave > 1) floatText(G.p.x, G.p.y - 34, n.toUpperCase(), '#ffd0a0', 2);
 }
+function clearFireArrows() {
+  G.burns = G.burns.filter(b => !b.fireArrow);
+  G.shots = G.shots.filter(s => !s.fireArrow);
+}
+function landFireArrow(x, y) {
+  if (G.twist !== 'fire_arrows' || G.state !== 'playing' || G.retreat || G.phase === 'vacuum' || solidAt(x, y)) return;
+  const F = TWISTS.fire_arrows, cell = Math.floor(x / TILE) + Math.floor(y / TILE) * MAPW;
+  if (MAP.shot[cell] || G.burns.length >= F.max ||
+      G.burns.some(b => Math.hypot(b.x - x, b.y - y) < b.r + F.r)) return;
+  G.burns.push({ x, y, r: F.r, t: -F.warm, next: 0, fresh: true, fireArrow: true });
+}
+function burnReaches(b, target, r) {
+  return Math.hypot(target.x - b.x, target.y - b.y) < r &&
+    (!b.fireArrow || (!solidAt(target.x, target.y) && lineClear(b.x, b.y, target.x, target.y, MAP.solid)));
+}
 function updateTwist(dt) {
   const id = G.twist; if (!id && !G.burns.length) return;
   const T = TWISTS[id], p = G.p, W = G.tw;
-  if (id === 'squall' && G.phase === 'fight') {
+  if (id === 'loose_carabao') updateCarabao(dt);
+  else if (id === 'squall' && G.phase === 'fight') {
     W.next -= dt;
     if (W.next <= 0) {                             // a dodgeable bolt near the hero; one in three lands on a raider instead
       W.next = rand(T.bolt[0], T.bolt[1]); let x = p.x + rand(-130, 130), y = p.y + rand(-90, 90);
@@ -3347,14 +3723,23 @@ function updateTwist(dt) {
     }
   }
   for (let i = G.burns.length - 1; i >= 0; i--) {
-    const b = G.burns[i], F = TWISTS.fire; b.t += dt;
-    if (b.t < 0) { if (Math.random() < dt * 14) part(b.x + rand(-b.r, b.r) * 0.6, b.y - rand(20, 60), rand(-6, 6), 70, 0.5, pick(['#ffd84a', '#ff9a2a']), 1); continue; }
-    if (Math.random() < dt * 26) part(b.x + rand(-b.r, b.r) * 0.75, b.y + rand(-b.r, b.r) * 0.45, rand(-5, 5), rand(-30, -12), rand(0.3, 0.7), pick(['#ffd84a', '#ff9a2a', '#e0503f']), 2);
-    b.acc += dt;
-    if (b.acc >= F.tick) {
-      b.acc -= F.tick;
-      if (Math.hypot(p.x - b.x, p.y - b.y) < b.r - 2) hurtPlayer(F.dmg * waveDmgMul(G.wave), b.x, b.y);
-      for (const e of G.enemies) if (!e.dead && !e.d.boss && Math.hypot(e.x - b.x, e.y - b.y) < b.r) hitEnemy(e, F.foeDmg, { dot: true });
+    const b = G.burns[i], F = b.fireArrow ? TWISTS.fire_arrows : TWISTS.fire;
+    if (b.fresh) { b.fresh = false; continue; }  // A newly landed arrow gets the entire warning.
+    b.t += dt;
+    if (b.t < 0) {
+      if (!b.fireArrow && Math.random() < dt * 14) part(b.x + rand(-b.r, b.r) * 0.6, b.y - rand(20, 60), rand(-6, 6), 70, 0.5, pick(['#ffd84a', '#ff9a2a']), 1);
+      continue;
+    }
+    if (!b.fireArrow && Math.random() < dt * 26) part(b.x + rand(-b.r, b.r) * 0.75, b.y + rand(-b.r, b.r) * 0.45, rand(-5, 5), rand(-30, -12), rand(0.3, 0.7), pick(['#ffd84a', '#ff9a2a', '#e0503f']), 2);
+    if (!b.fireArrow) b.acc += dt;
+    const tick = b.fireArrow ? b.next < F.dur && b.t >= b.next : b.acc >= F.tick;
+    if (tick) {
+      if (b.fireArrow) b.next += F.tick;
+      else b.acc -= F.tick;
+      if (burnReaches(b, p, b.r - 2)) hurtPlayer(F.dmg * waveDmgMul(G.wave), b.x, b.y);
+      if (G.state !== 'playing') return;
+      // Damage callbacks may change entity state. The general enemy array is independent of the shared proximity scratch list.
+      for (const e of G.enemies) if (!e.dead && !e.d.boss && (!b.fireArrow || !e.flee) && burnReaches(b, e, b.r)) hitEnemy(e, F.foeDmg, { dot: true });
     }
     if (b.t >= F.dur) { G.burns[i] = G.burns[G.burns.length - 1]; G.burns.pop(); }
   }
@@ -3381,7 +3766,8 @@ function traitBlocks(e, o) {
 
 /* ---------- one call per simulated frame (from update(), only while playing) ---------- */
 function update03(dt) {
-  updateDock(dt); updateTwist(dt); updateAllies(dt); updateCharms(dt); updateBursts(dt); updateLight(dt); deedTick(); tick04();
+  updateDock(dt); updateTwist(dt); updateAllies(dt); updateCharms(dt); updatePowderBarrels(); updateBursts(dt); updateLight(dt); deedTick(); tick04();
+  updateRaiderBanners();
   if (G.flashT > 0) G.flashT -= dt;
 }
 
@@ -3434,18 +3820,350 @@ const SKINSPR = {};
 function buildSkins() {
   for (const h in SKINS) { SKINSPR[h] = { default: SPR[h] }; for (const s of SKINS[h]) SKINSPR[h][s.id] = bakeWalker(s.rows || HUMAN[h].rows, LEGS, s.rows ? s.pal : Object.assign({}, HUMAN[h].pal, s.pal)); }
 }
-function applySkins() { if (!SKINSPR.mateo || !Save.data) return; const w = Save.data.skins.worn; for (const h in SKINS) SPR[h] = SKINSPR[h][w[h]] || SKINSPR[h].default; }
+function applySkins() { if (!SKINSPR.mateo || !Save.data) return; for (const h in SKINS) SPR[h] = SKINSPR[h][Save.wornSkin(h)]; }
 Object.assign(Save, {
-  hasSkin(h, id) { return id === 'default' || !!this.data.skins.owned[h + ':' + id]; },
-  wornSkin(h) { const id = this.data.skins.worn[h]; return id && this.hasSkin(h, id) && SKIN_BY_KEY[h + ':' + id] ? id : 'default'; },
+  hasSkin(h, id) { return skinOwned(this.data, h, id); },
+  wornSkin(h) { const id = this.data.skins.worn[h]; return this.hasSkin(h, id) ? id : 'default'; },
   buySkin(h, id) {
     const s = SKIN_BY_KEY[h + ':' + id]; if (!s) return 'none'; if (this.hasSkin(h, id)) return 'owned';
+    if (s.ending) return 'locked';
     if (this.data.funds < s.cost) return 'poor';
     this.data.funds -= s.cost; this.data.skins.owned[h + ':' + id] = true; this.data.skins.worn[h] = id; this.write(); applySkins(); return 'ok';
   },
-  wearSkin(h, id) { if (!SKINS[h] || !this.hasSkin(h, id) || (id !== 'default' && !SKIN_BY_KEY[h + ':' + id])) return false; this.data.skins.worn[h] = id; this.write(); applySkins(); return true; }
+  wearSkin(h, id) { if (!this.hasSkin(h, id)) return false; this.data.skins.worn[h] = id; this.write(); applySkins(); return true; }
 });
 { const load0 = Save.load, reset0 = Save.reset; Save.load = function () { load0.call(this); applySkins(); }; Save.reset = function () { reset0.call(this); applySkins(); }; }
+
+G.raiderBanners = [];
+let bannerLastHeal = new WeakMap();
+let bannerLastPulseAt = -Infinity;
+const BANNER_TIME_EPS = 1e-8;
+
+function clearRaiderBanners() {
+  G.raiderBanners.length = 0;
+  bannerLastHeal = new WeakMap();
+  bannerLastPulseAt = -Infinity;
+}
+
+function bannersLive() {
+  return G.state === 'playing' && !G.retreat && (G.phase === 'fight' || G.phase === 'mop');
+}
+
+function dropRaiderBanner(enemy) {
+  if (!bannersLive()) return;
+  const T = TRAITS.banner;
+  if (G.raiderBanners.length >= T.cap) G.raiderBanners.shift();
+  G.raiderBanners.push({
+    x: enemy.x, y: enemy.y, expiresAt: G.time + T.duration, nextPulse: G.time + T.tick
+  });
+  codex('champ_banner');
+}
+
+function bannerSuppressed(banner) {
+  return Math.hypot(G.p.x - banner.x, G.p.y - banner.y) <= TRAITS.banner.suppressRadius;
+}
+
+function updateRaiderBanners() {
+  if (!G.raiderBanners.length || G.state !== 'playing') return;
+  if (!bannersLive()) { clearRaiderBanners(); return; }
+  const T = TRAITS.banner, now = G.time + BANNER_TIME_EPS;
+  const pulses = [];
+  for (const b of G.raiderBanners) {
+    // A champion killed during a hit loop only registers the object. The first pulse waits a full tick.
+    if (b.nextPulse <= now && b.nextPulse <= b.expiresAt + BANNER_TIME_EPS) {
+      if (!bannerSuppressed(b)) pulses.push({ banner: b, at: b.nextPulse });
+      b.nextPulse += T.tick;
+    }
+  }
+  // Staggered banners can become due in the same frame. Resolve them in simulation time order.
+  pulses.sort((a, b) => a.at - b.at);
+  for (const { banner, at } of pulses) {
+    for (const e of G.enemies) {
+      if (e.dead || e.flee || e.d.boss || e.hp <= 0 || e.hp >= e.maxHp ||
+          Math.hypot(e.x - banner.x, e.y - banner.y) > T.radius) continue;
+      if (at - (bannerLastHeal.get(e) ?? -Infinity) < T.tick - BANNER_TIME_EPS) continue;
+      e.hp = Math.min(e.maxHp, e.hp + T.heal);
+      bannerLastHeal.set(e, at);
+      bannerLastPulseAt = G.time;
+    }
+  }
+  for (let i = G.raiderBanners.length - 1; i >= 0; i--) {
+    if (G.raiderBanners[i].expiresAt <= now) G.raiderBanners.splice(i, 1);
+  }
+}
+
+/* A wave-local crossing. The warning and contact tests share its footprint. */
+const CARABAO = {
+  warning: 1.5, speed: 184, length: 352, halfLength: 18, halfWidth: 13,
+  roadY: 38 * TILE, west: 17 * TILE, east: 95 * TILE, noticeRange: 125,
+  first: 8, interval: 15, retry: 3, maxCrossings: 3,
+  heroDamage: 8, raiderDamage: 22, push: 20, stun: 0.25
+};
+G.carabao = null;
+G.carabaoStunUntil = 0;
+
+function clearCarabao() {
+  G.carabao = null;
+  G.carabaoStunUntil = 0;
+}
+
+function carabaoRoute(x) {
+  const C = CARABAO, y = C.roadY;
+  const west = clamp(Math.round(x - C.length / 2), C.west, C.east - C.length);
+  const east = west + C.length;
+  const top = Math.floor((y - C.halfWidth) / TILE), bottom = Math.floor((y + C.halfWidth) / TILE);
+  const left = Math.floor((west - C.halfLength) / TILE), right = Math.floor((east + C.halfLength) / TILE);
+  for (let row = top; row <= bottom; row++) for (let col = left; col <= right; col++) {
+    const i = col + row * MAPW;
+    // Both lanes of the east–west dirt road are open through the palisade gates.
+    if (MAP.solid[i] || MAP.shot[i] || MAP.type[i] !== T_DIRT) return null;
+  }
+  return { west, east, y };
+}
+
+function pushFromCarabao(actor, direction) {
+  const distance = CARABAO.push, steps = Math.ceil(distance / 3), dy = direction * distance / steps;
+  const probe = { x: actor.x, y: actor.y, r: actor.r };
+  // Probe each short step with the normal collision solver. Stop if it would put the actor somewhere else.
+  for (let i = 0; i < steps; i++) {
+    const y = actor.y + dy;
+    probe.x = actor.x; probe.y = y;
+    collide(probe);
+    if (Math.abs(probe.y - y) > 1e-8 || Math.abs(probe.x - actor.x) > 1e-8) break;
+    actor.y = y;
+  }
+}
+
+function carabaoContacts(c, x0) {
+  const C = CARABAO;
+  const left = Math.min(x0, c.x) - C.halfLength, right = Math.max(x0, c.x) + C.halfLength;
+  const contact = actor => {
+    if (c.hit.has(actor) || actor.x < left || actor.x > right || Math.abs(actor.y - c.y) > C.halfWidth) return false;
+    c.hit.add(actor);
+    return true;
+  };
+  const side = actor => actor.y === c.y ? c.dir : Math.sign(actor.y - c.y);
+  const p = G.p;
+  if (contact(p) && hurtPlayer(C.heroDamage, c.x, c.y)) {
+    if (G.state !== 'playing') return;
+    pushFromCarabao(p, side(p));
+    G.carabaoStunUntil = G.time + C.stun;
+  }
+  for (const e of G.enemies) {
+    if (e.dead || e.d.boss || e.flee || !contact(e)) continue;
+    if (hitEnemy(e, C.raiderDamage, { power: true, stun: C.stun }) && !e.dead) pushFromCarabao(e, side(e));
+  }
+}
+
+function updateCarabao(dt) {
+  if (G.state !== 'playing') return;
+  if (G.phase !== 'fight') { if (G.carabao) G.carabao = null; return; }
+  const C = CARABAO, W = G.tw;
+  const c = G.carabao;
+  if (!c) {
+    if (W.carabaoCount >= C.maxCrossings) return;
+    W.next -= dt;
+    if (W.next > 0) return;
+    const route = Math.abs(G.p.y - C.roadY) <= C.noticeRange && carabaoRoute(G.p.x);
+    W.next = route ? C.interval : C.retry;
+    if (!route) return;
+    const dir = (G.wave + W.carabaoCount++) % 2 ? -1 : 1;
+    G.carabao = { ...route, dir, x: dir === 1 ? route.west : route.east, warning: C.warning, hit: new Set() };
+    sfx('warn');
+    return;
+  }
+  if (c.warning > 0) { c.warning = Math.max(0, c.warning - dt); return; }
+  const x0 = c.x, end = c.dir === 1 ? c.east : c.west;
+  c.x = clamp(c.x + c.dir * C.speed * dt, c.west, c.east);
+  carabaoContacts(c, x0);
+  if (c.x === end) G.carabao = null;
+}
+
+function resetHeroCharms(p) {
+  p.heroCharms = { chargeUntil: 0, bowlReadyAt: 0, hookedPrey: null };
+  G.bursts = G.bursts.filter(b => !b.heroCharm);
+}
+function heroHasCharm(id) {
+  return CHARM_BY_ID[id].heroes.includes(G.p.hero) && G.p.charms[id] === true;
+}
+function heroCharmCleave(closeHits) {
+  if (!passiveCombat() || !closeHits) return;
+  const p = G.p, state = p.heroCharms;
+  if (heroHasCharm('chargingember') && state.chargeUntil > G.time) {
+    state.chargeUntil = 0;
+    const T = HERO_CHARM_TUNING.chargingember;
+    G.bursts.push({ x: p.x, y: p.y, r: T.radius, dmg: T.damage, color: '#ffba74', heroCharm: true });
+  }
+  const T = HERO_CHARM_TUNING.sharedbowl;
+  if (heroHasCharm('sharedbowl') && closeHits >= T.targets && G.time >= state.bowlReadyAt) {
+    state.bowlReadyAt = G.time + T.cooldown;
+    const healing = Math.min(T.heal, p.maxHp - p.hp);
+    p.hp += healing;
+    if (healing > 0) floatText(p.x, p.y - 24, '+' + healing + ' HP', '#b4eab5');
+  }
+}
+function heroCharmMarkedKill(e) {
+  const p = G.p;
+  if (!passiveCombat() || !heroHasCharm('huntersknot') || e.flee ||
+      p.prey !== e || p.preyUntil <= G.time) return;
+  p.spT = Math.max(0, p.spT - HERO_CHARM_TUNING.huntersknot.recovery);
+}
+function heroCharmReturn(e) {
+  if (!passiveCombat() || !heroHasCharm('returnhook') || e.dead || e.flee || e.d.boss ||
+      markedPrey() !== e || G.p.heroCharms.hookedPrey === e) return;
+  e.snaredUntil = Math.max(e.snaredUntil, G.time + HERO_CHARM_TUNING.returnhook.seconds);
+  G.p.heroCharms.hookedPrey = e;
+}
+function heroCharmBulletOptions(shot) {
+  if (!shot.mainBullet) return {};
+  if (shot.smokeSeal && shot.enfiladeHits === 0) return { stun: HERO_CHARM_TUNING.smokeseal.stun };
+  return {};
+}
+function heroCharmBulletDamage(shot) {
+  if (!shot.mainBullet || !shot.longMatch || shot.enfiladeHits !== 0) return shot.dmg;
+  const T = HERO_CHARM_TUNING.longmatch;
+  return shot.dmg * (Math.hypot(shot.x - shot.originX, shot.y - shot.originY) >= T.distance ? T.damageScale : 1);
+}
+function heroCharmBulletHit(shot, e) {
+  if (!shot.mainBullet || !shot.thirdReport || shot.enfiladeHits !== HERO_CHARM_TUNING.thirdreport.targets) return;
+  const T = HERO_CHARM_TUNING.thirdreport;
+  G.bursts.push({ x: e.x, y: e.y - 4, r: T.radius, dmg: T.damage, color: '#edc589', heroCharm: true });
+}
+
+/* Run-only passive state. G.time advances only during the combat simulation. */
+function passiveCombat() {
+  return G.state === 'playing' && (G.phase === 'fight' || G.phase === 'mop');
+}
+function resetHeroPassive(p = G.p) {
+  resetHeroCharms(p);
+  if (p.hero === 'diego') p.reloadCutUntil = 0;
+  p.guardUntil = 0;
+  p.prey = null;
+  p.preyUntil = 0;
+  p.preyExtended = false;
+  // An outward throw already in progress cannot designate across a wave boundary.
+  p.yo.designated = true;
+  G.shots = G.shots.filter(s => s.enfiladeHits === undefined);
+  G.fx = G.fx.filter(f => f.kind !== 'enfilade');
+}
+function markedPrey(p = G.p) {
+  const e = p.prey;
+  return e && !e.dead && !e.flee && p.preyUntil > G.time ? e : null;
+}
+function clearMarkedPrey(e) {
+  if (G.p.prey !== e) return;
+  G.p.prey = null;
+  G.p.preyUntil = 0;
+  G.p.preyExtended = false;
+}
+function designatePrey(p, y, e) {
+  y.designated = true;
+  p.preyExtended = false;
+  p.heroCharms.hookedPrey = null;
+  p.prey = e.dead || e.flee ? null : e;
+  p.preyUntil = p.prey ? G.time + HERO_PASSIVES.datu.seconds : 0;
+}
+
+/* Run-only props. Contact hooks arm a fuse; the existing burst queue resolves its damage. */
+const POWDER_BARREL = {
+  perWave: 2, firstWave: 2, fuse: 1.2, bodyRadius: 7, blastRadius: 46,
+  heroDamage: 11, raiderDamage: 34, knockback: 230, stun: 0.30,
+  minPath: 7, maxPath: 30, heroClearance: 100, crateClearance: 65, spacing: 36, pairedEvery: 3
+};
+G.powderBarrels = [];
+
+function clearPowderBarrels() {
+  G.powderBarrels.length = 0;
+  for (let i = G.bursts.length - 1; i >= 0; i--) if (G.bursts[i].powder) G.bursts.splice(i, 1);
+}
+
+function placePowderBarrels() {
+  clearPowderBarrels();
+  const P = POWDER_BARREL;
+  if (G.wave < P.firstWave || G.def.boss) return;
+  const randSite = mulberry32(1574 + G.wave);
+  const sites = [];
+  for (const i of MAP.walk) {
+    if (FIELD[i] < P.minPath || FIELD[i] > P.maxPath) continue;
+    if (MAP.type[i] !== T_GRASS && MAP.type[i] !== T_PLAZA) continue;
+    if ([i, i - 1, i + 1, i - MAPW, i + MAPW].some(tile => MAP.solid[tile] || MAP.shot[tile])) continue;
+    const x = (i % MAPW) * TILE + TILE / 2, y = Math.floor(i / MAPW) * TILE + TILE / 2;
+    if (Math.hypot(x - G.p.x, y - G.p.y) < P.heroClearance ||
+        Math.hypot(x - MAP.start.x, y - MAP.start.y) < P.heroClearance ||
+        G.crates.some(c => Math.hypot(x - c.x, y - c.y) < P.crateClearance) ||
+        MAP.torches.some(c => Math.hypot(x - c.x, y - c.y) < 18) ||
+        MAP.fires.some(c => Math.hypot(x - c.x, y - c.y) < 18)) continue;
+    sites.push({ x, y, score: FIELD[i] + randSite() * 7 });
+  }
+  sites.sort((a, b) => a.score - b.score);
+  while (G.powderBarrels.length < P.perWave) {
+    const next = sites.filter(s => G.powderBarrels.every(b => Math.hypot(b.x - s.x, b.y - s.y) >= P.spacing));
+    const first = G.powderBarrels[0];
+    const pair = first && G.wave % P.pairedEvery === 0 && next.find(s =>
+      Math.hypot(first.x - s.x, first.y - s.y) <= P.blastRadius && lineClear(first.x, first.y, s.x, s.y, MAP.solid));
+    const site = pair || next[0];
+    if (!site) break;
+    G.powderBarrels.push({ x: site.x, y: site.y, detonatesAt: null });
+  }
+  if (G.powderBarrels.length) codex('powder_barrels');
+}
+
+function armPowderBarrel(b) {
+  if (b.detonatesAt !== null || G.state !== 'playing' || G.retreat ||
+      (G.phase !== 'intro' && G.phase !== 'fight' && G.phase !== 'mop')) return;
+  b.detonatesAt = G.time + POWDER_BARREL.fuse;
+  if (onScreen(b, POWDER_BARREL.blastRadius)) sfx('warn');
+}
+
+function contactPowderBarrels(x, y, radius, angle, arc) {
+  if (solidAt(x, y)) return;
+  for (const b of G.powderBarrels) {
+    if (b.detonatesAt !== null) continue;
+    const dx = b.x - x, dy = b.y - y, distance = Math.hypot(dx, dy);
+    if (distance > radius + POWDER_BARREL.bodyRadius) continue;
+    if (angle !== undefined && distance > POWDER_BARREL.bodyRadius + 7 &&
+        Math.abs(angDiff(Math.atan2(dy, dx), angle)) > arc / 2) continue;
+    if (lineClear(x, y, b.x, b.y, MAP.shot)) armPowderBarrel(b);
+  }
+}
+
+function shotTouchesPowderBarrels(s, fromX, fromY) {
+  for (const b of G.powderBarrels) {
+    if (b.detonatesAt !== null ||
+        Math.hypot(b.x - s.x, b.y - 5 - s.y) >= POWDER_BARREL.bodyRadius + s.r ||
+        !lineClear(fromX, fromY, b.x, b.y, MAP.shot)) continue;
+    armPowderBarrel(b);
+  }
+}
+
+function updatePowderBarrels() {
+  if (G.state !== 'playing') return;
+  // Remove all due props before their queued blasts can arm any remaining barrels.
+  for (let i = G.powderBarrels.length - 1; i >= 0; i--) {
+    const b = G.powderBarrels[i];
+    if (b.detonatesAt === null || G.time < b.detonatesAt) continue;
+    G.powderBarrels.splice(i, 1);
+    G.bursts.push({ x: b.x, y: b.y, powder: true });
+  }
+}
+
+function resolvePowderBlast(b) {
+  if (G.state !== 'playing') return;
+  const P = POWDER_BARREL;
+  const inBlast = actor => Math.hypot(actor.x - b.x, actor.y - b.y) <= P.blastRadius &&
+    lineClear(b.x, b.y, actor.x, actor.y, MAP.solid);
+  for (const other of G.powderBarrels) if (inBlast(other)) armPowderBarrel(other);
+  for (const e of G.enemies.slice()) {
+    if (!e.dead && !e.flee && inBlast(e)) {
+      hitEnemy(e, P.raiderDamage, { power: true, ax: b.x, ay: b.y, kb: P.knockback, stun: P.stun });
+    }
+  }
+  if (inBlast(G.p)) hurtPlayer(P.heroDamage, b.x, b.y);
+  if (G.state !== 'playing') return;
+  G.fx.push({ kind: 'ring', x: b.x, y: b.y, r0: P.blastRadius - 5, r1: P.blastRadius, t: 0, dur: 0.24, color: '#ffb45f' });
+  burst(b.x, b.y - 4, 14, ['#9f6843', '#ffb45f', '#e87537'], 110, 0.38, 2);
+  if (onScreen(b, P.blastRadius)) { shake(3); sfx('boom'); }
+}
 
 /* Rallying (0.4.3). Only aura sources are indexed. Membership is queried from
    live positions, so there are no per-recipient timers or stored speed changes. */
@@ -3464,7 +4182,84 @@ function rallyMoveScale(e) {
 }
 
 function raiderMoveScale(e) {
-  return raiderTideScale(e) * rallyMoveScale(e);
+  return raiderTideScale(e) * rallyMoveScale(e) * snareMoveScale(e);
+}
+
+/* Shift fields are run-only. The snare is aimed; smoke stays at Diego's cast point. */
+function placeShiftField(p, kind) {
+  const tune = SHIFT_FIELDS[kind];
+  let x = p.x, y = p.y;
+  if (kind === 'snare') {
+    const distance = Math.min(p.aimDist, tune.range);
+    const steps = Math.max(1, Math.ceil(distance / 4));
+    const dx = Math.cos(p.aim) * distance / steps, dy = Math.sin(p.aim) * distance / steps;
+    for (let i = 1; i <= steps; i++) {
+      const tx = p.x + dx * i, ty = p.y + dy * i;
+      if (solidAt(tx, ty)) break;
+      x = tx; y = ty;
+    }
+  }
+  if (G.powderBarrels.length) contactPowderBarrels(x, y, tune.radius);
+  p.shiftField = { kind, x, y, until: G.time + tune.duration, contacts: new Map() };
+}
+
+function activeShiftField(kind) {
+  const field = G.p?.shiftField;
+  return field && field.until > G.time && (!kind || field.kind === kind) ? field : null;
+}
+
+function inShiftField(field, actor) {
+  const radius = SHIFT_FIELDS[field.kind].radius;
+  const dx = actor.x - field.x, dy = actor.y - field.y;
+  return dx * dx + dy * dy <= radius * radius &&
+    lineClear(field.x, field.y, actor.x, actor.y, MAP.solid);
+}
+
+function clearShiftField() {
+  G.p.shiftField = null;
+  if (G.p.hero === 'datu') for (const e of G.enemies) e.snaredUntil = 0;
+}
+
+function shiftFieldContact(e) {
+  const field = activeShiftField();
+  if (!field || e.dead || e.flee || e.invuln) return;
+  const next = field.contacts.get(e);
+  if (next !== undefined && G.time < next) return;
+  if (!inShiftField(field, e)) return;
+  if (field.kind === 'snare') {
+    if (e.d.boss) return;
+    field.contacts.set(e, Infinity);
+    e.snaredUntil = G.time + SHIFT_FIELDS.snare.slowDuration;
+    hitEnemy(e, SHIFT_FIELDS.snare.chip, { dot: true });
+  } else {
+    const { chip, interval } = SHIFT_FIELDS.smoke;
+    field.contacts.set(e, G.time + interval);
+    hitEnemy(e, chip, { dot: true });
+  }
+}
+
+function snareMoveScale(e) {
+  return !e.d.boss && !e.flee && e.snaredUntil > G.time ? SHIFT_FIELDS.snare.speedScale : 1;
+}
+
+function smokeMoveScale(p) {
+  const field = activeShiftField('smoke');
+  return field && inShiftField(field, p) ? SHIFT_FIELDS.smoke.playerSpeed : 1;
+}
+
+function smokeSearchTarget(e) {
+  const field = activeShiftField('smoke');
+  if (!field || e.d.boss || e.d.shotSpeed || e.state !== 'move') return null;
+  const dx = field.x - e.x, dy = field.y - e.y;
+  if (dx * dx + dy * dy > SHIFT_FIELDS.smoke.searchRange ** 2) return null;
+  return inShiftField(field, G.p) && lineClear(e.x, e.y, field.x, field.y, MAP.solid) ? field : null;
+}
+
+function smokeAimOffset(e) {
+  const field = activeShiftField('smoke');
+  if (!field || e.d.boss || (!inShiftField(field, e) && !inShiftField(field, G.p))) return 0;
+  const { spread } = SHIFT_FIELDS.smoke;
+  return rand(-spread, spread);
 }
 
 /* ============================================================
@@ -3522,7 +4317,7 @@ function drawHeroWeapon(g, p) {
     if (p.atkT <= 0 || ((G.time * 8 | 0) % 2)) { g.fillStyle = '#ff7a2a'; g.fillRect(Math.round(hx + Math.cos(a) * 3), Math.round(hy + Math.sin(a) * 3) - 3, 1, 1); }
     return;
   }
-  if (p.hero === 'datu') { if (p.dash && p.dash.kind === 'tidal') { a = Math.atan2(p.dash.vy, p.dash.vx); drawRot(g, SPR.kris, hx, hy, a, SPR.kris.ox, SPR.kris.oy, Math.cos(a) < 0); } return; }   // the kris only comes out for Tidal Step
+  if (p.hero === 'datu') return;   // the stone is drawn separately
   const spr = SPR.macuahuitl;
   if (p.swingT > 0) { const t = 1 - p.swingT / p.swingDur, arc = p.h.arc * p.stats.arcMul; a = p.swingA + p.swingDir * arc * (t - 0.5); }
   else a = p.aim - 0.9 * p.face;
@@ -3544,7 +4339,14 @@ function drawPlayer(g, p) {
   g.globalAlpha = 1;
   if (p.companions.some(c => c.id === 'anito' && c.ready)) pxArc(g, p.x, p.y - 5, 12, G.time * 2, G.time * 2 + 4.6, '#bfe9ff', 1);
   if (p.armor > 0) pxArc(g, p.x, p.y - 5, 10, 2.2, 4.1, '#e8c05a', 1);
-  if (p.hero === 'diego' && p.atkT > 0) { g.fillStyle = '#1b1622'; g.fillRect(x - 2, Math.round(p.y) + 6, 16, 4); g.fillStyle = '#f0c040'; g.fillRect(x - 1, Math.round(p.y) + 7, Math.round(14 * (1 - p.atkT / p.reloadMax)), 2); }
+  if (p.hero === 'diego' && p.atkT > 0) {
+    const progress = Math.round(14 * (1 - p.atkT / p.reloadMax));
+    g.fillStyle = '#1b1622'; g.fillRect(x - 2, Math.round(p.y) + 6, 16, 4);
+    g.fillStyle = '#f0c040'; g.fillRect(x - 1, Math.round(p.y) + 7, progress, 2);
+    if (G.settings.flash && p.reloadCutUntil > G.time) {
+      g.fillStyle = '#e6dec8'; g.fillRect(x - 1 + progress, Math.round(p.y) + 6, 1, 4);
+    }
+  }
   if (p.radT > 0) { const a = G.time * 4, bx = p.x + Math.cos(a) * 22, by = p.y - 14 + Math.sin(a) * 9; g.drawImage(Math.sin(a) > 0 ? SPR.sarimanokL : SPR.sarimanok, Math.round(bx - 7), Math.round(by - 6)); }
 }
 function drawCompanion(g, c) {
@@ -3566,13 +4368,17 @@ function render() {
   drawTorches(g, cx, cy);
   if (inRun) {
     drawRallyBoundaries(g, cx, cy);
+    drawRaiderBannerGround(g, cx, cy);
     for (const z of G.zones) { const a = Math.min(1, (z.dur - z.t) / 0.5, z.t / 0.2); fillCircle(g, z.x, z.y, z.r, '#7be38a', 0.28 * a); pxArc(g, z.x, z.y, z.r, G.time, G.time + 2.4, '#d8ffd0', 1); pxArc(g, z.x, z.y, z.r, G.time + 3.14, G.time + 5.5, '#d8ffd0', 1); }
     drawBurns(g);
-    for (const h of G.hazards) drawHazard(g, h);
+    drawCarabaoGround(g);
+    drawShiftField(g, false);
+    if (nightRaidTorchScale() === 1) for (const h of G.hazards) drawHazard(g, h);
     drawRings(g); drawBombs(g);
     if (G.state !== 'gameover') drawAbilityRings(g, p);
     if (G.eclipse && G.eclipse.t < 0.8) pxArc(g, G.eclipse.x, G.eclipse.y, G.eclipse.r, 0, 6.283, '#4fd0e0', 1);
     for (const e of G.enemies) if (e.state !== 'move' && !e.dead) drawTelegraph(g, e);
+    drawPowderBarrels(g);
     for (const cr of G.crates) {
       g.fillStyle = 'rgba(0,0,0,0.3)'; g.fillRect(cr.x - 5, cr.y + 4, 12, 2); g.drawImage(SPR.cache, Math.round(cr.x - 6), Math.round(cr.y - 8));
       if ((G.time * 3 | 0) % 2) { g.fillStyle = '#fff7d0'; g.fillRect(cr.x + 4, cr.y - 10, 1, 3); g.fillRect(cr.x + 3, cr.y - 9, 3, 1); }
@@ -3597,9 +4403,10 @@ function render() {
     for (const a of DRAWLIST) { if (a.type) drawEnemy(g, a); else if (a.hero) drawPlayer(g, a); else drawCompanion(g, a); }
     if (p.hero === 'datu' && G.state !== 'gameover') drawYoyo(g, p);
     drawAllies(g);
+    drawCarabao(g);
     for (const s of G.shots) {
       if (s.enemy) {
-        if (s.kind === 'arrow') { const a = Math.atan2(s.vy, s.vx); g.fillStyle = '#f4f0e6'; for (let i = 0; i < 4; i++) g.fillRect(Math.round(s.x - Math.cos(a) * i * 2), Math.round(s.y - Math.sin(a) * i * 2), 1, 1); g.fillStyle = '#ff5a4a'; g.fillRect(Math.round(s.x) - 1, Math.round(s.y) - 1, 2, 2); }
+        if (s.kind === 'arrow') { const a = Math.atan2(s.vy, s.vx); g.fillStyle = s.fireArrow ? '#ffa146' : '#f4f0e6'; for (let i = 0; i < 4; i++) g.fillRect(Math.round(s.x - Math.cos(a) * i * 2), Math.round(s.y - Math.sin(a) * i * 2), 1, 1); g.fillStyle = s.fireArrow ? '#ffdb96' : '#ff5a4a'; g.fillRect(Math.round(s.x) - 1, Math.round(s.y) - 1, 2, 2); }
         else { g.fillStyle = '#ff7a2a'; g.fillRect(Math.round(s.x) - 2, Math.round(s.y) - 2, 4, 4); g.fillStyle = '#fff7d0'; g.fillRect(Math.round(s.x) - 1, Math.round(s.y) - 1, 2, 2); }
       } else drawPlayerShot(g, s);
     }
@@ -3608,6 +4415,9 @@ function render() {
   g.globalAlpha = 0.93; g.drawImage(MAP.over, cx, cy, VW, VH, 0, 0, VW, VH); g.globalAlpha = 1;
   if (inRun) { drawLighting(g, cx, cy); drawFog(g, cx, cy); }      // 0.3: everything drawn after this line (particles, arcs, rings, numbers) stays at full brightness
   g.save(); g.translate(-cx, -cy);
+  if (inRun && nightRaidTorchScale() < 1) for (const h of G.hazards) drawHazard(g, h);
+  if (inRun) { drawCarabaoWarning(g); drawFireArrowRings(g); drawPowderWarnings(g, cx, cy); }
+  if (inRun) drawRaiderBannerSignals(g, cx, cy);
   for (let i = 0; i < PARTS.length; i++) {
     const q = PARTS[i]; if (q.life <= 0) continue;
     g.globalAlpha = Math.min(1, q.life / q.max * 1.6); g.fillStyle = q.color; g.fillRect(Math.round(q.x), Math.round(q.y), q.size, q.size);
@@ -3620,10 +4430,13 @@ function render() {
         const start = f.a - f.dir * f.arc / 2, end = start + f.dir * f.arc * Math.min(1, k * 1.8);
         g.globalAlpha = 1 - k; pxArc(g, f.x, f.y, f.range - 1, start, end, f.color, f.th);
         g.globalAlpha = (1 - k) * 0.6; pxArc(g, f.x, f.y, f.range - 5, start, end, f.color, f.th); g.globalAlpha = (1 - k) * 0.3; pxArc(g, f.x, f.y, f.range - 9, start, end, f.color, 2); g.globalAlpha = 1;
-      } else { g.globalAlpha = 1 - k; pxArc(g, f.x, f.y, lerp(f.r0, f.r1, k), 0, 6.283, f.color, 2); g.globalAlpha = 1; }
+      } else if (f.kind === 'enfilade') drawEnfiladeImpact(g, f, k);
+      else { g.globalAlpha = 1 - k; pxArc(g, f.x, f.y, lerp(f.r0, f.r1, k), 0, 6.283, f.color, 2); g.globalAlpha = 1; }
     }
+    drawShiftField(g, true);
     drawBolts(g);
     drawRallyLabels(g, cx, cy);
+    drawPreyMark(g, cx, cy);
     for (let i = 0; i < TEXTS.length; i++) { const t = TEXTS[i]; if (t.life <= 0) continue; g.globalAlpha = Math.min(1, t.life / t.max * 2.5); drawText3(g, t.text, t.x, t.y, t.color, t.scale); }
     g.globalAlpha = 1;
   }
@@ -3687,10 +4500,13 @@ function drawLighting(g, cx, cy) {
   const flick = i => 1 + Math.sin(t * 9 + i * 2.3) * 0.06 + Math.sin(t * 23 + i) * 0.04;
   add(p.x, p.y - 6, 84, '#ffe2b0', 0.72);
   if (p.recoilT > 0.06) add(p.x + Math.cos(p.aim) * 14, p.y - 5 + Math.sin(p.aim) * 14, 70, '#ffd9a0', 1);
-  if (L.dark >= LIGHT.torchAt) for (let i = 0; i < MAP.torches.length; i++) add(MAP.torches[i].x, MAP.torches[i].y - 9, 50 * flick(i), '#ffc070', 0.58);
+  if (L.dark >= LIGHT.torchAt && nightRaidTorchScale() > 0) for (let i = 0; i < MAP.torches.length; i++) add(MAP.torches[i].x, MAP.torches[i].y - 9, 50 * flick(i), '#ffc070', 0.58 * nightRaidTorchScale());
   for (let i = 0; i < MAP.fires.length; i++) add(MAP.fires[i].x, MAP.fires[i].y - 4, 60 * flick(i + 7), '#ffa040', 0.62);
   for (const [jx, jy] of MAP.junks) add(jx + 23, jy + 22, 34, '#ffc070', 0.45);
-  for (const b of G.burns) if (b.t >= 0) add(b.x, b.y, b.r + 26, '#ffa040', 0.6);
+  for (const b of G.burns) if (b.t >= 0) add(b.x, b.y, b.r + (b.fireArrow ? 12 : 26), '#ffa040', b.fireArrow ? 0.3 : 0.6);
+  for (const barrel of G.powderBarrels) if (barrel.detonatesAt !== null) add(barrel.x, barrel.y - 4, 26, '#ffb45f', 0.32);
+  if (G.carabao && G.carabao.warning <= 0) add(G.carabao.x, G.carabao.y - 5, 37, '#ffe2b0', 0.43);
+  for (const b of G.raiderBanners) add(b.x, b.y - 8, 28, TRAITS.banner.color, 0.35);
   for (const z of G.zones) add(z.x, z.y, z.r + 10, '#9ff0a8', 0.6);
   for (const h of G.hazards) add(h.x, h.y, (h.r || 30) + 14, '#ff5a4a', 0.25);
   for (const r of G.rings) if (r.delay <= 0) add(r.x, r.y, r.r + 14, '#ffa040', 0.35);
@@ -3728,7 +4544,7 @@ function drawWeather(g) {
 }
 /* ---------- world-space pieces ---------- */
 function drawTorches(g, cx, cy) {
-  const lit = G.p && G.state !== 'menu' && G.light.dark >= LIGHT.torchAt && G.settings.light !== 'off', t = G.time;
+  const lit = G.p && G.state !== 'menu' && G.light.dark >= LIGHT.torchAt && G.settings.light !== 'off' && nightRaidTorchScale() > 0, t = G.time;
   for (let i = 0; i < MAP.torches.length; i++) {
     const q = MAP.torches[i]; if (q.x < cx - 10 || q.x > cx + VW + 10 || q.y < cy - 20 || q.y > cy + VH + 10) continue;
     g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(q.x - 1, q.y + 1, 5, 2); g.fillStyle = '#3c281a'; g.fillRect(q.x - 1, q.y - 9, 3, 11); g.fillStyle = '#7a5632'; g.fillRect(q.x, q.y - 9, 1, 10); g.fillStyle = '#2a2230'; g.fillRect(q.x - 2, q.y - 11, 5, 3);
@@ -3737,10 +4553,30 @@ function drawTorches(g, cx, cy) {
 }
 function drawBurns(g) {
   for (const b of G.burns) {
+    if (b.fireArrow) {
+      if (b.t >= 0) {
+        fillCircle(g, b.x, b.y, b.r, '#6d3219', 0.27);
+        fillCircle(g, b.x, b.y, b.r * 0.57, '#f09842', 0.22);
+      }
+      continue;   // The landing marker stays readable above the night lighting pass.
+    }
     if (b.t < 0) { for (let i = 0; i < 12; i += 2) pxArc(g, b.x, b.y, b.r, i * 0.5236, (i + 1) * 0.5236, (G.time * 12 | 0) % 2 ? '#ffd84a' : '#ff7a2a', 1); fillCircle(g, b.x, b.y, b.r * (1 + b.t / TWISTS.fire.warm), '#ff7a2a', 0.18); continue; }
     const fade = Math.min(1, (TWISTS.fire.dur - b.t) / 0.6);
     g.save(); g.translate(b.x, b.y); g.scale(1, 0.62); fillCircle(g, 0, 0, b.r, '#3a1a10', 0.45 * fade); fillCircle(g, 0, 0, b.r * (0.82 + Math.sin(G.time * 11 + b.x) * 0.06), '#ff7a2a', 0.34 * fade); fillCircle(g, 0, 0, b.r * 0.5, '#ffd84a', 0.3 * fade); g.restore();
     pxArc(g, b.x, b.y, b.r, 0, 6.283, '#ff5a4a', 1);
+  }
+}
+function drawFireArrowRings(g) {
+  for (const b of G.burns) {
+    if (!b.fireArrow) continue;
+    if (b.t < 0) {
+      for (let i = 0; i < 8; i++) pxArc(g, b.x, b.y, b.r, i * Math.PI / 4, (i + 0.55) * Math.PI / 4, '#ffdb96', 1);
+      g.fillStyle = '#ffdb96'; g.fillRect(Math.round(b.x) - 1, Math.round(b.y) - 1, 3, 3);
+    } else {
+      pxArc(g, b.x, b.y, b.r, 0, Math.PI * 2, '#ee833f', 1);
+      g.fillStyle = '#ffae55';
+      for (const [dx, dy] of [[-5, 2], [2, -4], [5, 3]]) g.fillRect(Math.round(b.x) + dx, Math.round(b.y) + dy, 1, 3);
+    }
   }
 }
 function drawBolts(g) {
@@ -3771,6 +4607,96 @@ function traitRing(g, e) {
   if (e.trait === 'shield') { if (e.guardT <= 0) { const a = Math.atan2(G.p.y - e.y, G.p.x - e.x); pxArc(g, e.x, e.y - 5, 11, a - 1, a + 1, '#6ac8ff', 2); pxArc(g, e.x, e.y - 5, 12, a - 0.7, a + 0.7, '#e6fbff', 1); } }
   else if (e.trait === 'swift') { g.fillStyle = T.color; for (let i = 1; i <= 3; i++) g.fillRect(Math.round(e.x - e.face * (5 + i * 4)), Math.round(e.y - 9 + i * 2), 4 - i, 1); }
   else if (e.trait === 'volatile') { g.fillStyle = (G.time * 8 | 0) % 2 ? '#ffd84a' : T.color; g.fillRect(Math.round(e.x) - 1, Math.round(e.y) - 22, 2, 2); g.fillStyle = '#3a2a22'; g.fillRect(Math.round(e.x), Math.round(e.y) - 20, 1, 2); }
+  else if (e.trait === 'banner') g.drawImage(SPR.raiderBanner, Math.round(e.x) + 9, Math.round(e.y) - 24, 8, 11);
+}
+
+function visibleRaiderBanner(b, cx, cy) {
+  const m = TRAITS.banner.radius + 12;
+  return b.x >= cx - m && b.x <= cx + VW + m && b.y >= cy - m && b.y <= cy + VH + m;
+}
+
+function drawRaiderBannerGround(g, cx, cy) {
+  for (const b of G.raiderBanners) {
+    if (!visibleRaiderBanner(b, cx, cy)) continue;
+    const T = TRAITS.banner, suppressed = bannerSuppressed(b);
+    if (!suppressed) fillCircle(g, b.x, b.y, T.radius, '#6fc6a3', 0.12);
+    fillCircle(g, b.x, b.y, T.suppressRadius, suppressed ? '#e0e0ed' : T.color, 0.14);
+    g.drawImage(SPR.raiderBanner, Math.round(b.x) - 2, Math.round(b.y) - 18);
+  }
+}
+
+function drawRaiderBannerSignals(g, cx, cy) {
+  const T = TRAITS.banner;
+  for (const b of G.raiderBanners) {
+    if (!visibleRaiderBanner(b, cx, cy)) continue;
+    const suppressed = bannerSuppressed(b), color = suppressed ? '#ded6dc' : T.color;
+    const x = Math.round(b.x), y = Math.round(b.y);
+    g.globalAlpha = suppressed ? 0.45 : 0.8;
+    for (let i = 0; i < 16; i++) pxArc(g, b.x, b.y, T.radius, i * Math.PI / 8, (i + 0.55) * Math.PI / 8, suppressed ? '#96929b' : '#9ce6bc', 1);
+    g.globalAlpha = 1;
+    pxArc(g, b.x, b.y, T.suppressRadius, 0, Math.PI * 2, '#35252c', 3);
+    pxArc(g, b.x, b.y, T.suppressRadius, 0, Math.PI * 2, color, 1);
+    drawText3(g, 'RAIDER BANNER', x, y - 39, T.color, 1);
+    drawText3(g, suppressed ? 'SUPPRESSED' : 'STEP IN', x, y - 29, color, 1);
+    g.fillStyle = '#201624'; g.fillRect(x - 15, y - 22, 30, 4);
+    g.fillStyle = color;
+    const remaining = clamp((b.expiresAt - G.time) / T.duration, 0, 1);
+    g.fillRect(x - 14, y - 21, Math.ceil(28 * remaining), 2);
+  }
+  const pulseCueTime = 0.18;
+  if (G.time - bannerLastPulseAt >= pulseCueTime) return;
+  g.fillStyle = '#b9f8d3';
+  for (const e of G.enemies) {
+    const healedAt = bannerLastHeal.get(e);
+    if (e.dead || healedAt === undefined || G.time - healedAt >= pulseCueTime || !onScreen(e, 8)) continue;
+    const x = Math.round(e.x), y = Math.round(e.y) - 15;
+    g.fillRect(x - 2, y, 5, 1); g.fillRect(x, y - 2, 1, 5);
+  }
+}
+
+function drawCarabaoGround(g) {
+  const c = G.carabao;
+  if (!c) return;
+  const { halfLength, halfWidth } = CARABAO;
+  const x = c.west - halfLength, y = c.y - halfWidth;
+  const w = c.east - c.west + halfLength * 2, h = halfWidth * 2;
+  g.fillStyle = c.warning > 0 ? 'rgba(190,99,39,0.25)' : 'rgba(190,99,39,0.12)';
+  g.fillRect(x, y, w, h);
+  if (c.warning <= 0) {
+    g.fillStyle = '#ba8257';
+    g.fillRect(x, y, w, 1); g.fillRect(x, y + h, w, 1);
+    g.fillRect(x, y, 1, h); g.fillRect(x + w, y, 1, h + 1);
+  }
+}
+
+function drawCarabaoWarning(g) {
+  const c = G.carabao;
+  if (!c || c.warning <= 0) return;
+  const { halfLength, halfWidth } = CARABAO;
+  const x = c.west - halfLength, y = c.y - halfWidth;
+  const w = c.east - c.west + halfLength * 2, h = halfWidth * 2;
+  g.fillStyle = '#432c2c';
+  g.fillRect(x, y - 1, w + 1, 3); g.fillRect(x, y + h - 1, w + 1, 3);
+  g.fillStyle = '#ffcf83';
+  g.fillRect(x, y, w + 1, 1); g.fillRect(x, y + h, w + 1, 1);
+  g.fillRect(x, y, 2, h); g.fillRect(x + w - 1, y, 2, h);
+  for (let cx = x + 17; cx < x + w - 6; cx += 35) {
+    for (let i = 0; i < 6; i++) {
+      g.fillRect(cx - c.dir * i, c.y - i, 2, 2);
+      g.fillRect(cx - c.dir * i, c.y + i, 2, 2);
+    }
+  }
+  drawText3(g, 'CARABAO', c.dir > 0 ? c.west + 25 : c.east - 25, y - 9, '#fff0c8', 1);
+}
+
+function drawCarabao(g) {
+  const c = G.carabao;
+  if (!c || c.warning > 0) return;
+  const x = Math.round(c.x), y = c.y;
+  const frames = c.dir > 0 ? SPR.carabao.right : SPR.carabao.left;
+  const sprite = frames[Math.floor(Math.abs(c.x - c.west) / 11) % frames.length];
+  g.fillStyle = 'rgba(24,18,27,0.32)'; g.fillRect(x - 14, y + 5, 28, 5);
+  g.drawImage(sprite, x - Math.floor(sprite.width / 2), y - 14);
 }
 
 /* ============================================================
@@ -3833,12 +4759,27 @@ function drawPlayerShot(g, s) {
     pxArc(g, cx, cy, s.r - 3, s.a - w * 0.8, s.a + w * 0.8, '#1c1826', 3); pxArc(g, cx, cy, s.r - 5, s.a - w * 0.5, s.a + w * 0.5, '#3a3550', 2);
     if ((G.time * 20 | 0) % 2) { g.fillStyle = '#ffffff'; g.fillRect(Math.round(cx + Math.cos(s.a) * (s.r + 1)), Math.round(cy + Math.sin(s.a) * (s.r + 1)), 2, 2); }
   } else if (s.kind === 'knife') drawRot(g, SPR.knife, x, y, s.a, 5, 1, false);
-  else { g.fillStyle = '#1b1622'; g.fillRect(x - 2, y - 2, 4, 4); g.fillStyle = s.crit ? '#ffd84a' : '#fff7d0'; g.fillRect(x - 1, y - 1, 3, 3); }
+  else {
+    if (s.enfiladeHits !== undefined) {
+      const speed = Math.hypot(s.vx, s.vy) || 1;
+      const dx = s.vx / speed, dy = s.vy / speed;
+      g.fillStyle = '#f1c77e';
+      for (const offset of [4, 7]) g.fillRect(Math.round(s.x - dx * offset), Math.round(s.y - dy * offset), 2, 2);
+    }
+    g.fillStyle = '#1b1622'; g.fillRect(x - 2, y - 2, 4, 4);
+    g.fillStyle = s.crit ? '#ffd84a' : '#fff7d0'; g.fillRect(x - 1, y - 1, 3, 3);
+  }
 }
 function drawBombs(g) {
   for (const b of G.bombs) {
     const k = Math.min(1, b.t / b.dur), x = lerp(b.x0, b.tx, k), y = lerp(b.y0, b.ty, k), hgt = Math.sin(k * Math.PI) * 30, blink = (G.time * 14 | 0) % 2;
     for (let i = 0; i < 16; i++) if (i % 2 === 0) pxArc(g, b.tx, b.ty, b.r, i * 0.3927, (i + 1) * 0.3927, blink && k > 0.7 ? '#ffffff' : '#ffb02e', 1);     // dashed blast radius
+    if (b.clearRadius > b.r) {
+      for (let i = 0; i < 12; i++) {
+        const angle = i * Math.PI / 6;
+        pxArc(g, b.tx, b.ty, b.clearRadius, angle, angle + 0.09, '#a5deeb', 1);
+      }
+    }
     fillCircle(g, b.tx, b.ty, b.r * k, '#ffb02e', 0.14);
     g.fillStyle = 'rgba(0,0,0,0.35)'; g.fillRect(Math.round(x) - 3, Math.round(y) + 2, 6, 2);
     g.drawImage(SPR.pot, Math.round(x) - 3, Math.round(y - hgt) - 6);
@@ -3903,10 +4844,34 @@ function renderVictory(g) {
   for (let x = 452; x < VW; x += 8) { g.fillStyle = '#3c281a'; g.fillRect(x, 198, 8, 62); g.fillStyle = '#7a5632'; g.fillRect(x, 200, 6, 58); g.fillStyle = '#9a7446'; g.fillRect(x, 200, 2, 58); g.fillStyle = '#b08a58'; g.fillRect(x + 2, 195, 2, 4); }
   g.fillStyle = '#2a2230'; g.fillRect(520, 130, 4, 72); g.fillStyle = '#c3ccd6'; g.fillRect(521, 130, 2, 70);
   for (let i = 0; i < 34; i++) { const wy = 132 + Math.round(Math.sin(t * 5 + i * 0.35) * (i / 16)); g.fillStyle = '#f4f0e6'; g.fillRect(524 + i, wy, 1, 22); g.fillStyle = '#c0392b'; g.fillRect(524 + i, wy + Math.round(i * 20 / 34), 1, 3); g.fillRect(524 + i, wy + 19 - Math.round(i * 20 / 34), 1, 3); }
+  // Three fictional foregrounds use the same harbour and the equipped hero sprite.
+  if (p.hero === 'datu') {
+    g.fillStyle = '#49301f'; g.fillRect(400, 275, 240, 18); g.fillRect(445, 291, 12, 48); g.fillRect(568, 291, 12, 48);
+    g.fillStyle = '#a47a4a'; g.fillRect(402, 277, 238, 5);
+    g.fillStyle = '#38251f'; g.fillRect(355, 308, 145, 9); g.fillRect(367, 317, 121, 10);
+    g.fillStyle = '#a16d3f'; g.fillRect(362, 307, 131, 6); g.fillRect(377, 317, 102, 5);
+    g.fillStyle = '#d9c487'; g.fillRect(491, 301, 27, 2); g.fillRect(516, 290, 2, 12);
+  }
+  if (p.hero === 'diego') {
+    g.fillStyle = '#49301f'; g.fillRect(0, 318, VW, 42); g.fillRect(0, 281, VW, 6);
+    for (let x = 25; x < VW; x += 88) g.fillRect(x, 282, 5, 37);
+    g.fillStyle = '#936b41'; for (let y = 322; y < 360; y += 9) g.fillRect(0, y, VW, 3);
+    g.fillStyle = '#76502f'; g.fillRect(400, 301, 38, 17); g.fillRect(440, 307, 27, 11);
+    g.fillStyle = '#302634'; g.fillRect(482, 290, 17, 28);
+    g.fillStyle = '#efbf55'; g.fillRect(485, 294, 11, 16); g.fillStyle = '#fff2ad'; g.fillRect(489, 299, 4, 6);
+  }
+  if (p.hero === 'mateo') {
+    g.fillStyle = '#51413b'; g.fillRect(375, 318, 30, 5);
+    g.fillStyle = '#e87632'; g.fillRect(384, 306 - (Math.floor(t * 3) % 2), 12, 11);
+    g.fillStyle = '#ffd84a'; g.fillRect(388, 310, 5, 7);
+    g.fillStyle = '#28212b'; g.fillRect(378, 301, 23, 5);
+    const w = SPR.macuahuitl; g.save(); g.translate(220, 306); g.rotate(-1.35);
+    g.drawImage(w, -w.width * 2, -w.height * 2, w.width * 4, w.height * 4); g.restore();
+  }
   // the defenders
   const crowd = [['villager', 392, 300, 2, 0], ['diego', 428, 292, 2, 1.1], ['villager2', 464, 304, 2, 2.3], ['datu', 500, 296, 2, 0.6], ['villager', 540, 306, 2, 1.7], ['mateo', 576, 298, 2, 2.9], ['villager2', 610, 304, 2, 0.3]];
   for (const [id, x, y, sc, ph] of crowd) {
-    if (id === p.hero) continue; const s = SPR[id], hop = Math.max(0, Math.sin(t * 5 + ph)) * 6, f = hop > 1 ? 1 : 0;
+    if (!id.startsWith('villager')) continue; const s = SPR[id], hop = 0, f = 0;
     g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(x - s.w * sc / 2 + 4, y, s.w * sc - 8, 3); g.drawImage(s.l[f], Math.round(x - s.w * sc / 2), Math.round(y - s.h * sc - hop), s.w * sc, s.h * sc);
   }
   if (K === 'sign') { g.fillStyle = 'rgba(14,11,32,0.42)'; g.fillRect(0, 154, VW, VH - 154); }      // the shore is still in shadow; the hero is drawn after this and stays lit
@@ -3920,7 +4885,9 @@ function renderVictory(g) {
   { const s = SPR[p.hero], sc = 5, x = 286, y = 322, bob = Math.round(Math.sin(t * 2.2) * 2);
     g.fillStyle = 'rgba(0,0,0,0.3)'; g.fillRect(x - 24, y, 48, 5); g.drawImage(s.l[0], x - s.w * sc / 2, y - s.h * sc + bob, s.w * sc, s.h * sc);
     const w = SPR[{ mateo: 'macuahuitl', datu: 'yoyo', diego: 'arquebus' }[p.hero]];
-    if (p.hero === 'datu') {                                  // the stone hangs from his raised fist and swings
+    if (p.hero === 'mateo') {
+      // His weapon is planted beside the fire.
+    } else if (p.hero === 'datu') {                                  // the stone hangs from his raised fist and swings
       const hx = x - 36, hy = y - 58 + bob, sw = Math.sin(t * 3) * 0.5, sx = hx + Math.sin(sw) * 40, sy = hy + Math.cos(sw) * 40;
       g.fillStyle = '#f4ead0'; for (let i = 0; i <= 20; i++) g.fillRect(Math.round(lerp(hx, sx, i / 20)), Math.round(lerp(hy, sy, i / 20)), 2, 2);
       g.drawImage(w, Math.round(sx) - 13, Math.round(sy) - 4, 28, 28);
@@ -3928,6 +4895,65 @@ function renderVictory(g) {
   // drifting petals (not before dawn)
   if (K !== 'sign') for (let i = 0; i < 40; i++) { const x = (i * 53 + Math.sin(t + i) * 20 + t * 12) % VW, y = (i * 29 + t * (18 + i % 7)) % VH; g.fillStyle = ['#ffd84a', '#ff9ad1', '#f4f0e6', '#7be38a'][i % 4]; g.fillRect(Math.round(x), Math.round(y), 2, 2); }
   if (t < 1) { g.globalAlpha = 1 - t; g.fillStyle = '#fffbe0'; g.fillRect(0, 0, VW, VH); g.globalAlpha = 1; }
+}
+
+function drawPreyMark(g, cx, cy) {
+  const e = markedPrey();
+  if (!e || e.x < cx - 12 || e.x > cx + VW + 12 || e.y < cy || e.y > cy + VH + 34) return;
+  const x = Math.round(e.x), y = Math.round(e.y) - (e.d.boss ? 38 : 27);
+  // Keep the brackets below the RALLY label and legible after night lighting.
+  g.fillStyle = '#1d1429';
+  g.fillRect(x - 8, y - 1, 6, 7);
+  g.fillRect(x + 3, y - 1, 6, 7);
+  g.fillStyle = '#dab6ff';
+  g.fillRect(x - 7, y, 4, 1);
+  g.fillRect(x - 7, y, 1, 5);
+  g.fillRect(x + 4, y, 4, 1);
+  g.fillRect(x + 7, y, 1, 5);
+}
+
+function enfiladeImpact(x, y, vx, vy) {
+  G.fx.push({ kind: 'enfilade', x, y, aim: Math.atan2(vy, vx), t: 0, dur: 0.13 });
+}
+function drawEnfiladeImpact(g, f, progress) {
+  if (!G.settings.flash) return;
+  g.fillStyle = '#ffe5a3';
+  g.globalAlpha = 1 - progress;
+  const length = 4 + 4 * progress;
+  for (const side of [-1, 1]) {
+    const a = f.aim + side * 0.7;
+    g.fillRect(Math.round(f.x + Math.cos(a) * length), Math.round(f.y + Math.sin(a) * length), 2, 2);
+  }
+  g.globalAlpha = 1;
+}
+
+function drawPowderBarrels(g) {
+  for (const b of G.powderBarrels) {
+    const x = Math.round(b.x), y = Math.round(b.y);
+    g.fillStyle = 'rgba(0,0,0,0.31)'; g.fillRect(x - 6, y - 1, 13, 3);
+    g.drawImage(SPR.powderBarrel, x - 5, y - 11);
+  }
+}
+
+function drawPowderWarnings(g, cx, cy) {
+  const r = POWDER_BARREL.blastRadius;
+  for (const b of G.powderBarrels) {
+    if (b.detonatesAt === null) continue;
+    const x = b.x, y = b.y, edgeX = clamp(x, cx, cx + VW), edgeY = clamp(y, cy, cy + VH);
+    if (Math.hypot(x - edgeX, y - edgeY) > r) continue;
+    const left = clamp((b.detonatesAt - G.time) / POWDER_BARREL.fuse, 0, 1);
+    fillCircle(g, x, y, r, '#e9602b', 0.09);
+    pxArc(g, x, y, r, 0, Math.PI * 2, '#ffa760', 1);
+    pxArc(g, x, y, r - 3, -Math.PI / 2, -Math.PI / 2 + left * Math.PI * 2, '#ffedb4', 1);
+    if (x !== edgeX || y !== edgeY) {
+      const markX = clamp(x, cx + 24, cx + VW - 24), markY = clamp(y, cy + 23, cy + VH - 22);
+      drawText3(g, 'FUSE', markX, markY, '#ffedb4', 1);
+    } else {
+      g.fillStyle = '#ffcc75'; g.fillRect(Math.round(x) - 1, Math.round(y) - 15, 3, 3);
+      g.fillStyle = '#fff2bf'; g.fillRect(Math.round(x), Math.round(y) - 16, 1, 2);
+      drawText3(g, 'FUSE', x, y - 25, '#ffedb4', 1);
+    }
+  }
 }
 
 /* Champion colors follow the existing ring system. Mark the source with a
@@ -3973,6 +4999,44 @@ function drawRallyLabels(g, cx, cy) {
     if (e.dead || e.trait !== 'rallying' || e.x < cx - 12 || e.x >= cx + VW + 12 ||
         e.y < cy || e.y >= cy + VH + 34) continue;
     g.drawImage(rallyLabel, Math.round(e.x) - 10, Math.round(e.y) - 35);
+  }
+}
+
+function drawShiftField(g, outline) {
+  const field = activeShiftField();
+  if (!field) return;
+  const { kind, x, y, until } = field;
+  const { radius } = SHIFT_FIELDS[kind];
+  const fade = Math.min(1, (until - G.time) * 4);
+  const snare = kind === 'snare';
+  if (outline) {
+    // Keep the actual boundary legible at night. Actors and projectiles draw above the fill.
+    g.globalAlpha = 0.8 * fade;
+    for (let i = 0; i < 12; i++) {
+      const angle = i * Math.PI / 6;
+      pxArc(g, x, y, radius, angle, angle + 0.23, snare ? '#7bebd2' : '#c4ccd5', 1);
+    }
+    g.globalAlpha = 1;
+    return;
+  }
+  fillCircle(g, x, y, radius, snare ? '#224f43' : '#677382', 0.38 * fade);
+  if (snare) {
+    g.fillStyle = '#8fcaa9';
+    g.globalAlpha = 0.38 * fade;
+    for (let row = -16; row <= 16; row += 8) {
+      for (let col = -16; col <= 16; col += 8) {
+        const px = Math.round(x + col), py = Math.round(y + row);
+        g.fillRect(px - 2, py, 5, 1); g.fillRect(px, py - 2, 1, 5);
+      }
+    }
+    g.globalAlpha = 1;
+  } else {
+    for (let i = 0; i < 9; i++) {
+      const turn = i * 2.4 + G.time * (i % 2 === 0 ? 0.7 : -0.4);
+      const offset = 7 + i * 3;
+      fillCircle(g, x + Math.cos(turn) * offset, y + Math.sin(turn) * offset, 10 + i % 4,
+        i % 2 === 0 ? '#c1cad0' : '#a0acb8', 0.23 * fade);
+    }
   }
 }
 
@@ -4112,7 +5176,7 @@ const fmtTime = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padSt
 const CAT_LABEL = { supply: 'Supplies', gear: 'Equipment', myth: 'Mythological' };
 const WEAPON_SPR = { mateo: 'macuahuitl', datu: 'yoyo', diego: 'arquebus' };
 const SP_GLYPH = { mateo: ['arc', '#35c2c2', '#1c1826'], datu: ['wing', '#c08aff', '#fff'], diego: ['flame', '#ffb02e', '#fff7d0'] };
-const AB_GLYPH = { mateo: ['wing', '#4fd0e0', '#fff'], datu: ['wave', '#4fd0e0', '#fff'], diego: ['shield', '#4fd0e0', '#e6fbff'] };
+const AB_GLYPH = { mateo: ['wing', '#4fd0e0', '#fff'], datu: ['magnet', '#7bebd2', '#fff'], diego: ['dome', '#c4ccd5', '#e6fbff'] };
 const SCREEN_PARENT = { modesel: 'menu', charsel: 'modesel', database: 'menu', perm: 'menu', notes: 'menu', deeds: 'menu', codex: 'menu' };
 const MODES = {
   arcade: { name: 'Arcade', tag: 'Ten waves. Two bosses. An ending.', desc: 'The campaign: survive ten waves, beat the Pirate Captain on wave 5 and the Fleet Commander on wave 10, and Manila is saved.' },
@@ -4259,6 +5323,7 @@ const UI = {
         <div class="hmove"><b class="k1">LMB</b> ${h.prim[0]}: ${h.prim[1]}</div>
         <div class="hmove"><b class="k2">RMB</b> ${h.sp[0]}: ${h.sp[1]}</div>
         <div class="hmove"><b class="k3">SHIFT</b> ${h.sec[0]}: ${h.sec[1]}</div>
+        <div class="hmove hpassive"><strong>${HERO_PASSIVES[h.id].name}</strong> &middot; ${HERO_PASSIVES[h.id].short()}</div>
         <div class="hdesc">${h.style}</div>
       </div>`).join(''));
     $('startbtn').textContent = `Begin as ${HEROES[G.heroId].name}`; $('startsum').innerHTML = `Mode: <b>${MODES[G.mode].name}</b> &middot; Defender: <b>${HEROES[G.heroId].name}</b>${Save.data.challengeTier ? ` &middot; Raider's Challenge tier <b>${Save.data.challengeTier}</b>` : ''}`;
@@ -4274,6 +5339,7 @@ const UI = {
       </div><div class="dbcol">
         <h3>${d.weapon[0]}</h3><p>${d.weapon[1]}</p>
         <h3>Combat identity</h3><p>${d.identity}</p>
+        <h3>Passive &middot; ${HERO_PASSIVES[h.id].name}</h3><p>${HERO_PASSIVES[h.id].short()} ${HERO_PASSIVES[h.id].detail()}</p>
         <h3>Strengths</h3><ul>${d.strengths.map(s => `<li>${s}</li>`).join('')}</ul>
         <h3>Weaknesses</h3><ul>${d.weaknesses.map(s => `<li>${s}</li>`).join('')}</ul>
       </div>`;
@@ -4334,6 +5400,10 @@ const UI = {
       wd('cd-c' + i, co ? (co.id === 'anito' && co.ready ? 0 : clamp(co.cd / co.cdMax, 0, 1) * 100) : 0, 'height');
     }
     let b = hudChips03(p);
+    if (p.guardUntil > G.time) {
+      b += '<span class="chip b gap-guard">GAP GUARD<i id="gap-fill" aria-hidden="true"></i></span>';
+    }
+    if (markedPrey(p)) b += '<span class="chip v">PREY MARKED</span>';
     if (p.challenge) b += `<span class="chip r">CHALLENGE ${p.challenge}</span>`;
     if (p.boost) b += '<span class="chip o">+25% DAMAGE</span>';
     if (p.barrier > 0) b += `<span class="chip b">BARRIER x${p.barrier}</span>`;
@@ -4343,6 +5413,10 @@ const UI = {
     if (p.speedT > 0) b += '<span class="chip g">SWIFT</span>';
     if (lv('laststand') && p.hp < p.maxHp * 0.4) b += '<span class="chip r">LAST STAND</span>';
     if (c.buffs !== b) { c.buffs = b; $('buffs').innerHTML = b; }
+    if (p.guardUntil > G.time) {
+      const remaining = clamp((p.guardUntil - G.time) / HERO_PASSIVES.mateo.seconds, 0, 1);
+      $('gap-fill').style.transform = `scaleX(${remaining})`;
+    }
     const tv = Input.device === 'touch' && G.state === 'playing' ? 1 : 0; if (c.tv !== tv) { c.tv = tv; $('touch').classList.toggle('hidden', !tv); }
   },
   buildHTML() {
@@ -4362,7 +5436,7 @@ const UI = {
       if (id === '_rations') return `<div class="card" role="button" tabindex="0" data-act="up" data-arg="${i}"><span class="ckey px">${i + 1}</span><img class="cicon" src="${iconURL(glyphCanvas('potion', '#e0503f', '#ffd0c0'))}"><div class="cname px">Field Rations</div><div class="ctag">Every skill is mastered</div><div class="cdesc">Restore 30 HP.</div></div>`;
       const u = UPGRADES[id], l = p.up[id] || 0;
       return `<div class="card ${u.hero ? 'heroup' : ''}" role="button" tabindex="0" data-act="up" data-arg="${i}"><span class="ckey px">${i + 1}</span><img class="cicon" src="${iconURL(iconFor(u))}">
-        <div class="cname px">${u.name}</div><div class="ctag">${u.hero ? HEROES[u.hero].name + ' technique' : 'Attribute'}</div>
+        <div class="cname px">${u.name}</div><div class="ctag">${u.hero ? HEROES[u.hero].name + ' technique' : 'Attribute'}${u.rarity ? ' &middot; ' + u.rarity : ''}</div>
         <div class="cdesc">${u.per}</div><div class="ctot">${l ? u.tot(l) + ' &rarr; ' : ''}<b>${u.tot(l + 1)}</b></div>
         <div class="clvl px">LV ${l} &gt;&gt; ${l + 1} <span>&nbsp;MAX ${u.max}</span></div></div>`;
     }).join('');
@@ -4370,7 +5444,8 @@ const UI = {
   },
   chooseUpgrade(i) {
     if (G.state !== 'levelup' || performance.now() < this.lock || !this.luIds[i]) return;
-    applyUpgrade(this.luIds[i]); sfx('click');
+    if (!applyUpgrade(this.luIds[i])) return;
+    sfx('click');
     if (G.p.pending > 0) this.openLevelUp(); else { G.state = 'playing'; this.show('hud'); }
   },
 
@@ -4487,23 +5562,24 @@ Object.assign(UI, {
     $('charmcards').innerHTML = ids.map((id, i) => {
       const c = CHARM_BY_ID[id];
       return `<div class="card charm" role="button" tabindex="0" data-act="charm" data-arg="${i}" ${i === 0 ? 'data-focus="1"' : ''}><span class="ckey px">${i + 1}</span><img class="cicon" src="${iconURL(iconFor(c))}" alt="">
-        <div class="cname px">${c.name}</div><div class="ctag">Anting-anting &middot; Perk</div><div class="cdesc">${c.desc}</div><div class="clore">${c.lore}</div></div>`;
+        <div class="cname px">${c.name}</div><div class="ctag">Anting-anting &middot; Perk${c.heroes ? ' &middot; ' + c.heroes.map(h => HEROES[h].name).join(', ') : ''}</div><div class="cdesc">${c.desc}</div><div class="clore">${c.lore}</div></div>`;
     }).join('');
     this.lock = performance.now() + 450; this.show('charm'); sfx('spirit');
   },
   chooseCharm(i) {
     if (G.state !== 'charm' || performance.now() < this.lock || !this.charmIds[i]) return;
-    gainCharm(this.charmIds[i]); sfx('buy'); this.charmIds = []; G.state = 'shop'; this.openShop();
+    if (!gainCharm(this.charmIds[i])) return;
+    sfx('buy'); this.charmIds = []; G.state = 'shop'; this.openShop();
   },
   renderDeeds() {
     const D = Save.data.deeds, done = DEEDS.filter(d => D[d.id]).length, base = CHARMS.filter(c => !c.deed);
-    $('deedhead').innerHTML = `<b>${done}</b> of <b>${DEEDS.length}</b> deeds (achievements) done &middot; <b>${base.length + done}</b> of <b>${CHARMS.length}</b> anting-anting (perks) can appear in your runs`;
+    $('deedhead').innerHTML = `<b>${done}</b> of <b>${DEEDS.length}</b> deeds (achievements) done &middot; <b>${base.length + done}</b> of <b>${CHARMS.length}</b> anting-anting (perks) unlocked across all heroes`;
     $('deedgrid').innerHTML = DEEDS.map(d => {
       const c = CHARM_BY_ID[d.charm], ok = !!D[d.id];
       return `<div class="deedcard ${ok ? 'done' : ''}"><div class="dkind px">DEED</div><div class="dname px">${d.name}${ok ? ' <span class="chip g">DONE</span>' : ''}</div><div class="dhow">${d.how}</div>
         <div class="dkind v px">${ok ? 'PERK UNLOCKED' : 'UNLOCKS PERK'}</div><div class="dcharm"><img src="${iconURL(iconFor(c))}" alt=""><div><b>${c.name}</b><span>${c.desc}</span></div></div></div>`;
     }).join('');
-    $('deedbase').innerHTML = '<i>Perks available from the start:</i> ' + base.map(c => `<span class="chip v" title="${c.desc}">${c.name}</span>`).join('');
+    $('deedbase').innerHTML = '<i>Perks available from the start:</i> ' + base.map(c => `<span class="chip v" title="${c.desc}">${c.name}${c.heroes ? ' (' + c.heroes.map(h => HEROES[h].name).join(', ') + ')' : ''}</span>`).join('');
   }
 });
 
@@ -4523,7 +5599,9 @@ Object.assign(UI, {
   },
   endingHTML() {
     const p = G.p, E = G.ending, seen = Save.data.endings[p.hero] || {}, all = ENDINGS[p.hero], n = all.filter(e => seen[e.key]).length;
+    const reward = E.fresh && SKINS[p.hero].find(s => s.ending === E.key);
     return `<b>Ending: ${E.name}</b>${E.fresh ? ' <span class="chip g">NEW</span>' : ''} &middot; ${n} of ${all.length} endings seen as ${p.h.name}` +
+      (reward ? `<div>Wardrobe reward earned: <b>${reward.name}</b></div>` : '') +
       all.filter(e => !seen[e.key]).map(e => `<div class="endhint">Not yet seen: ${e.how}</div>`).join('');
   },
   cxId: null,
@@ -4553,6 +5631,19 @@ Object.assign(UI, {
     MenuScroll.replaceContents($('wdtabs'), Object.keys(SKINS).map(k => `<button class="btn wdtab ${k === h ? 'sel' : ''}" aria-pressed="${k === h}" data-act="wdhero" data-arg="${k}"><img src="${iconURL(SPR[k].r[0])}" alt="">${HEROES[k].name} <small>${SKINS[k].filter(s => Save.hasSkin(k, s.id)).length}/${SKINS[k].length}</small></button>`).join(''));
     MenuScroll.replaceContents($('wdgrid'), list.map(s => {
       const has = Save.hasSkin(h, s.id), on = worn === s.id;
+      if (s.ending) {
+        const ending = ENDINGS[h].find(e => e.key === s.ending);
+        const state = on ? 'Worn' : has ? 'Earned' : 'Locked';
+        const btn = on ? '<button class="btn" disabled>Wearing</button>' : has
+          ? `<button class="btn" data-act="skin" data-arg="${s.id}" aria-label="Wear ${s.name}">Wear</button>`
+          : '<button class="btn" disabled>Locked</button>';
+        return `<div class="wdcard ${on ? 'on' : ''} ${has ? 'has' : ''}" role="group" aria-labelledby="wd-${s.id}">
+          <img class="wdimg" src="${iconURL(SKINSPR[h][s.id].r[0])}" alt="">
+          <div class="wdname px" id="wd-${s.id}">${s.name}</div>
+          <div class="wdkind px reward">${state} &middot; Ending reward</div>
+          <div class="wdhint">Ending: ${ending.name}<br>${ending.how}</div>
+          <div class="wdnote">${s.note}</div>${btn}</div>`;
+      }
       const btn = on ? '<button class="btn" disabled>Wearing</button>' : has ? `<button class="btn" data-act="skin" data-arg="${s.id}">Wear</button>` : `<button class="btn gold" data-act="skin" data-arg="${s.id}" ${Save.data.funds < s.cost ? 'disabled' : ''}>Buy &middot; ${s.cost}</button>`;
       return `<div class="wdcard ${on ? 'on' : ''} ${has ? 'has' : ''}"><img class="wdimg" src="${iconURL(SKINSPR[h][s.id].r[0])}" alt=""><div class="wdname px">${s.name}</div>
         <div class="wdkind px ${s.kind}">${s.kind === 'costume' ? 'COSTUME' : s.kind === 'recolor' ? 'RECOLOUR' : 'ORIGINAL'}</div><div class="wdnote">${s.note}</div>${btn}</div>`;
@@ -4566,7 +5657,7 @@ Object.assign(UI, {
     else if (a === 'skin') {
       const h = this.wdHero, s = SKIN_BY_KEY[h + ':' + arg];
       if (Save.hasSkin(h, arg)) { Save.wearSkin(h, arg); sfx('click'); this.wdMsg = `${HEROES[h].name} is wearing ${s ? s.name : 'his own clothes'}.`; }
-      else { const r = Save.buySkin(h, arg); if (r === 'ok') { sfx('buy'); this.wdMsg = `${s.name} bought and put on.`; } else { sfx('deny'); this.wdMsg = r === 'poor' ? 'Not enough Campaign Funds.' : ''; } }
+      else { const r = Save.buySkin(h, arg); if (r === 'ok') { sfx('buy'); this.wdMsg = `${s.name} bought and put on.`; } else { sfx('deny'); this.wdMsg = r === 'poor' ? 'Not enough Campaign Funds.' : r === 'locked' ? 'Earn the signature ending to unlock this reward.' : ''; } }
       this.renderWardrobe();
     } else return act0.call(this, a, arg);
     if (Input.device === 'pad' && this.current !== 'hud') this.navMove(0, 0);
